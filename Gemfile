@@ -6,7 +6,7 @@ gemspec
 
 group :development do
   gem "coveralls", "~> 0.6.7", :require => false
-  gem "flay", "~> 2.3.1"
+  gem "flay", "~> 2.4.0"
   gem "flog", "~> 4.1.1"
   gem "guard", "~> 1.8.1"
   gem "guard-bundler", "~> 1.0.0"
@@ -22,7 +22,7 @@ group :development do
   gem "rspec", "~> 2.14.1"
   gem "rspec-instafail", "~> 0.2.4"
   gem "terminal-notifier-guard", "~> 1.5.3"
-  gem "yard", "~> 0.8.6.2"
+  gem "yard", "~> 0.8.7"
 end
 
 
