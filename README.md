@@ -6,7 +6,7 @@ Pio
 [![Coverage Status](https://coveralls.io/repos/trema/pio/badge.png?branch=develop)](https://coveralls.io/r/trema/pio)
 [![Dependency Status](https://gemnasium.com/trema/pio.png)](https://gemnasium.com/trema/pio)
 
-Pio is a ruby gem to easily parse and generate network packets. It supports the following packer formats:
+Pio is a ruby gem to easily parse and generate network packets. It supports the following packet formats:
 
  * [LLDP](http://en.wikipedia.org/wiki/Link_Layer_Discovery_Protocol)
  * (currently there are just a few formats supported but I'm sure this list will grow)
