@@ -1,11 +1,10 @@
 source "https://rubygems.org"
 
 
-gem "bindata"
+gemspec
 
 
 group :development do
-  gem "cucumber", "~> 1.3.3"
   gem "flay", "~> 2.3.1"
   gem "flog", "~> 4.1.1"
   gem "guard", "~> 1.8.1"
