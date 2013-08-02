@@ -1,4 +1,4 @@
-pio
+Pio
 ===
 [![Gem Version](https://badge.fury.io/rb/pio.png)](http://badge.fury.io/rb/pio)
 [![Build Status](https://travis-ci.org/trema/pio.png?branch=develop)](https://travis-ci.org/trema/pio)
@@ -7,6 +7,30 @@ pio
 [![Dependency Status](https://gemnasium.com/trema/pio.png)](https://gemnasium.com/trema/pio)
 
 Packet parser and generator
+
+
+Example
+-------
+
+Its usage is dead simple: to parse an LLDP frame for example, use the
+API `Pio::Lldp.read` and you can access each field of the parsed LLDP
+frame.
+
+```ruby
+require "pio"
+
+lldp = Pio::Lldp.read( binary_data )
+lldp.ttl #=> 120
+```
+
+Also you can use `Pio::Lldp#new` to generate an LLDP frame like below:
+
+```ruby
+require "pio"
+
+lldp = Pio::Lldp.new( 0x123, 12 )  # dpid and port_number
+lldp.to_binary  #=> LLDP frame in binary literal.
+```
 
 
 Installation
