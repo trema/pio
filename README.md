@@ -6,10 +6,12 @@ Pio
 [![Coverage Status](https://coveralls.io/repos/trema/pio/badge.png?branch=develop)](https://coveralls.io/r/trema/pio)
 [![Dependency Status](https://gemnasium.com/trema/pio.png)](https://gemnasium.com/trema/pio)
 
+<a href="http://www.flickr.com/photos/mongogushi/4226014070/" title="pio pencil by mongo gushi, on Flickr"><img src="http://farm5.staticflickr.com/4022/4226014070_cdeb7c1e5d_m.jpg" width="240" height="218" alt="pio pencil"></a>
+
 Pio is a ruby gem to easily parse and generate network packets. It supports the following packet formats:
 
  * [LLDP](http://en.wikipedia.org/wiki/Link_Layer_Discovery_Protocol)
- * (currently there are just a few formats supported but I'm sure this list will grow)
+ * (...currently there are just a few formats supported but I'm sure this list will grow)
 
 
 Features Overview
