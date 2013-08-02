@@ -17,10 +17,11 @@
 
 
 require "bundler/gem_tasks"
+require "coveralls/rake/task"
 require "flay"
-require "rake/tasklib"
 require "flay_task"
 require "flog"
+require "rake/tasklib"
 require "reek/rake/task"
 require "rspec/core"
 require "rspec/core/rake_task"
@@ -32,8 +33,11 @@ $ruby_source = FileList[ "lib/**/*.rb" ]
 
 
 task :default => :travis
-task :travis => [ :spec, :quality ]
+task :travis => [ :spec, :quality, "coveralls:push" ]
 task :quality => [ :reek, :flog, :flay ]
+
+
+Coveralls::RakeTask.new
 
 
 RSpec::Core::RakeTask.new do | task |

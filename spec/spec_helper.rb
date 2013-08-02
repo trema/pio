@@ -1,5 +1,8 @@
 require "rubygems"
 
+require "simplecov"
+SimpleCov.start
+
 require "rspec"
 require "rspec/autorun"
 
@@ -8,6 +11,12 @@ require "rspec/autorun"
 # in ./support/ and its subdirectories.
 Dir[ "#{ File.dirname( __FILE__ ) }/support/**/*.rb" ].each do | each |
   require File.expand_path( each )
+end
+
+
+if ENV[ "TRAVIS" ]
+  require "coveralls"
+  Coveralls.wear!
 end
 
 
