@@ -6,7 +6,10 @@ Pio
 [![Coverage Status](https://coveralls.io/repos/trema/pio/badge.png?branch=develop)](https://coveralls.io/r/trema/pio)
 [![Dependency Status](https://gemnasium.com/trema/pio.png)](https://gemnasium.com/trema/pio)
 
-Packet parser and generator
+Pio is a ruby gem to easily parse and generate network packets. It supports the following packer formats:
+
+ * [LLDP](http://en.wikipedia.org/wiki/Link_Layer_Discovery_Protocol)
+ * (currently there are just a few formats but I'm sure this list will grow)
 
 
 Features Overview
@@ -42,7 +45,7 @@ Also you can use `Pio::Lldp#new` to generate an LLDP frame like below:
 require "pio"
 
 lldp = Pio::Lldp.new( 0x123, 12 )  # dpid and port_number
-lldp.to_binary  #=> LLDP frame in binary literal.
+lldp.to_binary  #=> LLDP frame in binary format.
 ```
 
 
