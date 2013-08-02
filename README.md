@@ -9,7 +9,7 @@ Pio
 Pio is a ruby gem to easily parse and generate network packets. It supports the following packer formats:
 
  * [LLDP](http://en.wikipedia.org/wiki/Link_Layer_Discovery_Protocol)
- * (currently there are just a few formats but I'm sure this list will grow)
+ * (currently there are just a few formats supported but I'm sure this list will grow)
 
 
 Features Overview
@@ -21,7 +21,7 @@ Features Overview
    Linux, and MacOSX), and supports all major version of Ruby (1.8.7,
    1.9.3, 2.0.0).
  * Clean Code. Pio is built on
-   [BinData](https://github.com/dmendel/bindata) declarative binary
+   [BinData](https://github.com/dmendel/bindata)'s declarative binary
    format DSL so that it is easy to read and debug by human beings.
  
 
