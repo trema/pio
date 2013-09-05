@@ -7,7 +7,7 @@ module Pio
     describe MacAddress do
       subject { MacAddress.new( "01:80:c2:00:00:0e" ) }
 
-      its( :to_binary_s ) { should eq "\001\200\302\000\000\016" }
+      its( :to_binary_s ) { should eq [ 0x01, 0x80, 0xc2, 0x00, 0x00, 0x0e ].pack( "C6" ) }
     end
   end
 end

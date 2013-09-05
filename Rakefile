@@ -17,20 +17,27 @@
 
 
 require "bundler/gem_tasks"
+require "coveralls/rake/task"
 require "flay"
-require "rake/tasklib"
 require "flay_task"
 require "flog"
+require "rake/tasklib"
 require "reek/rake/task"
 require "rspec/core"
 require "rspec/core/rake_task"
+require "yaml"
 require "yard"
 
 
 $ruby_source = FileList[ "lib/**/*.rb" ]
 
 
+task :default => :travis
+task :travis => [ :spec, :quality, "coveralls:push" ]
 task :quality => [ :reek, :flog, :flay ]
+
+
+Coveralls::RakeTask.new
 
 
 RSpec::Core::RakeTask.new do | task |
@@ -51,7 +58,7 @@ desc "Analyze for code complexity"
 task :flog do
   flog = Flog.new( :continue => true )
   flog.flog( *$ruby_source )
-  threshold = 10
+  threshold = 20
 
   bad_methods = flog.totals.select do | name, score |
     ( not ( /##{flog.no_method}$/=~ name ) ) and score > threshold
@@ -79,6 +86,31 @@ end
 YARD::Rake::YardocTask.new do | t |
   t.options = [ "--no-private" ]
   t.options << "--debug" << "--verbose" if $trace
+end
+
+
+def travis_yml
+  File.join File.dirname( __FILE__ ), ".travis.yml"
+end
+
+
+def rubies
+  ( [ "1.8.7" ] + YAML.load_file( travis_yml )[ "rvm" ] ).uniq.sort
+end
+
+
+desc "Run tests against multiple rubies"
+task :portability
+
+rubies.each do | each |
+  portability_task_name = "portability:#{ each }"
+  task :portability => portability_task_name
+
+  desc "Run tests against Ruby#{ each }"
+  task portability_task_name do
+    sh "rvm #{ each } exec bundle"
+    sh "rvm #{ each } exec bundle exec rake"
+  end
 end
 
 
