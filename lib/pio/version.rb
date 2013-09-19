@@ -19,7 +19,7 @@
 # Base module.
 module Pio
   # gem version.
-  VERSION = "0.1.1"
+  VERSION = "0.2.1"
 end
 
 
