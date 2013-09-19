@@ -1,0 +1,518 @@
+#+TITLE: Pio の TODO
+#+FILETAGS: PIO
+#+ICALENDAR_EXCLUDE_TAGS: noex
+
+GitHub のリポジトリはこちら https://github.com/trema/pio
+
+* Special Dates
+* Notes
+** ARP フォーマット                                                   :NOTE:
+:LOGBOOK:
+CLOCK: [2013-09-05 木 17:30]--[2013-09-05 木 17:31] =>  0:01
+:END:
+[2013-09-05 木 17:30]
+
+近藤さんおすすめの ARP フォーマット解説。
+http://www.n-study.com/network/arpheader.htm
+** ターミナルでペアプロするための設定                                 :NOTE:
+:LOGBOOK:
+CLOCK: [2013-07-22 月 09:29]--[2013-07-22 月 09:30] =>  0:01
+:END:
+:PROPERTIES:
+:orgtrello-id: 5201cfedc4c8f14e25000f99
+:ID:       B40E64E6-BFD3-4ABA-8F02-E7C180AF2737
+:END:
+[2013-07-22 月 09:29]
+
+http://www.zeespencer.com/articles/building-a-remote-pairing-setup/
+* Tasks
+このアイテムをそれぞれのリリースに割り振る。
+** NEXT git パスワードを省略できるように
+[2013-09-13 金 17:07]
+** WAITING 鈴木さんルータの ARP 部分を Pio で書き直してもらう      :WAITING:
+- State "WAITING"    from "TODO"       [2013-09-18 水 12:04] \\
+  ARP のコードが実機で動いてから
+:LOGBOOK:
+CLOCK: [2013-09-14 土 10:20]--[2013-09-14 土 10:21] =>  0:01
+:END:
+[2013-09-14 土 10:20]
+** WAITING 鈴木さんの IPv4Address への PR を Pio へ誘導            :WAITING:
+- State "WAITING"    from "TODO"       [2013-09-18 水 12:05] \\
+  本体にマージし 0.2.0 をリリースしてから。
+[2013-09-14 土 10:22]
+
+https://github.com/trema/trema-edge/pull/22
+** TODO flay に PR を送る (FlayTask が動かない件)
+:LOGBOOK:
+CLOCK: [2013-09-18 水 17:20]--[2013-09-18 水 17:21] =>  0:01
+:END:
+[2013-09-18 水 17:20]
+** TODO bindata 1.6.0 の changelog をチェック
+[2013-09-05 木 21:32]
+** TODO 各 OpenFlow メッセージのパーサを作る
+[2013-09-06 金 19:27]
+** TODO Nick さんに README の英語をチェックしてもらう
+[2013-09-18 水 12:01]
+* Research and Development
+** TODO 0.2.0 リリース
+:LOGBOOK:
+CLOCK: [2013-09-13 金 16:30]--[2013-09-13 金 17:02] =>  0:32
+CLOCK: [2013-09-13 金 16:29]--[2013-09-13 金 16:30] =>  0:01
+CLOCK: [2013-09-13 金 16:28]--[2013-09-13 金 16:29] =>  0:01
+CLOCK: [2013-09-13 金 16:26]--[2013-09-13 金 16:27] =>  0:01
+CLOCK: [2013-09-13 金 16:13]--[2013-09-13 金 16:26] =>  0:13
+CLOCK: [2013-09-13 金 16:07]--[2013-09-13 金 16:11] =>  0:04
+CLOCK: [2013-09-13 金 15:53]--[2013-09-13 金 15:54] =>  0:01
+CLOCK: [2013-09-13 金 15:45]--[2013-09-13 金 15:48] =>  0:03
+CLOCK: [2013-09-13 金 14:05]--[2013-09-13 金 15:43] =>  1:38
+CLOCK: [2013-09-13 金 13:25]--[2013-09-13 金 13:28] =>  0:03
+CLOCK: [2013-09-13 金 11:40]--[2013-09-13 金 11:56] =>  0:16
+CLOCK: [2013-09-13 金 11:27]--[2013-09-13 金 11:28] =>  0:01
+CLOCK: [2013-09-13 金 10:32]--[2013-09-13 金 10:33] =>  0:01
+CLOCK: [2013-09-13 金 10:27]--[2013-09-13 金 10:31] =>  0:04
+CLOCK: [2013-09-13 金 10:06]--[2013-09-13 金 10:07] =>  0:01
+CLOCK: [2013-09-13 金 09:59]--[2013-09-13 金 10:05] =>  0:06
+CLOCK: [2013-09-05 木 11:04]--[2013-09-05 木 11:05] =>  0:01
+:END:
+[2013-09-05 木 11:04]
+*** DONE 実機で検証
+CLOSED: [2013-09-19 木 13:56]
+- State "DONE"       from "WAITING"    [2013-09-19 木 13:56]
+- State "WAITING"    from "TODO"       [2013-09-18 水 12:00] \\
+  近藤さんに再度実機でのテストを依頼中。
+:LOGBOOK:
+CLOCK: [2013-09-06 金 16:05]--[2013-09-06 金 16:06] =>  0:01
+:END:
+[2013-09-06 金 16:05]
+
+近藤さんが実機検証環境を作り中。
+
+その上で Arp Request をつかまえてパースしたり、Arp Request を送るだけの
+簡単なコントローラを動かし、しばらく動かしてバグがないかを確認してもら
+う。
+
+もし何か問題があれば、コードにフィードバックする。
+
+**** DONE 実機環境を構築
+CLOSED: [2013-09-18 水 12:00]
+[2013-09-13 金 09:44]
+*** DONE Arp::{Request,Reply} の #mandatory_options をリファクタリング
+CLOSED: [2013-09-19 木 10:29] SCHEDULED: <2013-09-19 木>
+:LOGBOOK:
+CLOCK: [2013-09-19 木 10:23]--[2013-09-19 木 10:29] =>  0:06
+CLOCK: [2013-09-19 木 10:07]--[2013-09-19 木 10:08] =>  0:01
+:END:
+:PROPERTIES:
+:Effort:   0:30
+:END:
+[2013-09-19 木 10:07]
+
+今の実装だと、「必須オプション」と「それぞれの型」という 2 つの情報が
+入ってしまっている。「それぞれの型」の情報は、Arp::Message に引き上げ
+たほうがいいと思う。
+*** DONE FlayTask が正しく動いてるか確認
+CLOSED: [2013-09-18 水 17:17] SCHEDULED: <2013-09-18 水>
+[2013-09-18 水 16:54]
+
+最小の FlayTask だけを含んだ Rakefile を作ってみたけどやっぱりダメだっ
+た。なぜか verbose = trueにしたときだけレポートが表示される。FlayTask
+のバグか？
+*** DONE 近藤さんからもらったキャプチャデータを試す
+CLOSED: [2013-09-18 水 16:35] SCHEDULED: <2013-09-18 水>
+:LOGBOOK:
+CLOCK: [2013-09-18 水 16:24]--[2013-09-18 水 16:35] =>  0:11
+:END:
+:PROPERTIES:
+:Effort:   1:00
+:END:
+[2013-09-18 水 15:04]
+
+https://gist.github.com/shun159/6604955
+*** DONE ruby_topology を新しい Lldp.new に合わせて直す
+CLOSED: [2013-09-18 水 11:12] SCHEDULED: <2013-09-18 水>
+:LOGBOOK:
+CLOCK: [2013-09-18 水 10:45]--[2013-09-18 水 11:12] =>  0:27
+CLOCK: [2013-09-17 火 22:45]--[2013-09-17 火 22:46] =>  0:01
+:END:
+:PROPERTIES:
+:Effort:   0:30
+:END:
+[2013-09-17 火 22:45]
+*** DONE README.md に ARP の例を追加
+CLOSED: [2013-09-18 水 10:19] SCHEDULED: <2013-09-18 水>
+[2013-09-13 金 16:29]
+
+できれば .org から tangle して生成したいけどそれはまた今度の話?
+*** DONE ARP のオプション処理をリファクタリング
+CLOSED: [2013-09-18 水 10:07] SCHEDULED: <2013-09-18 水>
+:LOGBOOK:
+CLOCK: [2013-09-18 水 09:19]--[2013-09-18 水 10:07] =>  0:48
+:END:
+:PROPERTIES:
+:Effort:   0:30
+:END:
+[2013-09-18 水 09:17]
+*** DONE require "pio" ですべてロードされるようにする
+CLOSED: [2013-09-17 火 15:20] SCHEDULED: <2013-09-17 火>
+:LOGBOOK:
+CLOCK: [2013-09-13 金 16:27]--[2013-09-13 金 16:28] =>  0:01
+:END:
+[2013-09-13 金 16:27]
+
+README.md にはそのように書いてあるけど、実際にはそうなっていない。
+*** DONE Lldp のリファクタリング
+CLOSED: [2013-09-17 火 23:01] SCHEDULED: <2013-09-17 火>
+[2013-09-13 金 16:26]
+
+ARP のテストのように Lldp.new と Lldp.read のテストだけに絞ってシンプル
+にする。
+
+**** DONE lldp_spec.rb にパーサのテストを補強
+CLOSED: [2013-09-17 火 14:27] SCHEDULED: <2013-09-17 火>
+:LOGBOOK:
+CLOCK: [2013-09-17 火 11:08]--[2013-09-17 火 14:27] =>  3:19
+CLOCK: [2013-09-17 火 10:52]--[2013-09-17 火 10:53] =>  0:01
+:END:
+:PROPERTIES:
+:Effort:   0:30
+:END:
+[2013-09-17 火 10:52]
+**** DONE lldp_spec.rb にジェネレータのテストを補強
+CLOSED: [2013-09-17 火 17:43] SCHEDULED: <2013-09-17 火>
+:LOGBOOK:
+CLOCK: [2013-09-17 火 10:53]--[2013-09-17 火 10:54] =>  0:01
+:END:
+:PROPERTIES:
+:Effort:   2:00
+:END:
+[2013-09-17 火 10:53]
+**** DONE README.md の Lldp の使いかたを更新
+CLOSED: [2013-09-17 火 17:50] SCHEDULED: <2013-09-17 火>
+:LOGBOOK:
+CLOCK: [2013-09-17 火 17:45]--[2013-09-17 火 17:46] =>  0:01
+:END:
+[2013-09-17 火 17:45]
+**** DONE rake quality の警告をつぶす
+CLOSED: [2013-09-17 火 21:58] SCHEDULED: <2013-09-17 火>
+:LOGBOOK:
+CLOCK: [2013-09-17 火 21:33]--[2013-09-17 火 21:58] =>  0:25
+:END:
+[2013-09-17 火 21:32]
+**** DONE rake spec のエラーを直す
+CLOSED: [2013-09-17 火 22:06] SCHEDULED: <2013-09-17 火>
+:LOGBOOK:
+CLOCK: [2013-09-17 火 22:04]--[2013-09-17 火 22:06] =>  0:02
+CLOCK: [2013-09-17 火 22:02]--[2013-09-17 火 22:03] =>  0:01
+:END:
+[2013-09-17 火 22:02]
+
+2.0 系だけ？MacBook Air で実行したら次のエラーが出た。
+
+#+BEGIN_SRC shell
+/Users/yasuhito/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/json/common.rb:270:in `pretty_generate': uninitialized constant JSON::State (NameError)
+	from /Users/yasuhito/.rvm/gems/ruby-2.0.0-p247/gems/simplecov-0.7.1/lib/simplecov/json.rb:16:in `dump'
+	from /Users/yasuhito/.rvm/gems/ruby-2.0.0-p247/gems/simplecov-0.7.1/lib/simplecov/result_merger.rb:69:in `block in store_result'
+	from /Users/yasuhito/.rvm/gems/ruby-2.0.0-p247/gems/simplecov-0.7.1/lib/simplecov/result_merger.rb:68:in `open'
+	from /Users/yasuhito/.rvm/gems/ruby-2.0.0-p247/gems/simplecov-0.7.1/lib/simplecov/result_merger.rb:68:in `store_result'
+	from /Users/yasuhito/.rvm/gems/ruby-2.0.0-p247/gems/simplecov-0.7.1/lib/simplecov.rb:48:in `result'
+	from /Users/yasuhito/.rvm/gems/ruby-2.0.0-p247/gems/simplecov-0.7.1/lib/simplecov/configuration.rb:133:in `block in at_exit'
+	from /Users/yasuhito/.rvm/gems/ruby-2.0.0-p247/gems/simplecov-0.7.1/lib/simplecov/defaults.rb:52:in `call'
+	from /Users/yasuhito/.rvm/gems/ruby-2.0.0-p247/gems/simplecov-0.7.1/lib/simplecov/defaults.rb:52:in `block in <top (required)>'
+/Users/yasuhito/.rvm/rubies/ruby-2.0.0-p247/bin/ruby -S rspec ./spec/pio/arp/reply_spec.rb ./spec/pio/arp/request_spec.rb ./spec/pio/arp_spec.rb ./spec/pio/ip_spec.rb ./spec/pio/lldp/chassis-id-tlv_spec.rb ./spec/pio/lldp/end-of-lldpdu-value_spec.rb ./spec/pio/lldp/frame_spec.rb ./spec/pio/lldp/optional-tlv_spec.rb ./spec/pio/lldp/port-id-tlv_spec.rb ./spec/pio/lldp/ttl-tlv_spec.rb ./spec/pio/lldp_spec.rb ./spec/pio/mac_spec.rb failed
+#+END_SRC
+**** DONE いらないテストを消す
+CLOSED: [2013-09-17 火 22:08] SCHEDULED: <2013-09-17 火>
+:LOGBOOK:
+CLOCK: [2013-09-17 火 22:06]--[2013-09-17 火 22:07] =>  0:01
+:END:
+[2013-09-17 火 22:06]
+*** DONE quality タスクの description を追加
+CLOSED: [2013-09-13 金 16:13] SCHEDULED: <2013-09-13 金>
+:LOGBOOK:
+CLOCK: [2013-09-13 金 16:11]--[2013-09-13 金 16:13] =>  0:02
+:END:
+[2013-09-05 木 21:32]
+*** DONE Pio::Mac のテストコードを Trema から移植
+CLOSED: [2013-09-13 金 16:07] SCHEDULED: <2013-09-13 金>
+:LOGBOOK:
+CLOCK: [2013-09-13 金 15:54]--[2013-09-13 金 16:07] =>  0:13
+CLOCK: [2013-09-13 金 15:44]--[2013-09-13 金 15:45] =>  0:01
+:END:
+[2013-09-13 金 15:44]
+*** DONE Pio::IP のテストコードを Trema から移植
+CLOSED: [2013-09-13 金 15:53] SCHEDULED: <2013-09-13 金>
+:LOGBOOK:
+CLOCK: [2013-09-13 金 15:48]--[2013-09-13 金 15:53] =>  0:05
+CLOCK: [2013-09-13 金 15:43]--[2013-09-13 金 15:44] =>  0:01
+:END:
+[2013-09-13 金 15:43]
+*** DONE Pio::Arp::Reply#initialize の flog 警告を直す
+CLOSED: [2013-09-13 金 13:25] SCHEDULED: <2013-09-13 金>
+:LOGBOOK:
+CLOCK: [2013-09-13 金 11:56]--[2013-09-13 金 13:25] =>  1:29
+CLOCK: [2013-09-13 金 10:31]--[2013-09-13 金 10:32] =>  0:01
+:END:
+[2013-09-13 金 10:31]
+*** DONE Pio::Arp::Request#initialize の flog 警告を直す
+CLOSED: [2013-09-13 金 11:27] SCHEDULED: <2013-09-13 金>
+:LOGBOOK:
+CLOCK: [2013-09-13 金 10:33]--[2013-09-13 金 11:27] =>  0:54
+:END:
+[2013-09-13 金 10:32]
+*** DONE Pio::IP#prefixlen の reek 警告部分を直す
+CLOSED: [2013-09-13 金 10:27] SCHEDULED: <2013-09-13 金>
+:LOGBOOK:
+CLOCK: [2013-09-13 金 10:07]--[2013-09-13 金 10:27] =>  0:20
+CLOCK: [2013-09-13 金 10:05]--[2013-09-13 金 10:06] =>  0:01
+:END:
+[2013-09-13 金 10:05]
+
+次の警告が出ている。
+
+#+BEGIN_SRC shell
+% rake quality
+lib/pio/ip.rb -- 3 warnings:
+  Pio::IP#prefixlen has approx 6 statements (TooManyStatements)
+  Pio::IP#prefixlen refers to mask more than self (FeatureEnvy)
+  Pio::IP#prefixlen refers to range more than self (FeatureEnvy)
+3 total warnings
+#+END_SRC
+*** DONE rake quality が最後まで走るようにする
+CLOSED: [2013-09-13 金 09:59] SCHEDULED: <2013-09-13 金>
+:LOGBOOK:
+CLOCK: [2013-09-13 金 09:57]--[2013-09-13 金 09:59] =>  0:02
+CLOCK: [2013-09-13 金 09:50]--[2013-09-13 金 09:51] =>  0:01
+:END:
+[2013-09-13 金 09:50]
+
+いまの reek, flog タスク等は問題があったときに例外を上げてそこで止まっ
+てしまうので、次のタスクに行かない。そうではなくて、エラーメッセージだ
+け出して quality タスク全体をひととおり実行するように直す。
+*** DONE ARP パーサを作る (Pio::Arp.read)
+CLOSED: [2013-09-12 木 14:57]
+[2013-08-02 金 17:19]
+**** DONE rake quality にかける
+CLOSED: [2013-09-12 木 11:48] SCHEDULED: <2013-09-12 木>
+[2013-09-12 木 09:09]
+**** DONE RSpec の見直し
+CLOSED: [2013-09-12 木 11:36] SCHEDULED: <2013-09-12 木>
+:LOGBOOK:
+CLOCK: [2013-09-12 木 10:30]--[2013-09-12 木 11:36] =>  1:06
+CLOCK: [2013-09-11 水 21:36]--[2013-09-11 水 21:37] =>  0:01
+:END:
+[2013-09-11 水 21:36]
+
+ここに書いてあるベストプラクティスを参考に、ひととおり見直す。
+http://betterspecs.org/jp/
+**** DONE Arp.read でパースした結果の各フィールドのテストを追加
+CLOSED: [2013-09-12 木 10:08] SCHEDULED: <2013-09-12 木>
+[2013-09-11 水 15:47]
+**** DONE pio/lldp/mac-address.rb -> pio/mac-address.rb に変更
+CLOSED: [2013-09-09 月 13:52]
+:LOGBOOK:
+CLOCK: [2013-09-06 金 16:02]--[2013-09-06 金 16:03] =>  0:01
+:END:
+[2013-09-06 金 16:02]
+**** DONE ARP Reply のテストを追加
+CLOSED: [2013-09-09 月 14:17] SCHEDULED: <2013-09-09 月>
+[2013-09-06 金 16:04]
+**** DONE operation の値で ArpRequest と ArpReply クラスを変える
+CLOSED: [2013-09-11 水 14:30]
+:LOGBOOK:
+CLOCK: [2013-09-06 金 16:23]--[2013-09-06 金 16:24] =>  0:01
+:END:
+[2013-09-06 金 16:23]
+**** DONE 金曜日分の作業を近藤さんリポジトリに push する
+CLOSED: [2013-09-06 金 16:22]
+:LOGBOOK:
+CLOCK: [2013-09-06 金 16:14]--[2013-09-06 金 16:15] =>  0:01
+:END:
+[2013-09-06 金 16:14]
+**** DONE Arp.read で ArpRequest or ArpReply が返ってくる部分のテストを書く
+CLOSED: [2013-09-11 水 14:30]
+[2013-09-11 水 14:10]
+**** DONE いらないファイルがないか探して消す
+CLOSED: [2013-09-11 水 14:54]
+[2013-09-09 月 14:19]
+**** DONE lib/pio/arp/ip-address.rb -> lib/pio/type/ip-address.rb
+CLOSED: [2013-09-11 水 15:45]
+:LOGBOOK:
+CLOCK: [2013-09-11 水 15:43]--[2013-09-11 水 15:44] =>  0:01
+:END:
+[2013-09-11 水 15:43]
+**** DONE lib/pio/mac-address.rb -> lib/pio/type/mac-address.rb
+CLOSED: [2013-09-11 水 15:42]
+:LOGBOOK:
+CLOCK: [2013-09-11 水 15:38]--[2013-09-11 水 15:39] =>  0:01
+:END:
+[2013-09-11 水 15:38]
+**** DONE 調べる: ARP request と reply でパディングが付くのはどんなとき?
+CLOSED: [2013-09-11 水 15:06]
+:LOGBOOK:
+CLOCK: [2013-09-09 月 14:02]--[2013-09-09 月 14:03] =>  0:01
+:END:
+[2013-09-09 月 14:02]
+
+近藤さんが時間のあるときに調べる。
+**** DONE リネーム ArpRequest -> Arp::Request
+CLOSED: [2013-09-11 水 15:01]
+[2013-09-11 水 14:56]
+**** DONE リネーム ArpReply -> Arp::Reply
+CLOSED: [2013-09-11 水 15:05]
+[2013-09-11 水 14:57]
+*** DONE Arp Request のジェネレータを作る (Pio::Arp::Request.new) :Request:
+CLOSED: [2013-09-12 木 14:57]
+:LOGBOOK:
+CLOCK: [2013-09-10 火 11:36]--[2013-09-10 火 11:38] =>  0:02
+CLOCK: [2013-09-10 火 11:08]--[2013-09-10 火 11:10] =>  0:02
+CLOCK: [2013-09-10 火 10:47]--[2013-09-10 火 10:48] =>  0:01
+:END:
+[2013-09-09 月 15:23]
+**** DONE #to_binary を追加
+CLOSED: [2013-09-12 木 14:36] SCHEDULED: <2013-09-12 木>
+[2013-09-12 木 11:51]
+**** DONE RSpec の見直し
+CLOSED: [2013-09-12 木 14:36] SCHEDULED: <2013-09-12 木>
+:LOGBOOK:
+CLOCK: [2013-09-12 木 13:34]--[2013-09-12 木 14:09] =>  0:35
+CLOCK: [2013-09-11 水 21:36]--[2013-09-11 水 21:37] =>  0:01
+:END:
+[2013-09-11 水 21:36]
+
+ここに書いてあるベストプラクティスを参考に、ひととおり見直す。
+http://betterspecs.org/jp/
+**** DONE rake quality にかける
+CLOSED: [2013-09-12 木 14:44] SCHEDULED: <2013-09-12 木>
+[2013-09-12 木 08:47]
+**** DONE Trema の IP アドレスクラスを持ってくる
+CLOSED: [2013-09-11 水 14:05]
+[2013-09-11 水 13:41]
+**** DONE Trema の Mac クラスを Pio に持ってくる
+CLOSED: [2013-09-11 水 13:40] SCHEDULED: <2013-09-11 水>
+:LOGBOOK:
+CLOCK: [2013-09-11 水 11:17]--[2013-09-11 水 11:18] =>  0:01
+:END:
+[2013-09-11 水 11:17]
+**** DONE #new に必須オプションが渡されてないときのエラー処理
+CLOSED: [2013-09-11 水 11:03]
+[2013-09-10 火 11:38]
+**** DONE 整数 -> 8bit int の Array に変換するエレガントな書き方
+CLOSED: [2013-09-10 火 11:36] SCHEDULED: <2013-09-10 火>
+:LOGBOOK:
+CLOCK: [2013-09-10 火 11:10]--[2013-09-10 火 11:36] =>  0:26
+:END:
+[2013-09-09 月 17:13]
+**** DONE IP アドレスを文字列で指定できるようにする
+CLOSED: [2013-09-10 火 11:08] SCHEDULED: <2013-09-10 火>
+:LOGBOOK:
+CLOCK: [2013-09-10 火 10:48]--[2013-09-10 火 11:08] =>  0:20
+:END:
+[2013-09-09 月 17:10]
+**** DONE 00:00:00:00:00:00 な MAC アドレスの名前を調べる
+CLOSED: [2013-09-10 火 10:47] SCHEDULED: <2013-09-10 火>
+:LOGBOOK:
+CLOCK: [2013-09-10 火 10:45]--[2013-09-10 火 10:47] =>  0:02
+:END:
+[2013-09-09 月 15:53]
+**** DONE MAC アドレスを文字列で指定できるようにする
+CLOSED: [2013-09-09 月 17:10]
+[2013-09-09 月 15:58]
+**** DONE ARP Request を生成するテストを追加
+CLOSED: [2013-09-09 月 15:56]
+[2013-09-09 月 14:25]
+*** DONE Arp Reply のジェネレータを作る (Pio::Arp::Reply.new)       :Reply:
+CLOSED: [2013-09-12 木 14:57]
+[2013-09-09 月 15:26]
+**** DONE #to_binary を追加
+CLOSED: [2013-09-12 木 14:36] SCHEDULED: <2013-09-12 木>
+[2013-09-12 木 11:51]
+**** DONE RSpec の見直し
+CLOSED: [2013-09-12 木 14:36] SCHEDULED: <2013-09-12 木>
+:LOGBOOK:
+CLOCK: [2013-09-12 木 14:09]--[2013-09-12 木 14:36] =>  0:27
+CLOCK: [2013-09-11 水 21:36]--[2013-09-11 水 21:37] =>  0:01
+:END:
+[2013-09-11 水 21:36]
+
+ここに書いてあるベストプラクティスを参考に、ひととおり見直す。
+http://betterspecs.org/jp/
+**** DONE rake quality にかける
+CLOSED: [2013-09-12 木 14:44] SCHEDULED: <2013-09-12 木>
+:LOGBOOK:
+CLOCK: [2013-09-12 木 09:09]--[2013-09-12 木 09:10] =>  0:01
+:END:
+[2013-09-12 木 09:09]
+**** DONE ARP Reply を生成するテストを追加
+[2013-09-09 月 14:27]
+*** DONE Arp::Frame と Lldp::Frame の Ethernet ヘッダ部分を共通化
+CLOSED: [2013-09-12 木 15:15] SCHEDULED: <2013-09-12 木>
+:LOGBOOK:
+CLOCK: [2013-09-12 木 14:58]--[2013-09-12 木 15:15] =>  0:17
+CLOCK: [2013-09-06 金 16:10]--[2013-09-06 金 16:13] =>  0:03
+:END:
+[2013-09-06 金 16:10]
+
+たとえば、以下のように 3 つのフィールドがひとつにまとまることになる。
+
+#+BEGIN_SRC ruby
+  mac_address :destination_mac
+  mac_address :source_mac
+  uint16 :ether_type, :value => 0x0806
+
+  #=>
+
+  ethernet :ethernet
+  # or
+  ehternet :l2
+#+END_SRC
+
+みたいな感じ?
+*** DONE Lldp の :ethertype -> :ether_type に名前を変更
+CLOSED: [2013-09-12 木 15:18] SCHEDULED: <2013-09-12 木>
+:LOGBOOK:
+CLOCK: [2013-09-12 木 15:16]--[2013-09-12 木 15:18] =>  0:02
+CLOCK: [2013-09-06 金 20:38]--[2013-09-06 金 20:39] =>  0:01
+:END:
+[2013-09-06 金 20:38]
+*** DONE guard の "ambiguous option stat" を直す
+CLOSED: [2013-09-12 木 09:35] SCHEDULED: <2013-09-12 木>
+:LOGBOOK:
+CLOCK: [2013-09-12 木 09:19]--[2013-09-12 木 09:35] =>  0:16
+CLOCK: [2013-09-12 木 09:16]--[2013-09-12 木 09:17] =>  0:01
+:END:
+[2013-09-12 木 09:16]
+*** DONE フィールド名を修正
+:LOGBOOK:
+CLOCK: [2013-09-10 火 14:46]--[2013-09-10 火 14:48] =>  0:02
+:END:
+[2013-09-10 火 14:46]
+
+- :source_hardware_address -> :sender_hardware_address
+- :source_protocol_address -> :sender_protocol_address
+*** DONE Arp::Request と Arp::Reply の共通部分をクラスに引き上げ
+CLOSED: [2013-09-13 金 14:05] SCHEDULED: <2013-09-13 金>
+:LOGBOOK:
+CLOCK: [2013-09-13 金 13:28]--[2013-09-13 金 14:05] =>  0:37
+:END:
+[2013-09-13 金 13:28]
+** WAITING 0.3.0 リリース                                    :WAITING:
+- State "WAITING"    from "TODO"       [2013-09-06 金 17:17] \\
+  0.2.0 が無事に出てから
+[2013-09-05 木 17:29]
+*** TODO ICMP パーサを作る
+[2013-08-02 金 17:19]
+*** NEXT YARD の警告をつぶす
+SCHEDULED: <2014-08-19 火>
+:PROPERTIES:
+:Effort:   0:30
+:END:
+[2013-07-31 水 15:32]
+** WAITING 0.4.0 リリース                                    :WAITING:
+- State "WAITING"    from "TODO"       [2013-09-06 金 17:18] \\
+  0.3.0 が無事に出てから。
+[2013-09-06 金 16:30]
+*** TODO DHCP パーサを作る
+[2013-08-02 金 17:17]
+
+近藤さんがすでにコーディング中。Pull-Request が来たらいっしょにリファ
+クタリングして取り込む予定。

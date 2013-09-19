@@ -3,6 +3,7 @@ require "pio/lldp/system-name-value"
 require "pio/lldp/system-description-value"
 require "pio/lldp/system-capabilities-value"
 require "pio/lldp/management-address-value"
+require "pio/lldp/organizationally-specific-value"
 require "pio/lldp/end-of-lldpdu-value"
 
 
@@ -24,6 +25,7 @@ module Pio
         system_description_value 6
         system_capabilities_value 7
         management_address_value 8
+        organizationally_specific_value 127
         string "unknown"
       end
 
@@ -54,7 +56,7 @@ module Pio
 
       def optional_tlv?
         tmp_tlv_type = tlv_type
-        4 <= tmp_tlv_type and tmp_tlv_type <= 8
+        4 <= tmp_tlv_type and tmp_tlv_type <= 127
       end
 
 

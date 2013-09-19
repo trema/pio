@@ -4,14 +4,15 @@ source "https://rubygems.org"
 gemspec
 
 
-group :development do
+group :development, :test do
   gem "coveralls", "~> 0.6.7", :require => false
   gem "flay", "~> 2.4.0"
   gem "flog", "~> 4.1.1"
+  gem "fuubar", "~> 1.2.1"
   gem "guard", "~> 1.8.2"
   gem "guard-bundler", "~> 1.0.0"
   gem "guard-rspec", "~> 3.0.2"
-  gem "json", "~> 1.8.0" if RUBY_VERSION < "1.9.0"
+  gem "json", "~> 1.8.0"
   gem "rake", "~> 10.1.0"
   gem "rb-fchange", "~> 0.0.6", :require => false
   gem "rb-fsevent", "~> 0.9.3", :require => false

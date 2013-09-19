@@ -1,0 +1,389 @@
+Archived entries from file /Users/yasuhito/Dropbox/org/pio.org
+
+
+* DONE gem を分離
+CLOSED: [2013-08-02 金 10:36]
+:LOGBOOK:
+CLOCK: [2013-07-31 水 16:17]--[2013-07-31 水 23:05] =>  6:48
+CLOCK: [2013-07-31 水 15:32]--[2013-07-31 水 15:33] =>  0:01
+CLOCK: [2013-07-31 水 15:22]--[2013-07-31 水 15:32] =>  0:10
+CLOCK: [2013-07-31 水 14:59]--[2013-07-31 水 15:17] =>  0:18
+CLOCK: [2013-07-31 水 14:54]--[2013-07-31 水 14:58] =>  0:04
+CLOCK: [2013-07-31 水 14:14]--[2013-07-31 水 14:53] =>  0:39
+CLOCK: [2013-07-31 水 11:55]--[2013-07-31 水 12:11] =>  0:16
+CLOCK: [2013-07-31 水 11:33]--[2013-07-31 水 11:54] =>  0:21
+CLOCK: [2013-07-31 水 11:31]--[2013-07-31 水 11:33] =>  0:02
+CLOCK: [2013-07-31 水 11:27]--[2013-07-31 水 11:28] =>  0:01
+CLOCK: [2013-07-31 水 11:26]--[2013-07-31 水 11:27] =>  0:01
+CLOCK: [2013-07-31 水 11:21]--[2013-07-31 水 11:25] =>  0:04
+CLOCK: [2013-07-31 水 11:06]--[2013-07-31 水 11:07] =>  0:01
+:END:
+:PROPERTIES:
+:ARCHIVE_TIME: 2013-09-05 木 11:02
+:ARCHIVE_FILE: ~/Dropbox/org/pio.org
+:ARCHIVE_OLPATH: Research and Development/pio の開発
+:ARCHIVE_CATEGORY: pio
+:ARCHIVE_TODO: DONE
+:ARCHIVE_ITAGS: pio
+:END:
+[2013-07-31 水 11:06]
+** DONE 名前を決める
+CLOSED: [2013-07-31 水 11:20] SCHEDULED: <2013-07-31 水>
+:LOGBOOK:
+CLOCK: [2013-07-31 水 11:09]--[2013-07-31 水 11:20] =>  0:11
+:END:
+[2013-07-31 水 11:07]
+** DONE pio リポジトリを作る
+CLOSED: [2013-07-31 水 11:23] SCHEDULED: <2013-07-31 水>
+:LOGBOOK:
+CLOCK: [2013-07-31 水 11:20]--[2013-07-31 水 11:21] =>  0:01
+:END:
+[2013-07-31 水 11:20]
+** DONE Guard 対応にする
+CLOSED: [2013-07-31 水 11:30] SCHEDULED: <2013-07-31 水>
+:LOGBOOK:
+CLOCK: [2013-07-31 水 11:28]--[2013-07-31 水 11:30] =>  0:02
+:END:
+[2013-07-31 水 11:27]
+** DONE Gemfile を作る
+CLOSED: [2013-07-31 水 11:32] SCHEDULED: <2013-07-31 水>
+:LOGBOOK:
+CLOCK: [2013-07-31 水 11:30]--[2013-07-31 水 11:31] =>  0:01
+:END:
+[2013-07-31 水 11:30]
+** DONE paper-house/lib, spec 以下の bindata 関連を pio にコピー
+CLOSED: [2013-07-31 水 11:54] SCHEDULED: <2013-07-31 水>
+[2013-07-31 水 11:33]
+** DONE 各モジュールを Pio:: とか Lldp:: とかに移動
+CLOSED: [2013-07-31 水 14:09] SCHEDULED: <2013-07-31 水>
+:LOGBOOK:
+CLOCK: [2013-07-31 水 12:11]--[2013-07-31 水 12:14] =>  0:03
+CLOCK: [2013-07-31 水 11:54]--[2013-07-31 水 11:55] =>  0:01
+:END:
+[2013-07-31 水 11:54]
+** DONE reek タスクを追加
+CLOSED: [2013-07-31 水 14:14] SCHEDULED: <2013-07-31 水>
+:LOGBOOK:
+CLOCK: [2013-07-31 水 14:09]--[2013-07-31 水 14:14] =>  0:05
+:END:
+[2013-07-31 水 14:09]
+** DONE reek の警告をつぶす
+CLOSED: [2013-07-31 水 14:53] SCHEDULED: <2013-07-31 水>
+- State "NEXT"       from "HOLD"       [2013-07-31 水 14:36]
+- State "HOLD"       from "NEXT"       [2013-07-31 水 14:21] \\
+  ちょっと iOS のアップデートやる。
+[2013-07-31 水 14:14]
+** DONE flog タスクを追加
+CLOSED: [2013-07-31 水 14:58] SCHEDULED: <2013-07-31 水>
+:LOGBOOK:
+CLOCK: [2013-07-31 水 14:53]--[2013-07-31 水 14:54] =>  0:01
+:END:
+[2013-07-31 水 14:53]
+** DONE flog の警告をつぶす
+CLOSED: [2013-07-31 水 15:09] SCHEDULED: <2013-07-31 水>
+:LOGBOOK:
+CLOCK: [2013-07-31 水 14:58]--[2013-07-31 水 14:59] =>  0:01
+:END:
+[2013-07-31 水 14:58]
+** DONE flay タスクを追加
+CLOSED: [2013-07-31 水 15:22] SCHEDULED: <2013-07-31 水>
+:LOGBOOK:
+CLOCK: [2013-07-31 水 15:17]--[2013-07-31 水 15:22] =>  0:05
+:END:
+[2013-07-31 水 15:17]
+
+* DONE gem の最低限の仕上げ
+CLOSED: [2013-08-02 金 17:17]
+:LOGBOOK:
+CLOCK: [2013-08-02 金 11:35]--[2013-08-02 金 11:43] =>  0:08
+CLOCK: [2013-08-02 金 11:30]--[2013-08-02 金 11:35] =>  0:05
+CLOCK: [2013-08-02 金 10:55]--[2013-08-02 金 10:57] =>  0:02
+:END:
+:PROPERTIES:
+:ARCHIVE_TIME: 2013-09-05 木 11:02
+:ARCHIVE_FILE: ~/Dropbox/org/pio.org
+:ARCHIVE_OLPATH: Research and Development/pio の開発
+:ARCHIVE_CATEGORY: pio
+:ARCHIVE_TODO: DONE
+:ARCHIVE_ITAGS: pio
+:END:
+[2013-08-02 金 10:36]
+** DONE reek とか roodi とかそのへんやってくれる quality タスク
+CLOSED: [2013-08-02 金 10:55] SCHEDULED: <2013-08-02 金>
+[2013-07-31 水 11:26]
+** DONE README.md をアップデート
+CLOSED: [2013-08-02 金 17:15] SCHEDULED: <2013-08-02 金>
+:LOGBOOK:
+CLOCK: [2013-08-02 金 16:50]--[2013-08-02 金 16:51] =>  0:01
+CLOCK: [2013-08-02 金 15:25]--[2013-08-02 金 16:50] =>  1:25
+CLOCK: [2013-08-02 金 15:12]--[2013-08-02 金 15:25] =>  0:13
+CLOCK: [2013-08-02 金 14:27]--[2013-08-02 金 14:48] =>  0:21
+CLOCK: [2013-08-02 金 14:25]--[2013-08-02 金 14:27] =>  0:02
+CLOCK: [2013-08-02 金 14:11]--[2013-08-02 金 14:13] =>  0:02
+CLOCK: [2013-08-02 金 12:12]--[2013-08-02 金 14:11] =>  1:59
+CLOCK: [2013-08-02 金 12:05]--[2013-08-02 金 12:06] =>  0:01
+:END:
+[2013-08-02 金 10:38]
+*** DONE Code Climate のパッジを付ける
+CLOSED: [2013-08-02 金 11:32] SCHEDULED: <2013-08-02 金>
+:LOGBOOK:
+CLOCK: [2013-08-02 金 11:29]--[2013-08-02 金 11:30] =>  0:01
+:END:
+[2013-08-02 金 11:29]
+*** DONE Travis のバッジを付ける
+CLOSED: [2013-08-02 金 11:43] SCHEDULED: <2013-08-02 金>
+[2013-08-02 金 11:35]
+*** DONE Gem Version のバッジを付ける
+CLOSED: [2013-08-02 金 11:45] SCHEDULED: <2013-08-02 金>
+:LOGBOOK:
+CLOCK: [2013-08-02 金 11:43]--[2013-08-02 金 11:45] =>  0:02
+:END:
+[2013-08-02 金 11:43]
+*** DONE Coveralls のバッジを付ける
+CLOSED: [2013-08-02 金 12:05] SCHEDULED: <2013-08-02 金>
+:LOGBOOK:
+CLOCK: [2013-08-02 金 11:45]--[2013-08-02 金 12:05] =>  0:20
+:END:
+[2013-08-02 金 11:45]
+*** DONE Gemnasium のバッジを付ける
+CLOSED: [2013-08-02 金 12:12] SCHEDULED: <2013-08-02 金>
+:LOGBOOK:
+CLOCK: [2013-08-02 金 12:06]--[2013-08-02 金 12:12] =>  0:06
+:END:
+[2013-08-02 金 12:05]
+*** DONE 簡単なサブセクションを埋める [6/6]
+CLOSED: [2013-08-02 金 14:25] SCHEDULED: <2013-08-02 金>
+:LOGBOOK:
+CLOCK: [2013-08-02 金 14:13]--[2013-08-02 金 14:25] =>  0:12
+:END:
+[2013-08-02 金 14:11]
+
+- [X] Installation
+- [X] Documents
+- [X] Author
+- [X] Contributors
+- [X] Alternatives
+- [X] License
+
+*** DONE Example を追加
+CLOSED: [2013-08-02 金 15:25] SCHEDULED: <2013-08-02 金>
+[2013-08-02 金 14:27]
+*** DONE Features Overview を追加
+CLOSED: [2013-08-02 金 15:39] SCHEDULED: <2013-08-02 金>
+[2013-08-02 金 15:25]
+** DONE portability タスクを追加
+CLOSED: [2013-08-02 金 11:29] SCHEDULED: <2013-08-02 金>
+:LOGBOOK:
+CLOCK: [2013-08-02 金 10:57]--[2013-08-02 金 11:29] =>  0:32
+:END:
+[2013-08-02 金 10:57]
+
+* CANCELED 0.2.0 リリース
+CLOSED: [2013-09-05 木 11:06]
+- State "CANCELED"   from "TODO"       [2013-09-05 木 11:06] \\
+  タスク階層を整理したので消す
+:PROPERTIES:
+:ID:       54B2B522-5469-446C-9A56-2AD48E3CCCD9
+:ARCHIVE_TIME: 2013-09-05 木 11:06
+:ARCHIVE_FILE: ~/Dropbox/org/pio.org
+:ARCHIVE_OLPATH: Research and Development/pio の開発
+:ARCHIVE_CATEGORY: pio
+:ARCHIVE_TODO: CANCELED
+:ARCHIVE_ITAGS: pio
+:END:
+[2013-08-02 金 17:16]
+
+* CANCELED pio の開発                                                   :pio:
+CLOSED: [2013-09-05 木 11:06]
+- State "CANCELED"   from "TODO"       [2013-09-05 木 11:06] \\
+  タスク階層を整理したので消す。
+:PROPERTIES:
+:ID:       68CB07BC-306C-47B9-B54F-D099C24DB772
+:ARCHIVE_TIME: 2013-09-05 木 11:06
+:ARCHIVE_FILE: ~/Dropbox/org/pio.org
+:ARCHIVE_OLPATH: Research and Development
+:ARCHIVE_CATEGORY: pio
+:ARCHIVE_TODO: CANCELED
+:END:
+[2013-08-02 金 10:35]
+
+* DONE 0.1.1 リリース
+CLOSED: [2013-09-05 木 11:48]
+:LOGBOOK:
+CLOCK: [2013-09-05 木 11:38]--[2013-09-05 木 11:39] =>  0:01
+CLOCK: [2013-09-05 木 11:37]--[2013-09-05 木 11:38] =>  0:01
+:END:
+:PROPERTIES:
+:ARCHIVE_TIME: 2013-09-18 水 12:01
+:ARCHIVE_FILE: ~/Dropbox/org/pio.org
+:ARCHIVE_OLPATH: Research and Development
+:ARCHIVE_CATEGORY: pio
+:ARCHIVE_TODO: DONE
+:ARCHIVE_ITAGS: PIO
+:END:
+[2013-09-05 木 11:12]
+** DONE 古い gem 依存関係を直す
+CLOSED: [2013-09-05 木 11:37] SCHEDULED: <2013-09-05 木>
+:LOGBOOK:
+CLOCK: [2013-09-05 木 11:16]--[2013-09-05 木 11:37] =>  0:21
+:END:
+[2013-09-05 木 11:11]
+** DONE リリース作業
+CLOSED: [2013-09-05 木 11:48] SCHEDULED: <2013-09-05 木>
+:LOGBOOK:
+CLOCK: [2013-09-05 木 11:40]--[2013-09-05 木 11:48] =>  0:08
+CLOCK: [2013-09-05 木 11:39]--[2013-09-05 木 11:40] =>  0:01
+:END:
+[2013-09-05 木 11:39]
+
+- git flow でリリース
+- gem を作ってアップロード
+
+* フレームとパケットの違い
+:LOGBOOK:
+CLOCK: [2013-09-06 金 20:30]--[2013-09-06 金 20:31] =>  0:01
+:END:
+:PROPERTIES:
+:ARCHIVE_TIME: 2013-09-18 水 15:47
+:ARCHIVE_FILE: ~/play/shunpio/pio.org
+:ARCHIVE_OLPATH: Notes
+:ARCHIVE_CATEGORY: pio
+:ARCHIVE_ITAGS: PIO
+:END:
+[2013-09-06 金 20:30]
+
+フレームは、Ethernet ヘッダからユーザデータ (L3-L7) までを含むデータを
+さし、パケットは IP ヘッダ以降の L3-L7 までのデータをさす。
+その意味で LLDP はフレーム。
+
+ARPそのものは、L3レイヤで動作するのでパケットになるが、ルータから出たと
+きは、EthernetFrame でカプセル化されるので、フレームになる
+
+(近藤さん解説)
+
+* DONE Pio の TODO を近藤さんと共有
+CLOSED: [2013-09-06 金 20:45]
+:LOGBOOK:
+CLOCK: [2013-09-06 金 19:22]--[2013-09-06 金 19:23] =>  0:01
+:END:
+:PROPERTIES:
+:ARCHIVE_TIME: 2013-09-19 木 14:02
+:ARCHIVE_FILE: ~/play/pio/pio.org
+:ARCHIVE_OLPATH: Tasks
+:ARCHIVE_CATEGORY: pio
+:ARCHIVE_TODO: DONE
+:ARCHIVE_ITAGS: PIO
+:END:
+[2013-09-06 金 19:22]
+そのまま GitHu にコミットしてしまう。
+
+* DONE Guard の Emacs 通知が動くか試す
+CLOSED: [2013-09-17 火 10:20] SCHEDULED: <2013-09-17 火>
+:LOGBOOK:
+CLOCK: [2013-09-17 火 09:59]--[2013-09-17 火 10:00] =>  0:01
+:END:
+:PROPERTIES:
+:ARCHIVE_TIME: 2013-09-19 木 14:02
+:ARCHIVE_FILE: ~/play/pio/pio.org
+:ARCHIVE_OLPATH: Tasks
+:ARCHIVE_CATEGORY: pio
+:ARCHIVE_TODO: DONE
+:ARCHIVE_ITAGS: PIO
+:END:
+[2013-09-17 火 09:59]
+
+やっぱちゃんと動かない。深追いするのはとりあえずやめて、通知は tmux と
+terminal_notifier だけにしとく。
+
+* DONE ペアプロ環境を作る
+CLOSED: [2013-09-05 木 17:16]
+:LOGBOOK:
+CLOCK: [2013-09-05 木 12:00]--[2013-09-05 木 12:16] =>  0:16
+:END:
+:PROPERTIES:
+:ARCHIVE_TIME: 2013-09-19 木 14:02
+:ARCHIVE_FILE: ~/play/pio/pio.org
+:ARCHIVE_OLPATH: Tasks
+:ARCHIVE_CATEGORY: pio
+:ARCHIVE_TODO: DONE
+:ARCHIVE_ITAGS: PIO
+:END:
+[2013-09-05 木 11:38]
+
+どこかに tmux を使ったペアプロ環境構築法をメモっていたはず。
+ここだ → http://www.zeespencer.com/articles/building-a-remote-pairing-setup/
+** DONE ペアプロ設定のやりかたをざっと読む
+CLOSED: [2013-09-05 木 12:00] SCHEDULED: <2013-09-05 木>
+:LOGBOOK:
+CLOCK: [2013-09-05 木 11:52]--[2013-09-05 木 12:00] =>  0:08
+:END:
+[2013-09-05 木 11:51]
+
+* DONE チャット履歴から TODO 追加もれがないか確認
+CLOSED: [2013-09-06 金 20:41] SCHEDULED: <2013-09-06 金>
+:LOGBOOK:
+CLOCK: [2013-09-06 金 20:39]--[2013-09-06 金 20:41] =>  0:02
+CLOCK: [2013-09-06 金 20:31]--[2013-09-06 金 20:38] =>  0:07
+CLOCK: [2013-09-06 金 20:28]--[2013-09-06 金 20:30] =>  0:02
+:END:
+:PROPERTIES:
+:Effort:   0:15
+:ARCHIVE_TIME: 2013-09-19 木 14:02
+:ARCHIVE_FILE: ~/play/pio/pio.org
+:ARCHIVE_OLPATH: Tasks
+:ARCHIVE_CATEGORY: pio
+:ARCHIVE_TODO: DONE
+:ARCHIVE_ITAGS: PIO
+:END:
+[2013-09-06 金 19:24]
+
+* DONE 近藤さんとペアプロ
+CLOSED: [2013-09-06 金 16:50] SCHEDULED: <2013-09-06 金 13:30-17:00>
+:PROPERTIES:
+:ARCHIVE_TIME: 2013-09-19 木 14:02
+:ARCHIVE_FILE: ~/play/pio/pio.org
+:ARCHIVE_OLPATH: Special Dates
+:ARCHIVE_CATEGORY: pio
+:ARCHIVE_TODO: DONE
+:ARCHIVE_ITAGS: PIO
+:END:
+[2013-09-06 金 12:14]
+
+* DONE 近藤さんとペアプロ
+CLOSED: [2013-09-06 金 13:14] SCHEDULED: <2013-09-06 金 11:00-12:00>
+:PROPERTIES:
+:ARCHIVE_TIME: 2013-09-19 木 14:02
+:ARCHIVE_FILE: ~/play/pio/pio.org
+:ARCHIVE_OLPATH: Special Dates
+:ARCHIVE_CATEGORY: pio
+:ARCHIVE_TODO: DONE
+:ARCHIVE_ITAGS: PIO
+:END:
+[2013-09-06 金 10:32]
+
+* DONE 近藤さんとペアプロ
+CLOSED: [2013-09-09 月 17:23] SCHEDULED: <2013-09-09 月 13:30-17:00>
+:LOGBOOK:
+CLOCK: [2013-09-09 月 17:13]--[2013-09-09 月 17:23] =>  0:10
+CLOCK: [2013-09-09 月 17:10]--[2013-09-09 月 17:13] =>  0:03
+CLOCK: [2013-09-09 月 15:58]--[2013-09-09 月 17:10] =>  1:12
+CLOCK: [2013-09-09 月 15:53]--[2013-09-09 月 15:58] =>  0:05
+CLOCK: [2013-09-09 月 15:26]--[2013-09-09 月 15:53] =>  0:27
+CLOCK: [2013-09-09 月 15:23]--[2013-09-09 月 15:26] =>  0:03
+CLOCK: [2013-09-09 月 14:27]--[2013-09-09 月 15:23] =>  0:56
+CLOCK: [2013-09-09 月 14:25]--[2013-09-09 月 14:27] =>  0:02
+CLOCK: [2013-09-09 月 14:19]--[2013-09-09 月 14:25] =>  0:06
+CLOCK: [2013-09-09 月 14:03]--[2013-09-09 月 14:19] =>  0:16
+CLOCK: [2013-09-09 月 13:54]--[2013-09-09 月 14:02] =>  0:08
+CLOCK: [2013-09-09 月 13:40]--[2013-09-09 月 13:54] =>  0:14
+CLOCK: [2013-09-09 月 10:22]--[2013-09-09 月 10:23] =>  0:01
+:END:
+:PROPERTIES:
+:ARCHIVE_TIME: 2013-09-19 木 14:02
+:ARCHIVE_FILE: ~/play/pio/pio.org
+:ARCHIVE_OLPATH: Special Dates
+:ARCHIVE_CATEGORY: pio
+:ARCHIVE_TODO: DONE
+:ARCHIVE_ITAGS: PIO
+:END:
+[2013-09-09 月 10:22]
