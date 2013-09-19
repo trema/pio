@@ -37,15 +37,10 @@ http://www.zeespencer.com/articles/building-a-remote-pairing-setup/
 [2013-09-18 水 12:01]
 * Releases
 ** TODO 0.2.2 リリース
+:LOGBOOK:
+CLOCK: [2013-09-19 木 14:29]
+:END:
 [2013-09-19 木 14:17]
-*** NEXT 鈴木さんの IPv4Address への PR を Pio へ誘導
-SCHEDULED: <2013-09-19 木>
-- State "TODO"       from "WAITING"    [2013-09-19 木 14:18]
-- State "WAITING"    from "TODO"       [2013-09-18 水 12:05] \\
-  0.2.0 をリリースしてから。
-[2013-09-14 土 10:22]
-
-https://github.com/trema/trema-edge/pull/22
 *** TODO 鈴木さんルータの ARP 部分を Pio で書き直してもらう
 - State "TODO"       from "WAITING"    [2013-09-19 木 14:18]
 - State "WAITING"    from "TODO"       [2013-09-18 水 12:04] \\
@@ -54,6 +49,21 @@ https://github.com/trema/trema-edge/pull/22
 CLOCK: [2013-09-14 土 10:20]--[2013-09-14 土 10:21] =>  0:01
 :END:
 [2013-09-14 土 10:20]
+*** DONE 鈴木さんの IPv4Address への PR を Pio へ誘導
+CLOSED: [2013-09-19 木 14:29] SCHEDULED: <2013-09-19 木>
+:LOGBOOK:
+CLOCK: [2013-09-19 木 14:27]--[2013-09-19 木 14:29] =>  0:02
+:END:
+- State "TODO"       from "WAITING"    [2013-09-19 木 14:18]
+- State "WAITING"    from "TODO"       [2013-09-18 水 12:05] \\
+  0.2.0 をリリースしてから。
+[2013-09-14 土 10:22]
+
+鈴木さんが trema-edge に出している PR はこちら
+https://github.com/trema/trema-edge/pull/22
+
+コメントしておいた。
+https://github.com/trema/trema-edge/pull/22#issuecomment-24717877
 ** TODO 0.3.0 リリース
 - State "TODO"       from "WAITING"    [2013-09-19 木 14:16]
 - State "WAITING"    from "TODO"       [2013-09-06 金 17:17] \\
