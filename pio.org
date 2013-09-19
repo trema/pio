@@ -49,6 +49,9 @@ CLOCK: [2013-09-19 木 14:29]
 CLOCK: [2013-09-14 土 10:20]--[2013-09-14 土 10:21] =>  0:01
 :END:
 [2013-09-14 土 10:20]
+
+GitHub のチケットはこちら:
+https://github.com/trema/pio/issues/1
 *** DONE 鈴木さんの IPv4Address への PR を Pio へ誘導
 CLOSED: [2013-09-19 木 14:29] SCHEDULED: <2013-09-19 木>
 :LOGBOOK:
