@@ -10,7 +10,8 @@ Pio
 
 Pio is a ruby gem to easily parse and generate network packets. It supports the following packet formats:
 
- * [LLDP](http://en.wikipedia.org/wiki/Link_Layer_Discovery_Protocol)
+ * ARP
+ * LLDP
  * (...currently there are just a few formats supported but I'm sure this list will grow)
 
 
@@ -25,14 +26,51 @@ Features Overview
  * Clean Code. Pio is built on
    [BinData](https://github.com/dmendel/bindata)'s declarative binary
    format DSL so that it is easy to read and debug by human beings.
- 
+
 
 Example
 -------
 
-Its usage is dead simple: to parse an LLDP frame for example, use the
-API `Pio::Lldp.read` and you can access each field of the parsed LLDP
-frame.
+Its usage is dead simple.
+
+### ARP
+
+To parse an ARP frame, use the API `Pio::Arp.read` and you can access
+each field of the parsed ARP frame.
+
+```ruby
+require "pio"
+
+arp = Pio::Arp.read( binary_data )
+arp.source_mac.to_s #=> "00:26:82:eb:ea:d1"
+```
+
+Also you can use `Pio::Arp::Request#new` or `Pio::Arp::Reply#new` to
+generate an Arp Request/Reply frame like below:
+
+```ruby
+require "pio"
+
+request = Pio::Arp::Request.new(
+  source_mac: "00:26:82:eb:ea:d1",
+  sender_protocol_address: "192.168.83.3",
+  target_protocol_address: "192.168.83.254"
+)
+request.to_binary  #=> Arp Request frame in binary format.
+
+reply = Pio::Arp::Reply.new(
+  source_mac: "00:26:82:eb:ea:d1",
+  destination_mac: "00:26:82:eb:ea:d1",
+  sender_protocol_address: "192.168.83.3",
+  target_protocol_address: "192.168.83.254"
+)
+reply.to_binary  #=> Arp Reply frame in binary format.
+```
+
+### LLDP
+
+To parse an LLDP frame, use the API `Pio::Lldp.read` and you can
+access each field of the parsed LLDP frame.
 
 ```ruby
 require "pio"
@@ -46,7 +84,7 @@ Also you can use `Pio::Lldp#new` to generate an LLDP frame like below:
 ```ruby
 require "pio"
 
-lldp = Pio::Lldp.new( 0x123, 12 )  # dpid and port_number
+lldp = Pio::Lldp.new( dpid: 0x123, port_number: 12 )
 lldp.to_binary  #=> LLDP frame in binary format.
 ```
 

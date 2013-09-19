@@ -34,19 +34,19 @@ $ruby_source = FileList[ "lib/**/*.rb" ]
 
 task :default => :travis
 task :travis => [ :spec, :quality, "coveralls:push" ]
+
+desc "Check for code quality"
 task :quality => [ :reek, :flog, :flay ]
 
 
 Coveralls::RakeTask.new
 
 
-RSpec::Core::RakeTask.new do | task |
-  task.rspec_opts = "--format documentation --color"
-end
+RSpec::Core::RakeTask.new
 
 
 Reek::Rake::Task.new do | t |
-  t.fail_on_error = true
+  t.fail_on_error = false
   t.verbose = false
   t.ruby_opts = [ "-rubygems" ]
   t.reek_opts = "--quiet"
@@ -69,7 +69,7 @@ task :flog do
     puts "%8.1f: %s" % [ score, name ]
   end
   unless bad_methods.empty?
-    raise "#{ bad_methods.size } methods have a flog complexity > #{ threshold }"
+    $stderr.puts "#{ bad_methods.size } methods have a flog complexity > #{ threshold }"
   end
 end
 
