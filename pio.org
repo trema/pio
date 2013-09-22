@@ -32,6 +32,10 @@ CLOCK: [2013-07-22 月 09:29]--[2013-07-22 月 09:30] =>  0:01
 [2013-07-22 月 09:29]
 
 http://www.zeespencer.com/articles/building-a-remote-pairing-setup/
+** ICMP フォーマット                                                  :NOTE:
+[2013-09-22 日 23:09]
+
+http:///www.asahi-net.or.jp/~aa4t-nngk/ipttut/output/icmpheaders.html
 * Tasks
 このアイテムをそれぞれのリリースに割り振る。
 ** NEXT git パスワードを省略できるように

@@ -3,9 +3,10 @@
 .bundle
 .config
 Gemfile.lock
-coverage
 InstalledFiles
+coverage
 lib/bundler/man
+pio.html
 pkg
 rdoc
 spec/reports
