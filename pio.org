@@ -14,6 +14,13 @@ CLOCK: [2013-09-05 木 17:30]--[2013-09-05 木 17:31] =>  0:01
 
 近藤さんおすすめの ARP フォーマット解説。
 http://www.n-study.com/network/arpheader.htm
+** ICMP のテスト用データ                                              :NOTE:
+:LOGBOOK:
+CLOCK: [2013-09-22 日 22:25]--[2013-09-22 日 22:26] =>  0:01
+:END:
+[2013-09-22 日 22:25]
+
+https://gist.github.com/shun159/6647589
 ** ターミナルでペアプロするための設定                                 :NOTE:
 :LOGBOOK:
 CLOCK: [2013-07-22 月 09:29]--[2013-07-22 月 09:30] =>  0:01
@@ -38,7 +45,7 @@ http://www.zeespencer.com/articles/building-a-remote-pairing-setup/
 * Releases
 ** TODO 0.2.2 リリース
 :LOGBOOK:
-CLOCK: [2013-09-19 木 14:29]
+CLOCK: [2013-09-19 木 14:29]--[2013-09-19 木 16:39] =>  2:10
 :END:
 [2013-09-19 木 14:17]
 *** TODO 鈴木さんルータの ARP 部分を Pio で書き直してもらう
@@ -67,6 +74,12 @@ https://github.com/trema/trema-edge/pull/22
 
 コメントしておいた。
 https://github.com/trema/trema-edge/pull/22#issuecomment-24717877
+*** NEXT チケットを切ったことを鈴木さんに確認
+SCHEDULED: <2013-09-24 火>
+:PROPERTIES:
+:Effort:   0:15
+:END:
+[2013-09-20 金 09:26]
 ** TODO 0.3.0 リリース
 - State "TODO"       from "WAITING"    [2013-09-19 木 14:16]
 - State "WAITING"    from "TODO"       [2013-09-06 金 17:17] \\
