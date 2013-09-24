@@ -46,6 +46,8 @@ http:///www.asahi-net.or.jp/~aa4t-nngk/ipttut/output/icmpheaders.html
 [2013-09-06 金 19:27]
 ** TODO Nick さんに README の英語をチェックしてもらう
 [2013-09-18 水 12:01]
+** TODO phost を Pio で書き直す
+[2013-09-24 火 15:36]
 * Releases
 ** TODO 0.2.2 リリース
 :LOGBOOK:
@@ -79,9 +81,9 @@ https://github.com/trema/trema-edge/pull/22
 コメントしておいた。
 https://github.com/trema/trema-edge/pull/22#issuecomment-24717877
 *** NEXT チケットを切ったことを鈴木さんに確認
-SCHEDULED: <2013-09-24 火>
+SCHEDULED: <2013-09-24 火 13:45>
 :PROPERTIES:
-:Effort:   0:15
+:Effort:   0:05
 :END:
 [2013-09-20 金 09:26]
 ** TODO 0.3.0 リリース
