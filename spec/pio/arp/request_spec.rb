@@ -1,4 +1,3 @@
-require File.join( File.dirname( __FILE__ ), "..", "..", "spec_helper" )
 require "pio/arp/request"
 
 
@@ -113,7 +112,7 @@ module Pio
           let( :source_mac ) { 0x002682ebead1 }
           let( :sender_protocol_address ) { "192.168.83.254" }
           let( :target_protocol_address ) { nil }
-          
+
           it "raises an invalid IP address error" do
             expect { subject }.to raise_error( "Invalid IP address: nil" )
           end
