@@ -1,11 +1,11 @@
 require "rubygems"
 require "bindata"
 
-require "pio/lldp/chassis-id-tlv"
-require "pio/lldp/optional-tlv"
-require "pio/lldp/port-id-tlv"
-require "pio/lldp/ttl-tlv"
-require "pio/type/ethernet-header"
+require "pio/lldp/chassis_id_tlv"
+require "pio/lldp/optional_tlv"
+require "pio/lldp/port_id_tlv"
+require "pio/lldp/ttl_tlv"
+require "pio/type/ethernet_header"
 
 
 module Pio
