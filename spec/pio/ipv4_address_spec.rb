@@ -11,7 +11,8 @@ module Pio
         let( :ip_address ) { "10.1.1.1" }
 
         its( :to_s ) { should eq "10.1.1.1" }
-        its( :to_i ) { should eq ( ( 10 * 256 + 1 ) * 256 + 1 ) * 256 + 1 }
+        its( :to_i ) { should eq ( ( ( 10 * 256 + 1 ) * 256 + 1 ) * 256 + 1 ) }
+        its( :prefixlen ) { should eq 32 }
         its( :to_ary ) { should eq [ 0x0a, 0x01, 0x01, 0x01 ] }
         its( :class_a? ) { should be_true }
         its( :class_b? ) { should be_false }
@@ -45,7 +46,7 @@ module Pio
         let( :ip_address ) { "172.20.1.1" }
 
         its( :to_s ) { should eq "172.20.1.1" }
-        its( :to_i ) { should eq ( ( 172 * 256 + 20 ) * 256 + 1 ) * 256 + 1 }
+        its( :to_i ) { should eq ( ( ( 172 * 256 + 20 ) * 256 + 1 ) * 256 + 1 ) }
         its( :to_ary ) { should eq [ 0xac, 0x14, 0x01, 0x01 ] }
         its( :class_a? ) { should be_false }
         its( :class_b? ) { should be_true }
@@ -77,7 +78,7 @@ module Pio
         let( :ip_address ) { "234.1.1.1" }
 
         its( :to_s ) { should eq "234.1.1.1" }
-        its( :to_i ) { should eq ( ( 234 * 256 + 1 ) * 256 + 1 ) * 256 + 1 }
+        its( :to_i ) { should eq ( ( ( 234 * 256 + 1 ) * 256 + 1 ) * 256 + 1 ) }
         its( :to_ary ) { should eq [ 0xea, 0x01, 0x01, 0x01 ] }
         its( :class_a? ) { should be_false }
         its( :class_b? ) { should be_false }
