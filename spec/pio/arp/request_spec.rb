@@ -102,8 +102,8 @@ module Pio
           let( :sender_protocol_address ) { nil }
           let( :target_protocol_address ) { "192.168.83.254" }
 
-          it "raises an invalid IP address error" do
-            expect { subject }.to raise_error( "Invalid IP address: nil" )
+          it "raises an invalid IPv4 address error" do
+            expect { subject }.to raise_error( "Invalid IPv4 address: nil" )
           end
         end
 
@@ -113,8 +113,8 @@ module Pio
           let( :sender_protocol_address ) { "192.168.83.254" }
           let( :target_protocol_address ) { nil }
 
-          it "raises an invalid IP address error" do
-            expect { subject }.to raise_error( "Invalid IP address: nil" )
+          it "raises an invalid IPv4 address error" do
+            expect { subject }.to raise_error( "Invalid IPv4 address: nil" )
           end
         end
       end

@@ -73,11 +73,11 @@ module Pio
     # address string format.
     #
     # @example
-    #   Mac.new("11:22:33:44:55:66").to_a #=> [ 0x11, 0x22, 0x33, 0x44, 0x55, 0x66 ]
+    #   Mac.new("11:22:33:44:55:66").to_ary #=> [ 0x11, 0x22, 0x33, 0x44, 0x55, 0x66 ]
     #
     # @return [Array] the Ethernet address in Array format
     #
-    def to_a
+    def to_ary
       @string.split( ":" ).collect do | each |
         each.hex
       end
@@ -103,7 +103,7 @@ module Pio
     # @return [Boolean] whether the Ethernet address is multicast
     #
     def multicast?
-      to_a[ 0 ] & 1 == 1
+      to_ary[ 0 ] & 1 == 1
     end
 
 
@@ -116,7 +116,7 @@ module Pio
     # @return [Boolean] whether the Ethernet address is broadcast
     #
     def broadcast?
-      to_a.all? { | each | each == 0xff }
+      to_ary.all? { | each | each == 0xff }
     end
 
 

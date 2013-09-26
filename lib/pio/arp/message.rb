@@ -1,5 +1,6 @@
-require "pio/arp/frame"
 require "forwardable"
+require "pio/arp/frame"
+require "pio/ipv4_address"
 
 
 module Pio
@@ -45,7 +46,7 @@ module Pio
       def option_hash
         mandatory_options.inject( {} ) do | opt, each |
           klass = option_to_klass[ each ]
-          opt_pair = { each => klass.new( user_options[ each ] ).to_a }
+          opt_pair = { each => klass.new( user_options[ each ] ).to_ary }
           opt.merge opt_pair
         end.merge default_options
       end
@@ -57,8 +58,8 @@ module Pio
           :destination_mac => Mac,
           :sender_hardware_address => Mac,
           :target_hardware_address => Mac,
-          :sender_protocol_address => IP,
-          :target_protocol_address => IP,
+          :sender_protocol_address => IPv4Address,
+          :target_protocol_address => IPv4Address,
         }
       end
     end

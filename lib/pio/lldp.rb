@@ -21,8 +21,8 @@ module Pio
 
       def to_hash
         {
-          :destination_mac => Mac.new( destination_mac ).to_a,
-          :source_mac => Mac.new( source_mac ).to_a,
+          :destination_mac => Mac.new( destination_mac ).to_ary,
+          :source_mac => Mac.new( source_mac ).to_ary,
           :chassis_id => dpid,
           :port_id => port_id
         }

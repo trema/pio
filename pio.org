@@ -54,17 +54,9 @@ http:///www.asahi-net.or.jp/~aa4t-nngk/ipttut/output/icmpheaders.html
 CLOCK: [2013-09-19 木 14:29]--[2013-09-19 木 16:39] =>  2:10
 :END:
 [2013-09-19 木 14:17]
-*** TODO 鈴木さんルータの ARP 部分を Pio で書き直してもらう
-- State "TODO"       from "WAITING"    [2013-09-19 木 14:18]
-- State "WAITING"    from "TODO"       [2013-09-18 水 12:04] \\
-  ARP のコードが実機で動いてから
-:LOGBOOK:
-CLOCK: [2013-09-14 土 10:20]--[2013-09-14 土 10:21] =>  0:01
-:END:
-[2013-09-14 土 10:20]
-
-GitHub のチケットはこちら:
-https://github.com/trema/pio/issues/1
+*** DONE IP -> IPv4Address
+SCHEDULED: <2013-09-26 木>
+[2013-09-26 木 13:33]
 *** DONE 鈴木さんの IPv4Address への PR を Pio へ誘導
 CLOSED: [2013-09-19 木 14:29] SCHEDULED: <2013-09-19 木>
 :LOGBOOK:
@@ -86,6 +78,22 @@ CLOSED: [2013-09-24 火 20:57] SCHEDULED: <2013-09-24 火 13:45>
 :Effort:   0:05
 :END:
 [2013-09-20 金 09:26]
+** TODO 0.2.3 リリース
+:LOGBOOK:
+CLOCK: [2013-09-26 木 13:31]--[2013-09-26 木 13:32] =>  0:01
+:END:
+[2013-09-26 木 13:31]
+*** TODO 鈴木さんルータの ARP 部分を Pio で書き直してもらう
+- State "TODO"       from "WAITING"    [2013-09-19 木 14:18]
+- State "WAITING"    from "TODO"       [2013-09-18 水 12:04] \\
+  ARP のコードが実機で動いてから
+:LOGBOOK:
+CLOCK: [2013-09-14 土 10:20]--[2013-09-14 土 10:21] =>  0:01
+:END:
+[2013-09-14 土 10:20]
+
+GitHub のチケットはこちら:
+https://github.com/trema/pio/issues/1
 ** TODO 0.3.0 リリース
 - State "TODO"       from "WAITING"    [2013-09-19 木 14:16]
 - State "WAITING"    from "TODO"       [2013-09-06 金 17:17] \\
