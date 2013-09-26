@@ -1,6 +1,6 @@
-require "pio/type/ethernet-header"
-require "pio/type/ip-address"
-require "pio/type/mac-address"
+require "pio/type/ethernet_header"
+require "pio/type/ip_address"
+require "pio/type/mac_address"
 
 
 module Pio

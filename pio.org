@@ -81,7 +81,7 @@ https://github.com/trema/trema-edge/pull/22
 コメントしておいた。
 https://github.com/trema/trema-edge/pull/22#issuecomment-24717877
 *** DONE チケットを切ったことを鈴木さんに確認
-CLOSED: [2013-09-25 水 09:26] SCHEDULED: <2013-09-24 火 13:45>
+CLOSED: [2013-09-24 火 20:57] SCHEDULED: <2013-09-24 火 13:45>
 :PROPERTIES:
 :Effort:   0:05
 :END:
@@ -93,6 +93,16 @@ CLOSED: [2013-09-25 水 09:26] SCHEDULED: <2013-09-24 火 13:45>
 [2013-09-05 木 17:29]
 *** TODO ICMP パーサを作る
 [2013-08-02 金 17:19]
+*** DONE gem の命名規則に合わせる
+CLOSED: [2013-09-26 木 08:28] SCHEDULED: <2013-09-26 木>
+:LOGBOOK:
+CLOCK: [2013-09-26 木 08:20]--[2013-09-26 木 08:28] =>  0:08
+CLOCK: [2013-09-26 木 08:05]--[2013-09-26 木 08:06] =>  0:01
+:END:
+:PROPERTIES:
+:Effort:   0:30
+:END:
+[2013-09-26 木 08:05]
 *** NEXT YARD の警告をつぶす
 SCHEDULED: <2014-08-19 火>
 :PROPERTIES:
@@ -104,6 +114,15 @@ SCHEDULED: <2014-08-19 火>
 CLOCK: [2013-09-18 水 17:20]--[2013-09-18 水 17:21] =>  0:01
 :END:
 [2013-09-18 水 17:20]
+*** DONE 明示的に spec_helper.rb をロードしてる部分をなくす
+CLOSED: [2013-09-26 木 08:18] SCHEDULED: <2013-09-26 木>
+:LOGBOOK:
+CLOCK: [2013-09-26 木 08:14]--[2013-09-26 木 08:15] =>  0:01
+:END:
+:PROPERTIES:
+:Effort:   0:30
+:END:
+[2013-09-26 木 08:14]
 ** WAITING 0.4.0 リリース                                    :WAITING:
 - State "WAITING"    from "TODO"       [2013-09-06 金 17:18] \\
   0.3.0 が無事に出てから。
