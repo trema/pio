@@ -17,6 +17,12 @@ module Pio
 
 
     #
+    # @return [Number] prefix length of IPv4 address.
+    #
+    attr_reader :prefixlen
+
+
+    #
     # Creates a {IPv4Address} instance object as a proxy to IPAddr class.
     #
     # @overload initialize(addr)
@@ -30,6 +36,7 @@ module Pio
     #   a proxy to IPAddr.
     #
     def initialize addr
+      @prefixlen = 32
       case addr
       when Integer
         @value = IPAddr.new( addr, Socket::AF_INET )
@@ -69,6 +76,7 @@ module Pio
     #   Returns the IPv4 address masked with masklen.
     #
     def mask! masklen
+      @prefixlen = masklen
       @value = @value.mask( masklen )
       return self
     end
@@ -80,6 +88,7 @@ module Pio
     #   Returns the IPv4 address masked with masklen.
     #
     def mask masklen
+      @prefixlen = masklen
       self.clone.mask!( masklen )
     end
     alias :prefix :mask
