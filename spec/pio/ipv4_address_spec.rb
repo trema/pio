@@ -87,6 +87,20 @@ module Pio
         its( :unicast? ) { should be_false }
         its( :multicast? ) { should be_true }
       end
+
+
+      context "with 192.168.0.1/16" do
+        let( :ip_address ) { "192.168.0.1/16" }
+
+        its( :prefixlen ) { should eq 16 }
+      end
+
+
+      context "with 192.168.0.1/255.255.255.0" do
+        let( :ip_address ) { "192.168.0.1/255.255.255.0" }
+
+        its( :prefixlen ) { should eq 24 }
+      end
     end
   end
 end

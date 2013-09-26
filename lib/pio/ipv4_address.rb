@@ -35,6 +35,8 @@ module Pio
         @value = IPAddr.new( addr, Socket::AF_INET )
       when String
         @value = IPAddr.new( addr )
+      when IPv4Address
+        @value = addr.value
       else
         raise TypeError, "Invalid IPv4 address: #{ addr.inspect }"
       end
@@ -54,6 +56,21 @@ module Pio
 
 
     #
+    # @return [Range] Creates a Range object for the network address.
+    #
+    def_delegator :value, :to_range
+
+
+    #
+    # @return [Number] prefix length of IPv4 address.
+    #
+    def prefixlen
+      netmask = to_range.first.to_i ^ to_range.last.to_i
+      32 - ( "%b" % netmask ).length
+    end
+
+
+    #
     # @return [Array]
     #    an array of decimal numbers converted from IPv4 address.
     #
@@ -70,7 +87,7 @@ module Pio
     #
     def mask! masklen
       @value = @value.mask( masklen )
-      return self
+      self
     end
     alias :prefix! :mask!
 

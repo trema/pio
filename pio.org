@@ -49,7 +49,8 @@ http:///www.asahi-net.or.jp/~aa4t-nngk/ipttut/output/icmpheaders.html
 ** TODO phost を Pio で書き直す
 [2013-09-24 火 15:36]
 * Releases
-** TODO 0.2.2 リリース
+** DONE 0.2.2 リリース
+CLOSED: [2013-09-26 木 15:34]
 :LOGBOOK:
 CLOCK: [2013-09-19 木 14:29]--[2013-09-19 木 16:39] =>  2:10
 :END:
@@ -78,7 +79,13 @@ CLOSED: [2013-09-24 火 20:57] SCHEDULED: <2013-09-24 火 13:45>
 :Effort:   0:05
 :END:
 [2013-09-20 金 09:26]
-** TODO 0.2.3 リリース
+** DONE 0.2.3 リリース
+CLOSED: [2013-09-26 木 15:35]
+[2013-09-26 木 15:34]
+*** DONE Trema への組込み
+CLOSED: [2013-09-26 木 15:35]
+[2013-09-26 木 15:35]
+** TODO 0.2.4 リリース
 :LOGBOOK:
 CLOCK: [2013-09-26 木 13:31]--[2013-09-26 木 13:32] =>  0:01
 :END:
