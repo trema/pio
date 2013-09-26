@@ -1,10 +1,10 @@
-require "pio/lldp/port-description-value"
-require "pio/lldp/system-name-value"
-require "pio/lldp/system-description-value"
-require "pio/lldp/system-capabilities-value"
-require "pio/lldp/management-address-value"
-require "pio/lldp/organizationally-specific-value"
-require "pio/lldp/end-of-lldpdu-value"
+require "pio/lldp/port_description_value"
+require "pio/lldp/system_name_value"
+require "pio/lldp/system_description_value"
+require "pio/lldp/system_capabilities_value"
+require "pio/lldp/management_address_value"
+require "pio/lldp/organizationally_specific_value"
+require "pio/lldp/end_of_lldpdu_value"
 
 
 module Pio

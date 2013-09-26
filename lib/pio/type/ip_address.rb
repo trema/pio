@@ -1,4 +1,5 @@
 require "bindata"
+require "pio/ipv4_address"
 
 
 module Pio
@@ -14,7 +15,7 @@ module Pio
 
 
       def get
-        IP.new octets.collect { | each | "%d" % each }.join( "." )
+        IPv4Address.new octets.collect { | each | "%d" % each }.join( "." )
       end
     end
   end

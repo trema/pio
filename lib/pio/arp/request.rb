@@ -1,6 +1,5 @@
 require "pio/arp/frame"
 require "pio/arp/message"
-require "pio/ip"
 require "pio/mac"
 
 
@@ -10,8 +9,8 @@ module Pio
     class Request < Message
       OPERATION = 1
 
-      BROADCAST_MAC_ADDRESS = Mac.new( 0xffffffffffff ).to_a
-      ALL_ZERO_MAC_ADDRESS = Mac.new( 0 ).to_a
+      BROADCAST_MAC_ADDRESS = Mac.new( 0xffffffffffff ).to_ary
+      ALL_ZERO_MAC_ADDRESS = Mac.new( 0 ).to_ary
 
 
       ########################################################################

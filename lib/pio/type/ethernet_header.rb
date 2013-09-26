@@ -1,4 +1,4 @@
-require "pio/type/mac-address"
+require "pio/type/mac_address"
 
 
 module Pio
