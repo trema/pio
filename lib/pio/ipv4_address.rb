@@ -56,17 +56,17 @@ module Pio
 
 
     #
+    # @return [Range] Creates a Range object for the network address.
+    #
+    def_delegator :value, :to_range
+
+
+    #
     # @return [Number] prefix length of IPv4 address.
     #
     def prefixlen
-      range = @value.to_range
-      mask = range.first.to_i ^ range.last.to_i
-      masklen = 0
-      while mask != 0 do
-        mask = mask >> 1
-        masklen += 1
-      end
-      32 - masklen
+      netmask = to_range.first.to_i ^ to_range.last.to_i
+      32 - ( "%b" % netmask ).length
     end
 
 
