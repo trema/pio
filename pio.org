@@ -80,8 +80,8 @@ https://github.com/trema/trema-edge/pull/22
 
 コメントしておいた。
 https://github.com/trema/trema-edge/pull/22#issuecomment-24717877
-*** NEXT チケットを切ったことを鈴木さんに確認
-SCHEDULED: <2013-09-24 火 13:45>
+*** DONE チケットを切ったことを鈴木さんに確認
+CLOSED: [2013-09-25 水 09:26] SCHEDULED: <2013-09-24 火 13:45>
 :PROPERTIES:
 :Effort:   0:05
 :END:
