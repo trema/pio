@@ -21,8 +21,8 @@ module Pio
 
       def to_hash
         {
-          :destination_mac => Mac.new( destination_mac ).to_ary,
-          :source_mac => Mac.new( source_mac ).to_ary,
+          :destination_mac => Mac.new( destination_mac ).to_a,
+          :source_mac => Mac.new( source_mac ).to_a,
           :chassis_id => dpid,
           :port_id => port_id
         }
@@ -64,6 +64,7 @@ module Pio
       rescue
         raise Pio::ParseError, $!.message
       end
+
       lldp = allocate
       lldp.instance_variable_set :@frame, frame
       lldp
