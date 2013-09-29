@@ -64,6 +64,7 @@ module Pio
       rescue
         raise Pio::ParseError, $!.message
       end
+
       lldp = allocate
       lldp.instance_variable_set :@frame, frame
       lldp

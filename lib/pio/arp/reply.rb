@@ -1,6 +1,5 @@
 require "forwardable"
 require "pio/arp/message"
-require "pio/ip"
 require "pio/mac"
 
 

@@ -10,9 +10,9 @@ module Pio
       context %{with "11:22:33:44:55:66"} do
         let( :value ) { "11:22:33:44:55:66" }
         it { should eq Mac.new( "11:22:33:44:55:66" ) }
-        its( :value ) { should eq 0x112233445566 }
-        its( :to_s ) { should eq "11:22:33:44:55:66" }
-        its( :to_a ) { should eq [ 0x11, 0x22, 0x33, 0x44, 0x55, 0x66 ] }
+        its( :to_int ) { should eq 0x112233445566 }
+        its( :to_str ) { should eq "11:22:33:44:55:66" }
+        its( :to_ary ) { should eq [ 0x11, 0x22, 0x33, 0x44, 0x55, 0x66 ] }
         its( :multicast? ){ should be_true }
         its( :broadcast? ){ should be_false }
       end
@@ -21,9 +21,9 @@ module Pio
       context "with 0" do
         let( :value ) { 0 }
         it { should eq Mac.new( 0 ) }
-        its( :value ) { should eq 0 }
-        its( :to_s ) { should eq "00:00:00:00:00:00" }
-        its( :to_a ) { should eq [ 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 ] }
+        its( :to_int ) { should eq 0 }
+        its( :to_str ) { should eq "00:00:00:00:00:00" }
+        its( :to_ary ) { should eq [ 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 ] }
         its( :multicast? ){ should be_false }
         its( :broadcast? ){ should be_false }
       end
@@ -32,9 +32,9 @@ module Pio
       context "with 0xffffffffffff" do
         let( :value ) { 0xffffffffffff }
         it { should eq Mac.new( 0xffffffffffff ) }
-        its( :value ) { should eq 0xffffffffffff }
-        its( :to_s ) { should eq "ff:ff:ff:ff:ff:ff" }
-        its( :to_a ) { should eq [ 0xff, 0xff, 0xff, 0xff, 0xff, 0xff ] }
+        its( :to_int ) { should eq 0xffffffffffff }
+        its( :to_str ) { should eq "ff:ff:ff:ff:ff:ff" }
+        its( :to_ary ) { should eq [ 0xff, 0xff, 0xff, 0xff, 0xff, 0xff ] }
         its( :multicast? ){ should be_true }
         its( :broadcast? ){ should be_true }
       end
