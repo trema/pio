@@ -36,6 +36,12 @@ http://www.zeespencer.com/articles/building-a-remote-pairing-setup/
 [2013-09-22 日 23:09]
 
 http:///www.asahi-net.or.jp/~aa4t-nngk/ipttut/output/icmpheaders.html
+** [[http://www.ruby-forum.com/topic/217963][any good tools for reading networking data with optional TLV - Ruby Forum]] [2013-06-21 Fri]
+:PROPERTIES:
+:ID:       1670C09A-20C7-45F9-B068-56376DFD864C
+:END:
+  BinData での optional TLV の使い方
+
 * Tasks
 このアイテムをそれぞれのリリースに割り振る。
 ** NEXT git パスワードを省略できるように
