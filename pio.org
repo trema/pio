@@ -131,8 +131,8 @@ CLOCK: [2013-09-14 土 10:20]--[2013-09-14 土 10:21] =>  0:01
 
 GitHub のチケットはこちら:
 https://github.com/trema/pio/issues/1
-**** NEXT 鈴木さんに ping
-SCHEDULED: <2013-10-01 火>
+**** DONE 鈴木さんに ping
+CLOSED: [2013-10-01 火 12:29] SCHEDULED: <2013-10-01 火>
 :LOGBOOK:
 CLOCK: [2013-09-29 日 21:06]--[2013-09-29 日 21:07] =>  0:01
 :END:
