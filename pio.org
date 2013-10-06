@@ -141,7 +141,7 @@ CLOCK: [2013-09-29 日 21:06]--[2013-09-29 日 21:07] =>  0:01
 https://github.com/trema/pio/issues/1
 *** TODO Trema::Mac を Pio::Mac で置き換え
 [2013-10-03 木 09:04]
-**** NEXT ソースコード内の Trema::Mac を Pio::Mac で置換
+**** NEXT Trema ソースコード内の Trema::Mac を Pio::Mac で置換
 [2013-10-03 木 09:05]
 **** NEXT Trema::Mac のテストコードを削除
 :LOGBOOK:
