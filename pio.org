@@ -42,6 +42,14 @@ http:///www.asahi-net.or.jp/~aa4t-nngk/ipttut/output/icmpheaders.html
 :END:
   BinData での optional TLV の使い方
 
+** Trema/Pioでパケットを作ろう(1)                                     :NOTE:
+[2013-10-06 日 15:55]
+
+http://d.hatena.ne.jp/stereocat/20131005/1380977633
+** Trema/Pioでパケットを作ろう(2)                                     :NOTE:
+[2013-10-06 日 15:55]
+
+http://d.hatena.ne.jp/stereocat/20131006/1381028321
 * Tasks
 このアイテムをそれぞれのリリースに割り振る。
 ** NEXT git パスワードを省略できるように
