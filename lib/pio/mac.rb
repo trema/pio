@@ -11,23 +11,7 @@ module Pio
 
 
     #
-    # Returns an Ethernet address in its numeric presentation.
-    #
-    # @example
-    #   Mac.new("11:22:33:44:55:66") #=> 18838586676582
-    #
-    # @return [Number] the Ethernet address in numeric format
-    #
-    attr_reader :value
-
-
-    #
     # Creates a {Mac} instance that encapsulates Ethernet addresses.
-    #
-    # @overload initialize(value)
-    #
-    # @param [String,Integer] value
-    #   the Ethernet address to set to.
     #
     # @example address as a hexadecimal string
     #   Mac.new("11:22:33:44:55:66")
@@ -35,22 +19,37 @@ module Pio
     # @example address as a hexadecimal number
     #   Mac.new(0xffffffffffff)
     #
-    # @raise [ArgumentError] if invalid format is detected.
-    # @raise [TypeError] if supplied argument is not a String or Integer.
-    #
     def initialize value
-      case value
-        when String
-          @value = create_from( value )
-        when Integer
-          @value = value
-          validate_value_range
-        when Mac
-          @value = create_from( value.to_s )
-        else
-          raise TypeError, "Invalid MAC address: #{ value.inspect }"
+      if value.respond_to?( :to_str )
+        @value = parse_mac_string( value.to_str )
+      elsif value.respond_to?( :to_int )
+        @value = value.to_int
+        validate_value_range
+      else
+        raise TypeError, "Invalid MAC address: #{ value.inspect }"
       end
-      @string = string_format
+    end
+
+
+    #
+    # Returns an Ethernet address in its numeric presentation.
+    #
+    # @example
+    #   Mac.new("11:22:33:44:55:66").to_i #=> 18838586676582
+    #
+    def to_i
+      @value
+    end
+
+
+    #
+    # @see to_i
+    #
+    # @example
+    #   Mac.new("11:22:33:44:55:66").to_int #=> 18838586676582
+    #
+    def to_int
+      to_i
     end
 
 
@@ -61,10 +60,19 @@ module Pio
     # @example
     #   Mac.new(18838586676582).to_s #=> "11:22:33:44:55:66"
     #
-    # @return [String] the Ethernet address in String format
-    #
     def to_s
-      @string
+      sprintf( "%012x", @value ).unpack( "a2" * 6 ).join( ":" )
+    end
+
+
+    #
+    # @see to_s
+    #
+    # @example
+    #   Mac.new(18838586676582).to_str #=> "11:22:33:44:55:66"
+    #
+    def to_str
+      to_s
     end
 
 
@@ -73,14 +81,23 @@ module Pio
     # address string format.
     #
     # @example
-    #   Mac.new("11:22:33:44:55:66").to_ary #=> [ 0x11, 0x22, 0x33, 0x44, 0x55, 0x66 ]
+    #   Mac.new("11:22:33:44:55:66").to_a #=> [ 0x11, 0x22, 0x33, 0x44, 0x55, 0x66 ]
     #
-    # @return [Array] the Ethernet address in Array format
-    #
-    def to_ary
-      @string.split( ":" ).collect do | each |
+    def to_a
+      to_s.split( ":" ).collect do | each |
         each.hex
       end
+    end
+
+
+    #
+    # @see to_a
+    #
+    # @example
+    #   Mac.new("11:22:33:44:55:66").to_ary #=> [ 0x11, 0x22, 0x33, 0x44, 0x55, 0x66 ]
+    #
+    def to_ary
+      to_a
     end
 
 
@@ -88,7 +105,11 @@ module Pio
     # @private
     #
     def == other
-      to_s == other.to_s
+      begin
+        to_i == Mac.new( other ).to_i
+      rescue
+        false
+      end
     end
     alias :eql? :==
 
@@ -100,10 +121,8 @@ module Pio
     #   Mac.new("01:00:00:00:00:00").multicast? #=> true
     #   Mac.new("00:00:00:00:00:00").multicast? #=> false
     #
-    # @return [Boolean] whether the Ethernet address is multicast
-    #
     def multicast?
-      to_ary[ 0 ] & 1 == 1
+      to_a[ 0 ] & 1 == 1
     end
 
 
@@ -113,10 +132,8 @@ module Pio
     # @example
     #   Mac.new("ff:ff:ff:ff:ff:ff").broadcast? #=> true
     #
-    # @return [Boolean] whether the Ethernet address is broadcast
-    #
     def broadcast?
-      to_ary.all? { | each | each == 0xff }
+      to_a.all? { | each | each == 0xff }
     end
 
 
@@ -125,12 +142,12 @@ module Pio
     ################################################################################
 
 
-    def create_from string
+    def parse_mac_string mac
       octet_regex = "[0-9a-fA-F][0-9a-fA-F]"
-      if /^(#{ octet_regex }:){5}(#{ octet_regex })$/=~ string
-        string.gsub( ":", "" ).hex
+      if /^(#{ octet_regex }:){5}(#{ octet_regex })$/=~ mac
+        mac.gsub( ":", "" ).hex
       else
-        raise ArgumentError, %{Invalid MAC address: "#{ string }"}
+        raise ArgumentError, %{Invalid MAC address: "#{ mac }"}
       end
     end
 
@@ -139,11 +156,6 @@ module Pio
       unless ( @value >= 0 and @value <= 0xffffffffffff )
         raise ArgumentError, "Invalid MAC address: #{ @value }"
       end
-    end
-
-
-    def string_format
-      sprintf( "%012x", @value ).unpack( "a2" * 6 ).join( ":" )
     end
   end
 end

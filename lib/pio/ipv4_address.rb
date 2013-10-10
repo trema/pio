@@ -78,10 +78,19 @@ module Pio
     # @return [Array]
     #    an array of decimal numbers converted from IPv4 address.
     #
-    def to_ary
+    def to_a
       to_s.split( "." ).collect do | each |
         each.to_i
       end
+    end
+
+
+    #
+    # @return [Array]
+    #    an array of decimal numbers converted from IPv4 address.
+    #
+    def to_ary
+      to_a
     end
 
 
