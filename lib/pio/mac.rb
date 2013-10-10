@@ -3,7 +3,7 @@ require "forwardable"
 
 module Pio
   #
-  # Ethernet address class
+  # Ethernet address (MAC address) class.
   #
   class Mac
     extend Forwardable
@@ -14,10 +14,12 @@ module Pio
     # Creates a {Mac} instance that encapsulates Ethernet addresses.
     #
     # @example address as a hexadecimal string
-    #   Mac.new("11:22:33:44:55:66")
-    #
+    #   Pio::Mac.new("11:22:33:44:55:66")
     # @example address as a hexadecimal number
-    #   Mac.new(0xffffffffffff)
+    #   Pio::Mac.new(0xffffffffffff)
+    #
+    # @param value [#to_str, #to_int] the value converted to an
+    #   Ethernet address.
     #
     def initialize value
       if value.respond_to?( :to_str )
@@ -31,11 +33,13 @@ module Pio
     end
 
 
+    # @!group Converters
+
     #
     # Returns an Ethernet address in its numeric presentation.
     #
     # @example
-    #   Mac.new("11:22:33:44:55:66").to_i #=> 18838586676582
+    #   Pio::Mac.new("11:22:33:44:55:66").to_i #=> 18838586676582
     #
     def to_i
       @value
@@ -44,9 +48,6 @@ module Pio
 
     #
     # @see to_i
-    #
-    # @example
-    #   Mac.new("11:22:33:44:55:66").to_int #=> 18838586676582
     #
     def to_int
       to_i
@@ -58,7 +59,7 @@ module Pio
     # delimited by colons.
     #
     # @example
-    #   Mac.new(18838586676582).to_s #=> "11:22:33:44:55:66"
+    #   Pio::Mac.new(18838586676582).to_s #=> "11:22:33:44:55:66"
     #
     def to_s
       sprintf( "%012x", @value ).unpack( "a2" * 6 ).join( ":" )
@@ -68,20 +69,17 @@ module Pio
     #
     # @see to_s
     #
-    # @example
-    #   Mac.new(18838586676582).to_str #=> "11:22:33:44:55:66"
-    #
     def to_str
       to_s
     end
 
 
     #
-    # Returns an array of decimal numbers converted from Ethernet's
+    # Returns an Array of decimal numbers converted from Ethernet's
     # address string format.
     #
     # @example
-    #   Mac.new("11:22:33:44:55:66").to_a #=> [ 0x11, 0x22, 0x33, 0x44, 0x55, 0x66 ]
+    #   Pio::Mac.new("11:22:33:44:55:66").to_a #=> [ 0x11, 0x22, 0x33, 0x44, 0x55, 0x66 ]
     #
     def to_a
       to_s.split( ":" ).collect do | each |
@@ -93,33 +91,21 @@ module Pio
     #
     # @see to_a
     #
-    # @example
-    #   Mac.new("11:22:33:44:55:66").to_ary #=> [ 0x11, 0x22, 0x33, 0x44, 0x55, 0x66 ]
-    #
     def to_ary
       to_a
     end
 
+    # @!endgroup
 
-    #
-    # @private
-    #
-    def == other
-      begin
-        to_i == Mac.new( other ).to_i
-      rescue
-        false
-      end
-    end
-    alias :eql? :==
 
+    # @!group Predicates
 
     #
     # Returns true if Ethernet address is a multicast address.
     #
     # @example
-    #   Mac.new("01:00:00:00:00:00").multicast? #=> true
-    #   Mac.new("00:00:00:00:00:00").multicast? #=> false
+    #   Pio::Mac.new("01:00:00:00:00:00").multicast? #=> true
+    #   Pio::Mac.new("00:00:00:00:00:00").multicast? #=> false
     #
     def multicast?
       to_a[ 0 ] & 1 == 1
@@ -130,11 +116,38 @@ module Pio
     # Returns true if Ethernet address is a broadcast address.
     #
     # @example
-    #   Mac.new("ff:ff:ff:ff:ff:ff").broadcast? #=> true
+    #   Pio::Mac.new("ff:ff:ff:ff:ff:ff").broadcast? #=> true
     #
     def broadcast?
       to_a.all? { | each | each == 0xff }
     end
+
+    # @!endgroup
+
+
+    # @!group Equality
+
+    #
+    # Returns true if other can be converted to a {Mac} object and its
+    # numeric representation is equal to mine.
+    #
+    # @example
+    #   Pio::Mac.new("11:22:33:44:55:66") == "11:22:33:44:55:66" #=> true
+    #   Pio::Mac.new("11:22:33:44:55:66") == 18838586676582 #=> true
+    #
+    # @param other [#to_str, #to_int] a {Mac} object or an object that
+    #   can be converted to an Ethernet address.
+    #
+    def == other
+      begin
+        to_i == Mac.new( other ).to_i
+      rescue
+        false
+      end
+    end
+    alias :eql? :==
+
+    # @!endgroup
 
 
     ################################################################################
