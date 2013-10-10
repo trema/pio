@@ -43,10 +43,16 @@ http:///www.asahi-net.or.jp/~aa4t-nngk/ipttut/output/icmpheaders.html
   BinData での optional TLV の使い方
 
 ** Trema/Pioでパケットを作ろう(1)                                     :NOTE:
+:PROPERTIES:
+:ID:       BA8B555C-1FBE-4FDD-BFAC-D80EE9366643
+:END:
 [2013-10-06 日 15:55]
 
 http://d.hatena.ne.jp/stereocat/20131005/1380977633
 ** Trema/Pioでパケットを作ろう(2)                                     :NOTE:
+:PROPERTIES:
+:ID:       29F0265C-BF73-4749-A93D-20B0BF62C45E
+:END:
 [2013-10-06 日 15:55]
 
 http://d.hatena.ne.jp/stereocat/20131006/1381028321
@@ -58,10 +64,15 @@ http://d.hatena.ne.jp/stereocat/20131006/1381028321
 [2013-09-05 木 21:32]
 ** TODO 各 OpenFlow メッセージのパーサを作る
 [2013-09-06 金 19:27]
+*** TODO Trema::Hello の spec を見直し
 ** TODO Nick さんに README の英語をチェックしてもらう
 [2013-09-18 水 12:01]
 ** TODO phost を Pio で書き直す
 [2013-09-24 火 15:36]
+
+関連するタスク:
+- [[*Trema/Pio%E3%81%A7%E3%83%91%E3%82%B1%E3%83%83%E3%83%88%E3%82%92%E4%BD%9C%E3%82%8D%E3%81%86(1)][Trema/Pioでパケットを作ろう(1)]]
+- [[*Trema/Pio%E3%81%A7%E3%83%91%E3%82%B1%E3%83%83%E3%83%88%E3%82%92%E4%BD%9C%E3%82%8D%E3%81%86(2)][Trema/Pioでパケットを作ろう(2)]]
 ** TODO DHCP パーサを作る
 [2013-08-02 金 17:17]
 
@@ -129,7 +140,7 @@ CLOCK: [2013-09-26 木 13:31]--[2013-09-26 木 13:32] =>  0:01
 :END:
 [2013-09-26 木 13:31]
 *** NEXT Pio::Mac を Trema に組込む
-SCHEDULED: <2013-10-04 金>
+SCHEDULED: <2013-10-10 木>
 :PROPERTIES:
 :Effort:   0:30
 :END:
@@ -146,7 +157,7 @@ CLOCK: [2013-09-14 土 10:20]--[2013-09-14 土 10:21] =>  0:01
 GitHub のチケットはこちら:
 https://github.com/trema/pio/issues/1
 **** NEXT 鈴木さんルータの ARP 部分を試しに自分で書き直してみる
-SCHEDULED: <2013-10-04 金>
+SCHEDULED: <2013-10-10 木>
 :PROPERTIES:
 :Effort:   1:00
 :END:
