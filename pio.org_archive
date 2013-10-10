@@ -838,3 +838,20 @@ CLOSED: [2013-09-13 金 14:05] SCHEDULED: <2013-09-13 金>
 CLOCK: [2013-09-13 金 13:28]--[2013-09-13 金 14:05] =>  0:37
 :END:
 [2013-09-13 金 13:28]
+
+* Archived Tasks
+
+** CANCELED Pio::Mac を Trema に組込む
+CLOSED: [2013-10-10 木 13:41] SCHEDULED: <2013-10-04 金>
+- State "CANCELED"   from "NEXT"       [2013-10-10 木 13:41] \\
+  ダブってたのでキャンセル
+:PROPERTIES:
+:Effort:   0:30
+:ARCHIVE_TIME: 2013-10-10 木 13:41
+:ARCHIVE_FILE: ~/play/pio/pio.org
+:ARCHIVE_OLPATH: Releases/0.2.5 リリース
+:ARCHIVE_CATEGORY: pio
+:ARCHIVE_TODO: CANCELED
+:ARCHIVE_ITAGS: PIO
+:END:
+[2013-10-04 金 08:46]
