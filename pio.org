@@ -216,7 +216,3 @@ CLOCK: [2013-10-03 木 09:10]--[2013-10-03 木 09:12] =>  0:02
 
 開発は PR で追跡することにする．マージが可能な状態かとか，テスト成功/失
 敗も見えるし．
-** NEXT Respond to Chuya Nishihara <nishihara@iact.co.jp> on Re: 中也です
-SCHEDULED: <2013-10-10 木>
-[2013-10-10 木 10:28]
-[[gnus:%5BGmail%5D.All%20Mail#5255330E.6010309@iact.co.jp][Email from Chuya Nishihara: Re: 中也です]]
