@@ -43,7 +43,7 @@ module Pio
 
 
     #
-    # Returns an Ethernet address in its numeric presentation.
+    # @see to_i
     #
     # @example
     #   Mac.new("11:22:33:44:55:66").to_int #=> 18838586676582
@@ -66,8 +66,7 @@ module Pio
 
 
     #
-    # Returns the Ethernet address as 6 pairs of hexadecimal digits
-    # delimited by colons.
+    # @see to_s
     #
     # @example
     #   Mac.new(18838586676582).to_str #=> "11:22:33:44:55:66"
@@ -92,8 +91,7 @@ module Pio
 
 
     #
-    # Returns an array of decimal numbers converted from Ethernet's
-    # address string format.
+    # @see to_a
     #
     # @example
     #   Mac.new("11:22:33:44:55:66").to_ary #=> [ 0x11, 0x22, 0x33, 0x44, 0x55, 0x66 ]
