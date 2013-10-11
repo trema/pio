@@ -9,7 +9,17 @@ module Pio
 
       context %{with "11:22:33:44:55:66"} do
         let( :value ) { "11:22:33:44:55:66" }
-        it { should eq Mac.new( "11:22:33:44:55:66" ) }
+
+        describe "#==" do
+          it { should == Mac.new( "11:22:33:44:55:66" ) }
+          it { should_not == Mac.new( "66:55:44:33:22:11" ) }
+          it { should == "11:22:33:44:55:66" }
+          it { should_not == "66:55:44:33:22:11" }
+          it { should_not == "INVALID_MAC_ADDRESS" }
+          it { should == 0x112233445566 }
+          it { should_not == 42 }
+        end
+
         its( :to_int ) { should eq 0x112233445566 }
         its( :to_str ) { should eq "11:22:33:44:55:66" }
         its( :to_ary ) { should eq [ 0x11, 0x22, 0x33, 0x44, 0x55, 0x66 ] }

@@ -128,15 +128,21 @@ module Pio
     # @!group Equality
 
     #
-    # Returns true if other can be converted to a {Mac} object and its
-    # numeric representation is equal to mine.
+    # Returns +true+ if +other+ can be converted to a {Pio::Mac}
+    # object and its numeric representation is equal to +obj+'s.
     #
     # @example
-    #   Pio::Mac.new("11:22:33:44:55:66") == "11:22:33:44:55:66" #=> true
-    #   Pio::Mac.new("11:22:33:44:55:66") == 18838586676582 #=> true
+    #   mac_address = Pio::Mac.new("11:22:33:44:55:66")
+    #
+    #   mac_address == Pio::Mac.new("11:22:33:44:55:66") #=> true
+    #   mac_address == "11:22:33:44:55:66" #=> true
+    #   mac_address == 0x112233445566 #=> true
+    #   mac_address == "INVALID_MAC_ADDRESS" #=> false
     #
     # @param other [#to_str, #to_int] a {Mac} object or an object that
     #   can be converted to an Ethernet address.
+    #
+    # @return [Boolean]
     #
     def == other
       begin
@@ -145,7 +151,30 @@ module Pio
         false
       end
     end
-    alias :eql? :==
+
+
+    #
+    # Returns true if +obj+ and +other+ refer to the same hash key.
+    # +#==+ is used for the comparison.
+    #
+    # @see #==
+    #
+    def eql? other
+      self.== other
+    end
+
+    # @!endgroup
+
+
+    # @!group Debug
+
+    #
+    # Returns a string containing a human-readable representation of
+    # {Pio::Mac} for debugging.
+    #
+    def inspect
+      %{#<#{ self.class }:#{ __id__ } "#{ to_s }">}
+    end
 
     # @!endgroup
 
