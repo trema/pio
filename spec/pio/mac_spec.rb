@@ -11,13 +11,23 @@ module Pio
         let( :value ) { "11:22:33:44:55:66" }
 
         describe "#==" do
-          it { should == Mac.new( "11:22:33:44:55:66" ) }
-          it { should_not == Mac.new( "66:55:44:33:22:11" ) }
-          it { should == "11:22:33:44:55:66" }
-          it { should_not == "66:55:44:33:22:11" }
-          it { should_not == "INVALID_MAC_ADDRESS" }
-          it { should == 0x112233445566 }
-          it { should_not == 42 }
+          it { should eq Mac.new( "11:22:33:44:55:66" ) }
+          it { should eq "11:22:33:44:55:66" }
+          it { should_not eq Mac.new( "66:55:44:33:22:11" ) }
+          it { should_not eq "66:55:44:33:22:11" }
+          it { should eq 0x112233445566 }
+          it { should_not eq 42 }
+          it { should_not eq "INVALID_MAC_ADDRESS" }
+        end
+
+        describe "#eql?" do
+          it { expect( subject ).to eql Mac.new( "11:22:33:44:55:66" ) }
+          it { expect( subject ).to eql "11:22:33:44:55:66" }
+          it { expect( subject ).not_to eql Mac.new( "66:55:44:33:22:11" ) }
+          it { expect( subject ).not_to eql "66:55:44:33:22:11" }
+          it { expect( subject ).to eql 0x112233445566 }
+          it { expect( subject ).not_to eql 42 }
+          it { expect( subject ).not_to eql "INVALID_MAC_ADDRESS" }
         end
 
         its( :to_int ) { should eq 0x112233445566 }
@@ -25,6 +35,7 @@ module Pio
         its( :to_ary ) { should eq [ 0x11, 0x22, 0x33, 0x44, 0x55, 0x66 ] }
         its( :multicast? ){ should be_true }
         its( :broadcast? ){ should be_false }
+        its( :reserved? ){ should be_false }
       end
 
 
@@ -36,6 +47,7 @@ module Pio
         its( :to_ary ) { should eq [ 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 ] }
         its( :multicast? ){ should be_false }
         its( :broadcast? ){ should be_false }
+        its( :reserved? ){ should be_false }
       end
 
 
@@ -47,6 +59,7 @@ module Pio
         its( :to_ary ) { should eq [ 0xff, 0xff, 0xff, 0xff, 0xff, 0xff ] }
         its( :multicast? ){ should be_true }
         its( :broadcast? ){ should be_true }
+        its( :reserved? ){ should be_false }
       end
 
 
@@ -78,6 +91,19 @@ module Pio
         let( :value ) { "00:00:00:00:00:01" }
         it { expect( subject ).to eql Mac.new( "00:00:00:00:00:01" ) }
         its( :hash ) { should eq Mac.new( "00:00:00:00:00:01" ).hash }
+      end
+
+
+      context "with reserved address" do
+        (0x0..0xf).each do | each |
+          octet = "%02x" % each
+          reserved_address = "01:80:c2:00:00:#{ octet }"
+
+          context "when #{ reserved_address }" do
+            let( :value ) { reserved_address }
+            its( :reserved? ) { should be_true }
+          end
+        end
       end
     end
   end

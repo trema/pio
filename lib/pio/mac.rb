@@ -122,6 +122,20 @@ module Pio
       to_a.all? { | each | each == 0xff }
     end
 
+
+    #
+    # Returns true if Ethernet address is an IEEE 802.1D and 802.1Q
+    # reserved address. See
+    # http://standards.ieee.org/develop/regauth/grpmac/public.html
+    #
+    # @example
+    #   Pio::Mac.new( "01:80:c2:00:00:00" ).reserved? #=> true
+    #   Pio::Mac.new( "11:22:33:44:55:66" ).reserved? #=> false
+    #
+    def reserved?
+      ( to_i >> 8 ) == 0x0180c20000
+    end
+
     # @!endgroup
 
 
@@ -156,6 +170,16 @@ module Pio
     #
     # Returns true if +obj+ and +other+ refer to the same hash key.
     # +#==+ is used for the comparison.
+    #
+    # @example
+    #   fdb = {
+    #     Pio::Mac.new( "11:22:33:44:55:66" ) => 1,
+    #     Pio::Mac.new( "66:55:44:33:22:11" ) => 2
+    #   }
+    #
+    #   fdb[ Pio::Mac.new( "11:22:33:44:55:66" ) ] #=> 1
+    #   fdb[ "11:22:33:44:55:66" ] #=> 1
+    #   fdb[ 0x112233445566 ] #=> 1
     #
     # @see #==
     #
