@@ -6,6 +6,10 @@ module Pio
   # Ethernet address (MAC address) class.
   #
   class Mac
+    # Raised when Ethernet address is invalid.
+    class InvalidValueError < StandardError; end
+
+
     extend Forwardable
     def_delegator :@value, :hash
 
@@ -14,21 +18,25 @@ module Pio
     # Creates a {Mac} instance that encapsulates Ethernet addresses.
     #
     # @example address as a hexadecimal string
-    #   Pio::Mac.new("11:22:33:44:55:66")
+    #   Mac.new("11:22:33:44:55:66")
     # @example address as a hexadecimal number
-    #   Pio::Mac.new(0xffffffffffff)
+    #   Mac.new(0xffffffffffff)
     #
     # @param value [#to_str, #to_int] the value converted to an
     #   Ethernet address.
     #
     def initialize value
-      if value.respond_to?( :to_str )
-        @value = parse_mac_string( value.to_str )
-      elsif value.respond_to?( :to_int )
-        @value = value.to_int
-        validate_value_range
-      else
-        raise TypeError, "Invalid MAC address: #{ value.inspect }"
+      begin
+        if value.respond_to?( :to_str )
+          @value = parse_mac_string( value.to_str )
+        elsif value.respond_to?( :to_int )
+          @value = value.to_int
+          validate_value_range
+        else
+          raise TypeError
+        end
+      rescue ArgumentError, TypeError
+        raise InvalidValueError, "Invalid MAC address: #{ value.inspect }"
       end
     end
 
@@ -39,18 +47,12 @@ module Pio
     # Returns an Ethernet address in its numeric presentation.
     #
     # @example
-    #   Pio::Mac.new("11:22:33:44:55:66").to_i #=> 18838586676582
+    #   Mac.new("11:22:33:44:55:66").to_i #=> 18838586676582
+    #
+    # @return [Integer]
     #
     def to_i
       @value
-    end
-
-
-    #
-    # @see to_i
-    #
-    def to_int
-      to_i
     end
 
 
@@ -59,7 +61,9 @@ module Pio
     # delimited by colons.
     #
     # @example
-    #   Pio::Mac.new(18838586676582).to_s #=> "11:22:33:44:55:66"
+    #   Mac.new(0x112233445566).to_s #=> "11:22:33:44:55:66"
+    #
+    # @return [String]
     #
     def to_s
       sprintf( "%012x", @value ).unpack( "a2" * 6 ).join( ":" )
@@ -67,7 +71,15 @@ module Pio
 
 
     #
-    # @see to_s
+    # Implicitly converts +obj+ to a string.
+    #
+    # @example
+    #   mac = Mac.new( "11:22:33:44:55:66" )
+    #   puts "MAC = " + mac #=> "MAC = 11:22:33:44:55:66"
+    #
+    # @see #to_s
+    #
+    # @return [String]
     #
     def to_str
       to_s
@@ -79,20 +91,14 @@ module Pio
     # address string format.
     #
     # @example
-    #   Pio::Mac.new("11:22:33:44:55:66").to_a #=> [ 0x11, 0x22, 0x33, 0x44, 0x55, 0x66 ]
+    #   Mac.new("11:22:33:44:55:66").to_a #=> [ 0x11, 0x22, 0x33, 0x44, 0x55, 0x66 ]
+    #
+    # @return [Array]
     #
     def to_a
       to_s.split( ":" ).collect do | each |
         each.hex
       end
-    end
-
-
-    #
-    # @see to_a
-    #
-    def to_ary
-      to_a
     end
 
     # @!endgroup
@@ -104,8 +110,8 @@ module Pio
     # Returns true if Ethernet address is a multicast address.
     #
     # @example
-    #   Pio::Mac.new("01:00:00:00:00:00").multicast? #=> true
-    #   Pio::Mac.new("00:00:00:00:00:00").multicast? #=> false
+    #   Mac.new("01:00:00:00:00:00").multicast? #=> true
+    #   Mac.new("00:00:00:00:00:00").multicast? #=> false
     #
     def multicast?
       to_a[ 0 ] & 1 == 1
@@ -116,7 +122,7 @@ module Pio
     # Returns true if Ethernet address is a broadcast address.
     #
     # @example
-    #   Pio::Mac.new("ff:ff:ff:ff:ff:ff").broadcast? #=> true
+    #   Mac.new("ff:ff:ff:ff:ff:ff").broadcast? #=> true
     #
     def broadcast?
       to_a.all? { | each | each == 0xff }
@@ -124,13 +130,13 @@ module Pio
 
 
     #
-    # Returns true if Ethernet address is an IEEE 802.1D and 802.1Q
+    # Returns true if Ethernet address is an IEEE 802.1D or 802.1Q
     # reserved address. See
     # http://standards.ieee.org/develop/regauth/grpmac/public.html
     #
     # @example
-    #   Pio::Mac.new( "01:80:c2:00:00:00" ).reserved? #=> true
-    #   Pio::Mac.new( "11:22:33:44:55:66" ).reserved? #=> false
+    #   Mac.new( "01:80:c2:00:00:00" ).reserved? #=> true
+    #   Mac.new( "11:22:33:44:55:66" ).reserved? #=> false
     #
     def reserved?
       ( to_i >> 8 ) == 0x0180c20000
@@ -142,26 +148,26 @@ module Pio
     # @!group Equality
 
     #
-    # Returns +true+ if +other+ can be converted to a {Pio::Mac}
+    # Returns +true+ if +other+ can be converted to a {Mac}
     # object and its numeric representation is equal to +obj+'s.
     #
     # @example
-    #   mac_address = Pio::Mac.new("11:22:33:44:55:66")
+    #   mac_address = Mac.new("11:22:33:44:55:66")
     #
-    #   mac_address == Pio::Mac.new("11:22:33:44:55:66") #=> true
+    #   mac_address == Mac.new("11:22:33:44:55:66") #=> true
     #   mac_address == "11:22:33:44:55:66" #=> true
     #   mac_address == 0x112233445566 #=> true
     #   mac_address == "INVALID_MAC_ADDRESS" #=> false
     #
-    # @param other [#to_str, #to_int] a {Mac} object or an object that
-    #   can be converted to an Ethernet address.
+    # @param other [#to_str, #to_int] a {Mac} object or an object
+    #   that can be converted to an Ethernet address.
     #
     # @return [Boolean]
     #
     def == other
       begin
         to_i == Mac.new( other ).to_i
-      rescue
+      rescue InvalidValueError
         false
       end
     end
@@ -173,11 +179,11 @@ module Pio
     #
     # @example
     #   fdb = {
-    #     Pio::Mac.new( "11:22:33:44:55:66" ) => 1,
-    #     Pio::Mac.new( "66:55:44:33:22:11" ) => 2
+    #     Mac.new( "11:22:33:44:55:66" ) => 1,
+    #     Mac.new( "66:55:44:33:22:11" ) => 2
     #   }
     #
-    #   fdb[ Pio::Mac.new( "11:22:33:44:55:66" ) ] #=> 1
+    #   fdb[ Mac.new( "11:22:33:44:55:66" ) ] #=> 1
     #   fdb[ "11:22:33:44:55:66" ] #=> 1
     #   fdb[ 0x112233445566 ] #=> 1
     #
@@ -194,7 +200,9 @@ module Pio
 
     #
     # Returns a string containing a human-readable representation of
-    # {Pio::Mac} for debugging.
+    # {Mac} for debugging.
+    #
+    # @return [String]
     #
     def inspect
       %{#<#{ self.class }:#{ __id__ } "#{ to_s }">}
@@ -213,14 +221,14 @@ module Pio
       if /^(#{ octet_regex }:){5}(#{ octet_regex })$/=~ mac
         mac.gsub( ":", "" ).hex
       else
-        raise ArgumentError, %{Invalid MAC address: "#{ mac }"}
+        raise ArgumentError
       end
     end
 
 
     def validate_value_range
       unless ( @value >= 0 and @value <= 0xffffffffffff )
-        raise ArgumentError, "Invalid MAC address: #{ @value }"
+        raise ArgumentError
       end
     end
   end

@@ -46,7 +46,7 @@ module Pio
       def option_hash
         mandatory_options.inject( {} ) do | opt, each |
           klass = option_to_klass[ each ]
-          opt_pair = { each => klass.new( user_options[ each ] ).to_ary }
+          opt_pair = { each => klass.new( user_options[ each ] ).to_a }
           opt.merge opt_pair
         end.merge default_options
       end
