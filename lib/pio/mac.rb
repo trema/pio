@@ -74,7 +74,7 @@ module Pio
     # Implicitly converts +obj+ to a string.
     #
     # @example
-    #   mac = Mac.new( "11:22:33:44:55:66" )
+    #   mac = Mac.new("11:22:33:44:55:66")
     #   puts "MAC = " + mac #=> "MAC = 11:22:33:44:55:66"
     #
     # @see #to_s
@@ -91,7 +91,7 @@ module Pio
     # address string format.
     #
     # @example
-    #   Mac.new("11:22:33:44:55:66").to_a #=> [ 0x11, 0x22, 0x33, 0x44, 0x55, 0x66 ]
+    #   Mac.new("11:22:33:44:55:66").to_a #=> [0x11, 0x22, 0x33, 0x44, 0x55, 0x66]
     #
     # @return [Array]
     #
@@ -130,13 +130,14 @@ module Pio
 
 
     #
-    # Returns true if Ethernet address is an IEEE 802.1D or 802.1Q
+    # Returns +true+ if Ethernet address is an IEEE 802.1D or 802.1Q
     # reserved address. See
-    # http://standards.ieee.org/develop/regauth/grpmac/public.html
+    # http://standards.ieee.org/develop/regauth/grpmac/public.html for
+    # details.
     #
     # @example
-    #   Mac.new( "01:80:c2:00:00:00" ).reserved? #=> true
-    #   Mac.new( "11:22:33:44:55:66" ).reserved? #=> false
+    #   Mac.new("01:80:c2:00:00:00").reserved? #=> true
+    #   Mac.new("11:22:33:44:55:66").reserved? #=> false
     #
     def reserved?
       ( to_i >> 8 ) == 0x0180c20000
@@ -174,18 +175,18 @@ module Pio
 
 
     #
-    # Returns true if +obj+ and +other+ refer to the same hash key.
+    # Returns +true+ if +obj+ and +other+ refer to the same hash key.
     # +#==+ is used for the comparison.
     #
     # @example
     #   fdb = {
-    #     Mac.new( "11:22:33:44:55:66" ) => 1,
-    #     Mac.new( "66:55:44:33:22:11" ) => 2
+    #     Mac.new("11:22:33:44:55:66") => 1,
+    #     Mac.new("66:55:44:33:22:11") => 2
     #   }
     #
-    #   fdb[ Mac.new( "11:22:33:44:55:66" ) ] #=> 1
-    #   fdb[ "11:22:33:44:55:66" ] #=> 1
-    #   fdb[ 0x112233445566 ] #=> 1
+    #   fdb[ Mac.new("11:22:33:44:55:66")] #=> 1
+    #   fdb["11:22:33:44:55:66"] #=> 1
+    #   fdb[0x112233445566] #=> 1
     #
     # @see #==
     #
