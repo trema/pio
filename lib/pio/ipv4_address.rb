@@ -36,7 +36,7 @@ module Pio
       when IPv4Address
         @value = addr.value
       else
-        raise TypeError, "Invalid IPv4 address: #{ addr.inspect }"
+        fail TypeError, "Invalid IPv4 address: #{ addr.inspect }"
       end
     end
 

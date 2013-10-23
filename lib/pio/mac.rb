@@ -30,7 +30,7 @@ module Pio
         @value = value.to_int
         validate_value_range
       else
-        raise TypeError
+        fail TypeError
       end
     rescue ArgumentError, TypeError
       raise InvalidValueError, "Invalid MAC address: #{ value.inspect }"
@@ -203,12 +203,12 @@ module Pio
       if /^(#{ octet_regex }:){5}(#{ octet_regex })$/=~ mac
         mac.gsub( ":", "" ).hex
       else
-        raise ArgumentError
+        fail ArgumentError
       end
     end
 
     def validate_value_range
-      raise ArgumentError unless @value >= 0 && @value <= 0xffffffffffff
+      fail ArgumentError unless @value >= 0 && @value <= 0xffffffffffff
     end
   end
 end
