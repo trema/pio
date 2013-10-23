@@ -5,9 +5,6 @@
 HashSyntax:
   EnforcedStyle: hash_rockets
 
-IfUnlessModifier:
-  Enabled: false
-
 Lambda:
   Enabled: false
 

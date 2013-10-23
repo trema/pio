@@ -9,10 +9,7 @@ module Pio
     class Options
       def initialize(options)
         @options = options
-
-        unless dpid
-          raise TypeError, "Invalid DPID: #{ dpid.inspect }"
-        end
+        raise TypeError, "Invalid DPID: #{ dpid.inspect }" unless dpid
         unless port_id
           raise TypeError, "Invalid port number: #{ port_id.inspect }"
         end
