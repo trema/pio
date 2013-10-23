@@ -23,9 +23,7 @@ module Pio
       end
 
       def user_options
-        @options.merge(
-          { :sender_hardware_address => @options[ :source_mac ] }
-        )
+        @options.merge :sender_hardware_address => @options[ :source_mac ]
       end
 
       def mandatory_options

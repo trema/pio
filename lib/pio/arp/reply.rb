@@ -19,10 +19,8 @@ module Pio
 
       def user_options
         @options.merge(
-          {
-            :sender_hardware_address => @options[ :source_mac ],
-            :target_hardware_address => @options[ :destination_mac ]
-          }
+          :sender_hardware_address => @options[ :source_mac ],
+          :target_hardware_address => @options[ :destination_mac ]
         )
       end
 
