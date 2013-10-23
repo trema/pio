@@ -29,7 +29,7 @@ module Pio
 
 
       def set value
-        self.chassis_id = if value.kind_of?( Fixnum ) and subtype == 7
+        self.chassis_id = if subtype == 7
                             BinData::Uint64be.new( value ).to_binary_s
                           else
                             value
