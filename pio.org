@@ -10,6 +10,9 @@ GitHub のリポジトリはこちら https://github.com/trema/pio
 :LOGBOOK:
 CLOCK: [2013-09-05 木 17:30]--[2013-09-05 木 17:31] =>  0:01
 :END:
+:PROPERTIES:
+:ID:       CF2513EB-C01E-419C-BA81-0F9121DEA541
+:END:
 [2013-09-05 木 17:30]
 
 近藤さんおすすめの ARP フォーマット解説。
@@ -17,6 +20,9 @@ http://www.n-study.com/network/arpheader.htm
 ** ICMP のテスト用データ                                              :NOTE:
 :LOGBOOK:
 CLOCK: [2013-09-22 日 22:25]--[2013-09-22 日 22:26] =>  0:01
+:END:
+:PROPERTIES:
+:ID:       697F5C2C-9EE8-40E1-BB05-6B9619B59885
 :END:
 [2013-09-22 日 22:25]
 
@@ -33,6 +39,9 @@ CLOCK: [2013-07-22 月 09:29]--[2013-07-22 月 09:30] =>  0:01
 
 http://www.zeespencer.com/articles/building-a-remote-pairing-setup/
 ** ICMP フォーマット                                                  :NOTE:
+:PROPERTIES:
+:ID:       50EF068E-E7A1-4BEA-971F-9CF6AF9F3805
+:END:
 [2013-09-22 日 23:09]
 
 http:///www.asahi-net.or.jp/~aa4t-nngk/ipttut/output/icmpheaders.html
@@ -59,21 +68,42 @@ http://d.hatena.ne.jp/stereocat/20131006/1381028321
 * Tasks
 このアイテムをそれぞれのリリースに割り振る。
 ** NEXT git パスワードを省略できるように
+:PROPERTIES:
+:ID:       02BD00DD-6C97-4F3E-832A-A468ABC4A222
+:END:
 [2013-09-13 金 17:07]
 ** TODO bindata 1.6.0 の changelog をチェック
+:PROPERTIES:
+:ID:       A78CA230-2987-46F6-9992-541BCCBA6935
+:END:
 [2013-09-05 木 21:32]
 ** TODO 各 OpenFlow メッセージのパーサを作る
+:PROPERTIES:
+:ID:       E4B69E40-2A51-4EAF-9938-7E4533CAA5D5
+:END:
 [2013-09-06 金 19:27]
 *** TODO Trema::Hello の spec を見直し
+:PROPERTIES:
+:ID:       6B84B879-1E0B-4541-BA4D-8A0047400B6E
+:END:
 ** TODO Nick さんに README の英語をチェックしてもらう
+:PROPERTIES:
+:ID:       70FB87DD-7A14-4BE8-9635-5C5BD51B19D4
+:END:
 [2013-09-18 水 12:01]
 ** TODO phost を Pio で書き直す
+:PROPERTIES:
+:ID:       9B0ACC00-0157-4CA6-8ACA-EB3D1FE25091
+:END:
 [2013-09-24 火 15:36]
 
 関連するタスク:
 - [[*Trema/Pio%E3%81%A7%E3%83%91%E3%82%B1%E3%83%83%E3%83%88%E3%82%92%E4%BD%9C%E3%82%8D%E3%81%86(1)][Trema/Pioでパケットを作ろう(1)]]
 - [[*Trema/Pio%E3%81%A7%E3%83%91%E3%82%B1%E3%83%83%E3%83%88%E3%82%92%E4%BD%9C%E3%82%8D%E3%81%86(2)][Trema/Pioでパケットを作ろう(2)]]
 ** TODO DHCP パーサを作る
+:PROPERTIES:
+:ID:       E4ED4593-A2A0-47A3-B4FC-6E4558570E8A
+:END:
 [2013-08-02 金 17:17]
 
 近藤さんがすでにコーディング中。Pull-Request が来たらいっしょにリファ
@@ -167,12 +197,19 @@ CLOCK: [2013-10-07 月 10:23]--[2013-10-07 月 10:24] =>  0:01
 [2013-10-07 月 10:23]
 
 =#to_a= と =#to_ary= のコメントとか．
-** TODO 0.2.6 リリース
+** DONE 0.2.6 リリース
+CLOSED: [2013-10-23 水 09:32]
+:PROPERTIES:
+:ID:       8DD4DD8E-5043-4C38-92C0-947BF435B28F
+:END:
 [2013-10-10 木 13:37]
 *** DONE Pio::Mac のリファクタリング
 CLOSED: [2013-10-11 金 13:31] SCHEDULED: <2013-10-11 金>
 :LOGBOOK:
 CLOCK: [2013-10-11 金 09:39]--[2013-10-11 金 12:16] =>  2:37
+:END:
+:PROPERTIES:
+:ID:       64F5FB3B-FC7A-4537-8A0C-0265C6EAADAB
 :END:
 [2013-10-11 金 09:37]
 
@@ -189,6 +226,9 @@ CLOCK: [2013-10-07 月 10:22]--[2013-10-07 月 10:23] =>  0:01
 
 ファイルは lib/pio/mac.rb
 ** TODO 0.2.7 リリース
+:PROPERTIES:
+:ID:       C97E3866-09AF-4715-8CA6-E4C096B4B0A7
+:END:
 [2013-10-11 金 14:32]
 *** TODO 鈴木さんルータの ARP 部分を Pio で書き直してもらう
 - State "TODO"       from "WAITING"    [2013-09-19 木 14:18]
@@ -196,6 +236,9 @@ CLOCK: [2013-10-07 月 10:22]--[2013-10-07 月 10:23] =>  0:01
   ARP のコードが実機で動いてから
 :LOGBOOK:
 CLOCK: [2013-09-14 土 10:20]--[2013-09-14 土 10:21] =>  0:01
+:END:
+:PROPERTIES:
+:ID:       DE2EF581-A77C-4CF9-8948-27B2DA269A68
 :END:
 [2013-09-14 土 10:20]
 
@@ -205,6 +248,7 @@ https://github.com/trema/pio/issues/1
 SCHEDULED: <2013-10-10 木>
 :PROPERTIES:
 :Effort:   1:00
+:ID:       A7F9E149-085E-43F1-B721-98E074F2F02A
 :END:
 [2013-10-04 金 08:39]
 **** DONE 鈴木さんに ping
@@ -219,25 +263,38 @@ https://github.com/trema/pio/issues/1
 - State "TODO"       from "WAITING"    [2013-09-19 木 14:16]
 - State "WAITING"    from "TODO"       [2013-09-06 金 17:17] \\
   0.2.0 が無事に出てから
+:PROPERTIES:
+:ID:       A8AFAB99-A14E-4C61-B241-16D95C31713F
+:END:
 [2013-09-05 木 17:29]
 *** NEXT YARD の警告をつぶす
 SCHEDULED: <2014-08-19 火>
 :PROPERTIES:
 :Effort:   0:30
+:ID:       4BBDC79B-FD56-4B2D-962A-07A328F71F9C
 :END:
 [2013-07-31 水 15:32]
 *** TODO flay に PR を送る (FlayTask が動かない件)
 :LOGBOOK:
 CLOCK: [2013-09-18 水 17:20]--[2013-09-18 水 17:21] =>  0:01
 :END:
+:PROPERTIES:
+:ID:       BCAC8FBB-335B-4811-BF4B-16D81C22B711
+:END:
 [2013-09-18 水 17:20]
 *** TODO ICMP パーサを作る
+:PROPERTIES:
+:ID:       7BB7E1B1-076C-431D-BF16-2536B9137370
+:END:
 [2013-08-02 金 17:19]
 **** WAITING 近藤さんに PR 出してもらう                          :WAITING:
 - State "WAITING"    from "TODO"       [2013-10-07 月 08:56] \\
   近藤さんが PR の準備中．
 :LOGBOOK:
 CLOCK: [2013-10-03 木 09:10]--[2013-10-03 木 09:12] =>  0:02
+:END:
+:PROPERTIES:
+:ID:       DF855BC0-7A10-42EA-B3E7-6D7CA05F4672
 :END:
 [2013-10-03 木 09:10]
 
