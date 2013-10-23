@@ -11,9 +11,6 @@ Lambda:
 MethodLength:
   Enabled: false
 
-ParenthesesAsGroupedExpression:
-  Enabled: false
-
 ReduceArguments:
   Enabled: false
 
