@@ -24,18 +24,16 @@ module Pio
     #   Ethernet address.
     #
     def initialize(value)
-      begin
-        if value.respond_to?( :to_str )
-          @value = parse_mac_string( value.to_str )
-        elsif value.respond_to?( :to_int )
-          @value = value.to_int
-          validate_value_range
-        else
-          raise TypeError
-        end
-      rescue ArgumentError, TypeError
-        raise InvalidValueError, "Invalid MAC address: #{ value.inspect }"
+      if value.respond_to?( :to_str )
+        @value = parse_mac_string( value.to_str )
+      elsif value.respond_to?( :to_int )
+        @value = value.to_int
+        validate_value_range
+      else
+        raise TypeError
       end
+    rescue ArgumentError, TypeError
+      raise InvalidValueError, "Invalid MAC address: #{ value.inspect }"
     end
 
     # @!group Converters
@@ -157,11 +155,9 @@ module Pio
     # @return [Boolean]
     #
     def ==(other)
-      begin
-        to_i == Mac.new( other ).to_i
-      rescue InvalidValueError
-        false
-      end
+      to_i == Mac.new( other ).to_i
+    rescue InvalidValueError
+      false
     end
 
     #

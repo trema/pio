@@ -11,12 +11,6 @@ Lambda:
 MethodLength:
   Enabled: false
 
-ReduceArguments:
-  Enabled: false
-
-RedundantBegin:
-  Enabled: false
-
 RedundantSelf:
   Enabled: false
 
