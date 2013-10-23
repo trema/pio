@@ -27,19 +27,19 @@ module Pio
       private
 
       def dpid
-        @options[ :dpid ]
+        @options[:dpid]
       end
 
       def port_id
-        @options[ :port_number ]
+        @options[:port_number]
       end
 
       def destination_mac
-        @options[ :destination_mac ] || "01:80:c2:00:00:0e"
+        @options[:destination_mac] || "01:80:c2:00:00:0e"
       end
 
       def source_mac
-        @options[ :source_mac ] || "01:02:03:04:05:06"
+        @options[:source_mac] || "01:02:03:04:05:06"
       end
     end
 

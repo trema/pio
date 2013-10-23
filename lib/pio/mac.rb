@@ -106,7 +106,7 @@ module Pio
     #   Mac.new("00:00:00:00:00:00").multicast? #=> false
     #
     def multicast?
-      to_a[ 0 ] & 1 == 1
+      to_a[0] & 1 == 1
     end
 
     #

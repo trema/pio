@@ -248,7 +248,7 @@ describe Pio::Lldp do
       its( "system_capabilities.system_capabilities" ) { should eq 20 }
       its( "system_capabilities.enabled_capabilities" ) { should eq 20 }
       its( :management_address ) do
-        should eq [ 0x00, 0x01, 0x30, 0xf9, 0xad, 0xa0 ].pack( "C*" )
+        should eq [0x00, 0x01, 0x30, 0xf9, 0xad, 0xa0].pack( "C*" )
       end
       its( "organizationally_specific.oui" ) { should eq 4623 }
       its( "organizationally_specific.subtype" ) { should eq 2 }

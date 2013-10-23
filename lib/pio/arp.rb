@@ -20,7 +20,7 @@ module Pio
         raise Pio::ParseError, $!.message
       end
 
-      ARP_MESSAGE_TYPE[ frame.operation ].create_from frame
+      ARP_MESSAGE_TYPE[frame.operation].create_from frame
     end
   end
 end

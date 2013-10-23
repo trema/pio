@@ -30,7 +30,7 @@ describe Pio::Mac do
       its( :hash ) { should eq Pio::Mac.new( "11:22:33:44:55:66" ).hash }
 
       its( :to_i ) { should eq 0x112233445566 }
-      its( :to_a ) { should eq [ 0x11, 0x22, 0x33, 0x44, 0x55, 0x66 ] }
+      its( :to_a ) { should eq [0x11, 0x22, 0x33, 0x44, 0x55, 0x66] }
       its( :to_s ) { should eq "11:22:33:44:55:66" }
       describe "#to_str" do
         context %{when "MAC = " + subject} do
@@ -60,7 +60,7 @@ describe Pio::Mac do
 
       it { should eq Pio::Mac.new( 0 ) }
       its( :to_i ) { should eq 0 }
-      its( :to_a ) { should eq [ 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 ] }
+      its( :to_a ) { should eq [0x00, 0x00, 0x00, 0x00, 0x00, 0x00] }
       its( :to_s ) { should eq "00:00:00:00:00:00" }
       its( :multicast? ) { should be_false }
       its( :broadcast? ) { should be_false }
@@ -72,7 +72,7 @@ describe Pio::Mac do
 
       it { should eq Pio::Mac.new( 0xffffffffffff ) }
       its( :to_i ) { should eq 0xffffffffffff }
-      its( :to_a ) { should eq [ 0xff, 0xff, 0xff, 0xff, 0xff, 0xff ] }
+      its( :to_a ) { should eq [0xff, 0xff, 0xff, 0xff, 0xff, 0xff] }
       its( :to_s ) { should eq "ff:ff:ff:ff:ff:ff" }
       its( :multicast? ) { should be_true }
       its( :broadcast? ) { should be_true }
@@ -98,7 +98,7 @@ describe Pio::Mac do
     end
 
     context "with [ 1, 2, 3 ]" do
-      let( :value ) { [ 1, 2, 3 ] }
+      let( :value ) { [1, 2, 3] }
 
       it { expect { subject }.to raise_error( Pio::Mac::InvalidValueError ) }
     end

@@ -11,9 +11,6 @@ Lambda:
 MethodLength:
   Enabled: false
 
-SpaceInsideBrackets:
-  Enabled: false
-
 SpaceInsideParens:
   Enabled: false
 
