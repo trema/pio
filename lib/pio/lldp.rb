@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
-require "forwardable"
-require "pio/lldp/frame"
+require 'English'
+require 'forwardable'
+require 'pio/lldp/frame'
 
 module Pio
   # LLDP frame parser and generator.
@@ -49,7 +50,7 @@ module Pio
       begin
         frame = Frame.read(raw_data)
       rescue
-        raise Pio::ParseError, $!.message
+        raise Pio::ParseError, $ERROR_INFO.message
       end
 
       lldp = allocate

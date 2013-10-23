@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
-require "rubygems"
-require "bindata"
+require 'English'
+require 'rubygems'
+require 'bindata'
 
-require "pio/arp/request"
-require "pio/arp/reply"
+require 'pio/arp/request'
+require 'pio/arp/reply'
 
 module Pio
   # ARP parser and generator.
@@ -17,7 +18,7 @@ module Pio
       begin
         frame = Arp::Frame.read(raw_data)
       rescue
-        raise Pio::ParseError, $!.message
+        raise Pio::ParseError, $ERROR_INFO.message
       end
 
       ARP_MESSAGE_TYPE[frame.operation].create_from frame

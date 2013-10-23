@@ -11,9 +11,6 @@ Lambda:
 MethodLength:
   Enabled: false
 
-SpecialGlobalVars:
-  Enabled: false
-
 StringLiterals:
   Enabled: false
 
