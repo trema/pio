@@ -61,7 +61,7 @@ module Pio
     def prefixlen
       netmask = to_range.first.to_i ^ to_range.last.to_i
       if netmask > 0
-        32 - ( "%b" % netmask ).length
+        32 - sprintf("%b", netmask).length
       else
         32
       end

@@ -13,7 +13,7 @@ module Pio
       end
 
       def get
-        Mac.new( octets.reduce( "" ) { | str, each | str + ( "%02x" % each ) }.hex )
+        Mac.new( octets.reduce( "" ) { | str, each | str + sprintf("%02x", each ) }.hex )
       end
     end
   end
