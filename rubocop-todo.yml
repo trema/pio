@@ -10,6 +10,3 @@ Lambda:
 
 MethodLength:
   Enabled: false
-
-VariableName:
-  Enabled: false

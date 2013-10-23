@@ -177,7 +177,7 @@ module Pio
     # @see #==
     #
     def eql?(other)
-      self.== other
+      self == other
     end
 
     # @!endgroup
