@@ -11,9 +11,6 @@ Lambda:
 MethodLength:
   Enabled: false
 
-StringLiterals:
-  Enabled: false
-
 VariableName:
   Enabled: false
 

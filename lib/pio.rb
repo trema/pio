@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-require "pio/arp"
-require "pio/lldp"
+require 'pio/arp'
+require 'pio/lldp'
 
 module Pio
   # Raised when the packet data is in wrong format.

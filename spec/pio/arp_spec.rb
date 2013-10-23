@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-require "pio"
+require 'pio'
 
 describe Pio::Arp do
-  context ".read" do
-    subject { Pio::Arp.read(data.pack("C*")) }
+  context '.read' do
+    subject { Pio::Arp.read(data.pack('C*')) }
 
-    context "with an ARP Request packet" do
+    context 'with an ARP Request packet' do
       let(:data) do
         [
          0xff, 0xff, 0xff, 0xff, 0xff, 0xff, # destination mac address
@@ -24,21 +24,21 @@ describe Pio::Arp do
       end
 
       its(:class) { should be Pio::Arp::Request }
-      its("destination_mac.to_s") { should eq "ff:ff:ff:ff:ff:ff" }
-      its("source_mac.to_s") { should eq "00:26:82:eb:ea:d1" }
+      its('destination_mac.to_s') { should eq 'ff:ff:ff:ff:ff:ff' }
+      its('source_mac.to_s') { should eq '00:26:82:eb:ea:d1' }
       its(:ether_type) { should eq 0x0806 }
       its(:hardware_type) { should eq 1 }
       its(:protocol_type) { should eq 0x800 }
       its(:hardware_length) { should eq 6 }
       its(:protocol_length) { should eq 4 }
       its(:operation) { should eq 1 }
-      its("sender_hardware_address.to_s") { should eq "00:26:82:eb:ea:d1" }
-      its("sender_protocol_address.to_s") { should eq "192.168.83.3" }
-      its("target_hardware_address.to_s") { should eq "00:00:00:00:00:00" }
-      its("target_protocol_address.to_s") { should eq "192.168.83.254" }
+      its('sender_hardware_address.to_s') { should eq '00:26:82:eb:ea:d1' }
+      its('sender_protocol_address.to_s') { should eq '192.168.83.3' }
+      its('target_hardware_address.to_s') { should eq '00:00:00:00:00:00' }
+      its('target_protocol_address.to_s') { should eq '192.168.83.254' }
     end
 
-    context "with an ARP Reply packet" do
+    context 'with an ARP Reply packet' do
       let(:data) do
         [
          0x00, 0x26, 0x82, 0xeb, 0xea, 0xd1, # destination mac address
@@ -57,21 +57,21 @@ describe Pio::Arp do
       end
 
       its(:class) { should be Pio::Arp::Reply }
-      its("destination_mac.to_s") { should eq "00:26:82:eb:ea:d1" }
-      its("source_mac.to_s") { should eq "00:16:9d:1d:9c:c4" }
+      its('destination_mac.to_s') { should eq '00:26:82:eb:ea:d1' }
+      its('source_mac.to_s') { should eq '00:16:9d:1d:9c:c4' }
       its(:ether_type) { should eq 0x0806 }
       its(:hardware_type) { should eq 1 }
       its(:protocol_type) { should eq 0x800 }
       its(:hardware_length) { should eq 6 }
       its(:protocol_length) { should eq 4 }
       its(:operation) { should eq 2 }
-      its("sender_hardware_address.to_s") { should eq "00:16:9d:1d:9c:c4" }
-      its("sender_protocol_address.to_s") { should eq "192.168.83.254" }
-      its("target_hardware_address.to_s") { should eq "00:26:82:eb:ea:d1" }
-      its("target_protocol_address.to_s") { should eq "192.168.83.3" }
+      its('sender_hardware_address.to_s') { should eq '00:16:9d:1d:9c:c4' }
+      its('sender_protocol_address.to_s') { should eq '192.168.83.254' }
+      its('target_hardware_address.to_s') { should eq '00:26:82:eb:ea:d1' }
+      its('target_protocol_address.to_s') { should eq '192.168.83.3' }
     end
 
-    context "with an ARP Request captured in real environment" do
+    context 'with an ARP Request captured in real environment' do
       let(:data) do
         [
          0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x5c, 0x9a, 0xd8, 0xea,
@@ -84,7 +84,7 @@ describe Pio::Arp do
       end
     end
 
-    context "with an ARP Request from a real OpenFlow switch" do
+    context 'with an ARP Request from a real OpenFlow switch' do
       let(:data) do
         [
          0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x11, 0x22, 0x33, 0x44,
@@ -99,7 +99,7 @@ describe Pio::Arp do
       end
     end
 
-    context "with an ARP Reply captured in real environment" do
+    context 'with an ARP Reply captured in real environment' do
       let(:data) do
         [
          0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x5c, 0x9a, 0xd8, 0xea,
@@ -112,7 +112,7 @@ describe Pio::Arp do
       end
     end
 
-    context "with an invalid ARP packet" do
+    context 'with an invalid ARP packet' do
       let(:data) { [] }
 
       it { expect { subject }.to raise_error(Pio::ParseError) }

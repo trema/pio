@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-require "rubygems"
-require "bindata"
+require 'rubygems'
+require 'bindata'
 
 module Pio
   class Lldp
@@ -39,9 +39,9 @@ module Pio
       private
 
       def mac_address
-        chassis_id.unpack("C6").map do |each|
-          sprintf "%02x", each
-        end.join("").hex
+        chassis_id.unpack('C6').map do |each|
+          sprintf '%02x', each
+        end.join('').hex
       end
     end
   end

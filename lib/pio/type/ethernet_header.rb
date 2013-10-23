@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-require "pio/type/mac_address"
+require 'pio/type/mac_address'
 
 module Pio
   module Type

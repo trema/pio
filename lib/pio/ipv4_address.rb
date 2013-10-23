@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-require "forwardable"
-require "ipaddr"
+require 'forwardable'
+require 'ipaddr'
 
 module Pio
   #
@@ -61,7 +61,7 @@ module Pio
     def prefixlen
       netmask = to_range.first.to_i ^ to_range.last.to_i
       if netmask > 0
-        32 - sprintf("%b", netmask).length
+        32 - sprintf('%b', netmask).length
       else
         32
       end
@@ -72,7 +72,7 @@ module Pio
     #    an array of decimal numbers converted from IPv4 address.
     #
     def to_a
-      to_s.split(".").map do | each |
+      to_s.split('.').map do | each |
         each.to_i
       end
     end
@@ -109,7 +109,7 @@ module Pio
     #   Returns true if the address belongs to class A.
     #
     def class_a?
-      mask(1).to_s == "0.0.0.0"
+      mask(1).to_s == '0.0.0.0'
     end
 
     #
@@ -117,7 +117,7 @@ module Pio
     #   Returns true if the address belongs to class B.
     #
     def class_b?
-      mask(2).to_s == "128.0.0.0"
+      mask(2).to_s == '128.0.0.0'
     end
 
     #
@@ -125,7 +125,7 @@ module Pio
     #   Returns true if the address belongs to class C.
     #
     def class_c?
-      mask(3).to_s == "192.0.0.0"
+      mask(3).to_s == '192.0.0.0'
     end
 
     #
@@ -133,7 +133,7 @@ module Pio
     #   Returns true if the address belongs to class D.
     #
     def class_d?
-      mask(4).to_s == "224.0.0.0"
+      mask(4).to_s == '224.0.0.0'
     end
     alias_method :multicast?, :class_d?
 
@@ -142,7 +142,7 @@ module Pio
     #   Returns true if the address belongs to class E.
     #
     def class_e?
-      mask(4).to_s == "240.0.0.0"
+      mask(4).to_s == '240.0.0.0'
     end
 
     #

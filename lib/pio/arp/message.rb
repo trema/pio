@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-require "forwardable"
-require "pio/arp/frame"
-require "pio/ipv4_address"
+require 'forwardable'
+require 'pio/arp/frame'
+require 'pio/ipv4_address'
 
 module Pio
   class Arp

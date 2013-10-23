@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-require "pio/lldp/port_description_value"
-require "pio/lldp/system_name_value"
-require "pio/lldp/system_description_value"
-require "pio/lldp/system_capabilities_value"
-require "pio/lldp/management_address_value"
-require "pio/lldp/organizationally_specific_value"
-require "pio/lldp/end_of_lldpdu_value"
+require 'pio/lldp/port_description_value'
+require 'pio/lldp/system_name_value'
+require 'pio/lldp/system_description_value'
+require 'pio/lldp/system_capabilities_value'
+require 'pio/lldp/management_address_value'
+require 'pio/lldp/organizationally_specific_value'
+require 'pio/lldp/end_of_lldpdu_value'
 
 module Pio
   class Lldp
@@ -26,7 +26,7 @@ module Pio
         system_capabilities_value 7
         management_address_value 8
         organizationally_specific_value 127
-        string "unknown"
+        string 'unknown'
       end
 
       def end_of_lldpdu?
@@ -37,7 +37,7 @@ module Pio
         if valid_optional_tlv?
           tlv_type
         else
-          "unknown"
+          'unknown'
         end
       end
 

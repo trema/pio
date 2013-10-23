@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-require "forwardable"
-require "pio/arp/message"
-require "pio/mac"
+require 'forwardable'
+require 'pio/arp/message'
+require 'pio/mac'
 
 module Pio
   class Arp

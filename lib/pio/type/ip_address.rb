@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-require "bindata"
-require "pio/ipv4_address"
+require 'bindata'
+require 'pio/ipv4_address'
 
 module Pio
   module Type
@@ -13,7 +13,7 @@ module Pio
       end
 
       def get
-        IPv4Address.new octets.map { | each | sprintf("%d", each) }.join(".")
+        IPv4Address.new octets.map { | each | sprintf('%d', each) }.join('.')
       end
     end
   end

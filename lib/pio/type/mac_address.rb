@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-require "bindata"
-require "pio/mac"
+require 'bindata'
+require 'pio/mac'
 
 module Pio
   module Type
@@ -13,8 +13,8 @@ module Pio
       end
 
       def get
-        Mac.new(octets.reduce("") do |str, each|
-                  str + sprintf("%02x", each)
+        Mac.new(octets.reduce('') do |str, each|
+                  str + sprintf('%02x', each)
                 end.hex)
       end
     end

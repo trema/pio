@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-require "pio/arp/reply"
+require 'pio/arp/reply'
 
 describe Pio::Arp::Reply do
-  context ".new" do
+  context '.new' do
     subject do
       Pio::Arp::Reply.new(
         :source_mac => source_mac,
@@ -30,101 +30,101 @@ describe Pio::Arp::Reply do
        0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
        0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
        0x00, 0x00, 0x00, 0x00,
-      ].pack("C*")
+      ].pack('C*')
     end
 
-    context "with Integer MAC and IP address" do
+    context 'with Integer MAC and IP address' do
       let(:source_mac) { 0x00169d1d9cc4 }
       let(:destination_mac) { 0x002682ebead1 }
       let(:sender_protocol_address) { 0xc0a853fe }
       let(:target_protocol_address) { 0xc0a85303 }
 
-      context "#to_binary" do
-        it "returns an Arp Reply binary String" do
+      context '#to_binary' do
+        it 'returns an Arp Reply binary String' do
           expect(subject.to_binary).to eq arp_reply_dump
         end
 
-        it "returns a valid ether frame with size = 64" do
+        it 'returns a valid ether frame with size = 64' do
           expect(subject.to_binary.size).to eq 64
         end
       end
     end
 
-    context "with String MAC and Integer IP address" do
-      let(:source_mac) { "00:16:9d:1d:9c:c4" }
-      let(:destination_mac) { "00:26:82:eb:ea:d1" }
+    context 'with String MAC and Integer IP address' do
+      let(:source_mac) { '00:16:9d:1d:9c:c4' }
+      let(:destination_mac) { '00:26:82:eb:ea:d1' }
       let(:sender_protocol_address) { 0xc0a853fe }
       let(:target_protocol_address) { 0xc0a85303 }
 
-      context "#to_binary" do
-        it "returns an Arp Reply binary String" do
+      context '#to_binary' do
+        it 'returns an Arp Reply binary String' do
           expect(subject.to_binary).to eq arp_reply_dump
         end
 
-        it "returns a valid ether frame with size = 64" do
+        it 'returns a valid ether frame with size = 64' do
           expect(subject.to_binary.size).to eq 64
         end
       end
     end
 
-    context "when Integer MAC and String IP address" do
+    context 'when Integer MAC and String IP address' do
       let(:source_mac) { 0x00169d1d9cc4 }
       let(:destination_mac) { 0x002682ebead1 }
-      let(:sender_protocol_address) { "192.168.83.254" }
-      let(:target_protocol_address) { "192.168.83.3" }
+      let(:sender_protocol_address) { '192.168.83.254' }
+      let(:target_protocol_address) { '192.168.83.3' }
 
-      context "#to_binary" do
-        it "returns an Arp Reply binary String" do
+      context '#to_binary' do
+        it 'returns an Arp Reply binary String' do
           expect(subject.to_binary).to eq arp_reply_dump
         end
 
-        it "returns a valid ether frame with size = 64" do
+        it 'returns a valid ether frame with size = 64' do
           expect(subject.to_binary.size).to eq 64
         end
       end
     end
 
-    context "when :source_mac is not set" do
+    context 'when :source_mac is not set' do
       let(:source_mac) { nil }
       let(:destination_mac) { 0x002682ebead1 }
-      let(:sender_protocol_address) { "192.168.83.3" }
-      let(:target_protocol_address) { "192.168.83.254" }
+      let(:sender_protocol_address) { '192.168.83.3' }
+      let(:target_protocol_address) { '192.168.83.254' }
 
-      it "raises an invalid MAC address error" do
-        expect { subject }.to raise_error("Invalid MAC address: nil")
+      it 'raises an invalid MAC address error' do
+        expect { subject }.to raise_error('Invalid MAC address: nil')
       end
     end
 
-    context "when :destination_mac is not set" do
+    context 'when :destination_mac is not set' do
       let(:source_mac) { 0x00169d1d9cc4 }
       let(:destination_mac) { nil }
-      let(:sender_protocol_address) { "192.168.83.3" }
-      let(:target_protocol_address) { "192.168.83.254" }
+      let(:sender_protocol_address) { '192.168.83.3' }
+      let(:target_protocol_address) { '192.168.83.254' }
 
-      it "raises an invalid MAC address error" do
-        expect { subject }.to raise_error("Invalid MAC address: nil")
+      it 'raises an invalid MAC address error' do
+        expect { subject }.to raise_error('Invalid MAC address: nil')
       end
     end
 
-    context "when :sender_protocol_address is not set" do
+    context 'when :sender_protocol_address is not set' do
       let(:source_mac) { 0x00169d1d9cc4 }
       let(:destination_mac) { 0x002682ebead1 }
       let(:sender_protocol_address) { nil }
-      let(:target_protocol_address) { "192.168.83.254" }
+      let(:target_protocol_address) { '192.168.83.254' }
 
-      it "raises an invalid IPv4 address error" do
-        expect { subject }.to raise_error("Invalid IPv4 address: nil")
+      it 'raises an invalid IPv4 address error' do
+        expect { subject }.to raise_error('Invalid IPv4 address: nil')
       end
     end
 
-    context "when :target_protocol_address is not set" do
+    context 'when :target_protocol_address is not set' do
       let(:source_mac) { 0x00169d1d9cc4 }
       let(:destination_mac) { 0x002682ebead1 }
-      let(:sender_protocol_address) { "192.168.83.3" }
+      let(:sender_protocol_address) { '192.168.83.3' }
       let(:target_protocol_address) { nil }
 
-      it "raises an invalid IPv4 address error" do
-        expect { subject }.to raise_error("Invalid IPv4 address: nil")
+      it 'raises an invalid IPv4 address error' do
+        expect { subject }.to raise_error('Invalid IPv4 address: nil')
       end
     end
   end

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-require "forwardable"
+require 'forwardable'
 
 module Pio
   #
@@ -60,7 +60,7 @@ module Pio
     # @return [String]
     #
     def to_s
-      sprintf("%012x", @value).unpack("a2" * 6).join(":")
+      sprintf('%012x', @value).unpack('a2' * 6).join(':')
     end
 
     #
@@ -89,7 +89,7 @@ module Pio
     # @return [Array]
     #
     def to_a
-      to_s.split(":").map do | each |
+      to_s.split(':').map do | each |
         each.hex
       end
     end
@@ -199,9 +199,9 @@ module Pio
     private
 
     def parse_mac_string(mac)
-      octet_regex = "[0-9a-fA-F][0-9a-fA-F]"
+      octet_regex = '[0-9a-fA-F][0-9a-fA-F]'
       if /^(#{ octet_regex }:){5}(#{ octet_regex })$/ =~ mac
-        mac.gsub(":", "").hex
+        mac.gsub(':', '').hex
       else
         fail ArgumentError
       end

@@ -36,11 +36,11 @@ module Pio
       end
 
       def destination_mac
-        @options[:destination_mac] || "01:80:c2:00:00:0e"
+        @options[:destination_mac] || '01:80:c2:00:00:0e'
       end
 
       def source_mac
-        @options[:source_mac] || "01:02:03:04:05:06"
+        @options[:source_mac] || '01:02:03:04:05:06'
       end
     end
 
