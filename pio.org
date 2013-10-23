@@ -221,12 +221,16 @@ CLOCK: [2013-10-07 月 10:22]--[2013-10-07 月 10:23] =>  0:01
 ファイルは lib/pio/mac.rb
 ** TODO 0.3.0 リリース
 :LOGBOOK:
+CLOCK: [2013-10-23 水 15:03]
 CLOCK: [2013-10-23 水 10:19]--[2013-10-23 水 10:20] =>  0:01
 :END:
 [2013-10-11 金 14:32]
-*** TODO rubocop でコーディングスタイルを統一
+*** TODO paper-house で最近やった良さげなことを Pio にも移植
+[2013-10-21 月 21:47]
+**** DONE rubocop でコーディングスタイルを統一
+CLOSED: [2013-10-23 水 15:03]
 :LOGBOOK:
-CLOCK: [2013-10-23 水 14:45]
+CLOCK: [2013-10-23 水 14:45]--[2013-10-23 水 15:03] =>  0:18
 CLOCK: [2013-10-23 水 14:21]--[2013-10-23 水 14:23] =>  0:02
 CLOCK: [2013-10-23 水 14:17]--[2013-10-23 水 14:18] =>  0:01
 CLOCK: [2013-10-23 水 14:14]--[2013-10-23 水 14:17] =>  0:03
@@ -256,7 +260,7 @@ CLOCK: [2013-10-23 水 10:00]--[2013-10-23 水 10:02] =>  0:02
 CLOCK: [2013-10-21 月 21:42]--[2013-10-21 月 21:43] =>  0:01
 :END:
 [2013-10-21 月 21:42]
-**** DONE Pio に rubocop の設定ファイル一式を追加する [3/3]
+***** DONE Pio に rubocop の設定ファイル一式を追加する [3/3]
 CLOSED: [2013-10-23 水 10:00] SCHEDULED: <2013-10-23 水>
 :LOGBOOK:
 CLOCK: [2013-10-23 水 09:41]--[2013-10-23 水 10:00] =>  0:19
@@ -269,7 +273,7 @@ CLOCK: [2013-10-23 水 09:41]--[2013-10-23 水 10:00] =>  0:19
 - [X] Gemfile
 - [X] rubocop の設定ファイル
 - [X] Rakefile
-**** DONE 1.9.3 での rubocop エラーを修正
+***** DONE 1.9.3 での rubocop エラーを修正
 CLOSED: [2013-10-23 水 10:15] SCHEDULED: <2013-10-23 水>
 :LOGBOOK:
 CLOCK: [2013-10-23 水 10:04]--[2013-10-23 水 10:15] =>  0:11
@@ -278,7 +282,7 @@ CLOCK: [2013-10-23 水 10:04]--[2013-10-23 水 10:15] =>  0:11
 :Effort:   0:30
 :END:
 [2013-10-23 水 10:04]
-**** DONE rubocop の EmptyLines 警告を直す
+***** DONE rubocop の EmptyLines 警告を直す
 CLOSED: [2013-10-23 水 10:34] SCHEDULED: <2013-10-23 水>
 :LOGBOOK:
 CLOCK: [2013-10-23 水 10:20]--[2013-10-23 水 10:34] =>  0:14
@@ -287,7 +291,7 @@ CLOCK: [2013-10-23 水 10:20]--[2013-10-23 水 10:34] =>  0:14
 :Effort:   0:30
 :END:
 [2013-10-23 水 10:20]
-**** DONE rubocop の DefWithoutParentheses 警告を直す
+***** DONE rubocop の DefWithoutParentheses 警告を直す
 CLOSED: [2013-10-23 水 10:45] SCHEDULED: <2013-10-23 水>
 :LOGBOOK:
 CLOCK: [2013-10-23 水 10:40]--[2013-10-23 水 10:45] =>  0:05
@@ -296,7 +300,7 @@ CLOCK: [2013-10-23 水 10:40]--[2013-10-23 水 10:45] =>  0:05
 :Effort:   0:30
 :END:
 [2013-10-23 水 10:39]
-**** DONE rubocop の Alias 警告を直す
+***** DONE rubocop の Alias 警告を直す
 CLOSED: [2013-10-23 水 10:50] SCHEDULED: <2013-10-23 水>
 :LOGBOOK:
 CLOCK: [2013-10-23 水 10:48]--[2013-10-23 水 10:50] =>  0:02
@@ -306,7 +310,7 @@ CLOCK: [2013-10-23 水 10:47]--[2013-10-23 水 10:48] =>  0:01
 :Effort:   0:15
 :END:
 [2013-10-23 水 10:47]
-**** DONE rubocop の AndOr 警告を直す
+***** DONE rubocop の AndOr 警告を直す
 CLOSED: [2013-10-23 水 10:53] SCHEDULED: <2013-10-23 水>
 :LOGBOOK:
 CLOCK: [2013-10-23 水 10:52]--[2013-10-23 水 10:53] =>  0:01
@@ -316,7 +320,7 @@ CLOCK: [2013-10-23 水 10:51]--[2013-10-23 水 10:52] =>  0:01
 :Effort:   0:15
 :END:
 [2013-10-23 水 10:51]
-**** DONE rubocop の Blocks 警告を直す
+***** DONE rubocop の Blocks 警告を直す
 CLOSED: [2013-10-23 水 10:58] SCHEDULED: <2013-10-23 水>
 :LOGBOOK:
 CLOCK: [2013-10-23 水 10:55]--[2013-10-23 水 10:58] =>  0:03
@@ -325,7 +329,7 @@ CLOCK: [2013-10-23 水 10:55]--[2013-10-23 水 10:58] =>  0:03
 :Effort:   0:15
 :END:
 [2013-10-23 水 10:55]
-**** DONE rubocop の BracesAroundHashParameters 警告を直す
+***** DONE rubocop の BracesAroundHashParameters 警告を直す
 CLOSED: [2013-10-23 水 11:01] SCHEDULED: <2013-10-23 水>
 :LOGBOOK:
 CLOCK: [2013-10-23 水 10:59]--[2013-10-23 水 11:01] =>  0:02
@@ -334,7 +338,7 @@ CLOCK: [2013-10-23 水 10:59]--[2013-10-23 水 11:01] =>  0:02
 :Effort:   0:15
 :END:
 [2013-10-23 水 10:59]
-**** DONE rubocop の CollectionMethods 警告を直す
+***** DONE rubocop の CollectionMethods 警告を直す
 CLOSED: [2013-10-23 水 11:11] SCHEDULED: <2013-10-23 水>
 :LOGBOOK:
 CLOCK: [2013-10-23 水 11:10]--[2013-10-23 水 11:11] =>  0:01
@@ -344,7 +348,7 @@ CLOCK: [2013-10-23 水 11:09]--[2013-10-23 水 11:10] =>  0:01
 :Effort:   0:15
 :END:
 [2013-10-23 水 11:09]
-**** DONE rubocop の FavorSprintf 警告を直す
+***** DONE rubocop の FavorSprintf 警告を直す
 CLOSED: [2013-10-23 水 11:42] SCHEDULED: <2013-10-23 水>
 :LOGBOOK:
 CLOCK: [2013-10-23 水 11:40]--[2013-10-23 水 11:42] =>  0:02
@@ -353,7 +357,7 @@ CLOCK: [2013-10-23 水 11:40]--[2013-10-23 水 11:42] =>  0:02
 :Effort:   0:15
 :END:
 [2013-10-23 水 11:39]
-**** DONE rubocop の IfUnlessModifier 警告を直す
+***** DONE rubocop の IfUnlessModifier 警告を直す
 CLOSED: [2013-10-23 水 11:48] SCHEDULED: <2013-10-23 水>
 :LOGBOOK:
 CLOCK: [2013-10-23 水 11:46]--[2013-10-23 水 11:48] =>  0:02
@@ -362,7 +366,7 @@ CLOCK: [2013-10-23 水 11:46]--[2013-10-23 水 11:48] =>  0:02
 :Effort:   0:15
 :END:
 [2013-10-23 水 11:46]
-**** DONE rubocop の LineLength 警告を直す
+***** DONE rubocop の LineLength 警告を直す
 CLOSED: [2013-10-23 水 12:06] SCHEDULED: <2013-10-23 水>
 :LOGBOOK:
 CLOCK: [2013-10-23 水 11:53]--[2013-10-23 水 12:06] =>  0:13
@@ -371,7 +375,7 @@ CLOCK: [2013-10-23 水 11:53]--[2013-10-23 水 12:06] =>  0:13
 :Effort:   0:30
 :END:
 [2013-10-23 水 11:53]
-**** DONE rubocop の Not 警告を直す
+***** DONE rubocop の Not 警告を直す
 CLOSED: [2013-10-23 水 13:28] SCHEDULED: <2013-10-23 水>
 :LOGBOOK:
 CLOCK: [2013-10-23 水 13:27]--[2013-10-23 水 13:28] =>  0:01
@@ -381,7 +385,7 @@ CLOCK: [2013-10-23 水 13:26]--[2013-10-23 水 13:27] =>  0:01
 :Effort:   0:15
 :END:
 [2013-10-23 水 13:26]
-**** DONE rubocop の NumericLiterals 警告を直す
+***** DONE rubocop の NumericLiterals 警告を直す
 CLOSED: [2013-10-23 水 13:39] SCHEDULED: <2013-10-23 水>
 :LOGBOOK:
 CLOCK: [2013-10-23 水 13:32]--[2013-10-23 水 13:39] =>  0:07
@@ -390,7 +394,7 @@ CLOCK: [2013-10-23 水 13:32]--[2013-10-23 水 13:39] =>  0:07
 :Effort:   0:15
 :END:
 [2013-10-23 水 13:32]
-**** DONE rubocop の ParenthesesAroundCondition 警告を直す
+***** DONE rubocop の ParenthesesAroundCondition 警告を直す
 CLOSED: [2013-10-23 水 13:46] SCHEDULED: <2013-10-23 水>
 :LOGBOOK:
 CLOCK: [2013-10-23 水 13:44]--[2013-10-23 水 13:46] =>  0:02
@@ -399,7 +403,7 @@ CLOCK: [2013-10-23 水 13:44]--[2013-10-23 水 13:46] =>  0:02
 :Effort:   0:15
 :END:
 [2013-10-23 水 13:43]
-**** DONE rubocop の ParenthesesAsGroupedExpression 警告を直す
+***** DONE rubocop の ParenthesesAsGroupedExpression 警告を直す
 CLOSED: [2013-10-23 水 13:52] SCHEDULED: <2013-10-23 水>
 :LOGBOOK:
 CLOCK: [2013-10-23 水 13:49]--[2013-10-23 水 13:52] =>  0:03
@@ -408,7 +412,7 @@ CLOCK: [2013-10-23 水 13:49]--[2013-10-23 水 13:52] =>  0:03
 :Effort:   0:15
 :END:
 [2013-10-23 水 13:48]
-**** DONE rubocop の RedundantBegin 警告を直す
+***** DONE rubocop の RedundantBegin 警告を直す
 CLOSED: [2013-10-23 水 14:05] SCHEDULED: <2013-10-23 水>
 :LOGBOOK:
 CLOCK: [2013-10-23 水 13:55]--[2013-10-23 水 14:05] =>  0:10
@@ -418,7 +422,7 @@ CLOCK: [2013-10-23 水 13:54]--[2013-10-23 水 13:55] =>  0:01
 :Effort:   0:15
 :END:
 [2013-10-23 水 13:54]
-**** DONE rubocop の SignalException 警告を直す
+***** DONE rubocop の SignalException 警告を直す
 CLOSED: [2013-10-23 水 14:11] SCHEDULED: <2013-10-23 水>
 :LOGBOOK:
 CLOCK: [2013-10-23 水 14:09]--[2013-10-23 水 14:11] =>  0:02
@@ -428,7 +432,7 @@ CLOCK: [2013-10-23 水 14:08]--[2013-10-23 水 14:09] =>  0:01
 :Effort:   0:15
 :END:
 [2013-10-23 水 14:08]
-**** DONE rubocop の SpaceAroundBlockBraces 警告を直す
+***** DONE rubocop の SpaceAroundBlockBraces 警告を直す
 CLOSED: [2013-10-23 水 14:14] SCHEDULED: <2013-10-23 水>
 :LOGBOOK:
 CLOCK: [2013-10-23 水 14:13]--[2013-10-23 水 14:14] =>  0:01
@@ -438,7 +442,7 @@ CLOCK: [2013-10-23 水 14:12]--[2013-10-23 水 14:13] =>  0:01
 :Effort:   0:15
 :END:
 [2013-10-23 水 14:12]
-**** DONE rubocop の SpaceInsideBrackets 警告を直す
+***** DONE rubocop の SpaceInsideBrackets 警告を直す
 CLOSED: [2013-10-23 水 14:21] SCHEDULED: <2013-10-23 水>
 :LOGBOOK:
 CLOCK: [2013-10-23 水 14:18]--[2013-10-23 水 14:21] =>  0:03
@@ -447,7 +451,7 @@ CLOCK: [2013-10-23 水 14:18]--[2013-10-23 水 14:21] =>  0:03
 :Effort:   0:30
 :END:
 [2013-10-23 水 14:17]
-**** DONE rubocop の SpaceInsideParens 警告を直す
+***** DONE rubocop の SpaceInsideParens 警告を直す
 CLOSED: [2013-10-23 水 14:45] SCHEDULED: <2013-10-23 水>
 :LOGBOOK:
 CLOCK: [2013-10-23 水 14:24]--[2013-10-23 水 14:45] =>  0:21
@@ -457,7 +461,7 @@ CLOCK: [2013-10-23 水 14:23]--[2013-10-23 水 14:24] =>  0:01
 :Effort:   0:30
 :END:
 [2013-10-23 水 14:23]
-*** DONE 1.8.7 でのテストを travis.yml に追加
+**** DONE 1.8.7 でのテストを travis.yml に追加
 CLOSED: [2013-10-23 水 10:19] SCHEDULED: <2013-10-23 水>
 :LOGBOOK:
 CLOCK: [2013-10-23 水 10:16]--[2013-10-23 水 10:19] =>  0:03
@@ -521,8 +525,6 @@ CLOCK: [2013-09-29 日 21:06]--[2013-09-29 日 21:07] =>  0:01
 [2013-09-29 日 21:06]
 
 https://github.com/trema/pio/issues/1
-*** TODO paper-house で最近やった良さげなことを Pio にも移植
-[2013-10-21 月 21:47]
 ** TODO 0.3.1 リリース
 - State "TODO"       from "WAITING"    [2013-09-19 木 14:16]
 - State "WAITING"    from "TODO"       [2013-09-06 金 17:17] \\
