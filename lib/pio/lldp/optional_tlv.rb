@@ -44,12 +44,12 @@ module Pio
       private
 
       def valid_optional_tlv?
-        optional_tlv? or end_of_lldpdu_tlv?
+        optional_tlv? || end_of_lldpdu_tlv?
       end
 
       def optional_tlv?
         tmp_tlv_type = tlv_type
-        4 <= tmp_tlv_type and tmp_tlv_type <= 127
+        4 <= tmp_tlv_type && tmp_tlv_type <= 127
       end
 
       def end_of_lldpdu_tlv?

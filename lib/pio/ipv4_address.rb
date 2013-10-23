@@ -150,7 +150,7 @@ module Pio
     #   Returns true if the address is unicast address.
     #
     def unicast?
-      class_a? or class_b? or class_c?
+      class_a? || class_b? || class_c?
     end
   end
 end

@@ -211,7 +211,7 @@ module Pio
     end
 
     def validate_value_range
-      unless ( @value >= 0 and @value <= 0xffffffffffff )
+      unless ( @value >= 0 && @value <= 0xffffffffffff )
         raise ArgumentError
       end
     end
