@@ -5,16 +5,16 @@ module Pio
   class Arp
     describe Reply do
       context ".new" do
-        subject {
+        subject do
           Arp::Reply.new(
             :source_mac => source_mac,
             :destination_mac => destination_mac,
             :sender_protocol_address => sender_protocol_address,
             :target_protocol_address => target_protocol_address
           )
-        }
+        end
 
-        let( :arp_reply_dump ) {
+        let( :arp_reply_dump ) do
           [
            0x00, 0x26, 0x82, 0xeb, 0xea, 0xd1, # destination mac address
            0x00, 0x16, 0x9d, 0x1d, 0x9c, 0xc4, # source mac address
@@ -33,7 +33,7 @@ module Pio
            0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
            0x00, 0x00, 0x00, 0x00,
           ].pack( "C*" )
-        }
+        end
 
         context "with Integer MAC and IP address" do
           let( :source_mac ) { 0x00169d1d9cc4 }

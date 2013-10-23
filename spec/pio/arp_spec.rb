@@ -7,7 +7,7 @@ module Pio
       subject { Arp.read( data.pack( "C*" ) ) }
 
       context "with an ARP Request packet" do
-        let( :data ) {
+        let( :data ) do
           [
            0xff, 0xff, 0xff, 0xff, 0xff, 0xff, # destination mac address
            0x00, 0x26, 0x82, 0xeb, 0xea, 0xd1, # source mac address
@@ -22,7 +22,7 @@ module Pio
            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, # target hardware address
            0xc0, 0xa8, 0x53, 0xfe,             # target protocol address
           ]
-        }
+        end
 
         its( :class ) { should be Arp::Request }
         its( "destination_mac.to_s" ) { should eq "ff:ff:ff:ff:ff:ff" }
@@ -40,7 +40,7 @@ module Pio
       end
 
       context "with an ARP Reply packet" do
-        let( :data ) {
+        let( :data ) do
           [
            0x00, 0x26, 0x82, 0xeb, 0xea, 0xd1, # destination mac address
            0x00, 0x16, 0x9d, 0x1d, 0x9c, 0xc4, # source mac address
@@ -55,7 +55,7 @@ module Pio
            0x00, 0x26, 0x82, 0xeb, 0xea, 0xd1, # target hardware address
            0xc0, 0xa8, 0x53, 0x03,             # target protocol address
           ]
-        }
+        end
 
         its( :class ) { should be Arp::Reply }
         its( "destination_mac.to_s" ) { should eq "00:26:82:eb:ea:d1" }
@@ -73,7 +73,7 @@ module Pio
       end
 
       context "with an ARP Request captured in real environment" do
-        let( :data ) {
+        let( :data ) do
           [
            0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x5c, 0x9a, 0xd8, 0xea,
            0x37, 0x32, 0x08, 0x06, 0x00, 0x01, 0x08, 0x00, 0x06, 0x04,
@@ -82,11 +82,11 @@ module Pio
            0x00, 0xfe
           ]
           it { expect { subject }.not_to raise_error }
-        }
+        end
       end
 
       context "with an ARP Request from a real OpenFlow switch" do
-        let( :data ) {
+        let( :data ) do
           [
            0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x11, 0x22, 0x33, 0x44,
            0x55, 0x66, 0x08, 0x06, 0x00, 0x01, 0x08, 0x00, 0x06, 0x04,
@@ -97,11 +97,11 @@ module Pio
            0x00, 0x00, 0x00, 0x00
           ]
           it { expect { subject }.not_to raise_error }
-        }
+        end
       end
 
       context "with an ARP Reply captured in real environment" do
-        let( :data ) {
+        let( :data ) do
           [
            0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x5c, 0x9a, 0xd8, 0xea,
            0x37, 0x32, 0x08, 0x06, 0x00, 0x01, 0x08, 0x00, 0x06, 0x04,
@@ -110,7 +110,7 @@ module Pio
            0x00, 0xfe
           ]
           it { expect { subject }.not_to raise_error }
-        }
+        end
       end
 
       context "with an invalid ARP packet" do

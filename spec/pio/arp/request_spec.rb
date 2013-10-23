@@ -5,15 +5,15 @@ module Pio
   class Arp
     describe Request do
       context ".new" do
-        subject {
+        subject do
           Arp::Request.new(
             :source_mac => source_mac,
             :sender_protocol_address => sender_protocol_address,
             :target_protocol_address => target_protocol_address
           )
-        }
+        end
 
-        let( :arp_request_dump ) {
+        let( :arp_request_dump ) do
           [
            0xff, 0xff, 0xff, 0xff, 0xff, 0xff, # destination mac address
            0x00, 0x26, 0x82, 0xeb, 0xea, 0xd1, # source mac address
@@ -32,7 +32,7 @@ module Pio
            0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
            0x00, 0x00, 0x00, 0x00,
           ].pack( "C*" )
-        }
+        end
 
         context "with Integer MAC and IP address" do
           let( :source_mac ) { 0x002682ebead1 }

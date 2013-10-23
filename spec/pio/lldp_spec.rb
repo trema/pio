@@ -4,21 +4,21 @@ require "pio"
 module Pio
   describe Lldp do
     context ".new" do
-      subject {
+      subject do
         Lldp.new(
           :dpid => dpid,
           :port_number => port_number,
           :source_mac => source_mac,
           :destination_mac => destination_mac
         )
-      }
+      end
 
       context "with :dpid and :port_number" do
         let( :dpid ) { 108173701773 }
         let( :port_number ) { 1 }
         let( :source_mac ) { nil }
         let( :destination_mac ) { nil }
-        let( :lldp_dump ) {
+        let( :lldp_dump ) do
           [
            0x01, 0x80, 0xc2, 0x00, 0x00, 0x0e,  # Destination MAC
            0x01, 0x02, 0x03, 0x04, 0x05, 0x06,  # Source MAC
@@ -31,7 +31,7 @@ module Pio
            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
            0x00, 0x00
           ]
-        }
+        end
 
         context "#to_binary" do
           it "returns an LLDP binary string" do
@@ -49,7 +49,7 @@ module Pio
         let( :port_number ) { 1 }
         let( :source_mac ) { "06:05:04:03:02:01" }
         let( :destination_mac ) { nil }
-        let( :lldp_dump ) {
+        let( :lldp_dump ) do
           [
            0x01, 0x80, 0xc2, 0x00, 0x00, 0x0e,  # Destination MAC
            0x06, 0x05, 0x04, 0x03, 0x02, 0x01,  # Source MAC
@@ -62,7 +62,7 @@ module Pio
            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
            0x00, 0x00
           ]
-        }
+        end
 
         context "#to_binary" do
           it "returns an LLDP binary string" do
@@ -80,7 +80,7 @@ module Pio
         let( :port_number ) { 1 }
         let( :source_mac ) { "06:05:04:03:02:01" }
         let( :destination_mac ) { "01:02:03:04:05:06" }
-        let( :lldp_dump ) {
+        let( :lldp_dump ) do
           [
            0x01, 0x02, 0x03, 0x04, 0x05, 0x06,  # Destination MAC
            0x06, 0x05, 0x04, 0x03, 0x02, 0x01,  # Source MAC
@@ -93,7 +93,7 @@ module Pio
            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
            0x00, 0x00
           ]
-        }
+        end
 
         context "#to_binary" do
           it "returns an LLDP binary string" do
@@ -129,7 +129,7 @@ module Pio
       subject { Lldp.read( data.pack( "C*" ) ) }
 
       context "with a minimal LLDP frame" do
-        let( :data ) {
+        let( :data ) do
           [
            0x01, 0x80, 0xc2, 0x00, 0x00, 0x0e,  # Destination MAC
            0x00, 0x19, 0x2f, 0xa7, 0xb2, 0x8d,  # Source MAC
@@ -139,7 +139,7 @@ module Pio
            0x06, 0x02, 0x00, 0x78,  # Time to live TLV
            0x00, 0x00  # End of LLDPDU TLV
           ]
-        }
+        end
 
         its( "destination_mac.to_s" ) { should eq "01:80:c2:00:00:0e" }
         its( "source_mac.to_s" ) { should eq "00:19:2f:a7:b2:8d" }
@@ -157,7 +157,7 @@ module Pio
       end
 
       context "with a detailed LLDP frame" do
-        let( :data ) {
+        let( :data ) do
           [
            0x01, 0x80, 0xc2, 0x00, 0x00, 0x0e,  # Destination MAC
            0x00, 0x19, 0x2f, 0xa7, 0xb2, 0x8d,  # Source MAC
@@ -173,7 +173,7 @@ module Pio
            0xfe, 0x07, 0x00, 0x12, 0x0f, 0x02, 0x07, 0x01, 0x00, # Organizationally Specific
            0x00, 0x00  # End of LLDPDU TLV
           ]
-        }
+        end
 
         its( "destination_mac.to_s" ) { should eq "01:80:c2:00:00:0e" }
         its( "source_mac.to_s" ) { should eq "00:19:2f:a7:b2:8d" }
