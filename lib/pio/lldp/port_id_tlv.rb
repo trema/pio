@@ -25,7 +25,7 @@ module Pio
 
       def set(value)
         self.port_id = if subtype == 7
-                         BinData::Uint32be.new( value ).to_binary_s
+                         BinData::Uint32be.new(value).to_binary_s
                        else
                          value
                        end

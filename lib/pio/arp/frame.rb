@@ -23,7 +23,7 @@ module Pio
       ip_address :target_protocol_address
 
       def to_binary
-        to_binary_s + "\000" * ( 64 - num_bytes )
+        to_binary_s + "\000" * (64 - num_bytes)
       end
     end
   end

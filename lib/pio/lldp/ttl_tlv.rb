@@ -13,11 +13,11 @@ module Pio
       string :ttl, :read_length => :tlv_info_length
 
       def get
-        BinData::Int16be.read( ttl )
+        BinData::Int16be.read(ttl)
       end
 
       def set(value)
-        self.ttl = BinData::Int16be.new( value ).to_binary_s
+        self.ttl = BinData::Int16be.new(value).to_binary_s
       end
     end
   end

@@ -62,7 +62,7 @@ module Pio
       end
 
       def get_tlv_field(tlv_type, name)
-        tlv = get_tlv( tlv_type )
+        tlv = get_tlv(tlv_type)
         tlv[name] if tlv
       end
     end

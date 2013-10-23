@@ -24,9 +24,9 @@ module Pio
     #   Ethernet address.
     #
     def initialize(value)
-      if value.respond_to?( :to_str )
-        @value = parse_mac_string( value.to_str )
-      elsif value.respond_to?( :to_int )
+      if value.respond_to?(:to_str)
+        @value = parse_mac_string(value.to_str)
+      elsif value.respond_to?(:to_int)
         @value = value.to_int
         validate_value_range
       else
@@ -60,7 +60,7 @@ module Pio
     # @return [String]
     #
     def to_s
-      sprintf( "%012x", @value ).unpack( "a2" * 6 ).join( ":" )
+      sprintf("%012x", @value).unpack("a2" * 6).join(":")
     end
 
     #
@@ -89,7 +89,7 @@ module Pio
     # @return [Array]
     #
     def to_a
-      to_s.split( ":" ).map do | each |
+      to_s.split(":").map do | each |
         each.hex
       end
     end
@@ -130,7 +130,7 @@ module Pio
     #   Mac.new("11:22:33:44:55:66").reserved? #=> false
     #
     def reserved?
-      ( to_i >> 8 ) == 0x0180c20000
+      ( to_i >> 8) == 0x0180c20000
     end
 
     # @!endgroup
@@ -155,7 +155,7 @@ module Pio
     # @return [Boolean]
     #
     def ==(other)
-      to_i == Mac.new( other ).to_i
+      to_i == Mac.new(other).to_i
     rescue InvalidValueError
       false
     end
@@ -201,7 +201,7 @@ module Pio
     def parse_mac_string(mac)
       octet_regex = "[0-9a-fA-F][0-9a-fA-F]"
       if /^(#{ octet_regex }:){5}(#{ octet_regex })$/ =~ mac
-        mac.gsub( ":", "" ).hex
+        mac.gsub(":", "").hex
       else
         fail ArgumentError
       end

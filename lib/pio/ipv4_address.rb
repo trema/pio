@@ -30,9 +30,9 @@ module Pio
     def initialize(addr)
       case addr
       when Integer
-        @value = IPAddr.new( addr, Socket::AF_INET )
+        @value = IPAddr.new(addr, Socket::AF_INET)
       when String
-        @value = IPAddr.new( addr )
+        @value = IPAddr.new(addr)
       when IPv4Address
         @value = addr.value
       else
@@ -72,7 +72,7 @@ module Pio
     #    an array of decimal numbers converted from IPv4 address.
     #
     def to_a
-      to_s.split( "." ).map do | each |
+      to_s.split(".").map do | each |
         each.to_i
       end
     end
@@ -90,7 +90,7 @@ module Pio
     #   Returns the IPv4 address masked with masklen.
     #
     def mask!(masklen)
-      @value = @value.mask( masklen )
+      @value = @value.mask(masklen)
       self
     end
     alias_method :prefix!, :mask!
@@ -100,7 +100,7 @@ module Pio
     #   Returns the IPv4 address masked with masklen.
     #
     def mask(masklen)
-      clone.mask!( masklen )
+      clone.mask!(masklen)
     end
     alias_method :prefix, :mask
 
@@ -109,7 +109,7 @@ module Pio
     #   Returns true if the address belongs to class A.
     #
     def class_a?
-      mask( 1 ).to_s == "0.0.0.0"
+      mask(1).to_s == "0.0.0.0"
     end
 
     #
@@ -117,7 +117,7 @@ module Pio
     #   Returns true if the address belongs to class B.
     #
     def class_b?
-      mask( 2 ).to_s == "128.0.0.0"
+      mask(2).to_s == "128.0.0.0"
     end
 
     #
@@ -125,7 +125,7 @@ module Pio
     #   Returns true if the address belongs to class C.
     #
     def class_c?
-      mask( 3 ).to_s == "192.0.0.0"
+      mask(3).to_s == "192.0.0.0"
     end
 
     #
@@ -133,7 +133,7 @@ module Pio
     #   Returns true if the address belongs to class D.
     #
     def class_d?
-      mask( 4 ).to_s == "224.0.0.0"
+      mask(4).to_s == "224.0.0.0"
     end
     alias_method :multicast?, :class_d?
 
@@ -142,7 +142,7 @@ module Pio
     #   Returns true if the address belongs to class E.
     #
     def class_e?
-      mask( 4 ).to_s == "240.0.0.0"
+      mask(4).to_s == "240.0.0.0"
     end
 
     #

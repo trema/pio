@@ -5,19 +5,19 @@ describe Pio::Lldp do
   context ".new" do
     subject do
       Pio::Lldp.new(
-                    :dpid => dpid,
-                    :port_number => port_number,
-                    :source_mac => source_mac,
-                    :destination_mac => destination_mac
-                    )
+        :dpid => dpid,
+        :port_number => port_number,
+        :source_mac => source_mac,
+        :destination_mac => destination_mac
+      )
     end
 
     context "with :dpid and :port_number" do
-      let( :dpid ) { 0x192fa7b28d }
-      let( :port_number ) { 1 }
-      let( :source_mac ) { nil }
-      let( :destination_mac ) { nil }
-      let( :lldp_dump ) do
+      let(:dpid) { 0x192fa7b28d }
+      let(:port_number) { 1 }
+      let(:source_mac) { nil }
+      let(:destination_mac) { nil }
+      let(:lldp_dump) do
         [
          # Destination MAC
          0x01, 0x80, 0xc2, 0x00, 0x00, 0x0e,
@@ -42,21 +42,21 @@ describe Pio::Lldp do
 
       context "#to_binary" do
         it "returns an LLDP binary string" do
-          expect( subject.to_binary.unpack( "C*" ) ).to eq lldp_dump
+          expect(subject.to_binary.unpack("C*")).to eq lldp_dump
         end
 
         it "returns a valid ether frame with size = 64" do
-          expect( subject.to_binary.size ).to eq 64
+          expect(subject.to_binary.size).to eq 64
         end
       end
     end
 
     context "with :dpid, :port_number and :source_mac" do
-      let( :dpid ) { 0x192fa7b28d }
-      let( :port_number ) { 1 }
-      let( :source_mac ) { "06:05:04:03:02:01" }
-      let( :destination_mac ) { nil }
-      let( :lldp_dump ) do
+      let(:dpid) { 0x192fa7b28d }
+      let(:port_number) { 1 }
+      let(:source_mac) { "06:05:04:03:02:01" }
+      let(:destination_mac) { nil }
+      let(:lldp_dump) do
         [
          # Destination MAC
          0x01, 0x80, 0xc2, 0x00, 0x00, 0x0e,
@@ -81,21 +81,21 @@ describe Pio::Lldp do
 
       context "#to_binary" do
         it "returns an LLDP binary string" do
-          expect( subject.to_binary.unpack( "C*" ) ).to eq lldp_dump
+          expect(subject.to_binary.unpack("C*")).to eq lldp_dump
         end
 
         it "returns a valid ether frame with size = 64" do
-          expect( subject.to_binary.size ).to eq 64
+          expect(subject.to_binary.size).to eq 64
         end
       end
     end
 
     context "with :dpid, :port_number, :source_mac and :destination_mac" do
-      let( :dpid ) { 0x192fa7b28d }
-      let( :port_number ) { 1 }
-      let( :source_mac ) { "06:05:04:03:02:01" }
-      let( :destination_mac ) { "01:02:03:04:05:06" }
-      let( :lldp_dump ) do
+      let(:dpid) { 0x192fa7b28d }
+      let(:port_number) { 1 }
+      let(:source_mac) { "06:05:04:03:02:01" }
+      let(:destination_mac) { "01:02:03:04:05:06" }
+      let(:lldp_dump) do
         [
          # Destination MAC
          0x01, 0x02, 0x03, 0x04, 0x05, 0x06,
@@ -120,39 +120,39 @@ describe Pio::Lldp do
 
       context "#to_binary" do
         it "returns an LLDP binary string" do
-          expect( subject.to_binary.unpack( "C*" ) ).to eq lldp_dump
+          expect(subject.to_binary.unpack("C*")).to eq lldp_dump
         end
 
         it "returns a valid ether frame with size = 64" do
-          expect( subject.to_binary.size ).to eq 64
+          expect(subject.to_binary.size).to eq 64
         end
       end
     end
 
     context "when :dpid is not set" do
-      let( :dpid ) { nil }
-      let( :port_number ) { 1 }
-      let( :source_mac ) { nil }
-      let( :destination_mac ) { nil }
+      let(:dpid) { nil }
+      let(:port_number) { 1 }
+      let(:source_mac) { nil }
+      let(:destination_mac) { nil }
 
-      it { expect { subject }.to raise_error( "Invalid DPID: nil" ) }
+      it { expect { subject }.to raise_error("Invalid DPID: nil") }
     end
 
     context "when :port_number is not set" do
-      let( :dpid ) { 0x192fa7b28d }
-      let( :port_number ) { nil }
-      let( :source_mac ) { nil }
-      let( :destination_mac ) { nil }
+      let(:dpid) { 0x192fa7b28d }
+      let(:port_number) { nil }
+      let(:source_mac) { nil }
+      let(:destination_mac) { nil }
 
-      it { expect { subject }.to raise_error( "Invalid port number: nil" ) }
+      it { expect { subject }.to raise_error("Invalid port number: nil") }
     end
   end
 
   context ".read" do
-    subject { Pio::Lldp.read( data.pack( "C*" ) ) }
+    subject { Pio::Lldp.read(data.pack("C*")) }
 
     context "with a minimal LLDP frame" do
-      let( :data ) do
+      let(:data) do
         [
          # Destination MAC
          0x01, 0x80, 0xc2, 0x00, 0x00, 0x0e,
@@ -172,23 +172,23 @@ describe Pio::Lldp do
         ]
       end
 
-      its( "destination_mac.to_s" ) { should eq "01:80:c2:00:00:0e" }
-      its( "source_mac.to_s" ) { should eq "00:19:2f:a7:b2:8d" }
-      its( :ether_type ) { should eq 0x88cc }
-      its( :dpid ) { should eq 0x192fa7b28d }
-      its( :chassis_id ) { should eq 0x192fa7b28d }
-      its( :port_id ) { should eq "Uplink to S1" }
-      its( :port_number ) { should eq "Uplink to S1" }
-      its( :ttl ) { should eq 120 }
-      its( :port_description ) { should be_nil }
-      its( :system_name ) { should be_nil }
-      its( :system_description ) { should be_nil }
-      its( :system_capabilities ) { should be_nil }
-      its( :management_address ) { should be_nil }
+      its("destination_mac.to_s") { should eq "01:80:c2:00:00:0e" }
+      its("source_mac.to_s") { should eq "00:19:2f:a7:b2:8d" }
+      its(:ether_type) { should eq 0x88cc }
+      its(:dpid) { should eq 0x192fa7b28d }
+      its(:chassis_id) { should eq 0x192fa7b28d }
+      its(:port_id) { should eq "Uplink to S1" }
+      its(:port_number) { should eq "Uplink to S1" }
+      its(:ttl) { should eq 120 }
+      its(:port_description) { should be_nil }
+      its(:system_name) { should be_nil }
+      its(:system_description) { should be_nil }
+      its(:system_capabilities) { should be_nil }
+      its(:management_address) { should be_nil }
     end
 
     context "with a detailed LLDP frame" do
-      let( :data ) do
+      let(:data) do
         [
          # Destination MAC
          0x01, 0x80, 0xc2, 0x00, 0x00, 0x0e,
@@ -231,34 +231,34 @@ describe Pio::Lldp do
         ]
       end
 
-      its( "destination_mac.to_s" ) { should eq "01:80:c2:00:00:0e" }
-      its( "source_mac.to_s" ) { should eq "00:19:2f:a7:b2:8d" }
-      its( :ether_type ) { should eq 0x88cc }
-      its( :dpid ) { should eq 0x192fa7b28d }
-      its( :chassis_id ) { should eq 0x192fa7b28d }
-      its( :port_id ) { should eq "Uplink to S1" }
-      its( :port_number ) { should eq "Uplink to S1" }
-      its( :ttl ) { should eq 120 }
-      its( :port_description ) { should eq "Summit300-48-Port 1001" }
-      its( :system_name ) { should eq "Summit300-48" }
-      its( :system_description ) do
+      its("destination_mac.to_s") { should eq "01:80:c2:00:00:0e" }
+      its("source_mac.to_s") { should eq "00:19:2f:a7:b2:8d" }
+      its(:ether_type) { should eq 0x88cc }
+      its(:dpid) { should eq 0x192fa7b28d }
+      its(:chassis_id) { should eq 0x192fa7b28d }
+      its(:port_id) { should eq "Uplink to S1" }
+      its(:port_number) { should eq "Uplink to S1" }
+      its(:ttl) { should eq 120 }
+      its(:port_description) { should eq "Summit300-48-Port 1001" }
+      its(:system_name) { should eq "Summit300-48" }
+      its(:system_description) do
         should eq "Summit300-48 - Version 7.4e.1 (Build 5) " +
                   "by Release_Master 05/27/05 04:53:11"
       end
-      its( "system_capabilities.system_capabilities" ) { should eq 20 }
-      its( "system_capabilities.enabled_capabilities" ) { should eq 20 }
-      its( :management_address ) do
-        should eq [0x00, 0x01, 0x30, 0xf9, 0xad, 0xa0].pack( "C*" )
+      its("system_capabilities.system_capabilities") { should eq 20 }
+      its("system_capabilities.enabled_capabilities") { should eq 20 }
+      its(:management_address) do
+        should eq [0x00, 0x01, 0x30, 0xf9, 0xad, 0xa0].pack("C*")
       end
-      its( "organizationally_specific.oui" ) { should eq 4623 }
-      its( "organizationally_specific.subtype" ) { should eq 2 }
-      its( "organizationally_specific.information" ) { should eq "\a\x01" }
+      its("organizationally_specific.oui") { should eq 4623 }
+      its("organizationally_specific.subtype") { should eq 2 }
+      its("organizationally_specific.information") { should eq "\a\x01" }
     end
 
     context "with an invalid Lldp frame" do
-      let( :data ) { [] }
+      let(:data) { [] }
 
-      it { expect { subject }.to raise_error( Pio::ParseError ) }
+      it { expect { subject }.to raise_error(Pio::ParseError) }
     end
   end
 end

@@ -17,8 +17,8 @@ module Pio
 
       def to_hash
         {
-          :destination_mac => Mac.new( destination_mac ).to_a,
-          :source_mac => Mac.new( source_mac ).to_a,
+          :destination_mac => Mac.new(destination_mac).to_a,
+          :source_mac => Mac.new(source_mac).to_a,
           :chassis_id => dpid,
           :port_id => port_id
         }
@@ -47,7 +47,7 @@ module Pio
 
     def self.read(raw_data)
       begin
-        frame = Frame.read( raw_data )
+        frame = Frame.read(raw_data)
       rescue
         raise Pio::ParseError, $!.message
       end
@@ -58,7 +58,7 @@ module Pio
     end
 
     def initialize(options)
-      @frame = Frame.new( Options.new( options ).to_hash )
+      @frame = Frame.new(Options.new(options).to_hash)
     end
 
     def_delegator :@frame, :destination_mac
@@ -79,7 +79,7 @@ module Pio
     def_delegator :@frame, :organizationally_specific
 
     def to_binary
-      @frame.to_binary_s + "\000" * ( 64 - @frame.num_bytes )
+      @frame.to_binary_s + "\000" * ( 64 - @frame.num_bytes)
     end
   end
 end

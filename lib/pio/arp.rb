@@ -13,9 +13,9 @@ module Pio
       Reply::OPERATION => Reply
     }
 
-    def self.read( raw_data )
+    def self.read(raw_data)
       begin
-        frame = Arp::Frame.read( raw_data )
+        frame = Arp::Frame.read(raw_data)
       rescue
         raise Pio::ParseError, $!.message
       end
