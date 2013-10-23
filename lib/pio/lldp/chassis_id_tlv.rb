@@ -9,9 +9,11 @@ module Pio
       endian :big
 
       bit7 :tlv_type, :value => 1
-      bit9 :tlv_info_length, :value => lambda { subtype.num_bytes + chassis_id.length }
+      bit9(:tlv_info_length,
+           :value => lambda { subtype.num_bytes + chassis_id.length })
       uint8 :subtype, :initial_value => 7
-      string :chassis_id, :read_length => lambda { tlv_info_length - subtype.num_bytes }
+      string(:chassis_id,
+             :read_length => lambda { tlv_info_length - subtype.num_bytes })
 
       def get
         tmp_chassis_id = chassis_id
@@ -37,7 +39,9 @@ module Pio
       private
 
       def mac_address
-        chassis_id.unpack( "C6" ).map { | each | sprintf("%02x", each) }.join( "" ).hex
+        chassis_id.unpack("C6").map do |each|
+          sprintf "%02x", each
+        end.join("").hex
       end
     end
   end

@@ -20,7 +20,9 @@ module Pio
       chassis_id_tlv :chassis_id
       port_id_tlv :port_id
       ttl_tlv :ttl, :initial_value => 120
-      array :optional_tlv, :type => :optional_tlv, :read_until => lambda { element.end_of_lldpdu? }
+      array(:optional_tlv,
+            :type => :optional_tlv,
+            :read_until => lambda { element.end_of_lldpdu? })
 
       def dpid
         chassis_id

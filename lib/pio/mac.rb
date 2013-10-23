@@ -85,7 +85,8 @@ module Pio
     # address string format.
     #
     # @example
-    #   Mac.new("11:22:33:44:55:66").to_a #=> [0x11, 0x22, 0x33, 0x44, 0x55, 0x66]
+    #   Mac.new("11:22:33:44:55:66").to_a
+    #   #=> [0x11, 0x22, 0x33, 0x44, 0x55, 0x66]
     #
     # @return [Array]
     #

@@ -8,7 +8,10 @@ require "pio/arp/reply"
 module Pio
   # ARP parser and generator.
   class Arp
-    ARP_MESSAGE_TYPE = { Request::OPERATION => Request, Reply::OPERATION => Reply }
+    ARP_MESSAGE_TYPE = {
+      Request::OPERATION => Request,
+      Reply::OPERATION => Reply
+    }
 
     def self.read( raw_data )
       begin
