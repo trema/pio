@@ -200,7 +200,7 @@ module Pio
 
     def parse_mac_string(mac)
       octet_regex = "[0-9a-fA-F][0-9a-fA-F]"
-      if /^(#{ octet_regex }:){5}(#{ octet_regex })$/=~ mac
+      if /^(#{ octet_regex }:){5}(#{ octet_regex })$/ =~ mac
         mac.gsub( ":", "" ).hex
       else
         fail ArgumentError
