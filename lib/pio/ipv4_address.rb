@@ -93,7 +93,7 @@ module Pio
       @value = @value.mask( masklen )
       self
     end
-    alias :prefix! :mask!
+    alias_method :prefix!, :mask!
 
     #
     # @return [IPv4Address]
@@ -102,7 +102,7 @@ module Pio
     def mask(masklen)
       self.clone.mask!( masklen )
     end
-    alias :prefix :mask
+    alias_method :prefix, :mask
 
     #
     # @return [bool]
@@ -135,7 +135,7 @@ module Pio
     def class_d?
       mask( 4 ).to_s == "224.0.0.0"
     end
-    alias :multicast? :class_d?
+    alias_method :multicast?, :class_d?
 
     #
     # @return [bool]
