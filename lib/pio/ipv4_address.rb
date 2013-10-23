@@ -100,7 +100,7 @@ module Pio
     #   Returns the IPv4 address masked with masklen.
     #
     def mask(masklen)
-      self.clone.mask!( masklen )
+      clone.mask!( masklen )
     end
     alias_method :prefix, :mask
 

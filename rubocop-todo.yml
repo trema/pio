@@ -11,9 +11,6 @@ Lambda:
 MethodLength:
   Enabled: false
 
-RedundantSelf:
-  Enabled: false
-
 SignalException:
   Enabled: false
 
