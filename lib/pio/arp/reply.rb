@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 require "forwardable"
 require "pio/arp/message"
 require "pio/mac"

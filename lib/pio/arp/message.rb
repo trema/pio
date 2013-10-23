@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 require "forwardable"
 require "pio/arp/frame"
 require "pio/ipv4_address"
