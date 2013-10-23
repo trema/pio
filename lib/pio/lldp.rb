@@ -7,7 +7,7 @@ module Pio
   class Lldp
     # User options for creating an LLDP frame.
     class Options
-      def initialize options
+      def initialize(options)
         @options = options
 
         unless dpid
@@ -48,7 +48,7 @@ module Pio
 
     extend Forwardable
 
-    def self.read raw_data
+    def self.read(raw_data)
       begin
         frame = Frame.read( raw_data )
       rescue
@@ -60,7 +60,7 @@ module Pio
       lldp
     end
 
-    def initialize options
+    def initialize(options)
       @frame = Frame.new( Options.new( options ).to_hash )
     end
 

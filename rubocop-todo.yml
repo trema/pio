@@ -23,9 +23,6 @@ ClassLength:
 CollectionMethods:
   Enabled: false
 
-DefWithoutParentheses:
-  Enabled: false
-
 Documentation:
   Enabled: false
 

@@ -9,13 +9,13 @@ module Pio
     class Message
       extend Forwardable
 
-      def self.create_from frame
+      def self.create_from(frame)
         message = allocate
         message.instance_variable_set :@frame, frame
         message
       end
 
-      def initialize options
+      def initialize(options)
         @options = options
         @frame = Arp::Frame.new( option_hash )
       end

@@ -27,7 +27,7 @@ module Pio
     # @return [IPv4Address] self
     #   a proxy to IPAddr.
     #
-    def initialize addr
+    def initialize(addr)
       case addr
       when Integer
         @value = IPAddr.new( addr, Socket::AF_INET )
@@ -89,7 +89,7 @@ module Pio
     # @return [IPv4Address]
     #   Returns the IPv4 address masked with masklen.
     #
-    def mask! masklen
+    def mask!(masklen)
       @value = @value.mask( masklen )
       self
     end
@@ -99,7 +99,7 @@ module Pio
     # @return [IPv4Address]
     #   Returns the IPv4 address masked with masklen.
     #
-    def mask masklen
+    def mask(masklen)
       self.clone.mask!( masklen )
     end
     alias :prefix :mask

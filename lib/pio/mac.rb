@@ -23,7 +23,7 @@ module Pio
     # @param value [#to_str, #to_int] the value converted to an
     #   Ethernet address.
     #
-    def initialize value
+    def initialize(value)
       begin
         if value.respond_to?( :to_str )
           @value = parse_mac_string( value.to_str )
@@ -155,7 +155,7 @@ module Pio
     #
     # @return [Boolean]
     #
-    def == other
+    def ==(other)
       begin
         to_i == Mac.new( other ).to_i
       rescue InvalidValueError
@@ -179,7 +179,7 @@ module Pio
     #
     # @see #==
     #
-    def eql? other
+    def eql?(other)
       self.== other
     end
 
@@ -201,7 +201,7 @@ module Pio
 
     private
 
-    def parse_mac_string mac
+    def parse_mac_string(mac)
       octet_regex = "[0-9a-fA-F][0-9a-fA-F]"
       if /^(#{ octet_regex }:){5}(#{ octet_regex })$/=~ mac
         mac.gsub( ":", "" ).hex

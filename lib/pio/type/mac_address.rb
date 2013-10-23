@@ -8,7 +8,7 @@ module Pio
     class MacAddress < BinData::Primitive
       array :octets, :type => :uint8, :initial_length => 6
 
-      def set value
+      def set(value)
         self.octets = value
       end
 

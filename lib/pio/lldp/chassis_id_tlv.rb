@@ -26,7 +26,7 @@ module Pio
         end
       end
 
-      def set value
+      def set(value)
         self.chassis_id = if subtype == 7
                             BinData::Uint64be.new( value ).to_binary_s
                           else

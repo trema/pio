@@ -52,14 +52,14 @@ module Pio
 
       private
 
-      def get_tlv tlv_type
+      def get_tlv(tlv_type)
         tlv = optional_tlv.find do | each |
           each[ "tlv_type" ] == tlv_type
         end
         tlv[ "tlv_value" ] if tlv
       end
 
-      def get_tlv_field tlv_type, name
+      def get_tlv_field(tlv_type, name)
         tlv = get_tlv( tlv_type )
         tlv[ name ] if tlv
       end

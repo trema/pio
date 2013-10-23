@@ -16,7 +16,7 @@ module Pio
         BinData::Int16be.read( ttl )
       end
 
-      def set value
+      def set(value)
         self.ttl = BinData::Int16be.new( value ).to_binary_s
       end
     end
