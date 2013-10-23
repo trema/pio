@@ -11,9 +11,6 @@ Lambda:
 MethodLength:
   Enabled: false
 
-Not:
-  Enabled: false
-
 NumericLiterals:
   Enabled: false
 
