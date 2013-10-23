@@ -7,6 +7,3 @@ HashSyntax:
 
 Lambda:
   Enabled: false
-
-MethodLength:
-  Enabled: false
