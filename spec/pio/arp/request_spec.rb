@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 require "pio/arp/request"
 
-
 module Pio
   class Arp
     describe Request do
@@ -35,7 +34,6 @@ module Pio
           ].pack( "C*" )
         }
 
-
         context "with Integer MAC and IP address" do
           let( :source_mac ) { 0x002682ebead1 }
           let( :sender_protocol_address ) { 0xc0a85303 }
@@ -51,7 +49,6 @@ module Pio
             end
           end
         end
-
 
         context "with String MAC and IP address" do
           let( :source_mac ) { "00:26:82:eb:ea:d1" }
@@ -69,7 +66,6 @@ module Pio
           end
         end
 
-
         context "with Integer MAC and String IP address" do
           let( :source_mac ) { 0x002682ebead1 }
           let( :sender_protocol_address ) { "192.168.83.3" }
@@ -86,7 +82,6 @@ module Pio
           end
         end
 
-
         context "when :source_mac is not set" do
           let( :source_mac ) { nil }
           let( :sender_protocol_address ) { "192.168.83.3" }
@@ -97,7 +92,6 @@ module Pio
           end
         end
 
-
         context "when :sender_protocol_address is not set" do
           let( :source_mac ) { 0x002682ebead1 }
           let( :sender_protocol_address ) { nil }
@@ -107,7 +101,6 @@ module Pio
             expect { subject }.to raise_error( "Invalid IPv4 address: nil" )
           end
         end
-
 
         context "when :target_protocol_address is not set" do
           let( :source_mac ) { 0x002682ebead1 }
@@ -122,7 +115,6 @@ module Pio
     end
   end
 end
-
 
 ### Local variables:
 ### mode: Ruby

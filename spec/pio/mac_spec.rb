@@ -1,12 +1,10 @@
 # -*- coding: utf-8 -*-
 require "pio/mac"
 
-
 module Pio
   describe Mac do
     context ".new" do
       subject { Mac.new( value ) }
-
 
       context %{with "11:22:33:44:55:66"} do
         let( :value ) { "11:22:33:44:55:66" }
@@ -46,7 +44,6 @@ module Pio
         its( :reserved? ){ should be_false }
       end
 
-
       context "with reserved address" do
         ( 0x0..0xf ).each do | each |
           octet = "%02x" % each
@@ -58,7 +55,6 @@ module Pio
           end
         end
       end
-
 
       context "with 0" do
         let( :value ) { 0 }
@@ -72,7 +68,6 @@ module Pio
         its( :reserved? ){ should be_false }
       end
 
-
       context "with 0xffffffffffff" do
         let( :value ) { 0xffffffffffff }
 
@@ -85,13 +80,11 @@ module Pio
         its( :reserved? ){ should be_false }
       end
 
-
       context %{with "INVALID MAC ADDRESS"} do
         let( :value ) { "INVALID MAC ADDRESS" }
 
         it { expect { subject }.to raise_error( Mac::InvalidValueError ) }
       end
-
 
       context "with -1" do
         let( :value ) { -1 }
@@ -99,13 +92,11 @@ module Pio
         it { expect { subject }.to raise_error( Mac::InvalidValueError ) }
       end
 
-
       context "with 0x1000000000000" do
         let( :value ) { 0x1000000000000 }
 
         it { expect { subject }.to raise_error( Mac::InvalidValueError ) }
       end
-
 
       context "with [ 1, 2, 3 ]" do
         let( :value ) { [ 1, 2, 3 ] }
@@ -115,7 +106,6 @@ module Pio
     end
   end
 end
-
 
 ### Local variables:
 ### mode: Ruby

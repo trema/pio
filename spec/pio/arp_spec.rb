@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 require "pio"
 
-
 module Pio
   describe Arp do
     context ".read" do
@@ -40,7 +39,6 @@ module Pio
         its( "target_protocol_address.to_s" ) { should eq "192.168.83.254" }
       end
 
-
       context "with an ARP Reply packet" do
         let( :data ) {
           [
@@ -74,7 +72,6 @@ module Pio
         its( "target_protocol_address.to_s" ) { should eq "192.168.83.3" }
       end
 
-
       context "with an ARP Request captured in real environment" do
         let( :data ) {
           [
@@ -87,7 +84,6 @@ module Pio
           it { expect { subject }.not_to raise_error }
         }
       end
-
 
       context "with an ARP Request from a real OpenFlow switch" do
         let( :data ) {
@@ -104,7 +100,6 @@ module Pio
         }
       end
 
-
       context "with an ARP Reply captured in real environment" do
         let( :data ) {
           [
@@ -118,7 +113,6 @@ module Pio
         }
       end
 
-
       context "with an invalid ARP packet" do
         let( :data ) { [] }
 
@@ -127,7 +121,6 @@ module Pio
     end
   end
 end
-
 
 ### Local variables:
 ### mode: Ruby

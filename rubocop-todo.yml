@@ -29,9 +29,6 @@ DefWithoutParentheses:
 Documentation:
   Enabled: false
 
-EmptyLines:
-  Enabled: false
-
 FavorSprintf:
   Enabled: false
 

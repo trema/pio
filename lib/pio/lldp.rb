@@ -2,7 +2,6 @@
 require "forwardable"
 require "pio/lldp/frame"
 
-
 module Pio
   # LLDP frame parser and generator.
   class Lldp
@@ -19,7 +18,6 @@ module Pio
         end
       end
 
-
       def to_hash
         {
           :destination_mac => Mac.new( destination_mac ).to_a,
@@ -29,35 +27,26 @@ module Pio
         }
       end
 
-
-      ##########################################################################
       private
-      ##########################################################################
-
 
       def dpid
         @options[ :dpid ]
       end
 
-
       def port_id
         @options[ :port_number ]
       end
 
-
       def destination_mac
         @options[ :destination_mac ] || "01:80:c2:00:00:0e"
       end
-
 
       def source_mac
         @options[ :source_mac ] || "01:02:03:04:05:06"
       end
     end
 
-
     extend Forwardable
-
 
     def self.read raw_data
       begin
@@ -71,11 +60,9 @@ module Pio
       lldp
     end
 
-
     def initialize options
       @frame = Frame.new( Options.new( options ).to_hash )
     end
-
 
     def_delegator :@frame, :destination_mac
     def_delegator :@frame, :source_mac
@@ -94,13 +81,11 @@ module Pio
     def_delegator :@frame, :management_address
     def_delegator :@frame, :organizationally_specific
 
-
     def to_binary
       @frame.to_binary_s + "\000" * ( 64 - @frame.num_bytes )
     end
   end
 end
-
 
 ### Local variables:
 ### mode: Ruby

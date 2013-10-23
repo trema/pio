@@ -2,7 +2,6 @@
 require "rubygems"
 require "bindata"
 
-
 module Pio
   class Lldp
     # TLV value field of port description TLV
@@ -13,7 +12,6 @@ module Pio
     end
   end
 end
-
 
 ### Local variables:
 ### mode: Ruby

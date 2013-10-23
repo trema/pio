@@ -2,7 +2,6 @@
 require "rubygems"
 require "bindata"
 
-
 module Pio
   class Lldp
     # Port ID TLV
@@ -14,7 +13,6 @@ module Pio
       uint8 :subtype, :initial_value => 7
       string :port_id, :read_length => lambda { tlv_info_length - 1 }
 
-
       def get
         tmp_id = port_id
 
@@ -24,7 +22,6 @@ module Pio
           tmp_id
         end
       end
-
 
       def set value
         self.port_id = if subtype == 7
@@ -36,7 +33,6 @@ module Pio
     end
   end
 end
-
 
 ### Local variables:
 ### mode: Ruby

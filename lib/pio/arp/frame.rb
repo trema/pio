@@ -3,7 +3,6 @@ require "pio/type/ethernet_header"
 require "pio/type/ip_address"
 require "pio/type/mac_address"
 
-
 module Pio
   class Arp
     # ARP frame parser.
@@ -23,14 +22,12 @@ module Pio
       mac_address :target_hardware_address
       ip_address :target_protocol_address
 
-
       def to_binary
         to_binary_s + "\000" * ( 64 - num_bytes )
       end
     end
   end
 end
-
 
 ### Local variables:
 ### mode: Ruby

@@ -3,7 +3,6 @@ require "pio/arp/frame"
 require "pio/arp/message"
 require "pio/mac"
 
-
 module Pio
   class Arp
     # ARP Request packet generator
@@ -13,11 +12,7 @@ module Pio
       BROADCAST_MAC_ADDRESS = Mac.new( 0xffffffffffff ).to_a
       ALL_ZERO_MAC_ADDRESS = Mac.new( 0 ).to_a
 
-
-      ########################################################################
       private
-      ########################################################################
-
 
       def default_options
         {
@@ -27,13 +22,11 @@ module Pio
         }
       end
 
-
       def user_options
         @options.merge(
           { :sender_hardware_address => @options[ :source_mac ] }
         )
       end
-
 
       def mandatory_options
         [
@@ -46,7 +39,6 @@ module Pio
     end
   end
 end
-
 
 ### Local variables:
 ### mode: Ruby

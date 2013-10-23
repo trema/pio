@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 require "pio"
 
-
 module Pio
   describe Lldp do
     context ".new" do
@@ -13,7 +12,6 @@ module Pio
           :destination_mac => destination_mac
         )
       }
-
 
       context "with :dpid and :port_number" do
         let( :dpid ) { 108173701773 }
@@ -46,7 +44,6 @@ module Pio
         end
       end
 
-
       context "with :dpid, :port_number and :source_mac" do
         let( :dpid ) { 108173701773 }
         let( :port_number ) { 1 }
@@ -77,7 +74,6 @@ module Pio
           end
         end
       end
-
 
       context "with :dpid, :port_number, :source_mac and :destination_mac" do
         let( :dpid ) { 108173701773 }
@@ -110,7 +106,6 @@ module Pio
         end
       end
 
-
       context "when :dpid is not set" do
         let( :dpid ) { nil }
         let( :port_number ) { 1 }
@@ -119,7 +114,6 @@ module Pio
 
         it { expect { subject }.to raise_error( "Invalid DPID: nil" ) }
       end
-
 
       context "when :port_number is not set" do
         let( :dpid ) { 108173701773 }
@@ -130,7 +124,6 @@ module Pio
         it { expect { subject }.to raise_error( "Invalid port number: nil" ) }
       end
     end
-
 
     context ".read" do
       subject { Lldp.read( data.pack( "C*" ) ) }
@@ -162,7 +155,6 @@ module Pio
         its( :system_capabilities ) { should be_nil }
         its( :management_address ) { should be_nil }
       end
-
 
       context "with a detailed LLDP frame" do
         let( :data ) {
@@ -202,7 +194,6 @@ module Pio
         its( "organizationally_specific.information" ) { should eq "\a\x01" }
       end
 
-
       context "with an invalid Lldp frame" do
         let( :data ) { [] }
 
@@ -211,7 +202,6 @@ module Pio
     end
   end
 end
-
 
 ### Local variables:
 ### mode: Ruby

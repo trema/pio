@@ -2,7 +2,6 @@
 require "forwardable"
 require "ipaddr"
 
-
 module Pio
   #
   # IPv4 Address
@@ -10,12 +9,10 @@ module Pio
   class IPv4Address
     extend Forwardable
 
-
     #
     # @return [IPAddr] value object instance of proxied IPAddr.
     #
     attr_reader :value
-
 
     #
     # Creates a {IPv4Address} instance object as a proxy to IPAddr class.
@@ -43,24 +40,20 @@ module Pio
       end
     end
 
-
     #
     # @return [String] the IPv4 address in its text representation.
     #
     def_delegator :value, :to_s
-
 
     #
     # @return [Number] the IPv4 address in its numeric representation.
     #
     def_delegator :value, :to_i
 
-
     #
     # @return [Range] Creates a Range object for the network address.
     #
     def_delegator :value, :to_range
-
 
     #
     # @return [Number] prefix length of IPv4 address.
@@ -74,7 +67,6 @@ module Pio
       end
     end
 
-
     #
     # @return [Array]
     #    an array of decimal numbers converted from IPv4 address.
@@ -85,7 +77,6 @@ module Pio
       end
     end
 
-
     #
     # @return [Array]
     #    an array of decimal numbers converted from IPv4 address.
@@ -93,7 +84,6 @@ module Pio
     def to_ary
       to_a
     end
-
 
     #
     # @return [IPv4Address]
@@ -105,7 +95,6 @@ module Pio
     end
     alias :prefix! :mask!
 
-
     #
     # @return [IPv4Address]
     #   Returns the IPv4 address masked with masklen.
@@ -115,7 +104,6 @@ module Pio
     end
     alias :prefix :mask
 
-
     #
     # @return [bool]
     #   Returns true if the address belongs to class A.
@@ -123,7 +111,6 @@ module Pio
     def class_a?
       mask( 1 ).to_s == "0.0.0.0"
     end
-
 
     #
     # @return [bool]
@@ -133,7 +120,6 @@ module Pio
       mask( 2 ).to_s == "128.0.0.0"
     end
 
-
     #
     # @return [bool]
     #   Returns true if the address belongs to class C.
@@ -141,7 +127,6 @@ module Pio
     def class_c?
       mask( 3 ).to_s == "192.0.0.0"
     end
-
 
     #
     # @return [bool]
@@ -152,7 +137,6 @@ module Pio
     end
     alias :multicast? :class_d?
 
-
     #
     # @return [bool]
     #   Returns true if the address belongs to class E.
@@ -160,7 +144,6 @@ module Pio
     def class_e?
       mask( 4 ).to_s == "240.0.0.0"
     end
-
 
     #
     # @return [bool]
@@ -171,7 +154,6 @@ module Pio
     end
   end
 end
-
 
 ### Local variables:
 ### mode: Ruby

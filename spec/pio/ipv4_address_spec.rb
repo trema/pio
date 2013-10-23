@@ -1,12 +1,10 @@
 # -*- coding: utf-8 -*-
 require "pio/ipv4_address"
 
-
 module Pio
   describe IPv4Address do
     context ".new" do
       subject( :ipv4 ) { IPv4Address.new( ip_address ) }
-
 
       context "with 10.1.1.1" do
         let( :ip_address ) { "10.1.1.1" }
@@ -22,7 +20,6 @@ module Pio
         its( :class_e? ) { should be_false }
         its( :unicast? ) { should be_true }
         its( :multicast? ) { should be_false }
-
 
         context ".mask!" do
           subject { ipv4.mask!( mask ) }
@@ -42,7 +39,6 @@ module Pio
         end
       end
 
-
       context "with 172.20.1.1" do
         let( :ip_address ) { "172.20.1.1" }
 
@@ -57,7 +53,6 @@ module Pio
         its( :unicast? ) { should be_true }
         its( :multicast? ) { should be_false }
       end
-
 
       context "with 192.168.1.1" do
         let( :ip_address ) { "192.168.1.1" }
@@ -74,7 +69,6 @@ module Pio
         its( :multicast? ) { should be_false }
       end
 
-
       context "with 234.1.1.1" do
         let( :ip_address ) { "234.1.1.1" }
 
@@ -90,13 +84,11 @@ module Pio
         its( :multicast? ) { should be_true }
       end
 
-
       context "with 192.168.0.1/16" do
         let( :ip_address ) { "192.168.0.1/16" }
 
         its( :prefixlen ) { should eq 16 }
       end
-
 
       context "with 192.168.0.1/255.255.255.0" do
         let( :ip_address ) { "192.168.0.1/255.255.255.0" }
@@ -106,7 +98,6 @@ module Pio
     end
   end
 end
-
 
 ### Local variables:
 ### mode: Ruby

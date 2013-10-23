@@ -2,7 +2,6 @@
 require "rubygems"
 require "bindata"
 
-
 module Pio
   class Lldp
     # The V of Organizationally specfic TLV.
@@ -15,7 +14,6 @@ module Pio
     end
   end
 end
-
 
 ### Local variables:
 ### mode: Ruby

@@ -3,25 +3,19 @@ require "forwardable"
 require "pio/arp/message"
 require "pio/mac"
 
-
 module Pio
   class Arp
     # ARP Reply packet generator
     class Reply < Message
       OPERATION = 2
 
-
-      ##########################################################################
       private
-      ##########################################################################
-
 
       def default_options
         {
           :operation => OPERATION,
         }
       end
-
 
       def user_options
         @options.merge(
@@ -31,7 +25,6 @@ module Pio
           }
         )
       end
-
 
       def mandatory_options
         [
@@ -46,7 +39,6 @@ module Pio
     end
   end
 end
-
 
 ### Local variables:
 ### mode: Ruby

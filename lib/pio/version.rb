@@ -5,7 +5,6 @@ module Pio
   VERSION = "0.2.6"
 end
 
-
 ### Local variables:
 ### mode: Ruby
 ### coding: utf-8

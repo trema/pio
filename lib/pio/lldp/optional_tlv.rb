@@ -7,7 +7,6 @@ require "pio/lldp/management_address_value"
 require "pio/lldp/organizationally_specific_value"
 require "pio/lldp/end_of_lldpdu_value"
 
-
 module Pio
   class Lldp
     # Optional TLV and End Of LLDPDU
@@ -30,11 +29,9 @@ module Pio
         string "unknown"
       end
 
-
       def end_of_lldpdu?
         tlv_type == 0
       end
-
 
       def chooser
         if valid_optional_tlv?
@@ -44,22 +41,16 @@ module Pio
         end
       end
 
-
-      ##########################################################################
       private
-      ##########################################################################
-
 
       def valid_optional_tlv?
         optional_tlv? or end_of_lldpdu_tlv?
       end
 
-
       def optional_tlv?
         tmp_tlv_type = tlv_type
         4 <= tmp_tlv_type and tmp_tlv_type <= 127
       end
-
 
       def end_of_lldpdu_tlv?
         tlv_type == 0
@@ -67,7 +58,6 @@ module Pio
     end
   end
 end
-
 
 ### Local variables:
 ### mode: Ruby

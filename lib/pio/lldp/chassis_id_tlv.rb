@@ -2,7 +2,6 @@
 require "rubygems"
 require "bindata"
 
-
 module Pio
   class Lldp
     # Chassis ID TLV
@@ -13,7 +12,6 @@ module Pio
       bit9 :tlv_info_length, :value => lambda { subtype.num_bytes + chassis_id.length }
       uint8 :subtype, :initial_value => 7
       string :chassis_id, :read_length => lambda { tlv_info_length - subtype.num_bytes }
-
 
       def get
         tmp_chassis_id = chassis_id
@@ -28,7 +26,6 @@ module Pio
         end
       end
 
-
       def set value
         self.chassis_id = if subtype == 7
                             BinData::Uint64be.new( value ).to_binary_s
@@ -37,11 +34,7 @@ module Pio
                           end
       end
 
-
-      ##########################################################################
       private
-      ##########################################################################
-
 
       def mac_address
         chassis_id.unpack( "C6" ).collect { | each | "%02x" % each }.join( "" ).hex
@@ -49,7 +42,6 @@ module Pio
     end
   end
 end
-
 
 ### Local variables:
 ### mode: Ruby

@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 require "forwardable"
 
-
 module Pio
   #
   # Ethernet address (MAC address) class.
@@ -10,10 +9,8 @@ module Pio
     # Raised when Ethernet address is invalid.
     class InvalidValueError < StandardError; end
 
-
     extend Forwardable
     def_delegator :@value, :hash
-
 
     #
     # Creates a {Mac} instance that encapsulates Ethernet addresses.
@@ -41,7 +38,6 @@ module Pio
       end
     end
 
-
     # @!group Converters
 
     #
@@ -56,7 +52,6 @@ module Pio
       @value
     end
 
-
     #
     # Returns the Ethernet address as 6 pairs of hexadecimal digits
     # delimited by colons.
@@ -69,7 +64,6 @@ module Pio
     def to_s
       sprintf( "%012x", @value ).unpack( "a2" * 6 ).join( ":" )
     end
-
 
     #
     # Implicitly converts +obj+ to a string.
@@ -85,7 +79,6 @@ module Pio
     def to_str
       to_s
     end
-
 
     #
     # Returns an Array of decimal numbers converted from Ethernet's
@@ -104,7 +97,6 @@ module Pio
 
     # @!endgroup
 
-
     # @!group Predicates
 
     #
@@ -118,7 +110,6 @@ module Pio
       to_a[ 0 ] & 1 == 1
     end
 
-
     #
     # Returns true if Ethernet address is a broadcast address.
     #
@@ -128,7 +119,6 @@ module Pio
     def broadcast?
       to_a.all? { | each | each == 0xff }
     end
-
 
     #
     # Returns +true+ if Ethernet address is an IEEE 802.1D or 802.1Q
@@ -145,7 +135,6 @@ module Pio
     end
 
     # @!endgroup
-
 
     # @!group Equality
 
@@ -174,7 +163,6 @@ module Pio
       end
     end
 
-
     #
     # Returns +true+ if +obj+ and +other+ refer to the same hash key.
     # +#==+ is used for the comparison.
@@ -197,7 +185,6 @@ module Pio
 
     # @!endgroup
 
-
     # @!group Debug
 
     #
@@ -212,11 +199,7 @@ module Pio
 
     # @!endgroup
 
-
-    ################################################################################
     private
-    ################################################################################
-
 
     def parse_mac_string mac
       octet_regex = "[0-9a-fA-F][0-9a-fA-F]"
@@ -227,7 +210,6 @@ module Pio
       end
     end
 
-
     def validate_value_range
       unless ( @value >= 0 and @value <= 0xffffffffffff )
         raise ArgumentError
@@ -235,7 +217,6 @@ module Pio
     end
   end
 end
-
 
 ### Local variables:
 ### mode: Ruby
