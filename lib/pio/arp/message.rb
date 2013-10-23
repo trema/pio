@@ -37,7 +37,7 @@ module Pio
       private
 
       def option_hash
-        mandatory_options.inject( {} ) do | opt, each |
+        mandatory_options.reduce( {} ) do | opt, each |
           klass = option_to_klass[ each ]
           opt_pair = { each => klass.new( user_options[ each ] ).to_a }
           opt.merge opt_pair

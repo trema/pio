@@ -72,7 +72,7 @@ module Pio
     #    an array of decimal numbers converted from IPv4 address.
     #
     def to_a
-      to_s.split( "." ).collect do | each |
+      to_s.split( "." ).map do | each |
         each.to_i
       end
     end

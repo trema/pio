@@ -13,7 +13,7 @@ module Pio
       end
 
       def get
-        IPv4Address.new octets.collect { | each | "%d" % each }.join( "." )
+        IPv4Address.new octets.map { | each | "%d" % each }.join( "." )
       end
     end
   end

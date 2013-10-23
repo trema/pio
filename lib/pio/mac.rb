@@ -90,7 +90,7 @@ module Pio
     # @return [Array]
     #
     def to_a
-      to_s.split( ":" ).collect do | each |
+      to_s.split( ":" ).map do | each |
         each.hex
       end
     end

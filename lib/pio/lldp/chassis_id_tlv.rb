@@ -37,7 +37,7 @@ module Pio
       private
 
       def mac_address
-        chassis_id.unpack( "C6" ).collect { | each | "%02x" % each }.join( "" ).hex
+        chassis_id.unpack( "C6" ).map { | each | "%02x" % each }.join( "" ).hex
       end
     end
   end
