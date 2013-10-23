@@ -13,7 +13,7 @@ describe Pio::Lldp do
     end
 
     context "with :dpid and :port_number" do
-      let( :dpid ) { 108173701773 }
+      let( :dpid ) { 0x192fa7b28d }
       let( :port_number ) { 1 }
       let( :source_mac ) { nil }
       let( :destination_mac ) { nil }
@@ -52,7 +52,7 @@ describe Pio::Lldp do
     end
 
     context "with :dpid, :port_number and :source_mac" do
-      let( :dpid ) { 108173701773 }
+      let( :dpid ) { 0x192fa7b28d }
       let( :port_number ) { 1 }
       let( :source_mac ) { "06:05:04:03:02:01" }
       let( :destination_mac ) { nil }
@@ -91,7 +91,7 @@ describe Pio::Lldp do
     end
 
     context "with :dpid, :port_number, :source_mac and :destination_mac" do
-      let( :dpid ) { 108173701773 }
+      let( :dpid ) { 0x192fa7b28d }
       let( :port_number ) { 1 }
       let( :source_mac ) { "06:05:04:03:02:01" }
       let( :destination_mac ) { "01:02:03:04:05:06" }
@@ -139,7 +139,7 @@ describe Pio::Lldp do
     end
 
     context "when :port_number is not set" do
-      let( :dpid ) { 108173701773 }
+      let( :dpid ) { 0x192fa7b28d }
       let( :port_number ) { nil }
       let( :source_mac ) { nil }
       let( :destination_mac ) { nil }
@@ -175,8 +175,8 @@ describe Pio::Lldp do
       its( "destination_mac.to_s" ) { should eq "01:80:c2:00:00:0e" }
       its( "source_mac.to_s" ) { should eq "00:19:2f:a7:b2:8d" }
       its( :ether_type ) { should eq 0x88cc }
-      its( :dpid ) { should eq 108173701773 }
-      its( :chassis_id ) { should eq 108173701773 }
+      its( :dpid ) { should eq 0x192fa7b28d }
+      its( :chassis_id ) { should eq 0x192fa7b28d }
       its( :port_id ) { should eq "Uplink to S1" }
       its( :port_number ) { should eq "Uplink to S1" }
       its( :ttl ) { should eq 120 }
@@ -234,8 +234,8 @@ describe Pio::Lldp do
       its( "destination_mac.to_s" ) { should eq "01:80:c2:00:00:0e" }
       its( "source_mac.to_s" ) { should eq "00:19:2f:a7:b2:8d" }
       its( :ether_type ) { should eq 0x88cc }
-      its( :dpid ) { should eq 108173701773 }
-      its( :chassis_id ) { should eq 108173701773 }
+      its( :dpid ) { should eq 0x192fa7b28d }
+      its( :chassis_id ) { should eq 0x192fa7b28d }
       its( :port_id ) { should eq "Uplink to S1" }
       its( :port_number ) { should eq "Uplink to S1" }
       its( :ttl ) { should eq 120 }

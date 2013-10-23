@@ -11,9 +11,6 @@ Lambda:
 MethodLength:
   Enabled: false
 
-NumericLiterals:
-  Enabled: false
-
 ParenthesesAroundCondition:
   Enabled: false
 

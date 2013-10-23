@@ -57,7 +57,7 @@ describe Pio::IPv4Address do
       let( :ip_address ) { "192.168.1.1" }
 
       its( :to_s ) { should eq "192.168.1.1" }
-      its( :to_i ) { should eq 3232235777 }
+      its( :to_i ) { should eq 3_232_235_777 }
       its( :to_ary ) { should eq [ 0xc0, 0xa8, 0x01, 0x01 ] }
       its( :class_a? ) { should be_false }
       its( :class_b? ) { should be_false }
