@@ -38,9 +38,9 @@ describe Pio::Mac do
         end
       end
 
-      its( :multicast? ){ should be_true }
-      its( :broadcast? ){ should be_false }
-      its( :reserved? ){ should be_false }
+      its( :multicast? ) { should be_true }
+      its( :broadcast? ) { should be_false }
+      its( :reserved? ) { should be_false }
     end
 
     context "with reserved address" do
@@ -62,9 +62,9 @@ describe Pio::Mac do
       its( :to_i ) { should eq 0 }
       its( :to_a ) { should eq [ 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 ] }
       its( :to_s ) { should eq "00:00:00:00:00:00" }
-      its( :multicast? ){ should be_false }
-      its( :broadcast? ){ should be_false }
-      its( :reserved? ){ should be_false }
+      its( :multicast? ) { should be_false }
+      its( :broadcast? ) { should be_false }
+      its( :reserved? ) { should be_false }
     end
 
     context "with 0xffffffffffff" do
@@ -74,9 +74,9 @@ describe Pio::Mac do
       its( :to_i ) { should eq 0xffffffffffff }
       its( :to_a ) { should eq [ 0xff, 0xff, 0xff, 0xff, 0xff, 0xff ] }
       its( :to_s ) { should eq "ff:ff:ff:ff:ff:ff" }
-      its( :multicast? ){ should be_true }
-      its( :broadcast? ){ should be_true }
-      its( :reserved? ){ should be_false }
+      its( :multicast? ) { should be_true }
+      its( :broadcast? ) { should be_true }
+      its( :reserved? ) { should be_false }
     end
 
     context %{with "INVALID MAC ADDRESS"} do
