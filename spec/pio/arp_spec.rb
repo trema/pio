@@ -80,8 +80,8 @@ describe Pio::Arp do
          0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0xa8,
          0x00, 0xfe
         ]
-        it { expect { subject }.not_to raise_error }
       end
+      it { expect { subject }.not_to raise_error }
     end
 
     context 'with an ARP Request from a real OpenFlow switch' do
@@ -95,8 +95,8 @@ describe Pio::Arp do
          0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
          0x00, 0x00, 0x00, 0x00
         ]
-        it { expect { subject }.not_to raise_error }
       end
+      it { expect { subject }.not_to raise_error }
     end
 
     context 'with an ARP Reply captured in real environment' do
@@ -108,8 +108,8 @@ describe Pio::Arp do
          0x00, 0x01, 0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0xc0, 0xa8,
          0x00, 0xfe
         ]
-        it { expect { subject }.not_to raise_error }
       end
+      it { expect { subject }.not_to raise_error }
     end
 
     context 'with an invalid ARP packet' do

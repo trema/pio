@@ -13,6 +13,3 @@ MethodLength:
 
 VariableName:
   Enabled: false
-
-Void:
-  Enabled: false
