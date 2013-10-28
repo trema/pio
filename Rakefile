@@ -22,7 +22,7 @@ Coveralls::RakeTask.new
 
 RSpec::Core::RakeTask.new
 
-Reek::Rake::Task.new do | t |
+Reek::Rake::Task.new do |t|
   t.fail_on_error = false
   t.verbose = false
   t.ruby_opts = ['-rubygems']
@@ -36,8 +36,8 @@ task :flog do
   flog.flog(*ruby_source)
   threshold = 20
 
-  bad_methods = flog.totals.select do | name, score |
-    (!(/##{flog.no_method}$/ =~ name)) && score > threshold
+  bad_methods = flog.totals.select do |name, score|
+    !(/##{flog.no_method}$/ =~ name) && score > threshold
   end
   bad_methods.sort { |a, b| a[1] <=> b[1] }.reverse.each do |name, score|
     printf "%8.1f: %s\n", [score, name]
@@ -47,8 +47,8 @@ task :flog do
   end
 end
 
-FlayTask.new do | t |
-  t.dirs = ruby_source.map do | each |
+FlayTask.new do |t|
+  t.dirs = ruby_source.map do |each|
     each[/[^\/]+/]
   end.uniq
   t.threshold = 0
@@ -61,7 +61,7 @@ if RUBY_VERSION >= '1.9.0'
   Rubocop::RakeTask.new
 end
 
-YARD::Rake::YardocTask.new do | t |
+YARD::Rake::YardocTask.new do |t|
   t.options = ['--no-private']
   t.options << '--debug' << '--verbose' if Rake.verbose
 end
@@ -81,15 +81,15 @@ end
 desc 'Run tests against multiple rubies'
 task :portability
 
-rubies.each do | each |
-  portability_task_name = "portability:#{ each }"
+rubies.each do |each|
+  portability_task_name = "portability:#{each}"
   task :portability => portability_task_name
 
-  desc "Run tests against Ruby#{ each }"
+  desc "Run tests against Ruby#{each}"
   task portability_task_name do
     rm_f gemfile_lock
-    sh "rvm #{ each } exec bundle update"
-    sh "rvm #{ each } exec bundle exec rake"
+    sh "rvm #{each} exec bundle update"
+    sh "rvm #{each} exec bundle exec rake"
   end
 end
 
