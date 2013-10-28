@@ -71,7 +71,11 @@ def travis_yml
 end
 
 def rubies
-  (['1.8.7'] + YAML.load_file(travis_yml)['rvm']).uniq.sort
+  YAML.load_file(travis_yml)['rvm'].uniq.sort
+end
+
+def gemfile_lock
+  File.join File.dirname(__FILE__), 'Gemfile.lock'
 end
 
 desc 'Run tests against multiple rubies'
@@ -83,7 +87,8 @@ rubies.each do | each |
 
   desc "Run tests against Ruby#{ each }"
   task portability_task_name do
-    sh "rvm #{ each } exec bundle"
+    rm_f gemfile_lock
+    sh "rvm #{ each } exec bundle update"
     sh "rvm #{ each } exec bundle exec rake"
   end
 end
