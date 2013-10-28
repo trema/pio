@@ -88,7 +88,7 @@ rubies.each do |each|
   desc "Run tests against Ruby#{each}"
   task portability_task_name do
     rm_f gemfile_lock
-    sh "rvm #{each} exec bundle update"
+    sh "rvm #{each} exec bundle"
     sh "rvm #{each} exec bundle exec rake"
   end
 end
