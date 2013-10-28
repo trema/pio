@@ -39,30 +39,30 @@ To parse an ARP frame, use the API `Pio::Arp.read` and you can access
 each field of the parsed ARP frame.
 
 ```ruby
-require "pio"
+require 'pio'
 
-arp = Pio::Arp.read( binary_data )
-arp.source_mac.to_s #=> "00:26:82:eb:ea:d1"
+arp = Pio::Arp.read(binary_data)
+arp.source_mac.to_s #=> '00:26:82:eb:ea:d1'
 ```
 
 Also you can use `Pio::Arp::Request#new` or `Pio::Arp::Reply#new` to
 generate an Arp Request/Reply frame like below:
 
 ```ruby
-require "pio"
+require 'pio'
 
 request = Pio::Arp::Request.new(
-  source_mac: "00:26:82:eb:ea:d1",
-  sender_protocol_address: "192.168.83.3",
-  target_protocol_address: "192.168.83.254"
+  source_mac: '00:26:82:eb:ea:d1',
+  sender_protocol_address: '192.168.83.3',
+  target_protocol_address: '192.168.83.254'
 )
 request.to_binary  #=> Arp Request frame in binary format.
 
 reply = Pio::Arp::Reply.new(
-  source_mac: "00:26:82:eb:ea:d1",
-  destination_mac: "00:26:82:eb:ea:d1",
-  sender_protocol_address: "192.168.83.3",
-  target_protocol_address: "192.168.83.254"
+  source_mac: '00:26:82:eb:ea:d1',
+  destination_mac: '00:26:82:eb:ea:d1',
+  sender_protocol_address: '192.168.83.3',
+  target_protocol_address: '192.168.83.254'
 )
 reply.to_binary  #=> Arp Reply frame in binary format.
 ```
@@ -73,18 +73,18 @@ To parse an LLDP frame, use the API `Pio::Lldp.read` and you can
 access each field of the parsed LLDP frame.
 
 ```ruby
-require "pio"
+require 'pio'
 
-lldp = Pio::Lldp.read( binary_data )
+lldp = Pio::Lldp.read(binary_data)
 lldp.ttl #=> 120
 ```
 
 Also you can use `Pio::Lldp#new` to generate an LLDP frame like below:
 
 ```ruby
-require "pio"
+require 'pio'
 
-lldp = Pio::Lldp.new( dpid: 0x123, port_number: 12 )
+lldp = Pio::Lldp.new(dpid: 0x123, port_number: 12)
 lldp.to_binary  #=> LLDP frame in binary format.
 ```
 
