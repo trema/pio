@@ -9,6 +9,8 @@ group :development, :test do
   gem 'fuubar', '~> 1.2.1'
   gem 'guard', '~> 1.8.3' if RUBY_VERSION < '1.9.0'
   gem 'guard', '~> 2.2.2' if RUBY_VERSION >= '1.9.0'
+  gem 'guard-bundler', '~> 1.0.0' if RUBY_VERSION < '1.9.0'
+  gem 'guard-bundler', '~> 2.0.0' if RUBY_VERSION >= '1.9.0'
   gem 'guard-rspec', '~> 3.1.0' if RUBY_VERSION < '1.9.0'
   gem 'guard-rspec', '~> 4.0.3' if RUBY_VERSION >= '1.9.0'
   gem 'json', '~> 1.8.1'
