@@ -5,6 +5,15 @@
 GitHub のリポジトリはこちら https://github.com/trema/pio
 
 * Special Dates
+** TODO Pio プチ合宿
+SCHEDULED: <2013-11-01 金 10:00-17:00>
+:LOGBOOK:
+CLOCK: [2013-10-31 木 11:26]--[2013-10-31 木 11:27] =>  0:01
+:END:
+[2013-10-31 木 11:26]
+
+場所: 京急川崎駅近くのルノアール (電源が使えて長居できる)
+http://standard.navitime.biz/renoir/AroundMapSearch.act?acode=14131&count=2
 * Notes
 ** ARP フォーマット                                                   :NOTE:
 :LOGBOOK:
