@@ -5,8 +5,8 @@
 GitHub のリポジトリはこちら https://github.com/trema/pio
 
 * Special Dates
-** TODO Pio プチ合宿
-SCHEDULED: <2013-11-01 金 10:00-17:00>
+** DONE Pio プチ合宿
+CLOSED: [2013-11-02 土 16:02] SCHEDULED: <2013-11-01 金 10:00-17:00>
 :LOGBOOK:
 CLOCK: [2013-10-31 木 11:26]--[2013-10-31 木 11:27] =>  0:01
 :END:
