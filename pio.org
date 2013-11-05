@@ -238,14 +238,6 @@ CLOCK: [2013-10-23 水 15:03]--[2013-10-23 水 15:08] =>  0:05
 CLOCK: [2013-10-23 水 10:19]--[2013-10-23 水 10:20] =>  0:01
 :END:
 [2013-10-11 金 14:32]
-*** NEXT rake flogでエラー (#6) を修正
-SCHEDULED: <2013-11-05 火>
-:LOGBOOK:
-CLOCK: [2013-11-05 火 09:12]
-:END:
-[2013-11-05 火 09:11]
-
-https://github.com/trema/pio/issues/6
 *** TODO ICMP パーサを追加
 [2013-08-02 金 17:19]
 **** DONE 近藤さんに PR 出してもらう
@@ -274,7 +266,9 @@ CLOSED: [2013-10-28 月 09:12]
 - State "WAITING"    from "TODO"       [2013-10-21 月 21:37] \\
   近藤さんに問い合わせ中．
 [2013-10-21 月 21:37]
-***** WAITING 上流をマージしてもらう                            :WAITING:
+***** DONE 上流をマージしてもらう
+CLOSED: [2013-11-05 火 10:31]
+- State "DONE"       from "WAITING"    [2013-11-05 火 10:31]
 - State "WAITING"    from "TODO"       [2013-10-28 月 09:19] \\
   近藤さんに依頼中．
   https://github.com/trema/pio/pull/4#issuecomment-27183261
@@ -282,6 +276,16 @@ CLOSED: [2013-10-28 月 09:12]
 CLOCK: [2013-10-28 月 09:19]--[2013-10-28 月 09:20] =>  0:01
 :END:
 [2013-10-28 月 09:19]
+***** WAITING ICMP テストの 1.8.7 でのシンタックスエラーを直してもらう :WAITING:
+- State "WAITING"    from "TODO"       [2013-11-05 火 10:32] \\
+  近藤さんに修正依頼中．
+:LOGBOOK:
+CLOCK: [2013-11-05 火 10:32]--[2013-11-05 火 10:33] =>  0:01
+:END:
+[2013-11-05 火 10:32]
+
+PR にコメント済み．
+https://github.com/trema/pio/pull/4#issuecomment-27737600
 *** TODO 鈴木さんルータの ARP 部分を Pio で書き直してもらう
 - State "TODO"       from "WAITING"    [2013-09-19 木 14:18]
 - State "WAITING"    from "TODO"       [2013-09-18 水 12:04] \\
@@ -311,6 +315,11 @@ CLOCK: [2013-09-29 日 21:06]--[2013-09-29 日 21:07] =>  0:01
 [2013-09-29 日 21:06]
 
 https://github.com/trema/pio/issues/1
+*** DONE rake flog のエラー (#6) を修正
+CLOSED: [2013-11-05 火 10:31] SCHEDULED: <2013-11-05 火>
+[2013-11-05 火 09:11]
+
+https://github.com/trema/pio/issues/6
 *** DONE paper-house で最近やった良さげなことを Pio にも移植
 CLOSED: [2013-10-28 月 10:42]
 [2013-10-21 月 21:47]
@@ -575,10 +584,6 @@ CLOCK: [2013-10-28 月 09:23]--[2013-10-28 月 10:15] =>  0:52
 :Effort:   0:30
 :END:
 [2013-10-28 月 09:16]
-*** NEXT Respond to NITIN AGARWAL <cs12m1007@iith.ac.in> on [trema-dev] Write packet in file in pcap format
-SCHEDULED: <2013-10-31 木>
-[2013-10-31 木 10:23]
-[[gnus:%5BGmail%5D.All%20Mail#13da7f3e-11f6-44e4-af2c-59f28ad7e737@googlegroups.com][Email from NITIN AGARWAL: {trema-dev} Write packet in fi]]
 ** TODO 0.3.1 リリース
 - State "TODO"       from "WAITING"    [2013-09-19 木 14:16]
 - State "WAITING"    from "TODO"       [2013-09-06 金 17:17] \\
