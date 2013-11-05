@@ -238,6 +238,14 @@ CLOCK: [2013-10-23 水 15:03]--[2013-10-23 水 15:08] =>  0:05
 CLOCK: [2013-10-23 水 10:19]--[2013-10-23 水 10:20] =>  0:01
 :END:
 [2013-10-11 金 14:32]
+*** NEXT rake flogでエラー (#6) を修正
+SCHEDULED: <2013-11-05 火>
+:LOGBOOK:
+CLOCK: [2013-11-05 火 09:12]
+:END:
+[2013-11-05 火 09:11]
+
+https://github.com/trema/pio/issues/6
 *** TODO ICMP パーサを追加
 [2013-08-02 金 17:19]
 **** DONE 近藤さんに PR 出してもらう
@@ -567,6 +575,10 @@ CLOCK: [2013-10-28 月 09:23]--[2013-10-28 月 10:15] =>  0:52
 :Effort:   0:30
 :END:
 [2013-10-28 月 09:16]
+*** NEXT Respond to NITIN AGARWAL <cs12m1007@iith.ac.in> on [trema-dev] Write packet in file in pcap format
+SCHEDULED: <2013-10-31 木>
+[2013-10-31 木 10:23]
+[[gnus:%5BGmail%5D.All%20Mail#13da7f3e-11f6-44e4-af2c-59f28ad7e737@googlegroups.com][Email from NITIN AGARWAL: {trema-dev} Write packet in fi]]
 ** TODO 0.3.1 リリース
 - State "TODO"       from "WAITING"    [2013-09-19 木 14:16]
 - State "WAITING"    from "TODO"       [2013-09-06 金 17:17] \\
