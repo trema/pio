@@ -74,13 +74,19 @@ http://d.hatena.ne.jp/stereocat/20131005/1380977633
 [2013-10-06 日 15:55]
 
 http://d.hatena.ne.jp/stereocat/20131006/1381028321
+** Macros and Modules                                                 :NOTE:
+:LOGBOOK:
+CLOCK: [2013-11-08 金 11:03]--[2013-11-08 金 11:06] =>  0:03
+:END:
+[2013-11-08 金 11:03]
+
+Ruby でマクロ的機能を実装する方法を解説したスクリーンキャスト．
+http://www.rubytapas.com/episodes/27-Macros-and-Modules
+
+Pio では BinData の bitxxx みたいなクラスメソッドをはじめとして
+マクロ的な書き方を多用してるので見ておくと良い．
 * Tasks
 このアイテムをそれぞれのリリースに割り振る。
-** NEXT git パスワードを省略できるように
-:PROPERTIES:
-:ID:       02BD00DD-6C97-4F3E-832A-A468ABC4A222
-:END:
-[2013-09-13 金 17:07]
 ** TODO bindata 1.6.0 の changelog をチェック
 :PROPERTIES:
 :ID:       A78CA230-2987-46F6-9992-541BCCBA6935
@@ -303,6 +309,16 @@ CLOCK: [2013-11-08 金 10:25]--[2013-11-08 金 10:26] =>  0:01
 - State "WAITING"    from "TODO"       [2013-11-08 金 10:23] \\
   ICMP パーサがコミットされてから．
 [2013-11-08 金 10:23]
+*** WAITING 鈴木さんルータで Arp と ICMP を動作確認               :WAITING:
+- State "WAITING"    from "TODO"       [2013-11-08 金 11:00] \\
+  Pio::ICMP で simple_router を書き直してから．
+:LOGBOOK:
+CLOCK: [2013-11-08 金 10:59]--[2013-11-08 金 11:00] =>  0:01
+:END:
+[2013-11-08 金 10:59]
+
+チケットはこちら:
+https://github.com/trema/pio/issues/11
 *** DONE 鈴木さんルータの ARP 部分を Pio で書き直してもらう
 CLOSED: [2013-11-08 金 10:21]
 - State "TODO"       from "WAITING"    [2013-09-19 木 14:18]
