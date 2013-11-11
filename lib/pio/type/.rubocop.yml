@@ -1,0 +1,6 @@
+AllCops:
+  Excludes:
+    - ipv4_header.rb
+    - ethernet_header.rb
+    - ip_address.rb
+    - mac_address.rb

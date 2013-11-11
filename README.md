@@ -33,6 +33,45 @@ Example
 
 Its usage is dead simple.
 
+### ICMP
+#### This repository is still not approved, DO NOT USE!!!
+To parse an ICMP frame, use the API `Pio::Icmp.read` and you can access
+each field of the parsed ICMP frame.
+
+````ruby
+require 'pio'
+icmp = Pio::Icmp.read(binary_data)
+icmp.source_mac.to_s #=> '00:26:82:eb:ea:d1'
+````
+Also you can use `Pio::Icmp::Request#new` or `Pio::Icmp::Reply#new` to
+generate an Icmp Request/Reply frame like below:
+
+```ruby
+require 'pio'
+
+request = Pio::Icmp::Request.new(
+  source_mac: '00:26:82:eb:ea:d1',
+  destination_mac: '00:26:82:eb:ea:d1',
+  ip_source_address: '192.168.83.3',
+  ip_destination_address: '192.168.83.254'
+ )
+request.to_binary  #=> ICMP Request frame in binary format.
+
+request = Pio::Icmp.read(message.data)
+reply = Pio::Icmp::Reply.new(
+  destination_mac: '00:26:82:eb:ea:d1',
+  source_mac: '00:00:00:00:00:01',
+  ip_source_address: '192.168.0.1',
+  ip_destination_address: '192.168.0.2',
+  # The ICMP Identifier and the ICMP Sequence number
+  # should be same as those of the request.
+  icmp_identifier: request.icmp_identifier,
+  icmp_sequence_number: request.icmp_sequence_number,
+  icmp_data: request.icmp_data
+)
+reply.to_binary  #=> ICMP Reply frame in binary format.
+````
+
 ### ARP
 
 To parse an ARP frame, use the API `Pio::Arp.read` and you can access

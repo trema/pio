@@ -2,12 +2,14 @@
 require 'forwardable'
 require 'pio/arp/frame'
 require 'pio/ipv4_address'
+require 'pio/message_util'
 
 module Pio
   class Arp
     # Base class of ARP Request and Reply
     class Message
       extend Forwardable
+      include MessageUtil
 
       def self.create_from(frame)
         message = allocate
@@ -35,14 +37,6 @@ module Pio
       def_delegators :@frame, :to_binary
 
       private
-
-      def option_hash
-        mandatory_options.reduce({}) do | opt, each |
-          klass = option_to_klass[each]
-          opt_pair = { each => klass.new(user_options[each]).to_a }
-          opt.merge opt_pair
-        end.merge default_options
-      end
 
       def option_to_klass
         {

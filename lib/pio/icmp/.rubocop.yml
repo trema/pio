@@ -1,0 +1,7 @@
+AllCops:
+  Excludes:
+    - message.rb
+HashSyntax:
+  EnforcedStyle: hash_rockets
+Lambda:
+  Enabled: false
