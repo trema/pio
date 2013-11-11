@@ -121,61 +121,6 @@ Pio では BinData の bitxxx みたいなクラスメソッドをはじめと�
 近藤さんがすでにコーディング中。Pull-Request が来たらいっしょにリファ
 クタリングして取り込む予定。
 * Releases
-** DONE 0.2.2 リリース
-CLOSED: [2013-09-26 木 15:34]
-:LOGBOOK:
-CLOCK: [2013-09-19 木 14:29]--[2013-09-19 木 16:39] =>  2:10
-:END:
-[2013-09-19 木 14:17]
-*** DONE IP -> IPv4Address
-SCHEDULED: <2013-09-26 木>
-[2013-09-26 木 13:33]
-*** DONE 鈴木さんの IPv4Address への PR を Pio へ誘導
-CLOSED: [2013-09-19 木 14:29] SCHEDULED: <2013-09-19 木>
-:LOGBOOK:
-CLOCK: [2013-09-19 木 14:27]--[2013-09-19 木 14:29] =>  0:02
-:END:
-- State "TODO"       from "WAITING"    [2013-09-19 木 14:18]
-- State "WAITING"    from "TODO"       [2013-09-18 水 12:05] \\
-  0.2.0 をリリースしてから。
-[2013-09-14 土 10:22]
-
-鈴木さんが trema-edge に出している PR はこちら
-https://github.com/trema/trema-edge/pull/22
-
-コメントしておいた。
-https://github.com/trema/trema-edge/pull/22#issuecomment-24717877
-*** DONE チケットを切ったことを鈴木さんに確認
-CLOSED: [2013-09-24 火 20:57] SCHEDULED: <2013-09-24 火 13:45>
-:PROPERTIES:
-:Effort:   0:05
-:END:
-[2013-09-20 金 09:26]
-** DONE 0.2.3 リリース
-CLOSED: [2013-09-26 木 15:35]
-[2013-09-26 木 15:34]
-*** DONE Trema への組込み
-CLOSED: [2013-09-26 木 15:35]
-[2013-09-26 木 15:35]
-*** DONE gem の命名規則に合わせる
-CLOSED: [2013-09-26 木 08:28] SCHEDULED: <2013-09-26 木>
-:LOGBOOK:
-CLOCK: [2013-09-26 木 08:20]--[2013-09-26 木 08:28] =>  0:08
-CLOCK: [2013-09-26 木 08:05]--[2013-09-26 木 08:06] =>  0:01
-:END:
-:PROPERTIES:
-:Effort:   0:30
-:END:
-[2013-09-26 木 08:05]
-*** DONE 明示的に spec_helper.rb をロードしてる部分をなくす
-CLOSED: [2013-09-26 木 08:18] SCHEDULED: <2013-09-26 木>
-:LOGBOOK:
-CLOCK: [2013-09-26 木 08:14]--[2013-09-26 木 08:15] =>  0:01
-:END:
-:PROPERTIES:
-:Effort:   0:30
-:END:
-[2013-09-26 木 08:14]
 ** DONE 0.2.5 リリース
 CLOSED: [2013-10-10 木 15:00]
 :LOGBOOK:
