@@ -25,7 +25,7 @@ module Pio
             :read_until => lambda { element.end_of_lldpdu? })
 
       def dpid
-        chassis_id
+        chassis_id.to_i
       end
 
       def port_description
