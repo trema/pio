@@ -151,6 +151,7 @@ module Pio
         its( "source_mac.to_s" ) { should eq "00:19:2f:a7:b2:8d" }
         its( :ether_type ) { should eq 0x88cc }
         its( :dpid ) { should eq 108173701773 }
+        its( 'dpid.class' ) { should eq Fixnum }
         its( :chassis_id ) { should eq 108173701773 }
         its( :port_id ) { should eq "Uplink to S1" }
         its( :port_number ) { should eq "Uplink to S1" }

@@ -24,7 +24,7 @@ module Pio
 
 
       def dpid
-        chassis_id
+        chassis_id.to_i
       end
 
 
