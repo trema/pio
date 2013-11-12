@@ -12,13 +12,11 @@ module Pio
             :destination_mac => destination_mac,
             :ip_source_address => ip_source_address,
             :ip_destination_address => ip_destination_address,
-            :icmp_identifier => icmp_identifier,
-            :icmp_sequence_number => icmp_sequence_number,
             :echo_data => echo_data
           )
         end
 
-        context 'With :echo_data has a string' do
+        context 'with :echo_data' do
           let(:icmp_request_dump) do
             [
               # Destination MAC
@@ -70,8 +68,6 @@ module Pio
           let(:destination_mac) { '24:db:ac:41:e5:5b' }
           let(:ip_source_address) { '192.168.1.101' }
           let(:ip_destination_address) { '8.8.8.8' }
-          let(:icmp_identifier) { 0x0100 }
-          let(:icmp_sequence_number) { 0x0001 }
           let(:echo_data) { 'abcdefghijklmnopqrstuvwabcdefghi' }
 
           context '#to_binary' do
@@ -81,19 +77,62 @@ module Pio
           end
         end
 
-        context 'With :echo_data has not data' do
-          let(:source_mac) { '24:db:ac:41:e5:5b' }
-          let(:destination_mac) { '00:26:82:eb:ea:d1' }
-          let(:ip_ttl) { 0x2d }
+        context 'with an emply :echo_data' do
+          let(:icmp_request_dump) do
+            [
+             # Destination MAC
+             0x24, 0xdb, 0xac, 0x41, 0xe5, 0x5b,
+             # Source MAC
+             0x00, 0x26, 0x82, 0xeb, 0xea, 0xd1,
+             # EtherType
+             0x08, 0x00,
+             # IP Version&IP Header Length
+             0x45,
+             # IP Type Of Service
+             0x00,
+             # IP Total Length
+             0x00, 0x32,
+             # IP Identifier
+             0x00, 0x00,
+             # IP Flag&IP Fragment
+             0x00, 0x00,
+             # IP TTL
+             0x80,
+             # IP Protocol
+             0x01,
+             # IP Header Checksum
+             0x68, 0xad,
+             # IP Source Address
+             0x08, 0x08, 0x08, 0x08,
+             # IP Destination Address
+             0xc0, 0xa8, 0x01, 0x66,
+             # ICMP Type
+             0x08,
+             # ICMP Code
+             0x00,
+             # ICMP Checksum
+             0xf6, 0xfe,
+             # ICMP Identifier
+             0x01, 0x00,
+             # ICMP Sequence Number
+             0x00, 0x01,
+             # Echo Data
+             0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+             0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+             0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+             0x00, 0x00, 0x00, 0x00
+            ]
+          end
+
+          let(:destination_mac) { '24:db:ac:41:e5:5b' }
+          let(:source_mac) { '00:26:82:eb:ea:d1' }
           let(:ip_source_address) { '8.8.8.8' }
           let(:ip_destination_address) { '192.168.1.102' }
-          let(:icmp_identifier) { 0x1000 }
-          let(:icmp_sequence_number) { 0x0001 }
           let(:echo_data) { '' }
 
-          context '#to_binary.length' do
-            it 'returns a valid ether frame with size = 64' do
-              expect(subject.to_binary.length).to eq 64
+          context '#to_binary' do
+            it 'returns an ICMP request binary string' do
+              expect(subject.to_binary.unpack('C*')).to eq icmp_request_dump
             end
           end
         end

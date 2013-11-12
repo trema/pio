@@ -18,8 +18,8 @@ module Pio
       uint8 :icmp_type
       uint8 :icmp_code, :initial_value => 0
       uint16 :icmp_checksum, :value => lambda { get_icmp_checksum }
-      uint16 :icmp_identifier
-      uint16 :icmp_sequence_number
+      uint16 :icmp_identifier, :initial_value => 0x0100
+      uint16 :icmp_sequence_number, :initial_value => 0x0001
       string :echo_data,
              :initial_value => 'DEADBEEF',
              :read_length => lambda { get_read_length }
@@ -35,7 +35,7 @@ module Pio
       def get_ip_total_length
         icmpsize = (ip_header_length * 4) + (8 + echo_data.bytesize)
         if icmpsize < 36
-          icmpsize + (36 - icmpsize)
+          50
         else
           icmpsize
         end

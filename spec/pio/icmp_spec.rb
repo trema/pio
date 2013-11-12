@@ -5,7 +5,7 @@ describe Pio::Icmp do
   context '.read' do
     subject { Pio::Icmp.read(data.pack('C*')) }
 
-    context 'With ICMP Request Frame' do
+    context 'with Icmp request frame' do
       let(:data) do
         [
           # Destination MAC
@@ -76,7 +76,7 @@ describe Pio::Icmp do
       its(:echo_data) { should eq 'abcdefghijklmnopqrstuvwabcdefghi' }
     end
 
-    context 'With ICMP Reply Frame' do
+    context 'with Icmp reply frame' do
       let(:data) do
         [
           # Destination MAC
@@ -144,7 +144,7 @@ describe Pio::Icmp do
       its(:echo_data) { should eq 'abcdefghijklmnopqrstuvwabcdefghi' }
     end
 
-    context 'With An Invalid Icmp Frame' do
+    context 'with an invalid Icmp frame' do
       let(:data) { [] }
 
       it { expect { subject }.to raise_error(Pio::ParseError) }
