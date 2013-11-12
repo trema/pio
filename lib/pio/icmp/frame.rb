@@ -62,11 +62,15 @@ module Pio
       end
 
       def icmp_2bytewise_slices
-        (([
+        (
+          (
+            [
               icmp_type * 0x100 + icmp_code,
               icmp_identifier,
               icmp_sequence_number,
-            ] << echo_data.unpack('n*'))).flatten
+            ] << echo_data.unpack('n*')
+          )
+        ).flatten
       end
 
       def ipv4_header_2bytewise_slices
