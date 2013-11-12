@@ -2,6 +2,14 @@
 # The point is for the user to remove these configuration records
 # one by one as the offences are removed from the code base.
 
+AllCops:
+  Excludes:
+    - lib/pio/icmp/message.rb
+    - lib/pio/type/ipv4_header.rb
+    - lib/pio/type/ethernet_header.rb
+    - lib/pio/type/ip_address.rb
+    - lib/pio/type/mac_address.rb
+
 HashSyntax:
   EnforcedStyle: hash_rockets
 
