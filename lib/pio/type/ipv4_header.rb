@@ -3,6 +3,7 @@ require 'pio/type/ip_address'
 
 module Pio
   module Type
+    # IP Version 4 Header Format
     module IPv4Header
       def ipv4_header(options)
         endian :big
