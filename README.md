@@ -10,9 +10,9 @@ Pio
 
 Pio is a ruby gem to easily parse and generate network packets. It supports the following packet formats:
 
+ * ICMP
  * ARP
  * LLDP
- * ICMP
  * (...currently there are just a few formats supported but I'm sure this list will grow)
 
 
