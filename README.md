@@ -66,7 +66,7 @@ reply = Pio::Icmp::Reply.new(
   # should be same as those of the request.
   icmp_identifier: request.icmp_identifier,
   icmp_sequence_number: request.icmp_sequence_number,
-  icmp_data: request.icmp_data
+  echo_data: request.echo_data
 )
 reply.to_binary  #=> ICMP Reply frame in binary format.
 ````
