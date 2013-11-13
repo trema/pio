@@ -78,7 +78,7 @@ describe Pio::Icmp::Reply do
       end
     end
 
-    context 'with an emply :echo_data' do
+    context 'with an empty :echo_data' do
       let(:icmp_reply_dump) do
         [
           # Destination MAC
