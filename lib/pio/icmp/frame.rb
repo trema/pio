@@ -38,7 +38,7 @@ module Pio
 
       def ip_packet_length
         icmpsize = (ip_header_length * 4) + (8 + echo_data.bytesize)
-        if icmpsize < MINIMAL_PACKET_LENGTH
+        if icmpsize < MINIMUM_PACKET_LENGTH
           PADDED_PACKET_LENGTH
         else
           icmpsize
@@ -115,8 +115,8 @@ module Pio
       end
 
       def to_binary
-        if num_bytes < MINIMAL_FRAME_LENGTH
-          to_binary_s + "\000" * (MINIMAL_FRAME_LENGTH - num_bytes)
+        if num_bytes < MINIMUM_FRAME_LENGTH
+          to_binary_s + "\000" * (MINIMUM_FRAME_LENGTH - num_bytes)
         else
           to_binary_s
         end
