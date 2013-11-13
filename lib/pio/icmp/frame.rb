@@ -6,56 +6,60 @@ module Pio
   class Icmp
     # Icmp frame parser.
     class Frame < BinData::Record
+
+      PADDED_PACKET_LENGTH = 50
+      MINIMAL_PACKET_LENGTH = 36
+      MINIMAL_FRAME_LENGTH = 64
+
       extend Type::EthernetHeader
       extend Type::IPv4Header
 
       endian :big
-
       ethernet_header :ether_type => 0x0800
       ipv4_header :ip_protocol => 1,
-                  :ip_header_checksum => lambda { get_ip_checksum },
-                  :ip_total_length => lambda { get_ip_total_length }
+                  :ip_header_checksum => lambda { ip_sum },
+                  :ip_total_length => lambda { ip_packet_length }
       uint8 :icmp_type
       uint8 :icmp_code, :initial_value => 0
-      uint16 :icmp_checksum, :value => lambda { get_icmp_checksum }
+      uint16 :icmp_checksum, :value => lambda { icmp_sum }
       uint16 :icmp_identifier, :initial_value => 0x0100
       uint16 :icmp_sequence_number, :initial_value => 0x0001
       string :echo_data,
              :initial_value => 'DEADBEEF',
-             :read_length => lambda { get_read_length }
+             :read_length => lambda { echo_data_length }
 
       def message_type
         icmp_type
       end
 
-      def get_read_length
+      def echo_data_length
         ip_total_length - (ip_header_length * 4 + 8)
       end
 
-      def get_ip_total_length
+      def ip_packet_length
         icmpsize = (ip_header_length * 4) + (8 + echo_data.bytesize)
-        if icmpsize < 36
-          50
+        if icmpsize < MINIMAL_PACKET_LENGTH
+          PADDED_PACKET_LENGTH
         else
           icmpsize
         end
       end
 
-      def get_icmp_checksum
-        ~((icmp_sum & 0xffff) + (icmp_sum >> 16)) & 0xffff
+      def icmp_sum
+        ~((icmp_csum & 0xffff) + (icmp_csum >> 16)) & 0xffff
       end
 
-      def icmp_sum
+      def icmp_csum
         icmp_2bytewise_slices.reduce(0) do |acc, each|
           acc + each
         end
       end
 
-      def get_ip_checksum
-        ~((ip_sum & 0xffff) + (ip_sum >> 16)) & 0xffff
+      def ip_sum
+        ~((ip_csum & 0xffff) + (ip_csum >> 16)) & 0xffff
       end
 
-      def ip_sum
+      def ip_csum
         ipv4_header_2bytewise_slices.reduce(0) do |acc, each|
           acc + each
         end
@@ -111,8 +115,8 @@ module Pio
       end
 
       def to_binary
-        if num_bytes < 64
-          to_binary_s + "\000" * (64 - num_bytes)
+        if num_bytes < MINIMAL_FRAME_LENGTH
+          to_binary_s + "\000" * (MINIMAL_FRAME_LENGTH - num_bytes)
         else
           to_binary_s
         end
