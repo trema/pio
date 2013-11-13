@@ -8,8 +8,8 @@ module Pio
     class Frame < BinData::Record
 
       PADDED_PACKET_LENGTH = 50
-      MINIMAL_PACKET_LENGTH = 36
-      MINIMAL_FRAME_LENGTH = 64
+      MINIMUM_PACKET_LENGTH = 36
+      MINIMUM_FRAME_LENGTH = 64
 
       extend Type::EthernetHeader
       extend Type::IPv4Header
