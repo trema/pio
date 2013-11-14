@@ -1,0 +1,10 @@
+AllCops:
+  Includes:
+    - lib/pio/icmp/message.rb
+    - lib/pio/type/ipv4_header.rb
+
+LineLength:
+  Enabled: false
+
+MethodLength:
+  Enabled: false

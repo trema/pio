@@ -22,6 +22,10 @@ module Pio
       mac_address :target_hardware_address
       ip_address :target_protocol_address
 
+      def message_type
+        operation
+      end
+
       def to_binary
         to_binary_s + "\000" * (64 - num_bytes)
       end
