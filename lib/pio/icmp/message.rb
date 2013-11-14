@@ -46,6 +46,7 @@ module Pio
 
       private
 
+      # rubocop:disable MethodLength
       def default_options
         {
           :ip_type_of_service => @options[:ip_type_of_service],
@@ -60,6 +61,7 @@ module Pio
           :echo_data => @options[:echo_data]
         }
       end
+      # rubocop:enable MethodLength
 
       def user_options
         @options.merge(
@@ -72,10 +74,10 @@ module Pio
 
       def mandatory_options
         [
-          :source_mac,
-          :destination_mac,
-          :ip_source_address,
-          :ip_destination_address
+         :source_mac,
+         :destination_mac,
+         :ip_source_address,
+         :ip_destination_address
         ]
       end
 

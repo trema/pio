@@ -6,7 +6,6 @@ module Pio
   class Icmp
     # Icmp frame parser.
     class Frame < BinData::Record
-
       PADDED_PACKET_LENGTH = 50
       MINIMUM_PACKET_LENGTH = 36
       MINIMUM_FRAME_LENGTH = 64
