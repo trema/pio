@@ -29,8 +29,8 @@ Features Overview
    format DSL so that it is easy to read and debug by human beings.
 
 
-Example
--------
+Examples
+--------
 
 Its usage is dead simple.
 
