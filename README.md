@@ -153,9 +153,11 @@ Documents
  * [API document generated with YARD](http://rubydoc.info/github/trema/pio/frames/file/README.md)
 
 
-### Author
+Team
+----
 
-[Yasuhito Takamiya](https://github.com/yasuhito) ([@yasuhito](http://twitter.com/yasuhito))
+ * [Yasuhito Takamiya](https://github.com/yasuhito) ([@yasuhito](https://twitter.com/yasuhito))
+ * [Eishun Kondoh](https://github.com/shun159) ([@Eishun_Kondoh](https://twitter.com/Eishun_Kondoh))
 
 ### Contributors
 
