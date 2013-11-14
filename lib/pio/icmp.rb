@@ -1,19 +1,18 @@
 # -*- coding: utf-8 -*-
-require 'English'
 require 'rubygems'
 require 'bindata'
 
-require 'pio/arp/request'
-require 'pio/arp/reply'
+require 'pio/icmp/frame'
+require 'pio/icmp/request'
+require 'pio/icmp/reply'
 require 'pio/util'
 
 module Pio
-  # ARP parser and generator.
-
-  class Arp
+  # Icmp parser and generator.
+  class Icmp
     MESSAGE_TYPE = {
-      Request::OPERATION => Request,
-      Reply::OPERATION => Reply
+      Request::TYPE => Request,
+      Reply::TYPE => Reply
     }
     class << self
       include Util

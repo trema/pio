@@ -34,7 +34,7 @@ desc 'Analyze for code complexity'
 task :flog do
   flog = Flog.new(:continue => true)
   flog.flog(*ruby_source)
-  threshold = 20
+  threshold = 28
 
   bad_methods = flog.totals.select do |name, score|
     !(/##{flog.no_method}$/ =~ name) && score > threshold
