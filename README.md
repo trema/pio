@@ -10,6 +10,7 @@ Pio
 
 Pio is a ruby gem to easily parse and generate network packets. It supports the following packet formats:
 
+ * ICMP
  * ARP
  * LLDP
  * (...currently there are just a few formats supported but I'm sure this list will grow)
@@ -28,10 +29,49 @@ Features Overview
    format DSL so that it is easy to read and debug by human beings.
 
 
-Example
--------
+Examples
+--------
 
 Its usage is dead simple.
+
+### ICMP
+
+To parse an ICMP frame, use the API `Pio::Icmp.read` and you can
+access each field of the parsed ICMP frame.
+
+```ruby
+require 'pio'
+icmp = Pio::Icmp.read(binary_data)
+icmp.source_mac.to_s #=> '00:26:82:eb:ea:d1'
+```
+
+Also you can use `Pio::Icmp::Request#new` or `Pio::Icmp::Reply#new` to
+generate an Icmp Request/Reply frame like below:
+
+```ruby
+require 'pio'
+
+request = Pio::Icmp::Request.new(
+  source_mac: '00:26:82:eb:ea:d1',
+  destination_mac: '00:26:82:eb:ea:d1',
+  ip_source_address: '192.168.83.3',
+  ip_destination_address: '192.168.83.254'
+)
+request.to_binary  #=> ICMP Request frame in binary format.
+
+reply = Pio::Icmp::Reply.new(
+  destination_mac: '00:26:82:eb:ea:d1',
+  source_mac: '00:00:00:00:00:01',
+  ip_source_address: '192.168.0.1',
+  ip_destination_address: '192.168.0.2',
+  # The ICMP Identifier and the ICMP Sequence number
+  # should be same as those of the request.
+  icmp_identifier: request.icmp_identifier,
+  icmp_sequence_number: request.icmp_sequence_number,
+  echo_data: request.echo_data
+)
+reply.to_binary  #=> ICMP Reply frame in binary format.
+```
 
 ### ARP
 
@@ -39,30 +79,30 @@ To parse an ARP frame, use the API `Pio::Arp.read` and you can access
 each field of the parsed ARP frame.
 
 ```ruby
-require "pio"
+require 'pio'
 
-arp = Pio::Arp.read( binary_data )
-arp.source_mac.to_s #=> "00:26:82:eb:ea:d1"
+arp = Pio::Arp.read(binary_data)
+arp.source_mac.to_s #=> '00:26:82:eb:ea:d1'
 ```
 
 Also you can use `Pio::Arp::Request#new` or `Pio::Arp::Reply#new` to
 generate an Arp Request/Reply frame like below:
 
 ```ruby
-require "pio"
+require 'pio'
 
 request = Pio::Arp::Request.new(
-  source_mac: "00:26:82:eb:ea:d1",
-  sender_protocol_address: "192.168.83.3",
-  target_protocol_address: "192.168.83.254"
+  source_mac: '00:26:82:eb:ea:d1',
+  sender_protocol_address: '192.168.83.3',
+  target_protocol_address: '192.168.83.254'
 )
 request.to_binary  #=> Arp Request frame in binary format.
 
 reply = Pio::Arp::Reply.new(
-  source_mac: "00:26:82:eb:ea:d1",
-  destination_mac: "00:26:82:eb:ea:d1",
-  sender_protocol_address: "192.168.83.3",
-  target_protocol_address: "192.168.83.254"
+  source_mac: '00:26:82:eb:ea:d1',
+  destination_mac: '00:26:82:eb:ea:d1',
+  sender_protocol_address: '192.168.83.3',
+  target_protocol_address: '192.168.83.254'
 )
 reply.to_binary  #=> Arp Reply frame in binary format.
 ```
@@ -73,18 +113,18 @@ To parse an LLDP frame, use the API `Pio::Lldp.read` and you can
 access each field of the parsed LLDP frame.
 
 ```ruby
-require "pio"
+require 'pio'
 
-lldp = Pio::Lldp.read( binary_data )
+lldp = Pio::Lldp.read(binary_data)
 lldp.ttl #=> 120
 ```
 
 Also you can use `Pio::Lldp#new` to generate an LLDP frame like below:
 
 ```ruby
-require "pio"
+require 'pio'
 
-lldp = Pio::Lldp.new( dpid: 0x123, port_number: 12 )
+lldp = Pio::Lldp.new(dpid: 0x123, port_number: 12)
 lldp.to_binary  #=> LLDP frame in binary format.
 ```
 
@@ -113,9 +153,11 @@ Documents
  * [API document generated with YARD](http://rubydoc.info/github/trema/pio/frames/file/README.md)
 
 
-### Author
+Team
+----
 
-[Yasuhito Takamiya](https://github.com/yasuhito) ([@yasuhito](http://twitter.com/yasuhito))
+ * [Yasuhito Takamiya](https://github.com/yasuhito) ([@yasuhito](https://twitter.com/yasuhito))
+ * [Eishun Kondoh](https://github.com/shun159) ([@Eishun_Kondoh](https://twitter.com/Eishun_Kondoh))
 
 ### Contributors
 

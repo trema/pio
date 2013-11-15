@@ -1,13 +1,13 @@
-$LOAD_PATH.unshift File.join( File.dirname( __FILE__ ), "..", "lib" )
+# -*- coding: utf-8 -*-
+$LOAD_PATH.unshift File.join(File.dirname(__FILE__), '..', 'lib')
 
-require "rubygems"
+require 'rubygems'
 
-require "simplecov"
+require 'simplecov'
 SimpleCov.start
 
-require "rspec"
-require "rspec/autorun"
-
+require 'rspec'
+require 'rspec/autorun'
 
 RSpec.configure do | config |
   config.expect_with :rspec do | c |
@@ -15,19 +15,16 @@ RSpec.configure do | config |
   end
 end
 
-
 # Requires supporting files with custom matchers and macros, etc,
 # in ./support/ and its subdirectories.
-Dir[ "#{ File.dirname( __FILE__ ) }/support/**/*.rb" ].each do | each |
-  require File.expand_path( each )
+Dir[ "#{ File.dirname(__FILE__) }/support/**/*.rb"].each do | each |
+  require File.expand_path(each)
 end
 
-
-if ENV[ "TRAVIS" ]
-  require "coveralls"
+if ENV['TRAVIS']
+  require 'coveralls'
   Coveralls.wear!
 end
-
 
 ### Local variables:
 ### mode: Ruby

@@ -1,5 +1,5 @@
-require "forwardable"
-
+# -*- coding: utf-8 -*-
+require 'forwardable'
 
 module Pio
   #
@@ -9,10 +9,8 @@ module Pio
     # Raised when Ethernet address is invalid.
     class InvalidValueError < StandardError; end
 
-
     extend Forwardable
     def_delegator :@value, :hash
-
 
     #
     # Creates a {Mac} instance that encapsulates Ethernet addresses.
@@ -25,21 +23,18 @@ module Pio
     # @param value [#to_str, #to_int] the value converted to an
     #   Ethernet address.
     #
-    def initialize value
-      begin
-        if value.respond_to?( :to_str )
-          @value = parse_mac_string( value.to_str )
-        elsif value.respond_to?( :to_int )
-          @value = value.to_int
-          validate_value_range
-        else
-          raise TypeError
-        end
-      rescue ArgumentError, TypeError
-        raise InvalidValueError, "Invalid MAC address: #{ value.inspect }"
+    def initialize(value)
+      if value.respond_to?(:to_str)
+        @value = parse_mac_string(value.to_str)
+      elsif value.respond_to?(:to_int)
+        @value = value.to_int
+        validate_value_range
+      else
+        fail TypeError
       end
+    rescue ArgumentError, TypeError
+      raise InvalidValueError, "Invalid MAC address: #{ value.inspect }"
     end
-
 
     # @!group Converters
 
@@ -55,7 +50,6 @@ module Pio
       @value
     end
 
-
     #
     # Returns the Ethernet address as 6 pairs of hexadecimal digits
     # delimited by colons.
@@ -66,9 +60,8 @@ module Pio
     # @return [String]
     #
     def to_s
-      sprintf( "%012x", @value ).unpack( "a2" * 6 ).join( ":" )
+      sprintf('%012x', @value).unpack('a2' * 6).join(':')
     end
-
 
     #
     # Implicitly converts +obj+ to a string.
@@ -85,24 +78,23 @@ module Pio
       to_s
     end
 
-
     #
     # Returns an Array of decimal numbers converted from Ethernet's
     # address string format.
     #
     # @example
-    #   Mac.new("11:22:33:44:55:66").to_a #=> [0x11, 0x22, 0x33, 0x44, 0x55, 0x66]
+    #   Mac.new("11:22:33:44:55:66").to_a
+    #   #=> [0x11, 0x22, 0x33, 0x44, 0x55, 0x66]
     #
     # @return [Array]
     #
     def to_a
-      to_s.split( ":" ).collect do | each |
+      to_s.split(':').map do | each |
         each.hex
       end
     end
 
     # @!endgroup
-
 
     # @!group Predicates
 
@@ -114,9 +106,8 @@ module Pio
     #   Mac.new("00:00:00:00:00:00").multicast? #=> false
     #
     def multicast?
-      to_a[ 0 ] & 1 == 1
+      to_a[0] & 1 == 1
     end
-
 
     #
     # Returns true if Ethernet address is a broadcast address.
@@ -127,7 +118,6 @@ module Pio
     def broadcast?
       to_a.all? { | each | each == 0xff }
     end
-
 
     #
     # Returns +true+ if Ethernet address is an IEEE 802.1D or 802.1Q
@@ -140,11 +130,10 @@ module Pio
     #   Mac.new("11:22:33:44:55:66").reserved? #=> false
     #
     def reserved?
-      ( to_i >> 8 ) == 0x0180c20000
+      ( to_i >> 8) == 0x0180c20000
     end
 
     # @!endgroup
-
 
     # @!group Equality
 
@@ -165,14 +154,11 @@ module Pio
     #
     # @return [Boolean]
     #
-    def == other
-      begin
-        to_i == Mac.new( other ).to_i
-      rescue InvalidValueError
-        false
-      end
+    def ==(other)
+      to_i == Mac.new(other).to_i
+    rescue InvalidValueError
+      false
     end
-
 
     #
     # Returns +true+ if +obj+ and +other+ refer to the same hash key.
@@ -190,12 +176,11 @@ module Pio
     #
     # @see #==
     #
-    def eql? other
-      self.== other
+    def eql?(other)
+      self == other
     end
 
     # @!endgroup
-
 
     # @!group Debug
 
@@ -211,30 +196,22 @@ module Pio
 
     # @!endgroup
 
-
-    ################################################################################
     private
-    ################################################################################
 
-
-    def parse_mac_string mac
-      octet_regex = "[0-9a-fA-F][0-9a-fA-F]"
-      if /^(#{ octet_regex }:){5}(#{ octet_regex })$/=~ mac
-        mac.gsub( ":", "" ).hex
+    def parse_mac_string(mac)
+      octet_regex = '[0-9a-fA-F][0-9a-fA-F]'
+      if /^(#{ octet_regex }:){5}(#{ octet_regex })$/ =~ mac
+        mac.gsub(':', '').hex
       else
-        raise ArgumentError
+        fail ArgumentError
       end
     end
 
-
     def validate_value_range
-      unless ( @value >= 0 and @value <= 0xffffffffffff )
-        raise ArgumentError
-      end
+      fail ArgumentError unless @value >= 0 && @value <= 0xffffffffffff
     end
   end
 end
-
 
 ### Local variables:
 ### mode: Ruby

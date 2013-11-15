@@ -1,7 +1,7 @@
-require "forwardable"
-require "pio/arp/message"
-require "pio/mac"
-
+# -*- coding: utf-8 -*-
+require 'forwardable'
+require 'pio/arp/message'
+require 'pio/mac'
 
 module Pio
   class Arp
@@ -9,11 +9,7 @@ module Pio
     class Reply < Message
       OPERATION = 2
 
-
-      ##########################################################################
       private
-      ##########################################################################
-
 
       def default_options
         {
@@ -21,16 +17,12 @@ module Pio
         }
       end
 
-
       def user_options
         @options.merge(
-          {
-            :sender_hardware_address => @options[ :source_mac ],
-            :target_hardware_address => @options[ :destination_mac ]
-          }
+          :sender_hardware_address => @options[:source_mac],
+          :target_hardware_address => @options[:destination_mac]
         )
       end
-
 
       def mandatory_options
         [
@@ -45,7 +37,6 @@ module Pio
     end
   end
 end
-
 
 ### Local variables:
 ### mode: Ruby

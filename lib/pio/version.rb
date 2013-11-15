@@ -1,9 +1,9 @@
+# -*- coding: utf-8 -*-
 # Base module.
 module Pio
   # gem version.
-  VERSION = "0.2.7"
+  VERSION = '0.3.0'
 end
-
 
 ### Local variables:
 ### mode: Ruby

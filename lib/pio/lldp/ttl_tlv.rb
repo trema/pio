@@ -1,6 +1,6 @@
-require "rubygems"
-require "bindata"
-
+# -*- coding: utf-8 -*-
+require 'rubygems'
+require 'bindata'
 
 module Pio
   class Lldp
@@ -12,19 +12,16 @@ module Pio
       bit9 :tlv_info_length, :value => 2
       string :ttl, :read_length => :tlv_info_length
 
-
       def get
-        BinData::Int16be.read( ttl )
+        BinData::Int16be.read(ttl)
       end
 
-
-      def set value
-        self.ttl = BinData::Int16be.new( value ).to_binary_s
+      def set(value)
+        self.ttl = BinData::Int16be.new(value).to_binary_s
       end
     end
   end
 end
-
 
 ### Local variables:
 ### mode: Ruby

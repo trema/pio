@@ -1,7 +1,7 @@
-require "pio/type/ethernet_header"
-require "pio/type/ip_address"
-require "pio/type/mac_address"
-
+# -*- coding: utf-8 -*-
+require 'pio/type/ethernet_header'
+require 'pio/type/ip_address'
+require 'pio/type/mac_address'
 
 module Pio
   class Arp
@@ -22,14 +22,16 @@ module Pio
       mac_address :target_hardware_address
       ip_address :target_protocol_address
 
+      def message_type
+        operation
+      end
 
       def to_binary
-        to_binary_s + "\000" * ( 64 - num_bytes )
+        to_binary_s + "\000" * (64 - num_bytes)
       end
     end
   end
 end
-
 
 ### Local variables:
 ### mode: Ruby

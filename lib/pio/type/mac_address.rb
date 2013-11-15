@@ -1,6 +1,6 @@
-require "bindata"
-require "pio/mac"
-
+# -*- coding: utf-8 -*-
+require 'bindata'
+require 'pio/mac'
 
 module Pio
   module Type
@@ -8,19 +8,18 @@ module Pio
     class MacAddress < BinData::Primitive
       array :octets, :type => :uint8, :initial_length => 6
 
-
-      def set value
+      def set(value)
         self.octets = value
       end
 
-
       def get
-        Mac.new( octets.inject( "" ) { | str, each | str + ( "%02x" % each ) }.hex )
+        Mac.new(octets.reduce('') do |str, each|
+                  str + sprintf('%02x', each)
+                end.hex)
       end
     end
   end
 end
-
 
 ### Local variables:
 ### mode: Ruby

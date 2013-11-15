@@ -1,6 +1,6 @@
-require "rubygems"
-require "bindata"
-
+# -*- coding: utf-8 -*-
+require 'rubygems'
+require 'bindata'
 
 module Pio
   class Lldp
@@ -13,7 +13,6 @@ module Pio
       uint8 :subtype, :initial_value => 7
       string :port_id, :read_length => lambda { tlv_info_length - 1 }
 
-
       def get
         tmp_id = port_id
 
@@ -24,10 +23,9 @@ module Pio
         end
       end
 
-
-      def set value
-        self.port_id = if value.kind_of?( Fixnum ) and subtype == 7
-                         BinData::Uint32be.new( value ).to_binary_s
+      def set(value)
+        self.port_id = if subtype == 7
+                         BinData::Uint32be.new(value).to_binary_s
                        else
                          value
                        end
@@ -35,7 +33,6 @@ module Pio
     end
   end
 end
-
 
 ### Local variables:
 ### mode: Ruby

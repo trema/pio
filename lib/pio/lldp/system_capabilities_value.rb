@@ -1,6 +1,6 @@
-require "rubygems"
-require "bindata"
-
+# -*- coding: utf-8 -*-
+require 'rubygems'
+require 'bindata'
 
 module Pio
   class Lldp
@@ -13,7 +13,6 @@ module Pio
     end
   end
 end
-
 
 ### Local variables:
 ### mode: Ruby
