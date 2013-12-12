@@ -58,7 +58,14 @@ end
 if RUBY_VERSION >= '1.9.0'
   task :quality => :rubocop
   require 'rubocop/rake_task'
-  Rubocop::RakeTask.new
+  Rubocop::RakeTask.new do |task|
+    task.patterns = %w(lib/**/*.rb
+                       spec/**/*.rb
+                       Rakefile
+                       Gemfile
+                       Guardfile
+                       pio.gemspec)
+  end
 end
 
 YARD::Rake::YardocTask.new do |t|
