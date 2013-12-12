@@ -941,3 +941,79 @@ CLOCK: [2013-09-26 木 08:14]--[2013-09-26 木 08:15] =>  0:01
 :Effort:   0:30
 :END:
 [2013-09-26 木 08:14]
+
+** DONE 0.2.5 リリース
+CLOSED: [2013-10-10 木 15:00]
+:LOGBOOK:
+CLOCK: [2013-09-26 木 13:31]--[2013-09-26 木 13:32] =>  0:01
+:END:
+:PROPERTIES:
+:ARCHIVE_TIME: 2013-12-12 木 10:28
+:ARCHIVE_FILE: ~/play/pio/pio.org
+:ARCHIVE_OLPATH: Releases
+:ARCHIVE_CATEGORY: pio
+:ARCHIVE_TODO: DONE
+:ARCHIVE_ITAGS: PIO
+:END:
+[2013-09-26 木 13:31]
+*** DONE Trema::Mac を Pio::Mac で置き換え
+CLOSED: [2013-10-10 木 14:57] SCHEDULED: <2013-10-10 木>
+:LOGBOOK:
+CLOCK: [2013-10-10 木 11:38]--[2013-10-10 木 13:30] =>  1:52
+:END:
+[2013-10-03 木 09:04]
+**** DONE Trema ソースコード内の Trema::Mac を Pio::Mac で置換
+CLOSED: [2013-10-10 木 13:42]
+[2013-10-03 木 09:05]
+**** DONE Trema::Mac のテストコードを削除
+CLOSED: [2013-10-10 木 13:42]
+:LOGBOOK:
+CLOCK: [2013-10-03 木 09:06]--[2013-10-03 木 09:07] =>  0:01
+:END:
+[2013-10-03 木 09:06]
+**** DONE cruise.rb が通ることを確認
+CLOSED: [2013-10-10 木 14:57]
+[2013-10-03 木 09:08]
+*** DONE Pio::Mac のYARD コメントでダブってるやつは @see にする
+CLOSED: [2013-10-10 木 13:37] SCHEDULED: <2013-10-10 木>
+:LOGBOOK:
+CLOCK: [2013-10-10 木 13:30]--[2013-10-10 木 13:37] =>  0:07
+CLOCK: [2013-10-07 月 10:23]--[2013-10-07 月 10:24] =>  0:01
+:END:
+[2013-10-07 月 10:23]
+
+=#to_a= と =#to_ary= のコメントとか．
+
+** DONE 0.2.6 リリース
+CLOSED: [2013-10-21 月 21:19]
+:PROPERTIES:
+:ARCHIVE_TIME: 2013-12-12 木 10:28
+:ARCHIVE_FILE: ~/play/pio/pio.org
+:ARCHIVE_OLPATH: Releases
+:ARCHIVE_CATEGORY: pio
+:ARCHIVE_TODO: DONE
+:ARCHIVE_ITAGS: PIO
+:END:
+[2013-10-10 木 13:37]
+*** DONE Pio::Mac のリファクタリング
+CLOSED: [2013-10-11 金 13:31] SCHEDULED: <2013-10-11 金>
+:LOGBOOK:
+CLOCK: [2013-10-11 金 09:39]--[2013-10-11 金 12:16] =>  2:37
+:END:
+:PROPERTIES:
+:ID:       64F5FB3B-FC7A-4537-8A0C-0265C6EAADAB
+:END:
+[2013-10-11 金 09:37]
+
+- YARD コメント
+- RSpec
+- いらないメソッドの削除
+など．
+*** DONE おかしな MAC アドレスはすべて InvalidMAC 例外にまとめる
+CLOSED: [2013-10-11 金 13:31]
+:LOGBOOK:
+CLOCK: [2013-10-07 月 10:22]--[2013-10-07 月 10:23] =>  0:01
+:END:
+[2013-10-07 月 10:22]
+
+ファイルは lib/pio/mac.rb
