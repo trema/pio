@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 require 'bundler/gem_tasks'
 require 'coveralls/rake/task'
 require 'flay'
