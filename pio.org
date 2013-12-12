@@ -597,6 +597,7 @@ CLOCK: [2013-11-15 金 09:38]--[2013-11-15 金 09:40] =>  0:02
 今は一時的に github を直接見る Gemfile になってる．
 ** TODO 0.3.1 リリース
 :LOGBOOK:
+CLOCK: [2013-12-12 木 15:45]--[2013-12-12 木 15:46] =>  0:01
 CLOCK: [2013-12-12 木 11:32]--[2013-12-12 木 11:39] =>  0:07
 :END:
 - State "TODO"       from "WAITING"    [2013-09-19 木 14:16]
@@ -659,10 +660,10 @@ CLOCK: [2013-12-12 木 11:25]--[2013-12-12 木 11:32] =>  0:07
 :END:
 [2013-12-12 木 11:25]
 
-*** NEXT Respond to Travis CI <notifications@travis-ci.org> on [Broken] trema/pio#165 (develop - 79b3bee)
-SCHEDULED: <2013-12-12 木>
+*** DONE Respond to Travis CI <notifications@travis-ci.org> on [Broken] trema/pio#165 (develop - 79b3bee)
+CLOSED: [2013-12-12 木 15:45] SCHEDULED: <2013-12-12 木>
 :LOGBOOK:
-CLOCK: [2013-12-12 木 15:30]
+CLOCK: [2013-12-12 木 15:30]--[2013-12-12 木 15:45] =>  0:15
 :END:
 [2013-12-12 木 15:28]
 [[gnus:%5BGmail%5D.All%20Mail#52a921751b580_25ed6377786@2f551007-1e47-441a-a7a2-1e98feef45d6.mail][Email from Travis CI: {Broken} trema/pio#165 (develo]]
