@@ -10,12 +10,6 @@ module Pio
       extend Forwardable
       include MessageUtil
 
-      def self.create_from(frame)
-        message = allocate
-        message.instance_variable_set :@frame, frame
-        message
-      end
-
       def initialize(options)
         @options = options
         @frame = Icmp::Frame.new(option_hash)
@@ -45,6 +39,12 @@ module Pio
       def_delegators :@frame, :to_binary
 
       private
+
+      def self.create_from(frame)
+        message = allocate
+        message.instance_variable_set :@frame, frame
+        message
+      end
 
       # rubocop:disable MethodLength
       def default_options

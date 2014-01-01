@@ -48,14 +48,24 @@ module Pio
         ~((icmp_csum & 0xffff) + (icmp_csum >> 16)) & 0xffff
       end
 
+      def ip_sum
+        ~((ip_csum & 0xffff) + (ip_csum >> 16)) & 0xffff
+      end
+
+      def to_binary
+        if num_bytes < MINIMUM_FRAME_LENGTH
+          to_binary_s + "\000" * (MINIMUM_FRAME_LENGTH - num_bytes)
+        else
+          to_binary_s
+        end
+      end
+
+      private
+
       def icmp_csum
         icmp_2bytewise_slices.reduce(0) do |acc, each|
           acc + each
         end
-      end
-
-      def ip_sum
-        ~((ip_csum & 0xffff) + (ip_csum >> 16)) & 0xffff
       end
 
       def ip_csum
@@ -111,14 +121,6 @@ module Pio
 
       def ipttl_ipproto
         ip_ttl << 8 | ip_protocol
-      end
-
-      def to_binary
-        if num_bytes < MINIMUM_FRAME_LENGTH
-          to_binary_s + "\000" * (MINIMUM_FRAME_LENGTH - num_bytes)
-        else
-          to_binary_s
-        end
       end
     end
   end
