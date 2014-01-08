@@ -5,15 +5,6 @@
 GitHub のリポジトリはこちら https://github.com/trema/pio
 
 * Special Dates
-** DONE Pio プチ合宿
-CLOSED: [2013-11-02 土 16:02] SCHEDULED: <2013-11-01 金 10:00-17:00>
-:LOGBOOK:
-CLOCK: [2013-10-31 木 11:26]--[2013-10-31 木 11:27] =>  0:01
-:END:
-[2013-10-31 木 11:26]
-
-場所: 京急川崎駅近くのルノアール (電源が使えて長居できる)
-http://standard.navitime.biz/renoir/AroundMapSearch.act?acode=14131&count=2
 * Notes
 ** ARP フォーマット                                                   :NOTE:
 :LOGBOOK:
@@ -131,470 +122,38 @@ CLOCK: [2013-11-15 金 09:54]--[2013-11-15 金 09:57] =>  0:03
 ペして GitHub のイシューに貼れば，こちらで簡単に解析できる．
 ** TODO ワンボタンリリース用 rake タスクを実装
 [2013-11-27 水 14:39]
+** DONE Respond to Eishun Kondoh <notifications@github.com> on Re: [pio] Many objects are undocumented. (#16)
+CLOSED: [2014-01-07 火 09:41] SCHEDULED: <2014-01-07 火>
+:PROPERTIES:
+:Effort:   0:15
+:END:
+[2014-01-06 月 09:55]
+[[gnus:%5BGmail%5D.All%20Mail#trema/pio/issues/16/31417774@github.com][Email from Eishun Kondoh: Re: {pio} Many objects are und]]
+** DONE Respond to Eishun Kondoh <notifications@github.com> on Re: [pio] Reviewed Method Access Control. (#17)
+CLOSED: [2014-01-08 水 17:12] SCHEDULED: <2014-01-08 水>
+:LOGBOOK:
+CLOCK: [2014-01-08 水 17:09]--[2014-01-08 水 17:12] =>  0:03
+:END:
+:PROPERTIES:
+:Effort:   0:15
+:END:
+[2014-01-08 水 09:10]
+[[gnus:%5BGmail%5D.All%20Mail#trema/pio/pull/17/c31708682@github.com][Email from Eishun Kondoh: Re: {pio} Reviewed Method Acce]]
+** DONE Respond to Eishun Kondoh <notifications@github.com> on Re: [pio] Reviewed Method Access Control. (#17)
+CLOSED: [2014-01-08 水 17:13] SCHEDULED: <2014-01-08 水>
+:PROPERTIES:
+:Effort:   0:15
+:END:
+[2014-01-08 水 09:13]
+[[gnus:%5BGmail%5D.All%20Mail#trema/pio/pull/17/c31708430@github.com][Email from Eishun Kondoh: Re: {pio} Reviewed Method Acce]]
+** DONE Respond to stereocat <notifications@github.com> on Re: [pio] DHCP Optional Field の種類 (#18)
+CLOSED: [2014-01-08 水 17:13] SCHEDULED: <2014-01-08 水>
+:PROPERTIES:
+:Effort:   0:15
+:END:
+[2014-01-08 水 09:13]
+[[gnus:%5BGmail%5D.All%20Mail#trema/pio/issues/18/31739103@github.com][Email from stereocat: Re: {pio} DHCP Optional Field ]]
 * Releases
-** DONE 0.3.0 リリース
-CLOSED: [2013-11-15 金 09:40] DEADLINE: <2013-11-15 金>
-:LOGBOOK:
-CLOCK: [2013-11-15 金 09:36]--[2013-11-15 金 09:38] =>  0:02
-CLOCK: [2013-11-15 金 09:24]--[2013-11-15 金 09:35] =>  0:11
-CLOCK: [2013-11-14 木 13:34]--[2013-11-14 木 13:38] =>  0:04
-CLOCK: [2013-11-14 木 13:15]--[2013-11-14 木 13:34] =>  0:19
-CLOCK: [2013-11-14 木 11:08]--[2013-11-14 木 12:16] =>  1:08
-CLOCK: [2013-11-14 木 11:07]--[2013-11-14 木 11:08] =>  0:01
-CLOCK: [2013-11-14 木 10:40]--[2013-11-14 木 10:53] =>  0:13
-CLOCK: [2013-11-14 木 10:23]--[2013-11-14 木 10:28] =>  0:05
-CLOCK: [2013-10-28 月 10:42]--[2013-10-28 月 10:45] =>  0:03
-CLOCK: [2013-10-28 月 10:15]--[2013-10-28 月 10:16] =>  0:01
-CLOCK: [2013-10-23 水 15:40]--[2013-10-23 水 15:41] =>  0:01
-CLOCK: [2013-10-23 水 15:03]--[2013-10-23 水 15:08] =>  0:05
-CLOCK: [2013-10-23 水 10:19]--[2013-10-23 水 10:20] =>  0:01
-:END:
-[2013-10-11 金 14:32]
-*** DONE 鈴木さんルータで Arp と ICMP を動作確認
-CLOSED: [2013-11-14 木 19:03]
-- State "NEXT"       from "WAITING"    [2013-11-14 木 10:24]
-- State "WAITING"    from "TODO"       [2013-11-08 金 11:00] \\
-  Pio::ICMP で simple_router を書き直してから．
-:LOGBOOK:
-CLOCK: [2013-11-08 金 10:59]--[2013-11-08 金 11:00] =>  0:01
-:END:
-[2013-11-08 金 10:59]
-
-チケットはこちら．現在近藤さんに依頼中．
-https://github.com/trema/pio/issues/11
-*** DONE rubocop の設定をリファクタリング
-CLOSED: [2013-11-14 木 13:15] SCHEDULED: <2013-11-14 木>
-:LOGBOOK:
-CLOCK: [2013-11-14 木 13:14]--[2013-11-14 木 13:15] =>  0:01
-:END:
-:PROPERTIES:
-:Effort:   0:30
-:END:
-[2013-11-14 木 11:08]
-*** DONE ICMP パーサを追加
-CLOSED: [2013-11-14 木 10:24]
-:LOGBOOK:
-CLOCK: [2013-11-14 木 09:48]--[2013-11-14 木 09:51] =>  0:03
-CLOCK: [2013-11-13 水 11:12]--[2013-11-13 水 11:16] =>  0:04
-CLOCK: [2013-11-12 火 09:36]--[2013-11-12 火 09:48] =>  0:12
-:END:
-[2013-08-02 金 17:19]
-**** DONE 近藤さんに PR 出してもらう
-CLOSED: [2013-10-21 月 21:20]
-- State "DONE"       from "WAITING"    [2013-10-21 月 21:20]
-- State "WAITING"    from "TODO"       [2013-10-07 月 08:56] \\
-  近藤さんが PR の準備中．
-:LOGBOOK:
-CLOCK: [2013-10-03 木 09:10]--[2013-10-03 木 09:12] =>  0:02
-:END:
-[2013-10-03 木 09:10]
-
-開発は PR で追跡することにする．マージが可能な状態かとか，テスト成功/失
-敗も見えるし．
-**** DONE PR のエラーを直してもらう
-CLOSED: [2013-11-08 金 10:22]
-:LOGBOOK:
-CLOCK: [2013-10-21 月 21:26]--[2013-10-21 月 21:35] =>  0:09
-:END:
-[2013-10-21 月 21:26]
-
-Travis で 1.9.3 でエラーが出ている．
-https://github.com/trema/pio/pull/4
-***** DONE Invalid UTF-8 な箇所の確認
-CLOSED: [2013-10-28 月 09:12]
-- State "DONE"       from "WAITING"    [2013-10-28 月 09:12]
-- State "WAITING"    from "TODO"       [2013-10-21 月 21:37] \\
-  近藤さんに問い合わせ中．
-[2013-10-21 月 21:37]
-***** DONE 上流をマージしてもらう
-CLOSED: [2013-11-05 火 10:31]
-- State "DONE"       from "WAITING"    [2013-11-05 火 10:31]
-- State "WAITING"    from "TODO"       [2013-10-28 月 09:19] \\
-  近藤さんに依頼中．
-  https://github.com/trema/pio/pull/4#issuecomment-27183261
-:LOGBOOK:
-CLOCK: [2013-10-28 月 09:19]--[2013-10-28 月 09:20] =>  0:01
-:END:
-[2013-10-28 月 09:19]
-***** DONE ICMP テストの 1.8.7 でのシンタックスエラーを直してもらう
-CLOSED: [2013-11-08 金 10:22]
-- State "DONE"       from "WAITING"    [2013-11-08 金 10:22]
-- State "WAITING"    from "TODO"       [2013-11-05 火 10:32] \\
-  近藤さんに修正依頼中．
-:LOGBOOK:
-CLOCK: [2013-11-05 火 10:32]--[2013-11-05 火 10:33] =>  0:01
-:END:
-[2013-11-05 火 10:32]
-
-PR にコメント済み．
-https://github.com/trema/pio/pull/4#issuecomment-27737600
-**** DONE 近藤さんに PR を出してもらう
-CLOSED: [2013-11-12 火 09:07]
-- State "DONE"       from "WAITING"    [2013-11-12 火 09:07]
-- State "WAITING"    from "TODO"       [2013-11-08 金 10:26] \\
-  近藤さんが作業中．
-:LOGBOOK:
-CLOCK: [2013-11-08 金 10:25]--[2013-11-08 金 10:26] =>  0:01
-:END:
-[2013-11-08 金 10:25]
-
-テストはすべて通ったので，最後にリファクタリングをしてもらって PR して
-もらう．
-**** DONE 近藤さん PR のレビュー
-CLOSED: [2013-11-12 火 09:36] SCHEDULED: <2013-11-12 火>
-:LOGBOOK:
-CLOCK: [2013-11-12 火 09:08]--[2013-11-12 火 09:36] =>  0:28
-:END:
-:PROPERTIES:
-:Effort:   1:00
-:END:
-[2013-11-12 火 09:07]
-**** DONE 近藤さんの PR をレビュー
-CLOSED: [2013-11-13 水 11:12] SCHEDULED: <2013-11-13 水>
-:LOGBOOK:
-CLOCK: [2013-11-13 水 10:30]--[2013-11-13 水 11:12] =>  0:42
-CLOCK: [2013-11-13 水 10:06]--[2013-11-13 水 10:07] =>  0:01
-:END:
-:PROPERTIES:
-:Effort:   0:30
-:END:
-[2013-11-13 水 10:06]
-**** DONE Respond to Eishun Kondoh <notifications@github.com> on Re: [pio] Added ICMP Parser And Generator (#13)
-CLOSED: [2013-11-14 木 09:41] SCHEDULED: <2013-11-14 木>
-[2013-11-14 木 09:23]
-[[gnus:%5BGmail%5D.All%20Mail#trema/pio/pull/13/c28378722@github.com][Email from Eishun Kondoh: Re: {pio} Added ICMP Parser An]]
-**** DONE 近藤さん PR の最終チェック
-CLOSED: [2013-11-14 木 09:48] SCHEDULED: <2013-11-14 木>
-:LOGBOOK:
-CLOCK: [2013-11-14 木 09:42]--[2013-11-14 木 09:48] =>  0:06
-CLOCK: [2013-11-14 木 09:41]--[2013-11-14 木 09:42] =>  0:01
-:END:
-:PROPERTIES:
-:Effort:   0:30
-:END:
-[2013-11-14 木 09:41]
-*** DONE 鈴木さんルータの ICMP 部分を Pio で書き直す
-CLOSED: [2013-11-14 木 10:23] SCHEDULED: <2013-11-14 木>
-:LOGBOOK:
-CLOCK: [2013-11-14 木 09:51]--[2013-11-14 木 10:23] =>  0:32
-:END:
-- State "NEXT"       from "WAITING"    [2013-11-14 木 09:50]
-- State "WAITING"    from "TODO"       [2013-11-08 金 10:23] \\
-  ICMP パーサがコミットされてから．
-:PROPERTIES:
-:Effort:   0:30
-:END:
-[2013-11-08 金 10:23]
-*** DONE 鈴木さんルータの ARP 部分を Pio で書き直してもらう
-CLOSED: [2013-11-08 金 10:21]
-- State "TODO"       from "WAITING"    [2013-09-19 木 14:18]
-- State "WAITING"    from "TODO"       [2013-09-18 水 12:04] \\
-  ARP のコードが実機で動いてから
-:LOGBOOK:
-CLOCK: [2013-09-14 土 10:20]--[2013-09-14 土 10:21] =>  0:01
-:END:
-:PROPERTIES:
-:ID:       DE2EF581-A77C-4CF9-8948-27B2DA269A68
-:END:
-[2013-09-14 土 10:20]
-
-GitHub のチケットはこちら:
-https://github.com/trema/pio/issues/1
-**** DONE 鈴木さんルータの ARP 部分を試しに自分で書き直してみる
-CLOSED: [2013-11-08 金 10:21] SCHEDULED: <2013-10-10 木>
-:PROPERTIES:
-:Effort:   1:00
-:ID:       A7F9E149-085E-43F1-B721-98E074F2F02A
-:END:
-[2013-10-04 金 08:39]
-**** DONE 鈴木さんに ping
-CLOSED: [2013-10-01 火 12:29] SCHEDULED: <2013-10-01 火>
-:LOGBOOK:
-CLOCK: [2013-09-29 日 21:06]--[2013-09-29 日 21:07] =>  0:01
-:END:
-[2013-09-29 日 21:06]
-
-https://github.com/trema/pio/issues/1
-*** DONE rake flog のエラー (#6) を修正
-CLOSED: [2013-11-05 火 10:31] SCHEDULED: <2013-11-05 火>
-[2013-11-05 火 09:11]
-
-https://github.com/trema/pio/issues/6
-*** DONE paper-house で最近やった良さげなことを Pio にも移植
-CLOSED: [2013-10-28 月 10:42]
-[2013-10-21 月 21:47]
-**** DONE rubocop でコーディングスタイルを統一
-CLOSED: [2013-10-23 水 15:03]
-:LOGBOOK:
-CLOCK: [2013-10-23 水 14:45]--[2013-10-23 水 15:03] =>  0:18
-CLOCK: [2013-10-23 水 14:21]--[2013-10-23 水 14:23] =>  0:02
-CLOCK: [2013-10-23 水 14:17]--[2013-10-23 水 14:18] =>  0:01
-CLOCK: [2013-10-23 水 14:14]--[2013-10-23 水 14:17] =>  0:03
-CLOCK: [2013-10-23 水 14:11]--[2013-10-23 水 14:12] =>  0:01
-CLOCK: [2013-10-23 水 14:05]--[2013-10-23 水 14:08] =>  0:03
-CLOCK: [2013-10-23 水 13:52]--[2013-10-23 水 13:54] =>  0:02
-CLOCK: [2013-10-23 水 13:48]--[2013-10-23 水 13:49] =>  0:01
-CLOCK: [2013-10-23 水 13:46]--[2013-10-23 水 13:48] =>  0:02
-CLOCK: [2013-10-23 水 13:43]--[2013-10-23 水 13:44] =>  0:01
-CLOCK: [2013-10-23 水 13:39]--[2013-10-23 水 13:43] =>  0:04
-CLOCK: [2013-10-23 水 13:28]--[2013-10-23 水 13:32] =>  0:04
-CLOCK: [2013-10-23 水 12:06]--[2013-10-23 水 12:12] =>  0:06
-CLOCK: [2013-10-23 水 11:48]--[2013-10-23 水 11:53] =>  0:05
-CLOCK: [2013-10-23 水 11:42]--[2013-10-23 水 11:46] =>  0:04
-CLOCK: [2013-10-23 水 11:39]--[2013-10-23 水 11:40] =>  0:01
-CLOCK: [2013-10-23 水 11:11]--[2013-10-23 水 11:26] =>  0:15
-CLOCK: [2013-10-23 水 11:01]--[2013-10-23 水 11:09] =>  0:08
-CLOCK: [2013-10-23 水 10:58]--[2013-10-23 水 10:59] =>  0:01
-CLOCK: [2013-10-23 水 10:53]--[2013-10-23 水 10:55] =>  0:02
-CLOCK: [2013-10-23 水 10:50]--[2013-10-23 水 10:51] =>  0:01
-CLOCK: [2013-10-23 水 10:45]--[2013-10-23 水 10:47] =>  0:02
-CLOCK: [2013-10-23 水 10:39]--[2013-10-23 水 10:40] =>  0:01
-CLOCK: [2013-10-23 水 10:34]--[2013-10-23 水 10:39] =>  0:05
-CLOCK: [2013-10-23 水 10:15]--[2013-10-23 水 10:16] =>  0:01
-CLOCK: [2013-10-23 水 10:02]--[2013-10-23 水 10:04] =>  0:02
-CLOCK: [2013-10-23 水 10:00]--[2013-10-23 水 10:02] =>  0:02
-CLOCK: [2013-10-21 月 21:42]--[2013-10-21 月 21:43] =>  0:01
-:END:
-[2013-10-21 月 21:42]
-***** DONE Pio に rubocop の設定ファイル一式を追加する [3/3]
-CLOSED: [2013-10-23 水 10:00] SCHEDULED: <2013-10-23 水>
-:LOGBOOK:
-CLOCK: [2013-10-23 水 09:41]--[2013-10-23 水 10:00] =>  0:19
-:END:
-:PROPERTIES:
-:Effort:   1:00
-:END:
-[2013-10-21 月 21:43]
-
-- [X] Gemfile
-- [X] rubocop の設定ファイル
-- [X] Rakefile
-***** DONE 1.9.3 での rubocop エラーを修正
-CLOSED: [2013-10-23 水 10:15] SCHEDULED: <2013-10-23 水>
-:LOGBOOK:
-CLOCK: [2013-10-23 水 10:04]--[2013-10-23 水 10:15] =>  0:11
-:END:
-:PROPERTIES:
-:Effort:   0:30
-:END:
-[2013-10-23 水 10:04]
-***** DONE rubocop の EmptyLines 警告を直す
-CLOSED: [2013-10-23 水 10:34] SCHEDULED: <2013-10-23 水>
-:LOGBOOK:
-CLOCK: [2013-10-23 水 10:20]--[2013-10-23 水 10:34] =>  0:14
-:END:
-:PROPERTIES:
-:Effort:   0:30
-:END:
-[2013-10-23 水 10:20]
-***** DONE rubocop の DefWithoutParentheses 警告を直す
-CLOSED: [2013-10-23 水 10:45] SCHEDULED: <2013-10-23 水>
-:LOGBOOK:
-CLOCK: [2013-10-23 水 10:40]--[2013-10-23 水 10:45] =>  0:05
-:END:
-:PROPERTIES:
-:Effort:   0:30
-:END:
-[2013-10-23 水 10:39]
-***** DONE rubocop の Alias 警告を直す
-CLOSED: [2013-10-23 水 10:50] SCHEDULED: <2013-10-23 水>
-:LOGBOOK:
-CLOCK: [2013-10-23 水 10:48]--[2013-10-23 水 10:50] =>  0:02
-CLOCK: [2013-10-23 水 10:47]--[2013-10-23 水 10:48] =>  0:01
-:END:
-:PROPERTIES:
-:Effort:   0:15
-:END:
-[2013-10-23 水 10:47]
-***** DONE rubocop の AndOr 警告を直す
-CLOSED: [2013-10-23 水 10:53] SCHEDULED: <2013-10-23 水>
-:LOGBOOK:
-CLOCK: [2013-10-23 水 10:52]--[2013-10-23 水 10:53] =>  0:01
-CLOCK: [2013-10-23 水 10:51]--[2013-10-23 水 10:52] =>  0:01
-:END:
-:PROPERTIES:
-:Effort:   0:15
-:END:
-[2013-10-23 水 10:51]
-***** DONE rubocop の Blocks 警告を直す
-CLOSED: [2013-10-23 水 10:58] SCHEDULED: <2013-10-23 水>
-:LOGBOOK:
-CLOCK: [2013-10-23 水 10:55]--[2013-10-23 水 10:58] =>  0:03
-:END:
-:PROPERTIES:
-:Effort:   0:15
-:END:
-[2013-10-23 水 10:55]
-***** DONE rubocop の BracesAroundHashParameters 警告を直す
-CLOSED: [2013-10-23 水 11:01] SCHEDULED: <2013-10-23 水>
-:LOGBOOK:
-CLOCK: [2013-10-23 水 10:59]--[2013-10-23 水 11:01] =>  0:02
-:END:
-:PROPERTIES:
-:Effort:   0:15
-:END:
-[2013-10-23 水 10:59]
-***** DONE rubocop の CollectionMethods 警告を直す
-CLOSED: [2013-10-23 水 11:11] SCHEDULED: <2013-10-23 水>
-:LOGBOOK:
-CLOCK: [2013-10-23 水 11:10]--[2013-10-23 水 11:11] =>  0:01
-CLOCK: [2013-10-23 水 11:09]--[2013-10-23 水 11:10] =>  0:01
-:END:
-:PROPERTIES:
-:Effort:   0:15
-:END:
-[2013-10-23 水 11:09]
-***** DONE rubocop の FavorSprintf 警告を直す
-CLOSED: [2013-10-23 水 11:42] SCHEDULED: <2013-10-23 水>
-:LOGBOOK:
-CLOCK: [2013-10-23 水 11:40]--[2013-10-23 水 11:42] =>  0:02
-:END:
-:PROPERTIES:
-:Effort:   0:15
-:END:
-[2013-10-23 水 11:39]
-***** DONE rubocop の IfUnlessModifier 警告を直す
-CLOSED: [2013-10-23 水 11:48] SCHEDULED: <2013-10-23 水>
-:LOGBOOK:
-CLOCK: [2013-10-23 水 11:46]--[2013-10-23 水 11:48] =>  0:02
-:END:
-:PROPERTIES:
-:Effort:   0:15
-:END:
-[2013-10-23 水 11:46]
-***** DONE rubocop の LineLength 警告を直す
-CLOSED: [2013-10-23 水 12:06] SCHEDULED: <2013-10-23 水>
-:LOGBOOK:
-CLOCK: [2013-10-23 水 11:53]--[2013-10-23 水 12:06] =>  0:13
-:END:
-:PROPERTIES:
-:Effort:   0:30
-:END:
-[2013-10-23 水 11:53]
-***** DONE rubocop の Not 警告を直す
-CLOSED: [2013-10-23 水 13:28] SCHEDULED: <2013-10-23 水>
-:LOGBOOK:
-CLOCK: [2013-10-23 水 13:27]--[2013-10-23 水 13:28] =>  0:01
-CLOCK: [2013-10-23 水 13:26]--[2013-10-23 水 13:27] =>  0:01
-:END:
-:PROPERTIES:
-:Effort:   0:15
-:END:
-[2013-10-23 水 13:26]
-***** DONE rubocop の NumericLiterals 警告を直す
-CLOSED: [2013-10-23 水 13:39] SCHEDULED: <2013-10-23 水>
-:LOGBOOK:
-CLOCK: [2013-10-23 水 13:32]--[2013-10-23 水 13:39] =>  0:07
-:END:
-:PROPERTIES:
-:Effort:   0:15
-:END:
-[2013-10-23 水 13:32]
-***** DONE rubocop の ParenthesesAroundCondition 警告を直す
-CLOSED: [2013-10-23 水 13:46] SCHEDULED: <2013-10-23 水>
-:LOGBOOK:
-CLOCK: [2013-10-23 水 13:44]--[2013-10-23 水 13:46] =>  0:02
-:END:
-:PROPERTIES:
-:Effort:   0:15
-:END:
-[2013-10-23 水 13:43]
-***** DONE rubocop の ParenthesesAsGroupedExpression 警告を直す
-CLOSED: [2013-10-23 水 13:52] SCHEDULED: <2013-10-23 水>
-:LOGBOOK:
-CLOCK: [2013-10-23 水 13:49]--[2013-10-23 水 13:52] =>  0:03
-:END:
-:PROPERTIES:
-:Effort:   0:15
-:END:
-[2013-10-23 水 13:48]
-***** DONE rubocop の RedundantBegin 警告を直す
-CLOSED: [2013-10-23 水 14:05] SCHEDULED: <2013-10-23 水>
-:LOGBOOK:
-CLOCK: [2013-10-23 水 13:55]--[2013-10-23 水 14:05] =>  0:10
-CLOCK: [2013-10-23 水 13:54]--[2013-10-23 水 13:55] =>  0:01
-:END:
-:PROPERTIES:
-:Effort:   0:15
-:END:
-[2013-10-23 水 13:54]
-***** DONE rubocop の SignalException 警告を直す
-CLOSED: [2013-10-23 水 14:11] SCHEDULED: <2013-10-23 水>
-:LOGBOOK:
-CLOCK: [2013-10-23 水 14:09]--[2013-10-23 水 14:11] =>  0:02
-CLOCK: [2013-10-23 水 14:08]--[2013-10-23 水 14:09] =>  0:01
-:END:
-:PROPERTIES:
-:Effort:   0:15
-:END:
-[2013-10-23 水 14:08]
-***** DONE rubocop の SpaceAroundBlockBraces 警告を直す
-CLOSED: [2013-10-23 水 14:14] SCHEDULED: <2013-10-23 水>
-:LOGBOOK:
-CLOCK: [2013-10-23 水 14:13]--[2013-10-23 水 14:14] =>  0:01
-CLOCK: [2013-10-23 水 14:12]--[2013-10-23 水 14:13] =>  0:01
-:END:
-:PROPERTIES:
-:Effort:   0:15
-:END:
-[2013-10-23 水 14:12]
-***** DONE rubocop の SpaceInsideBrackets 警告を直す
-CLOSED: [2013-10-23 水 14:21] SCHEDULED: <2013-10-23 水>
-:LOGBOOK:
-CLOCK: [2013-10-23 水 14:18]--[2013-10-23 水 14:21] =>  0:03
-:END:
-:PROPERTIES:
-:Effort:   0:30
-:END:
-[2013-10-23 水 14:17]
-***** DONE rubocop の SpaceInsideParens 警告を直す
-CLOSED: [2013-10-23 水 14:45] SCHEDULED: <2013-10-23 水>
-:LOGBOOK:
-CLOCK: [2013-10-23 水 14:24]--[2013-10-23 水 14:45] =>  0:21
-CLOCK: [2013-10-23 水 14:23]--[2013-10-23 水 14:24] =>  0:01
-:END:
-:PROPERTIES:
-:Effort:   0:30
-:END:
-[2013-10-23 水 14:23]
-**** DONE 1.8.7 でのテストを travis.yml に追加
-CLOSED: [2013-10-23 水 10:19] SCHEDULED: <2013-10-23 水>
-:LOGBOOK:
-CLOCK: [2013-10-23 水 10:16]--[2013-10-23 水 10:19] =>  0:03
-:END:
-:PROPERTIES:
-:Effort:   0:15
-:END:
-[2013-10-23 水 10:02]
-**** DONE ほかにやることがないかチェック
-CLOSED: [2013-10-28 月 10:42] SCHEDULED: <2013-10-28 月>
-:LOGBOOK:
-CLOCK: [2013-10-28 月 10:16]--[2013-10-28 月 10:42] =>  0:26
-:END:
-:PROPERTIES:
-:Effort:   0:15
-:END:
-[2013-10-28 月 09:18]
-*** DONE 依存する gem で古くなっているものを更新
-CLOSED: [2013-11-14 木 10:40] SCHEDULED: <2013-11-14 木>
-:LOGBOOK:
-CLOCK: [2013-11-14 木 10:28]--[2013-11-14 木 10:40] =>  0:12
-CLOCK: [2013-10-28 月 09:23]--[2013-10-28 月 10:15] =>  0:52
-:END:
-:PROPERTIES:
-:Effort:   0:30
-:END:
-[2013-10-28 月 09:16]
-*** DONE 0.3.0 の gem を作ってリリース
-CLOSED: [2013-11-15 金 09:35] SCHEDULED: <2013-11-15 金>
-[2013-11-14 木 19:06]
-*** DONE Trema の依存関係を Pio 0.3.0 にする
-CLOSED: [2013-11-15 金 09:40] SCHEDULED: <2013-11-15 金>
-:LOGBOOK:
-CLOCK: [2013-11-15 金 09:38]--[2013-11-15 金 09:40] =>  0:02
-:END:
-[2013-11-14 木 19:05]
-今は一時的に github を直接見る Gemfile になってる．
 ** TODO 0.3.1 リリース
 :LOGBOOK:
 CLOCK: [2013-12-12 木 15:45]--[2013-12-12 木 15:46] =>  0:01
@@ -626,6 +185,15 @@ CLOCK: [2013-12-12 木 10:39]--[2013-12-12 木 10:40] =>  0:01
 :END:
 [2013-12-12 木 10:39]
 
+**** NEXT @Keichi さんに ping
+:LOGBOOK:
+CLOCK: [2013-12-27 金 11:20]--[2013-12-27 金 11:25] =>  0:05
+:END:
+[2013-12-27 金 11:20]
+
+ユースケースくださいと言ったところコメントがないので、年が明けたら
+ping してみよう。
+
 *** TODO #16 YARD の警告をつぶす                                      :ISSUE:
 :LOGBOOK:
 CLOCK: [2013-12-12 木 11:20]--[2013-12-12 木 11:25] =>  0:05
@@ -652,6 +220,12 @@ CLOSED: [2013-12-12 木 11:20] SCHEDULED: <2013-12-12 木>
 CLOCK: [2013-12-12 木 11:16]--[2013-12-12 木 11:20] =>  0:04
 :END:
 [2013-12-12 木 11:16]
+
+**** NEXT 警告を 1 つつぶす
+:LOGBOOK:
+CLOCK: [2013-12-27 金 11:25]--[2013-12-27 金 11:32] =>  0:07
+:END:
+[2013-12-27 金 11:25]
 
 *** DONE rubocop の監視対象を増やす
 CLOSED: [2013-12-12 木 11:32] SCHEDULED: <2013-12-12 木>
@@ -686,3 +260,12 @@ CLOCK: [2013-09-18 水 17:20]--[2013-09-18 水 17:21] =>  0:01
 CLOCK: [2013-11-14 木 19:11]--[2013-11-14 木 19:12] =>  0:01
 :END:
 [2013-11-14 木 19:11]
+*** NEXT マクロの書き方を勉強
+:LOGBOOK:
+CLOCK: [2013-12-27 金 11:32]--[2013-12-27 金 11:41] =>  0:09
+:END:
+[2013-12-27 金 11:32]
+
+情報源:
+- [[http://www.rubytapas.com/episodes/27-Macros-and-Modules][#27: Macros and Modules]]
+- [[http://devblog.avdi.org/2012/11/27/rubytapas-027-macros-and-modules/][Avdi Grimm のブログエントリ]]
