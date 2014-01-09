@@ -9,7 +9,7 @@ module Pio
       array :octets, :type => :uint8, :initial_length => 6
 
       def set(value)
-        self.octets = value
+        self.octets = value.to_a
       end
 
       def get

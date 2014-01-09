@@ -153,6 +153,19 @@ CLOSED: [2014-01-08 水 17:13] SCHEDULED: <2014-01-08 水>
 :END:
 [2014-01-08 水 09:13]
 [[gnus:%5BGmail%5D.All%20Mail#trema/pio/issues/18/31739103@github.com][Email from stereocat: Re: {pio} DHCP Optional Field ]]
+** DONE feature/update_bundle の rspec エラーを修正
+CLOSED: [2014-01-09 木 15:04] SCHEDULED: <2014-01-09 木>
+:LOGBOOK:
+CLOCK: [2014-01-09 木 15:01]--[2014-01-09 木 15:04] =>  0:03
+CLOCK: [2014-01-09 木 14:58]--[2014-01-09 木 15:01] =>  0:03
+:END:
+:PROPERTIES:
+:Effort:   0:30
+:END:
+[2014-01-09 木 14:58]
+
+依存する gem を更新したら rspec が失敗するようになってしまった。
+
 * Releases
 ** TODO 0.3.1 リリース
 :LOGBOOK:
