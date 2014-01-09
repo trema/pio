@@ -7,7 +7,7 @@ group :development, :test do
   gem 'coveralls', '~> 0.7.0', :require => false
   gem 'flay', '~> 2.4.0'
   gem 'flog', '~> 4.2.0'
-  gem 'fuubar', '~> 1.2.1'
+  gem 'fuubar', '~> 1.3.2'
   gem 'guard', '~> 1.8.3' if RUBY_VERSION < '1.9.0'
   gem 'guard', '~> 2.2.2' if RUBY_VERSION >= '1.9.0'
   gem 'guard-bundler', '~> 1.0.0' if RUBY_VERSION < '1.9.0'
@@ -17,13 +17,13 @@ group :development, :test do
   gem 'json', '~> 1.8.1'
   gem 'mime-types', '~> 1.25' if RUBY_VERSION < '1.9.0'
   gem 'mime-types', '~> 2.0' if RUBY_VERSION >= '1.9.0'
-  gem 'rake', '~> 10.1.0'
+  gem 'rake', '~> 10.1.1'
   gem 'rb-fchange', '~> 0.0.6', :require => false
-  gem 'rb-fsevent', '~> 0.9.3', :require => false
-  gem 'rb-inotify', '~> 0.9.2', :require => false
+  gem 'rb-fsevent', '~> 0.9.4', :require => false
+  gem 'rb-inotify', '~> 0.9.3', :require => false
   gem 'redcarpet', '~> 2.3.0' if RUBY_VERSION < '1.9.0'
   gem 'redcarpet', '~> 3.0.0' if RUBY_VERSION >= '1.9.0'
-  gem 'reek', '~> 1.3.4'
+  gem 'reek', '~> 1.3.6'
   gem 'rspec', '~> 2.14.1'
   gem 'rspec-instafail', '~> 0.2.4'
   gem 'rubocop', '~> 0.14.1' if RUBY_VERSION >= '1.9.0'

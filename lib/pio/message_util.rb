@@ -2,7 +2,6 @@
 module Pio
   # Pio Message Util.
   module MessageUtil
-
     private
 
     def option_hash
