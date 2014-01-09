@@ -2,8 +2,6 @@
 module Pio
   # Pio Message Util.
   module MessageUtil
-    private
-
     def option_hash
       mandatory_options.reduce({}) do | opt, each |
         klass = option_to_klass[each]
