@@ -254,6 +254,17 @@ CLOCK: [2013-12-12 木 15:30]--[2013-12-12 木 15:45] =>  0:15
 :END:
 [2013-12-12 木 15:28]
 [[gnus:%5BGmail%5D.All%20Mail#52a921751b580_25ed6377786@2f551007-1e47-441a-a7a2-1e98feef45d6.mail][Email from Travis CI: {Broken} trema/pio#165 (develo]]
+*** NEXT pio の bindata を更新
+SCHEDULED: <2014-01-16 木>
+:LOGBOOK:
+CLOCK: [2014-01-16 木 16:41]
+CLOCK: [2014-01-16 木 16:07]--[2014-01-16 木 16:08] =>  0:01
+:END:
+:PROPERTIES:
+:Effort:   0:15
+:END:
+[2014-01-16 木 16:07]
+
 ** TODO 0.3.2 リリース
 :LOGBOOK:
 CLOCK: [2013-12-12 木 10:26]--[2013-12-12 木 10:39] =>  0:13
