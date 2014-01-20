@@ -9,7 +9,7 @@ module Pio
         raise Pio::ParseError, $ERROR_INFO.message
       end
 
-      const_get('MESSAGE_TYPE')[frame.message_type].create_from frame
+      const_get('MESSAGE_TYPE')[frame.message_type].create_from(frame)
     end
   end
 end

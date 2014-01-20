@@ -2,6 +2,7 @@
 require 'pio/arp'
 require 'pio/lldp'
 require 'pio/icmp'
+require 'pio/dhcp'
 
 module Pio
   # Raised when the packet data is in wrong format.
