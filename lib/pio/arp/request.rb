@@ -9,16 +9,16 @@ module Pio
     class Request < Message
       OPERATION = 1
 
-      BROADCAST_MAC_ADDRESS = Mac.new(0xffffffffffff).to_a
-      ALL_ZERO_MAC_ADDRESS = Mac.new(0).to_a
+      BROADCAST_MAC = Mac.new(0xffffffffffff).to_a
+      ALL_ZERO_MAC = Mac.new(0).to_a
 
       private
 
       def default_options
         {
           operation: OPERATION,
-          destination_mac: BROADCAST_MAC_ADDRESS,
-          target_hardware_address: ALL_ZERO_MAC_ADDRESS
+          destination_mac: BROADCAST_MAC,
+          target_hardware_address: ALL_ZERO_MAC
         }
       end
 
