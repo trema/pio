@@ -3,21 +3,23 @@ module Pio
   class Lldp
     # User options for creating an LLDP frame.
     class Options
+      DEFAULT_DESTINATION_MAC = '01:80:c2:00:00:0e'
+      DEFAULT_SOURCE_MAC = '01:02:03:04:05:06'
+
       def initialize(options)
         @dpid = mandatory_option(options, :dpid)
         @port_id = mandatory_option(options, :port_number)
-        @destination_mac = Mac.new(options[:destination_mac] ||
-                                   '01:80:c2:00:00:0e')
-        @source_mac = Mac.new(options[:source_mac] ||
-                              '01:02:03:04:05:06')
+        @destination_mac =
+          Mac.new(options[:destination_mac] || DEFAULT_DESTINATION_MAC)
+        @source_mac = Mac.new(options[:source_mac] || DEFAULT_SOURCE_MAC)
       end
 
       def to_hash
         {
          chassis_id: @dpid,
          port_id: @port_id,
-         destination_mac: @destination_mac.to_a,
-         source_mac: @source_mac.to_a
+         destination_mac: @destination_mac,
+         source_mac: @source_mac
         }
       end
 
