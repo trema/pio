@@ -9,8 +9,8 @@ module Pio
     class Request < Message
       OPERATION = 1
 
-      BROADCAST_MAC = Mac.new(0xffffffffffff).to_a
-      ALL_ZERO_MAC = Mac.new(0).to_a
+      BROADCAST_MAC = Mac.new(0xffffffffffff)
+      ALL_ZERO_MAC = Mac.new(0)
 
       private
 
