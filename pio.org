@@ -181,7 +181,7 @@ CLOCK: [2014-01-09 木 14:58]--[2014-01-09 木 15:01] =>  0:03
 依存する gem を更新したら rspec が失敗するようになってしまった。
 
 * Releases
-** TODO 0.3.1 リリース                                       :VERSION0.3.1:
+** TODO 0.3.1 リリース                                       :VERSION0_3_1:
 :LOGBOOK:
 CLOCK: [2014-01-16 木 16:47]--[2014-01-16 木 16:57] =>  0:10
 CLOCK: [2013-12-12 木 15:45]--[2013-12-12 木 15:46] =>  0:01
@@ -194,6 +194,84 @@ CLOCK: [2013-12-12 木 11:32]--[2013-12-12 木 11:39] =>  0:07
 :ID:       A8AFAB99-A14E-4C61-B241-16D95C31713F
 :END:
 [2013-09-05 木 17:29]
+
+*** 10 High Value Development Chores to Start 2014 Right
+:LOGBOOK:
+CLOCK: [2014-02-27 木 15:58]
+CLOCK: [2014-02-27 木 15:48]--[2014-02-27 木 15:49] =>  0:01
+:END:
+[2014-02-27 木 15:48]
+http://blog.codeclimate.com/blog/2014/01/02/ten-high-value-development-chores-to-start-2014-right/
+**** DONE Delete inactive branches and Pull Requests
+CLOSED: [2014-02-27 木 16:00] SCHEDULED: <2014-02-27 木>
+:LOGBOOK:
+CLOCK: [2014-02-27 木 15:49]--[2014-02-27 木 15:50] =>  0:01
+:END:
+:PROPERTIES:
+:Effort:   0:15
+:END:
+[2014-02-27 木 15:49]
+
+**** TODO Optimize your deploys
+:LOGBOOK:
+CLOCK: [2014-02-27 木 15:50]--[2014-02-27 木 15:51] =>  0:01
+:END:
+[2014-02-27 木 15:50]
+
+**** DONE Ratify a coding style guide
+CLOSED: [2014-02-27 木 16:01]
+:LOGBOOK:
+CLOCK: [2014-02-27 木 15:51]--[2014-02-27 木 15:52] =>  0:01
+:END:
+[2014-02-27 木 15:51]
+
+**** DONE Curate a core test suite
+CLOSED: [2014-02-27 木 16:15]
+:LOGBOOK:
+CLOCK: [2014-02-27 木 15:52]--[2014-02-27 木 15:53] =>  0:01
+:END:
+[2014-02-27 木 15:52]
+
+**** DONE Audit your app for vulnerabilities
+CLOSED: [2014-02-27 木 16:04]
+:LOGBOOK:
+CLOCK: [2014-02-27 木 15:53]--[2014-02-27 木 15:55] =>  0:02
+:END:
+:PROPERTIES:
+:Effort:   0:15
+:END:
+[2014-02-27 木 15:53]
+
+**** TODO Extract an open source project
+[2014-02-27 木 15:55]
+例の Wireshark Ruby ライブラリを GitHub に置く.
+**** DONE Ditch your CI server
+CLOSED: [2014-02-27 木 16:08]
+:LOGBOOK:
+CLOCK: [2014-02-27 木 15:55]--[2014-02-27 木 15:56] =>  0:01
+:END:
+:PROPERTIES:
+:Effort:   0:15
+:END:
+[2014-02-27 木 15:55]
+
+**** TODO Clean up your READMEs [0/2]
+[2014-02-27 木 15:56]
+- [ ] 古い/まちがった情報がないかチェック
+- [ ] コード例を include して自動生成するように
+**** DONE Aggregate and index your logs
+CLOSED: [2014-02-27 木 16:11]
+[2014-02-27 木 15:56]
+
+**** DONE Track the quality of your team’s code as you commit
+CLOSED: [2014-02-27 木 15:58] SCHEDULED: <2014-02-27 木>
+:LOGBOOK:
+CLOCK: [2014-02-27 木 15:56]--[2014-02-27 木 15:58] =>  0:02
+:END:
+:PROPERTIES:
+:Effort:   0:15
+:END:
+[2014-02-27 木 15:56]
 
 *** TODO #16 YARD の警告をつぶす                                      :ISSUE:
 :LOGBOOK:
@@ -349,7 +427,8 @@ CLOCK: [2014-02-17 月 10:39]--[2014-02-17 月 10:40] =>  0:01
 CLOCK: [2014-02-17 月 10:14]--[2014-02-17 月 10:16] =>  0:02
 :END:
 [2014-02-17 月 10:14]
-** TODO 0.3.2 リリース
+
+** TODO 0.3.2 リリース                                        :VERSION0_3_2:
 :LOGBOOK:
 CLOCK: [2013-12-12 木 10:26]--[2013-12-12 木 10:39] =>  0:13
 :END:
