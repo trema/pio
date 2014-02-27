@@ -5,10 +5,10 @@ describe Pio::Lldp do
   context '.new' do
     subject do
       Pio::Lldp.new(
-        :dpid => dpid,
-        :port_number => port_number,
-        :source_mac => source_mac,
-        :destination_mac => destination_mac
+        dpid: dpid,
+        port_number: port_number,
+        source_mac: source_mac,
+        destination_mac: destination_mac
       )
     end
 
@@ -129,22 +129,38 @@ describe Pio::Lldp do
       end
     end
 
-    context 'when :dpid is not set' do
+    context 'when :dpid is nil' do
       let(:dpid) { nil }
       let(:port_number) { 1 }
       let(:source_mac) { nil }
       let(:destination_mac) { nil }
 
-      it { expect { subject }.to raise_error('Invalid DPID: nil') }
+      it { expect { subject }.to raise_error("The dpid option shouldn't be nil.") }
     end
 
-    context 'when :port_number is not set' do
+    context 'when :dpid is not passed' do
+      it do
+        expect do
+          Pio::Lldp.new(port_number: 1)
+        end.to raise_error('The dpid option should be passed.')
+      end
+    end
+
+    context 'when :port_number is not passed' do
+      it do
+        expect do
+          Pio::Lldp.new(dpid: 1)
+        end.to raise_error('The port_number option should be passed.')
+      end
+    end
+
+    context 'when :port_number is nil' do
       let(:dpid) { 0x192fa7b28d }
       let(:port_number) { nil }
       let(:source_mac) { nil }
       let(:destination_mac) { nil }
 
-      it { expect { subject }.to raise_error('Invalid port number: nil') }
+      it { expect { subject }.to raise_error("The port_number option shouldn't be nil.") }
     end
   end
 
@@ -243,7 +259,7 @@ describe Pio::Lldp do
       its(:port_description) { should eq 'Summit300-48-Port 1001' }
       its(:system_name) { should eq 'Summit300-48' }
       its(:system_description) do
-        should eq 'Summit300-48 - Version 7.4e.1 (Build 5) ' +
+        should eq 'Summit300-48 - Version 7.4e.1 (Build 5) ' \
                   'by Release_Master 05/27/05 04:53:11'
       end
       its('system_capabilities.system_capabilities') { should eq 20 }

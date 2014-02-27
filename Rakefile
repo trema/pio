@@ -13,6 +13,8 @@ require 'yard'
 
 ruby_source = FileList['lib/**/*.rb']
 
+# rubocop:disable HashSyntax
+
 task :default => :travis
 task :travis => [:spec, :quality, 'coveralls:push']
 
@@ -108,6 +110,8 @@ rubies.each do |each|
     sh "rvm #{each} exec bundle exec rake"
   end
 end
+
+# rubocop:enable HashSyntax
 
 ### Local variables:
 ### mode: Ruby

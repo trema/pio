@@ -5,10 +5,10 @@ describe Pio::Arp::Reply do
   context '.new' do
     subject do
       Pio::Arp::Reply.new(
-        :source_mac => source_mac,
-        :destination_mac => destination_mac,
-        :sender_protocol_address => sender_protocol_address,
-        :target_protocol_address => target_protocol_address
+        source_mac: source_mac,
+        destination_mac: destination_mac,
+        sender_protocol_address: sender_protocol_address,
+        target_protocol_address: target_protocol_address
       )
     end
 
@@ -29,7 +29,7 @@ describe Pio::Arp::Reply do
        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, # padding
        0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
        0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-       0x00, 0x00, 0x00, 0x00,
+       0x00, 0x00, 0x00, 0x00
       ].pack('C*')
     end
 

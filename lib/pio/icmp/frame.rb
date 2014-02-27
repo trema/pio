@@ -14,18 +14,18 @@ module Pio
       extend Type::IPv4Header
 
       endian :big
-      ethernet_header :ether_type => 0x0800
-      ipv4_header :ip_protocol => 1,
-                  :ip_header_checksum => lambda { ip_sum },
-                  :ip_total_length => lambda { ip_packet_length }
+      ethernet_header ether_type: 0x0800
+      ipv4_header ip_protocol: 1,
+                  ip_header_checksum: lambda { ip_sum },
+                  ip_total_length: lambda { ip_packet_length }
       uint8 :icmp_type
-      uint8 :icmp_code, :initial_value => 0
-      uint16 :icmp_checksum, :value => lambda { icmp_sum }
-      uint16 :icmp_identifier, :initial_value => 0x0100
-      uint16 :icmp_sequence_number, :initial_value => 0x0001
+      uint8 :icmp_code, initial_value: 0
+      uint16 :icmp_checksum, value: lambda { icmp_sum }
+      uint16 :icmp_identifier, initial_value: 0x0100
+      uint16 :icmp_sequence_number, initial_value: 0x0001
       string :echo_data,
-             :initial_value => 'DEADBEEF',
-             :read_length => lambda { echo_data_length }
+             initial_value: 'DEADBEEF',
+             read_length: lambda { echo_data_length }
 
       def message_type
         icmp_type

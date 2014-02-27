@@ -16,9 +16,9 @@ module Pio
       bit7 :tlv_type
       bit9 :tlv_info_length
       choice :tlv_value,
-             :read_length => :tlv_info_length,
-             :onlyif => lambda { !end_of_lldpdu? },
-             :selection => :chooser do
+             read_length: :tlv_info_length,
+             onlyif: lambda { !end_of_lldpdu? },
+             selection: :chooser do
         end_of_lldpdu_value 0
         port_description_value 4
         system_name_value 5

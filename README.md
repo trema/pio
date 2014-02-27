@@ -22,8 +22,7 @@ Features Overview
  * Pure Ruby. No additional dependency on other external tools
    to parse/generate packets.
  * Multi-Platform. Runs on major operating systems (recent Windows,
-   Linux, and MacOSX), and supports all major version of Ruby (1.8.7,
-   1.9.3, 2.0.0).
+   Linux, and MacOSX).
  * Clean Code. Pio is built on
    [BinData](https://github.com/dmendel/bindata)'s declarative binary
    format DSL so that it is easy to read and debug by human beings.

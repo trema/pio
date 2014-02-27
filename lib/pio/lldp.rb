@@ -2,48 +2,11 @@
 require 'English'
 require 'forwardable'
 require 'pio/lldp/frame'
+require 'pio/lldp/options'
 
 module Pio
   # LLDP frame parser and generator.
   class Lldp
-    # User options for creating an LLDP frame.
-    class Options
-      def initialize(options)
-        @options = options
-        fail TypeError, "Invalid DPID: #{ dpid.inspect }" unless dpid
-        unless port_id
-          fail TypeError, "Invalid port number: #{ port_id.inspect }"
-        end
-      end
-
-      def to_hash
-        {
-          :destination_mac => Mac.new(destination_mac).to_a,
-          :source_mac => Mac.new(source_mac).to_a,
-          :chassis_id => dpid,
-          :port_id => port_id
-        }
-      end
-
-      private
-
-      def dpid
-        @options[:dpid]
-      end
-
-      def port_id
-        @options[:port_number]
-      end
-
-      def destination_mac
-        @options[:destination_mac] || '01:80:c2:00:00:0e'
-      end
-
-      def source_mac
-        @options[:source_mac] || '01:02:03:04:05:06'
-      end
-    end
-
     extend Forwardable
 
     def self.read(raw_data)

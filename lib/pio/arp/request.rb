@@ -16,22 +16,22 @@ module Pio
 
       def default_options
         {
-          :operation => OPERATION,
-          :destination_mac => BROADCAST_MAC_ADDRESS,
-          :target_hardware_address => ALL_ZERO_MAC_ADDRESS
+          operation: OPERATION,
+          destination_mac: BROADCAST_MAC_ADDRESS,
+          target_hardware_address: ALL_ZERO_MAC_ADDRESS
         }
       end
 
       def user_options
-        @options.merge :sender_hardware_address => @options[:source_mac]
+        @options.merge sender_hardware_address: @options[:source_mac]
       end
 
       def mandatory_options
         [
-          :source_mac,
-          :sender_hardware_address,
-          :sender_protocol_address,
-          :target_protocol_address,
+         :source_mac,
+         :sender_hardware_address,
+         :sender_protocol_address,
+         :target_protocol_address
         ]
       end
     end

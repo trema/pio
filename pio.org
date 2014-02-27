@@ -76,6 +76,20 @@ http://www.rubytapas.com/episodes/27-Macros-and-Modules
 
 Pio では BinData の bitxxx みたいなクラスメソッドをはじめとして
 マクロ的な書き方を多用してるので見ておくと良い．
+** Ruby method with argument hash with default values: how to DRY?    :NOTE:
+:LOGBOOK:
+CLOCK: [2014-02-27 木 11:23]--[2014-02-27 木 11:24] =>  0:01
+:END:
+[2014-02-27 木 11:23]
+
+http://stackoverflow.com/questions/5931313/ruby-method-with-argument-hash-with-default-values-how-to-dry
+** What's a nice clean way to use an options hash with defaults values as a parameter in ruby :NOTE:
+:LOGBOOK:
+CLOCK: [2014-02-27 木 11:26]--[2014-02-27 木 11:50] =>  0:24
+:END:
+[2014-02-27 木 11:26]
+
+http://stackoverflow.com/questions/977535/whats-a-nice-clean-way-to-use-an-options-hash-with-defaults-values-as-a-paramet
 * Tasks
 このアイテムをそれぞれのリリースに割り振る。
 ** TODO bindata 1.6.0 の changelog をチェック
@@ -167,9 +181,9 @@ CLOCK: [2014-01-09 木 14:58]--[2014-01-09 木 15:01] =>  0:03
 依存する gem を更新したら rspec が失敗するようになってしまった。
 
 * Releases
-** TODO 0.3.1 リリース
+** TODO 0.3.1 リリース                                       :VERSION0.3.1:
 :LOGBOOK:
-CLOCK: [2014-01-16 木 16:47]
+CLOCK: [2014-01-16 木 16:47]--[2014-01-16 木 16:57] =>  0:10
 CLOCK: [2013-12-12 木 15:45]--[2013-12-12 木 15:46] =>  0:01
 CLOCK: [2013-12-12 木 11:32]--[2013-12-12 木 11:39] =>  0:07
 :END:
@@ -180,33 +194,6 @@ CLOCK: [2013-12-12 木 11:32]--[2013-12-12 木 11:39] =>  0:07
 :ID:       A8AFAB99-A14E-4C61-B241-16D95C31713F
 :END:
 [2013-09-05 木 17:29]
-*** TODO #15 LLDPフレーム構築の方法                                 :ISSUE:
-:LOGBOOK:
-CLOCK: [2013-12-12 木 10:43]--[2013-12-12 木 10:49] =>  0:06
-CLOCK: [2013-12-12 木 10:40]--[2013-12-12 木 10:43] =>  0:03
-CLOCK: [2013-12-12 木 10:24]--[2013-12-12 木 10:26] =>  0:02
-:END:
-:PROPERTIES:
-:Effort:   0:30
-:END:
-[2013-12-12 木 10:24]
-
-https://github.com/trema/pio/issues/15
-**** DONE System Name TLV 等のユースケースと API についてコメント
-CLOSED: [2013-12-12 木 10:40] SCHEDULED: <2013-12-12 木>
-:LOGBOOK:
-CLOCK: [2013-12-12 木 10:39]--[2013-12-12 木 10:40] =>  0:01
-:END:
-[2013-12-12 木 10:39]
-
-**** NEXT @Keichi さんに ping
-:LOGBOOK:
-CLOCK: [2013-12-27 金 11:20]--[2013-12-27 金 11:25] =>  0:05
-:END:
-[2013-12-27 金 11:20]
-
-ユースケースくださいと言ったところコメントがないので、年が明けたら
-ping してみよう。
 
 *** TODO #16 YARD の警告をつぶす                                      :ISSUE:
 :LOGBOOK:
@@ -241,6 +228,61 @@ CLOCK: [2013-12-27 金 11:25]--[2013-12-27 金 11:32] =>  0:07
 :END:
 [2013-12-27 金 11:25]
 
+*** DONE LLDP の必須オプションをリファクタリング
+CLOSED: [2014-02-27 木 14:16] SCHEDULED: <2014-02-27 木>
+:LOGBOOK:
+CLOCK: [2014-02-27 木 12:02]--[2014-02-27 木 12:07] =>  0:05
+CLOCK: [2014-02-27 木 11:55]--[2014-02-27 木 11:56] =>  0:01
+CLOCK: [2014-02-27 木 11:24]--[2014-02-27 木 11:26] =>  0:02
+CLOCK: [2014-02-27 木 11:19]--[2014-02-27 木 11:23] =>  0:04
+CLOCK: [2014-02-27 木 11:10]--[2014-02-27 木 11:13] =>  0:03
+:END:
+[2014-02-27 木 11:10]
+**** DONE RubyTapas の #45: Hash Default Value を観る
+CLOSED: [2014-02-27 木 11:19] SCHEDULED: <2014-02-27 木>
+:LOGBOOK:
+CLOCK: [2014-02-27 木 11:15]--[2014-02-27 木 11:19] =>  0:04
+CLOCK: [2014-02-27 木 11:13]--[2014-02-27 木 11:15] =>  0:02
+:END:
+:PROPERTIES:
+:Effort:   0:15
+:END:
+[2014-02-27 木 11:13]
+
+http://www.rubytapas.com/episodes/45-Hash-Default-Value
+関係なかった.他のエピソードだっけ？
+**** DONE RubyTapas の #8: fetch as an Assertion を観る
+CLOSED: [2014-02-27 木 11:55] SCHEDULED: <2014-02-27 木>
+:LOGBOOK:
+CLOCK: [2014-02-27 木 11:52]--[2014-02-27 木 11:55] =>  0:03
+CLOCK: [2014-02-27 木 11:50]--[2014-02-27 木 11:52] =>  0:02
+:END:
+:PROPERTIES:
+:Effort:   0:15
+:END:
+[2014-02-27 木 11:50]
+
+http://www.rubytapas.com/episodes/8-fetch-as-an-Assertion
+**** DONE RubyTapas の #12: #fetch for Defaults を観る
+CLOSED: [2014-02-27 木 12:02] SCHEDULED: <2014-02-27 木>
+:LOGBOOK:
+CLOCK: [2014-02-27 木 11:58]--[2014-02-27 木 12:02] =>  0:04
+CLOCK: [2014-02-27 木 11:56]--[2014-02-27 木 11:58] =>  0:02
+:END:
+:PROPERTIES:
+:Effort:   0:15
+:END:
+[2014-02-27 木 11:56]
+**** DONE RubyTapas の #15: Advanced #fetch を観る
+CLOSED: [2014-02-27 木 14:15] SCHEDULED: <2014-02-27 木>
+:LOGBOOK:
+CLOCK: [2014-02-27 木 12:08]--[2014-02-27 木 12:16] =>  0:08
+CLOCK: [2014-02-27 木 12:07]--[2014-02-27 木 12:08] =>  0:01
+:END:
+:PROPERTIES:
+:Effort:   0:15
+:END:
+[2014-02-27 木 12:07]
 *** DONE rubocop の監視対象を増やす
 CLOSED: [2013-12-12 木 11:32] SCHEDULED: <2013-12-12 木>
 :LOGBOOK:
@@ -265,7 +307,48 @@ CLOCK: [2014-01-16 木 16:07]--[2014-01-16 木 16:08] =>  0:01
 :Effort:   0:15
 :END:
 [2014-01-16 木 16:07]
+*** CANCELED #15 LLDPフレーム構築の方法                             :ISSUE:
+CLOSED: [2014-02-24 月 21:04]
+- State "CANCELED"   from "TODO"       [2014-02-24 月 21:04] \\
+  返事がないのでチケットを閉じた.
+:LOGBOOK:
+CLOCK: [2013-12-12 木 10:43]--[2013-12-12 木 10:49] =>  0:06
+CLOCK: [2013-12-12 木 10:40]--[2013-12-12 木 10:43] =>  0:03
+CLOCK: [2013-12-12 木 10:24]--[2013-12-12 木 10:26] =>  0:02
+:END:
+:PROPERTIES:
+:Effort:   0:30
+:END:
+[2013-12-12 木 10:24]
 
+https://github.com/trema/pio/issues/15
+**** DONE System Name TLV 等のユースケースと API についてコメント
+CLOSED: [2013-12-12 木 10:40] SCHEDULED: <2013-12-12 木>
+:LOGBOOK:
+CLOCK: [2013-12-12 木 10:39]--[2013-12-12 木 10:40] =>  0:01
+:END:
+[2013-12-12 木 10:39]
+
+**** DONE @Keichi さんに ping
+CLOSED: [2014-02-17 月 09:40]
+:LOGBOOK:
+CLOCK: [2013-12-27 金 11:20]--[2013-12-27 金 11:25] =>  0:05
+:END:
+[2013-12-27 金 11:20]
+
+ユースケースくださいと言ったところコメントがないので、年が明けたら
+ping してみよう。
+
+**** CANCELED @Keichi さんからの返事待ち
+CLOSED: [2014-02-24 月 21:04]
+- State "CANCELED"   from "WAITING"    [2014-02-24 月 21:04] \\
+  返事がないのでチケットを閉じた.
+- State "WAITING"    from "TODO"       [2014-02-17 月 10:14]
+:LOGBOOK:
+CLOCK: [2014-02-17 月 10:39]--[2014-02-17 月 10:40] =>  0:01
+CLOCK: [2014-02-17 月 10:14]--[2014-02-17 月 10:16] =>  0:02
+:END:
+[2014-02-17 月 10:14]
 ** TODO 0.3.2 リリース
 :LOGBOOK:
 CLOCK: [2013-12-12 木 10:26]--[2013-12-12 木 10:39] =>  0:13

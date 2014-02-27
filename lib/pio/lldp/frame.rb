@@ -16,13 +16,13 @@ module Pio
 
       endian :big
 
-      ethernet_header :ether_type => 0x88cc
+      ethernet_header ether_type: 0x88cc
       chassis_id_tlv :chassis_id
       port_id_tlv :port_id
-      ttl_tlv :ttl, :initial_value => 120
+      ttl_tlv :ttl, initial_value: 120
       array(:optional_tlv,
-            :type => :optional_tlv,
-            :read_until => lambda { element.end_of_lldpdu? })
+            type: :optional_tlv,
+            read_until: lambda { element.end_of_lldpdu? })
 
       def dpid
         chassis_id.to_i

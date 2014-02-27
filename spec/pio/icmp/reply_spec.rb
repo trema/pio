@@ -5,11 +5,11 @@ describe Pio::Icmp::Reply do
   context '.new' do
     subject do
       Pio::Icmp::Reply.new(
-        :destination_mac => '00:26:82:eb:ea:d1',
-        :source_mac => '24:db:ac:41:e5:5b',
-        :ip_source_address => '8.8.8.8',
-        :ip_destination_address => '192.168.1.102',
-        :echo_data => echo_data
+        destination_mac: '00:26:82:eb:ea:d1',
+        source_mac: '24:db:ac:41:e5:5b',
+        ip_source_address: '8.8.8.8',
+        ip_destination_address: '192.168.1.102',
+        echo_data: echo_data
       )
     end
 

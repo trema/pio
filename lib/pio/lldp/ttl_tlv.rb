@@ -8,9 +8,9 @@ module Pio
     class TtlTlv < BinData::Primitive
       endian :big
 
-      bit7 :tlv_type, :value => 3
-      bit9 :tlv_info_length, :value => 2
-      string :ttl, :read_length => :tlv_info_length
+      bit7 :tlv_type, value: 3
+      bit9 :tlv_info_length, value: 2
+      string :ttl, read_length: :tlv_info_length
 
       def get
         BinData::Int16be.read(ttl)

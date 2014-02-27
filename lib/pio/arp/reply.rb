@@ -13,25 +13,25 @@ module Pio
 
       def default_options
         {
-          :operation => OPERATION,
+          operation: OPERATION
         }
       end
 
       def user_options
         @options.merge(
-          :sender_hardware_address => @options[:source_mac],
-          :target_hardware_address => @options[:destination_mac]
+          sender_hardware_address: @options[:source_mac],
+          target_hardware_address: @options[:destination_mac]
         )
       end
 
       def mandatory_options
         [
-          :source_mac,
-          :destination_mac,
-          :sender_hardware_address,
-          :target_hardware_address,
-          :sender_protocol_address,
-          :target_protocol_address,
+         :source_mac,
+         :destination_mac,
+         :sender_hardware_address,
+         :target_hardware_address,
+         :sender_protocol_address,
+         :target_protocol_address
         ]
       end
     end

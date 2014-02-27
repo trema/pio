@@ -6,7 +6,7 @@ module Pio
   module Type
     # IP address
     class IpAddress < BinData::Primitive
-      array :octets, :type => :uint8, :initial_length => 4
+      array :octets, type: :uint8, initial_length: 4
 
       def set(value)
         self.octets = value

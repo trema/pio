@@ -40,12 +40,12 @@ module Pio
 
       def option_to_klass
         {
-          :source_mac => Mac,
-          :destination_mac => Mac,
-          :sender_hardware_address => Mac,
-          :target_hardware_address => Mac,
-          :sender_protocol_address => IPv4Address,
-          :target_protocol_address => IPv4Address,
+         source_mac: Mac,
+         destination_mac: Mac,
+         sender_hardware_address: Mac,
+         target_hardware_address: Mac,
+         sender_protocol_address: IPv4Address,
+         target_protocol_address: IPv4Address
         }
       end
     end

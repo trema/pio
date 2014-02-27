@@ -49,26 +49,26 @@ module Pio
       # rubocop:disable MethodLength
       def default_options
         {
-          :ip_type_of_service => @options[:ip_type_of_service],
-          :ip_identifier => @options[:ip_identifier],
-          :ip_flag => @options[:ip_flag],
-          :ip_fragment => @options[:ip_fragment],
-          :ip_ttl => @options[:ip_ttl],
-          :icmp_type => self.class::TYPE,
-          :icmp_code => @options[:icmp_code],
-          :icmp_identifier => @options[:icmp_identifier],
-          :icmp_sequence_number => @options[:icmp_sequence_number],
-          :echo_data => @options[:echo_data]
+          ip_type_of_service: @options[:ip_type_of_service],
+          ip_identifier: @options[:ip_identifier],
+          ip_flag: @options[:ip_flag],
+          ip_fragment: @options[:ip_fragment],
+          ip_ttl: @options[:ip_ttl],
+          icmp_type: self.class::TYPE,
+          icmp_code: @options[:icmp_code],
+          icmp_identifier: @options[:icmp_identifier],
+          icmp_sequence_number: @options[:icmp_sequence_number],
+          echo_data: @options[:echo_data]
         }
       end
       # rubocop:enable MethodLength
 
       def user_options
         @options.merge(
-          :source_mac => @options[:source_mac],
-          :destination_mac => @options[:destination_mac],
-          :ip_source_address => @options[:ip_source_address],
-          :ip_destination_address => @options[:ip_destination_address]
+          source_mac: @options[:source_mac],
+          destination_mac: @options[:destination_mac],
+          ip_source_address: @options[:ip_source_address],
+          ip_destination_address: @options[:ip_destination_address]
         )
       end
 
@@ -83,10 +83,10 @@ module Pio
 
       def option_to_klass
         {
-          :source_mac => Mac,
-          :destination_mac => Mac,
-          :ip_source_address => IPv4Address,
-          :ip_destination_address => IPv4Address
+          source_mac: Mac,
+          destination_mac: Mac,
+          ip_source_address: IPv4Address,
+          ip_destination_address: IPv4Address
         }
       end
     end
