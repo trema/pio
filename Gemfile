@@ -11,6 +11,7 @@ group :development, :test do
   gem 'guard', '~> 2.5.1'
   gem 'guard-bundler', '~> 2.0.0'
   gem 'guard-rspec', '~> 4.2.7'
+  gem 'guard-rubocop', '~> 1.0.2'
   gem 'rake', '~> 10.1.1'
   gem 'rb-fchange', '~> 0.0.6', require: false
   gem 'rb-fsevent', '~> 0.9.4', require: false

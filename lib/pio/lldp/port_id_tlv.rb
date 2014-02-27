@@ -9,9 +9,9 @@ module Pio
       endian :big
 
       bit7 :tlv_type, value: 2
-      bit9 :tlv_info_length, initial_value: lambda { port_id.num_bytes + 1 }
+      bit9 :tlv_info_length, initial_value: -> { port_id.num_bytes + 1 }
       uint8 :subtype, initial_value: 7
-      string :port_id, read_length: lambda { tlv_info_length - 1 }
+      string :port_id, read_length: -> { tlv_info_length - 1 }
 
       def get
         tmp_id = port_id

@@ -22,7 +22,7 @@ module Pio
       ttl_tlv :ttl, initial_value: 120
       array(:optional_tlv,
             type: :optional_tlv,
-            read_until: lambda { element.end_of_lldpdu? })
+            read_until: -> { element.end_of_lldpdu? })
 
       def dpid
         chassis_id.to_i

@@ -10,10 +10,10 @@ module Pio
 
       bit7 :tlv_type, value: 1
       bit9(:tlv_info_length,
-           value: lambda { subtype.num_bytes + chassis_id.length })
+           value: -> { subtype.num_bytes + chassis_id.length })
       uint8 :subtype, initial_value: 7
       string(:chassis_id,
-             read_length: lambda { tlv_info_length - subtype.num_bytes })
+             read_length: -> { tlv_info_length - subtype.num_bytes })
 
       def get
         tmp_chassis_id = chassis_id
