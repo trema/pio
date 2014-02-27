@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 module Pio
   class Lldp
     # User options for creating an LLDP frame.
