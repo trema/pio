@@ -136,50 +136,6 @@ CLOCK: [2013-11-15 金 09:54]--[2013-11-15 金 09:57] =>  0:03
 ペして GitHub のイシューに貼れば，こちらで簡単に解析できる．
 ** TODO ワンボタンリリース用 rake タスクを実装
 [2013-11-27 水 14:39]
-** DONE Respond to Eishun Kondoh <notifications@github.com> on Re: [pio] Many objects are undocumented. (#16)
-CLOSED: [2014-01-07 火 09:41] SCHEDULED: <2014-01-07 火>
-:PROPERTIES:
-:Effort:   0:15
-:END:
-[2014-01-06 月 09:55]
-[[gnus:%5BGmail%5D.All%20Mail#trema/pio/issues/16/31417774@github.com][Email from Eishun Kondoh: Re: {pio} Many objects are und]]
-** DONE Respond to Eishun Kondoh <notifications@github.com> on Re: [pio] Reviewed Method Access Control. (#17)
-CLOSED: [2014-01-08 水 17:12] SCHEDULED: <2014-01-08 水>
-:LOGBOOK:
-CLOCK: [2014-01-08 水 17:09]--[2014-01-08 水 17:12] =>  0:03
-:END:
-:PROPERTIES:
-:Effort:   0:15
-:END:
-[2014-01-08 水 09:10]
-[[gnus:%5BGmail%5D.All%20Mail#trema/pio/pull/17/c31708682@github.com][Email from Eishun Kondoh: Re: {pio} Reviewed Method Acce]]
-** DONE Respond to Eishun Kondoh <notifications@github.com> on Re: [pio] Reviewed Method Access Control. (#17)
-CLOSED: [2014-01-08 水 17:13] SCHEDULED: <2014-01-08 水>
-:PROPERTIES:
-:Effort:   0:15
-:END:
-[2014-01-08 水 09:13]
-[[gnus:%5BGmail%5D.All%20Mail#trema/pio/pull/17/c31708430@github.com][Email from Eishun Kondoh: Re: {pio} Reviewed Method Acce]]
-** DONE Respond to stereocat <notifications@github.com> on Re: [pio] DHCP Optional Field の種類 (#18)
-CLOSED: [2014-01-08 水 17:13] SCHEDULED: <2014-01-08 水>
-:PROPERTIES:
-:Effort:   0:15
-:END:
-[2014-01-08 水 09:13]
-[[gnus:%5BGmail%5D.All%20Mail#trema/pio/issues/18/31739103@github.com][Email from stereocat: Re: {pio} DHCP Optional Field ]]
-** DONE feature/update_bundle の rspec エラーを修正
-CLOSED: [2014-01-09 木 15:04] SCHEDULED: <2014-01-09 木>
-:LOGBOOK:
-CLOCK: [2014-01-09 木 15:01]--[2014-01-09 木 15:04] =>  0:03
-CLOCK: [2014-01-09 木 14:58]--[2014-01-09 木 15:01] =>  0:03
-:END:
-:PROPERTIES:
-:Effort:   0:30
-:END:
-[2014-01-09 木 14:58]
-
-依存する gem を更新したら rspec が失敗するようになってしまった。
-
 * Releases
 ** TODO 0.3.1 リリース                                       :VERSION0_3_1:
 :LOGBOOK:
@@ -200,6 +156,16 @@ CLOCK: [2013-12-12 木 11:32]--[2013-12-12 木 11:39] =>  0:07
 CLOCK: [2014-02-27 木 18:19]--[2014-02-27 木 18:20] =>  0:01
 :END:
 [2014-02-27 木 18:19]
+**** NEXT spec/pio/arp/request_spec.rb を rspec_given で書き直す
+SCHEDULED: <2014-03-04 火>
+:LOGBOOK:
+CLOCK: [2014-03-04 火 14:30]
+CLOCK: [2014-03-04 火 09:59]--[2014-03-04 火 10:01] =>  0:02
+:END:
+:PROPERTIES:
+:Effort:   1:00
+:END:
+[2014-03-04 火 09:59]
 **** DONE 定数 *_MAC_ADDRESS -> *_MAC に
 CLOSED: [2014-02-27 木 18:27] SCHEDULED: <2014-02-27 木>
 :LOGBOOK:
