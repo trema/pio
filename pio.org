@@ -128,50 +128,6 @@ CLOCK: [2013-11-15 金 09:54]--[2013-11-15 金 09:57] =>  0:03
 ペして GitHub のイシューに貼れば，こちらで簡単に解析できる．
 ** TODO ワンボタンリリース用 rake タスクを実装
 [2013-11-27 水 14:39]
-** DONE Respond to Eishun Kondoh <notifications@github.com> on Re: [pio] Many objects are undocumented. (#16)
-CLOSED: [2014-01-07 火 09:41] SCHEDULED: <2014-01-07 火>
-:PROPERTIES:
-:Effort:   0:15
-:END:
-[2014-01-06 月 09:55]
-[[gnus:%5BGmail%5D.All%20Mail#trema/pio/issues/16/31417774@github.com][Email from Eishun Kondoh: Re: {pio} Many objects are und]]
-** DONE Respond to Eishun Kondoh <notifications@github.com> on Re: [pio] Reviewed Method Access Control. (#17)
-CLOSED: [2014-01-08 水 17:12] SCHEDULED: <2014-01-08 水>
-:LOGBOOK:
-CLOCK: [2014-01-08 水 17:09]--[2014-01-08 水 17:12] =>  0:03
-:END:
-:PROPERTIES:
-:Effort:   0:15
-:END:
-[2014-01-08 水 09:10]
-[[gnus:%5BGmail%5D.All%20Mail#trema/pio/pull/17/c31708682@github.com][Email from Eishun Kondoh: Re: {pio} Reviewed Method Acce]]
-** DONE Respond to Eishun Kondoh <notifications@github.com> on Re: [pio] Reviewed Method Access Control. (#17)
-CLOSED: [2014-01-08 水 17:13] SCHEDULED: <2014-01-08 水>
-:PROPERTIES:
-:Effort:   0:15
-:END:
-[2014-01-08 水 09:13]
-[[gnus:%5BGmail%5D.All%20Mail#trema/pio/pull/17/c31708430@github.com][Email from Eishun Kondoh: Re: {pio} Reviewed Method Acce]]
-** DONE Respond to stereocat <notifications@github.com> on Re: [pio] DHCP Optional Field の種類 (#18)
-CLOSED: [2014-01-08 水 17:13] SCHEDULED: <2014-01-08 水>
-:PROPERTIES:
-:Effort:   0:15
-:END:
-[2014-01-08 水 09:13]
-[[gnus:%5BGmail%5D.All%20Mail#trema/pio/issues/18/31739103@github.com][Email from stereocat: Re: {pio} DHCP Optional Field ]]
-** DONE feature/update_bundle の rspec エラーを修正
-CLOSED: [2014-01-09 木 15:04] SCHEDULED: <2014-01-09 木>
-:LOGBOOK:
-CLOCK: [2014-01-09 木 15:01]--[2014-01-09 木 15:04] =>  0:03
-CLOCK: [2014-01-09 木 14:58]--[2014-01-09 木 15:01] =>  0:03
-:END:
-:PROPERTIES:
-:Effort:   0:30
-:END:
-[2014-01-09 木 14:58]
-
-依存する gem を更新したら rspec が失敗するようになってしまった。
-
 * Releases
 ** TODO 0.3.1 リリース                                       :VERSION0_3_1:
 :LOGBOOK:
@@ -194,15 +150,29 @@ CLOCK: [2014-02-27 木 18:19]--[2014-02-27 木 18:20] =>  0:01
 [2014-02-27 木 18:19]
 **** NEXT 定数 *_MAC_ADDRESS -> *_MAC に
 SCHEDULED: <2014-02-27 木>
-:LOGBOOK:
-CLOCK: [2014-02-27 木 18:20]
-:END:
 :PROPERTIES:
 :Effort:   0:15
 :END:
 [2014-02-27 木 18:20]
 
 :source_mac とかのオプションと名前を合わせる.
+*** TODO DHCP パーサを作る
+:PROPERTIES:
+:ID:       E4ED4593-A2A0-47A3-B4FC-6E4558570E8A
+:END:
+[2013-08-02 金 17:17]
+https://github.com/trema/pio/pull/22
+**** WAITING DHCP のテストエラーを直してもらう                   :WAITING:
+:LOGBOOK:
+- State "WAITING"    from "TODO"       [2014-03-03 月 14:42] \\
+  近藤さんに修正を依頼中.
+CLOCK: [2014-03-03 月 14:41]
+:END:
+[2014-03-03 月 14:41]
+
+RSpec を走らせたところいくつかエラーになったので,
+近藤さんにエラーを直してもらう.エラーログはこちら.
+https://github.com/trema/pio/pull/22#issuecomment-36482699
 
 *** 10 High Value Development Chores to Start 2014 Right
 :LOGBOOK:
@@ -314,6 +284,48 @@ CLOCK: [2013-12-12 木 11:16]--[2013-12-12 木 11:20] =>  0:04
 CLOCK: [2013-12-27 金 11:25]--[2013-12-27 金 11:32] =>  0:07
 :END:
 [2013-12-27 金 11:25]
+*** CANCELED #15 LLDPフレーム構築の方法                             :ISSUE:
+CLOSED: [2014-02-24 月 21:04]
+- State "CANCELED"   from "TODO"       [2014-02-24 月 21:04] \\
+  返事がないのでチケットを閉じた.
+:LOGBOOK:
+CLOCK: [2013-12-12 木 10:43]--[2013-12-12 木 10:49] =>  0:06
+CLOCK: [2013-12-12 木 10:40]--[2013-12-12 木 10:43] =>  0:03
+CLOCK: [2013-12-12 木 10:24]--[2013-12-12 木 10:26] =>  0:02
+:END:
+:PROPERTIES:
+:Effort:   0:30
+:END:
+[2013-12-12 木 10:24]
+
+https://github.com/trema/pio/issues/15
+**** DONE System Name TLV 等のユースケースと API についてコメント
+CLOSED: [2013-12-12 木 10:40] SCHEDULED: <2013-12-12 木>
+:LOGBOOK:
+CLOCK: [2013-12-12 木 10:39]--[2013-12-12 木 10:40] =>  0:01
+:END:
+[2013-12-12 木 10:39]
+
+**** DONE @Keichi さんに ping
+CLOSED: [2014-02-17 月 09:40]
+:LOGBOOK:
+CLOCK: [2013-12-27 金 11:20]--[2013-12-27 金 11:25] =>  0:05
+:END:
+[2013-12-27 金 11:20]
+
+ユースケースくださいと言ったところコメントがないので、年が明けたら
+ping してみよう。
+
+**** CANCELED @Keichi さんからの返事待ち
+CLOSED: [2014-02-24 月 21:04]
+- State "CANCELED"   from "WAITING"    [2014-02-24 月 21:04] \\
+  返事がないのでチケットを閉じた.
+- State "WAITING"    from "TODO"       [2014-02-17 月 10:14]
+:LOGBOOK:
+CLOCK: [2014-02-17 月 10:39]--[2014-02-17 月 10:40] =>  0:01
+CLOCK: [2014-02-17 月 10:14]--[2014-02-17 月 10:16] =>  0:02
+:END:
+[2014-02-17 月 10:14]
 *** DONE Pio::Lldp::Options のリファクタリング
 CLOSED: [2014-02-27 木 18:11]
 :LOGBOOK:
@@ -408,48 +420,6 @@ CLOCK: [2014-01-16 木 16:07]--[2014-01-16 木 16:08] =>  0:01
 :Effort:   0:15
 :END:
 [2014-01-16 木 16:07]
-*** CANCELED #15 LLDPフレーム構築の方法                             :ISSUE:
-CLOSED: [2014-02-24 月 21:04]
-- State "CANCELED"   from "TODO"       [2014-02-24 月 21:04] \\
-  返事がないのでチケットを閉じた.
-:LOGBOOK:
-CLOCK: [2013-12-12 木 10:43]--[2013-12-12 木 10:49] =>  0:06
-CLOCK: [2013-12-12 木 10:40]--[2013-12-12 木 10:43] =>  0:03
-CLOCK: [2013-12-12 木 10:24]--[2013-12-12 木 10:26] =>  0:02
-:END:
-:PROPERTIES:
-:Effort:   0:30
-:END:
-[2013-12-12 木 10:24]
-
-https://github.com/trema/pio/issues/15
-**** DONE System Name TLV 等のユースケースと API についてコメント
-CLOSED: [2013-12-12 木 10:40] SCHEDULED: <2013-12-12 木>
-:LOGBOOK:
-CLOCK: [2013-12-12 木 10:39]--[2013-12-12 木 10:40] =>  0:01
-:END:
-[2013-12-12 木 10:39]
-
-**** DONE @Keichi さんに ping
-CLOSED: [2014-02-17 月 09:40]
-:LOGBOOK:
-CLOCK: [2013-12-27 金 11:20]--[2013-12-27 金 11:25] =>  0:05
-:END:
-[2013-12-27 金 11:20]
-
-ユースケースくださいと言ったところコメントがないので、年が明けたら
-ping してみよう。
-
-**** CANCELED @Keichi さんからの返事待ち
-CLOSED: [2014-02-24 月 21:04]
-- State "CANCELED"   from "WAITING"    [2014-02-24 月 21:04] \\
-  返事がないのでチケットを閉じた.
-- State "WAITING"    from "TODO"       [2014-02-17 月 10:14]
-:LOGBOOK:
-CLOCK: [2014-02-17 月 10:39]--[2014-02-17 月 10:40] =>  0:01
-CLOCK: [2014-02-17 月 10:14]--[2014-02-17 月 10:16] =>  0:02
-:END:
-[2014-02-17 月 10:14]
 *** DONE lldp/options_spec.rb を rspec_given で書き直す
 CLOSED: [2014-03-03 月 14:02] SCHEDULED: <2014-03-03 月>
 :LOGBOOK:
@@ -460,11 +430,6 @@ CLOCK: [2014-03-03 月 10:38]--[2014-03-03 月 10:39] =>  0:01
 :Effort:   2:00
 :END:
 [2014-03-03 月 10:38]
-*** TODO DHCP パーサを作る
-:PROPERTIES:
-:ID:       E4ED4593-A2A0-47A3-B4FC-6E4558570E8A
-:END:
-[2013-08-02 金 17:17]
 ** TODO 0.3.2 リリース                                        :VERSION0_3_2:
 :LOGBOOK:
 CLOCK: [2013-12-12 木 10:26]--[2013-12-12 木 10:39] =>  0:13
