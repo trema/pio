@@ -18,6 +18,7 @@ group :development, :test do
   gem 'rb-inotify', '~> 0.9.3', require: false
   gem 'reek', '~> 1.3.6'
   gem 'rspec', '~> 2.14.1'
+  gem 'rspec-given', '~> 3.5.4'
   gem 'rspec-instafail', '~> 0.2.4'
   gem 'rubocop', '~> 0.18.1'
   gem 'terminal-notifier-guard', '~> 1.5.3'

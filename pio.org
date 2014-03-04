@@ -156,10 +156,20 @@ CLOCK: [2013-12-12 木 11:32]--[2013-12-12 木 11:39] =>  0:07
 CLOCK: [2014-02-27 木 18:19]--[2014-02-27 木 18:20] =>  0:01
 :END:
 [2014-02-27 木 18:19]
-**** NEXT 定数 *_MAC_ADDRESS -> *_MAC に
-SCHEDULED: <2014-02-27 木>
+**** DONE spec/pio/arp/request_spec.rb を rspec_given で書き直す
+CLOSED: [2014-03-04 火 15:48] SCHEDULED: <2014-03-04 火>
 :LOGBOOK:
-CLOCK: [2014-02-27 木 18:20]
+CLOCK: [2014-03-04 火 14:30]
+CLOCK: [2014-03-04 火 09:59]--[2014-03-04 火 10:01] =>  0:02
+:END:
+:PROPERTIES:
+:Effort:   1:00
+:END:
+[2014-03-04 火 09:59]
+**** DONE 定数 *_MAC_ADDRESS -> *_MAC に
+CLOSED: [2014-02-27 木 18:27] SCHEDULED: <2014-02-27 木>
+:LOGBOOK:
+CLOCK: [2014-02-27 木 18:20]--[2014-02-27 木 18:27] =>  0:07
 :END:
 :PROPERTIES:
 :Effort:   0:15
