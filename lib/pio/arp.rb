@@ -11,7 +11,7 @@ module Pio
   # ARP parser and generator.
   class Arp
     MESSAGE_TYPE = {
-      Request::OPERATION => Request,
+      Request::Options::OPERATION => Request,
       Reply::OPERATION => Reply
     }
     class << self
