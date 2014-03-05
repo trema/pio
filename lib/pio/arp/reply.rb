@@ -7,32 +7,30 @@ module Pio
   class Arp
     # ARP Reply packet generator
     class Reply < Message
-      OPERATION = 2
+      # User options for creating an Arp Reply.
+      class Options
+        OPERATION = 2
 
-      private
+        def initialize(options)
+          @source_mac = Mac.new(options[:source_mac])
+          @destination_mac = Mac.new(options[:destination_mac])
+          @sender_protocol_address =
+            IPv4Address.new(options[:sender_protocol_address])
+          @target_protocol_address =
+            IPv4Address.new(options[:target_protocol_address])
+        end
 
-      def default_options
-        {
-          operation: OPERATION
-        }
-      end
-
-      def user_options
-        @options.merge(
-          sender_hardware_address: @options[:source_mac],
-          target_hardware_address: @options[:destination_mac]
-        )
-      end
-
-      def mandatory_options
-        [
-         :source_mac,
-         :destination_mac,
-         :sender_hardware_address,
-         :target_hardware_address,
-         :sender_protocol_address,
-         :target_protocol_address
-        ]
+        def to_hash
+          {
+            operation: OPERATION,
+            source_mac: @source_mac,
+            destination_mac: @destination_mac,
+            sender_hardware_address: @source_mac,
+            target_hardware_address: @destination_mac,
+            sender_protocol_address: @sender_protocol_address,
+            target_protocol_address: @target_protocol_address
+          }
+        end
       end
     end
   end

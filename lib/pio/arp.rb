@@ -12,7 +12,7 @@ module Pio
   class Arp
     MESSAGE_TYPE = {
       Request::Options::OPERATION => Request,
-      Reply::OPERATION => Reply
+      Reply::Options::OPERATION => Reply
     }
     class << self
       include Util
