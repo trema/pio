@@ -19,6 +19,22 @@ describe Pio::Lldp::Options do
       its([:source_mac]) { should eq Pio::Mac.new('01:02:03:04:05:06') }
     end
 
+    context 'with :dpid and :port_number and :UNKNOWN_OPTION' do
+      let(:options) do
+        {
+          dpid: 0x192fa7b28d,
+          port_number: 1,
+          UNKNOWN_OPTION: :foo
+        }
+      end
+
+      it do
+        expect do
+          subject
+        end.to raise_error('Unknown option: UNKNOWN_OPTION.')
+      end
+    end
+
     context 'with :dpid, :port_number and :destination_mac' do
       let(:options) do
         {
@@ -64,7 +80,8 @@ describe Pio::Lldp::Options do
       its([:source_mac]) { should eq Pio::Mac.new('01:02:03:04:05:06') }
     end
 
-    context 'with :dpid, :port_number, :destination_mac(=nil) and :source_mac(=nil)' do
+    context 'with :dpid, :port_number,'\
+            ' :destination_mac(=nil) and :source_mac(=nil)' do
       let(:options) do
         {
          dpid: 0x192fa7b28d,
@@ -83,25 +100,37 @@ describe Pio::Lldp::Options do
     context 'when :dpid is not passed' do
       let(:options) { { port_number: 1 } }
 
-      it { expect { subject }.to raise_error('The dpid option should be passed.') }
+      it do
+        expect { subject }.to raise_error('The dpid option should be passed.')
+      end
     end
 
     context 'when :dpid is nil' do
       let(:options) { { dpid: nil, port_number: 1 } }
 
-      it { expect { subject }.to raise_error("The dpid option shouldn't be nil.") }
+      it do
+        expect { subject }.to raise_error("The dpid option shouldn't be nil.")
+      end
     end
 
     context 'when :port_number is not passed' do
       let(:options) { { dpid: 0x192fa7b28d } }
 
-      it { expect { subject }.to raise_error('The port_number option should be passed.') }
+      it do
+        expect do
+          subject
+        end.to raise_error('The port_number option should be passed.')
+      end
     end
 
     context 'when :port_number is nil' do
       let(:options) { { dpid: 1, port_number: nil } }
 
-      it { expect { subject }.to raise_error("The port_number option shouldn't be nil.") }
+      it do
+        expect do
+          subject
+        end.to raise_error("The port_number option shouldn't be nil.")
+      end
     end
   end
 end

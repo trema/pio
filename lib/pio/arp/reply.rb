@@ -1,17 +1,24 @@
 # -*- coding: utf-8 -*-
-require 'forwardable'
 require 'pio/arp/message'
 require 'pio/mac'
+require 'pio/options'
 
 module Pio
   class Arp
     # ARP Reply packet generator
     class Reply < Message
+      OPERATION = 2
+      public_class_method :new
+
       # User options for creating an Arp Reply.
-      class Options
-        OPERATION = 2
+      class Options < Pio::Options
+        mandatory_option :source_mac
+        mandatory_option :destination_mac
+        mandatory_option :sender_protocol_address
+        mandatory_option :target_protocol_address
 
         def initialize(options)
+          validate_options(options)
           @source_mac = Mac.new(options[:source_mac])
           @destination_mac = Mac.new(options[:destination_mac])
           @sender_protocol_address =

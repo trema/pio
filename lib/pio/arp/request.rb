@@ -1,19 +1,26 @@
 # -*- coding: utf-8 -*-
-require 'pio/arp/frame'
 require 'pio/arp/message'
 require 'pio/mac'
+require 'pio/options'
 
 module Pio
   class Arp
     # ARP Request packet generator
     class Request < Message
+      OPERATION = 1
+      public_class_method :new
+
       # User options for creating an Arp Request.
-      class Options
-        OPERATION = 1
+      class Options < Pio::Options
+        mandatory_option :source_mac
+        mandatory_option :sender_protocol_address
+        mandatory_option :target_protocol_address
+
         BROADCAST_MAC = Mac.new(0xffffffffffff)
         ALL_ZERO_MAC = Mac.new(0)
 
         def initialize(options)
+          validate_options(options)
           @source_mac = Mac.new(options[:source_mac])
           @sender_protocol_address =
             IPv4Address.new(options[:sender_protocol_address])

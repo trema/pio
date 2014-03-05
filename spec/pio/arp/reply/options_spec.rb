@@ -21,8 +21,12 @@ describe Pio::Arp::Reply::Options, '.new' do
 
       Then { result[:source_mac] == Pio::Mac.new(0x00169d1d9cc4) }
       Then { result[:destination_mac] == Pio::Mac.new(0x002682ebead1) }
-      Then { result[:sender_protocol_address] == Pio::IPv4Address.new(0xc0a85303) }
-      Then { result[:target_protocol_address] == Pio::IPv4Address.new(0xc0a853fe) }
+      Then do
+        result[:sender_protocol_address] == Pio::IPv4Address.new(0xc0a85303)
+      end
+      Then do
+        result[:target_protocol_address] == Pio::IPv4Address.new(0xc0a853fe)
+      end
     end
   end
 
@@ -35,9 +39,8 @@ describe Pio::Arp::Reply::Options, '.new' do
     When(:result) { Pio::Arp::Reply::Options.new(user_options) }
 
     Then do
-      # FIXME: ArgumentError, 'The source_mac option should be passed.'
       result ==
-        Failure(Pio::Mac::InvalidValueError, 'Invalid MAC address: nil')
+        Failure(ArgumentError, 'The source_mac option should be passed.')
     end
   end
 
@@ -50,9 +53,8 @@ describe Pio::Arp::Reply::Options, '.new' do
     When(:result) { Pio::Arp::Reply::Options.new(user_options) }
 
     Then do
-      # FIXME: ArgumentError, "The source_mac option shouldn't be nil."
       result ==
-        Failure(Pio::Mac::InvalidValueError, 'Invalid MAC address: nil')
+        Failure(ArgumentError, "The source_mac option shouldn't be nil.")
     end
   end
 
@@ -65,9 +67,8 @@ describe Pio::Arp::Reply::Options, '.new' do
     When(:result) { Pio::Arp::Reply::Options.new(user_options) }
 
     Then do
-      # FIXME: ArgumentError, 'The destination_mac option should be passed.'
       result ==
-        Failure(Pio::Mac::InvalidValueError, 'Invalid MAC address: nil')
+        Failure(ArgumentError, 'The destination_mac option should be passed.')
     end
   end
 
@@ -80,9 +81,8 @@ describe Pio::Arp::Reply::Options, '.new' do
     When(:result) { Pio::Arp::Reply::Options.new(user_options) }
 
     Then do
-      # FIXME: ArgumentError, "The destination_mac option shouldn't be nil."
       result ==
-        Failure(Pio::Mac::InvalidValueError, 'Invalid MAC address: nil')
+        Failure(ArgumentError, "The destination_mac option shouldn't be nil.")
     end
   end
 
@@ -95,9 +95,8 @@ describe Pio::Arp::Reply::Options, '.new' do
     When(:result) { Pio::Arp::Reply::Options.new(user_options) }
 
     Then do
-      # FIXME: ArgumentError, 'The sender_protocol_address option should be passed.'
-      result ==
-        Failure(TypeError, 'Invalid IPv4 address: nil')
+      result == Failure(ArgumentError,
+                        'The sender_protocol_address option should be passed.')
     end
   end
 
@@ -110,9 +109,8 @@ describe Pio::Arp::Reply::Options, '.new' do
     When(:result) { Pio::Arp::Reply::Options.new(user_options) }
 
     Then do
-      # FIXME: ArgumentError, "The sender_protocol_address option shouldn't be nil."
-      result ==
-        Failure(TypeError, 'Invalid IPv4 address: nil')
+      result == Failure(ArgumentError,
+                        "The sender_protocol_address option shouldn't be nil.")
     end
   end
 
@@ -125,9 +123,8 @@ describe Pio::Arp::Reply::Options, '.new' do
     When(:result) { Pio::Arp::Reply::Options.new(user_options) }
 
     Then do
-      # FIXME: ArgumentError, 'The target_protocol_address option should be passed.'
-      result ==
-        Failure(TypeError, 'Invalid IPv4 address: nil')
+      result == Failure(ArgumentError,
+                        'The target_protocol_address option should be passed.')
     end
   end
 
@@ -140,9 +137,8 @@ describe Pio::Arp::Reply::Options, '.new' do
     When(:result) { Pio::Arp::Reply::Options.new(user_options) }
 
     Then do
-      # FIXME: ArgumentError, "The target_protocol_address option shouldn't be nil."
-      result ==
-        Failure(TypeError, 'Invalid IPv4 address: nil')
+      result == Failure(ArgumentError,
+                        "The target_protocol_address option shouldn't be nil.")
     end
   end
 end

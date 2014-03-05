@@ -8,17 +8,6 @@ module Pio
     class Message
       extend Forwardable
 
-      def self.create_from(frame)
-        message = allocate
-        message.instance_variable_set :@frame, frame
-        message
-      end
-
-      def initialize(user_options)
-        options = self.class.const_get(:Options).new(user_options)
-        @frame = Arp::Frame.new(options.to_hash)
-      end
-
       def_delegators :@frame, :destination_mac
       def_delegators :@frame, :source_mac
       def_delegators :@frame, :ether_type
@@ -32,6 +21,19 @@ module Pio
       def_delegators :@frame, :target_hardware_address
       def_delegators :@frame, :target_protocol_address
       def_delegators :@frame, :to_binary
+
+      def self.create_from(frame)
+        message = allocate
+        message.instance_variable_set :@frame, frame
+        message
+      end
+
+      private_class_method :new
+
+      def initialize(user_options)
+        options = self.class.const_get(:Options).new(user_options)
+        @frame = Arp::Frame.new(options.to_hash)
+      end
     end
   end
 end

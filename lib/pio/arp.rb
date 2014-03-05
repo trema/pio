@@ -1,21 +1,25 @@
 # -*- coding: utf-8 -*-
 require 'English'
-require 'rubygems'
-require 'bindata'
-
+require 'pio/arp/frame'
 require 'pio/arp/request'
 require 'pio/arp/reply'
-require 'pio/util'
 
 module Pio
   # ARP parser and generator.
   class Arp
     MESSAGE_TYPE = {
-      Request::Options::OPERATION => Request,
-      Reply::Options::OPERATION => Reply
+      Request::OPERATION => Request,
+      Reply::OPERATION => Reply
     }
-    class << self
-      include Util
+
+    def self.read(raw_data)
+      begin
+        frame = Frame.read(raw_data)
+      rescue
+        raise Pio::ParseError, $ERROR_INFO.message
+      end
+
+      MESSAGE_TYPE[frame.message_type].create_from frame
     end
   end
 end
