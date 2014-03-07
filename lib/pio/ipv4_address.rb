@@ -55,6 +55,8 @@ module Pio
     #
     def_delegator :value, :to_range
 
+    def_delegator :value, :==
+
     #
     # @return [Number] prefix length of IPv4 address.
     #

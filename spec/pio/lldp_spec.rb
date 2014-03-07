@@ -135,7 +135,9 @@ describe Pio::Lldp do
       let(:source_mac) { nil }
       let(:destination_mac) { nil }
 
-      it { expect { subject }.to raise_error("The dpid option shouldn't be nil.") }
+      it do
+        expect { subject }.to raise_error("The dpid option shouldn't be nil.")
+      end
     end
 
     context 'when :dpid is not passed' do
@@ -160,7 +162,11 @@ describe Pio::Lldp do
       let(:source_mac) { nil }
       let(:destination_mac) { nil }
 
-      it { expect { subject }.to raise_error("The port_number option shouldn't be nil.") }
+      it do
+        expect do
+          subject
+        end.to raise_error("The port_number option shouldn't be nil.")
+      end
     end
   end
 
