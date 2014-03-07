@@ -24,7 +24,7 @@ module Pio
       uint16 :icmp_identifier, initial_value: 0x0100
       uint16 :icmp_sequence_number, initial_value: 0x0001
       string :echo_data,
-             initial_value: 'DEADBEEF',
+             initial_value: '',
              read_length: -> { echo_data_length }
 
       def message_type
