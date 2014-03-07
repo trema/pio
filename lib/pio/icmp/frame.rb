@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+require 'bindata'
 require 'pio/type/ethernet_header'
 require 'pio/type/ipv4_header'
 
@@ -14,6 +15,7 @@ module Pio
       extend Type::IPv4Header
 
       endian :big
+
       ethernet_header ether_type: 0x0800
       ipv4_header ip_protocol: 1,
                   ip_header_checksum: -> { ip_sum },

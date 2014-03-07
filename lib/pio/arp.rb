@@ -1,26 +1,15 @@
 # -*- coding: utf-8 -*-
-require 'English'
 require 'pio/arp/frame'
 require 'pio/arp/request'
 require 'pio/arp/reply'
+require 'pio/message_type_selector'
 
 module Pio
   # ARP parser and generator.
   class Arp
-    MESSAGE_TYPE = {
-      Request::OPERATION => Request,
-      Reply::OPERATION => Reply
-    }
+    extend MessageTypeSelector
 
-    def self.read(raw_data)
-      begin
-        frame = Frame.read(raw_data)
-      rescue
-        raise Pio::ParseError, $ERROR_INFO.message
-      end
-
-      MESSAGE_TYPE[frame.message_type].create_from frame
-    end
+    message_type Request::OPERATION => Request, Reply::OPERATION => Reply
   end
 end
 
