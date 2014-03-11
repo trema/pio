@@ -22,6 +22,23 @@ describe Pio::Arp::Request, '.new' do
      0x00, 0x00, 0x00, 0x00
     ].pack('C*')
 
+  context 'with String MAC and IP address' do
+    Given(:arp_request) do
+      Pio::Arp::Request.new(
+        source_mac: '00:26:82:eb:ea:d1',
+        sender_protocol_address: '192.168.83.3',
+        target_protocol_address: '192.168.83.254'
+      )
+    end
+
+    describe '#to_binary' do
+      When(:result) { arp_request.to_binary }
+
+      Then { result == ARP_REQUEST_DUMP }
+      And { result.size == 64 }
+    end
+  end
+
   context 'with Integer MAC address and IP address' do
     Given(:arp_request) do
       Pio::Arp::Request.new(
@@ -70,93 +87,6 @@ describe Pio::Arp::Request, '.new' do
 
       Then { result == ARP_REQUEST_DUMP }
       And { result.size == 64 }
-    end
-  end
-
-  context 'when source_mac is not passed' do
-    When(:result) do
-      Pio::Arp::Request.new(
-        sender_protocol_address: '192.168.83.3',
-        target_protocol_address: '192.168.83.254'
-      )
-    end
-
-    Then do
-      result ==
-        Failure(ArgumentError, 'The source_mac option should be passed.')
-    end
-  end
-
-  context 'with source_mac = nil' do
-    When(:result) do
-      Pio::Arp::Request.new(
-        source_mac: nil,
-        sender_protocol_address: '192.168.83.3',
-        target_protocol_address: '192.168.83.254'
-      )
-    end
-
-    Then do
-      result ==
-        Failure(ArgumentError, "The source_mac option shouldn't be nil.")
-    end
-  end
-
-  context 'when sender_protocol_address is not passed' do
-    When(:result) do
-      Pio::Arp::Request.new(
-        source_mac: 0x002682ebead1,
-        target_protocol_address: '192.168.83.254'
-      )
-    end
-
-    Then do
-      result == Failure(ArgumentError,
-                        'The sender_protocol_address option should be passed.')
-    end
-  end
-
-  context 'with sender_protocol_address = nil' do
-    When(:result) do
-      Pio::Arp::Request.new(
-        source_mac: 0x002682ebead1,
-        sender_protocol_address: nil,
-        target_protocol_address: '192.168.83.254'
-      )
-    end
-
-    Then do
-      result == Failure(ArgumentError,
-                        "The sender_protocol_address option shouldn't be nil.")
-    end
-  end
-
-  context 'when :target_protocol_address is not passed' do
-    When(:result) do
-      Pio::Arp::Request.new(
-        source_mac: 0x002682ebead1,
-        sender_protocol_address: '192.168.83.254'
-      )
-    end
-
-    Then do
-      result == Failure(ArgumentError,
-                        'The target_protocol_address option should be passed.')
-    end
-  end
-
-  context 'when :target_protocol_address = nil' do
-    When(:result) do
-      Pio::Arp::Request.new(
-        source_mac: 0x002682ebead1,
-        sender_protocol_address: '192.168.83.254',
-        target_protocol_address: nil
-      )
-    end
-
-    Then do
-      result == Failure(ArgumentError,
-                        "The target_protocol_address option shouldn't be nil.")
     end
   end
 end
