@@ -31,15 +31,15 @@ Its usage is dead simple.
 
 ### ICMP
 
-To parse an ICMP frame, use the API \`Pio::Icmp.read\` and you can
+To parse an ICMP frame, use the API `Pio::Icmp.read` and you can
 access each field of the parsed ICMP frame.
 
     require 'pio'
 
     icmp = Pio::Icmp.read(binary_data)
-    icmp.source_mac.to_s #=> '00:26:82:eb:ea:d1'
+    icmp.source_mac.to_s # => '00:26:82:eb:ea:d1'
 
-Also you can use \`Pio::Icmp::Request#new\` or \`Pio::Icmp::Reply#new\` to
+Also you can use `Pio::Icmp::Request#new` or `Pio::Icmp::Reply#new` to
 generate an Icmp Request/Reply frame like below:
 
     require 'pio'
@@ -50,7 +50,7 @@ generate an Icmp Request/Reply frame like below:
       ip_source_address: '192.168.83.3',
       ip_destination_address: '192.168.83.254'
     )
-    request.to_binary  #=> ICMP Request frame in binary format.
+    request.to_binary  # => ICMP Request frame in binary format.
 
     reply = Pio::Icmp::Reply.new(
       destination_mac: '00:26:82:eb:ea:d1',
@@ -63,7 +63,7 @@ generate an Icmp Request/Reply frame like below:
       icmp_sequence_number: request.icmp_sequence_number,
       echo_data: request.echo_data
     )
-    reply.to_binary  #=> ICMP Reply frame in binary format.
+    reply.to_binary  # => ICMP Reply frame in binary format.
 
 ### ARP
 
@@ -73,7 +73,7 @@ each field of the parsed ARP frame.
     require 'pio'
 
     arp = Pio::Arp.read(binary_data)
-    arp.source_mac.to_s #=> '00:26:82:eb:ea:d1'
+    arp.source_mac.to_s # => '00:26:82:eb:ea:d1'
 
 Also you can use `Pio::Arp::Request#new` or `Pio::Arp::Reply#new` to
 generate an Arp Request/Reply frame like below:
@@ -85,7 +85,7 @@ generate an Arp Request/Reply frame like below:
       sender_protocol_address: '192.168.83.3',
       target_protocol_address: '192.168.83.254'
     )
-    request.to_binary  #=> Arp Request frame in binary format.
+    request.to_binary  # => Arp Request frame in binary format.
 
     reply = Pio::Arp::Reply.new(
       source_mac: '00:26:82:eb:ea:d1',
@@ -93,7 +93,7 @@ generate an Arp Request/Reply frame like below:
       sender_protocol_address: '192.168.83.3',
       target_protocol_address: '192.168.83.254'
     )
-    reply.to_binary  #=> Arp Reply frame in binary format.
+    reply.to_binary  # => Arp Reply frame in binary format.
 
 ### LLDP
 
@@ -103,14 +103,14 @@ access each field of the parsed LLDP frame.
     require 'pio'
 
     lldp = Pio::Lldp.read(binary_data)
-    lldp.ttl #=> 120
+    lldp.ttl # => 120
 
 Also you can use `Pio::Lldp#new` to generate an LLDP frame like below:
 
     require 'pio'
 
     lldp = Pio::Lldp.new(dpid: 0x123, port_number: 12)
-    lldp.to_binary  #=> LLDP frame in binary format.
+    lldp.to_binary  # => LLDP frame in binary format.
 
 ## Installation
 
