@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 require 'pio/icmp/message'
+require 'pio/icmp/options'
 require 'pio/mac'
-require 'pio/options'
 
 module Pio
   class Icmp
@@ -11,34 +11,35 @@ module Pio
       public_class_method :new
 
       # User options for creating an ICMP Request.
-      class Options < Pio::Options
+      class Options < Pio::Icmp::Options
+        DEFAULT_IDENTIFIER = 0x0100
+        DEFAULT_SEQUENCE_NUMBER = 0x0001
+
         mandatory_option :source_mac
         mandatory_option :destination_mac
         mandatory_option :ip_source_address
         mandatory_option :ip_destination_address
+        option :identifier
+        option :sequence_number
         option :echo_data
+
+        # rubocop:disable MethodLength
 
         def initialize(options)
           validate_options(options)
+          @type = TYPE
           @source_mac = Mac.new(options[:source_mac])
           @destination_mac = Mac.new(options[:destination_mac])
-          @ip_source_address =
-            IPv4Address.new(options[:ip_source_address])
+          @ip_source_address = IPv4Address.new(options[:ip_source_address])
           @ip_destination_address =
             IPv4Address.new(options[:ip_destination_address])
-          @echo_data = options[:echo_data] || ''
+          @identifier = options[:identifier] || DEFAULT_IDENTIFIER
+          @sequence_number =
+            options[:sequence_number] || DEFAULT_SEQUENCE_NUMBER
+          @echo_data = options[:echo_data] || DEFAULT_ECHO_DATA
         end
 
-        def to_hash
-          {
-            icmp_type: TYPE,
-            source_mac: @source_mac,
-            destination_mac: @destination_mac,
-            ip_source_address: @ip_source_address,
-            ip_destination_address: @ip_destination_address,
-            echo_data: @echo_data
-          }
-        end
+        # rubocop:enable MethodLength
       end
     end
   end

@@ -23,10 +23,9 @@ module Pio
       uint8 :icmp_type
       uint8 :icmp_code, initial_value: 0
       uint16 :icmp_checksum, value: -> { icmp_sum }
-      uint16 :icmp_identifier, initial_value: 0x0100
-      uint16 :icmp_sequence_number, initial_value: 0x0001
+      uint16 :icmp_identifier
+      uint16 :icmp_sequence_number
       string :echo_data,
-             initial_value: '',
              read_length: -> { echo_data_length }
 
       def message_type

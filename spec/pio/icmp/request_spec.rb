@@ -9,6 +9,8 @@ describe Pio::Icmp::Request, '.new' do
         source_mac: '74:e5:0b:2a:18:f8',
         ip_source_address: '192.168.1.101',
         ip_destination_address: '8.8.8.8',
+        identifier: 0x123,
+        sequence_number: 0x321,
         echo_data: 'abcdefghijklmnopqrstuvwabcdefghi'
       )
     end
@@ -50,11 +52,11 @@ describe Pio::Icmp::Request, '.new' do
            # ICMP Code
            0x00,
            # ICMP Checksum
-           0x4c, 0x5b,
+           0x49, 0x18,
            # ICMP Identifier
-           0x01, 0x00,
+           0x01, 0x23,
            # ICMP Sequence Number
-           0x00, 0x01,
+           0x03, 0x21,
            # Echo Data
            0x61, 0x62, 0x63, 0x64, 0x65, 0x66, 0x67,
            0x68, 0x69, 0x6a, 0x6b, 0x6c, 0x6d, 0x6e,
@@ -72,7 +74,9 @@ describe Pio::Icmp::Request, '.new' do
         destination_mac: '24:db:ac:41:e5:5b',
         source_mac: '74:e5:0b:2a:18:f8',
         ip_source_address: '192.168.1.101',
-        ip_destination_address: '8.8.8.8'
+        ip_destination_address: '8.8.8.8',
+        identifier: 0x123,
+        sequence_number: 0x321
       )
     end
 
@@ -113,11 +117,11 @@ describe Pio::Icmp::Request, '.new' do
            # ICMP Code
            0x00,
            # ICMP Checksum
-           0xf6, 0xfe,
+           0xf3, 0xbb,
            # ICMP Identifier
-           0x01, 0x00,
+           0x01, 0x23,
            # ICMP Sequence Number
-           0x00, 0x01,
+           0x03, 0x21,
            # Echo Data
            0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
            0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
