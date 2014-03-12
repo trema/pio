@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+require 'bindata'
 require 'pio/type/ethernet_header'
 require 'pio/type/ipv4_header'
 
@@ -14,6 +15,7 @@ module Pio
       extend Type::IPv4Header
 
       endian :big
+
       ethernet_header ether_type: 0x0800
       ipv4_header ip_protocol: 1,
                   ip_header_checksum: -> { ip_sum },
@@ -21,10 +23,9 @@ module Pio
       uint8 :icmp_type
       uint8 :icmp_code, initial_value: 0
       uint16 :icmp_checksum, value: -> { icmp_sum }
-      uint16 :icmp_identifier, initial_value: 0x0100
-      uint16 :icmp_sequence_number, initial_value: 0x0001
+      uint16 :icmp_identifier
+      uint16 :icmp_sequence_number
       string :echo_data,
-             initial_value: 'DEADBEEF',
              read_length: -> { echo_data_length }
 
       def message_type
