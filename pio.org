@@ -149,6 +149,130 @@ CLOCK: [2013-12-12 木 11:32]--[2013-12-12 木 11:39] =>  0:07
 
 *** TODO Pio::Icmp のリファクタリング
 [2014-03-07 金 15:54]
+
+**** TODO pio/util.rb とかの適当に作った箇所のリファクタリング
+:LOGBOOK:
+CLOCK: [2013-11-14 木 19:11]--[2013-11-14 木 19:12] =>  0:01
+:END:
+[2013-11-14 木 19:11]
+*** TODO LLDP のリファクタリング
+:LOGBOOK:
+CLOCK: [2014-03-12 水 10:57]
+:END:
+[2014-03-12 水 10:57]
+**** DONE Pio::Lldp::Options のリファクタリング
+CLOSED: [2014-02-27 木 18:11]
+:LOGBOOK:
+CLOCK: [2014-02-27 木 16:42]--[2014-02-27 木 16:45] =>  0:03
+:END:
+[2014-02-27 木 16:42]
+***** DONE Magic String を定数にする
+CLOSED: [2014-02-27 木 18:11] SCHEDULED: <2014-02-27 木>
+:LOGBOOK:
+CLOCK: [2014-02-27 木 16:46]--[2014-02-27 木 16:48] =>  0:02
+:END:
+:PROPERTIES:
+:Effort:   0:15
+:END:
+[2014-02-27 木 16:46]
+**** DONE LLDP の必須オプションをリファクタリング
+CLOSED: [2014-02-27 木 14:16] SCHEDULED: <2014-02-27 木>
+:LOGBOOK:
+CLOCK: [2014-02-27 木 12:02]--[2014-02-27 木 12:07] =>  0:05
+CLOCK: [2014-02-27 木 11:55]--[2014-02-27 木 11:56] =>  0:01
+CLOCK: [2014-02-27 木 11:24]--[2014-02-27 木 11:26] =>  0:02
+CLOCK: [2014-02-27 木 11:19]--[2014-02-27 木 11:23] =>  0:04
+CLOCK: [2014-02-27 木 11:10]--[2014-02-27 木 11:13] =>  0:03
+:END:
+[2014-02-27 木 11:10]
+***** DONE RubyTapas の #45: Hash Default Value を観る
+CLOSED: [2014-02-27 木 11:19] SCHEDULED: <2014-02-27 木>
+:LOGBOOK:
+CLOCK: [2014-02-27 木 11:15]--[2014-02-27 木 11:19] =>  0:04
+CLOCK: [2014-02-27 木 11:13]--[2014-02-27 木 11:15] =>  0:02
+:END:
+:PROPERTIES:
+:Effort:   0:15
+:END:
+[2014-02-27 木 11:13]
+
+http://www.rubytapas.com/episodes/45-Hash-Default-Value
+関係なかった.他のエピソードだっけ？
+***** DONE RubyTapas の #8: fetch as an Assertion を観る
+CLOSED: [2014-02-27 木 11:55] SCHEDULED: <2014-02-27 木>
+:LOGBOOK:
+CLOCK: [2014-02-27 木 11:52]--[2014-02-27 木 11:55] =>  0:03
+CLOCK: [2014-02-27 木 11:50]--[2014-02-27 木 11:52] =>  0:02
+:END:
+:PROPERTIES:
+:Effort:   0:15
+:END:
+[2014-02-27 木 11:50]
+
+http://www.rubytapas.com/episodes/8-fetch-as-an-Assertion
+***** DONE RubyTapas の #12: #fetch for Defaults を観る
+CLOSED: [2014-02-27 木 12:02] SCHEDULED: <2014-02-27 木>
+:LOGBOOK:
+CLOCK: [2014-02-27 木 11:58]--[2014-02-27 木 12:02] =>  0:04
+CLOCK: [2014-02-27 木 11:56]--[2014-02-27 木 11:58] =>  0:02
+:END:
+:PROPERTIES:
+:Effort:   0:15
+:END:
+[2014-02-27 木 11:56]
+***** DONE RubyTapas の #15: Advanced #fetch を観る
+CLOSED: [2014-02-27 木 14:15] SCHEDULED: <2014-02-27 木>
+:LOGBOOK:
+CLOCK: [2014-02-27 木 12:08]--[2014-02-27 木 12:16] =>  0:08
+CLOCK: [2014-02-27 木 12:07]--[2014-02-27 木 12:08] =>  0:01
+:END:
+:PROPERTIES:
+:Effort:   0:15
+:END:
+[2014-02-27 木 12:07]
+**** CANCELED #15 LLDPフレーム構築の方法                           :ISSUE:
+CLOSED: [2014-02-24 月 21:04]
+- State "CANCELED"   from "TODO"       [2014-02-24 月 21:04] \\
+  返事がないのでチケットを閉じた.
+:LOGBOOK:
+CLOCK: [2013-12-12 木 10:43]--[2013-12-12 木 10:49] =>  0:06
+CLOCK: [2013-12-12 木 10:40]--[2013-12-12 木 10:43] =>  0:03
+CLOCK: [2013-12-12 木 10:24]--[2013-12-12 木 10:26] =>  0:02
+:END:
+:PROPERTIES:
+:Effort:   0:30
+:END:
+[2013-12-12 木 10:24]
+
+https://github.com/trema/pio/issues/15
+***** DONE System Name TLV 等のユースケースと API についてコメント
+CLOSED: [2013-12-12 木 10:40] SCHEDULED: <2013-12-12 木>
+:LOGBOOK:
+CLOCK: [2013-12-12 木 10:39]--[2013-12-12 木 10:40] =>  0:01
+:END:
+[2013-12-12 木 10:39]
+
+***** DONE @Keichi さんに ping
+CLOSED: [2014-02-17 月 09:40]
+:LOGBOOK:
+CLOCK: [2013-12-27 金 11:20]--[2013-12-27 金 11:25] =>  0:05
+:END:
+[2013-12-27 金 11:20]
+
+ユースケースくださいと言ったところコメントがないので、年が明けたら
+ping してみよう。
+
+***** CANCELED @Keichi さんからの返事待ち
+CLOSED: [2014-02-24 月 21:04]
+- State "CANCELED"   from "WAITING"    [2014-02-24 月 21:04] \\
+  返事がないのでチケットを閉じた.
+- State "WAITING"    from "TODO"       [2014-02-17 月 10:14]
+:LOGBOOK:
+CLOCK: [2014-02-17 月 10:39]--[2014-02-17 月 10:40] =>  0:01
+CLOCK: [2014-02-17 月 10:14]--[2014-02-17 月 10:16] =>  0:02
+:END:
+[2014-02-17 月 10:14]
+
 *** TODO DHCP パーサを作る
 :PROPERTIES:
 :ID:       E4ED4593-A2A0-47A3-B4FC-6E4558570E8A
@@ -228,26 +352,11 @@ CLOCK: [2014-02-27 木 15:55]--[2014-02-27 木 15:56] =>  0:01
 :END:
 [2014-02-27 木 15:55]
 
-**** DONE Clean up your READMEs [2/2]
+**** DONE Clean up your READMEs
 CLOSED: [2014-03-12 水 10:27]
 [2014-02-27 木 15:56]
-- [X] 古い/まちがった情報がないかチェック
-- [X] コード例を include して自動生成するように
-**** DONE Aggregate and index your logs
-CLOSED: [2014-02-27 木 16:11]
-[2014-02-27 木 15:56]
 
-**** DONE Track the quality of your team’s code as you commit
-CLOSED: [2014-02-27 木 15:58] SCHEDULED: <2014-02-27 木>
-:LOGBOOK:
-CLOCK: [2014-02-27 木 15:56]--[2014-02-27 木 15:58] =>  0:02
-:END:
-:PROPERTIES:
-:Effort:   0:15
-:END:
-[2014-02-27 木 15:56]
-
-*** DONE README.md を .org から生成
+***** DONE README.md を .org から生成
 CLOSED: [2014-03-11 火 14:32] SCHEDULED: <2014-03-11 火>
 :LOGBOOK:
 CLOCK: [2014-03-11 火 14:13]--[2014-03-11 火 14:32] =>  0:19
@@ -261,6 +370,19 @@ CLOCK: [2014-03-11 火 11:40]--[2014-03-11 火 11:45] =>  0:05
 
 コードのサンプルは include するようにして, kobachi などからも使い回せる
 ようにする.
+**** DONE Aggregate and index your logs
+CLOSED: [2014-02-27 木 16:11]
+[2014-02-27 木 15:56]
+
+**** DONE Track the quality of your team’s code as you commit
+CLOSED: [2014-02-27 木 15:58] SCHEDULED: <2014-02-27 木>
+:LOGBOOK:
+CLOCK: [2014-02-27 木 15:56]--[2014-02-27 木 15:58] =>  0:02
+:END:
+:PROPERTIES:
+:Effort:   0:15
+:END:
+[2014-02-27 木 15:56]
 
 *** DONE Pio::Arp のリファクタリング
 CLOSED: [2014-03-11 火 11:17]
@@ -406,76 +528,6 @@ CLOCK: [2014-03-05 水 11:04]--[2014-03-05 水 11:06] =>  0:02
 :Effort:   1:00
 :END:
 [2014-03-05 水 11:04]
-*** DONE Pio::Lldp::Options のリファクタリング
-CLOSED: [2014-02-27 木 18:11]
-:LOGBOOK:
-CLOCK: [2014-02-27 木 16:42]--[2014-02-27 木 16:45] =>  0:03
-:END:
-[2014-02-27 木 16:42]
-**** DONE Magic String を定数にする
-CLOSED: [2014-02-27 木 18:11] SCHEDULED: <2014-02-27 木>
-:LOGBOOK:
-CLOCK: [2014-02-27 木 16:46]--[2014-02-27 木 16:48] =>  0:02
-:END:
-:PROPERTIES:
-:Effort:   0:15
-:END:
-[2014-02-27 木 16:46]
-*** DONE LLDP の必須オプションをリファクタリング
-CLOSED: [2014-02-27 木 14:16] SCHEDULED: <2014-02-27 木>
-:LOGBOOK:
-CLOCK: [2014-02-27 木 12:02]--[2014-02-27 木 12:07] =>  0:05
-CLOCK: [2014-02-27 木 11:55]--[2014-02-27 木 11:56] =>  0:01
-CLOCK: [2014-02-27 木 11:24]--[2014-02-27 木 11:26] =>  0:02
-CLOCK: [2014-02-27 木 11:19]--[2014-02-27 木 11:23] =>  0:04
-CLOCK: [2014-02-27 木 11:10]--[2014-02-27 木 11:13] =>  0:03
-:END:
-[2014-02-27 木 11:10]
-**** DONE RubyTapas の #45: Hash Default Value を観る
-CLOSED: [2014-02-27 木 11:19] SCHEDULED: <2014-02-27 木>
-:LOGBOOK:
-CLOCK: [2014-02-27 木 11:15]--[2014-02-27 木 11:19] =>  0:04
-CLOCK: [2014-02-27 木 11:13]--[2014-02-27 木 11:15] =>  0:02
-:END:
-:PROPERTIES:
-:Effort:   0:15
-:END:
-[2014-02-27 木 11:13]
-
-http://www.rubytapas.com/episodes/45-Hash-Default-Value
-関係なかった.他のエピソードだっけ？
-**** DONE RubyTapas の #8: fetch as an Assertion を観る
-CLOSED: [2014-02-27 木 11:55] SCHEDULED: <2014-02-27 木>
-:LOGBOOK:
-CLOCK: [2014-02-27 木 11:52]--[2014-02-27 木 11:55] =>  0:03
-CLOCK: [2014-02-27 木 11:50]--[2014-02-27 木 11:52] =>  0:02
-:END:
-:PROPERTIES:
-:Effort:   0:15
-:END:
-[2014-02-27 木 11:50]
-
-http://www.rubytapas.com/episodes/8-fetch-as-an-Assertion
-**** DONE RubyTapas の #12: #fetch for Defaults を観る
-CLOSED: [2014-02-27 木 12:02] SCHEDULED: <2014-02-27 木>
-:LOGBOOK:
-CLOCK: [2014-02-27 木 11:58]--[2014-02-27 木 12:02] =>  0:04
-CLOCK: [2014-02-27 木 11:56]--[2014-02-27 木 11:58] =>  0:02
-:END:
-:PROPERTIES:
-:Effort:   0:15
-:END:
-[2014-02-27 木 11:56]
-**** DONE RubyTapas の #15: Advanced #fetch を観る
-CLOSED: [2014-02-27 木 14:15] SCHEDULED: <2014-02-27 木>
-:LOGBOOK:
-CLOCK: [2014-02-27 木 12:08]--[2014-02-27 木 12:16] =>  0:08
-CLOCK: [2014-02-27 木 12:07]--[2014-02-27 木 12:08] =>  0:01
-:END:
-:PROPERTIES:
-:Effort:   0:15
-:END:
-[2014-02-27 木 12:07]
 *** DONE rubocop の監視対象を増やす
 CLOSED: [2013-12-12 木 11:32] SCHEDULED: <2013-12-12 木>
 :LOGBOOK:
@@ -483,13 +535,6 @@ CLOCK: [2013-12-12 木 11:25]--[2013-12-12 木 11:32] =>  0:07
 :END:
 [2013-12-12 木 11:25]
 
-*** DONE Respond to Travis CI <notifications@travis-ci.org> on [Broken] trema/pio#165 (develop - 79b3bee)
-CLOSED: [2013-12-12 木 15:45] SCHEDULED: <2013-12-12 木>
-:LOGBOOK:
-CLOCK: [2013-12-12 木 15:30]--[2013-12-12 木 15:45] =>  0:15
-:END:
-[2013-12-12 木 15:28]
-[[gnus:%5BGmail%5D.All%20Mail#52a921751b580_25ed6377786@2f551007-1e47-441a-a7a2-1e98feef45d6.mail][Email from Travis CI: {Broken} trema/pio#165 (develo]]
 *** DONE pio の bindata を更新
 CLOSED: [2014-01-16 木 16:47] SCHEDULED: <2014-01-16 木>
 :LOGBOOK:
@@ -500,49 +545,6 @@ CLOCK: [2014-01-16 木 16:07]--[2014-01-16 木 16:08] =>  0:01
 :Effort:   0:15
 :END:
 [2014-01-16 木 16:07]
-*** CANCELED #15 LLDPフレーム構築の方法                             :ISSUE:
-CLOSED: [2014-02-24 月 21:04]
-- State "CANCELED"   from "TODO"       [2014-02-24 月 21:04] \\
-  返事がないのでチケットを閉じた.
-:LOGBOOK:
-CLOCK: [2013-12-12 木 10:43]--[2013-12-12 木 10:49] =>  0:06
-CLOCK: [2013-12-12 木 10:40]--[2013-12-12 木 10:43] =>  0:03
-CLOCK: [2013-12-12 木 10:24]--[2013-12-12 木 10:26] =>  0:02
-:END:
-:PROPERTIES:
-:Effort:   0:30
-:END:
-[2013-12-12 木 10:24]
-
-https://github.com/trema/pio/issues/15
-**** DONE System Name TLV 等のユースケースと API についてコメント
-CLOSED: [2013-12-12 木 10:40] SCHEDULED: <2013-12-12 木>
-:LOGBOOK:
-CLOCK: [2013-12-12 木 10:39]--[2013-12-12 木 10:40] =>  0:01
-:END:
-[2013-12-12 木 10:39]
-
-**** DONE @Keichi さんに ping
-CLOSED: [2014-02-17 月 09:40]
-:LOGBOOK:
-CLOCK: [2013-12-27 金 11:20]--[2013-12-27 金 11:25] =>  0:05
-:END:
-[2013-12-27 金 11:20]
-
-ユースケースくださいと言ったところコメントがないので、年が明けたら
-ping してみよう。
-
-**** CANCELED @Keichi さんからの返事待ち
-CLOSED: [2014-02-24 月 21:04]
-- State "CANCELED"   from "WAITING"    [2014-02-24 月 21:04] \\
-  返事がないのでチケットを閉じた.
-- State "WAITING"    from "TODO"       [2014-02-17 月 10:14]
-:LOGBOOK:
-CLOCK: [2014-02-17 月 10:39]--[2014-02-17 月 10:40] =>  0:01
-CLOCK: [2014-02-17 月 10:14]--[2014-02-17 月 10:16] =>  0:02
-:END:
-[2014-02-17 月 10:14]
-
 ** TODO 0.4.1 リリース                                         :VERSION0_4_1:
 :LOGBOOK:
 CLOCK: [2013-12-12 木 10:26]--[2013-12-12 木 10:39] =>  0:13
@@ -557,20 +559,6 @@ CLOCK: [2013-09-18 水 17:20]--[2013-09-18 水 17:21] =>  0:01
 :ID:       BCAC8FBB-335B-4811-BF4B-16D81C22B711
 :END:
 [2013-09-18 水 17:20]
-*** TODO pio/util.rb とかの適当に作った箇所のリファクタリング
-:LOGBOOK:
-CLOCK: [2013-11-14 木 19:11]--[2013-11-14 木 19:12] =>  0:01
-:END:
-[2013-11-14 木 19:11]
-*** NEXT マクロの書き方を勉強
-:LOGBOOK:
-CLOCK: [2013-12-27 金 11:32]--[2013-12-27 金 11:41] =>  0:09
-:END:
-[2013-12-27 金 11:32]
-
-情報源:
-- [[http://www.rubytapas.com/episodes/27-Macros-and-Modules][#27: Macros and Modules]]
-- [[http://devblog.avdi.org/2012/11/27/rubytapas-027-macros-and-modules/][Avdi Grimm のブログエントリ]]
 *** TODO キャプチャしたパケットのパーステストを cucumber で
 [2014-03-11 火 11:18]
 *** TODO #16 YARD の警告をつぶす                                    :ISSUE:
