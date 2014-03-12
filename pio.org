@@ -6,7 +6,8 @@ GitHub のリポジトリはこちら https://github.com/trema/pio
 
 * Special Dates
 * Notes
-** ARP フォーマット                                                   :NOTE:
+** フォーマット
+*** ARP フォーマット                                                 :NOTE:
 :LOGBOOK:
 CLOCK: [2013-09-05 木 17:30]--[2013-09-05 木 17:31] =>  0:01
 :END:
@@ -17,6 +18,13 @@ CLOCK: [2013-09-05 木 17:30]--[2013-09-05 木 17:31] =>  0:01
 
 近藤さんおすすめの ARP フォーマット解説。
 http://www.n-study.com/network/arpheader.htm
+*** ICMP フォーマット                                                :NOTE:
+:PROPERTIES:
+:ID:       50EF068E-E7A1-4BEA-971F-9CF6AF9F3805
+:END:
+[2013-09-22 日 23:09]
+
+http:///www.asahi-net.or.jp/~aa4t-nngk/ipttut/output/icmpheaders.html
 ** ICMP のテスト用データ                                              :NOTE:
 :LOGBOOK:
 CLOCK: [2013-09-22 日 22:25]--[2013-09-22 日 22:26] =>  0:01
@@ -38,13 +46,6 @@ CLOCK: [2013-07-22 月 09:29]--[2013-07-22 月 09:30] =>  0:01
 [2013-07-22 月 09:29]
 
 http://www.zeespencer.com/articles/building-a-remote-pairing-setup/
-** ICMP フォーマット                                                  :NOTE:
-:PROPERTIES:
-:ID:       50EF068E-E7A1-4BEA-971F-9CF6AF9F3805
-:END:
-[2013-09-22 日 23:09]
-
-http:///www.asahi-net.or.jp/~aa4t-nngk/ipttut/output/icmpheaders.html
 ** [[http://www.ruby-forum.com/topic/217963][any good tools for reading networking data with optional TLV - Ruby Forum]] [2013-06-21 Fri]
 :PROPERTIES:
 :ID:       1670C09A-20C7-45F9-B068-56376DFD864C
@@ -156,6 +157,85 @@ CLOCK: [2013-12-12 木 11:32]--[2013-12-12 木 11:39] =>  0:07
 
 *** TODO Pio::Icmp のリファクタリング
 [2014-03-07 金 15:54]
+*** 10 High Value Development Chores to Start 2014 Right
+:LOGBOOK:
+CLOCK: [2014-02-27 木 16:41]--[2014-02-27 木 16:42] =>  0:01
+CLOCK: [2014-02-27 木 15:58]--[2014-02-27 木 16:29] =>  0:31
+CLOCK: [2014-02-27 木 15:48]--[2014-02-27 木 15:49] =>  0:01
+:END:
+[2014-02-27 木 15:48]
+http://blog.codeclimate.com/blog/2014/01/02/ten-high-value-development-chores-to-start-2014-right/
+**** DONE Delete inactive branches and Pull Requests
+CLOSED: [2014-02-27 木 16:00] SCHEDULED: <2014-02-27 木>
+:LOGBOOK:
+CLOCK: [2014-02-27 木 15:49]--[2014-02-27 木 15:50] =>  0:01
+:END:
+:PROPERTIES:
+:Effort:   0:15
+:END:
+[2014-02-27 木 15:49]
+
+**** TODO Optimize your deploys
+:LOGBOOK:
+CLOCK: [2014-02-27 木 15:50]--[2014-02-27 木 15:51] =>  0:01
+:END:
+[2014-02-27 木 15:50]
+
+**** DONE Ratify a coding style guide
+CLOSED: [2014-02-27 木 16:01]
+:LOGBOOK:
+CLOCK: [2014-02-27 木 15:51]--[2014-02-27 木 15:52] =>  0:01
+:END:
+[2014-02-27 木 15:51]
+
+**** DONE Curate a core test suite
+CLOSED: [2014-02-27 木 16:15]
+:LOGBOOK:
+CLOCK: [2014-02-27 木 15:52]--[2014-02-27 木 15:53] =>  0:01
+:END:
+[2014-02-27 木 15:52]
+
+**** DONE Audit your app for vulnerabilities
+CLOSED: [2014-02-27 木 16:04]
+:LOGBOOK:
+CLOCK: [2014-02-27 木 15:53]--[2014-02-27 木 15:55] =>  0:02
+:END:
+:PROPERTIES:
+:Effort:   0:15
+:END:
+[2014-02-27 木 15:53]
+
+**** TODO Extract an open source project
+[2014-02-27 木 15:55]
+例の Wireshark Ruby ライブラリを GitHub に置く？
+**** DONE Ditch your CI server
+CLOSED: [2014-02-27 木 16:08]
+:LOGBOOK:
+CLOCK: [2014-02-27 木 15:55]--[2014-02-27 木 15:56] =>  0:01
+:END:
+:PROPERTIES:
+:Effort:   0:15
+:END:
+[2014-02-27 木 15:55]
+
+**** DONE Clean up your READMEs [2/2]
+CLOSED: [2014-03-12 水 10:27]
+[2014-02-27 木 15:56]
+- [X] 古い/まちがった情報がないかチェック
+- [X] コード例を include して自動生成するように
+**** DONE Aggregate and index your logs
+CLOSED: [2014-02-27 木 16:11]
+[2014-02-27 木 15:56]
+
+**** DONE Track the quality of your team’s code as you commit
+CLOSED: [2014-02-27 木 15:58] SCHEDULED: <2014-02-27 木>
+:LOGBOOK:
+CLOCK: [2014-02-27 木 15:56]--[2014-02-27 木 15:58] =>  0:02
+:END:
+:PROPERTIES:
+:Effort:   0:15
+:END:
+[2014-02-27 木 15:56]
 
 *** DONE README.md を .org から生成
 CLOSED: [2014-03-11 火 14:32] SCHEDULED: <2014-03-11 火>
@@ -316,116 +396,6 @@ CLOCK: [2014-03-05 水 11:04]--[2014-03-05 水 11:06] =>  0:02
 :Effort:   1:00
 :END:
 [2014-03-05 水 11:04]
-*** 10 High Value Development Chores to Start 2014 Right
-:LOGBOOK:
-CLOCK: [2014-02-27 木 16:41]--[2014-02-27 木 16:42] =>  0:01
-CLOCK: [2014-02-27 木 15:58]--[2014-02-27 木 16:29] =>  0:31
-CLOCK: [2014-02-27 木 15:48]--[2014-02-27 木 15:49] =>  0:01
-:END:
-[2014-02-27 木 15:48]
-http://blog.codeclimate.com/blog/2014/01/02/ten-high-value-development-chores-to-start-2014-right/
-**** DONE Delete inactive branches and Pull Requests
-CLOSED: [2014-02-27 木 16:00] SCHEDULED: <2014-02-27 木>
-:LOGBOOK:
-CLOCK: [2014-02-27 木 15:49]--[2014-02-27 木 15:50] =>  0:01
-:END:
-:PROPERTIES:
-:Effort:   0:15
-:END:
-[2014-02-27 木 15:49]
-
-**** TODO Optimize your deploys
-:LOGBOOK:
-CLOCK: [2014-02-27 木 15:50]--[2014-02-27 木 15:51] =>  0:01
-:END:
-[2014-02-27 木 15:50]
-
-**** DONE Ratify a coding style guide
-CLOSED: [2014-02-27 木 16:01]
-:LOGBOOK:
-CLOCK: [2014-02-27 木 15:51]--[2014-02-27 木 15:52] =>  0:01
-:END:
-[2014-02-27 木 15:51]
-
-**** DONE Curate a core test suite
-CLOSED: [2014-02-27 木 16:15]
-:LOGBOOK:
-CLOCK: [2014-02-27 木 15:52]--[2014-02-27 木 15:53] =>  0:01
-:END:
-[2014-02-27 木 15:52]
-
-**** DONE Audit your app for vulnerabilities
-CLOSED: [2014-02-27 木 16:04]
-:LOGBOOK:
-CLOCK: [2014-02-27 木 15:53]--[2014-02-27 木 15:55] =>  0:02
-:END:
-:PROPERTIES:
-:Effort:   0:15
-:END:
-[2014-02-27 木 15:53]
-
-**** TODO Extract an open source project
-[2014-02-27 木 15:55]
-例の Wireshark Ruby ライブラリを GitHub に置く.
-**** DONE Ditch your CI server
-CLOSED: [2014-02-27 木 16:08]
-:LOGBOOK:
-CLOCK: [2014-02-27 木 15:55]--[2014-02-27 木 15:56] =>  0:01
-:END:
-:PROPERTIES:
-:Effort:   0:15
-:END:
-[2014-02-27 木 15:55]
-
-**** TODO Clean up your READMEs [0/2]
-[2014-02-27 木 15:56]
-- [ ] 古い/まちがった情報がないかチェック
-- [ ] コード例を include して自動生成するように
-**** DONE Aggregate and index your logs
-CLOSED: [2014-02-27 木 16:11]
-[2014-02-27 木 15:56]
-
-**** DONE Track the quality of your team’s code as you commit
-CLOSED: [2014-02-27 木 15:58] SCHEDULED: <2014-02-27 木>
-:LOGBOOK:
-CLOCK: [2014-02-27 木 15:56]--[2014-02-27 木 15:58] =>  0:02
-:END:
-:PROPERTIES:
-:Effort:   0:15
-:END:
-[2014-02-27 木 15:56]
-*** TODO #16 YARD の警告をつぶす                                      :ISSUE:
-:LOGBOOK:
-CLOCK: [2013-12-12 木 11:20]--[2013-12-12 木 11:25] =>  0:05
-CLOCK: [2013-12-12 木 11:14]--[2013-12-12 木 11:16] =>  0:02
-:END:
-:PROPERTIES:
-:Effort:   0:15
-:ID:       4BBDC79B-FD56-4B2D-962A-07A328F71F9C
-:END:
-[2013-07-31 水 15:32]
-**** DONE YARD の警告を確認
-CLOSED: [2013-12-12 木 11:14] SCHEDULED: <2013-12-12 木>
-:LOGBOOK:
-CLOCK: [2013-12-12 木 10:49]--[2013-12-12 木 11:14] =>  0:25
-:END:
-:PROPERTIES:
-:Effort:   0:15
-:END:
-[2013-12-12 木 10:49]
-
-**** DONE イシューを作る
-CLOSED: [2013-12-12 木 11:20] SCHEDULED: <2013-12-12 木>
-:LOGBOOK:
-CLOCK: [2013-12-12 木 11:16]--[2013-12-12 木 11:20] =>  0:04
-:END:
-[2013-12-12 木 11:16]
-
-**** NEXT 警告を 1 つつぶす
-:LOGBOOK:
-CLOCK: [2013-12-27 金 11:25]--[2013-12-27 金 11:32] =>  0:07
-:END:
-[2013-12-27 金 11:25]
 *** DONE Pio::Lldp::Options のリファクタリング
 CLOSED: [2014-02-27 木 18:11]
 :LOGBOOK:
@@ -593,3 +563,35 @@ CLOCK: [2013-12-27 金 11:32]--[2013-12-27 金 11:41] =>  0:09
 - [[http://devblog.avdi.org/2012/11/27/rubytapas-027-macros-and-modules/][Avdi Grimm のブログエントリ]]
 *** TODO キャプチャしたパケットのパーステストを cucumber で
 [2014-03-11 火 11:18]
+*** TODO #16 YARD の警告をつぶす                                    :ISSUE:
+:LOGBOOK:
+CLOCK: [2013-12-12 木 11:20]--[2013-12-12 木 11:25] =>  0:05
+CLOCK: [2013-12-12 木 11:14]--[2013-12-12 木 11:16] =>  0:02
+:END:
+:PROPERTIES:
+:Effort:   0:15
+:ID:       4BBDC79B-FD56-4B2D-962A-07A328F71F9C
+:END:
+[2013-07-31 水 15:32]
+**** DONE YARD の警告を確認
+CLOSED: [2013-12-12 木 11:14] SCHEDULED: <2013-12-12 木>
+:LOGBOOK:
+CLOCK: [2013-12-12 木 10:49]--[2013-12-12 木 11:14] =>  0:25
+:END:
+:PROPERTIES:
+:Effort:   0:15
+:END:
+[2013-12-12 木 10:49]
+
+**** DONE イシューを作る
+CLOSED: [2013-12-12 木 11:20] SCHEDULED: <2013-12-12 木>
+:LOGBOOK:
+CLOCK: [2013-12-12 木 11:16]--[2013-12-12 木 11:20] =>  0:04
+:END:
+[2013-12-12 木 11:16]
+
+**** NEXT 警告を 1 つつぶす
+:LOGBOOK:
+CLOCK: [2013-12-27 金 11:25]--[2013-12-27 金 11:32] =>  0:07
+:END:
+[2013-12-27 金 11:25]
