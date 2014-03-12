@@ -4,7 +4,6 @@
 
 GitHub のリポジトリはこちら https://github.com/trema/pio
 
-* Special Dates
 * Notes
 ** フォーマット
 *** ARP フォーマット                                                 :NOTE:
