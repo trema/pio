@@ -1,10 +1,10 @@
 # Pio
 
-[![Gem Version](https://badge.fury.io/rb/pio.png)](http://badge.fury.io/rb/pio)
-[![Build Status](https://travis-ci.org/trema/pio.png?branch=develop)](https://travis-ci.org/trema/pio)
-[![Code Climate](https://codeclimate.com/github/trema/pio.png)](https://codeclimate.com/github/trema/pio)
-[![Coverage Status](https://coveralls.io/repos/trema/pio/badge.png?branch=develop)](https://coveralls.io/r/trema/pio)
-[![Dependency Status](https://gemnasium.com/trema/pio.png)](https://gemnasium.com/trema/pio)
+<a href="http://badge.fury.io/rb/pio"><img src="https://badge.fury.io/rb/pio@2x.png" alt="Gem Version" height="18"></a>
+<a href="https://travis-ci.org/trema/pio"><img src="https://travis-ci.org/trema/pio.png?branch=develop" /></a>
+<a href="https://codeclimate.com/github/trema/pio"><img src="https://codeclimate.com/github/trema/pio.png" /></a>
+<a href='https://coveralls.io/r/trema/pio?branch=develop'><img src='https://coveralls.io/repos/trema/pio/badge.png?branch=develop' alt='Coverage Status' /></a>
+<a href='https://gemnasium.com/trema/pio'><img src="https://gemnasium.com/trema/pio.png" alt="Dependency Status" /></a>
 
 <a href="http://www.flickr.com/photos/mongogushi/4226014070/" title="pio pencil by mongo gushi, on Flickr"><img src="http://farm5.staticflickr.com/4022/4226014070_cdeb7c1e5d_n.jpg" width="320" height="290" alt="pio pencil"></a>
 
