@@ -33,9 +33,14 @@ module Pio
           @ip_source_address = IPv4Address.new(options[:ip_source_address])
           @ip_destination_address =
             IPv4Address.new(options[:ip_destination_address])
-          @identifier = options[:identifier] || DEFAULT_IDENTIFIER
+          @identifier =
+            options[:icmp_identifier] ||
+            options[:identifier] ||
+            DEFAULT_IDENTIFIER
           @sequence_number =
-            options[:sequence_number] || DEFAULT_SEQUENCE_NUMBER
+            options[:icmp_sequence_number] ||
+            options[:sequence_number] ||
+            DEFAULT_SEQUENCE_NUMBER
           @echo_data = options[:echo_data] || DEFAULT_ECHO_DATA
         end
 
