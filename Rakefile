@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 require 'bundler/gem_tasks'
 
 # rubocop:disable HashSyntax
@@ -13,8 +12,3 @@ task :quality => [:reek, :flog, :flay, :rubocop]
 # rubocop:enable HashSyntax
 
 Dir.glob('tasks/*.rake').each { |each| import each }
-
-### Local variables:
-### mode: Ruby
-### indent-tabs-mode: nil
-### End:

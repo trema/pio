@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 source 'https://rubygems.org'
 
 gem 'rake', '~> 10.1.1'
@@ -29,9 +28,3 @@ group :test do
 end
 
 gemspec
-
-### Local variables:
-### mode: Ruby
-### coding: utf-8-unix
-### indent-tabs-mode: nil
-### End:

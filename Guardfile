@@ -1,7 +1,3 @@
-# -*- coding: utf-8 -*-
-# A sample Guardfile
-# More info at https://github.com/guard/guard#readme
-
 notification :terminal_notifier
 notification :tmux, display_message: true
 

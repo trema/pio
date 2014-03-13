@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'pio/version'
@@ -29,9 +28,3 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'bindata', '~> 2.0.0'
   gem.add_development_dependency 'bundler', '~> 1.5.3'
 end
-
-### Local variables:
-### mode: Ruby
-### coding: utf-8-unix
-### indent-tabs-mode: nil
-### End:
