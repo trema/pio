@@ -16,6 +16,7 @@ branches:
 
 matrix:
   allow_failures:
+    - rvm: 2.1.0
     - rvm: ruby-head
   fast_finish: true
 
