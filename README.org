@@ -5,11 +5,11 @@
 
 * Pio
 #+BEGIN_HTML
-<a href="http://badge.fury.io/rb/pio"><img src="https://badge.fury.io/rb/pio@2x.png" alt="Gem Version" height="18"></a>
-<a href="https://travis-ci.org/trema/pio"><img src="https://travis-ci.org/trema/pio.png?branch=develop" /></a>
-<a href="https://codeclimate.com/github/trema/pio"><img src="https://codeclimate.com/github/trema/pio.png" /></a>
-<a href='https://coveralls.io/r/trema/pio?branch=develop'><img src='https://coveralls.io/repos/trema/pio/badge.png?branch=develop' alt='Coverage Status' /></a>
-<a href='https://gemnasium.com/trema/pio'><img src="https://gemnasium.com/trema/pio.png" alt="Dependency Status" /></a>
+<a href='https://rubygems.org/gems/pio'><img src='http://img.shields.io/gem/v/pio.svg' alt='Gem Version' /></a>
+<a href='https://travis-ci.org/trema/pio'><img src='http://img.shields.io/travis/trema/pio/develop.svg' alt='Build Status' /></a>
+<a href='https://codeclimate.com/github/trema/pio'><img src='http://img.shields.io/codeclimate/github/trema/pio.svg' alt='Code Climate' /></a>
+<a href='https://coveralls.io/r/trema/pio?branch=develop'><img src='http://img.shields.io/coveralls/trema/pio/develop.svg' alt='Coverage Status' /></a>
+<a href='https://gemnasium.com/trema/pio'><img src='http://img.shields.io/gemnasium/trema/pio.svg' alt='Dependency Status' /></a>
 #+END_HTML
 
 #+BEGIN_HTML
