@@ -131,6 +131,7 @@ describe Pio::Dhcp::Request do
 
       context '#to_binary' do
         it 'returns a DHCP Request binary string' do
+          pending
           expect(subject.to_binary.unpack('C*')).to eq valid_dhcp_request_dump
         end
 
@@ -148,6 +149,7 @@ describe Pio::Dhcp::Request do
 
       context '#to_binary' do
         it 'returns a DHCP Request binary string' do
+          pending
           expect(subject.to_binary.unpack('C*')).to eq valid_dhcp_request_dump
         end
 

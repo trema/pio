@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+require 'pio/ipv4_address'
 require 'pio/mac'
 
 module Pio
