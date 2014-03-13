@@ -1,0 +1,7 @@
+# '== nil' is often used in rspec_given's natural assertions
+NilComparison:
+  Enabled: false
+
+# Don't require magic comment at the top of every file
+Encoding:
+  Enabled: false

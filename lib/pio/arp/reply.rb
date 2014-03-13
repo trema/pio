@@ -1,38 +1,43 @@
 # -*- coding: utf-8 -*-
-require 'forwardable'
 require 'pio/arp/message'
 require 'pio/mac'
+require 'pio/options'
 
 module Pio
   class Arp
     # ARP Reply packet generator
     class Reply < Message
       OPERATION = 2
+      public_class_method :new
 
-      private
+      # User options for creating an Arp Reply.
+      class Options < Pio::Options
+        mandatory_option :source_mac
+        mandatory_option :destination_mac
+        mandatory_option :sender_protocol_address
+        mandatory_option :target_protocol_address
 
-      def default_options
-        {
-          operation: OPERATION
-        }
-      end
+        def initialize(options)
+          validate_options(options)
+          @source_mac = Mac.new(options[:source_mac])
+          @destination_mac = Mac.new(options[:destination_mac])
+          @sender_protocol_address =
+            IPv4Address.new(options[:sender_protocol_address])
+          @target_protocol_address =
+            IPv4Address.new(options[:target_protocol_address])
+        end
 
-      def user_options
-        @options.merge(
-          sender_hardware_address: @options[:source_mac],
-          target_hardware_address: @options[:destination_mac]
-        )
-      end
-
-      def mandatory_options
-        [
-         :source_mac,
-         :destination_mac,
-         :sender_hardware_address,
-         :target_hardware_address,
-         :sender_protocol_address,
-         :target_protocol_address
-        ]
+        def to_hash
+          {
+            operation: OPERATION,
+            source_mac: @source_mac,
+            destination_mac: @destination_mac,
+            sender_hardware_address: @source_mac,
+            target_hardware_address: @destination_mac,
+            sender_protocol_address: @sender_protocol_address,
+            target_protocol_address: @target_protocol_address
+          }
+        end
       end
     end
   end

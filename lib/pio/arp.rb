@@ -1,22 +1,15 @@
 # -*- coding: utf-8 -*-
-require 'English'
-require 'rubygems'
-require 'bindata'
-
+require 'pio/arp/frame'
 require 'pio/arp/request'
 require 'pio/arp/reply'
-require 'pio/util'
+require 'pio/message_type_selector'
 
 module Pio
   # ARP parser and generator.
   class Arp
-    MESSAGE_TYPE = {
-      Request::OPERATION => Request,
-      Reply::OPERATION => Reply
-    }
-    class << self
-      include Util
-    end
+    extend MessageTypeSelector
+
+    message_type Request::OPERATION => Request, Reply::OPERATION => Reply
   end
 end
 

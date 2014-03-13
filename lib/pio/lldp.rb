@@ -9,22 +9,6 @@ module Pio
   class Lldp
     extend Forwardable
 
-    def self.read(raw_data)
-      begin
-        frame = Frame.read(raw_data)
-      rescue
-        raise Pio::ParseError, $ERROR_INFO.message
-      end
-
-      lldp = allocate
-      lldp.instance_variable_set :@frame, frame
-      lldp
-    end
-
-    def initialize(options)
-      @frame = Frame.new(Options.new(options).to_hash)
-    end
-
     def_delegator :@frame, :destination_mac
     def_delegator :@frame, :source_mac
     def_delegator :@frame, :ether_type
@@ -42,8 +26,24 @@ module Pio
     def_delegator :@frame, :management_address
     def_delegator :@frame, :organizationally_specific
 
+    def self.read(raw_data)
+      begin
+        frame = Frame.read(raw_data)
+      rescue
+        raise Pio::ParseError, $ERROR_INFO.message
+      end
+
+      lldp = allocate
+      lldp.instance_variable_set :@frame, frame
+      lldp
+    end
+
+    def initialize(options)
+      @frame = Frame.new(Options.new(options).to_hash)
+    end
+
     def to_binary
-      @frame.to_binary_s + "\000" * ( 64 - @frame.num_bytes)
+      @frame.to_binary_s + "\000" * (64 - @frame.num_bytes)
     end
   end
 end
