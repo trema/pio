@@ -22,6 +22,7 @@ supports the following packet formats:
  - ICMP
  - ARP
  - LLDP
+ - DHCP
  - (...currently there are just a few formats supported but I'm sure this list will grow)
 
 ** Features Overview
@@ -66,6 +67,18 @@ access each field of the parsed LLDP frame.
 Also you can use =Pio::Lldp#new= to generate an LLDP frame like below:
 
 #+INCLUDE: "./examples/lldp_new.rb" src ruby
+
+*** DHCP
+To parse a DHCP frame, use the API =Pio::Dhcp.read= and you can access
+each field of the parsed DHCP frame.
+
+#+INCLUDE: "./examples/dhcp_read.rb" src ruby
+
+Also you can use =Pio::Dhcp::Discover#new=,
+=Pio::Dhcp::Offer#new=, =Pio::Dhcp::Request#new= and
+=Pio::Dhcp::Ack#new= to generate a DHCP frame like below:
+
+#+INCLUDE: "./examples/dhcp_new.rb" src ruby
 
 ** Installation
 The simplest way to install Pio is to use [[http://gembundler.com/][Bundler]].
