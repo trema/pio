@@ -125,7 +125,7 @@ Add Pio to your `Gemfile`:
 
 and install it by running Bundler:
 
-    $ bundle
+    prompt> bundle
 
 ## Documents
 

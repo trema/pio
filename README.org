@@ -79,7 +79,7 @@ gem 'pio'
 and install it by running Bundler:
 
 #+BEGIN_SRC sh
-  $ bundle
+  prompt> bundle
 #+END_SRC
 
 ** Documents
