@@ -1,3 +1,4 @@
+require 'rake/tasklib'
 require 'flay'
 require 'flay_task'
 
