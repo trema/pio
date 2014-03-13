@@ -3,7 +3,7 @@ lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'pio/version'
 
-Gem::Specification.new do | gem |
+Gem::Specification.new do |gem|
   gem.name = 'pio'
   gem.version = Pio::VERSION
   gem.summary = 'Packet parser and generator.'
@@ -22,7 +22,9 @@ Gem::Specification.new do | gem |
   gem.extra_rdoc_files = ['README.md']
   gem.test_files = `git ls-files -- {spec,features}/*`.split("\n")
 
+  gem.required_ruby_version = '>= 1.9.3'
   gem.add_dependency 'bindata', '~> 2.0.0'
+  gem.add_development_dependency 'bundler', '~> 1.5.3'
 end
 
 ### Local variables:
