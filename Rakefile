@@ -58,8 +58,8 @@ FlayTask.new do |t|
   t.verbose = true
 end
 
-if RUBY_VERSION >= '1.9.0'
-  task :quality => :rubocop
+task :quality => :rubocop
+begin
   require 'rubocop/rake_task'
   Rubocop::RakeTask.new do |task|
     task.patterns = %w(lib/**/*.rb
@@ -68,6 +68,10 @@ if RUBY_VERSION >= '1.9.0'
                        Gemfile
                        Guardfile
                        pio.gemspec)
+  end
+rescue LoadError
+  task :rubocop do
+    $stderr.puts 'Rubocop is disabled'
   end
 end
 
@@ -106,7 +110,7 @@ rubies.each do |each|
   task portability_task_name do
     rm_f gemfile_lock
     sh "rvm #{each} exec bundle update"
-    sh "rvm #{each} exec bundle install"
+    sh "rvm #{each} exec bundle install --without development"
     sh "rvm #{each} exec bundle exec rake"
   end
 end
