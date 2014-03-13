@@ -1,1 +1,7 @@
-inherit_from: rubocop-todo.yml
+AllCops:
+  Includes:
+    - Gemfile
+    - Guardfile
+    - Rakefile
+    - pio.gemspec
+    - tasks/*.rake

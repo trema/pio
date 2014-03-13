@@ -1,12 +1,6 @@
 begin
   require 'rubocop/rake_task'
-  Rubocop::RakeTask.new do |task|
-    task.patterns = %w(lib/**/*.rb
-                       spec/**/*.rb
-                       Gemfile
-                       Guardfile
-                       pio.gemspec)
-  end
+  Rubocop::RakeTask.new
 rescue LoadError
   task :rubocop do
     $stderr.puts 'Rubocop is disabled'
