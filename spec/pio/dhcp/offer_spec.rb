@@ -137,7 +137,6 @@ describe Pio::Dhcp::Offer do
 
       context '#to_binary' do
         it 'returns a DHCP ack binary string' do
-          pending
           expect(subject.to_binary.unpack('C*')).to eq dhcp_offer_dump
         end
 
@@ -156,7 +155,6 @@ describe Pio::Dhcp::Offer do
 
       context '#to_binary' do
         it 'returns a DHCP ack binary string' do
-          pending
           expect(subject.to_binary.unpack('C*')).to eq dhcp_offer_dump
         end
 

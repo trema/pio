@@ -32,14 +32,11 @@ module Pio
       ip_address :relay_agent_ip_address
       mac_address :client_mac_address
       string :client_mac_address_padding,
-             length: 10,
-             initial_value: '\000'
+             length: 10
       string :server_host_name,
-             length: 64,
-             initial_value: '\000'
+             length: 64
       string :boot_file_name,
-             length: 128,
-             initial_value: '\000'
+             length: 128
       uint32be :magic_cookie,
                value: MAGIC_COOKIE
       array  :optional_tlvs,
