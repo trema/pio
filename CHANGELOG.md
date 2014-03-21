@@ -7,5 +7,6 @@
   `Pio::Dhcp::Offer`, `Pio::Dhcp::Request` and `Pio::Dhcp::Ack`.
 
 ### Changes
+* Added new class alias `Pio::ICMP` => `Pio::Icmp`.
 
 ### Bugs fixed
