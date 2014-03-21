@@ -1,4 +1,5 @@
 TooManyStatements:
   exclude:
   - ipv4_header
+  - udp_header
   enabled: true
