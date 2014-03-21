@@ -4,6 +4,7 @@ require 'forwardable'
 require 'pio/lldp/frame'
 require 'pio/lldp/options'
 
+# Packet parser and generator library.
 module Pio
   # LLDP frame parser and generator.
   class Lldp
@@ -46,10 +47,5 @@ module Pio
       @frame.to_binary_s + "\000" * (64 - @frame.num_bytes)
     end
   end
+  LLDP = Lldp
 end
-
-### Local variables:
-### mode: Ruby
-### coding: utf-8-unix
-### indent-tabs-mode: nil
-### End:

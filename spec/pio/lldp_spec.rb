@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 require 'pio'
 
+describe Pio::LLDP do
+  Then { Pio::LLDP == Pio::Lldp }
+end
+
 describe Pio::Lldp do
   describe '.new' do
     context 'with :dpid and :port_number' do
