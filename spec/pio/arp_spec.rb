@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 require 'pio'
 
+describe Pio::ARP do
+  Then { Pio::ARP == Pio::Arp }
+end
+
 describe Pio::Arp do
   describe '.read' do
     context 'with an Arp Request packet' do
@@ -86,9 +90,3 @@ describe Pio::Arp do
     end
   end
 end
-
-### Local variables:
-### mode: Ruby
-### coding: utf-8-unix
-### indent-tabs-mode: nil
-### End:

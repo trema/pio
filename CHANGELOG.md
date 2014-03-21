@@ -8,5 +8,6 @@
 
 ### Changes
 * Added new class alias `Pio::ICMP` => `Pio::Icmp`.
+* Added new class alias `Pio::ARP` => `Pio::Arp`.
 
 ### Bugs fixed
