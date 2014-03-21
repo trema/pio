@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
-require 'pio/arp/request'
+require 'pio'
+
+describe Pio::ARP::Request do
+  Then { Pio::ARP::Request == Pio::Arp::Request }
+end
 
 describe Pio::Arp::Request, '.new' do
   ARP_REQUEST_DUMP =
@@ -90,9 +94,3 @@ describe Pio::Arp::Request, '.new' do
     end
   end
 end
-
-### Local variables:
-### mode: Ruby
-### coding: utf-8-unix
-### indent-tabs-mode: nil
-### End:

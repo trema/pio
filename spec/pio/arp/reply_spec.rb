@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
-require 'pio/arp/reply'
+require 'pio'
+
+describe Pio::ARP::Reply do
+  Then { Pio::ARP::Reply == Pio::Arp::Reply }
+end
 
 describe Pio::Arp::Reply, '.new' do
   ARP_REPLY_DUMP =
@@ -94,9 +98,3 @@ describe Pio::Arp::Reply, '.new' do
     end
   end
 end
-
-### Local variables:
-### mode: Ruby
-### coding: utf-8-unix
-### indent-tabs-mode: nil
-### End:
