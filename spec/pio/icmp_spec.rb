@@ -2,6 +2,8 @@
 require 'pio'
 
 describe Pio::Icmp do
+  Then { Pio::ICMP == Pio::Icmp }
+
   context '.read' do
     context 'with an ICMP request frame' do
       Given(:icmp_request_dump) do

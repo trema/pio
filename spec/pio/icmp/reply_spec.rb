@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
-require 'pio/icmp/reply'
+require 'pio'
+
+describe Pio::Icmp::Reply do
+  Then { Pio::ICMP::Reply == Pio::Icmp::Reply }
+end
 
 describe Pio::Icmp::Reply, '.new' do
   context 'with echo_data' do
@@ -132,9 +136,3 @@ describe Pio::Icmp::Reply, '.new' do
     end
   end
 end
-
-### Local variables:
-### mode: Ruby
-### coding: utf-8-unix
-### indent-tabs-mode: nil
-### End:

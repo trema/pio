@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
-require 'pio/icmp/request'
+require 'pio'
+
+describe Pio::Icmp::Request do
+  Then { Pio::ICMP::Request == Pio::Icmp::Request }
+end
 
 describe Pio::Icmp::Request, '.new' do
   context 'with echo_data' do
@@ -132,9 +136,3 @@ describe Pio::Icmp::Request, '.new' do
     end
   end
 end
-
-### Local variables:
-### mode: Ruby
-### coding: utf-8-unix
-### indent-tabs-mode: nil
-### End:
