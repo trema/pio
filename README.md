@@ -4,7 +4,7 @@
 <a href='https://travis-ci.org/trema/pio'><img src='http://img.shields.io/travis/trema/pio/develop.svg' alt='Build Status' /></a>
 <a href='https://codeclimate.com/github/trema/pio'><img src='http://img.shields.io/codeclimate/github/trema/pio.svg' alt='Code Climate' /></a>
 <a href='https://coveralls.io/r/trema/pio?branch=develop'><img src='http://img.shields.io/coveralls/trema/pio/develop.svg' alt='Coverage Status' /></a>
-<a href='https://gemnasium.com/trema/pio'><img src='http://img.shields.io/gemnasium/trema/pio.svg' alt='Dependency Status' /></a>
+<a href='https://gemnasium.com/trema/pio'><img src='https://gemnasium.com/trema/pio.svg' alt='Dependency Status' /></a>
 
 <a href="http://www.flickr.com/photos/mongogushi/4226014070/" title="pio pencil by mongo gushi, on Flickr"><img src="http://farm5.staticflickr.com/4022/4226014070_cdeb7c1e5d_n.jpg" width="320" height="290" alt="pio pencil"></a>
 
