@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 require 'rubygems'
 require 'bindata'
 
@@ -10,6 +9,7 @@ require 'pio/dhcp/ack'
 
 require 'pio/util'
 
+# Packet parser and generator library.
 module Pio
   # Dhcp parser and generator.
   class Dhcp
@@ -23,10 +23,5 @@ module Pio
       include Util
     end
   end
+  DHCP = Dhcp
 end
-
-### Local variables:
-### mode: Ruby
-### coding: utf-8-unix
-### indent-tabs-mode: nil
-### End:
