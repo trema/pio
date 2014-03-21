@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 require 'pio'
 
-describe Pio::Icmp::Reply do
+describe Pio::ICMP::Reply do
   Then { Pio::ICMP::Reply == Pio::Icmp::Reply }
 end
 
