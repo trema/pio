@@ -1,16 +1,13 @@
 require 'pio'
 
-discover = Pio::Dhcp::Discover.new(
-  source_mac: '24:db:ac:41:e5:5b',
-  transaction_id: 0xdeadbeef
-)
+discover = Pio::Dhcp::Discover.new(source_mac: '24:db:ac:41:e5:5b')
 
 offer = Pio::Dhcp::Offer.new(
   source_mac: '24:db:ac:41:e5:5b',
   destination_mac: '11:22:33:44:55:66',
   ip_source_address: '192.168.0.10',
   ip_destination_address: '192.168.0.1',
-  transaction_id: 0xdeadbeef,
+  transaction_id: discover.transaction_id,
   renewal_time_value_tlv: 0xdeadbeef,
   rebinding_time_value_tlv: 0xdeadbeef,
   ip_address_lease_time_tlv: 0xdeadbeef,
@@ -19,7 +16,7 @@ offer = Pio::Dhcp::Offer.new(
 
 request = Pio::Dhcp::Request.new(
   source_mac: '24:db:ac:41:e5:5b',
-  transaction_id: 0xdeadbeef,
+  transaction_id: offer.transaction_id,
   server_identifier_tlv: '192.168.0.10',
   requested_ip_address_tlv: '192.168.0.1'
 )
@@ -29,7 +26,7 @@ ack = Pio::Dhcp::Ack.new(
   destination_mac: '11:22:33:44:55:66',
   ip_source_address: '192.168.0.10',
   ip_destination_address: '192.168.0.1',
-  transaction_id: 0xdeadbeef,
+  transaction_id: request.transaction_id,
   renewal_time_value_tlv: 0xdeadbeef,
   rebinding_time_value_tlv: 0xdeadbeef,
   ip_address_lease_time_tlv: 0xdeadbeef,
