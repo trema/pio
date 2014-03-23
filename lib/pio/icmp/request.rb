@@ -13,7 +13,7 @@ module Pio
       # User options for creating an ICMP Request.
       class Options < Pio::Icmp::Options
         DEFAULT_IDENTIFIER = 0x0100
-        DEFAULT_SEQUENCE_NUMBER = 0x0001
+        DEFAULT_SEQUENCE_NUMBER = 0
 
         mandatory_option :source_mac
         mandatory_option :destination_mac
