@@ -163,9 +163,3 @@ describe Pio::Icmp, '.read' do
     Then { result == Failure(Pio::ParseError, 'End of file reached') }
   end
 end
-
-### Local variables:
-### mode: Ruby
-### coding: utf-8-unix
-### indent-tabs-mode: nil
-### End:

@@ -17,6 +17,7 @@ describe Pio::Mac do
         it { should_not eq 42 }
         it { should_not eq 'INVALID_MAC_ADDRESS' }
       end
+
       describe '#eql?' do
         it { expect(subject).to eql Pio::Mac.new('11:22:33:44:55:66') }
         it { expect(subject).to eql '11:22:33:44:55:66' }
@@ -104,9 +105,3 @@ describe Pio::Mac do
     end
   end
 end
-
-### Local variables:
-### mode: Ruby
-### coding: utf-8-unix
-### indent-tabs-mode: nil
-### End:
