@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-require 'rubygems'
 require 'bindata'
 
 require 'pio/lldp/chassis_id_tlv'
