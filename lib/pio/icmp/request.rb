@@ -28,11 +28,12 @@ module Pio
         def initialize(options)
           validate_options(options)
           @type = TYPE
-          @source_mac = Mac.new(options[:source_mac])
-          @destination_mac = Mac.new(options[:destination_mac])
-          @ip_source_address = IPv4Address.new(options[:ip_source_address])
+          @source_mac = Mac.new(options[:source_mac]).freeze
+          @destination_mac = Mac.new(options[:destination_mac]).freeze
+          @ip_source_address =
+            IPv4Address.new(options[:ip_source_address]).freeze
           @ip_destination_address =
-            IPv4Address.new(options[:ip_destination_address])
+            IPv4Address.new(options[:ip_destination_address]).freeze
           @identifier =
             options[:icmp_identifier] ||
             options[:identifier] ||
@@ -49,9 +50,3 @@ module Pio
     end
   end
 end
-
-### Local variables:
-### mode: Ruby
-### coding: utf-8-unix
-### indent-tabs-mode: nil
-### End:
