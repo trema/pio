@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+# encoding: utf-8
+
 require 'pio/dhcp/const'
 require 'pio/dhcp/type/dhcp_param_list'
 require 'pio/dhcp/type/dhcp_client_id'

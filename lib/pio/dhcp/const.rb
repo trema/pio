@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# encoding: utf-8
 
 require 'pio/ipv4_address'
 require 'pio/mac'

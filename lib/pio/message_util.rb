@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 module Pio
   # Pio Message Utility.
   module MessageUtil

@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+# encoding: utf-8
+
 require 'pio/dhcp/frame'
 require 'pio/dhcp/tlv_hash_util'
 require 'pio/message_util'

@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+# encoding: utf-8
+
 require 'pio/dhcp/optional_tlv'
 require 'pio/type/ip_address'
 require 'pio/type/mac_address'

@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 notification :terminal_notifier
 notification :tmux, display_message: true
 
