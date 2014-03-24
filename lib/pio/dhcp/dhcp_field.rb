@@ -22,7 +22,7 @@ module Pio
       uint8 :hops,
             initial_value: 0
       uint32be :transaction_id,
-               initial_value: 0
+               initial_value: rand(0xffffffff)
       uint16be :seconds,
                initial_value: 0
       uint16be :bootp_flags,
