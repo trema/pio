@@ -21,7 +21,7 @@ module Pio
         ALL_ZERO_MAC = Mac.new(0).freeze
 
         def initialize(options)
-          validate_options(options)
+          validate options
           @source_mac = Mac.new(options[:source_mac]).freeze
           @sender_protocol_address =
             IPv4Address.new(options[:sender_protocol_address]).freeze

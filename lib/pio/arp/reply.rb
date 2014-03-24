@@ -19,7 +19,7 @@ module Pio
         mandatory_option :target_protocol_address
 
         def initialize(options)
-          validate_options(options)
+          validate options
           @source_mac = Mac.new(options[:source_mac]).freeze
           @destination_mac = Mac.new(options[:destination_mac]).freeze
           @sender_protocol_address =

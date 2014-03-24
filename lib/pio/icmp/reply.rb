@@ -24,7 +24,7 @@ module Pio
         # rubocop:disable MethodLength
 
         def initialize(options)
-          validate_options(options)
+          validate options
           @type = TYPE
           @source_mac = Mac.new(options[:source_mac]).freeze
           @destination_mac = Mac.new(options[:destination_mac]).freeze

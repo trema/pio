@@ -17,7 +17,7 @@ module Pio
 
     private
 
-    def validate_options(user_options)
+    def validate(user_options)
       check_unknown user_options
       check_mandatory user_options
     end

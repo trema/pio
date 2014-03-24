@@ -15,7 +15,7 @@ module Pio
       DEFAULT_SOURCE_MAC = '01:02:03:04:05:06'.freeze
 
       def initialize(options)
-        validate_options(options)
+        validate options
         @dpid = options[:dpid].freeze
         @port_id = options[:port_number].freeze
         @destination_mac =
