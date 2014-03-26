@@ -58,6 +58,18 @@ module Pio
         ].concat(reply_option)
       end
 
+      def dhcp_server_identifier_hash
+        {
+          tlv_type: SERVER_IDENTIFIER_TLV,
+          tlv_info_length: 4,
+          tlv_value: server_identifier_value
+        }
+      end
+
+      def server_identifier_value
+        ipv4_saddr
+      end
+
       def user_options
         @options.merge(
           destination_mac: macda,

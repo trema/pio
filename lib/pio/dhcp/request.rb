@@ -27,14 +27,6 @@ module Pio
           dhcp_server_identifier_hash
         ]
       end
-
-      def dhcp_server_identifier_hash
-        {
-          tlv_type: SERVER_IDENTIFIER_TLV,
-          tlv_info_length: server_identifier.length,
-          tlv_value: server_identifier
-        }
-      end
     end
   end
 end

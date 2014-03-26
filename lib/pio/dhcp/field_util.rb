@@ -8,35 +8,35 @@ module Pio
         get_tlv_field(53)
       end
 
-      def server_identifier_tlv
+      def server_identifier
         get_tlv_field(54)
       end
 
-      def client_identifier_tlv
+      def client_identifier
         get_tlv_field(61)
       end
 
-      def renewal_time_value_tlv
+      def renewal_time_value
         get_tlv_field(58)
       end
 
-      def rebinding_time_value_tlv
+      def rebinding_time_value
         get_tlv_field(59)
       end
 
-      def ip_address_lease_time_tlv
+      def ip_address_lease_time
         get_tlv_field(51)
       end
 
-      def requested_ip_address_tlv
+      def requested_ip_address
         get_tlv_field(50)
       end
 
-      def parameters_list_tlv
+      def parameters_list
         get_tlv_field(55)
       end
 
-      def subnet_mask_tlv
+      def subnet_mask
         get_tlv_field(1)
       end
 

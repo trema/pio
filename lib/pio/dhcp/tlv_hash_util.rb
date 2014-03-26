@@ -15,12 +15,8 @@ module Pio
         Dhcp::DhcpField.new(options_for_dhcp)
       end
 
-      def server_identifier
-        IPv4Address.new(@options[:server_identifier_tlv]).to_a
-      end
-
       def requested_address
-        IPv4Address.new(@options[:requested_ip_address_tlv]).to_a
+        IPv4Address.new(@options[:requested_ip_address]).to_a
       end
 
       def macsa
@@ -44,19 +40,19 @@ module Pio
       end
 
       def ren_time_val
-        @options[:renewal_time_value_tlv]
+        @options[:renewal_time_value]
       end
 
       def reb_time_val
-        @options[:rebinding_time_value_tlv]
+        @options[:rebinding_time_value]
       end
 
       def ip_lease_time_val
-        @options[:ip_address_lease_time_tlv]
+        @options[:ip_address_lease_time]
       end
 
-      def subnet_mask
-        IPv4Address.new(@options[:subnet_mask_tlv]).to_a
+      def subnet_mask_value
+        IPv4Address.new(@options[:subnet_mask]).to_a
       end
 
       def message_type_hash
@@ -72,14 +68,6 @@ module Pio
           tlv_type: RENEWAL_TIME_VALUE_TLV,
           tlv_info_length: 4,
           tlv_value: ren_time_val
-        }
-      end
-
-      def dhcp_server_identifier_hash
-        {
-          tlv_type: SERVER_IDENTIFIER_TLV,
-          tlv_info_length: 4,
-          tlv_value: server_identifier
         }
       end
 
@@ -99,19 +87,11 @@ module Pio
         }
       end
 
-      def dhcp_server_identifier_hash
-        {
-          tlv_type: SERVER_IDENTIFIER_TLV,
-          tlv_info_length: 4,
-          tlv_value: ipv4_saddr
-        }
-      end
-
       def subnet_mask_hash
         {
           tlv_type: SUBNET_MASK_TLV,
           tlv_info_length: 4,
-          tlv_value: subnet_mask
+          tlv_value: subnet_mask_value
         }
       end
 
