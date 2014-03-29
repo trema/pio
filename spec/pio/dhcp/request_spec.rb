@@ -11,8 +11,8 @@ describe Pio::Dhcp::Request, '.new' do
     Pio::Dhcp::Request.new(
      source_mac: source_mac,
      transaction_id: 0xdeadbeef,
-     server_identifier_tlv: server_identifier_tlv,
-     requested_ip_address_tlv: requested_ip_address_tlv
+     server_identifier: server_identifier,
+     requested_ip_address: requested_ip_address
     )
   end
 
@@ -127,8 +127,8 @@ describe Pio::Dhcp::Request, '.new' do
 
   context 'with String Address' do
     let(:source_mac) { '24:db:ac:41:e5:5b' }
-    let(:server_identifier_tlv) { '192.168.0.1' }
-    let(:requested_ip_address_tlv) { '192.168.0.10' }
+    let(:server_identifier) { '192.168.0.1' }
+    let(:requested_ip_address) { '192.168.0.10' }
 
     context '#to_binary' do
       it 'returns a DHCP Request binary string' do
@@ -143,8 +143,8 @@ describe Pio::Dhcp::Request, '.new' do
 
   context 'with IPv4Address Object Address And Mac Object Address' do
     let(:source_mac) { Pio::Mac.new('24:db:ac:41:e5:5b') }
-    let(:server_identifier_tlv) { Pio::IPv4Address.new('192.168.0.1') }
-    let(:requested_ip_address_tlv) { Pio::IPv4Address.new('192.168.0.10') }
+    let(:server_identifier) { Pio::IPv4Address.new('192.168.0.1') }
+    let(:requested_ip_address) { Pio::IPv4Address.new('192.168.0.10') }
 
     context '#to_binary' do
       it 'returns a DHCP Request binary string' do

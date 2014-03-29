@@ -55,14 +55,14 @@ module Pio
       def_delegators :@frame, :client_mac_address
       def_delegators :@frame, :server_host_name
       def_delegators :@frame, :boot_file_name
-      def_delegators :@frame, :server_identifier_tlv
-      def_delegators :@frame, :renewal_time_value_tlv
-      def_delegators :@frame, :rebinding_time_value_tlv
-      def_delegators :@frame, :ip_address_lease_time_tlv
-      def_delegators :@frame, :subnet_mask_tlv
-      def_delegators :@frame, :client_identifier_tlv
-      def_delegators :@frame, :requested_ip_address_tlv
-      def_delegators :@frame, :parameters_list_tlv
+      def_delegators :@frame, :server_identifier
+      def_delegators :@frame, :renewal_time_value
+      def_delegators :@frame, :rebinding_time_value
+      def_delegators :@frame, :ip_address_lease_time
+      def_delegators :@frame, :subnet_mask
+      def_delegators :@frame, :client_identifier
+      def_delegators :@frame, :requested_ip_address
+      def_delegators :@frame, :parameters_list
       def_delegators :@frame, :to_binary
 
       private

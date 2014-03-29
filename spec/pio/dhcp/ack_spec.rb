@@ -14,10 +14,10 @@ describe Pio::Dhcp::Ack, '.new' do
      ip_source_address: ip_source_address,
      ip_destination_address: ip_destination_address,
      transaction_id: 0xdeadbeef,
-     renewal_time_value_tlv: 0xdeadbeef,
-     rebinding_time_value_tlv: 0xdeadbeef,
-     ip_address_lease_time_tlv: 0xdeadbeef,
-     subnet_mask_tlv: subnet_mask_tlv
+     renewal_time_value: 0xdeadbeef,
+     rebinding_time_value: 0xdeadbeef,
+     ip_address_lease_time: 0xdeadbeef,
+     subnet_mask: subnet_mask
    )
   end
 
@@ -137,7 +137,7 @@ describe Pio::Dhcp::Ack, '.new' do
     let(:destination_mac) { Pio::Mac.new('11:22:33:44:55:66') }
     let(:ip_source_address) { Pio::IPv4Address.new('192.168.0.10') }
     let(:ip_destination_address) { Pio::IPv4Address.new('192.168.0.1') }
-    let(:subnet_mask_tlv) { Pio::IPv4Address.new('255.255.255.0') }
+    let(:subnet_mask) { Pio::IPv4Address.new('255.255.255.0') }
 
     context '#to_binary' do
       it 'returns a DHCP ack binary string' do
@@ -155,7 +155,7 @@ describe Pio::Dhcp::Ack, '.new' do
     let(:destination_mac) { '11:22:33:44:55:66' }
     let(:ip_source_address) { '192.168.0.10' }
     let(:ip_destination_address) { '192.168.0.1' }
-    let(:subnet_mask_tlv) { '255.255.255.0' }
+    let(:subnet_mask) { '255.255.255.0' }
 
     context '#to_binary' do
       it 'returns a DHCP ack binary string' do

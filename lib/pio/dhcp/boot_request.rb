@@ -83,6 +83,18 @@ module Pio
         }
       end
 
+      def dhcp_server_identifier_hash
+        {
+          tlv_type: SERVER_IDENTIFIER_TLV,
+          tlv_info_length: 4,
+          tlv_value: server_identifier_value
+        }
+      end
+
+      def server_identifier_value
+        IPv4Address.new(@options[:server_identifier]).to_a
+      end
+
       def user_options
         @options.merge({})
       end
