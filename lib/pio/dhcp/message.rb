@@ -1,23 +1,13 @@
 # encoding: utf-8
 
 require 'pio/dhcp/frame'
-require 'pio/dhcp/tlv_hash_util'
-require 'pio/message_util'
 require 'forwardable'
-require 'pp'
 
 module Pio
   class Dhcp
     # Base class of Dhcp Packet Generator and Parser.
     class Message
       extend Forwardable
-      include MessageUtil
-      include TlvHashUtil
-
-      def initialize(options)
-        @options = options
-        @frame = Dhcp::Frame.new(option_hash)
-      end
 
       def_delegators :@frame, :destination_mac
       def_delegators :@frame, :source_mac
@@ -65,21 +55,24 @@ module Pio
       def_delegators :@frame, :parameters_list
       def_delegators :@frame, :to_binary
 
-      private
-
       def self.create_from(frame)
         message = allocate
         message.instance_variable_set :@frame, frame
         message
       end
 
-      def option_to_klass
-        {
-          source_mac: Mac,
-          destination_mac: Mac,
-          ip_source_address: IPv4Address,
-          ip_destination_address: IPv4Address
-        }
+      def initialize(user_options)
+        type_merged_options = user_options.merge type: const_type
+        options = options_klass.new(type_merged_options)
+        @frame = Dhcp::Frame.new(options.to_hash)
+      end
+
+      def const_type
+        self.class::TYPE
+      end
+
+      def options_klass
+        self.class.const_get(:Options)
       end
     end
   end
