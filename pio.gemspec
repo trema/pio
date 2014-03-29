@@ -28,5 +28,5 @@ Gem::Specification.new do |gem|
 
   gem.required_ruby_version = '>= 1.9.3'
   gem.add_dependency 'bindata', '~> 2.0.0'
-  gem.add_development_dependency 'bundler', '~> 1.5.3'
+  gem.add_development_dependency 'bundler', '~> 1.6.0'
 end
