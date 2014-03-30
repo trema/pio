@@ -3,7 +3,11 @@
 source 'https://rubygems.org'
 
 gem 'rake', '~> 10.1.1'
-gem 'yard', '~> 0.8.7.3'
+
+group :docs do
+  gem 'inch', '~> 0.3.3'
+  gem 'yard', '~> 0.8.7.3'
+end
 
 group :development do
   gem 'byebug', '~> 2.7.0', platforms: :ruby_20
