@@ -143,8 +143,8 @@ Also you can use `Pio::Dhcp::Discover#new`,
 
     request = Pio::Dhcp::Request.new(
       source_mac: '24:db:ac:41:e5:5b',
-      server_identifier_tlv: '192.168.0.100',
-      requested_ip_address_tlv: '192.168.0.1',
+      server_identifier: '192.168.0.100',
+      requested_ip_address: '192.168.0.1',
       transaction_id: offer.transaction_id
     )
     request.to_binary  # => DHCP Request frame in binary format
