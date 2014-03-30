@@ -51,9 +51,15 @@ module Pio
       # Dhcp Base Constants
       BOOTPC = 68
       BOOTPS = 67
-      QUAD_ZERO_IP_ADDRESS = IPv4Address.new(0).to_a
-      BROADCAST_MAC_ADDRESS = Mac.new(0xffffffffffff).to_a
-      BROADCAST_IP_ADDRESS = IPv4Address.new(0xffffffff).to_a
+      QUAD_ZERO_IP_ADDRESS = IPv4Address.new(0)
+      BROADCAST_MAC_ADDRESS = Mac.new(0xffffffffffff)
+      BROADCAST_IP_ADDRESS = IPv4Address.new(0xffffffff)
+      PARAMETER_REQUEST_LIST = [
+        SUBNET_MASK_TLV,
+        ROUTER_TLV,
+        DNS_TLV,
+        NTP_SERVERS_TLV
+      ]
     end
   end
 end

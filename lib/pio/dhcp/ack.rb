@@ -7,10 +7,6 @@ module Pio
     # Dhcp Ack packet generator
     class Ack < BootReply
       TYPE = 5
-
-      def reply_option
-        []
-      end
     end
   end
 end
