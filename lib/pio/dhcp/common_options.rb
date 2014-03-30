@@ -1,12 +1,14 @@
 # encoding: utf-8
 
-require 'pio/dhcp/const'
-
 module Pio
   class Dhcp
     # DHCP Common Options.
     module CommonOptions
-      include Consts
+      BOOTPC = 68
+      BOOTPS = 67
+      QUAD_ZERO_IP_ADDRESS = IPv4Address.new(0)
+      BROADCAST_MAC_ADDRESS = Mac.new(0xffffffffffff)
+      BROADCAST_IP_ADDRESS = IPv4Address.new(0xffffffff)
 
       def dhcp_data
         Dhcp::DhcpField.new(dhcp_field_values)

@@ -1,7 +1,6 @@
 # encoding: utf-8
 
 require 'pio/options'
-require 'pio/dhcp/const'
 require 'pio/dhcp/common_options'
 require 'pio/dhcp/dhcp_tlv_options'
 
@@ -9,7 +8,6 @@ module Pio
   class Dhcp
     # Options for creating a DHCP message.
     class BootReplyOptions < Pio::Options
-      include Consts
       include CommonOptions
       include DhcpTlvOptions
 

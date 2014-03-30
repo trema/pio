@@ -1,6 +1,5 @@
 # encoding: utf-8
 
-require 'pio/dhcp/const'
 require 'pio/type/ethernet_header'
 require 'pio/type/ipv4_header'
 require 'pio/type/udp_header'
@@ -15,9 +14,14 @@ module Pio
       extend Type::EthernetHeader
       extend Type::IPv4Header
       extend Type::UdpHeader
-      include Consts
       include FieldUtil
       include CsumUtil
+
+      ETHER_TYPE_IP = 0x0800
+      IP_PROTOCOL_UDP = 17
+      IP_HEADER_LENGTH = 20
+      UDP_HEADER_LENGTH = 8
+      DHCP_OPTION_FIELD_LENGTH = 60
 
       endian :big
 
