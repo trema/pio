@@ -1,16 +1,17 @@
 # encoding: utf-8
 
-require 'pio/dhcp/const'
 require 'pio/dhcp/type/dhcp_param_list'
 require 'pio/dhcp/type/dhcp_client_id'
 require 'pio/dhcp/type/dhcp_string'
 require 'pio/type/ip_address'
 
 module Pio
+  # Dhcp parser and generator.
   class Dhcp
     # DHCP Optional TLV
     class OptionalTlv < BinData::Record
-      include Consts
+      DEFAULT = 'default'
+
       endian :big
 
       bit8 :tlv_type
@@ -19,20 +20,20 @@ module Pio
       choice  :tlv_value,
               onlyif: -> { !(end_of_dhcpdu?) },
               selection: :chooser do
-        uint8 MESSAGE_TYPE_TLV
-        ip_address SERVER_IDENTIFIER_TLV
-        uint32be RENEWAL_TIME_VALUE_TLV
-        uint32be REBINDING_TIME_VALUE_TLV
-        uint32be IP_ADDRESS_LEASE_TIME_TLV
-        ip_address SUBNET_MASK_TLV
-        ip_address REQUESTED_IP_ADDRESS_TLV
-        client_id CLIENT_IDENTIFIER_TLV
-        parameter_list PARAMETERS_LIST_TLV
+        uint8 Dhcp::MESSAGE_TYPE_TLV
+        ip_address Dhcp::SERVER_IDENTIFIER_TLV
+        uint32be Dhcp::RENEWAL_TIME_VALUE_TLV
+        uint32be Dhcp::REBINDING_TIME_VALUE_TLV
+        uint32be Dhcp::IP_ADDRESS_LEASE_TIME_TLV
+        ip_address Dhcp::SUBNET_MASK_TLV
+        ip_address Dhcp::REQUESTED_IP_ADDRESS_TLV
+        client_id Dhcp::CLIENT_IDENTIFIER_TLV
+        parameter_list Dhcp::PARAMETERS_LIST_TLV
         dhcp_string DEFAULT
       end
 
       def end_of_dhcptlv?
-        tlv_type == END_OF_TLV
+        tlv_type == Dhcp::END_OF_TLV
       end
 
       def chooser
@@ -44,7 +45,7 @@ module Pio
       end
 
       def end_of_dhcpdu?
-        tlv_type == END_OF_TLV
+        tlv_type == Dhcp::END_OF_TLV
       end
 
       private
@@ -56,15 +57,15 @@ module Pio
       # rubocop:disable MethodLength
       def optional_tlv?
         [
-          MESSAGE_TYPE_TLV,
-          SERVER_IDENTIFIER_TLV,
-          CLIENT_IDENTIFIER_TLV,
-          RENEWAL_TIME_VALUE_TLV,
-          REBINDING_TIME_VALUE_TLV,
-          REQUESTED_IP_ADDRESS_TLV,
-          PARAMETERS_LIST_TLV,
-          IP_ADDRESS_LEASE_TIME_TLV,
-          SUBNET_MASK_TLV
+          Dhcp::MESSAGE_TYPE_TLV,
+          Dhcp::SERVER_IDENTIFIER_TLV,
+          Dhcp::CLIENT_IDENTIFIER_TLV,
+          Dhcp::RENEWAL_TIME_VALUE_TLV,
+          Dhcp::REBINDING_TIME_VALUE_TLV,
+          Dhcp::REQUESTED_IP_ADDRESS_TLV,
+          Dhcp::PARAMETERS_LIST_TLV,
+          Dhcp::IP_ADDRESS_LEASE_TIME_TLV,
+          Dhcp::SUBNET_MASK_TLV
         ].include?(tlv_type)
       end
       # rubocop:enable MethodLength

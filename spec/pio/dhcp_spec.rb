@@ -3,7 +3,7 @@
 require 'pio'
 
 describe Pio::DHCP do
-  Pio::DHCP = Pio::Dhcp
+  Pio::DHCP == Pio::Dhcp
 end
 
 describe Pio::Dhcp, '.read' do
