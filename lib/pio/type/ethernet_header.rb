@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+# encoding: utf-8
+
 require 'pio/type/mac_address'
 
 module Pio
@@ -11,7 +12,7 @@ module Pio
         class_eval do
           mac_address :destination_mac
           mac_address :source_mac
-          uint16 :ether_type, :value => options[:ether_type]
+          uint16 :ether_type, value: options[:ether_type]
         end
       end
     end

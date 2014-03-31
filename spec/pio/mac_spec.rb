@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+#  coding: utf-8
 require 'pio/mac'
 
 describe Pio::Mac do
@@ -17,6 +17,7 @@ describe Pio::Mac do
         it { should_not eq 42 }
         it { should_not eq 'INVALID_MAC_ADDRESS' }
       end
+
       describe '#eql?' do
         it { expect(subject).to eql Pio::Mac.new('11:22:33:44:55:66') }
         it { expect(subject).to eql '11:22:33:44:55:66' }
@@ -45,7 +46,7 @@ describe Pio::Mac do
 
     context 'with reserved address' do
       (0x0..0xf).each do | each |
-        octet = sprintf('%02x', each)
+        octet = format('%02x', each)
         reserved_address = "01:80:c2:00:00:#{ octet }"
 
         context "when #{ reserved_address }" do
@@ -104,9 +105,3 @@ describe Pio::Mac do
     end
   end
 end
-
-### Local variables:
-### mode: Ruby
-### coding: utf-8-unix
-### indent-tabs-mode: nil
-### End:

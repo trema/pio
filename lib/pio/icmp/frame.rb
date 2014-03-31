@@ -1,4 +1,6 @@
-# -*- coding: utf-8 -*-
+# encoding: utf-8
+
+require 'bindata'
 require 'pio/type/ethernet_header'
 require 'pio/type/ipv4_header'
 
@@ -14,18 +16,18 @@ module Pio
       extend Type::IPv4Header
 
       endian :big
-      ethernet_header :ether_type => 0x0800
-      ipv4_header :ip_protocol => 1,
-                  :ip_header_checksum => lambda { ip_sum },
-                  :ip_total_length => lambda { ip_packet_length }
+
+      ethernet_header ether_type: 0x0800
+      ipv4_header ip_protocol: 1,
+                  ip_header_checksum: -> { ip_sum },
+                  ip_total_length: -> { ip_packet_length }
       uint8 :icmp_type
-      uint8 :icmp_code, :initial_value => 0
-      uint16 :icmp_checksum, :value => lambda { icmp_sum }
-      uint16 :icmp_identifier, :initial_value => 0x0100
-      uint16 :icmp_sequence_number, :initial_value => 0x0001
+      uint8 :icmp_code, initial_value: 0
+      uint16 :icmp_checksum, value: -> { icmp_sum }
+      uint16 :icmp_identifier
+      uint16 :icmp_sequence_number
       string :echo_data,
-             :initial_value => 'DEADBEEF',
-             :read_length => lambda { echo_data_length }
+             read_length: -> { echo_data_length }
 
       def message_type
         icmp_type
@@ -48,14 +50,24 @@ module Pio
         ~((icmp_csum & 0xffff) + (icmp_csum >> 16)) & 0xffff
       end
 
+      def ip_sum
+        ~((ip_csum & 0xffff) + (ip_csum >> 16)) & 0xffff
+      end
+
+      def to_binary
+        if num_bytes < MINIMUM_FRAME_LENGTH
+          to_binary_s + "\000" * (MINIMUM_FRAME_LENGTH - num_bytes)
+        else
+          to_binary_s
+        end
+      end
+
+      private
+
       def icmp_csum
         icmp_2bytewise_slices.reduce(0) do |acc, each|
           acc + each
         end
-      end
-
-      def ip_sum
-        ~((ip_csum & 0xffff) + (ip_csum >> 16)) & 0xffff
       end
 
       def ip_csum
@@ -66,22 +78,22 @@ module Pio
 
       def icmp_2bytewise_slices
         [
-         icmp_type * 0x100 + icmp_code,
-         icmp_identifier,
-         icmp_sequence_number,
-         *echo_data.unpack('n*')
+          icmp_type * 0x100 + icmp_code,
+          icmp_identifier,
+          icmp_sequence_number,
+          *echo_data.unpack('n*')
         ]
       end
 
       def ipv4_header_2bytewise_slices
         [
-         ipversion_ipheaderlength_iptypeofservice, ip_total_length,
-         ip_identifier, ipflag_ipfragment,
-         ipttl_ipproto,
-         ip_source_address_upper,
-         ip_source_address_lower,
-         ip_destination_address_upper,
-         ip_destination_address_lower
+          ipversion_ipheaderlength_iptypeofservice, ip_total_length,
+          ip_identifier, ipflag_ipfragment,
+          ipttl_ipproto,
+          ip_source_address_upper,
+          ip_source_address_lower,
+          ip_destination_address_upper,
+          ip_destination_address_lower
         ]
       end
 
@@ -112,20 +124,6 @@ module Pio
       def ipttl_ipproto
         ip_ttl << 8 | ip_protocol
       end
-
-      def to_binary
-        if num_bytes < MINIMUM_FRAME_LENGTH
-          to_binary_s + "\000" * (MINIMUM_FRAME_LENGTH - num_bytes)
-        else
-          to_binary_s
-        end
-      end
     end
   end
 end
-
-### Local variables:
-### mode: Ruby
-### coding: utf-8-unix
-### indent-tabs-mode: nil
-### End:

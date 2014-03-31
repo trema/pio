@@ -1,5 +1,5 @@
-# -*- coding: utf-8 -*-
-require 'rubygems'
+# encoding: utf-8
+
 require 'bindata'
 
 module Pio
@@ -8,10 +8,10 @@ module Pio
     class PortIdTlv < BinData::Primitive
       endian :big
 
-      bit7 :tlv_type, :value => 2
-      bit9 :tlv_info_length, :initial_value => lambda { port_id.num_bytes + 1 }
-      uint8 :subtype, :initial_value => 7
-      string :port_id, :read_length => lambda { tlv_info_length - 1 }
+      bit7 :tlv_type, value: 2
+      bit9 :tlv_info_length, initial_value: -> { port_id.num_bytes + 1 }
+      uint8 :subtype, initial_value: 7
+      string :port_id, read_length: -> { tlv_info_length - 1 }
 
       def get
         tmp_id = port_id
@@ -33,9 +33,3 @@ module Pio
     end
   end
 end
-
-### Local variables:
-### mode: Ruby
-### coding: utf-8-unix
-### indent-tabs-mode: nil
-### End:

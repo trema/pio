@@ -1,5 +1,5 @@
-# -*- coding: utf-8 -*-
-require 'rubygems'
+# encoding: utf-8
+
 require 'bindata'
 
 module Pio
@@ -12,9 +12,3 @@ module Pio
     end
   end
 end
-
-### Local variables:
-### mode: Ruby
-### coding: utf-8-unix
-### indent-tabs-mode: nil
-### End:

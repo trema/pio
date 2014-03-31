@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+# encoding: utf-8
+
 require 'forwardable'
 require 'ipaddr'
 
@@ -55,13 +56,15 @@ module Pio
     #
     def_delegator :value, :to_range
 
+    def_delegator :value, :==
+
     #
     # @return [Number] prefix length of IPv4 address.
     #
     def prefixlen
       netmask = to_range.first.to_i ^ to_range.last.to_i
       if netmask > 0
-        32 - sprintf('%b', netmask).length
+        32 - format('%b', netmask).length
       else
         32
       end
@@ -154,9 +157,3 @@ module Pio
     end
   end
 end
-
-### Local variables:
-### mode: Ruby
-### coding: utf-8-unix
-### indent-tabs-mode: nil
-### End:
