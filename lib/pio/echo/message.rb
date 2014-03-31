@@ -1,19 +1,22 @@
+require 'forwardable'
 require 'bindata'
 
 module Pio
   class Echo
-    # OpenFlow 1.0 Echo message.
-    class Message < BinData::Record
-      endian :big
+    # Base class of Echo request and reply.
+    class Message
+      extend Forwardable
 
-      uint8 :version, value: 1
-      uint8 :message_type
-      uint16 :message_length, value: -> { 8 + data.length }
-      uint32 :transaction_id, initial_value: 0
-      string :data
+      def_delegators :@echo, :version
+      def_delegators :@echo, :message_type
+      def_delegators :@echo, :message_length
+      def_delegators :@echo, :xid
+      def_delegators :@echo, :data
 
-      def xid
-        transaction_id
+      def self.create_from(echo)
+        message = allocate
+        message.instance_variable_set :@echo, echo
+        message
       end
     end
   end
