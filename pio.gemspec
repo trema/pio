@@ -20,6 +20,7 @@ Gem::Specification.new do |gem|
   gem.files += Dir.glob('lib/**/*.rb')
   gem.files += Dir.glob('bin/**/*')
   gem.files += Dir.glob('spec/**/*')
+  gem.files += Dir.glob('examples/**/*')
 
   gem.require_paths = ['lib']
 
