@@ -11,5 +11,3 @@
 * Added new class alias `Pio::ARP` => `Pio::Arp`.
 * Added new class alias `Pio::LLDP` => `Pio::Lldp`.
 * Added new class alias `Pio::DHCP` => `Pio::Dhcp`.
-
-### Bugs fixed
