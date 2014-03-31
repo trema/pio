@@ -1,6 +1,6 @@
 # Changelog
 
-## develop (unreleased)
+## 0.4.0 (3/31/2014)
 
 ### New features
 * Added new classes `Pio::Dhcp`, `Pio::Dhcp::Discover`,
