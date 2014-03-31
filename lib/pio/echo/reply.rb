@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 require 'pio/echo/format'
 require 'pio/echo/message'
 
