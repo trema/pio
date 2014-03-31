@@ -10,14 +10,14 @@ module Pio
 
       def to_hash
         {
-         icmp_type: @type,
-         source_mac: @source_mac,
-         destination_mac: @destination_mac,
-         ip_source_address: @ip_source_address,
-         ip_destination_address: @ip_destination_address,
-         icmp_identifier: @identifier,
-         icmp_sequence_number: @sequence_number,
-         echo_data: @echo_data
+          icmp_type: @type,
+          source_mac: @source_mac,
+          destination_mac: @destination_mac,
+          ip_source_address: @ip_source_address,
+          ip_destination_address: @ip_destination_address,
+          icmp_identifier: @identifier,
+          icmp_sequence_number: @sequence_number,
+          echo_data: @echo_data
         }.freeze
       end
     end

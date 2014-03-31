@@ -46,7 +46,7 @@ describe Pio::Mac do
 
     context 'with reserved address' do
       (0x0..0xf).each do | each |
-        octet = sprintf('%02x', each)
+        octet = format('%02x', each)
         reserved_address = "01:80:c2:00:00:#{ octet }"
 
         context "when #{ reserved_address }" do

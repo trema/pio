@@ -15,7 +15,7 @@ module Pio
 
       def get
         Mac.new(octets.reduce('') do |str, each|
-                  str + sprintf('%02x', each)
+                  str + format('%02x', each)
                 end.hex)
       end
     end

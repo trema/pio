@@ -20,10 +20,10 @@ module Pio
 
     PARAMETER_REQUEST_LIST =
       [
-       SUBNET_MASK_TLV,
-       ROUTER_TLV,
-       DNS_TLV,
-       NTP_SERVERS_TLV
+        SUBNET_MASK_TLV,
+        ROUTER_TLV,
+        DNS_TLV,
+        NTP_SERVERS_TLV
       ]
   end
   DHCP = Dhcp

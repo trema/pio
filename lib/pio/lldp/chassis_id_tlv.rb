@@ -40,7 +40,7 @@ module Pio
 
       def mac_address
         chassis_id.unpack('C6').map do |each|
-          sprintf '%02x', each
+          format '%02x', each
         end.join('').hex
       end
     end

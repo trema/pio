@@ -26,10 +26,10 @@ module Pio
 
       def to_hash
         {
-         chassis_id: @dpid,
-         port_id: @port_id,
-         destination_mac: @destination_mac,
-         source_mac: @source_mac
+          chassis_id: @dpid,
+          port_id: @port_id,
+          destination_mac: @destination_mac,
+          source_mac: @source_mac
         }.freeze
       end
     end
