@@ -2,7 +2,6 @@
 
 require 'pio/dhcp/type/dhcp_param_list'
 require 'pio/dhcp/type/dhcp_client_id'
-require 'pio/dhcp/type/dhcp_string'
 require 'pio/type/ip_address'
 
 module Pio
@@ -29,7 +28,7 @@ module Pio
         ip_address Dhcp::REQUESTED_IP_ADDRESS_TLV
         client_id Dhcp::CLIENT_IDENTIFIER_TLV
         parameter_list Dhcp::PARAMETERS_LIST_TLV
-        dhcp_string DEFAULT
+        string DEFAULT
       end
 
       def end_of_dhcptlv?
