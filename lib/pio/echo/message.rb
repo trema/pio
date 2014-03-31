@@ -6,10 +6,10 @@ module Pio
     class Message < BinData::Record
       endian :big
 
-      uint8 :version
+      uint8 :version, value: 1
       uint8 :message_type
-      uint16 :message_length
-      uint32 :transaction_id
+      uint16 :message_length, value: -> { 8 + data.length }
+      uint32 :transaction_id, initial_value: 0
       string :data
 
       def xid

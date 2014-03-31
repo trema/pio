@@ -12,7 +12,7 @@ module Pio
       echo = Echo::Message.read(raw_data)
       case echo.message_type
       when REQUEST
-        Echo::Request.read(raw_data)
+        Echo::Request.create_from(echo)
       when REPLY
         Echo::Reply.read(raw_data)
       else
