@@ -24,7 +24,13 @@ Gem::Specification.new do |gem|
 
   gem.require_paths = ['lib']
 
-  gem.extra_rdoc_files = ['README.md']
+  gem.extra_rdoc_files =
+    [
+      'README.md',
+      'CHANGELOG.md',
+      'LICENSE',
+      'CONTRIBUTING.md'
+    ]
   gem.test_files = Dir.glob('spec/**/*')
 
   gem.required_ruby_version = '>= 1.9.3'
