@@ -35,8 +35,6 @@ require 'pio/dhcp/offer'
 require 'pio/dhcp/request'
 require 'pio/dhcp/ack'
 
-require 'pio/util'
-
 module Pio
   # Dhcp parser and generator.
   class Dhcp
@@ -47,8 +45,14 @@ module Pio
       Ack::TYPE => Ack
     }
 
-    class << self
-      include Util
+    def self.read(raw_data)
+      begin
+        frame = const_get('Frame').read(raw_data)
+      rescue
+        raise Pio::ParseError, $ERROR_INFO.message
+      end
+
+      const_get('MESSAGE_TYPE')[frame.message_type].create_from(frame)
     end
   end
 end
