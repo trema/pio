@@ -3,7 +3,7 @@
 require 'bindata'
 
 module Pio
-  module Type
+  class Dhcp
     # DHCP ParameterList Format.
     class ParameterList < BinData::Primitive
       array :octets,
