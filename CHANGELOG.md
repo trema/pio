@@ -1,5 +1,12 @@
 # Changelog
 
+## develop (unreleased)
+
+### Misc
+
+* Added new rake task `dump_pcap`.
+
+
 ## 0.4.0 (3/31/2014)
 
 ### New features
