@@ -32,6 +32,7 @@ Gem::Specification.new do |gem|
       'CONTRIBUTING.md'
     ]
   gem.test_files = Dir.glob('spec/**/*')
+  gem.test_files += Dir.glob('features/**/*')
 
   gem.required_ruby_version = '>= 1.9.3'
   gem.add_dependency 'bindata', '~> 2.0.0'
