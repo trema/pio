@@ -1,7 +1,7 @@
 # encoding: utf-8
 
-require 'pio/dhcp/type/dhcp_param_list'
-require 'pio/dhcp/type/dhcp_client_id'
+require 'pio/dhcp/parameter_list'
+require 'pio/dhcp/client_id'
 require 'pio/type/ip_address'
 
 module Pio
