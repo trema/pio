@@ -4,6 +4,7 @@
 
 ### Misc
 
+* Added new rake task `cucumber`.
 * Added new rake task `dump_pcap`.
 
 
