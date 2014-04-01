@@ -24,6 +24,7 @@ end
 
 group :test do
   gem 'coveralls', '~> 0.7.0', require: false
+  gem 'cucumber', '~> 1.3.14'
   gem 'flay', '~> 2.4.0'
   gem 'flog', '~> 4.2.0'
   gem 'fuubar', '~> 1.3.2'
