@@ -6,7 +6,7 @@ end
 
 When(/^I try to parse the pcap file with "(.*?)" class$/) do |parser|
   File.open(@pcap) do |file|
-    pcap = Pcap::Frame.read(file)
+    pcap = Pio::Pcap::Frame.read(file)
     pcap.records.each do |each|
       Pio.const_get(parser).__send__ :read, each.data
     end
