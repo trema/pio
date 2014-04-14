@@ -14,7 +14,7 @@ module Pio
     def_delegators :@data, :transaction_id
     def_delegator :@data, :transaction_id, :xid
     def_delegators :@data, :body
-    def_delegators :@data, :to_binary_s
+    def_delegator :@data, :to_binary_s, :to_binary
 
     def self.read(raw_data)
       hello = allocate
