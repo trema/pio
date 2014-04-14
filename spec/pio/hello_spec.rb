@@ -28,6 +28,7 @@ describe Pio::Hello do
       Then { hello.message_length == 8 }
       Then { hello.xid == 0 }
       Then { hello.body.empty? }
+      Then { hello.to_binary_s == [1, 0, 0, 8, 0, 0, 0, 0].pack('C*') }
     end
 
     context 'with transaction_id: 123' do
@@ -39,6 +40,7 @@ describe Pio::Hello do
       Then { hello.message_length == 8 }
       Then { hello.xid == 123 }
       Then { hello.body.empty? }
+      Then { hello.to_binary_s == [1, 0, 0, 8, 0, 0, 0, 123].pack('C*') }
     end
 
     context 'with xid: 123' do
@@ -50,6 +52,7 @@ describe Pio::Hello do
       Then { hello.message_length == 8 }
       Then { hello.xid == 123 }
       Then { hello.body.empty? }
+      Then { hello.to_binary_s == [1, 0, 0, 8, 0, 0, 0, 123].pack('C*') }
     end
   end
 end
