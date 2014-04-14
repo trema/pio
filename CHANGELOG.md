@@ -1,6 +1,8 @@
 # Changelog
 
-## develop (unreleased)
+## 0.5.0 (4/14/2014)
+
+* Added new class `Pio::Hello`.
 
 ### Misc
 
