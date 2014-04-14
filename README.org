@@ -24,6 +24,8 @@ supports the following packet formats:
  - ARP
  - LLDP
  - DHCP
+ - OpenFlow 1.0 messages
+   - Hello
  - (...currently there are just a few formats supported but I'm sure this list will grow)
 
 ** Features Overview
@@ -80,6 +82,17 @@ Also you can use =Pio::Dhcp::Discover#new=,
 =Pio::Dhcp::Ack#new= to generate a DHCP frame like below:
 
 #+INCLUDE: "./examples/dhcp_new.rb" src ruby
+
+*** Hello
+To parse an OpenFlow 1.0 Hello message, use the API =Pio::Hello.read=
+and you can access each field of the parsed Hello message.
+
+#+INCLUDE: "./examples/hello_read.rb" src ruby
+
+Also you can use =Pio::Hello#new= to generate a Hello message like
+below:
+
+#+INCLUDE: "./examples/hello_new.rb" src ruby
 
 ** Installation
 The simplest way to install Pio is to use [[http://gembundler.com/][Bundler]].
