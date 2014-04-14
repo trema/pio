@@ -2,10 +2,10 @@
 
 ## 0.5.0 (4/14/2014)
 
+### New features
 * Added new class `Pio::Hello`.
 
 ### Misc
-
 * Added new rake task `cucumber`.
 * Added new rake task `dump_pcap`.
 
