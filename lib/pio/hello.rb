@@ -23,9 +23,15 @@ module Pio
     end
 
     def initialize(user_options = {})
-      options = user_options.dup
-      options[:transaction_id] ||= options[:xid]
-      @data = Format.new(options)
+      @options = user_options.dup
+      handle_option_aliases
+      @data = Format.new(@options)
+    end
+
+    private
+
+    def handle_option_aliases
+      @options[:transaction_id] ||= @options[:xid]
     end
   end
 end
