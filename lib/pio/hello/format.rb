@@ -9,7 +9,7 @@ module Pio
       endian :big
 
       uint8 :version, value: 1
-      uint8 :message_type
+      uint8 :message_type, value: 0
       uint16 :message_length, initial_value: 8
       uint32 :transaction_id
       string :body  # ignored
