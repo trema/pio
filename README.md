@@ -16,8 +16,9 @@ supports the following packet formats:
 -   ARP
 -   LLDP
 -   DHCP
--   OpenFlow 1.0 messages
+-   OpenFlow 1.0
     -   Hello
+    -   Echo Request and Reply
 -   (&#x2026;currently there are just a few formats supported but I'm sure this list will grow)
 
 ## Features Overview
@@ -177,6 +178,29 @@ below:
 
     hello = Pio::Hello.new(transaction_id: 123)
     hello.to_binary  # => HELLO message in binary format.
+
+## ECHO
+
+To parse an OpenFlow 1.0 ECHO message, use the API `Pio::Echo.read`
+and you can access each field of the parsed ECHO message.
+
+    require 'pio'
+
+    echo = Pio::Echo.read(binary_data)
+    echo.xid # => 123
+
+Also you can use `Pio::Echo::Request#new` or `Pio::Echo::Reply#new` to
+generate an Echo Request/Reply message like below:
+
+    require 'pio'
+
+    request = Pio::Echo::Request.new
+    request.to_binary  # => ECHO Request message in binary format.
+
+    # The ECHO xid (transaction_id)
+    # should be same as those of the request.
+    reply = Pio::Echo::Reply.new(xid: request.xid)
+    reply.to_binary  # => ECHO Reply message in binary format.
 
 ## Installation
 
