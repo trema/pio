@@ -1,5 +1,14 @@
 # Changelog
 
+## develop (unreleased)
+
+
+## 0.5.1 (4/15/2014)
+
+### Bugs fixed
+* Set hello message type = 0.
+
+
 ## 0.5.0 (4/14/2014)
 
 ### New features
