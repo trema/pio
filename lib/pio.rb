@@ -4,6 +4,7 @@ require 'pio/parse_error'
 
 require 'pio/arp'
 require 'pio/dhcp'
+require 'pio/echo'
 require 'pio/hello'
 require 'pio/icmp'
 require 'pio/lldp'
