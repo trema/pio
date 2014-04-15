@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+# encoding: utf-8
+
 require 'pio/icmp/message'
 require 'pio/icmp/options'
 require 'pio/mac'
@@ -20,25 +21,24 @@ module Pio
         mandatory_option :sequence_number
         option :echo_data
 
+        # rubocop:disable MethodLength
+
         def initialize(options)
-          validate_options(options)
+          validate options
           @type = TYPE
-          @source_mac = Mac.new(options[:source_mac])
-          @destination_mac = Mac.new(options[:destination_mac])
-          @ip_source_address = IPv4Address.new(options[:ip_source_address])
+          @source_mac = Mac.new(options[:source_mac]).freeze
+          @destination_mac = Mac.new(options[:destination_mac]).freeze
+          @ip_source_address =
+            IPv4Address.new(options[:ip_source_address]).freeze
           @ip_destination_address =
-            IPv4Address.new(options[:ip_destination_address])
+            IPv4Address.new(options[:ip_destination_address]).freeze
           @identifier = options[:identifier]
           @sequence_number = options[:sequence_number]
           @echo_data = options[:echo_data] || DEFAULT_ECHO_DATA
         end
+
+        # rubocop:enable MethodLength
       end
     end
   end
 end
-
-### Local variables:
-### mode: Ruby
-### coding: utf-8-unix
-### indent-tabs-mode: nil
-### End:

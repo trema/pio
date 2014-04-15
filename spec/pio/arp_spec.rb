@@ -1,23 +1,28 @@
-# -*- coding: utf-8 -*-
+# encoding: utf-8
+
 require 'pio'
+
+describe Pio::ARP do
+  Then { Pio::ARP == Pio::Arp }
+end
 
 describe Pio::Arp do
   describe '.read' do
     context 'with an Arp Request packet' do
       Given(:arp_request_dump) do
         [
-         0xff, 0xff, 0xff, 0xff, 0xff, 0xff, # destination mac address
-         0x00, 0x26, 0x82, 0xeb, 0xea, 0xd1, # source mac address
-         0x08, 0x06,                         # ethernet type
-         0x00, 0x01,                         # arp hardware type
-         0x08, 0x00,                         # arp protocol type
-         0x06,                               # hardware address size
-         0x04,                               # protocol address size
-         0x00, 0x01,                         # operational code
-         0x00, 0x26, 0x82, 0xeb, 0xea, 0xd1, # sender hardware address
-         0xc0, 0xa8, 0x53, 0x03,             # sender protocol address
-         0x00, 0x00, 0x00, 0x00, 0x00, 0x00, # target hardware address
-         0xc0, 0xa8, 0x53, 0xfe,             # target protocol address
+          0xff, 0xff, 0xff, 0xff, 0xff, 0xff, # destination mac address
+          0x00, 0x26, 0x82, 0xeb, 0xea, 0xd1, # source mac address
+          0x08, 0x06,                         # ethernet type
+          0x00, 0x01,                         # arp hardware type
+          0x08, 0x00,                         # arp protocol type
+          0x06,                               # hardware address size
+          0x04,                               # protocol address size
+          0x00, 0x01,                         # operational code
+          0x00, 0x26, 0x82, 0xeb, 0xea, 0xd1, # sender hardware address
+          0xc0, 0xa8, 0x53, 0x03,             # sender protocol address
+          0x00, 0x00, 0x00, 0x00, 0x00, 0x00, # target hardware address
+          0xc0, 0xa8, 0x53, 0xfe,             # target protocol address
         ].pack('C*')
       end
 
@@ -43,18 +48,18 @@ describe Pio::Arp do
     context 'with an Arp Reply packet' do
       Given(:arp_reply_dump) do
         [
-         0x00, 0x26, 0x82, 0xeb, 0xea, 0xd1, # destination mac address
-         0x00, 0x16, 0x9d, 0x1d, 0x9c, 0xc4, # source mac address
-         0x08, 0x06,                         # ethernet type
-         0x00, 0x01,                         # arp hardware type
-         0x08, 0x00,                         # arp protocol type
-         0x06,                               # hardware address size
-         0x04,                               # protocol address size
-         0x00, 0x02,                         # operational code
-         0x00, 0x16, 0x9d, 0x1d, 0x9c, 0xc4, # sender hardware address
-         0xc0, 0xa8, 0x53, 0xfe,             # sender protocol address
-         0x00, 0x26, 0x82, 0xeb, 0xea, 0xd1, # target hardware address
-         0xc0, 0xa8, 0x53, 0x03,             # target protocol address
+          0x00, 0x26, 0x82, 0xeb, 0xea, 0xd1, # destination mac address
+          0x00, 0x16, 0x9d, 0x1d, 0x9c, 0xc4, # source mac address
+          0x08, 0x06,                         # ethernet type
+          0x00, 0x01,                         # arp hardware type
+          0x08, 0x00,                         # arp protocol type
+          0x06,                               # hardware address size
+          0x04,                               # protocol address size
+          0x00, 0x02,                         # operational code
+          0x00, 0x16, 0x9d, 0x1d, 0x9c, 0xc4, # sender hardware address
+          0xc0, 0xa8, 0x53, 0xfe,             # sender protocol address
+          0x00, 0x26, 0x82, 0xeb, 0xea, 0xd1, # target hardware address
+          0xc0, 0xa8, 0x53, 0x03,             # target protocol address
         ].pack('C*')
       end
 
@@ -86,9 +91,3 @@ describe Pio::Arp do
     end
   end
 end
-
-### Local variables:
-### mode: Ruby
-### coding: utf-8-unix
-### indent-tabs-mode: nil
-### End:

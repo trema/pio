@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+# encoding: utf-8
+
 require 'bindata'
 require 'pio/type/ethernet_header'
 require 'pio/type/ip_address'
@@ -33,9 +34,3 @@ module Pio
     end
   end
 end
-
-### Local variables:
-### mode: Ruby
-### coding: utf-8-unix
-### indent-tabs-mode: nil
-### End:

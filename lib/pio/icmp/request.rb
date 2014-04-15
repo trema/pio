@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+# encoding: utf-8
+
 require 'pio/icmp/message'
 require 'pio/icmp/options'
 require 'pio/mac'
@@ -13,7 +14,7 @@ module Pio
       # User options for creating an ICMP Request.
       class Options < Pio::Icmp::Options
         DEFAULT_IDENTIFIER = 0x0100
-        DEFAULT_SEQUENCE_NUMBER = 0x0001
+        DEFAULT_SEQUENCE_NUMBER = 0
 
         mandatory_option :source_mac
         mandatory_option :destination_mac
@@ -26,13 +27,14 @@ module Pio
         # rubocop:disable MethodLength
 
         def initialize(options)
-          validate_options(options)
+          validate options
           @type = TYPE
-          @source_mac = Mac.new(options[:source_mac])
-          @destination_mac = Mac.new(options[:destination_mac])
-          @ip_source_address = IPv4Address.new(options[:ip_source_address])
+          @source_mac = Mac.new(options[:source_mac]).freeze
+          @destination_mac = Mac.new(options[:destination_mac]).freeze
+          @ip_source_address =
+            IPv4Address.new(options[:ip_source_address]).freeze
           @ip_destination_address =
-            IPv4Address.new(options[:ip_destination_address])
+            IPv4Address.new(options[:ip_destination_address]).freeze
           @identifier =
             options[:icmp_identifier] ||
             options[:identifier] ||
@@ -49,9 +51,3 @@ module Pio
     end
   end
 end
-
-### Local variables:
-### mode: Ruby
-### coding: utf-8-unix
-### indent-tabs-mode: nil
-### End:

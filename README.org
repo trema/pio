@@ -9,7 +9,8 @@
 <a href='https://travis-ci.org/trema/pio'><img src='http://img.shields.io/travis/trema/pio/develop.svg' alt='Build Status' /></a>
 <a href='https://codeclimate.com/github/trema/pio'><img src='http://img.shields.io/codeclimate/github/trema/pio.svg' alt='Code Climate' /></a>
 <a href='https://coveralls.io/r/trema/pio?branch=develop'><img src='http://img.shields.io/coveralls/trema/pio/develop.svg' alt='Coverage Status' /></a>
-<a href='https://gemnasium.com/trema/pio'><img src='http://img.shields.io/gemnasium/trema/pio.svg' alt='Dependency Status' /></a>
+<a href='https://gemnasium.com/trema/pio'><img src='https://gemnasium.com/trema/pio.svg' alt='Dependency Status' /></a>
+<a href="http://inch-pages.github.io/github/trema/pio"><img src="http://inch-pages.github.io/github/trema/pio.svg" alt="Inline docs"></a>
 #+END_HTML
 
 #+BEGIN_HTML
@@ -22,6 +23,10 @@ supports the following packet formats:
  - ICMP
  - ARP
  - LLDP
+ - DHCP
+ - OpenFlow 1.0
+   - Hello
+   - Echo Request and Reply
  - (...currently there are just a few formats supported but I'm sure this list will grow)
 
 ** Features Overview
@@ -66,6 +71,40 @@ access each field of the parsed LLDP frame.
 Also you can use =Pio::Lldp#new= to generate an LLDP frame like below:
 
 #+INCLUDE: "./examples/lldp_new.rb" src ruby
+
+*** DHCP
+To parse a DHCP frame, use the API =Pio::Dhcp.read= and you can access
+each field of the parsed DHCP frame.
+
+#+INCLUDE: "./examples/dhcp_read.rb" src ruby
+
+Also you can use =Pio::Dhcp::Discover#new=,
+=Pio::Dhcp::Offer#new=, =Pio::Dhcp::Request#new= and
+=Pio::Dhcp::Ack#new= to generate a DHCP frame like below:
+
+#+INCLUDE: "./examples/dhcp_new.rb" src ruby
+
+*** Hello
+To parse an OpenFlow 1.0 Hello message, use the API =Pio::Hello.read=
+and you can access each field of the parsed Hello message.
+
+#+INCLUDE: "./examples/hello_read.rb" src ruby
+
+Also you can use =Pio::Hello#new= to generate a Hello message like
+below:
+
+#+INCLUDE: "./examples/hello_new.rb" src ruby
+
+*** Echo
+To parse an OpenFlow 1.0 ECHO message, use the API =Pio::Echo.read=
+and you can access each field of the parsed ECHO message.
+
+#+INCLUDE: "./examples/echo_read.rb" src ruby
+
+Also you can use =Pio::Echo::Request#new= or =Pio::Echo::Reply#new= to
+generate an Echo Request/Reply message like below:
+
+#+INCLUDE: "./examples/echo_new.rb" src ruby
 
 ** Installation
 The simplest way to install Pio is to use [[http://gembundler.com/][Bundler]].

@@ -21,3 +21,11 @@ matrix:
   fast_finish: true
 
 script: bundle exec rake travis
+
+notifications:
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/ce8abcdff1f9c912333f
+    on_success: alawys  # options: [always|never|change] default: always
+    on_failure: always  # options: [always|never|change] default: always
+    on_start: always     # default: false

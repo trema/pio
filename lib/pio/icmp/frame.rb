@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+# encoding: utf-8
+
 require 'bindata'
 require 'pio/type/ethernet_header'
 require 'pio/type/ipv4_header'
@@ -77,22 +78,22 @@ module Pio
 
       def icmp_2bytewise_slices
         [
-         icmp_type * 0x100 + icmp_code,
-         icmp_identifier,
-         icmp_sequence_number,
-         *echo_data.unpack('n*')
+          icmp_type * 0x100 + icmp_code,
+          icmp_identifier,
+          icmp_sequence_number,
+          *echo_data.unpack('n*')
         ]
       end
 
       def ipv4_header_2bytewise_slices
         [
-         ipversion_ipheaderlength_iptypeofservice, ip_total_length,
-         ip_identifier, ipflag_ipfragment,
-         ipttl_ipproto,
-         ip_source_address_upper,
-         ip_source_address_lower,
-         ip_destination_address_upper,
-         ip_destination_address_lower
+          ipversion_ipheaderlength_iptypeofservice, ip_total_length,
+          ip_identifier, ipflag_ipfragment,
+          ipttl_ipproto,
+          ip_source_address_upper,
+          ip_source_address_lower,
+          ip_destination_address_upper,
+          ip_destination_address_lower
         ]
       end
 
@@ -126,9 +127,3 @@ module Pio
     end
   end
 end
-
-### Local variables:
-### mode: Ruby
-### coding: utf-8-unix
-### indent-tabs-mode: nil
-### End:

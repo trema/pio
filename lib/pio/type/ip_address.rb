@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+# encoding: utf-8
+
 require 'bindata'
 require 'pio/ipv4_address'
 
@@ -13,14 +14,8 @@ module Pio
       end
 
       def get
-        IPv4Address.new octets.map { | each | sprintf('%d', each) }.join('.')
+        IPv4Address.new octets.map { | each | format('%d', each) }.join('.')
       end
     end
   end
 end
-
-### Local variables:
-### mode: Ruby
-### coding: utf-8-unix
-### indent-tabs-mode: nil
-### End:

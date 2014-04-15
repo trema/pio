@@ -1,16 +1,11 @@
-# -*- coding: utf-8 -*-
+# encoding: utf-8
+
+require 'pio/parse_error'
+
 require 'pio/arp'
-require 'pio/lldp'
+require 'pio/dhcp'
+require 'pio/echo'
+require 'pio/hello'
 require 'pio/icmp'
+require 'pio/lldp'
 require 'pio/mac'
-
-module Pio
-  # Raised when the packet data is in wrong format.
-  class ParseError < StandardError; end
-end
-
-### Local variables:
-### mode: Ruby
-### coding: utf-8-unix
-### indent-tabs-mode: nil
-### End:

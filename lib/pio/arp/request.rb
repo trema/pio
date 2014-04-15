@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+# encoding: utf-8
+
 require 'pio/arp/message'
 require 'pio/mac'
 require 'pio/options'
@@ -16,16 +17,16 @@ module Pio
         mandatory_option :sender_protocol_address
         mandatory_option :target_protocol_address
 
-        BROADCAST_MAC = Mac.new(0xffffffffffff)
-        ALL_ZERO_MAC = Mac.new(0)
+        BROADCAST_MAC = Mac.new(0xffffffffffff).freeze
+        ALL_ZERO_MAC = Mac.new(0).freeze
 
         def initialize(options)
-          validate_options(options)
-          @source_mac = Mac.new(options[:source_mac])
+          validate options
+          @source_mac = Mac.new(options[:source_mac]).freeze
           @sender_protocol_address =
-            IPv4Address.new(options[:sender_protocol_address])
+            IPv4Address.new(options[:sender_protocol_address]).freeze
           @target_protocol_address =
-            IPv4Address.new(options[:target_protocol_address])
+            IPv4Address.new(options[:target_protocol_address]).freeze
         end
 
         def to_hash
@@ -37,15 +38,9 @@ module Pio
             target_hardware_address: ALL_ZERO_MAC,
             sender_protocol_address: @sender_protocol_address,
             target_protocol_address: @target_protocol_address
-          }
+          }.freeze
         end
       end
     end
   end
 end
-
-### Local variables:
-### mode: Ruby
-### coding: utf-8-unix
-### indent-tabs-mode: nil
-### End:

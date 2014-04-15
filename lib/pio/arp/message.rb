@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+# encoding: utf-8
+
 require 'forwardable'
 require 'pio/arp/frame'
 
@@ -31,7 +32,7 @@ module Pio
       private_class_method :new
 
       def initialize(user_options)
-        options = self.class.const_get(:Options).new(user_options)
+        options = self.class.const_get(:Options).new(user_options.dup.freeze)
         @frame = Arp::Frame.new(options.to_hash)
       end
     end

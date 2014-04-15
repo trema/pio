@@ -1,5 +1,5 @@
-# -*- coding: utf-8 -*-
-require 'rubygems'
+# encoding: utf-8
+
 require 'bindata'
 
 module Pio
@@ -40,15 +40,9 @@ module Pio
 
       def mac_address
         chassis_id.unpack('C6').map do |each|
-          sprintf '%02x', each
+          format '%02x', each
         end.join('').hex
       end
     end
   end
 end
-
-### Local variables:
-### mode: Ruby
-### coding: utf-8-unix
-### indent-tabs-mode: nil
-### End:

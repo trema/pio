@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 require 'pio'
 
 describe Pio::Lldp::Options, '.new' do

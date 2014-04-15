@@ -1,12 +1,13 @@
-# -*- coding: utf-8 -*-
+# encoding: utf-8
+
 require 'pio'
 
 describe Pio::Arp::Request::Options, '.new' do
   Given(:mandatory_options) do
     {
-     source_mac: 0x002682ebead1,
-     sender_protocol_address: 0xc0a85303,
-     target_protocol_address: 0xc0a853fe
+      source_mac: 0x002682ebead1,
+      sender_protocol_address: 0xc0a85303,
+      target_protocol_address: 0xc0a853fe
     }
   end
 

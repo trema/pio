@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+# encoding: utf-8
+
 require 'forwardable'
 
 module Pio
@@ -60,7 +61,7 @@ module Pio
     # @return [String]
     #
     def to_s
-      sprintf('%012x', @value).unpack('a2' * 6).join(':')
+      format('%012x', @value).unpack('a2' * 6).join(':')
     end
 
     #
@@ -191,7 +192,7 @@ module Pio
     # @return [String]
     #
     def inspect
-      %{#<#{ self.class }:#{ __id__ } "#{ to_s }">}
+      %(#<#{self.class}:#{__id__} "#{self}">)
     end
 
     # @!endgroup
@@ -212,9 +213,3 @@ module Pio
     end
   end
 end
-
-### Local variables:
-### mode: Ruby
-### coding: utf-8-unix
-### indent-tabs-mode: nil
-### End:
