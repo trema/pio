@@ -1,6 +1,9 @@
 # Changelog
 
-## develop (unreleased)
+## 0.6.0 (4/15/2014)
+
+### New features
+* Added new class `Pio::Echo`, `Pio::Echo::Request` and `Pio::Echo::Reply`.
 
 
 ## 0.5.1 (4/15/2014)
