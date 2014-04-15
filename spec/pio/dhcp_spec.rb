@@ -152,7 +152,7 @@ describe Pio::Dhcp, '.read' do
     its('client_mac_address.to_s') { should eq '24:db:ac:41:e5:5b' }
     its('client_identifier.to_s') { should eq '24:db:ac:41:e5:5b' }
     its('requested_ip_address.to_s') { should eq '0.0.0.0' }
-    its(:parameters_list) { should eq  [0x01, 0x03, 0x06, 0x2a] }
+    its(:parameters_list) { should eq [0x01, 0x03, 0x06, 0x2a] }
   end
 
   context 'with DHCP offer frame' do
@@ -452,7 +452,7 @@ describe Pio::Dhcp, '.read' do
     its('client_mac_address.to_s') { should eq '24:db:ac:41:e5:5b' }
     its('client_identifier.to_s') { should eq '24:db:ac:41:e5:5b' }
     its('requested_ip_address.to_s') { should eq '192.168.0.10' }
-    its(:parameters_list) { should eq  [0x01, 0x03, 0x06, 0x2a] }
+    its(:parameters_list) { should eq [0x01, 0x03, 0x06, 0x2a] }
   end
 
   context 'with DHCP ACK frame' do

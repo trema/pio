@@ -16,9 +16,9 @@ module Pio
       bit8 :tlv_type
       bit8 :tlv_info_length,
            onlyif: -> { !(end_of_dhcpdu?) }
-      choice  :tlv_value,
-              onlyif: -> { !(end_of_dhcpdu?) },
-              selection: :chooser do
+      choice :tlv_value,
+             onlyif: -> { !(end_of_dhcpdu?) },
+             selection: :chooser do
         uint8 Dhcp::MESSAGE_TYPE_TLV
         ip_address Dhcp::SERVER_IDENTIFIER_TLV
         uint32be Dhcp::RENEWAL_TIME_VALUE_TLV

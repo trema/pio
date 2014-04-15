@@ -151,7 +151,7 @@ describe Pio::Dhcp::Ack, '.new' do
       end
     end
 
-    context  'with String MAC Address' do
+    context 'with String MAC Address' do
       let(:source_mac) { 'aa:bb:cc:dd:ee:ff' }
       let(:destination_mac) { '11:22:33:44:55:66' }
       let(:ip_source_address) { '192.168.0.10' }

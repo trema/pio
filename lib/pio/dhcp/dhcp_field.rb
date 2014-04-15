@@ -40,9 +40,9 @@ module Pio
              length: 128
       uint32be :magic_cookie,
                value: MAGIC_COOKIE
-      array  :optional_tlvs,
-             type: :optional_tlv,
-             read_until: -> { element.end_of_dhcptlv? }
+      array :optional_tlvs,
+            type: :optional_tlv,
+            read_until: -> { element.end_of_dhcptlv? }
     end
   end
 end

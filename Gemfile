@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 gem 'rake', '~> 10.2.2'
 
 group :docs do
-  gem 'inch', '~> 0.3.3'
+  gem 'inch', '~> 0.4.2'
   gem 'yard', '~> 0.8.7.4'
 end
 
@@ -15,7 +15,7 @@ group :development do
   gem 'guard-bundler', '~> 2.0.0'
   gem 'guard-cucumber', '~> 1.4.1'
   gem 'guard-rspec', '~> 4.2.8'
-  gem 'guard-rubocop', '~> 1.0.2'
+  gem 'guard-rubocop', '~> 1.1.0'
   gem 'pry', '~> 0.9.12.6'
   gem 'rb-fchange', '~> 0.0.6', require: false
   gem 'rb-fsevent', '~> 0.9.4', require: false
@@ -32,7 +32,7 @@ group :test do
   gem 'reek', '~> 1.3.7'
   gem 'rspec', '~> 2.14.1'
   gem 'rspec-given', '~> 3.5.4'
-  gem 'rubocop', '~> 0.19.1', platforms: [:ruby_19, :ruby_20, :ruby_21]
+  gem 'rubocop', '~> 0.20.1', platforms: [:ruby_19, :ruby_20, :ruby_21]
 end
 
 gemspec
