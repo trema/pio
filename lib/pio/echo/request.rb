@@ -8,8 +8,8 @@ module Pio
   class Echo
     # OpenFlow 1.0 Echo Request message.
     class Request < Message
-      def initialize
-        @echo = Format.new(message_type: REQUEST)
+      def initialize(user_options = {})
+        super REQUEST, user_options
       end
     end
   end

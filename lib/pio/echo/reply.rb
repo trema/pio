@@ -8,8 +8,8 @@ module Pio
   class Echo
     # OpenFlow 1.0 Echo Reply message.
     class Reply < Message
-      def initialize
-        @echo = Format.new(message_type: REPLY)
+      def initialize(user_options = {})
+        super REPLY, user_options
       end
     end
   end

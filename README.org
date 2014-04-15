@@ -24,8 +24,9 @@ supports the following packet formats:
  - ARP
  - LLDP
  - DHCP
- - OpenFlow 1.0 messages
+ - OpenFlow 1.0
    - Hello
+   - Echo Request and Reply
  - (...currently there are just a few formats supported but I'm sure this list will grow)
 
 ** Features Overview
@@ -93,6 +94,17 @@ Also you can use =Pio::Hello#new= to generate a Hello message like
 below:
 
 #+INCLUDE: "./examples/hello_new.rb" src ruby
+
+** ECHO
+To parse an OpenFlow 1.0 ECHO message, use the API =Pio::Echo.read=
+and you can access each field of the parsed ECHO message.
+
+#+INCLUDE: "./examples/echo_read.rb" src ruby
+
+Also you can use =Pio::Echo::Request#new= or =Pio::Echo::Reply#new= to
+generate an Echo Request/Reply message like below:
+
+#+INCLUDE: "./examples/echo_new.rb" src ruby
 
 ** Installation
 The simplest way to install Pio is to use [[http://gembundler.com/][Bundler]].

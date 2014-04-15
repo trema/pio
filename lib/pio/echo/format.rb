@@ -13,10 +13,6 @@ module Pio
       uint16 :message_length, value: -> { 8 + data.length }
       uint32 :transaction_id, initial_value: 0
       string :data
-
-      def xid
-        transaction_id
-      end
     end
   end
 end
