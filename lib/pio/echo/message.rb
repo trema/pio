@@ -12,8 +12,9 @@ module Pio
       def_delegators :@echo, :version
       def_delegators :@echo, :message_type
       def_delegators :@echo, :message_length
-      def_delegators :@echo, :xid
+      def_delegator :@echo, :transaction_id, :xid
       def_delegators :@echo, :data
+      def_delegator :@echo, :to_binary_s, :to_binary
 
       def self.create_from(echo)
         message = allocate
