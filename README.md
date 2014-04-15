@@ -179,7 +179,7 @@ below:
     hello = Pio::Hello.new(transaction_id: 123)
     hello.to_binary  # => HELLO message in binary format.
 
-## Echo
+### Echo
 
 To parse an OpenFlow 1.0 ECHO message, use the API `Pio::Echo.read`
 and you can access each field of the parsed ECHO message.
