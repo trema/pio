@@ -50,9 +50,11 @@ module Pio
     def initialize(user_options = {})
       if user_options.respond_to?(:to_i)
         @options = { transaction_id: user_options.to_i }
-      else
+      elsif user_options.respond_to?(:[])
         @options = user_options.dup
         handle_user_options
+      else
+        fail TypeError
       end
       @data = Format.new(@options)
     end

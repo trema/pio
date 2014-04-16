@@ -51,6 +51,15 @@ describe Pio::Hello do
       Then { hello.to_binary == [1, 0, 0, 8, 0, 0, 0, 123].pack('C*') }
     end
 
+    context 'with 2**32' do
+      When(:result) { Pio::Hello.new(2**32) }
+
+      Then do
+        pending 'check if xid is within 32bit range.'
+        result == Failure(ArgumentError)
+      end
+    end
+
     context 'with transaction_id: 123' do
       When(:hello) { Pio::Hello.new(transaction_id: 123) }
 
@@ -73,6 +82,12 @@ describe Pio::Hello do
       Then { hello.xid == 123 }
       Then { hello.body.empty? }
       Then { hello.to_binary == [1, 0, 0, 8, 0, 0, 0, 123].pack('C*') }
+    end
+
+    context 'with :INVALID_ARGUMENT' do
+      When(:result) { Pio::Hello.new(:INVALID_ARGUMENT) }
+
+      Then { result == Failure(TypeError) }
     end
   end
 end
