@@ -5,7 +5,6 @@ module Pio
     # UDP Header Format.
     module UdpHeader
       def udp_header(options)
-        endian :big
         class_eval do
           uint16be :udp_src_port
           uint16be :udp_dst_port

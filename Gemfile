@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-gem 'rake', '~> 10.2.2'
+gem 'rake', '~> 10.3.0'
 
 group :docs do
   gem 'inch', '~> 0.4.2'

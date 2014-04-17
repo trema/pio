@@ -8,7 +8,6 @@ module Pio
     module IPv4Header
       # rubocop:disable MethodLength
       def ipv4_header(options)
-        endian :big
         class_eval do
           bit4 :ip_version, initial_value: 0x4
           bit4 :ip_header_length, initial_value: 0x5
