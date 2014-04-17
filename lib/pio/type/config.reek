@@ -1,5 +1,10 @@
 TooManyStatements:
   exclude:
   - ipv4_header
+  - openflow_header
   - udp_header
+  enabled: true
+NestedIterators:
+  exclude:
+  - openflow_header
   enabled: true
