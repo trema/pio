@@ -10,7 +10,7 @@ module Pio
     REQUEST = 2
     REPLY = 3
 
-    # Parses +raw_data+ binary string into a Echo message object.
+    # Parses +raw_data+ binary string into an Echo message object.
     #
     # @example
     #   Pio::Echo.read("\x01\x02\x00\b\x00\x00\x00\x00")
