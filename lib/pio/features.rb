@@ -9,6 +9,12 @@ module Pio
     REQUEST = 5
     REPLY = 6
 
+    # Parses +raw_data+ binary string into a Features message object.
+    #
+    # @example
+    #   Pio::Features.read("\x01\x05\x00\b\x00\x00\x00\x00")
+    # @return [Pio::Features::Request]
+    # @return [Pio::Features::Reply]
     def self.read(raw_data)
       features = Features::Format.read(raw_data)
       case features.message_type
