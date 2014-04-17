@@ -14,7 +14,7 @@ module Pio
       def_delegators :@echo, :message_length
       def_delegators :@echo, :transaction_id
       def_delegator :@echo, :transaction_id, :xid
-      def_delegators :@echo, :data
+      def_delegator :@echo, :body, :data
       def_delegator :@echo, :to_binary_s, :to_binary
 
       def self.create_from(echo)
@@ -24,15 +24,24 @@ module Pio
       end
 
       def initialize(message_type, user_options = {})
-        @options = user_options.dup.merge(message_type: message_type)
-        handle_option_aliases
+        if user_options.respond_to?(:to_i)
+          @options = { transaction_id: user_options.to_i,
+                       message_type: message_type }
+        elsif user_options.respond_to?(:[])
+          @options = user_options.dup.merge(message_type: message_type)
+          handle_user_hash_options
+        else
+          fail TypeError
+        end
         @echo = Format.new(@options)
       end
 
       private
 
-      def handle_option_aliases
+      def handle_user_hash_options
+        @options[:body] = @options[:data]
         @options[:transaction_id] ||= @options[:xid]
+        @options[:transaction_id] = 0 unless @options[:transaction_id]
       end
     end
   end

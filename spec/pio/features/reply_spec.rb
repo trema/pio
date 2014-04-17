@@ -2,7 +2,7 @@
 
 require 'pio'
 
-describe Pio::FeaturesReply do
+describe Pio::Features::Reply do
   describe '.read' do
     pending 'Not yet implemented'
   end

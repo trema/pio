@@ -4,8 +4,8 @@ require 'bindata'
 require 'pio/type/open_flow'
 
 module Pio
-  class Echo
-    # OpenFlow 1.0 Echo message format.
+  class Features
+    # OpenFlow 1.0 Features message format.
     class Format < BinData::Record
       extend Type::OpenFlow
 

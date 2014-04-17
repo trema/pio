@@ -10,6 +10,12 @@ module Pio
     REQUEST = 2
     REPLY = 3
 
+    # Parses +raw_data+ binary string into an Echo message object.
+    #
+    # @example
+    #   Pio::Echo.read("\x01\x02\x00\b\x00\x00\x00\x00")
+    # @return [Pio::Echo::Request]
+    # @return [Pio::Echo::Reply]
     def self.read(raw_data)
       echo = Echo::Format.read(raw_data)
       case echo.message_type
@@ -18,7 +24,7 @@ module Pio
       when REPLY
         Echo::Reply.create_from(echo)
       else
-        fail 'Unknown Echo message type.'
+        fail ParseError, 'Unknown Echo message type.'
       end
     end
   end
