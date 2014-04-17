@@ -19,7 +19,7 @@ guard :rubocop do
   watch(/(?:.+\/)?\.rubocop\.yml$/) { |m| File.dirname(m[0]) }
 end
 
-guard :cucumber do
+guard :cucumber, cli: '--profile default' do
   watch(/^features\/.+\.feature$/)
   watch(%r{^features/support/.+$}) { 'features' }
   watch(%r{^features/step_definitions/(.+)_steps\.rb$}) do |m|

@@ -1,7 +1,8 @@
 # encoding: utf-8
 
 Given(/^a pcap file "(.*?)"$/) do |pcap|
-  @pcap = File.join(File.dirname(__FILE__), '..', 'pcap', pcap)
+  path = File.join(File.dirname(__FILE__), '..', 'pcap', pcap)
+  @pcap = File.expand_path(path)
 end
 
 When(/^I try to parse the pcap file with "(.*?)" class$/) do |parser|
