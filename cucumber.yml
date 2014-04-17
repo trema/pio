@@ -5,4 +5,3 @@ wip_opts = "--color -r features --tags @wip"
 default: <%= std_opts %>
 wip: --wip <%= wip_opts %> features
 none: --format pretty
-
