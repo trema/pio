@@ -4,9 +4,7 @@ require 'pio/type/mac_address'
 
 module Pio
   module Type
-    #
     # Adds ethernet_header macro.
-    #
     module EthernetHeader
       def ethernet_header(options)
         class_eval do

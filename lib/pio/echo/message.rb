@@ -14,7 +14,7 @@ module Pio
       def_delegators :@echo, :message_length
       def_delegators :@echo, :transaction_id
       def_delegator :@echo, :transaction_id, :xid
-      def_delegators :@echo, :data
+      def_delegator :@echo, :body, :data
       def_delegator :@echo, :to_binary_s, :to_binary
 
       def self.create_from(echo)
@@ -39,6 +39,7 @@ module Pio
       private
 
       def handle_user_hash_options
+        @options[:body] = @options[:data]
         @options[:transaction_id] ||= @options[:xid]
         @options[:transaction_id] = 0 unless @options[:transaction_id]
       end
