@@ -1,5 +1,6 @@
 # encoding: utf-8
 
+require 'English'
 require 'forwardable'
 require 'pio/hello/format'
 
@@ -23,7 +24,11 @@ module Pio
     # @return [Pio::Hello]
     def self.read(raw_data)
       hello = allocate
-      hello.instance_variable_set :@data, Format.read(raw_data)
+      begin
+        hello.instance_variable_set :@data, Format.read(raw_data)
+      rescue BinData::ValidityError
+        raise ParseError, $ERROR_INFO.message
+      end
       hello
     end
 
