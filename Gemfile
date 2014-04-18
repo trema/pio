@@ -24,6 +24,7 @@ group :development do
 end
 
 group :test do
+  gem 'codeclimate-test-reporter', '~> 0.3.0', require: false
   gem 'coveralls', '~> 0.7.0', require: false
   gem 'cucumber', '~> 1.3.14'
   gem 'flay', '~> 2.4.0'
