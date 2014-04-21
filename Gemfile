@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-gem 'rake', '~> 10.3.0'
+gem 'rake', '~> 10.3.1'
 
 group :docs do
   gem 'inch', '~> 0.4.2'
@@ -10,7 +10,7 @@ group :docs do
 end
 
 group :development do
-  gem 'byebug', '~> 2.7.0', platforms: :ruby_20
+  gem 'byebug', '~> 3.0.0', platforms: :ruby_20
   gem 'guard', '~> 2.6.0'
   gem 'guard-bundler', '~> 2.0.0'
   gem 'guard-cucumber', '~> 1.4.1'
