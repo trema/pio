@@ -1,5 +1,5 @@
 Feature: Pio::Echo.read
-  Scenario: echo.pcap
-    Given PENDING: a pcap file "echo.pcap"
-    When I try to parse the pcap file with "Echo" class
+  Scenario: echo.raw
+    Given PENDING: a packet data file "echo.raw"
+    When I try to parse the file with "Echo" class
     Then it should finish successfully
