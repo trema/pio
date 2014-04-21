@@ -3,6 +3,10 @@ language: ruby
 before_install: gem update bundler
 bundler_args: --without development
 
+env:
+  global:
+    - secure: "JVaFKDaJWWyBJAejWLvERmci+VyVtTc8iKl8RMdjtrg0rQEIL6zKQbPOti5M+gKyQDfOWrlLwKtgeH3Q1ZYpptrit3EugCx9D6/JsgZNQad51JF1cQTbV26AiVqunCQA7CrkqNGilCVmipeWhVZS+9k5sjTKuflrBaEkH63WOi0="
+
 rvm:
   - 1.9.3
   - 2.0.0
@@ -28,4 +32,4 @@ notifications:
       - https://webhooks.gitter.im/e/ce8abcdff1f9c912333f
     on_success: alawys  # options: [always|never|change] default: always
     on_failure: always  # options: [always|never|change] default: always
-    on_start: always     # default: false
+    on_start: always    # default: false
