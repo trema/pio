@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-require 'pio/icmp/frame'
+require 'pio/icmp/format'
 require 'forwardable'
 
 module Pio
@@ -42,7 +42,7 @@ module Pio
 
       def initialize(user_options)
         options = self.class.const_get(:Options).new(user_options)
-        @frame = Icmp::Frame.new(options.to_hash)
+        @frame = Icmp::Format.new(options.to_hash)
       end
     end
   end
