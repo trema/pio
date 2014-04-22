@@ -1,5 +1,14 @@
 # Changelog
 
+## develop (unreleased)
+
+### New features
+* Added new class `Pio::Features`, `Pio::Features::Request` and `Pio::Features::Reply`
+
+### Changes
+* Renamed `rake PCAP='foo.pcap' dump_pcap` => `rake PACKET_FILE='foo.pcap' dump`
+
+
 ## 0.6.0 (4/15/2014)
 
 ### New features

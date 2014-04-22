@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 require 'forwardable'
-require 'pio/arp/frame'
+require 'pio/arp/format'
 
 module Pio
   class Arp
@@ -33,7 +33,7 @@ module Pio
 
       def initialize(user_options)
         options = self.class.const_get(:Options).new(user_options.dup.freeze)
-        @frame = Arp::Frame.new(options.to_hash)
+        @frame = Arp::Format.new(options.to_hash)
       end
     end
   end

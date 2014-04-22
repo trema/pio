@@ -1,12 +1,13 @@
 # encoding: utf-8
 
 require 'forwardable'
+require 'pio/features/message'
 
 module Pio
   # OpenFlow 1.0 Features messages
   class Features
     # OpenFlow 1.0 Features Request message
-    class Request
+    class Request < Message
       extend Forwardable
 
       def_delegators :@features, :version
@@ -16,12 +17,6 @@ module Pio
       def_delegator :@features, :transaction_id, :xid
       def_delegators :@features, :body
       def_delegator :@features, :to_binary_s, :to_binary
-
-      def self.create_from(features)
-        message = allocate
-        message.instance_variable_set :@features, features
-        message
-      end
 
       # Creates a Features Request OpenFlow message.
       #

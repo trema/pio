@@ -6,8 +6,8 @@ require 'pio/type/ipv4_header'
 
 module Pio
   class Icmp
-    # Icmp frame parser.
-    class Frame < BinData::Record
+    # Icmp parser.
+    class Format < BinData::Record
       PADDED_PACKET_LENGTH = 50
       MINIMUM_PACKET_LENGTH = 36
       MINIMUM_FRAME_LENGTH = 64

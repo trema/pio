@@ -7,8 +7,8 @@ require 'pio/type/mac_address'
 
 module Pio
   class Arp
-    # ARP frame parser.
-    class Frame < BinData::Record
+    # ARP parser.
+    class Format < BinData::Record
       extend Type::EthernetHeader
 
       endian :big

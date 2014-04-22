@@ -9,6 +9,8 @@ module Pio
     class Format < BinData::Record
       extend Type::OpenFlow
 
+      endian :big
+
       openflow_header
       string :body
     end
