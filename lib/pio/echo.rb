@@ -3,23 +3,16 @@
 require 'pio/echo/format'
 require 'pio/echo/reply'
 require 'pio/echo/request'
+require 'pio/message_type_selector'
 
 module Pio
   # OpenFlow Echo Request and Reply message parser.
   class Echo
+    extend MessageTypeSelector
+
     REQUEST = 2
     REPLY = 3
 
-    def self.read(raw_data)
-      echo = Echo::Format.read(raw_data)
-      case echo.message_type
-      when REQUEST
-        Echo::Request.create_from(echo)
-      when REPLY
-        Echo::Reply.create_from(echo)
-      else
-        fail 'Unknown Echo message type.'
-      end
-    end
+    message_type REQUEST => Request, REPLY => Reply
   end
 end

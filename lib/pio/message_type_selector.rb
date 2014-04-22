@@ -10,13 +10,10 @@ module Pio
     end
 
     def read(raw_data)
-      begin
-        frame = const_get(:Frame).read(raw_data)
-      rescue
-        raise Pio::ParseError, $ERROR_INFO.message
-      end
-
-      const_get(:MESSAGE_TYPE)[frame.message_type].create_from frame
+      parsed = const_get(:Format).read(raw_data)
+      const_get(:MESSAGE_TYPE)[parsed.message_type].create_from parsed
+    rescue
+      raise Pio::ParseError, $ERROR_INFO.message
     end
   end
 end

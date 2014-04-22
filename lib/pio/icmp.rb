@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-require 'pio/icmp/frame'
+require 'pio/icmp/format'
 require 'pio/icmp/reply'
 require 'pio/icmp/request'
 require 'pio/message_type_selector'

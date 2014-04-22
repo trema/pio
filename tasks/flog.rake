@@ -2,7 +2,7 @@ require 'flog'
 
 desc 'Analyze for code complexity'
 task :flog do
-  flog = Flog.new(:continue => true)
+  flog = Flog.new(continue: true)
   flog.flog(*FileList['lib/**/*.rb'])
   threshold = 28
 

@@ -26,12 +26,12 @@ module Pio
       endian :big
 
       ethernet_header ether_type: ETHER_TYPE_IP
-      ipv4_header     ip_protocol: IP_PROTOCOL_UDP,
-                      ip_header_checksum: -> { ip_sum },
-                      ip_total_length: -> { ip_len }
-      udp_header      udp_length: -> { udp_len },
-                      udp_checksum: -> { udp_sum }
-      dhcp_field      :dhcp
+      ipv4_header ip_protocol: IP_PROTOCOL_UDP,
+                  ip_header_checksum: -> { ip_sum },
+                  ip_total_length: -> { ip_len }
+      udp_header udp_length: -> { udp_len },
+                 udp_checksum: -> { udp_sum }
+      dhcp_field :dhcp
 
       def ip_sum
         ~((ip_csum & 0xffff) + (ip_csum >> 16)) & 0xffff

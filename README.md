@@ -18,7 +18,8 @@ supports the following packet formats:
 -   DHCP
 -   OpenFlow 1.0
     -   Hello
-    -   Echo Request and Reply
+    -   Echo
+    -   Features
 -   (&#x2026;currently there are just a few formats supported but I'm sure this list will grow)
 
 ## Features Overview
@@ -132,33 +133,37 @@ Also you can use `Pio::Dhcp::Discover#new`,
 
     require 'pio'
 
-    discover = Pio::Dhcp::Discover.new(source_mac: '24:db:ac:41:e5:5b')
+    dhcp_client_mac_address = '24:db:ac:41:e5:5b'
+
+    dhcp_server_options =
+      {
+        source_mac: '00:26:82:eb:ea:d1',
+        destination_mac: '24:db:ac:41:e5:5b',
+        ip_source_address: '192.168.0.100',
+        ip_destination_address: '192.168.0.1'
+      }
+
+    # Client side
+    discover = Pio::Dhcp::Discover.new(source_mac: dhcp_client_mac_address)
     discover.to_binary  # => DHCP Discover frame in binary format
 
-    offer = Pio::Dhcp::Offer.new(
-      source_mac: '00:26:82:eb:ea:d1',
-      destination_mac: '24:db:ac:41:e5:5b',
-      ip_source_address: '192.168.0.100',
-      ip_destination_address: '192.168.0.1',
-      transaction_id: discover.transaction_id
-    )
+    # Server side
+    offer = Pio::Dhcp::Offer.new(dhcp_server_options
+                                 .merge(transaction_id: discover.transaction_id))
     offer.to_binary  # => DHCP Offer frame in binary format
 
+    # Client side
     request = Pio::Dhcp::Request.new(
-      source_mac: '24:db:ac:41:e5:5b',
-      server_identifier: '192.168.0.100',
-      requested_ip_address: '192.168.0.1',
+      source_mac: dhcp_client_mac_address,
+      server_identifier: dhcp_server_options[:ip_source_address],
+      requested_ip_address: dhcp_server_options[:ip_destination_address],
       transaction_id: offer.transaction_id
     )
     request.to_binary  # => DHCP Request frame in binary format
 
-    ack = Pio::Dhcp::Ack.new(
-      source_mac: '00:26:82:eb:ea:d1',
-      destination_mac: '24:db:ac:41:e5:5b',
-      ip_source_address: '192.168.0.100',
-      ip_destination_address: '192.168.0.1',
-      transaction_id: request.transaction_id
-    )
+    # Server side
+    ack = Pio::Dhcp::Ack.new(dhcp_server_options
+                             .merge(transaction_id: request.transaction_id))
     ack.to_binary  # => DHCP Ack frame in binary format
 
 ### Hello
@@ -179,10 +184,10 @@ below:
     hello = Pio::Hello.new(transaction_id: 123)
     hello.to_binary  # => HELLO message in binary format.
 
-## Echo
+### Echo
 
-To parse an OpenFlow 1.0 ECHO message, use the API `Pio::Echo.read`
-and you can access each field of the parsed ECHO message.
+To parse an OpenFlow 1.0 Echo message, use the API `Pio::Echo.read`
+and you can access each field of the parsed Echo message.
 
     require 'pio'
 
@@ -201,6 +206,35 @@ generate an Echo Request/Reply message like below:
     # should be same as that of the request.
     reply = Pio::Echo::Reply.new(xid: request.xid)
     reply.to_binary  # => ECHO Reply message in binary format.
+
+### Features
+
+To parse an OpenFlow 1.0 Features message, use the API
+`Pio::Features.read` and you can access each field of the parsed
+Features message.
+
+    require 'pio'
+
+    features = Pio::Features.read(binary_data)
+    features.xid # => 123
+
+Also you can use `Pio::Features::Request#new` or `Pio::Features::Reply#new` to
+generate an Features Request/Reply message like below:
+
+    require 'pio'
+
+    request = Pio::Features::Request.new
+    request.to_binary  # => Features Request message in binary format.
+
+    # The Features xid (transaction_id)
+    # should be same as that of the request.
+    reply = Pio::Features::Reply.new(xid: request.xid,
+                                     dpid: 0x123,
+                                     n_buffers: 0x100,
+                                     n_tables: 0xfe,
+                                     capabilities: 0xc7,
+                                     actions: 0xfff)
+    reply.to_binary  # => Features Reply message in binary format.
 
 ## Installation
 

@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-require 'pio/arp/frame'
+require 'pio/arp/format'
 require 'pio/arp/request'
 require 'pio/arp/reply'
 require 'pio/message_type_selector'
