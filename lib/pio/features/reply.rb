@@ -32,13 +32,17 @@ module Pio
       def_delegators :@features, :body
 
       def initialize(user_options = {})
-        @user_options = user_options.dup
+        @options = user_options.dup.merge(datapath_id: user_options[:dpid])
+        body = Body.new(@options)
+        @features = Format.new(@options.merge(message_type: 6,
+                                              body: body.to_binary_s))
       end
 
       def datapath_id
         @body ||= Body.read(@features.body)
         @body.datapath_id
       end
+      alias_method :dpid, :datapath_id
 
       def n_buffers
         @body ||= Body.read(@features.body)
