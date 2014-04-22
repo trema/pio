@@ -18,7 +18,8 @@ supports the following packet formats:
 -   DHCP
 -   OpenFlow 1.0
     -   Hello
-    -   Echo Request and Reply
+    -   Echo
+    -   Features
 -   (&#x2026;currently there are just a few formats supported but I'm sure this list will grow)
 
 ## Features Overview
@@ -185,8 +186,8 @@ below:
 
 ### Echo
 
-To parse an OpenFlow 1.0 ECHO message, use the API `Pio::Echo.read`
-and you can access each field of the parsed ECHO message.
+To parse an OpenFlow 1.0 Echo message, use the API `Pio::Echo.read`
+and you can access each field of the parsed Echo message.
 
     require 'pio'
 
@@ -205,6 +206,35 @@ generate an Echo Request/Reply message like below:
     # should be same as that of the request.
     reply = Pio::Echo::Reply.new(xid: request.xid)
     reply.to_binary  # => ECHO Reply message in binary format.
+
+### Features
+
+To parse an OpenFlow 1.0 Features message, use the API
+`Pio::Features.read` and you can access each field of the parsed
+Features message.
+
+    require 'pio'
+
+    features = Pio::Features.read(binary_data)
+    features.xid # => 123
+
+Also you can use `Pio::Features::Request#new` or `Pio::Features::Reply#new` to
+generate an Features Request/Reply message like below:
+
+    require 'pio'
+
+    request = Pio::Features::Request.new
+    request.to_binary  # => Features Request message in binary format.
+
+    # The Features xid (transaction_id)
+    # should be same as that of the request.
+    reply = Pio::Features::Reply.new(xid: request.xid,
+                                     dpid: 0x123,
+                                     n_buffers: 0x100,
+                                     n_tables: 0xfe,
+                                     capabilities: 0xc7,
+                                     actions: 0xfff)
+    reply.to_binary  # => Features Reply message in binary format.
 
 ## Installation
 
