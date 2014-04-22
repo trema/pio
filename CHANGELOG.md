@@ -1,6 +1,6 @@
 # Changelog
 
-## develop (unreleased)
+## 0.7.0 (4/22/2014)
 
 ### New features
 * Added new class `Pio::Features`, `Pio::Features::Request` and `Pio::Features::Reply`
