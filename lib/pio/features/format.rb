@@ -9,8 +9,10 @@ module Pio
     class Format < BinData::Record
       extend Type::OpenFlow
 
+      endian :big
+
       openflow_header
-      string :body
+      string :body, read_length: -> { message_length - 8 }
     end
   end
 end

@@ -13,6 +13,7 @@ describe Pio::Features do
       Then { features_request.version == 1 }
       Then { features_request.message_type == Pio::Features::REQUEST }
       Then { features_request.message_length == 8 }
+      Then { features_request.transaction_id == 0 }
       Then { features_request.xid == 0 }
       Then { features_request.body.empty? }
     end
@@ -48,6 +49,22 @@ describe Pio::Features do
          0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
          0x00, 0x00].pack('C*')
       end
+
+      When(:features_reply) { Pio::Features.read(features_reply_dump) }
+
+      Then { features_reply.class == Pio::Features::Reply }
+      Then { features_reply.version == 1 }
+      Then { features_reply.message_type == Pio::Features::REPLY }
+      Then { features_reply.message_length == 272 }
+      Then { features_reply.transaction_id == 2 }
+      Then { features_reply.xid == 2 }
+      Then { !features_reply.body.empty? }
+      Then { features_reply.datapath_id == 0xe2fc0fae664d }
+      Then { features_reply.n_buffers == 0x100 }
+      Then { features_reply.n_tables == 0xfe }
+      Then { features_reply.capabilities == 0xc7 }
+      Then { features_reply.actions == 0xfff }
+      Then { features_reply.ports.size == 7 }
     end
 
     context 'with a Hello message' do
