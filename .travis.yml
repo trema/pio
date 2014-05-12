@@ -5,7 +5,7 @@ bundler_args: --without development
 
 env:
   global:
-    - secure: "JVaFKDaJWWyBJAejWLvERmci+VyVtTc8iKl8RMdjtrg0rQEIL6zKQbPOti5M+gKyQDfOWrlLwKtgeH3Q1ZYpptrit3EugCx9D6/JsgZNQad51JF1cQTbV26AiVqunCQA7CrkqNGilCVmipeWhVZS+9k5sjTKuflrBaEkH63WOi0="
+    - "KbWY/i2xysF1PMc/51tWxJGinJiUY/zpc32b7MDUwMUrl5IoPA7Ick7prgVaJHau1/ug8lIOwzx9YT+ph/Kej3BFmPkYE4qyCv9m23I4Vlc53qA5jroFUvjuiTpiCE83HiW0xzEhvEMXF35Yusso4RshCpstH3hC/rE90PQxIcM="
 
 rvm:
   - 1.9.3
