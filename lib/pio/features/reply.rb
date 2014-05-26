@@ -24,7 +24,7 @@ module Pio
 
       extend Forwardable
 
-      def_delegators :@features, :version
+      def_delegators :@features, :ofp_version
       def_delegators :@features, :message_type
       def_delegators :@features, :message_length
       def_delegators :@features, :transaction_id

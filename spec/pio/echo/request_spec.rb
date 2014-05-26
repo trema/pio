@@ -7,7 +7,7 @@ describe Pio::Echo::Request do
     context 'with no arguments' do
       When(:echo_request) { Pio::Echo::Request.new }
 
-      Then { echo_request.version == 1 }
+      Then { echo_request.ofp_version == 1 }
       Then { echo_request.message_type == Pio::Echo::REQUEST }
       Then { echo_request.message_length == 8 }
       Then { echo_request.transaction_id == 0 }
@@ -19,7 +19,7 @@ describe Pio::Echo::Request do
     context 'with 123' do
       When(:echo_request) { Pio::Echo::Request.new(123) }
 
-      Then { echo_request.version == 1 }
+      Then { echo_request.ofp_version == 1 }
       Then { echo_request.message_type == Pio::Echo::REQUEST }
       Then { echo_request.message_length == 8 }
       Then { echo_request.transaction_id == 123 }
@@ -40,7 +40,7 @@ describe Pio::Echo::Request do
     context 'with transaction_id: 123' do
       When(:echo_request) { Pio::Echo::Request.new(transaction_id: 123) }
 
-      Then { echo_request.version == 1 }
+      Then { echo_request.ofp_version == 1 }
       Then { echo_request.message_type == Pio::Echo::REQUEST }
       Then { echo_request.message_length == 8 }
       Then { echo_request.transaction_id == 123 }
@@ -52,7 +52,7 @@ describe Pio::Echo::Request do
     context 'with xid: 123' do
       When(:echo_request) { Pio::Echo::Request.new(xid: 123) }
 
-      Then { echo_request.version == 1 }
+      Then { echo_request.ofp_version == 1 }
       Then { echo_request.message_type == Pio::Echo::REQUEST }
       Then { echo_request.message_length == 8 }
       Then { echo_request.transaction_id == 123 }
@@ -64,7 +64,7 @@ describe Pio::Echo::Request do
     context "with transaction_id: 123, data: 'foobar'" do
       When(:echo_request) { Pio::Echo::Request.new(xid: 123, data: 'foobar') }
 
-      Then { echo_request.version == 1 }
+      Then { echo_request.ofp_version == 1 }
       Then { echo_request.message_type == Pio::Echo::REQUEST }
       Then { echo_request.message_length == 14 }
       Then { echo_request.transaction_id == 123 }

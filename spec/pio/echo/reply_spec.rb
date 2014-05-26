@@ -7,7 +7,7 @@ describe Pio::Echo::Reply do
     context 'with no arguments' do
       When(:echo_reply) { Pio::Echo::Reply.new }
 
-      Then { echo_reply.version == 1 }
+      Then { echo_reply.ofp_version == 1 }
       Then { echo_reply.message_type == Pio::Echo::REPLY }
       Then { echo_reply.message_length == 8 }
       Then { echo_reply.transaction_id == 0 }
@@ -19,7 +19,7 @@ describe Pio::Echo::Reply do
     context 'with 123' do
       When(:echo_reply) { Pio::Echo::Reply.new(123) }
 
-      Then { echo_reply.version == 1 }
+      Then { echo_reply.ofp_version == 1 }
       Then { echo_reply.message_type == Pio::Echo::REPLY }
       Then { echo_reply.message_length == 8 }
       Then { echo_reply.transaction_id == 123 }
@@ -40,7 +40,7 @@ describe Pio::Echo::Reply do
     context 'with transaction_id: 123' do
       When(:echo_reply) { Pio::Echo::Reply.new(transaction_id: 123) }
 
-      Then { echo_reply.version == 1 }
+      Then { echo_reply.ofp_version == 1 }
       Then { echo_reply.message_type == Pio::Echo::REPLY }
       Then { echo_reply.message_length == 8 }
       Then { echo_reply.transaction_id == 123 }
@@ -52,7 +52,7 @@ describe Pio::Echo::Reply do
     context 'with xid: 123' do
       When(:echo_reply) { Pio::Echo::Reply.new(xid: 123) }
 
-      Then { echo_reply.version == 1 }
+      Then { echo_reply.ofp_version == 1 }
       Then { echo_reply.message_type == Pio::Echo::REPLY }
       Then { echo_reply.message_length == 8 }
       Then { echo_reply.transaction_id == 123 }
@@ -64,7 +64,7 @@ describe Pio::Echo::Reply do
     context "with transaction_id: 123, data: 'foobar'" do
       When(:echo_reply) { Pio::Echo::Reply.new(xid: 123, data: 'foobar') }
 
-      Then { echo_reply.version == 1 }
+      Then { echo_reply.ofp_version == 1 }
       Then { echo_reply.message_type == Pio::Echo::REPLY }
       Then { echo_reply.message_length == 14 }
       Then { echo_reply.transaction_id == 123 }
