@@ -26,43 +26,43 @@ describe Pio::Icmp::Request, '.new' do
       Then do
         result ==
           [
-           # Destination MAC
+            # Destination MAC
             0x24, 0xdb, 0xac, 0x41, 0xe5, 0x5b,
-           # Source MAC
+            # Source MAC
             0x74, 0xe5, 0x0b, 0x2a, 0x18, 0xf8,
-           # EtherType
+            # EtherType
             0x08, 0x00,
-           # IP Version&IP Header Length
+            # IP Version&IP Header Length
             0x45,
-           # IP Type Of Service
+            # IP Type Of Service
             0x00,
-           # IP Total Length
+            # IP Total Length
             0x00, 0x3c,
-           # IP Identifier
+            # IP Identifier
             0x00, 0x00,
-           # IP Flag&IP Fragment
+            # IP Flag&IP Fragment
             0x00, 0x00,
-           # IP TTL
+            # IP TTL
             0x80,
-           # IP Protocol
+            # IP Protocol
             0x01,
-           # IP Header Checksum
+            # IP Header Checksum
             0x68, 0xa4,
-           # IP Source Address
+            # IP Source Address
             0xc0, 0xa8, 0x01, 0x65,
-           # IP Destination Address
+            # IP Destination Address
             0x08, 0x08, 0x08, 0x08,
-           # ICMP Type
+            # ICMP Type
             0x08,
-           # ICMP Code
+            # ICMP Code
             0x00,
-           # ICMP Checksum
+            # ICMP Checksum
             0x49, 0x18,
-           # ICMP Identifier
+            # ICMP Identifier
             0x01, 0x23,
-           # ICMP Sequence Number
+            # ICMP Sequence Number
             0x03, 0x21,
-           # Echo Data
+            # Echo Data
             0x61, 0x62, 0x63, 0x64, 0x65, 0x66, 0x67,
             0x68, 0x69, 0x6a, 0x6b, 0x6c, 0x6d, 0x6e,
             0x6f, 0x70, 0x71, 0x72, 0x73, 0x74, 0x75,
@@ -91,43 +91,43 @@ describe Pio::Icmp::Request, '.new' do
       Then do
         result ==
           [
-           # Destination MAC
+            # Destination MAC
             0x24, 0xdb, 0xac, 0x41, 0xe5, 0x5b,
-           # Source MAC
+            # Source MAC
             0x74, 0xe5, 0x0b, 0x2a, 0x18, 0xf8,
-           # EtherType
+            # EtherType
             0x08, 0x00,
-           # IP Version&IP Header Length
+            # IP Version&IP Header Length
             0x45,
-           # IP Type Of Service
+            # IP Type Of Service
             0x00,
-           # IP Total Length
+            # IP Total Length
             0x00, 0x32,
-           # IP Identifier
+            # IP Identifier
             0x00, 0x00,
-           # IP Flag&IP Fragment
+            # IP Flag&IP Fragment
             0x00, 0x00,
-           # IP TTL
+            # IP TTL
             0x80,
-           # IP Protocol
+            # IP Protocol
             0x01,
-           # IP Header Checksum
+            # IP Header Checksum
             0x68, 0xae,
-           # IP Source Address
+            # IP Source Address
             0xc0, 0xa8, 0x01, 0x65,
-           # IP Destination Address
+            # IP Destination Address
             0x08, 0x08, 0x08, 0x08,
-           # ICMP Type
+            # ICMP Type
             0x08,
-           # ICMP Code
+            # ICMP Code
             0x00,
-           # ICMP Checksum
+            # ICMP Checksum
             0xf3, 0xbb,
-           # ICMP Identifier
+            # ICMP Identifier
             0x01, 0x23,
-           # ICMP Sequence Number
+            # ICMP Sequence Number
             0x03, 0x21,
-           # Echo Data
+            # Echo Data
             0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
             0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
             0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
