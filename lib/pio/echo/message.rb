@@ -9,7 +9,7 @@ module Pio
     class Message
       extend Forwardable
 
-      def_delegators :@echo, :version
+      def_delegators :@echo, :ofp_version
       def_delegators :@echo, :message_type
       def_delegators :@echo, :message_length
       def_delegators :@echo, :transaction_id

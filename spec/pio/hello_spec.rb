@@ -10,7 +10,7 @@ describe Pio::Hello do
       When(:hello) { Pio::Hello.read(hello_dump) }
 
       Then { hello.class == Pio::Hello }
-      Then { hello.version == 1 }
+      Then { hello.ofp_version == 1 }
       Then { hello.message_type == 0 }
       Then { hello.message_length == 8 }
       Then { hello.transaction_id == 0 }
@@ -31,7 +31,7 @@ describe Pio::Hello do
     context 'with no arguments' do
       When(:hello) { Pio::Hello.new }
 
-      Then { hello.version == 1 }
+      Then { hello.ofp_version == 1 }
       Then { hello.message_type == 0 }
       Then { hello.message_length == 8 }
       Then { hello.transaction_id == 0 }
@@ -43,7 +43,7 @@ describe Pio::Hello do
     context 'with 123' do
       When(:hello) { Pio::Hello.new(123) }
 
-      Then { hello.version == 1 }
+      Then { hello.ofp_version == 1 }
       Then { hello.message_type == 0 }
       Then { hello.message_length == 8 }
       Then { hello.transaction_id == 123 }
@@ -64,7 +64,7 @@ describe Pio::Hello do
     context 'with transaction_id: 123' do
       When(:hello) { Pio::Hello.new(transaction_id: 123) }
 
-      Then { hello.version == 1 }
+      Then { hello.ofp_version == 1 }
       Then { hello.message_type == 0 }
       Then { hello.message_length == 8 }
       Then { hello.transaction_id == 123 }
@@ -76,7 +76,7 @@ describe Pio::Hello do
     context 'with xid: 123' do
       When(:hello) { Pio::Hello.new(xid: 123) }
 
-      Then { hello.version == 1 }
+      Then { hello.ofp_version == 1 }
       Then { hello.message_type == 0 }
       Then { hello.message_length == 8 }
       Then { hello.transaction_id == 123 }

@@ -7,7 +7,7 @@ describe Pio::Features::Request do
     context 'with no arguments' do
       When(:request) { Pio::Features::Request.new }
 
-      Then { request.version == 1 }
+      Then { request.ofp_version == 1 }
       Then { request.message_type == Pio::Features::REQUEST }
       Then { request.message_length == 8 }
       Then { request.transaction_id == 0 }
@@ -19,7 +19,7 @@ describe Pio::Features::Request do
     context 'with 123' do
       When(:request) { Pio::Features::Request.new(123) }
 
-      Then { request.version == 1 }
+      Then { request.ofp_version == 1 }
       Then { request.message_type == Pio::Features::REQUEST }
       Then { request.message_length == 8 }
       Then { request.transaction_id == 123 }
@@ -40,7 +40,7 @@ describe Pio::Features::Request do
     context 'with transaction_id: 123' do
       When(:request) { Pio::Features::Request.new(transaction_id: 123) }
 
-      Then { request.version == 1 }
+      Then { request.ofp_version == 1 }
       Then { request.message_type == Pio::Features::REQUEST }
       Then { request.message_length == 8 }
       Then { request.transaction_id == 123 }
@@ -52,7 +52,7 @@ describe Pio::Features::Request do
     context 'with xid: 123' do
       When(:request) { Pio::Features::Request.new(xid: 123) }
 
-      Then { request.version == 1 }
+      Then { request.ofp_version == 1 }
       Then { request.message_type == Pio::Features::REQUEST }
       Then { request.message_length == 8 }
       Then { request.transaction_id == 123 }

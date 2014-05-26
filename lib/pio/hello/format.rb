@@ -8,7 +8,7 @@ module Pio
     class Format < BinData::Record
       endian :big
 
-      uint8 :version, value: 1
+      uint8 :ofp_version, value: 1
       uint8 :message_type, initial_value: 0, assert: -> { value == 0 }
       uint16 :message_length, initial_value: 8
       uint32 :transaction_id

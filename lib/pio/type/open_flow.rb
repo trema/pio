@@ -8,7 +8,7 @@ module Pio
     module OpenFlow
       def openflow_header
         class_eval do
-          uint8 :version, value: 1
+          uint8 :ofp_version, value: 1
           uint8 :message_type
           uint16 :message_length, initial_value: -> { 8 + body.length }
           uint32 :transaction_id, initial_value: 0

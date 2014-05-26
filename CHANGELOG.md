@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.8.0 (5/26/2014)
+
+### Changes
+* Renamed `version` => `ofp_version`
+
+
 ## 0.7.0 (4/22/2014)
 
 ### New features

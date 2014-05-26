@@ -9,7 +9,7 @@ module Pio
   class Hello
     extend Forwardable
 
-    def_delegators :@data, :version
+    def_delegators :@data, :ofp_version
     def_delegators :@data, :message_type
     def_delegators :@data, :message_length
     def_delegators :@data, :transaction_id

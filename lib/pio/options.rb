@@ -4,10 +4,11 @@ module Pio
   # User options utility.
   class Options
     def self.mandatory_option(name)
-      unless const_defined?(:MANDATORY_OPTIONS)
-        const_set(:MANDATORY_OPTIONS, [])
+      if const_defined?(:MANDATORY_OPTIONS)
+        const_get(:MANDATORY_OPTIONS) << name
+      else
+        const_set(:MANDATORY_OPTIONS, [name])
       end
-      const_get(:MANDATORY_OPTIONS) << name
     end
 
     def self.option(name)
@@ -57,9 +58,8 @@ module Pio
       value = user_options.fetch(key) do |missing_key|
         fail ArgumentError, "The #{missing_key} option should be passed."
       end
-      unless value
-        fail(ArgumentError, "The #{key} option shouldn't be #{value.inspect}.")
-      end
+      return if value
+      fail(ArgumentError, "The #{key} option shouldn't be #{value.inspect}.")
     end
   end
 end

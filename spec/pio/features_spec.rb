@@ -10,7 +10,7 @@ describe Pio::Features do
       When(:features_request) { Pio::Features.read(features_request_dump) }
 
       Then { features_request.class == Pio::Features::Request }
-      Then { features_request.version == 1 }
+      Then { features_request.ofp_version == 1 }
       Then { features_request.message_type == Pio::Features::REQUEST }
       Then { features_request.message_length == 8 }
       Then { features_request.transaction_id == 0 }
@@ -53,7 +53,7 @@ describe Pio::Features do
       When(:features_reply) { Pio::Features.read(features_reply_dump) }
 
       Then { features_reply.class == Pio::Features::Reply }
-      Then { features_reply.version == 1 }
+      Then { features_reply.ofp_version == 1 }
       Then { features_reply.message_type == Pio::Features::REPLY }
       Then { features_reply.message_length == 272 }
       Then { features_reply.transaction_id == 2 }
