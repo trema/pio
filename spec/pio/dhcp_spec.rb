@@ -118,41 +118,213 @@ describe Pio::Dhcp, '.read' do
       ]
     end
 
-    its(:class) { should be Pio::Dhcp::Discover }
-    its('destination_mac.to_s') { should eq 'ff:ff:ff:ff:ff:ff' }
-    its('source_mac.to_s') { should eq '24:db:ac:41:e5:5b' }
-    its(:ether_type) { should eq 2048 }
-    its(:ip_version) { should eq 4 }
-    its(:ip_header_length) { should eq 5 }
-    its(:ip_type_of_service) { should eq 0 }
-    its(:ip_total_length) { should eq 328 }
-    its(:ip_identifier) { should eq 0x0000 }
-    its(:ip_flag) { should eq 0 }
-    its(:ip_fragment) { should eq 0 }
-    its(:ip_ttl) { should eq 128 }
-    its(:ip_protocol) { should eq 17 }
-    its(:ip_header_checksum) { should eq 0x39a6 }
-    its('ip_source_address.to_s') { should eq '0.0.0.0' }
-    its('ip_destination_address.to_s') { should eq '255.255.255.255' }
-    its(:udp_src_port) { should eq 68 }
-    its(:udp_dst_port) { should eq 67 }
-    its(:udp_length) { should eq 308 }
-    its(:udp_checksum) { should eq 0x8814 }
-    its(:message_type) { should eq 1 }
-    its(:hw_addr_type) { should eq 1 }
-    its(:hw_addr_len) { should eq 6 }
-    its(:hops) { should eq 0 }
-    its(:transaction_id) { should eq 0xdeadbeef }
-    its(:seconds) { should eq 0 }
-    its(:bootp_flags) { should eq 0 }
-    its('client_ip_address.to_s') { should eq '0.0.0.0' }
-    its('your_ip_address.to_s') { should eq '0.0.0.0' }
-    its('next_server_ip_address.to_s') { should eq '0.0.0.0' }
-    its('relay_agent_ip_address.to_s') { should eq '0.0.0.0' }
-    its('client_mac_address.to_s') { should eq '24:db:ac:41:e5:5b' }
-    its('client_identifier.to_s') { should eq '24:db:ac:41:e5:5b' }
-    its('requested_ip_address.to_s') { should eq '0.0.0.0' }
-    its(:parameters_list) { should eq [0x01, 0x03, 0x06, 0x2a] }
+    describe '#class' do
+      subject { super().class }
+      it { is_expected.to be Pio::Dhcp::Discover }
+    end
+
+    describe '#destination_mac' do
+      subject { super().destination_mac }
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq 'ff:ff:ff:ff:ff:ff' }
+      end
+    end
+
+    describe '#source_mac' do
+      subject { super().source_mac }
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq '24:db:ac:41:e5:5b' }
+      end
+    end
+
+    describe '#ether_type' do
+      subject { super().ether_type }
+      it { is_expected.to eq 2048 }
+    end
+
+    describe '#ip_version' do
+      subject { super().ip_version }
+      it { is_expected.to eq 4 }
+    end
+
+    describe '#ip_header_length' do
+      subject { super().ip_header_length }
+      it { is_expected.to eq 5 }
+    end
+
+    describe '#ip_type_of_service' do
+      subject { super().ip_type_of_service }
+      it { is_expected.to eq 0 }
+    end
+
+    describe '#ip_total_length' do
+      subject { super().ip_total_length }
+      it { is_expected.to eq 328 }
+    end
+
+    describe '#ip_identifier' do
+      subject { super().ip_identifier }
+      it { is_expected.to eq 0x0000 }
+    end
+
+    describe '#ip_flag' do
+      subject { super().ip_flag }
+      it { is_expected.to eq 0 }
+    end
+
+    describe '#ip_fragment' do
+      subject { super().ip_fragment }
+      it { is_expected.to eq 0 }
+    end
+
+    describe '#ip_ttl' do
+      subject { super().ip_ttl }
+      it { is_expected.to eq 128 }
+    end
+
+    describe '#ip_protocol' do
+      subject { super().ip_protocol }
+      it { is_expected.to eq 17 }
+    end
+
+    describe '#ip_header_checksum' do
+      subject { super().ip_header_checksum }
+      it { is_expected.to eq 0x39a6 }
+    end
+
+    describe '#ip_source_address' do
+      subject { super().ip_source_address }
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq '0.0.0.0' }
+      end
+    end
+
+    describe '#ip_destination_address' do
+      subject { super().ip_destination_address }
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq '255.255.255.255' }
+      end
+    end
+
+    describe '#udp_src_port' do
+      subject { super().udp_src_port }
+      it { is_expected.to eq 68 }
+    end
+
+    describe '#udp_dst_port' do
+      subject { super().udp_dst_port }
+      it { is_expected.to eq 67 }
+    end
+
+    describe '#udp_length' do
+      subject { super().udp_length }
+      it { is_expected.to eq 308 }
+    end
+
+    describe '#udp_checksum' do
+      subject { super().udp_checksum }
+      it { is_expected.to eq 0x8814 }
+    end
+
+    describe '#message_type' do
+      subject { super().message_type }
+      it { is_expected.to eq 1 }
+    end
+
+    describe '#hw_addr_type' do
+      subject { super().hw_addr_type }
+      it { is_expected.to eq 1 }
+    end
+
+    describe '#hw_addr_len' do
+      subject { super().hw_addr_len }
+      it { is_expected.to eq 6 }
+    end
+
+    describe '#hops' do
+      subject { super().hops }
+      it { is_expected.to eq 0 }
+    end
+
+    describe '#transaction_id' do
+      subject { super().transaction_id }
+      it { is_expected.to eq 0xdeadbeef }
+    end
+
+    describe '#seconds' do
+      subject { super().seconds }
+      it { is_expected.to eq 0 }
+    end
+
+    describe '#bootp_flags' do
+      subject { super().bootp_flags }
+      it { is_expected.to eq 0 }
+    end
+
+    describe '#client_ip_address' do
+      subject { super().client_ip_address }
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq '0.0.0.0' }
+      end
+    end
+
+    describe '#your_ip_address' do
+      subject { super().your_ip_address }
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq '0.0.0.0' }
+      end
+    end
+
+    describe '#next_server_ip_address' do
+      subject { super().next_server_ip_address }
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq '0.0.0.0' }
+      end
+    end
+
+    describe '#relay_agent_ip_address' do
+      subject { super().relay_agent_ip_address }
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq '0.0.0.0' }
+      end
+    end
+
+    describe '#client_mac_address' do
+      subject { super().client_mac_address }
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq '24:db:ac:41:e5:5b' }
+      end
+    end
+
+    describe '#client_identifier' do
+      subject { super().client_identifier }
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq '24:db:ac:41:e5:5b' }
+      end
+    end
+
+    describe '#requested_ip_address' do
+      subject { super().requested_ip_address }
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq '0.0.0.0' }
+      end
+    end
+
+    describe '#parameters_list' do
+      subject { super().parameters_list }
+      it { is_expected.to eq [0x01, 0x03, 0x06, 0x2a] }
+    end
   end
 
   context 'with DHCP offer frame' do
@@ -268,43 +440,223 @@ describe Pio::Dhcp, '.read' do
       ]
     end
 
-    its(:class) { should be Pio::Dhcp::Offer }
-    its('destination_mac.to_s') { should eq '11:22:33:44:55:66' }
-    its('source_mac.to_s') { should eq 'aa:bb:cc:dd:ee:ff' }
-    its(:ether_type) { should eq 2048 }
-    its(:ip_version) { should eq 4 }
-    its(:ip_header_length) { should eq 5 }
-    its(:ip_type_of_service) { should eq 0 }
-    its(:ip_total_length) { should eq 328 }
-    its(:ip_identifier) { should eq 0x0000 }
-    its(:ip_flag) { should eq 0 }
-    its(:ip_fragment) { should eq 0 }
-    its(:ip_ttl) { should eq 128 }
-    its(:ip_protocol) { should eq 17 }
-    its(:ip_header_checksum) { should eq 0xb849 }
-    its('ip_source_address.to_s') { should eq '192.168.0.10' }
-    its('ip_destination_address.to_s') { should eq '192.168.0.1' }
-    its(:udp_src_port) { should eq 67 }
-    its(:udp_dst_port) { should eq 68 }
-    its(:udp_length) { should eq 308 }
-    its(:udp_checksum) { should eq 7780 }
-    its(:message_type) { should eq 2 }
-    its(:hw_addr_type) { should eq 1 }
-    its(:hw_addr_len) { should eq 6 }
-    its(:hops) { should eq 0 }
-    its(:transaction_id) { should eq 0xdeadbeef }
-    its(:seconds) { should eq 0 }
-    its(:bootp_flags) { should eq 0x0000 }
-    its('client_ip_address.to_s') { should eq '0.0.0.0' }
-    its('your_ip_address.to_s') { should eq '192.168.0.1' }
-    its('next_server_ip_address.to_s') { should eq '0.0.0.0' }
-    its('relay_agent_ip_address.to_s') { should eq '0.0.0.0' }
-    its('client_mac_address.to_s') { should eq 'aa:bb:cc:dd:ee:ff' }
-    its('server_identifier.to_s') { should eq '192.168.0.10' }
-    its('subnet_mask.to_s') { should eq '255.255.255.0' }
-    its(:renewal_time_value) { should eq 0xdeadbeef }
-    its(:rebinding_time_value) { should eq 0xdeadbeef }
-    its(:ip_address_lease_time) { should eq 0xdeadbeef }
+    describe '#class' do
+      subject { super().class }
+      it { is_expected.to be Pio::Dhcp::Offer }
+    end
+
+    describe '#destination_mac' do
+      subject { super().destination_mac }
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq '11:22:33:44:55:66' }
+      end
+    end
+
+    describe '#source_mac' do
+      subject { super().source_mac }
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq 'aa:bb:cc:dd:ee:ff' }
+      end
+    end
+
+    describe '#ether_type' do
+      subject { super().ether_type }
+      it { is_expected.to eq 2048 }
+    end
+
+    describe '#ip_version' do
+      subject { super().ip_version }
+      it { is_expected.to eq 4 }
+    end
+
+    describe '#ip_header_length' do
+      subject { super().ip_header_length }
+      it { is_expected.to eq 5 }
+    end
+
+    describe '#ip_type_of_service' do
+      subject { super().ip_type_of_service }
+      it { is_expected.to eq 0 }
+    end
+
+    describe '#ip_total_length' do
+      subject { super().ip_total_length }
+      it { is_expected.to eq 328 }
+    end
+
+    describe '#ip_identifier' do
+      subject { super().ip_identifier }
+      it { is_expected.to eq 0x0000 }
+    end
+
+    describe '#ip_flag' do
+      subject { super().ip_flag }
+      it { is_expected.to eq 0 }
+    end
+
+    describe '#ip_fragment' do
+      subject { super().ip_fragment }
+      it { is_expected.to eq 0 }
+    end
+
+    describe '#ip_ttl' do
+      subject { super().ip_ttl }
+      it { is_expected.to eq 128 }
+    end
+
+    describe '#ip_protocol' do
+      subject { super().ip_protocol }
+      it { is_expected.to eq 17 }
+    end
+
+    describe '#ip_header_checksum' do
+      subject { super().ip_header_checksum }
+      it { is_expected.to eq 0xb849 }
+    end
+
+    describe '#ip_source_address' do
+      subject { super().ip_source_address }
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq '192.168.0.10' }
+      end
+    end
+
+    describe '#ip_destination_address' do
+      subject { super().ip_destination_address }
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq '192.168.0.1' }
+      end
+    end
+
+    describe '#udp_src_port' do
+      subject { super().udp_src_port }
+      it { is_expected.to eq 67 }
+    end
+
+    describe '#udp_dst_port' do
+      subject { super().udp_dst_port }
+      it { is_expected.to eq 68 }
+    end
+
+    describe '#udp_length' do
+      subject { super().udp_length }
+      it { is_expected.to eq 308 }
+    end
+
+    describe '#udp_checksum' do
+      subject { super().udp_checksum }
+      it { is_expected.to eq 7780 }
+    end
+
+    describe '#message_type' do
+      subject { super().message_type }
+      it { is_expected.to eq 2 }
+    end
+
+    describe '#hw_addr_type' do
+      subject { super().hw_addr_type }
+      it { is_expected.to eq 1 }
+    end
+
+    describe '#hw_addr_len' do
+      subject { super().hw_addr_len }
+      it { is_expected.to eq 6 }
+    end
+
+    describe '#hops' do
+      subject { super().hops }
+      it { is_expected.to eq 0 }
+    end
+
+    describe '#transaction_id' do
+      subject { super().transaction_id }
+      it { is_expected.to eq 0xdeadbeef }
+    end
+
+    describe '#seconds' do
+      subject { super().seconds }
+      it { is_expected.to eq 0 }
+    end
+
+    describe '#bootp_flags' do
+      subject { super().bootp_flags }
+      it { is_expected.to eq 0x0000 }
+    end
+
+    describe '#client_ip_address' do
+      subject { super().client_ip_address }
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq '0.0.0.0' }
+      end
+    end
+
+    describe '#your_ip_address' do
+      subject { super().your_ip_address }
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq '192.168.0.1' }
+      end
+    end
+
+    describe '#next_server_ip_address' do
+      subject { super().next_server_ip_address }
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq '0.0.0.0' }
+      end
+    end
+
+    describe '#relay_agent_ip_address' do
+      subject { super().relay_agent_ip_address }
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq '0.0.0.0' }
+      end
+    end
+
+    describe '#client_mac_address' do
+      subject { super().client_mac_address }
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq 'aa:bb:cc:dd:ee:ff' }
+      end
+    end
+
+    describe '#server_identifier' do
+      subject { super().server_identifier }
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq '192.168.0.10' }
+      end
+    end
+
+    describe '#subnet_mask' do
+      subject { super().subnet_mask }
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq '255.255.255.0' }
+      end
+    end
+
+    describe '#renewal_time_value' do
+      subject { super().renewal_time_value }
+      it { is_expected.to eq 0xdeadbeef }
+    end
+
+    describe '#rebinding_time_value' do
+      subject { super().rebinding_time_value }
+      it { is_expected.to eq 0xdeadbeef }
+    end
+
+    describe '#ip_address_lease_time' do
+      subject { super().ip_address_lease_time }
+      it { is_expected.to eq 0xdeadbeef }
+    end
   end
 
   context 'with DHCP Request frame' do
@@ -418,41 +770,213 @@ describe Pio::Dhcp, '.read' do
       ]
     end
 
-    its(:class) { should be Pio::Dhcp::Request }
-    its('destination_mac.to_s') { should eq 'ff:ff:ff:ff:ff:ff' }
-    its('source_mac.to_s') { should eq '24:db:ac:41:e5:5b' }
-    its(:ether_type) { should eq 2048 }
-    its(:ip_version) { should eq 4 }
-    its(:ip_header_length) { should eq 5 }
-    its(:ip_type_of_service) { should eq 0 }
-    its(:ip_total_length) { should eq 328 }
-    its(:ip_identifier) { should eq 0x0000 }
-    its(:ip_flag) { should eq 0 }
-    its(:ip_fragment) { should eq 0 }
-    its(:ip_ttl) { should eq 128 }
-    its(:ip_protocol) { should eq 17 }
-    its(:ip_header_checksum) { should eq 0x39a6 }
-    its('ip_source_address.to_s') { should eq '0.0.0.0' }
-    its('ip_destination_address.to_s') { should eq '255.255.255.255' }
-    its(:udp_src_port) { should eq 68 }
-    its(:udp_dst_port) { should eq 67 }
-    its(:udp_length) { should eq 308 }
-    its(:udp_checksum) { should eq 0xceb3 }
-    its(:message_type) { should eq 3 }
-    its(:hw_addr_type) { should eq 1 }
-    its(:hw_addr_len) { should eq 6 }
-    its(:hops) { should eq 0 }
-    its(:transaction_id) { should eq 0xdeadbeef }
-    its(:seconds) { should eq 0 }
-    its(:bootp_flags) { should eq 0 }
-    its('client_ip_address.to_s') { should eq '0.0.0.0' }
-    its('your_ip_address.to_s') { should eq '0.0.0.0' }
-    its('next_server_ip_address.to_s') { should eq '0.0.0.0' }
-    its('relay_agent_ip_address.to_s') { should eq '0.0.0.0' }
-    its('client_mac_address.to_s') { should eq '24:db:ac:41:e5:5b' }
-    its('client_identifier.to_s') { should eq '24:db:ac:41:e5:5b' }
-    its('requested_ip_address.to_s') { should eq '192.168.0.10' }
-    its(:parameters_list) { should eq [0x01, 0x03, 0x06, 0x2a] }
+    describe '#class' do
+      subject { super().class }
+      it { is_expected.to be Pio::Dhcp::Request }
+    end
+
+    describe '#destination_mac' do
+      subject { super().destination_mac }
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq 'ff:ff:ff:ff:ff:ff' }
+      end
+    end
+
+    describe '#source_mac' do
+      subject { super().source_mac }
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq '24:db:ac:41:e5:5b' }
+      end
+    end
+
+    describe '#ether_type' do
+      subject { super().ether_type }
+      it { is_expected.to eq 2048 }
+    end
+
+    describe '#ip_version' do
+      subject { super().ip_version }
+      it { is_expected.to eq 4 }
+    end
+
+    describe '#ip_header_length' do
+      subject { super().ip_header_length }
+      it { is_expected.to eq 5 }
+    end
+
+    describe '#ip_type_of_service' do
+      subject { super().ip_type_of_service }
+      it { is_expected.to eq 0 }
+    end
+
+    describe '#ip_total_length' do
+      subject { super().ip_total_length }
+      it { is_expected.to eq 328 }
+    end
+
+    describe '#ip_identifier' do
+      subject { super().ip_identifier }
+      it { is_expected.to eq 0x0000 }
+    end
+
+    describe '#ip_flag' do
+      subject { super().ip_flag }
+      it { is_expected.to eq 0 }
+    end
+
+    describe '#ip_fragment' do
+      subject { super().ip_fragment }
+      it { is_expected.to eq 0 }
+    end
+
+    describe '#ip_ttl' do
+      subject { super().ip_ttl }
+      it { is_expected.to eq 128 }
+    end
+
+    describe '#ip_protocol' do
+      subject { super().ip_protocol }
+      it { is_expected.to eq 17 }
+    end
+
+    describe '#ip_header_checksum' do
+      subject { super().ip_header_checksum }
+      it { is_expected.to eq 0x39a6 }
+    end
+
+    describe '#ip_source_address' do
+      subject { super().ip_source_address }
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq '0.0.0.0' }
+      end
+    end
+
+    describe '#ip_destination_address' do
+      subject { super().ip_destination_address }
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq '255.255.255.255' }
+      end
+    end
+
+    describe '#udp_src_port' do
+      subject { super().udp_src_port }
+      it { is_expected.to eq 68 }
+    end
+
+    describe '#udp_dst_port' do
+      subject { super().udp_dst_port }
+      it { is_expected.to eq 67 }
+    end
+
+    describe '#udp_length' do
+      subject { super().udp_length }
+      it { is_expected.to eq 308 }
+    end
+
+    describe '#udp_checksum' do
+      subject { super().udp_checksum }
+      it { is_expected.to eq 0xceb3 }
+    end
+
+    describe '#message_type' do
+      subject { super().message_type }
+      it { is_expected.to eq 3 }
+    end
+
+    describe '#hw_addr_type' do
+      subject { super().hw_addr_type }
+      it { is_expected.to eq 1 }
+    end
+
+    describe '#hw_addr_len' do
+      subject { super().hw_addr_len }
+      it { is_expected.to eq 6 }
+    end
+
+    describe '#hops' do
+      subject { super().hops }
+      it { is_expected.to eq 0 }
+    end
+
+    describe '#transaction_id' do
+      subject { super().transaction_id }
+      it { is_expected.to eq 0xdeadbeef }
+    end
+
+    describe '#seconds' do
+      subject { super().seconds }
+      it { is_expected.to eq 0 }
+    end
+
+    describe '#bootp_flags' do
+      subject { super().bootp_flags }
+      it { is_expected.to eq 0 }
+    end
+
+    describe '#client_ip_address' do
+      subject { super().client_ip_address }
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq '0.0.0.0' }
+      end
+    end
+
+    describe '#your_ip_address' do
+      subject { super().your_ip_address }
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq '0.0.0.0' }
+      end
+    end
+
+    describe '#next_server_ip_address' do
+      subject { super().next_server_ip_address }
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq '0.0.0.0' }
+      end
+    end
+
+    describe '#relay_agent_ip_address' do
+      subject { super().relay_agent_ip_address }
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq '0.0.0.0' }
+      end
+    end
+
+    describe '#client_mac_address' do
+      subject { super().client_mac_address }
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq '24:db:ac:41:e5:5b' }
+      end
+    end
+
+    describe '#client_identifier' do
+      subject { super().client_identifier }
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq '24:db:ac:41:e5:5b' }
+      end
+    end
+
+    describe '#requested_ip_address' do
+      subject { super().requested_ip_address }
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq '192.168.0.10' }
+      end
+    end
+
+    describe '#parameters_list' do
+      subject { super().parameters_list }
+      it { is_expected.to eq [0x01, 0x03, 0x06, 0x2a] }
+    end
   end
 
   context 'with DHCP ACK frame' do
@@ -568,42 +1092,222 @@ describe Pio::Dhcp, '.read' do
       ]
     end
 
-    its(:class) { should be Pio::Dhcp::Ack }
-    its('destination_mac.to_s') { should eq '11:22:33:44:55:66' }
-    its('source_mac.to_s') { should eq 'aa:bb:cc:dd:ee:ff' }
-    its(:ether_type) { should eq 2048 }
-    its(:ip_version) { should eq 4 }
-    its(:ip_header_length) { should eq 5 }
-    its(:ip_type_of_service) { should eq 0 }
-    its(:ip_total_length) { should eq 328 }
-    its(:ip_identifier) { should eq 0x0000 }
-    its(:ip_flag) { should eq 0 }
-    its(:ip_fragment) { should eq 0 }
-    its(:ip_ttl) { should eq 128 }
-    its(:ip_protocol) { should eq 17 }
-    its(:ip_header_checksum) { should eq 0xb849 }
-    its('ip_source_address.to_s') { should eq '192.168.0.10' }
-    its('ip_destination_address.to_s') { should eq '192.168.0.1' }
-    its(:udp_src_port) { should eq 67 }
-    its(:udp_dst_port) { should eq 68 }
-    its(:udp_length) { should eq 308 }
-    its(:udp_checksum) { should eq 0x1b64 }
-    its(:message_type) { should eq 5 }
-    its(:hw_addr_type) { should eq 1 }
-    its(:hw_addr_len) { should eq 6 }
-    its(:hops) { should eq 0 }
-    its(:transaction_id) { should eq 0xdeadbeef }
-    its(:seconds) { should eq 0 }
-    its(:bootp_flags) { should eq 0x0000 }
-    its('client_ip_address.to_s') { should eq '0.0.0.0' }
-    its('your_ip_address.to_s') { should eq '192.168.0.1' }
-    its('next_server_ip_address.to_s') { should eq '0.0.0.0' }
-    its('relay_agent_ip_address.to_s') { should eq '0.0.0.0' }
-    its('client_mac_address.to_s') { should eq 'aa:bb:cc:dd:ee:ff' }
-    its('server_identifier.to_s') { should eq '192.168.0.10' }
-    its('subnet_mask.to_s') { should eq '255.255.255.0' }
-    its(:renewal_time_value) { should eq 0xdeadbeef }
-    its(:rebinding_time_value) { should eq 0xdeadbeef }
-    its(:ip_address_lease_time) { should eq 0xdeadbeef }
+    describe '#class' do
+      subject { super().class }
+      it { is_expected.to be Pio::Dhcp::Ack }
+    end
+
+    describe '#destination_mac' do
+      subject { super().destination_mac }
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq '11:22:33:44:55:66' }
+      end
+    end
+
+    describe '#source_mac' do
+      subject { super().source_mac }
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq 'aa:bb:cc:dd:ee:ff' }
+      end
+    end
+
+    describe '#ether_type' do
+      subject { super().ether_type }
+      it { is_expected.to eq 2048 }
+    end
+
+    describe '#ip_version' do
+      subject { super().ip_version }
+      it { is_expected.to eq 4 }
+    end
+
+    describe '#ip_header_length' do
+      subject { super().ip_header_length }
+      it { is_expected.to eq 5 }
+    end
+
+    describe '#ip_type_of_service' do
+      subject { super().ip_type_of_service }
+      it { is_expected.to eq 0 }
+    end
+
+    describe '#ip_total_length' do
+      subject { super().ip_total_length }
+      it { is_expected.to eq 328 }
+    end
+
+    describe '#ip_identifier' do
+      subject { super().ip_identifier }
+      it { is_expected.to eq 0x0000 }
+    end
+
+    describe '#ip_flag' do
+      subject { super().ip_flag }
+      it { is_expected.to eq 0 }
+    end
+
+    describe '#ip_fragment' do
+      subject { super().ip_fragment }
+      it { is_expected.to eq 0 }
+    end
+
+    describe '#ip_ttl' do
+      subject { super().ip_ttl }
+      it { is_expected.to eq 128 }
+    end
+
+    describe '#ip_protocol' do
+      subject { super().ip_protocol }
+      it { is_expected.to eq 17 }
+    end
+
+    describe '#ip_header_checksum' do
+      subject { super().ip_header_checksum }
+      it { is_expected.to eq 0xb849 }
+    end
+
+    describe '#ip_source_address' do
+      subject { super().ip_source_address }
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq '192.168.0.10' }
+      end
+    end
+
+    describe '#ip_destination_address' do
+      subject { super().ip_destination_address }
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq '192.168.0.1' }
+      end
+    end
+
+    describe '#udp_src_port' do
+      subject { super().udp_src_port }
+      it { is_expected.to eq 67 }
+    end
+
+    describe '#udp_dst_port' do
+      subject { super().udp_dst_port }
+      it { is_expected.to eq 68 }
+    end
+
+    describe '#udp_length' do
+      subject { super().udp_length }
+      it { is_expected.to eq 308 }
+    end
+
+    describe '#udp_checksum' do
+      subject { super().udp_checksum }
+      it { is_expected.to eq 0x1b64 }
+    end
+
+    describe '#message_type' do
+      subject { super().message_type }
+      it { is_expected.to eq 5 }
+    end
+
+    describe '#hw_addr_type' do
+      subject { super().hw_addr_type }
+      it { is_expected.to eq 1 }
+    end
+
+    describe '#hw_addr_len' do
+      subject { super().hw_addr_len }
+      it { is_expected.to eq 6 }
+    end
+
+    describe '#hops' do
+      subject { super().hops }
+      it { is_expected.to eq 0 }
+    end
+
+    describe '#transaction_id' do
+      subject { super().transaction_id }
+      it { is_expected.to eq 0xdeadbeef }
+    end
+
+    describe '#seconds' do
+      subject { super().seconds }
+      it { is_expected.to eq 0 }
+    end
+
+    describe '#bootp_flags' do
+      subject { super().bootp_flags }
+      it { is_expected.to eq 0x0000 }
+    end
+
+    describe '#client_ip_address' do
+      subject { super().client_ip_address }
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq '0.0.0.0' }
+      end
+    end
+
+    describe '#your_ip_address' do
+      subject { super().your_ip_address }
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq '192.168.0.1' }
+      end
+    end
+
+    describe '#next_server_ip_address' do
+      subject { super().next_server_ip_address }
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq '0.0.0.0' }
+      end
+    end
+
+    describe '#relay_agent_ip_address' do
+      subject { super().relay_agent_ip_address }
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq '0.0.0.0' }
+      end
+    end
+
+    describe '#client_mac_address' do
+      subject { super().client_mac_address }
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq 'aa:bb:cc:dd:ee:ff' }
+      end
+    end
+
+    describe '#server_identifier' do
+      subject { super().server_identifier }
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq '192.168.0.10' }
+      end
+    end
+
+    describe '#subnet_mask' do
+      subject { super().subnet_mask }
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq '255.255.255.0' }
+      end
+    end
+
+    describe '#renewal_time_value' do
+      subject { super().renewal_time_value }
+      it { is_expected.to eq 0xdeadbeef }
+    end
+
+    describe '#rebinding_time_value' do
+      subject { super().rebinding_time_value }
+      it { is_expected.to eq 0xdeadbeef }
+    end
+
+    describe '#ip_address_lease_time' do
+      subject { super().ip_address_lease_time }
+      it { is_expected.to eq 0xdeadbeef }
+    end
   end
 end

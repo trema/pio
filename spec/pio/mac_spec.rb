@@ -9,13 +9,13 @@ describe Pio::Mac do
       let(:value) { '11:22:33:44:55:66' }
 
       describe '#==' do
-        it { should eq Pio::Mac.new('11:22:33:44:55:66') }
-        it { should eq '11:22:33:44:55:66' }
-        it { should_not eq Pio::Mac.new('66:55:44:33:22:11') }
-        it { should_not eq '66:55:44:33:22:11' }
-        it { should eq 0x112233445566 }
-        it { should_not eq 42 }
-        it { should_not eq 'INVALID_MAC_ADDRESS' }
+        it { is_expected.to eq Pio::Mac.new('11:22:33:44:55:66') }
+        it { is_expected.to eq '11:22:33:44:55:66' }
+        it { is_expected.not_to eq Pio::Mac.new('66:55:44:33:22:11') }
+        it { is_expected.not_to eq '66:55:44:33:22:11' }
+        it { is_expected.to eq 0x112233445566 }
+        it { is_expected.not_to eq 42 }
+        it { is_expected.not_to eq 'INVALID_MAC_ADDRESS' }
       end
 
       describe '#eql?' do
@@ -28,20 +28,45 @@ describe Pio::Mac do
         it { expect(subject).not_to eql 'INVALID_MAC_ADDRESS' }
       end
 
-      its(:hash) { should eq Pio::Mac.new('11:22:33:44:55:66').hash }
+      describe '#hash' do
+        subject { super().hash }
+        it { is_expected.to eq Pio::Mac.new('11:22:33:44:55:66').hash }
+      end
 
-      its(:to_i) { should eq 0x112233445566 }
-      its(:to_a) { should eq [0x11, 0x22, 0x33, 0x44, 0x55, 0x66] }
-      its(:to_s) { should eq '11:22:33:44:55:66' }
+      describe '#to_i' do
+        subject { super().to_i }
+        it { is_expected.to eq 0x112233445566 }
+      end
+
+      describe '#to_a' do
+        subject { super().to_a }
+        it { is_expected.to eq [0x11, 0x22, 0x33, 0x44, 0x55, 0x66] }
+      end
+
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq '11:22:33:44:55:66' }
+      end
       describe '#to_str' do
         context 'when "MAC = " + subject' do
           it { expect('MAC = ' + subject).to eq 'MAC = 11:22:33:44:55:66' }
         end
       end
 
-      its(:multicast?) { should be_true }
-      its(:broadcast?) { should be_false }
-      its(:reserved?) { should be_false }
+      describe '#multicast?' do
+        subject { super().multicast? }
+        it { is_expected.to be_truthy }
+      end
+
+      describe '#broadcast?' do
+        subject { super().broadcast? }
+        it { is_expected.to be_falsey }
+      end
+
+      describe '#reserved?' do
+        subject { super().reserved? }
+        it { is_expected.to be_falsey }
+      end
     end
 
     context 'with reserved address' do
@@ -51,7 +76,11 @@ describe Pio::Mac do
 
         context "when #{ reserved_address }" do
           let(:value) { reserved_address }
-          its(:reserved?) { should be_true }
+
+          describe '#reserved?' do
+            subject { super().reserved? }
+            it { is_expected.to be_truthy }
+          end
         end
       end
     end
@@ -59,25 +88,73 @@ describe Pio::Mac do
     context 'with 0' do
       let(:value) { 0 }
 
-      it { should eq Pio::Mac.new(0) }
-      its(:to_i) { should eq 0 }
-      its(:to_a) { should eq [0x00, 0x00, 0x00, 0x00, 0x00, 0x00] }
-      its(:to_s) { should eq '00:00:00:00:00:00' }
-      its(:multicast?) { should be_false }
-      its(:broadcast?) { should be_false }
-      its(:reserved?) { should be_false }
+      it { is_expected.to eq Pio::Mac.new(0) }
+
+      describe '#to_i' do
+        subject { super().to_i }
+        it { is_expected.to eq 0 }
+      end
+
+      describe '#to_a' do
+        subject { super().to_a }
+        it { is_expected.to eq [0x00, 0x00, 0x00, 0x00, 0x00, 0x00] }
+      end
+
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq '00:00:00:00:00:00' }
+      end
+
+      describe '#multicast?' do
+        subject { super().multicast? }
+        it { is_expected.to be_falsey }
+      end
+
+      describe '#broadcast?' do
+        subject { super().broadcast? }
+        it { is_expected.to be_falsey }
+      end
+
+      describe '#reserved?' do
+        subject { super().reserved? }
+        it { is_expected.to be_falsey }
+      end
     end
 
     context 'with 0xffffffffffff' do
       let(:value) { 0xffffffffffff }
 
-      it { should eq Pio::Mac.new(0xffffffffffff) }
-      its(:to_i) { should eq 0xffffffffffff }
-      its(:to_a) { should eq [0xff, 0xff, 0xff, 0xff, 0xff, 0xff] }
-      its(:to_s) { should eq 'ff:ff:ff:ff:ff:ff' }
-      its(:multicast?) { should be_true }
-      its(:broadcast?) { should be_true }
-      its(:reserved?) { should be_false }
+      it { is_expected.to eq Pio::Mac.new(0xffffffffffff) }
+
+      describe '#to_i' do
+        subject { super().to_i }
+        it { is_expected.to eq 0xffffffffffff }
+      end
+
+      describe '#to_a' do
+        subject { super().to_a }
+        it { is_expected.to eq [0xff, 0xff, 0xff, 0xff, 0xff, 0xff] }
+      end
+
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq 'ff:ff:ff:ff:ff:ff' }
+      end
+
+      describe '#multicast?' do
+        subject { super().multicast? }
+        it { is_expected.to be_truthy }
+      end
+
+      describe '#broadcast?' do
+        subject { super().broadcast? }
+        it { is_expected.to be_truthy }
+      end
+
+      describe '#reserved?' do
+        subject { super().reserved? }
+        it { is_expected.to be_falsey }
+      end
     end
 
     context 'with "INVALID MAC ADDRESS"' do
