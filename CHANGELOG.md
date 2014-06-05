@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.8.1 (6/5/2014)
+
+### Misc
+
+* Updated bundled gems.
+* Modernized Gemfile and .gemspec.
+
+
 ## 0.8.0 (5/26/2014)
 
 ### Changes
