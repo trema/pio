@@ -40,9 +40,6 @@ Gem::Specification.new do |gem|
 
   gem.add_development_dependency 'rake'
   gem.add_development_dependency 'bundler', '~> 1.6.2'
-
-  # Pry
-  gem.add_development_dependency 'byebug', '~> 3.1.2'
   gem.add_development_dependency 'pry', '~> 0.9.12.6'
 
   # Guard
