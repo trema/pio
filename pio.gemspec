@@ -54,7 +54,7 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'terminal-notifier-guard', '~> 1.6.4'
 
   # Docs
-  gem.add_development_dependency 'inch', '~> 0.4.6'
+  gem.add_development_dependency 'inch', '~> 0.5.7'
   gem.add_development_dependency 'yard', '~> 0.8.7.6'
 
   # Test
