@@ -22,7 +22,7 @@ module Pio
         option :echo_data
 
         # rubocop:disable MethodLength
-
+        # rubocop:disable AbcSize
         def initialize(options)
           validate options
           @type = TYPE
@@ -36,7 +36,7 @@ module Pio
           @sequence_number = options[:sequence_number]
           @echo_data = options[:echo_data] || DEFAULT_ECHO_DATA
         end
-
+        # rubocop:enable AbcSize
         # rubocop:enable MethodLength
       end
     end
