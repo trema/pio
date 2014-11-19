@@ -7,6 +7,7 @@ module Pio
     # IP Version 4 Header Format
     module IPv4Header
       # rubocop:disable MethodLength
+      # rubocop:disable AbcSize
       def ipv4_header(options)
         class_eval do
           bit4 :ip_version, initial_value: 0x4
@@ -25,6 +26,7 @@ module Pio
           ip_address :ip_destination_address
         end
       end
+      # rubocop:enable AbcSize
       # rubocop:enable MethodLength
     end
   end
