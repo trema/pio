@@ -2,6 +2,7 @@
 
 require 'pio/echo/format'
 require 'pio/echo/message'
+require 'pio/open_flow/type'
 
 module Pio
   # OpenFlow Echo Request and Reply message parser.
@@ -38,7 +39,7 @@ module Pio
       #     bandwidth or zero-size(nil) to verify liveness between the
       #     switch and controller.
       def initialize(user_options = {})
-        super REPLY, user_options
+        super Pio::OpenFlow::Type::ECHO_REPLY, user_options
       end
     end
   end
