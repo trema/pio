@@ -15,10 +15,10 @@ describe Pio::Echo do
 
       Then { echo_request.class == Pio::Echo::Request }
       Then { echo_request.ofp_version == 1 }
-      Then { echo_request.message_type == Pio::Echo::REQUEST }
+      Then { echo_request.message_type == Pio::OpenFlow::Type::ECHO_REQUEST }
       Then { echo_request.message_length == 8 }
       Then { echo_request.xid == 0 }
-      Then { echo_request.data == '' }
+      Then { echo_request.user_data == '' }
       Then { echo_request.to_binary == echo_request_dump }
     end
 
@@ -33,10 +33,10 @@ describe Pio::Echo do
 
       Then { echo_reply.class == Pio::Echo::Reply }
       Then { echo_reply.ofp_version == 1 }
-      Then { echo_reply.message_type == Pio::Echo::REPLY }
+      Then { echo_reply.message_type == Pio::OpenFlow::Type::ECHO_REPLY }
       Then { echo_reply.message_length == 8 }
       Then { echo_reply.xid == 0 }
-      Then { echo_reply.data == '' }
+      Then { echo_reply.user_data == '' }
       Then { echo_reply.to_binary == echo_reply_dump }
     end
 
