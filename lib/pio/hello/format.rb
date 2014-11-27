@@ -1,6 +1,7 @@
 # encoding: utf-8
 
 require 'bindata'
+require 'pio/open_flow/type'
 
 module Pio
   class Hello
@@ -9,7 +10,9 @@ module Pio
       endian :big
 
       uint8 :ofp_version, value: 1
-      uint8 :message_type, initial_value: 0, assert: -> { value == 0 }
+      uint8 :message_type,
+            initial_value: OpenFlow::Type::HELLO,
+            assert: -> { value == OpenFlow::Type::HELLO }
       uint16 :message_length, initial_value: 8
       uint32 :transaction_id
       string :body  # ignored
