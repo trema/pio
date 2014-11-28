@@ -9,19 +9,13 @@ module Pio
     class Message
       extend Forwardable
 
-      def_delegators :@echo, :ofp_version
-      def_delegators :@echo, :message_type
-      def_delegators :@echo, :message_length
-      def_delegators :@echo, :transaction_id
-      def_delegator :@echo, :transaction_id, :xid
-      def_delegator :@echo, :body, :user_data
-      def_delegator :@echo, :to_binary_s, :to_binary
-
-      def self.create_from(echo)
-        message = allocate
-        message.instance_variable_set :@echo, echo
-        message
-      end
+      def_delegators :@format, :ofp_version
+      def_delegators :@format, :message_type
+      def_delegators :@format, :message_length
+      def_delegators :@format, :transaction_id
+      def_delegator :@format, :transaction_id, :xid
+      def_delegator :@format, :body, :user_data
+      def_delegator :@format, :to_binary_s, :to_binary
 
       def initialize(message_type, user_options = {})
         if user_options.respond_to?(:to_i)
@@ -33,7 +27,7 @@ module Pio
         else
           fail TypeError
         end
-        @echo = Format.new(@options)
+        @format = Format.new(@options)
       end
 
       private

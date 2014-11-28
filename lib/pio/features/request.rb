@@ -10,13 +10,13 @@ module Pio
     class Request < Message
       extend Forwardable
 
-      def_delegators :@features, :ofp_version
-      def_delegators :@features, :message_type
-      def_delegators :@features, :message_length
-      def_delegators :@features, :transaction_id
-      def_delegator :@features, :transaction_id, :xid
-      def_delegators :@features, :body
-      def_delegator :@features, :to_binary_s, :to_binary
+      def_delegators :@format, :ofp_version
+      def_delegators :@format, :message_type
+      def_delegators :@format, :message_length
+      def_delegators :@format, :transaction_id
+      def_delegator :@format, :transaction_id, :xid
+      def_delegators :@format, :body
+      def_delegator :@format, :to_binary_s, :to_binary
 
       # Creates a Features Request OpenFlow message.
       #
@@ -49,7 +49,7 @@ module Pio
         else
           fail TypeError
         end
-        @features = Format.new(@options)
+        @format = Format.new(@options)
       end
 
       private
