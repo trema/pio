@@ -17,25 +17,18 @@ module Pio
       def_delegator :@format, :body, :user_data
       def_delegator :@format, :to_binary_s, :to_binary
 
+      # This method smells of :reek:FeatureEnvy
       def initialize(message_type, user_options = {})
-        if user_options.respond_to?(:to_i)
-          @options = { transaction_id: user_options.to_i,
-                       message_type: message_type }
-        elsif user_options.respond_to?(:fetch)
-          @options = user_options.merge(message_type: message_type)
-          handle_user_hash_options
-        else
-          fail TypeError
-        end
-        @format = Format.new(@options)
-      end
-
-      private
-
-      def handle_user_hash_options
-        @options[:body] = @options[:user_data]
-        @options[:transaction_id] ||= @options[:xid]
-        @options[:transaction_id] = 0 unless @options[:transaction_id]
+        options = if user_options.respond_to?(:to_i)
+                    { transaction_id: user_options.to_i }
+                  elsif user_options.respond_to?(:fetch)
+                    { body: user_options[:user_data],
+                      transaction_id: user_options[:transaction_id] ||
+                                      user_options[:xid] || 0 }
+                  else
+                    fail TypeError
+                  end
+        @format = Format.new(options.merge(message_type: message_type))
       end
     end
   end
