@@ -1,8 +1,5 @@
 # encoding: utf-8
 
-notification :terminal_notifier
-notification :tmux, display_message: true
-
 guard :bundler do
   watch('Gemfile')
   watch(/^.+\.gemspec/)
