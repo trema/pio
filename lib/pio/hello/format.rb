@@ -1,20 +1,19 @@
 # encoding: utf-8
 
 require 'bindata'
-require 'pio/open_flow/type'
+require 'pio/open_flow'
 
 module Pio
-  class Hello
-    # OpenFlow 1.0 Hello message
+  class Hello < Pio::OpenFlow::Message
+    # OpenFlow 1.0 Hello message parser and generator.
     class Format < BinData::Record
+      include Pio::OpenFlow::Type
+
       endian :big
 
-      uint8 :ofp_version, value: 1
-      uint8 :message_type,
-            initial_value: OpenFlow::Type::HELLO,
-            assert: -> { value == OpenFlow::Type::HELLO }
-      uint16 :message_length, initial_value: 8
-      uint32 :transaction_id
+      open_flow_header :open_flow_header, message_type_value: HELLO
+      virtual assert: -> { open_flow_header.message_type == HELLO }
+
       string :body  # ignored
     end
   end

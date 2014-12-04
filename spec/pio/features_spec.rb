@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-require 'pio'
+require 'pio/features'
 
 describe Pio::Features do
   describe '.read' do
@@ -11,7 +11,10 @@ describe Pio::Features do
 
       Then { features_request.class == Pio::Features::Request }
       Then { features_request.ofp_version == 1 }
-      Then { features_request.message_type == Pio::Features::REQUEST }
+      Then do
+        features_request.message_type ==
+          Pio::OpenFlow::Type::FEATURES_REQUEST
+      end
       Then { features_request.message_length == 8 }
       Then { features_request.transaction_id == 0 }
       Then { features_request.xid == 0 }
@@ -54,7 +57,10 @@ describe Pio::Features do
 
       Then { features_reply.class == Pio::Features::Reply }
       Then { features_reply.ofp_version == 1 }
-      Then { features_reply.message_type == Pio::Features::REPLY }
+      Then do
+        features_reply.message_type ==
+          Pio::OpenFlow::Type::FEATURES_REPLY
+      end
       Then { features_reply.message_length == 272 }
       Then { features_reply.transaction_id == 2 }
       Then { features_reply.xid == 2 }

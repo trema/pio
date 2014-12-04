@@ -1,14 +1,26 @@
 # encoding: utf-8
 
 require 'bindata'
-require 'forwardable'
 require 'pio/features/message'
+require 'pio/open_flow'
 
 module Pio
   # OpenFlow 1.0 Features messages
   class Features
     # OpenFlow 1.0 Features Reply message
-    class Reply < Message
+    class Reply < Pio::OpenFlow::Message
+      # OpenFlow 1.0 Features request message.
+      class Format < BinData::Record
+        include Pio::OpenFlow::Type
+
+        endian :big
+
+        open_flow_header :open_flow_header, message_type_value: FEATURES_REPLY
+        virtual assert: -> { open_flow_header.message_type == FEATURES_REPLY }
+
+        string :body
+      end
+
       # Message body of Features Reply
       class Body < BinData::Record
         endian :big
@@ -22,20 +34,11 @@ module Pio
         array :ports, type: :phy_port, read_until: :eof
       end
 
-      extend Forwardable
-
-      def_delegators :@format, :ofp_version
-      def_delegators :@format, :message_type
-      def_delegators :@format, :message_length
-      def_delegators :@format, :transaction_id
-      def_delegator :@format, :transaction_id, :xid
-      def_delegators :@format, :body
-
       def initialize(user_options = {})
         @options = user_options.dup.merge(datapath_id: user_options[:dpid])
         body = Body.new(@options)
-        @format = Format.new(@options.merge(message_type: 6,
-                                            body: body.to_binary_s))
+        @format = Format.new(@options.merge(body: body.to_binary_s))
+        @format.open_flow_header.assign(@options.merge(message_type_value: 6))
       end
 
       def datapath_id
