@@ -23,8 +23,6 @@ module Pio
         end
       end
 
-      include Pio::OpenFlow::Type
-
       # Creates a Features Request OpenFlow message.
       #
       # @overload initialize()
@@ -47,28 +45,18 @@ module Pio
       #   @option user_options [Number] :transaction_id
       #   @option user_options [Number] :xid An alias to transaction_id.
       #
-      # rubocop:disable Metrics/MethodLength
+      # @reek This method smells of :reek:FeatureEnvy
       def initialize(user_options = {})
-        if user_options.respond_to?(:to_i)
-          @options = { transaction_id: user_options.to_i,
-                       message_type_value: FEATURES_REQUEST }
-        elsif user_options.respond_to?(:[])
-          @options =
-            user_options.dup.merge(message_type_value: FEATURES_REQUEST)
-          handle_user_hash_options
-        else
-          fail TypeError
-        end
-        @format = Format.new(@options)
-        @format.open_flow_header.assign(@options)
-      end
-      # rubocop:enable Metrics/MethodLength
-
-      private
-
-      def handle_user_hash_options
-        @options[:transaction_id] ||= @options[:xid]
-        @options[:transaction_id] = 0 unless @options[:transaction_id]
+        options = if user_options.respond_to?(:to_i)
+                    { open_flow_header: { transaction_id: user_options.to_i } }
+                  elsif user_options.respond_to?(:fetch)
+                    transaction_id =
+                      user_options[:transaction_id] || user_options[:xid] || 0
+                    { open_flow_header: { transaction_id: transaction_id } }
+                  else
+                    fail TypeError
+                  end
+        @format = Format.new(options)
       end
     end
   end
