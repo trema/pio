@@ -4,7 +4,7 @@ require 'pio/echo/format'
 require 'pio/echo/reply'
 require 'pio/echo/request'
 require 'pio/message_type_selector'
-require 'pio/open_flow/type'
+require 'pio/open_flow'
 
 module Pio
   # OpenFlow Echo Request and Reply message parser.

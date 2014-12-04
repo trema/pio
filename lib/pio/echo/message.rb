@@ -1,35 +1,25 @@
 # encoding: utf-8
 
-require 'forwardable'
-require 'bindata'
-
 module Pio
   class Echo
     # Base class of Echo request and reply.
-    class Message
-      extend Forwardable
-
-      def_delegators :@format, :ofp_version
-      def_delegators :@format, :message_type
-      def_delegators :@format, :message_length
-      def_delegators :@format, :transaction_id
-      def_delegator :@format, :transaction_id, :xid
-      def_delegator :@format, :body, :user_data
-      def_delegator :@format, :to_binary_s, :to_binary
-
-      # This method smells of :reek:FeatureEnvy
-      def initialize(message_type, user_options = {})
+    class Message < Pio::OpenFlow::Message
+      # @reek This method smells of :reek:FeatureEnvy
+      # rubocop:disable Metrics/MethodLength
+      def initialize(user_options = {})
         options = if user_options.respond_to?(:to_i)
-                    { transaction_id: user_options.to_i }
+                    { open_flow_header: { transaction_id: user_options.to_i } }
                   elsif user_options.respond_to?(:fetch)
-                    { body: user_options[:user_data],
-                      transaction_id: user_options[:transaction_id] ||
-                                      user_options[:xid] || 0 }
+                    transaction_id =
+                      user_options[:transaction_id] || user_options[:xid] || 0
+                    { open_flow_header: { transaction_id: transaction_id },
+                      body: user_options[:user_data] }
                   else
                     fail TypeError
                   end
-        @format = Format.new(options.merge(message_type: message_type))
+        @format = self.class.const_get(:Format).new(options)
       end
+      # rubocop:enable Metrics/MethodLength
     end
   end
 end

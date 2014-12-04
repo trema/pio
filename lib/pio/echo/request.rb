@@ -2,13 +2,17 @@
 
 require 'pio/echo/format'
 require 'pio/echo/message'
-require 'pio/open_flow/type'
+require 'pio/open_flow'
 
 module Pio
-  # OpenFlow Echo Request and Reply message parser.
   class Echo
     # OpenFlow 1.0 Echo Request message.
     class Request < Message
+      # OpenFlow 1.0 Echo request message generator.
+      class Format < Pio::Echo::Format
+        default_parameters message_type_value: Pio::OpenFlow::Type::ECHO_REQUEST
+      end
+
       # Creates an EchoRequest OpenFlow message. This message can be
       # used to measure the bandwidth of a controller/switch
       # connection as well as to verify its liveness.
@@ -38,9 +42,6 @@ module Pio
       #     timestamp to check latency, various lengths to measure
       #     bandwidth or zero-size(nil) to verify liveness between the
       #     switch and controller.
-      def initialize(user_options = {})
-        super Pio::OpenFlow::Type::ECHO_REQUEST, user_options
-      end
     end
   end
 end

@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-require 'pio'
+require 'pio/echo'
 
 describe Pio::Echo::Request do
   describe '.new' do

@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-require 'pio'
+require 'pio/features'
 
 describe Pio::Features::Reply do
   describe '.new' do
@@ -17,7 +17,7 @@ describe Pio::Features::Reply do
     When(:features_reply) { Pio::Features::Reply.new(options) }
 
     Then { features_reply.ofp_version == 1 }
-    Then { features_reply.message_type == Pio::Features::REPLY }
+    Then { features_reply.message_type == Pio::OpenFlow::Type::FEATURES_REPLY }
     Then { features_reply.transaction_id == 0 }
     Then { features_reply.xid == 0 }
     Then { features_reply.dpid == 0x123 }
