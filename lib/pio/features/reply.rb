@@ -18,58 +18,37 @@ module Pio
         open_flow_header :open_flow_header, message_type_value: FEATURES_REPLY
         virtual assert: -> { open_flow_header.message_type == FEATURES_REPLY }
 
-        string :body
+        struct :body do
+          uint64 :datapath_id
+          uint32 :n_buffers
+          uint8 :n_tables
+          uint24 :padding
+          uint32 :capabilities
+          uint32 :actions
+          array :ports, type: :phy_port, read_until: :eof
+        end
       end
 
-      # Message body of Features Reply
-      class Body < BinData::Record
-        endian :big
-
-        uint64 :datapath_id
-        uint32 :n_buffers
-        uint8 :n_tables
-        uint24 :padding
-        uint32 :capabilities
-        uint32 :actions
-        array :ports, type: :phy_port, read_until: :eof
-      end
+      def_delegators :@format, :body
+      def_delegators :body, :datapath_id
+      def_delegator :body, :datapath_id, :dpid
+      def_delegators :body, :n_buffers
+      def_delegators :body, :n_tables
+      def_delegators :body, :capabilities
+      def_delegators :body, :actions
+      def_delegators :body, :ports
 
       def initialize(user_options = {})
-        @options = user_options.dup.merge(datapath_id: user_options[:dpid])
-        body = Body.new(@options)
-        @format = Format.new(@options.merge(body: body.to_binary_s))
-        @format.open_flow_header.assign(@options.merge(message_type_value: 6))
-      end
-
-      def datapath_id
-        @body ||= Body.read(@format.body)
-        @body.datapath_id
-      end
-      alias_method :dpid, :datapath_id
-
-      def n_buffers
-        @body ||= Body.read(@format.body)
-        @body.n_buffers
-      end
-
-      def n_tables
-        @body ||= Body.read(@format.body)
-        @body.n_tables
-      end
-
-      def capabilities
-        @body ||= Body.read(@format.body)
-        @body.capabilities
-      end
-
-      def actions
-        @body ||= Body.read(@format.body)
-        @body.actions
-      end
-
-      def ports
-        @body ||= Body.read(@format.body)
-        @body.ports
+        body_options =
+          {
+            datapath_id: user_options[:dpid],
+            n_buffers: user_options[:n_buffers],
+            n_tables: user_options[:n_tables],
+            capabilities: user_options[:capabilities],
+            actions: user_options[:actions],
+            ports: user_options[:ports]
+          }
+        @format = Format.new(user_options.merge(body: body_options))
       end
     end
   end
