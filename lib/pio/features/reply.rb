@@ -29,7 +29,10 @@ module Pio
         end
       end
 
-      def_delegators :@format, :body
+      def datapath_id
+        @format.body.datapath_id
+      end
+
       def_delegators :body, :datapath_id
       def_delegator :body, :datapath_id, :dpid
       def_delegators :body, :n_buffers
@@ -38,7 +41,7 @@ module Pio
       def_delegators :body, :actions
       def_delegators :body, :ports
 
-      def initialize(user_options = {})
+      def initialize(user_options)
         body_options =
           {
             datapath_id: user_options[:dpid],

@@ -18,7 +18,9 @@ module Pio
         open_flow_header :open_flow_header, message_type_value: FEATURES_REQUEST
         virtual assert: -> { open_flow_header.message_type == FEATURES_REQUEST }
 
-        string :body
+        def body
+          ''
+        end
       end
 
       include Pio::OpenFlow::Type
