@@ -9,8 +9,11 @@ describe Pio::Features::Reply do
         dpid: 0x123,
         n_buffers: 0x100,
         n_tables: 0xfe,
-        capabilities: 0xc7,
-        actions: 0xfff
+        capabilities: [:flow_stats, :table_stats, :port_stats, :queue_stats,
+                       :arp_match_ip],
+        actions: [:output, :set_vlan_vid, :set_vlan_pcp, :strip_vlan,
+                  :set_dl_src, :set_dl_dst, :set_nw_src, :set_nw_dst,
+                  :set_nw_tos, :set_tp_src, :set_tp_dst, :enqueue]
       }
     end
 
@@ -23,8 +26,16 @@ describe Pio::Features::Reply do
     Then { features_reply.dpid == 0x123 }
     Then { features_reply.n_buffers == 0x100 }
     Then { features_reply.n_tables == 0xfe }
-    Then { features_reply.capabilities == 0xc7 }
-    Then { features_reply.actions == 0xfff }
+    Then do
+      features_reply.capabilities ==
+        [:flow_stats, :table_stats, :port_stats, :queue_stats, :arp_match_ip]
+    end
+    Then do
+      features_reply.actions ==
+        [:output, :set_vlan_vid, :set_vlan_pcp, :strip_vlan, :set_dl_src,
+         :set_dl_dst, :set_nw_src, :set_nw_dst, :set_nw_tos, :set_tp_src,
+         :set_tp_dst, :enqueue]
+    end
     Then { features_reply.ports == [] }
   end
 end

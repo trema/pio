@@ -71,8 +71,16 @@ describe Pio::Features do
       Then { features_reply.datapath_id == 0xe2fc0fae664d }
       Then { features_reply.n_buffers == 0x100 }
       Then { features_reply.n_tables == 0xfe }
-      Then { features_reply.capabilities == 0xc7 }
-      Then { features_reply.actions == 0xfff }
+      Then do
+        features_reply.capabilities ==
+          [:flow_stats, :table_stats, :port_stats, :queue_stats, :arp_match_ip]
+      end
+      Then do
+        features_reply.actions ==
+          [:output, :set_vlan_vid, :set_vlan_pcp, :strip_vlan, :set_dl_src,
+           :set_dl_dst, :set_nw_src, :set_nw_dst, :set_nw_tos, :set_tp_src,
+           :set_tp_dst, :enqueue]
+      end
       Then { features_reply.ports.size == 7 }
     end
 
