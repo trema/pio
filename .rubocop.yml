@@ -6,3 +6,6 @@ AllCops:
     - examples
     - pio.gemspec
     - tasks/*.rake
+
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
