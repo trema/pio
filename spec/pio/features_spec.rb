@@ -81,7 +81,31 @@ describe Pio::Features do
            :set_dl_dst, :set_nw_src, :set_nw_dst, :set_nw_tos, :set_tp_src,
            :set_tp_dst, :enqueue]
       end
-      Then { features_reply.ports.size == 7 }
+      Then { features_reply.ports.size == 5 }
+      Then { features_reply.ports.all? { |each| each.port_no > 0 } }
+      Then do
+        features_reply.ports.all? do |each|
+          /^([0-9a-fA-F]{2}[:-]){5}[0-9a-fA-F]{2}$/i=~
+            each.hardware_address.to_s
+        end
+      end
+      Then do
+        features_reply.ports.all? do |each|
+          /^veth.*|^br0$/=~ each.name
+        end
+      end
+      Then { features_reply.ports.all? { |each| each.config.empty? } }
+      Then { features_reply.ports.all? { |each| each.state.empty? } }
+      Then do
+        features_reply.ports.all? do |port|
+          port.curr.all? do |f|
+            Pio::Type::OpenFlow::PortFeature.list.include?(f)
+          end
+        end
+      end
+      Then { features_reply.ports.all? { |each| each.advertised.empty? } }
+      Then { features_reply.ports.all? { |each| each.supported.empty? } }
+      Then { features_reply.ports.all? { |each| each.peer.empty? } }
     end
 
     context 'with a Hello message' do

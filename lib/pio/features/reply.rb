@@ -9,61 +9,42 @@ module Pio
   class Features
     # OpenFlow 1.0 Features Reply message
     class Reply < Pio::OpenFlow::Message
-      # bitmap functions.
-      module Flags
-        def flags(name, flags)
-          def_get name, flags
-          def_set name, flags
-        end
-
-        def def_get(name, list)
-          str = %{
-            def get
-              list = #{list.inspect}
-              (0..(list.length - 1)).each_with_object([]) do |each, result|
-                result << list[each] if #{name} & (1 << each) != 0
-                result
-              end
-            end
-          }
-          module_eval str
-        end
-
-        def def_set(name, list)
-          str = %{
-            def set(v)
-              list = #{list.inspect}
-              v.each do |each|
-                fail "Invalid #{name} flag: \#{v}" unless list.include?(each)
-              end
-              self.#{name} = v.map { |each| 1 << list.index(each) }.inject(:|)
-            end
-          }
-          module_eval str
-        end
-      end
-
-      # ofp_capabilities
+      # enum ofp_capabilities
       class Capabilities < BinData::Primitive
         extend Flags
-        flags :capabilities,
-              [:flow_stats, :table_stats, :port_stats, :stp, :reserved,
-               :ip_reasm, :queue_stats, :arp_match_ip]
 
         endian :big
-        uint32 :capabilities
+
+        flags :capabilities,
+              :flow_stats,
+              :table_stats,
+              :port_stats,
+              :stp,
+              :reserved,
+              :ip_reasm,
+              :queue_stats,
+              :arp_match_ip
       end
 
-      # ofp_action_type
+      # enum ofp_action_type
       class Actions < BinData::Primitive
         extend Flags
-        flags :actions,
-              [:output, :set_vlan_vid, :set_vlan_pcp, :strip_vlan,
-               :set_dl_src, :set_dl_dst, :set_nw_src, :set_nw_dst,
-               :set_nw_tos, :set_tp_src, :set_tp_dst, :enqueue]
 
         endian :big
-        uint32 :actions
+
+        flags :actions,
+              :output,
+              :set_vlan_vid,
+              :set_vlan_pcp,
+              :strip_vlan,
+              :set_dl_src,
+              :set_dl_dst,
+              :set_nw_src,
+              :set_nw_dst,
+              :set_nw_tos,
+              :set_tp_src,
+              :set_tp_dst,
+              :enqueue
       end
 
       # OpenFlow 1.0 Features request message.
