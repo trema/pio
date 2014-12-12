@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 require 'bindata'
 require 'pio/type/ethernet_header'
 require 'pio/type/ipv4_header'

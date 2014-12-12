@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 # Packet parser and generator library.
 module Pio
   # Dhcp parser and generator.

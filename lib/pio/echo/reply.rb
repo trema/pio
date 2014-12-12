@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 require 'forwardable'
 require 'pio/echo/format'
 require 'pio/echo/message'

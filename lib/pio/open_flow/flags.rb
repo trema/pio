@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 # bitmap functions.
 module Flags
   # rubocop:disable MethodLength

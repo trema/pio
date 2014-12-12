@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 require 'English'
 require 'pio/hello/format'
 require 'pio/parse_error'

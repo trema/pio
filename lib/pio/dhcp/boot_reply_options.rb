@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 require 'pio/options'
 require 'pio/dhcp/common_options'
 require 'pio/dhcp/dhcp_tlv_options'

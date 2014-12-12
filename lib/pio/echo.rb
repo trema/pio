@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 require 'pio/echo/format'
 require 'pio/echo/reply'
 require 'pio/echo/request'

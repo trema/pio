@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'pio/version'
@@ -34,7 +32,7 @@ Gem::Specification.new do |gem|
   gem.test_files = Dir.glob('spec/**/*')
   gem.test_files += Dir.glob('features/**/*')
 
-  gem.required_ruby_version = '>= 1.9.3'
+  gem.required_ruby_version = '>= 2.0.0'
 
   gem.add_dependency 'bindata', '~> 2.1.0'
 

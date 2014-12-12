@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 require 'pio/echo'
 
 describe Pio::Echo do

@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 require 'pio/features/reply'
 require 'pio/features/request'
 require 'pio/open_flow'

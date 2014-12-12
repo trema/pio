@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 module Pio
   class Dhcp
     # Dhcp Field Read Methods.

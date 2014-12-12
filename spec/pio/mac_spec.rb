@@ -1,4 +1,3 @@
-#  coding: utf-8
 require 'pio/mac'
 
 describe Pio::Mac do

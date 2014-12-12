@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 Given(/^a packet data file "(.*?)"$/) do |name|
   path = File.expand_path(File.join(File.dirname(__FILE__),
                                     '..', 'packet_data', name))

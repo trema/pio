@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 require 'pio/type/ip_address'
 
 module Pio
