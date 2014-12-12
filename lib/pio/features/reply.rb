@@ -14,14 +14,14 @@ module Pio
         endian :big
 
         flags :capabilities,
-              :flow_stats,
-              :table_stats,
-              :port_stats,
-              :stp,
-              :reserved,
-              :ip_reasm,
-              :queue_stats,
-              :arp_match_ip
+              flow_stats: 1 << 0,
+              table_stats: 1 << 1,
+              port_stats: 1 << 2,
+              stp: 1 << 3,
+              reserved: 1 << 4,
+              ip_reasm: 1 << 5,
+              queue_stats: 1 << 6,
+              arp_match_ip: 1 << 7
       end
 
       # enum ofp_action_type
@@ -31,18 +31,18 @@ module Pio
         endian :big
 
         flags :actions,
-              :output,
-              :set_vlan_vid,
-              :set_vlan_pcp,
-              :strip_vlan,
-              :set_dl_src,
-              :set_dl_dst,
-              :set_nw_src,
-              :set_nw_dst,
-              :set_nw_tos,
-              :set_tp_src,
-              :set_tp_dst,
-              :enqueue
+              output: 1 << 0,
+              set_vlan_vid: 1 << 1,
+              set_vlan_pcp: 1 << 2,
+              strip_vlan: 1 << 3,
+              set_dl_src: 1 << 4,
+              set_dl_dst: 1 << 5,
+              set_nw_src: 1 << 6,
+              set_nw_dst: 1 << 7,
+              set_nw_tos: 1 << 8,
+              set_tp_src: 1 << 9,
+              set_tp_dst: 1 << 10,
+              enqueue: 1 << 11
       end
 
       # OpenFlow 1.0 Features request message.
@@ -78,6 +78,7 @@ module Pio
       def_delegators :body, :actions
       def_delegators :body, :ports
 
+      # @reek This method smells of :reek:FeatureEnvy
       def initialize(user_options)
         body_options =
           {

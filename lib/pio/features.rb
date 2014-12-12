@@ -20,8 +20,6 @@ module Pio
       message
     rescue KeyError
       raise Pio::ParseError, 'Invalid features request/reply message.'
-    rescue
-      raise Pio::ParseError, $ERROR_INFO.message
     end
     # rubocop:enable MethodLength
   end
