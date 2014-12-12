@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 require 'pio/arp/message'
 require 'pio/mac'
 require 'pio/options'

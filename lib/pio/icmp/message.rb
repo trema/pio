@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 require 'pio/icmp/format'
 require 'forwardable'
 

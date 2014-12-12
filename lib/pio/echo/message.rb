@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 module Pio
   class Echo
     # Base class of Echo request and reply.

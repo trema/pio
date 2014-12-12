@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 require 'pio/dhcp/parameter_list'
 require 'pio/dhcp/client_id'
 require 'pio/type/ip_address'

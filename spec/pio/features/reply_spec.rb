@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 require 'pio/features'
 
 describe Pio::Features::Reply do

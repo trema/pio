@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 require 'pio/dhcp/frame'
 require 'forwardable'
 
