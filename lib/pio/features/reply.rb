@@ -61,6 +61,7 @@ module Pio
           uint32 :n_buffers
           uint8 :n_tables
           uint24 :padding
+          hide :padding
           capabilities :capabilities
           actions :actions
           array :ports, type: :phy_port, read_until: :eof
