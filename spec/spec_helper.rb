@@ -1,27 +1,14 @@
-$LOAD_PATH.unshift File.join(File.dirname(__FILE__), '..', 'lib')
-
-require 'codeclimate-test-reporter'
-CodeClimate::TestReporter.start
-
 require 'simplecov'
-SimpleCov.start
+require 'codeclimate-test-reporter'
+require 'coveralls'
 
-require 'rspec'
+formatters = [SimpleCov::Formatter::HTMLFormatter]
+formatters << Coveralls::SimpleCov::Formatter if ENV['COVERALLS_REPO_TOKEN']
+if ENV['CODECLIMATE_REPO_TOKEN']
+  formatters << CodeClimate::TestReporter::Formatter
+end
+
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[*formatters]
+SimpleCov.start { add_filter '/vendor/' }
+
 require 'rspec/given'
-
-RSpec.configure do | config |
-  config.expect_with :rspec do | c |
-    c.syntax = :expect
-  end
-end
-
-# Requires supporting files with custom matchers and macros, etc,
-# in ./support/ and its subdirectories.
-Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each do | each |
-  require File.expand_path(each)
-end
-
-if ENV['TRAVIS']
-  require 'coveralls'
-  Coveralls.wear!
-end
