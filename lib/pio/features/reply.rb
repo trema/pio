@@ -45,6 +45,24 @@ module Pio
               enqueue: 1 << 11
       end
 
+      # Message body of features reply.
+      class Body < BinData::Record
+        endian :big
+
+        uint64 :datapath_id
+        uint32 :n_buffers
+        uint8 :n_tables
+        uint24 :padding
+        hide :padding
+        capabilities :capabilities
+        actions :actions
+        array :ports, type: :phy_port, read_until: :eof
+
+        def empty?
+          false
+        end
+      end
+
       # OpenFlow 1.0 Features request message.
       class Format < BinData::Record
         include Pio::OpenFlow::Type
@@ -54,16 +72,7 @@ module Pio
         open_flow_header :open_flow_header, message_type_value: FEATURES_REPLY
         virtual assert: -> { open_flow_header.message_type == FEATURES_REPLY }
 
-        struct :body do
-          uint64 :datapath_id
-          uint32 :n_buffers
-          uint8 :n_tables
-          uint24 :padding
-          hide :padding
-          capabilities :capabilities
-          actions :actions
-          array :ports, type: :phy_port, read_until: :eof
-        end
+        body :body
       end
 
       def datapath_id

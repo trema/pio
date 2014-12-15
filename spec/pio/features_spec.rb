@@ -52,10 +52,7 @@ describe Pio::Features do
       Then { reply.message_length == 176 }
       Then { reply.transaction_id == 2 }
       Then { reply.xid == 2 }
-      Then do
-        pending 'TODO'
-        !reply.body.empty?
-      end
+      Then { !reply.body.empty? }
       Then { reply.datapath_id == 1 }
       Then { reply.n_buffers == 0x100 }
       Then { reply.n_tables == 1 }
