@@ -1,5 +1,4 @@
 require 'bindata'
-require 'pio/features/message'
 require 'pio/open_flow'
 
 module Pio
