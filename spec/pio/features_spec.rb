@@ -91,7 +91,10 @@ describe Pio::Features do
 
       When(:result) { Pio::Features.read(hello_dump) }
 
-      Then { result == Failure(Pio::ParseError) }
+      Then do
+        result == Failure(Pio::ParseError,
+                          'Invalid features request/reply message.')
+      end
     end
   end
 end
