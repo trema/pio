@@ -29,10 +29,7 @@ describe Pio::Features::Request do
     context 'with 2**32' do
       When(:result) { Pio::Features::Request.new(2**32) }
 
-      Then do
-        pending 'check if xid is within 32bit range.'
-        result == Failure(ArgumentError)
-      end
+      Then { result == Failure(ArgumentError) }
     end
 
     context 'with transaction_id: 123' do

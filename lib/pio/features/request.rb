@@ -43,6 +43,7 @@ module Pio
       #   @option user_options [Number] :xid An alias to transaction_id.
       #
       # @reek This method smells of :reek:FeatureEnvy
+      # rubocop:disable MethodLength
       def initialize(user_options = {})
         options = if user_options.respond_to?(:to_i)
                     { open_flow_header: { transaction_id: user_options.to_i } }
@@ -53,8 +54,12 @@ module Pio
                   else
                     fail TypeError
                   end
+        if options[:open_flow_header][:transaction_id] >= 2**32
+          fail ArgumentError, 'Transaction ID >= 2**32'
+        end
         @format = Format.new(options)
       end
+      # rubocop:enable MethodLength
     end
   end
 end
