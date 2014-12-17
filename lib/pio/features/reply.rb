@@ -1,15 +1,50 @@
-# encoding: utf-8
-
 require 'bindata'
-require 'forwardable'
-require 'pio/features/message'
+require 'pio/open_flow'
 
 module Pio
   # OpenFlow 1.0 Features messages
   class Features
     # OpenFlow 1.0 Features Reply message
-    class Reply < Message
-      # Message body of Features Reply
+    class Reply < Pio::OpenFlow::Message
+      # enum ofp_capabilities
+      class Capabilities < BinData::Primitive
+        extend Flags
+
+        endian :big
+
+        flags :capabilities,
+              flow_stats: 1 << 0,
+              table_stats: 1 << 1,
+              port_stats: 1 << 2,
+              stp: 1 << 3,
+              reserved: 1 << 4,
+              ip_reasm: 1 << 5,
+              queue_stats: 1 << 6,
+              arp_match_ip: 1 << 7
+      end
+
+      # enum ofp_action_type
+      class Actions < BinData::Primitive
+        extend Flags
+
+        endian :big
+
+        flags :actions,
+              output: 1 << 0,
+              set_vlan_vid: 1 << 1,
+              set_vlan_pcp: 1 << 2,
+              strip_vlan: 1 << 3,
+              set_dl_src: 1 << 4,
+              set_dl_dst: 1 << 5,
+              set_nw_src: 1 << 6,
+              set_nw_dst: 1 << 7,
+              set_nw_tos: 1 << 8,
+              set_tp_src: 1 << 9,
+              set_tp_dst: 1 << 10,
+              enqueue: 1 << 11
+      end
+
+      # Message body of features reply.
       class Body < BinData::Record
         endian :big
 
@@ -17,56 +52,56 @@ module Pio
         uint32 :n_buffers
         uint8 :n_tables
         uint24 :padding
-        uint32 :capabilities
-        uint32 :actions
+        hide :padding
+        capabilities :capabilities
+        actions :actions
         array :ports, type: :phy_port, read_until: :eof
+
+        def empty?
+          false
+        end
+
+        def length
+          24 + ports.to_binary_s.length
+        end
       end
 
-      extend Forwardable
+      # OpenFlow 1.0 Features request message.
+      class Format < BinData::Record
+        include Pio::OpenFlow::Type
 
-      def_delegators :@features, :ofp_version
-      def_delegators :@features, :message_type
-      def_delegators :@features, :message_length
-      def_delegators :@features, :transaction_id
-      def_delegator :@features, :transaction_id, :xid
-      def_delegators :@features, :body
+        endian :big
 
-      def initialize(user_options = {})
-        @options = user_options.dup.merge(datapath_id: user_options[:dpid])
-        body = Body.new(@options)
-        @features = Format.new(@options.merge(message_type: 6,
-                                              body: body.to_binary_s))
+        open_flow_header :open_flow_header, message_type_value: FEATURES_REPLY
+        virtual assert: -> { open_flow_header.message_type == FEATURES_REPLY }
+
+        body :body
       end
 
       def datapath_id
-        @body ||= Body.read(@features.body)
-        @body.datapath_id
-      end
-      alias_method :dpid, :datapath_id
-
-      def n_buffers
-        @body ||= Body.read(@features.body)
-        @body.n_buffers
+        @format.body.datapath_id
       end
 
-      def n_tables
-        @body ||= Body.read(@features.body)
-        @body.n_tables
-      end
+      def_delegators :body, :datapath_id
+      def_delegator :body, :datapath_id, :dpid
+      def_delegators :body, :n_buffers
+      def_delegators :body, :n_tables
+      def_delegators :body, :capabilities
+      def_delegators :body, :actions
+      def_delegators :body, :ports
 
-      def capabilities
-        @body ||= Body.read(@features.body)
-        @body.capabilities
-      end
-
-      def actions
-        @body ||= Body.read(@features.body)
-        @body.actions
-      end
-
-      def ports
-        @body ||= Body.read(@features.body)
-        @body.ports
+      # @reek This method smells of :reek:FeatureEnvy
+      def initialize(user_options)
+        body_options =
+          {
+            datapath_id: user_options[:dpid],
+            n_buffers: user_options[:n_buffers],
+            n_tables: user_options[:n_tables],
+            capabilities: user_options[:capabilities],
+            actions: user_options[:actions],
+            ports: user_options[:ports]
+          }
+        @format = Format.new(user_options.merge(body: body_options))
       end
     end
   end

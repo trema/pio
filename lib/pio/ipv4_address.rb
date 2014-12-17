@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 require 'forwardable'
 require 'ipaddr'
 
@@ -59,9 +57,7 @@ module Pio
     # @return [Array]
     #    an array of decimal numbers converted from IPv4 address.
     def to_a
-      to_s.split('.').map do | each |
-        each.to_i
-      end
+      to_s.split('.').map(&:to_i)
     end
 
     # @return [Array]

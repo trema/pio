@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 require 'forwardable'
 
 module Pio
@@ -90,9 +88,7 @@ module Pio
     # @return [Array]
     #
     def to_a
-      to_s.split(':').map do | each |
-        each.hex
-      end
+      to_s.split(':').map(&:hex)
     end
 
     # @!endgroup
@@ -131,7 +127,7 @@ module Pio
     #   Mac.new("11:22:33:44:55:66").reserved? #=> false
     #
     def reserved?
-      ( to_i >> 8) == 0x0180c20000
+      (to_i >> 8) == 0x0180c20000
     end
 
     # @!endgroup

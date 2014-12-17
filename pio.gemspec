@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'pio/version'
@@ -34,37 +32,37 @@ Gem::Specification.new do |gem|
   gem.test_files = Dir.glob('spec/**/*')
   gem.test_files += Dir.glob('features/**/*')
 
-  gem.required_ruby_version = '>= 1.9.3'
+  gem.required_ruby_version = '>= 2.0.0'
 
   gem.add_dependency 'bindata', '~> 2.1.0'
 
   gem.add_development_dependency 'rake'
-  gem.add_development_dependency 'bundler', '~> 1.6.2'
-  gem.add_development_dependency 'pry', '~> 0.9.12.6'
+  gem.add_development_dependency 'bundler', '~> 1.7.6'
+  gem.add_development_dependency 'pry', '~> 0.10.1'
 
   # Guard
-  gem.add_development_dependency 'guard', '~> 2.6.1'
+  gem.add_development_dependency 'guard', '~> 2.8.2'
   gem.add_development_dependency 'guard-bundler', '~> 2.0.0'
-  gem.add_development_dependency 'guard-cucumber', '~> 1.4.1'
-  gem.add_development_dependency 'guard-rspec', '~> 4.2.9'
-  gem.add_development_dependency 'guard-rubocop', '~> 1.1.0'
+  gem.add_development_dependency 'guard-cucumber', '~> 1.5.1'
+  gem.add_development_dependency 'guard-rspec', '~> 4.3.1'
+  gem.add_development_dependency 'guard-rubocop', '~> 1.2.0'
   gem.add_development_dependency 'rb-fchange', '~> 0.0.6'
   gem.add_development_dependency 'rb-fsevent', '~> 0.9.4'
-  gem.add_development_dependency 'rb-inotify', '~> 0.9.3'
-  gem.add_development_dependency 'terminal-notifier-guard', '~> 1.5.3'
+  gem.add_development_dependency 'rb-inotify', '~> 0.9.5'
+  gem.add_development_dependency 'terminal-notifier-guard', '~> 1.6.4'
 
   # Docs
-  gem.add_development_dependency 'inch', '~> 0.4.6'
-  gem.add_development_dependency 'yard', '~> 0.8.7.4'
+  gem.add_development_dependency 'inch', '~> 0.5.7'
+  gem.add_development_dependency 'yard', '~> 0.8.7.6'
 
   # Test
-  gem.add_development_dependency 'codeclimate-test-reporter', '~> 0.3.0'
-  gem.add_development_dependency 'coveralls', '~> 0.7.0'
-  gem.add_development_dependency 'cucumber', '~> 1.3.15'
+  gem.add_development_dependency 'codeclimate-test-reporter', '~> 0.4.1'
+  gem.add_development_dependency 'coveralls', '~> 0.7.2'
+  gem.add_development_dependency 'cucumber', '~> 1.3.17'
   gem.add_development_dependency 'flay', '~> 2.5.0'
-  gem.add_development_dependency 'flog', '~> 4.2.1'
-  gem.add_development_dependency 'reek', '~> 1.3.7'
-  gem.add_development_dependency 'rspec', '~> 3.0.0'
+  gem.add_development_dependency 'flog', '~> 4.3.0'
+  gem.add_development_dependency 'reek', '~> 1.4.0'
+  gem.add_development_dependency 'rspec', '~> 3.1.0'
   gem.add_development_dependency 'rspec-given', '~> 3.5.4'
-  gem.add_development_dependency 'rubocop', '~> 0.23.0'
+  gem.add_development_dependency 'rubocop', '~> 0.27.1'
 end

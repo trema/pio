@@ -5,26 +5,26 @@ bundler_args: --without development
 
 env:
   global:
-    - "KbWY/i2xysF1PMc/51tWxJGinJiUY/zpc32b7MDUwMUrl5IoPA7Ick7prgVaJHau1/ug8lIOwzx9YT+ph/Kej3BFmPkYE4qyCv9m23I4Vlc53qA5jroFUvjuiTpiCE83HiW0xzEhvEMXF35Yusso4RshCpstH3hC/rE90PQxIcM="
+    - secure: KbWY/i2xysF1PMc/51tWxJGinJiUY/zpc32b7MDUwMUrl5IoPA7Ick7prgVaJHau1/ug8lIOwzx9YT+ph/Kej3BFmPkYE4qyCv9m23I4Vlc53qA5jroFUvjuiTpiCE83HiW0xzEhvEMXF35Yusso4RshCpstH3hC/rE90PQxIcM=
+    - secure: cbR8GBZyaDxE54pfGkfzhuTQEh3mpcghrx95dL42df3Ei9s3DHCI2Q/yDChUMY3eeqzHUNAt9fPQeDZsMG/aHUrh775bebh28M8zSkUYzv6x1diPnDtywXGutW7MKGak6jw8F+45J6TW4IxNFYMmuWyBu9HOd5VkqWRKvezvqc8=
 
 rvm:
-  - 1.9.3
   - 2.0.0
   - 2.1.0
   - ruby-head
-
+  
 matrix:
   allow_failures:
     - rvm: 2.1.0
     - rvm: ruby-head
   fast_finish: true
-
+  
 script: bundle exec rake travis
 
 notifications:
   webhooks:
     urls:
       - https://webhooks.gitter.im/e/ce8abcdff1f9c912333f
-    on_success: alawys  # options: [always|never|change] default: always
-    on_failure: always  # options: [always|never|change] default: always
-    on_start: always    # default: false
+    on_success: alawys
+    on_failure: always
+    on_start: always

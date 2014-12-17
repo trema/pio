@@ -1,17 +1,21 @@
-# encoding: utf-8
-
 require 'bindata'
-require 'pio/type/open_flow'
+require 'pio/open_flow'
 
 module Pio
   class Echo
-    # OpenFlow 1.0 Echo message format.
+    # OpenFlow 1.0 Echo request and reply message parser.
     class Format < BinData::Record
-      extend Type::OpenFlow
+      include Pio::OpenFlow::Type
+
+      def message_type
+        open_flow_header.message_type
+      end
 
       endian :big
 
-      openflow_header
+      open_flow_header :open_flow_header
+      virtual assert: -> { [ECHO_REQUEST, ECHO_REPLY].include?(message_type) }
+
       string :body
     end
   end

@@ -1,10 +1,11 @@
 # Pio
 
-<a href='https://rubygems.org/gems/pio'><img src='http://img.shields.io/gem/v/pio.svg' alt='Gem Version' /></a>
-<a href='https://travis-ci.org/trema/pio'><img src='http://img.shields.io/travis/trema/pio/develop.svg' alt='Build Status' /></a>
-<a href='https://codeclimate.com/github/trema/pio'><img src='http://img.shields.io/codeclimate/github/trema/pio.svg' alt='Code Climate' /></a>
-<a href='https://coveralls.io/r/trema/pio?branch=develop'><img src='http://img.shields.io/coveralls/trema/pio/develop.svg' alt='Coverage Status' /></a>
-<a href='https://gemnasium.com/trema/pio'><img src='https://gemnasium.com/trema/pio.svg' alt='Dependency Status' /></a>
+<a href='https://rubygems.org/gems/pio'><img src='http://img.shields.io/gem/v/pio.svg?style=flat' alt='Gem Version' /></a>
+<a href='https://travis-ci.org/trema/pio'><img src='http://img.shields.io/travis/trema/pio/develop.svg?style=flat' alt='Build Status' /></a>
+<a href='https://codeclimate.com/github/trema/pio'><img src='http://img.shields.io/codeclimate/github/trema/pio.svg?style=flat' alt='Code Climate' /></a>
+<a href='https://coveralls.io/r/trema/pio?branch=develop'><img src='http://img.shields.io/coveralls/trema/pio/develop.svg?style=flat' alt='Coverage Status' /></a>
+<a href='https://gemnasium.com/trema/pio'><img src='http://img.shields.io/gemnasium/trema/pio.svg?style=flat' alt='Dependency Status' /></a>
+<a href='https://gitter.im/trema/pio'><img src='https://badges.gitter.im/Join Chat.svg?style=flat' alt='Gitter Chat' /></a>
 <a href="http://inch-pages.github.io/github/trema/pio"><img src="http://inch-pages.github.io/github/trema/pio.svg" alt="Inline docs"></a>
 
 <a href="http://www.flickr.com/photos/mongogushi/4226014070/" title="pio pencil by mongo gushi, on Flickr"><img src="http://farm5.staticflickr.com/4022/4226014070_cdeb7c1e5d_n.jpg" width="320" height="290" alt="pio pencil"></a>
@@ -228,12 +229,23 @@ generate an Features Request/Reply message like below:
 
     # The Features xid (transaction_id)
     # should be same as that of the request.
-    reply = Pio::Features::Reply.new(xid: request.xid,
-                                     dpid: 0x123,
-                                     n_buffers: 0x100,
-                                     n_tables: 0xfe,
-                                     capabilities: 0xc7,
-                                     actions: 0xfff)
+    reply = Pio::Features::Reply.new(
+              xid: request.xid,
+              dpid: 0x123,
+              n_buffers: 0x100,
+              n_tables: 0xfe,
+              capabilities: [:flow_stats, :table_stats, :port_stats,
+                             :queue_stats, :arp_match_ip],
+              actions: [:output, :set_vlan_vid, :set_vlan_pcp, :strip_vlan,
+                        :set_dl_src, :set_dl_dst, :set_nw_src, :set_nw_dst,
+                        :set_nw_tos, :set_tp_src, :set_tp_dst, :enqueue],
+              ports: [{ port_no: 1,
+                        hardware_address: '11:22:33:44:55:66',
+                        name: 'port123',
+                        config: [:port_down],
+                        state: [:link_down],
+                        curr: [:port_10gb_fd, :port_copper] }]
+            )
     reply.to_binary  # => Features Reply message in binary format.
 
 ## Installation
@@ -269,4 +281,5 @@ and install it by running Bundler:
 ## License
 
 Pio is released under the GNU General Public License version 3.0:
+
 -   <http://www.gnu.org/licenses/gpl.html>

@@ -1,6 +1,5 @@
-# encoding: utf-8
-
 require 'English'
+require 'pio/parse_error'
 
 module Pio
   # Macros for defining message types.
@@ -10,8 +9,10 @@ module Pio
     end
 
     def read(raw_data)
-      parsed = const_get(:Format).read(raw_data)
-      const_get(:MESSAGE_TYPE)[parsed.message_type].create_from parsed
+      format = const_get(:Format).read(raw_data)
+      message = const_get(:MESSAGE_TYPE)[format.message_type].allocate
+      message.instance_variable_set :@format, format
+      message
     rescue
       raise Pio::ParseError, $ERROR_INFO.message
     end

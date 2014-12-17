@@ -1,6 +1,4 @@
-# encoding: utf-8
-
-require 'pio'
+require 'pio/features'
 
 describe Pio::Features::Request do
   describe '.new' do
@@ -8,7 +6,7 @@ describe Pio::Features::Request do
       When(:request) { Pio::Features::Request.new }
 
       Then { request.ofp_version == 1 }
-      Then { request.message_type == Pio::Features::REQUEST }
+      Then { request.message_type == Pio::OpenFlow::Type::FEATURES_REQUEST }
       Then { request.message_length == 8 }
       Then { request.transaction_id == 0 }
       Then { request.xid == 0 }
@@ -20,7 +18,7 @@ describe Pio::Features::Request do
       When(:request) { Pio::Features::Request.new(123) }
 
       Then { request.ofp_version == 1 }
-      Then { request.message_type == Pio::Features::REQUEST }
+      Then { request.message_type == Pio::OpenFlow::Type::FEATURES_REQUEST }
       Then { request.message_length == 8 }
       Then { request.transaction_id == 123 }
       Then { request.xid == 123 }
@@ -31,17 +29,14 @@ describe Pio::Features::Request do
     context 'with 2**32' do
       When(:result) { Pio::Features::Request.new(2**32) }
 
-      Then do
-        pending 'check if xid is within 32bit range.'
-        result == Failure(ArgumentError)
-      end
+      Then { result == Failure(ArgumentError) }
     end
 
     context 'with transaction_id: 123' do
       When(:request) { Pio::Features::Request.new(transaction_id: 123) }
 
       Then { request.ofp_version == 1 }
-      Then { request.message_type == Pio::Features::REQUEST }
+      Then { request.message_type == Pio::OpenFlow::Type::FEATURES_REQUEST }
       Then { request.message_length == 8 }
       Then { request.transaction_id == 123 }
       Then { request.xid == 123 }
@@ -53,7 +48,7 @@ describe Pio::Features::Request do
       When(:request) { Pio::Features::Request.new(xid: 123) }
 
       Then { request.ofp_version == 1 }
-      Then { request.message_type == Pio::Features::REQUEST }
+      Then { request.message_type == Pio::OpenFlow::Type::FEATURES_REQUEST }
       Then { request.message_length == 8 }
       Then { request.transaction_id == 123 }
       Then { request.xid == 123 }

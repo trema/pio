@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 require 'bindata'
 require 'pio/ipv4_address'
 

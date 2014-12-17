@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 require 'pio'
 
 describe Pio::Arp::Reply::Options, '.new' do

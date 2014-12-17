@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 require 'pio/icmp/message'
 require 'pio/icmp/options'
 require 'pio/mac'

@@ -1,6 +1,4 @@
-# encoding: utf-8
-
-require 'pio'
+require 'pio/hello'
 
 describe Pio::Hello do
   describe '.read' do

@@ -1,22 +1,24 @@
-# encoding: utf-8
-
 require 'forwardable'
-require 'pio/features/message'
+require 'pio/open_flow'
 
 module Pio
   # OpenFlow 1.0 Features messages
   class Features
     # OpenFlow 1.0 Features Request message
-    class Request < Message
-      extend Forwardable
+    class Request < Pio::OpenFlow::Message
+      # OpenFlow 1.0 Features Request format
+      class Format < BinData::Record
+        include Pio::OpenFlow::Type
 
-      def_delegators :@features, :ofp_version
-      def_delegators :@features, :message_type
-      def_delegators :@features, :message_length
-      def_delegators :@features, :transaction_id
-      def_delegator :@features, :transaction_id, :xid
-      def_delegators :@features, :body
-      def_delegator :@features, :to_binary_s, :to_binary
+        endian :big
+
+        open_flow_header :open_flow_header, message_type_value: FEATURES_REQUEST
+        virtual assert: -> { open_flow_header.message_type == FEATURES_REQUEST }
+
+        def body
+          ''
+        end
+      end
 
       # Creates a Features Request OpenFlow message.
       #
@@ -39,25 +41,25 @@ module Pio
       #     The options to create a message with.
       #   @option user_options [Number] :transaction_id
       #   @option user_options [Number] :xid An alias to transaction_id.
+      #
+      # @reek This method smells of :reek:FeatureEnvy
+      # rubocop:disable MethodLength
       def initialize(user_options = {})
-        if user_options.respond_to?(:to_i)
-          @options = { transaction_id: user_options.to_i,
-                       message_type: 5 }
-        elsif user_options.respond_to?(:[])
-          @options = user_options.dup.merge(message_type: 5)
-          handle_user_hash_options
-        else
-          fail TypeError
+        options = if user_options.respond_to?(:to_i)
+                    { open_flow_header: { transaction_id: user_options.to_i } }
+                  elsif user_options.respond_to?(:fetch)
+                    transaction_id =
+                      user_options[:transaction_id] || user_options[:xid] || 0
+                    { open_flow_header: { transaction_id: transaction_id } }
+                  else
+                    fail TypeError
+                  end
+        if options[:open_flow_header][:transaction_id] >= 2**32
+          fail ArgumentError, 'Transaction ID >= 2**32'
         end
-        @features = Format.new(@options)
+        @format = Format.new(options)
       end
-
-      private
-
-      def handle_user_hash_options
-        @options[:transaction_id] ||= @options[:xid]
-        @options[:transaction_id] = 0 unless @options[:transaction_id]
-      end
+      # rubocop:enable MethodLength
     end
   end
 end

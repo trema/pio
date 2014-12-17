@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 require 'pio/arp/format'
 require 'pio/arp/request'
 require 'pio/arp/reply'

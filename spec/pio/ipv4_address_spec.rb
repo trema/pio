@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 require 'pio/ipv4_address'
 
 describe Pio::IPv4Address do
