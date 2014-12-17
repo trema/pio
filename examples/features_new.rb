@@ -14,6 +14,12 @@ reply = Pio::Features::Reply.new(
                          :queue_stats, :arp_match_ip],
           actions: [:output, :set_vlan_vid, :set_vlan_pcp, :strip_vlan,
                     :set_dl_src, :set_dl_dst, :set_nw_src, :set_nw_dst,
-                    :set_nw_tos, :set_tp_src, :set_tp_dst, :enqueue]
+                    :set_nw_tos, :set_tp_src, :set_tp_dst, :enqueue],
+          ports: [{ port_no: 1,
+                    hardware_address: '11:22:33:44:55:66',
+                    name: 'port123',
+                    config: [:port_down],
+                    state: [:link_down],
+                    curr: [:port_10gb_fd, :port_copper] }]
         )
 reply.to_binary  # => Features Reply message in binary format.

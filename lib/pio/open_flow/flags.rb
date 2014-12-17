@@ -30,7 +30,7 @@ module Flags
         v.each do |each|
           fail "Invalid state flag: \#{v}" unless list.keys.include?(each)
         end
-        self.#{name} = v.map { |each| list[each] }.inject(:|)
+        self.#{name} = v.empty? ? 0 : v.map { |each| list[each] }.inject(:|)
       end
     }
     module_eval str

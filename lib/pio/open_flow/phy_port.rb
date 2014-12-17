@@ -61,7 +61,7 @@ module Pio
 
         uint16 :port_no
         mac_address :hardware_address
-        string :name, read_length: 16, trim_padding: true
+        string :name, length: 16, trim_padding: true
         port_config :config
         port_state :state
         port_feature :curr

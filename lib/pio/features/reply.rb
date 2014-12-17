@@ -60,6 +60,10 @@ module Pio
         def empty?
           false
         end
+
+        def length
+          24 + ports.to_binary_s.length
+        end
       end
 
       # OpenFlow 1.0 Features request message.
