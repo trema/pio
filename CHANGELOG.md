@@ -3,7 +3,7 @@
 ## 0.8.2 (12/18/2014)
 
 ### Bugs fixed
-* #100: Fix bug when passing `ports:` option to `Pio::Features::Request.new`.
+* [#100](https://github.com/trema/pio/pull/100): Fix bug when passing `ports:` option to `Pio::Features::Request.new`.
 
 
 ## 0.8.1 (6/5/2014)
