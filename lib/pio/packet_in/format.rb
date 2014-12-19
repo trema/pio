@@ -8,15 +8,19 @@ module Pio
       endian :big
 
       uint32 :buffer_id
-      uint16 :total_len
+      uint16 :total_len, value: -> { data.length }
       uint16 :in_port
       uint8 :reason
       uint8 :padding
       hide :padding
-      string :data, length: :total_len
+      string :data, read_length: :total_len
 
       def empty?
         false
+      end
+
+      def length
+        10 + data.length
       end
     end
 

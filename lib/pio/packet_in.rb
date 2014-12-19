@@ -14,5 +14,12 @@ module Pio
     def_delegators :body, :in_port
     def_delegators :body, :reason
     def_delegators :body, :data
+
+    # @reek This method smells of :reek:FeatureEnvy
+    def initialize(user_options)
+      header_options = { transaction_id: user_options[:transaction_id] ||
+                                         user_options[:xid] || 0 }
+      @format = Format.new(open_flow_header: header_options, body: user_options)
+    end
   end
 end
