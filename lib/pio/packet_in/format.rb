@@ -5,6 +5,16 @@ module Pio
   class PacketIn < Pio::OpenFlow::Message
     # Message body of Packet-In.
     class Body < BinData::Record
+      endian :big
+
+      uint32 :buffer_id
+      uint16 :total_len
+      uint16 :in_port
+      uint8 :reason
+      uint8 :padding
+      hide :padding
+      string :data, length: :total_len
+
       def empty?
         false
       end
@@ -17,6 +27,7 @@ module Pio
       endian :big
 
       open_flow_header :open_flow_header, message_type_value: PACKET_IN
+
       body :body
     end
   end
