@@ -1,4 +1,5 @@
 require 'pio/packet_in/format'
+require 'pio/parse_error'
 
 module Pio
   # OpenFlow 1.0 Packet-In message
@@ -7,6 +8,8 @@ module Pio
       packet_in = allocate
       packet_in.instance_variable_set :@format, Format.read(raw_data)
       packet_in
+    rescue BinData::ValidityError
+      raise Pio::ParseError, 'Invalid Packet-In message.'
     end
 
     def_delegators :body, :buffer_id

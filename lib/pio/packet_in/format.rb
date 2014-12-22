@@ -31,6 +31,7 @@ module Pio
       endian :big
 
       open_flow_header :open_flow_header, message_type_value: PACKET_IN
+      virtual assert: -> { open_flow_header.message_type == PACKET_IN }
 
       body :body
     end
