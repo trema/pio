@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.9.0 (12/22/2014)
+
+### New features
+* [#102](https://github.com/trema/pio/pull/102): Added new class `Pio::PacketIn`.
+
+
 ## 0.8.2 (12/18/2014)
 
 ### Bugs fixed
