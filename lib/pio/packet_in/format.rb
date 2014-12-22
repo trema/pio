@@ -3,6 +3,22 @@ require 'pio/open_flow'
 
 module Pio
   class PacketIn < Pio::OpenFlow::Message
+    # Why is this packet being sent to the controller?
+    # (enum ofp_packet_in_reason)
+    class Reason < BinData::Primitive
+      REASONS = { no_match: 0, action: 1 }
+
+      uint8 :reason
+
+      def get
+        REASONS.invert.fetch(reason)
+      end
+
+      def set(value)
+        self.reason = REASONS.fetch(value)
+      end
+    end
+
     # Message body of Packet-In.
     class Body < BinData::Record
       endian :big
@@ -10,7 +26,7 @@ module Pio
       uint32 :buffer_id
       uint16 :total_len, value: -> { data.length }
       uint16 :in_port
-      uint8 :reason
+      reason :reason
       uint8 :padding
       hide :padding
       string :data, read_length: :total_len

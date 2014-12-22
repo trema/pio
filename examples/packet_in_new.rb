@@ -13,7 +13,7 @@ packet_in = Pio::PacketIn.new(
               transaction_id: 0,
               buffer_id: 0xffffff00,
               in_port: 1,
-              reason: 0,
+              reason: :no_match,
               data: data_dump
             )
 packet_in.to_binary  # => Packet-In message in binary format.

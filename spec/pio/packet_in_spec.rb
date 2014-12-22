@@ -47,7 +47,7 @@ describe Pio::PacketIn do
       Then { packet_in.buffer_id == 0xffffff00 }
       Then { packet_in.total_len == 0x3c }
       Then { packet_in.in_port == 1 }
-      Then { packet_in.reason == 0 }
+      Then { packet_in.reason == :no_match }
       Then { packet_in.data == data_dump }
     end
 
@@ -57,7 +57,7 @@ describe Pio::PacketIn do
           transaction_id: 0,
           buffer_id: 0xffffff00,
           in_port: 1,
-          reason: 0,
+          reason: :no_match,
           data: data_dump
         ).to_binary
       end
@@ -74,7 +74,7 @@ describe Pio::PacketIn do
       Then { packet_in.buffer_id == 0xffffff00 }
       Then { packet_in.total_len == 0x3c }
       Then { packet_in.in_port == 1 }
-      Then { packet_in.reason == 0 }
+      Then { packet_in.reason == :no_match }
       Then { packet_in.data == data_dump }
     end
 
@@ -98,7 +98,7 @@ describe Pio::PacketIn do
           transaction_id: 0x123,
           buffer_id: 0xffffff00,
           in_port: 1,
-          reason: 0,
+          reason: :no_match,
           data: data_dump
         }
       end
@@ -112,7 +112,7 @@ describe Pio::PacketIn do
       Then { !packet_in.body.empty? }
       Then { packet_in.buffer_id == 0xffffff00 }
       Then { packet_in.in_port == 1 }
-      Then { packet_in.reason == 0 }
+      Then { packet_in.reason == :no_match }
       Then { packet_in.data == data_dump }
     end
 
@@ -122,7 +122,7 @@ describe Pio::PacketIn do
           xid: 0x123,
           buffer_id: 0xffffff00,
           in_port: 1,
-          reason: 0,
+          reason: :no_match,
           data: data_dump
         }
       end
@@ -136,7 +136,7 @@ describe Pio::PacketIn do
       Then { !packet_in.body.empty? }
       Then { packet_in.buffer_id == 0xffffff00 }
       Then { packet_in.in_port == 1 }
-      Then { packet_in.reason == 0 }
+      Then { packet_in.reason == :no_match }
       Then { packet_in.data == data_dump }
     end
   end
