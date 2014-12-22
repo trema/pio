@@ -29,6 +29,7 @@ supports the following packet formats:
    - Hello
    - Echo
    - Features
+   - Packet-In
  - (...currently there are just a few formats supported but I'm sure this list will grow)
 
 ** Features Overview
@@ -118,6 +119,17 @@ Also you can use =Pio::Features::Request#new= or =Pio::Features::Reply#new= to
 generate an Features Request/Reply message like below:
 
 #+INCLUDE: "./examples/features_new.rb" src ruby
+*** Packet-In
+To parse an OpenFlow 1.0 Packet-In message, use the API
+=Pio::PacketIn.read= and you can access each field of the parsed
+Packet-In message.
+
+#+INCLUDE: "./examples/packet_in_read.rb" src ruby
+
+Also you can use =Pio::PacketIn#new= to generate a Packet-In message
+like below:
+
+#+INCLUDE: "./examples/packet_in_new.rb" src ruby
 ** Installation
 The simplest way to install Pio is to use [[http://gembundler.com/][Bundler]].
 

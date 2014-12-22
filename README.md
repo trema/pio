@@ -21,6 +21,7 @@ supports the following packet formats:
     -   Hello
     -   Echo
     -   Features
+    -   Packet-In
 -   (&#x2026;currently there are just a few formats supported but I'm sure this list will grow)
 
 ## Features Overview
@@ -247,6 +248,41 @@ generate an Features Request/Reply message like below:
                         curr: [:port_10gb_fd, :port_copper] }]
             )
     reply.to_binary  # => Features Reply message in binary format.
+
+### Packet-In
+
+To parse an OpenFlow 1.0 Packet-In message, use the API
+`Pio::PacketIn.read` and you can access each field of the parsed
+Packet-In message.
+
+    require 'pio'
+
+    packet_in = Pio::PacketIn.read(binary_data)
+    packet_in.in_port # => 1
+    packet_in.buffer_id # => 4294967040
+
+Also you can use `Pio::PacketIn#new` to generate a Packet-In message
+like below:
+
+    require 'pio'
+
+    data_dump = [
+      0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xac, 0x5d, 0x10, 0x31, 0x37,
+      0x79, 0x08, 0x06, 0x00, 0x01, 0x08, 0x00, 0x06, 0x04, 0x00, 0x01,
+      0xac, 0x5d, 0x10, 0x31, 0x37, 0x79, 0xc0, 0xa8, 0x02, 0xfe, 0xff,
+      0xff, 0xff, 0xff, 0xff, 0xff, 0xc0, 0xa8, 0x02, 0x05, 0x00, 0x00,
+      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+      0x00, 0x00, 0x00, 0x00, 0x00
+    ].pack('C*')
+
+    packet_in = Pio::PacketIn.new(
+                  transaction_id: 0,
+                  buffer_id: 0xffffff00,
+                  in_port: 1,
+                  reason: :no_match,
+                  data: data_dump
+                )
+    packet_in.to_binary  # => Packet-In message in binary format.
 
 ## Installation
 

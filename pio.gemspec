@@ -37,14 +37,14 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'bindata', '~> 2.1.0'
 
   gem.add_development_dependency 'rake'
-  gem.add_development_dependency 'bundler', '~> 1.7.6'
+  gem.add_development_dependency 'bundler', '~> 1.7.9'
   gem.add_development_dependency 'pry', '~> 0.10.1'
 
   # Guard
-  gem.add_development_dependency 'guard', '~> 2.8.2'
-  gem.add_development_dependency 'guard-bundler', '~> 2.0.0'
-  gem.add_development_dependency 'guard-cucumber', '~> 1.5.1'
-  gem.add_development_dependency 'guard-rspec', '~> 4.3.1'
+  gem.add_development_dependency 'guard', '~> 2.10.4'
+  gem.add_development_dependency 'guard-bundler', '~> 2.1.0'
+  gem.add_development_dependency 'guard-cucumber', '~> 1.5.3'
+  gem.add_development_dependency 'guard-rspec', '~> 4.5.0'
   gem.add_development_dependency 'guard-rubocop', '~> 1.2.0'
   gem.add_development_dependency 'rb-fchange', '~> 0.0.6'
   gem.add_development_dependency 'rb-fsevent', '~> 0.9.4'
@@ -52,17 +52,17 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'terminal-notifier-guard', '~> 1.6.4'
 
   # Docs
-  gem.add_development_dependency 'inch', '~> 0.5.7'
+  gem.add_development_dependency 'inch', '~> 0.5.8'
   gem.add_development_dependency 'yard', '~> 0.8.7.6'
 
   # Test
-  gem.add_development_dependency 'codeclimate-test-reporter', '~> 0.4.1'
+  gem.add_development_dependency 'codeclimate-test-reporter', '~> 0.4.3'
   gem.add_development_dependency 'coveralls', '~> 0.7.2'
   gem.add_development_dependency 'cucumber', '~> 1.3.17'
   gem.add_development_dependency 'flay', '~> 2.5.0'
   gem.add_development_dependency 'flog', '~> 4.3.0'
-  gem.add_development_dependency 'reek', '~> 1.4.0'
+  gem.add_development_dependency 'reek', '~> 1.5.1'
   gem.add_development_dependency 'rspec', '~> 3.1.0'
   gem.add_development_dependency 'rspec-given', '~> 3.5.4'
-  gem.add_development_dependency 'rubocop', '~> 0.27.1'
+  gem.add_development_dependency 'rubocop', '~> 0.28.0'
 end
