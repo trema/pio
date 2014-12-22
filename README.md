@@ -258,7 +258,8 @@ Packet-In message.
     require 'pio'
 
     packet_in = Pio::PacketIn.read(binary_data)
-    packet_in.xid # => 123
+    packet_in.in_port # => 1
+    packet_in.buffer_id # => 4294967040
 
 Also you can use `Pio::PacketIn#new` to generate a Packet-In message
 like below:
@@ -278,7 +279,7 @@ like below:
                   transaction_id: 0,
                   buffer_id: 0xffffff00,
                   in_port: 1,
-                  reason: 0,
+                  reason: :no_match,
                   data: data_dump
                 )
     packet_in.to_binary  # => Packet-In message in binary format.
