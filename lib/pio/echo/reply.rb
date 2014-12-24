@@ -1,5 +1,3 @@
-require 'forwardable'
-require 'pio/echo/format'
 require 'pio/echo/message'
 require 'pio/open_flow'
 
@@ -7,10 +5,7 @@ module Pio
   class Echo
     # OpenFlow 1.0 Echo Reply message generator.
     class Reply < Message
-      # OpenFlow 1.0 Echo reply message generator.
-      class Format < Pio::Echo::Format
-        default_parameters message_type_value: Pio::OpenFlow::Type::ECHO_REPLY
-      end
+      def_format Pio::OpenFlow::Type::ECHO_REPLY
 
       # Creates an EchoReply OpenFlow message. This message can be
       # used to measure the bandwidth of a controller/switch
