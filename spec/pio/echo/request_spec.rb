@@ -10,7 +10,7 @@ describe Pio::Echo::Request do
       Then { echo_request.message_length == 8 }
       Then { echo_request.transaction_id == 0 }
       Then { echo_request.xid == 0 }
-      Then { echo_request.user_data == '' }
+      Then { echo_request.user_data.empty? }
       Then { echo_request.to_binary == [1, 2, 0, 8, 0, 0, 0, 0].pack('C*') }
     end
 
@@ -22,17 +22,14 @@ describe Pio::Echo::Request do
       Then { echo_request.message_length == 8 }
       Then { echo_request.transaction_id == 123 }
       Then { echo_request.xid == 123 }
-      Then { echo_request.user_data == '' }
+      Then { echo_request.user_data.empty? }
       Then { echo_request.to_binary == [1, 2, 0, 8, 0, 0, 0, 123].pack('C*') }
     end
 
     context 'with 2**32' do
       When(:result) { Pio::Echo::Request.new(2**32) }
 
-      Then do
-        pending 'check if xid is within 32bit range.'
-        result == Failure(ArgumentError)
-      end
+      Then { result == Failure(ArgumentError) }
     end
 
     context 'with transaction_id: 123' do
@@ -43,7 +40,7 @@ describe Pio::Echo::Request do
       Then { echo_request.message_length == 8 }
       Then { echo_request.transaction_id == 123 }
       Then { echo_request.xid == 123 }
-      Then { echo_request.user_data == '' }
+      Then { echo_request.user_data.empty? }
       Then { echo_request.to_binary == [1, 2, 0, 8, 0, 0, 0, 123].pack('C*') }
     end
 
@@ -55,7 +52,7 @@ describe Pio::Echo::Request do
       Then { echo_request.message_length == 8 }
       Then { echo_request.transaction_id == 123 }
       Then { echo_request.xid == 123 }
-      Then { echo_request.user_data == '' }
+      Then { echo_request.user_data.empty? }
       Then { echo_request.to_binary == [1, 2, 0, 8, 0, 0, 0, 123].pack('C*') }
     end
 

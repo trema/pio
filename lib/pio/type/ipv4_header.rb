@@ -4,6 +4,7 @@ module Pio
   module Type
     # IP Version 4 Header Format
     module IPv4Header
+      # This method smells of :reek:TooManyStatements
       # rubocop:disable MethodLength
       # rubocop:disable AbcSize
       def ipv4_header(options)

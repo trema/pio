@@ -8,6 +8,7 @@ module Pio
       FEATURES_REQUEST = 5
       FEATURES_REPLY = 6
       PACKET_IN = 10
+      PACKET_OUT = 13
     end
   end
 end
