@@ -1,11 +1,28 @@
 require 'English'
-require 'pio/hello/format'
-require 'pio/parse_error'
+require 'bindata'
 require 'pio/open_flow'
+require 'pio/parse_error'
 
 module Pio
   # OpenFlow 1.0 Hello message
   class Hello < Pio::OpenFlow::Message
+    # Message body of Hello
+    class Body < BinData::Record
+      endian :big
+
+      string :body # ignored
+
+      def length
+        0
+      end
+
+      def empty?
+        true
+      end
+    end
+
+    def_format Pio::OpenFlow::Type::HELLO
+
     # Parses +raw_data+ binary string into a Hello message object.
     #
     # @example
@@ -41,6 +58,7 @@ module Pio
     #   @option user_options [Number] :xid An alias to transaction_id.
     #
     # @reek This method smells of :reek:FeatureEnvy
+    # rubocop:disable MethodLength
     def initialize(user_options = {})
       options = if user_options.respond_to?(:to_i)
                   { transaction_id: user_options.to_i }
@@ -50,7 +68,11 @@ module Pio
                 else
                   fail TypeError
                 end
+      if options[:transaction_id] >= 2**32
+        fail ArgumentError, 'Transaction ID >= 2**32'
+      end
       @format = Format.new(open_flow_header: options)
     end
+    # rubocop:enable MethodLength
   end
 end

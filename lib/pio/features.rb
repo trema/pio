@@ -1,24 +1,14 @@
 require 'pio/features/reply'
 require 'pio/features/request'
 require 'pio/open_flow'
-require 'pio/parse_error'
+require 'pio/open_flow/parser'
 
 module Pio
-  # OpenFlow 1.0 Features messages
+  # OpenFlow 1.0 Features Request and Reply message parser.
   class Features
-    include Pio::OpenFlow::Type
+    KLASS = { Pio::OpenFlow::Type::FEATURES_REQUEST => Pio::Features::Request,
+              Pio::OpenFlow::Type::FEATURES_REPLY => Pio::Features::Reply }
 
-    # @reek This method smells of :reek:TooManyStatements
-    def self.read(raw_data)
-      header = Pio::Type::OpenFlow::OpenFlowHeader.read(raw_data)
-      klass = { FEATURES_REQUEST => Request,
-                FEATURES_REPLY => Reply }.fetch(header.message_type)
-      format = klass.const_get(:Format).read(raw_data)
-      message = klass.allocate
-      message.instance_variable_set :@format, format
-      message
-    rescue KeyError
-      raise Pio::ParseError, 'Invalid features request/reply message.'
-    end
+    extend Pio::OpenFlow::Parser
   end
 end

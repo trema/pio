@@ -10,7 +10,7 @@ describe Pio::Features::Request do
       Then { request.message_length == 8 }
       Then { request.transaction_id == 0 }
       Then { request.xid == 0 }
-      Then { request.body == '' }
+      Then { request.body.empty? }
       Then { request.to_binary == [1, 5, 0, 8, 0, 0, 0, 0].pack('C*') }
     end
 
@@ -22,7 +22,7 @@ describe Pio::Features::Request do
       Then { request.message_length == 8 }
       Then { request.transaction_id == 123 }
       Then { request.xid == 123 }
-      Then { request.body == '' }
+      Then { request.body.empty? }
       Then { request.to_binary == [1, 5, 0, 8, 0, 0, 0, 123].pack('C*') }
     end
 
@@ -40,7 +40,7 @@ describe Pio::Features::Request do
       Then { request.message_length == 8 }
       Then { request.transaction_id == 123 }
       Then { request.xid == 123 }
-      Then { request.body == '' }
+      Then { request.body.empty? }
       Then { request.to_binary == [1, 5, 0, 8, 0, 0, 0, 123].pack('C*') }
     end
 
@@ -52,7 +52,7 @@ describe Pio::Features::Request do
       Then { request.message_length == 8 }
       Then { request.transaction_id == 123 }
       Then { request.xid == 123 }
-      Then { request.body == '' }
+      Then { request.body.empty? }
       Then { request.to_binary == [1, 5, 0, 8, 0, 0, 0, 123].pack('C*') }
     end
 

@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.10.0 (1/6/2015)
+
+### New features
+* [#103](https://github.com/trema/pio/pull/103): Added new class `Pio::PacketOut`.
+
+
 ## 0.9.0 (12/22/2014)
 
 ### New features

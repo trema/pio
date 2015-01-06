@@ -6,19 +6,22 @@ module Pio
   class Features
     # OpenFlow 1.0 Features Request message
     class Request < Pio::OpenFlow::Message
-      # OpenFlow 1.0 Features Request format
-      class Format < BinData::Record
-        include Pio::OpenFlow::Type
-
+      # Message body of Features Request
+      class Body < BinData::Record
         endian :big
 
-        open_flow_header :open_flow_header, message_type_value: FEATURES_REQUEST
-        virtual assert: -> { open_flow_header.message_type == FEATURES_REQUEST }
+        string :body # ignored
 
-        def body
-          ''
+        def length
+          0
+        end
+
+        def empty?
+          true
         end
       end
+
+      def_format Pio::OpenFlow::Type::FEATURES_REQUEST
 
       # Creates a Features Request OpenFlow message.
       #

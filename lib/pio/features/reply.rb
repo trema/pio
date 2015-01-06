@@ -6,46 +6,36 @@ module Pio
   class Features
     # OpenFlow 1.0 Features Reply message
     class Reply < Pio::OpenFlow::Message
-      # enum ofp_capabilities
-      class Capabilities < BinData::Primitive
-        extend Flags
-
-        endian :big
-
-        flags :capabilities,
-              flow_stats: 1 << 0,
-              table_stats: 1 << 1,
-              port_stats: 1 << 2,
-              stp: 1 << 3,
-              reserved: 1 << 4,
-              ip_reasm: 1 << 5,
-              queue_stats: 1 << 6,
-              arp_match_ip: 1 << 7
-      end
-
-      # enum ofp_action_type
-      class Actions < BinData::Primitive
-        extend Flags
-
-        endian :big
-
-        flags :actions,
-              output: 1 << 0,
-              set_vlan_vid: 1 << 1,
-              set_vlan_pcp: 1 << 2,
-              strip_vlan: 1 << 3,
-              set_dl_src: 1 << 4,
-              set_dl_dst: 1 << 5,
-              set_nw_src: 1 << 6,
-              set_nw_dst: 1 << 7,
-              set_nw_tos: 1 << 8,
-              set_tp_src: 1 << 9,
-              set_tp_dst: 1 << 10,
-              enqueue: 1 << 11
-      end
-
       # Message body of features reply.
       class Body < BinData::Record
+        extend Flags
+
+        # enum ofp_capabilities
+        def_flags :capabilities,
+                  [:flow_stats,
+                   :table_stats,
+                   :port_stats,
+                   :stp,
+                   :reserved,
+                   :ip_reasm,
+                   :queue_stats,
+                   :arp_match_ip]
+
+        # enum ofp_action_type
+        def_flags :actions,
+                  [:output,
+                   :set_vlan_vid,
+                   :set_vlan_pcp,
+                   :strip_vlan,
+                   :set_dl_src,
+                   :set_dl_dst,
+                   :set_nw_src,
+                   :set_nw_dst,
+                   :set_nw_tos,
+                   :set_tp_src,
+                   :set_tp_dst,
+                   :enqueue]
+
         endian :big
 
         uint64 :datapath_id
@@ -66,17 +56,7 @@ module Pio
         end
       end
 
-      # OpenFlow 1.0 Features request message.
-      class Format < BinData::Record
-        include Pio::OpenFlow::Type
-
-        endian :big
-
-        open_flow_header :open_flow_header, message_type_value: FEATURES_REPLY
-        virtual assert: -> { open_flow_header.message_type == FEATURES_REPLY }
-
-        body :body
-      end
+      def_format Pio::OpenFlow::Type::FEATURES_REPLY
 
       def datapath_id
         @format.body.datapath_id

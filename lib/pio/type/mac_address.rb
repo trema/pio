@@ -11,6 +11,8 @@ module Pio
         case value
         when String
           self.octets = value.split(':').map { |each| ('0x' + each).hex }
+        when Integer
+          self.octets = (0..5).map { |each| value >> ((5 - each) * 8) & 0xff }
         else
           self.octets = value.to_a
         end

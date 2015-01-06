@@ -1,15 +1,14 @@
-require 'pio/echo/format'
 require 'pio/echo/reply'
 require 'pio/echo/request'
-require 'pio/message_type_selector'
 require 'pio/open_flow'
+require 'pio/open_flow/parser'
 
 module Pio
-  # OpenFlow Echo Request and Reply message parser.
+  # OpenFlow 1.0 Echo Request and Reply message parser.
   class Echo
-    extend MessageTypeSelector
+    KLASS = { Pio::OpenFlow::Type::ECHO_REQUEST => Pio::Echo::Request,
+              Pio::OpenFlow::Type::ECHO_REPLY => Pio::Echo::Reply }
 
-    message_type Pio::OpenFlow::Type::ECHO_REQUEST => Request,
-                 Pio::OpenFlow::Type::ECHO_REPLY => Reply
+    extend Pio::OpenFlow::Parser
   end
 end
