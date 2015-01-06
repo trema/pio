@@ -37,11 +37,11 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'bindata', '~> 2.1.0'
 
   gem.add_development_dependency 'rake'
-  gem.add_development_dependency 'bundler', '~> 1.7.9'
+  gem.add_development_dependency 'bundler', '~> 1.7.11'
   gem.add_development_dependency 'pry', '~> 0.10.1'
 
   # Guard
-  gem.add_development_dependency 'guard', '~> 2.10.4'
+  gem.add_development_dependency 'guard', '~> 2.10.5'
   gem.add_development_dependency 'guard-bundler', '~> 2.1.0'
   gem.add_development_dependency 'guard-cucumber', '~> 1.5.3'
   gem.add_development_dependency 'guard-rspec', '~> 4.5.0'
@@ -56,9 +56,9 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'yard', '~> 0.8.7.6'
 
   # Test
-  gem.add_development_dependency 'codeclimate-test-reporter', '~> 0.4.3'
+  gem.add_development_dependency 'codeclimate-test-reporter', '~> 0.4.4'
   gem.add_development_dependency 'coveralls', '~> 0.7.2'
-  gem.add_development_dependency 'cucumber', '~> 1.3.17'
+  gem.add_development_dependency 'cucumber', '~> 1.3.18'
   gem.add_development_dependency 'flay', '~> 2.5.0'
   gem.add_development_dependency 'flog', '~> 4.3.0'
   gem.add_development_dependency 'reek', '~> 1.5.1'
