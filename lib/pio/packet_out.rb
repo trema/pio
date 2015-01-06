@@ -51,7 +51,7 @@ module Pio
             tmp = tmp[action.message_length..-1]
             actions << action
           rescue KeyError
-            raise "action #{type} is not supported." unless ACTION_CLASS[type]
+            raise "action type #{type} is not supported."
           end
         end
         actions

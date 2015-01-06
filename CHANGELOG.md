@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.10.1 (1/6/2015)
+
+### Bugs fixed
+* [#104](https://github.com/trema/pio/issues/104): Fix bug when parsing `Pio::PacketOut` with `Pio::StripVlanHeader` action.
+
+
 ## 0.10.0 (1/6/2015)
 
 ### New features
