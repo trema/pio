@@ -83,9 +83,7 @@ describe Pio::PacketIn do
 
       When(:result) { Pio::PacketIn.read(hello_dump) }
 
-      Then do
-        result == Failure(Pio::ParseError, 'Invalid Packet-In message.')
-      end
+      Then { result == Failure(Pio::ParseError) }
     end
   end
 

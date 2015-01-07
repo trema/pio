@@ -89,7 +89,7 @@ describe Pio::Features do
       When(:result) { Pio::Features.read(hello_dump) }
 
       Then do
-        result == Failure(Pio::ParseError, 'Invalid OpenFlow message.')
+        result == Failure(Pio::ParseError, 'Invalid Features message.')
       end
     end
   end
