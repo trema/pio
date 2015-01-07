@@ -1,4 +1,4 @@
-require 'pio/echo'
+require 'pio/echo/reply'
 
 describe Pio::Echo::Reply do
   describe '.new' do

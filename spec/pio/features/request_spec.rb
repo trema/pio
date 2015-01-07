@@ -1,4 +1,4 @@
-require 'pio/features'
+require 'pio/features/request'
 
 describe Pio::Features::Request do
   describe '.new' do

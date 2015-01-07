@@ -1,12 +1,9 @@
-require 'pio/echo/message'
 require 'pio/open_flow'
 
 module Pio
-  class Echo
+  module Echo
     # OpenFlow 1.0 Echo Reply message generator.
-    class Reply < Message
-      def_format Pio::OpenFlow::Type::ECHO_REPLY
-
+    class Reply < OpenFlow::Message.factory(OpenFlow::Type::ECHO_REPLY)
       # Creates an EchoReply OpenFlow message. This message can be
       # used to measure the bandwidth of a controller/switch
       # connection as well as to verify its liveness.

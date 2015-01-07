@@ -12,7 +12,7 @@ require 'pio/strip_vlan_header'
 
 module Pio
   # OpenFlow 1.0 Packet-Out message
-  class PacketOut < Pio::OpenFlow::Message
+  class PacketOut < OpenFlow::Message.factory(OpenFlow::Type::PACKET_OUT)
     # Actions list.
     class Actions < BinData::Primitive
       ACTION_CLASS = {
@@ -64,7 +64,7 @@ module Pio
     end
 
     # Message body of Packet-Out
-    class Body < BinData::Record
+    class PacketOutBody < BinData::Record
       endian :big
 
       uint32 :buffer_id
@@ -83,14 +83,6 @@ module Pio
       def actions_len
         actions.actions_len
       end
-    end
-
-    def_format Pio::OpenFlow::Type::PACKET_OUT
-
-    def self.read(raw_data)
-      packet_out = allocate
-      packet_out.instance_variable_set :@format, Format.read(raw_data)
-      packet_out
     end
 
     def_delegators :body, :buffer_id

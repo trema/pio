@@ -1,12 +1,9 @@
-require 'pio/echo/message'
 require 'pio/open_flow'
 
 module Pio
-  class Echo
+  module Echo
     # OpenFlow 1.0 Echo Request message.
-    class Request < Message
-      def_format Pio::OpenFlow::Type::ECHO_REQUEST
-
+    class Request < OpenFlow::Message.factory(OpenFlow::Type::ECHO_REQUEST)
       # Creates an EchoRequest OpenFlow message. This message can be
       # used to measure the bandwidth of a controller/switch
       # connection as well as to verify its liveness.
@@ -36,8 +33,6 @@ module Pio
       #     timestamp to check latency, various lengths to measure
       #     bandwidth or zero-size(nil) to verify liveness between the
       #     switch and controller.
-      #
-      # rubocop:disable MethodLength
     end
   end
 end
