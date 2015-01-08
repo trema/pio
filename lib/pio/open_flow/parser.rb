@@ -1,4 +1,3 @@
-require 'pio/open_flow'
 require 'pio/parse_error'
 
 module Pio

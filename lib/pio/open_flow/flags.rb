@@ -1,8 +1,16 @@
 # bitmap functions.
 module Flags
+  def def_flags(name, flags)
+    _def_flags(32, name, flags)
+  end
+
+  def def_flags16(name, flags)
+    _def_flags(16, name, flags)
+  end
+
   # rubocop:disable MethodLength
   # This method smells of :reek:TooManyStatements
-  def def_flags(name, flags)
+  def _def_flags(size, name, flags)
     flag_value = case flags
                  when Array
                    shift = 0
@@ -14,12 +22,12 @@ module Flags
                  when Hash
                    flags
                  end
-    _def_class name, flag_value
+    _def_class size, name, flag_value
   end
   # rubocop:enable MethodLength
 
   # rubocop:disable MethodLength
-  def _def_class(name, flags)
+  def _def_class(length, name, flags)
     klass_name = name.to_s.split('_').map(&:capitalize).join
     flags_hash = flags.inspect
 
@@ -27,7 +35,7 @@ module Flags
       class #{klass_name} < BinData::Primitive
         endian :big
 
-        uint32 :#{name}
+        uint#{length} :#{name}
 
         def get
           list = #{flags_hash}

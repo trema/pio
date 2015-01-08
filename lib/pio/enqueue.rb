@@ -1,7 +1,7 @@
 require 'bindata'
 require 'forwardable'
 require 'pio/monkey_patch/integer'
-require 'pio/open_flow'
+require 'pio/open_flow/port_number'
 
 module Pio
   # An action to enqueue the packet on the specified queue attached to

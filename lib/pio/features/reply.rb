@@ -22,7 +22,7 @@ module Pio
                    :arp_match_ip]
 
         # enum ofp_action_type
-        def_flags :actions,
+        def_flags :actions_flag,
                   [:output,
                    :set_vlan_vid,
                    :set_vlan_pcp,
@@ -44,7 +44,7 @@ module Pio
         uint24 :padding
         hide :padding
         capabilities :capabilities
-        actions :actions
+        actions_flag :actions
         array :ports, type: :phy_port, read_until: :eof
 
         def empty?
