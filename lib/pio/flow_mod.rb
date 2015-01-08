@@ -44,6 +44,10 @@ module Pio
       def empty?
         false
       end
+
+      def length
+        64 + actions.binary.length
+      end
     end
 
     def_delegators :body, :cookie
