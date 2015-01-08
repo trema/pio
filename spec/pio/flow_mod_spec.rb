@@ -37,6 +37,33 @@ describe Pio::FlowMod do
       Then { flow_mod.xid == 0x15 }
 
       Then { !flow_mod.body.empty? }
+      Then do
+        flow_mod.match.wildcards == [
+          :dl_vlan,
+          :dl_src,
+          :dl_dst,
+          :dl_type,
+          :nw_proto,
+          :tp_src,
+          :tp_dst,
+          :nw_src_all,
+          :nw_dst_all,
+          :dl_vlan_pcp,
+          :nw_tos
+        ]
+      end
+      Then { flow_mod.match.in_port == 1 }
+      Then { flow_mod.match.dl_src == '00:00:00:00:00:00' }
+      Then { flow_mod.match.dl_dst == '00:00:00:00:00:00' }
+      Then { flow_mod.match.dl_vlan == 0 }
+      Then { flow_mod.match.dl_vlan_pcp == 0 }
+      Then { flow_mod.match.dl_type == 0 }
+      Then { flow_mod.match.nw_tos == 0 }
+      Then { flow_mod.match.nw_proto == 0 }
+      Then { flow_mod.match.nw_src == '0.0.0.0' }
+      Then { flow_mod.match.nw_dst == '0.0.0.0' }
+      Then { flow_mod.match.tp_src == 0 }
+      Then { flow_mod.match.tp_dst == 0 }
       Then { flow_mod.cookie == 1 }
       Then { flow_mod.command == :add }
       Then { flow_mod.idle_timeout == 0 }
@@ -54,19 +81,42 @@ describe Pio::FlowMod do
 
   describe '.new' do
     context 'with a SendOutPort action' do
-      Given(:match_dump) do
+      Given(:wildcards) do
         [
-          0x00, 0x38, 0x20, 0xfe, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00,
-          0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-          0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-          0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-        ].pack('C*')
+          :dl_vlan,
+          :dl_src,
+          :dl_dst,
+          :dl_type,
+          :nw_proto,
+          :tp_src,
+          :tp_dst,
+          :nw_src_all,
+          :nw_dst_all,
+          :dl_vlan_pcp,
+          :nw_tos
+        ]
+      end
+      Given(:match) do
+        Pio::Match.new(wildcards: wildcards,
+                       in_port: 1,
+                       dl_src: '00:00:00:00:00:00',
+                       dl_dst: '00:00:00:00:00:00',
+                       dl_vlan: 0,
+                       dl_vlan_pcp: 0,
+                       dl_type: 0,
+                       dl_tos: 0,
+                       nw_proto: 0,
+                       nw_src: '0.0.0.0',
+                       nw_dst: '0.0.0.0',
+                       tp_src: 0,
+                       tp_dst: 0
+        )
       end
 
-      Given(:flow_mod) do
+      When(:flow_mod) do
         Pio::FlowMod.new(transaction_id: 0x15,
                          buffer_id: 0xffffffff,
-                         match: match_dump,
+                         match: match,
                          cookie: 1,
                          command: :add,
                          idle_timeout: 0,
@@ -74,7 +124,8 @@ describe Pio::FlowMod do
                          priority: 0xffff,
                          out_port: 2,
                          flags: [:send_flow_rem, :check_overwrap],
-                         actions: Pio::SendOutPort.new(2))
+                         actions: Pio::SendOutPort.new(2)
+        )
       end
 
       Then { flow_mod.class == Pio::FlowMod }
@@ -85,6 +136,33 @@ describe Pio::FlowMod do
       Then { flow_mod.xid == 0x15 }
 
       Then { !flow_mod.body.empty? }
+      Then do
+        flow_mod.match.wildcards == [
+          :dl_vlan,
+          :dl_src,
+          :dl_dst,
+          :dl_type,
+          :nw_proto,
+          :tp_src,
+          :tp_dst,
+          :nw_src_all,
+          :nw_dst_all,
+          :dl_vlan_pcp,
+          :nw_tos
+        ]
+      end
+      Then { flow_mod.match.in_port == 1 }
+      Then { flow_mod.match.dl_src == '00:00:00:00:00:00' }
+      Then { flow_mod.match.dl_dst == '00:00:00:00:00:00' }
+      Then { flow_mod.match.dl_vlan == 0 }
+      Then { flow_mod.match.dl_vlan_pcp == 0 }
+      Then { flow_mod.match.dl_type == 0 }
+      Then { flow_mod.match.nw_tos == 0 }
+      Then { flow_mod.match.nw_proto == 0 }
+      Then { flow_mod.match.nw_src == '0.0.0.0' }
+      Then { flow_mod.match.nw_dst == '0.0.0.0' }
+      Then { flow_mod.match.tp_src == 0 }
+      Then { flow_mod.match.tp_dst == 0 }
       Then { flow_mod.cookie == 1 }
       Then { flow_mod.command == :add }
       Then { flow_mod.idle_timeout == 0 }

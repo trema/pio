@@ -8,6 +8,7 @@ Feature: Pio::FlowMod.read
     And the "message_length" of the packet data is "80"
     And the "transaction_id" of the packet data is "21"
     And the "xid" of the packet data is "21"
+    And the "match.wildcards" of the packet data is "[:dl_vlan, :dl_src, :dl_dst, :dl_type, :nw_proto, :tp_src, :tp_dst, :nw_src_all, :nw_dst_all, :dl_vlan_pcp, :nw_tos]"
     And the "cookie" of the packet data is "1"
     And the "command" of the packet data is "add"
     And the "idle_timeout" of the packet data is "0"

@@ -1,3 +1,4 @@
+require 'pio/match'
 require 'pio/open_flow'
 
 module Pio
@@ -30,7 +31,7 @@ module Pio
 
       endian :big
 
-      string :match, read_length: 40
+      match :match, read_length: 40
       uint64 :cookie
       command :command
       uint16 :idle_timeout
@@ -50,6 +51,7 @@ module Pio
       end
     end
 
+    def_delegators :body, :match
     def_delegators :body, :cookie
     def_delegators :body, :command
     def_delegators :body, :idle_timeout
