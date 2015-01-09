@@ -14,7 +14,7 @@ end
 When(/^I try to parse the file with "(.*?)" class$/) do |parser|
   parser_klass = Pio.const_get(parser)
   if @raw
-    parser_klass.read IO.read(@raw)
+    @result = parser_klass.read(IO.read(@raw))
   elsif @pcap
     File.open(@pcap) do |file|
       pcap = Pio::Pcap::Frame.read(file)
@@ -27,4 +27,13 @@ end
 
 Then(/^it should finish successfully$/) do
   # Noop.
+end
+
+Then(/^the parsed data have the follwing field and value:$/) do |table|
+  table.hashes.each do |each|
+    output = each['field'].split('.').inject(@result) do |memo, method|
+      memo.__send__(method)
+    end
+    expect(output.to_s).to eq(each['value'])
+  end
 end
