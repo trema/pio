@@ -29,9 +29,11 @@ Then(/^it should finish successfully$/) do
   # Noop.
 end
 
-Then(/^the "(.*?)" of the packet data is "(.*?)"$/) do |field, value|
-  output = field.split('.').inject(@result) do |memo, each|
-    memo.__send__(each)
+Then(/^the parsed data have the following field and value:$/) do |table|
+  table.hashes.each do |each|
+    output = each['field'].split('.').inject(@result) do |memo, method|
+      memo.__send__(method)
+    end
+    expect(output.to_s).to eq(each['value'])
   end
-  expect(output.to_s).to eq(value)
 end

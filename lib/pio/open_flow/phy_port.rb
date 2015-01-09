@@ -52,6 +52,10 @@ module Pio
         port_feature :advertised
         port_feature :supported
         port_feature :peer
+
+        def mac_address
+          hardware_address
+        end
       end
     end
   end
