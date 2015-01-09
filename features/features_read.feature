@@ -3,7 +3,7 @@ Feature: Pio::Features.read
     Given a packet data file "features_request.raw"
     When I try to parse the file with "Features" class
     Then it should finish successfully
-    And the parsed data have the follwing field and value:
+    And the parsed data have the following field and value:
     | field          |                  value |
     | class          | Pio::Features::Request |
     | ofp_version    |                      1 |
@@ -17,7 +17,7 @@ Feature: Pio::Features.read
     Given a packet data file "features_reply.raw"
     When I try to parse the file with "Features" class
     Then it should finish successfully
-    And the parsed data have the follwing field and value:
+    And the parsed data have the following field and value:
     | field                        | value                                                                                                                                                     |
     | class                        | Pio::Features::Reply                                                                                                                                      |
     | ofp_version                  | 1                                                                                                                                                         |

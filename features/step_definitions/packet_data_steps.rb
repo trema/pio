@@ -29,7 +29,7 @@ Then(/^it should finish successfully$/) do
   # Noop.
 end
 
-Then(/^the parsed data have the follwing field and value:$/) do |table|
+Then(/^the parsed data have the following field and value:$/) do |table|
   table.hashes.each do |each|
     output = each['field'].split('.').inject(@result) do |memo, method|
       memo.__send__(method)
