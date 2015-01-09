@@ -81,42 +81,10 @@ describe Pio::FlowMod do
 
   describe '.new' do
     context 'with a SendOutPort action' do
-      Given(:wildcards) do
-        [
-          :dl_vlan,
-          :dl_src,
-          :dl_dst,
-          :dl_type,
-          :nw_proto,
-          :tp_src,
-          :tp_dst,
-          :nw_src_all,
-          :nw_dst_all,
-          :dl_vlan_pcp,
-          :nw_tos
-        ]
-      end
-      Given(:match) do
-        Pio::Match.new(wildcards: wildcards,
-                       in_port: 1,
-                       dl_src: '00:00:00:00:00:00',
-                       dl_dst: '00:00:00:00:00:00',
-                       dl_vlan: 0,
-                       dl_vlan_pcp: 0,
-                       dl_type: 0,
-                       dl_tos: 0,
-                       nw_proto: 0,
-                       nw_src: '0.0.0.0',
-                       nw_dst: '0.0.0.0',
-                       tp_src: 0,
-                       tp_dst: 0
-        )
-      end
-
       When(:flow_mod) do
         Pio::FlowMod.new(transaction_id: 0x15,
                          buffer_id: 0xffffffff,
-                         match: match,
+                         match: Pio::Match.new(in_port: 1),
                          cookie: 1,
                          command: :add,
                          idle_timeout: 0,
