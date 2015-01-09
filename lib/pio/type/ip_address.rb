@@ -8,17 +8,16 @@ module Pio
       array :octets, type: :uint8, initial_length: 4
 
       def set(value)
-        case value
-        when String
-          self.octets = value.split('.').map(&:to_i)
-        else
-          self.octets = value
-        end
+        address = IPv4Address.new(value)
+        @match_nw = 32 - address.prefixlen
+        self.octets = address.to_a
       end
 
       def get
         IPv4Address.new octets.map { |each| format('%d', each) }.join('.')
       end
+
+      attr_reader :match_nw
 
       def ==(other)
         get == other
