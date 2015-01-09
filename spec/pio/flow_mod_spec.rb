@@ -87,8 +87,6 @@ describe Pio::FlowMod do
                          match: Pio::Match.new(in_port: 1),
                          cookie: 1,
                          command: :add,
-                         idle_timeout: 0,
-                         hard_timeout: 0,
                          priority: 0xffff,
                          out_port: 2,
                          flags: [:send_flow_rem, :check_overwrap],
