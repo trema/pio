@@ -10,7 +10,8 @@ module Pio
           Pio::Type::OpenFlow::OpenFlowHeader.read(raw_data).message_type
         klass = Pio::OpenFlow::Message.klass(message_type)
         if klass.name.split('::')[0..-2].join('::') != name
-          fail Pio::ParseError, "Invalid #{name.split('::').last} message."
+          message_name = name.split('::')[1..-1].join(' ')
+          fail Pio::ParseError, "Invalid #{message_name} message."
         end
         klass.read(raw_data)
       rescue KeyError
