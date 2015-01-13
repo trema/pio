@@ -194,7 +194,7 @@ and you can access each field of the parsed Echo message.
 
     require 'pio'
 
-    echo = Pio::Echo.read(binary_data)
+    echo = Pio::Echo::Request.read(binary_data)
     echo.xid # => 123
 
 Also you can use `Pio::Echo::Request#new` or `Pio::Echo::Reply#new` to
