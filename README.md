@@ -218,7 +218,7 @@ Features message.
 
     require 'pio'
 
-    features = Pio::Features.read(binary_data)
+    features = Pio::Features::Request.read(binary_data)
     features.xid # => 123
 
 Also you can use `Pio::Features::Request#new` or `Pio::Features::Reply#new` to
