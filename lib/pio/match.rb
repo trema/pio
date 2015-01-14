@@ -41,16 +41,15 @@ module Pio
 
       uint32 :flags
 
+      # This method smells of :reek:FeatureEnvy
       def get
-        BITS.each_with_object(Hash.new(0)) do |(key, bit), tmp|
-          if flags & bit != 0
-            if /(nw_src|nw_dst)(\d)/=~ key
-              tmp[$LAST_MATCH_INFO[1].intern] |= (1 << $LAST_MATCH_INFO[2].to_i)
-            else
-              tmp[key] = true
-            end
+        BITS.each_with_object(Hash.new(0)) do |(key, bit), memo|
+          next if flags & bit == 0
+          if /(nw_src|nw_dst)(\d)/=~ key
+            memo[$LAST_MATCH_INFO[1].intern] |= 1 << $LAST_MATCH_INFO[2].to_i
+          else
+            memo[key] = true
           end
-          tmp
         end
       end
 
