@@ -22,6 +22,21 @@ module Pio
 
     # Message body of FlowMod.
     class FlowModBody < BinData::Record
+      # Pio::MatchFormat wrapper.
+      class Match < BinData::Primitive
+        endian :big
+
+        string :match, read_length: 40
+
+        def set(object)
+          self.match = object.to_binary_s
+        end
+
+        def get
+          Pio::Match.read match
+        end
+      end
+
       extend Flags
 
       def_flags16 :flags,
@@ -31,7 +46,7 @@ module Pio
 
       endian :big
 
-      match :match, read_length: 40
+      match :match
       uint64 :cookie
       command :command
       uint16 :idle_timeout

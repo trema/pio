@@ -3,10 +3,11 @@ require 'bindata'
 require 'pio/open_flow'
 require 'pio/type/ip_address'
 require 'pio/type/mac_address'
+require 'forwardable'
 
 module Pio
   # Fields to match against flows
-  class Match < BinData::Record
+  class Match
     # Flow wildcards
     class Wildcards < BinData::Primitive
       BITS = {
@@ -74,52 +75,115 @@ module Pio
       end
       # rubocop:enable MethodLength
       # rubocop:enable AbcSize
-    end
 
-    endian :big
+      def nw_src
+        get.fetch(:nw_src)
+      rescue KeyError
+        0
+      end
 
-    wildcards :wildcards, initial_value: -> { init_wildcards }
-    uint16 :in_port
-    mac_address :dl_src
-    mac_address :dl_dst
-    uint16 :dl_vlan
-    uint8 :dl_vlan_pcp
-    uint8 :padding1
-    hide :padding1
-    uint16 :dl_type
-    uint8 :nw_tos
-    uint8 :nw_proto
-    uint16 :padding2
-    hide :padding2
-    ip_address :nw_src
-    ip_address :nw_dst
-    uint16 :tp_src
-    uint16 :tp_dst
-
-    private
-
-    # rubocop:disable AbcSize
-    # rubocop:disable MethodLength
-    def init_wildcards
-      {}.tap do |hash|
-        hash[:in_port] = in_port == 0
-        hash[:dl_vlan] = dl_vlan == 0
-        hash[:dl_src] = dl_src == '00:00:00:00:00:00'
-        hash[:dl_dst] = dl_dst == '00:00:00:00:00:00'
-        hash[:dl_type] = dl_type == 0
-        hash[:nw_proto] = nw_proto == 0
-        hash[:tp_src] = tp_src == 0
-        hash[:tp_dst] = tp_dst == 0
-        hash[:nw_src] = nw_src.match_nw
-        hash[:nw_src_all] = nw_src == '0.0.0.0'
-        hash[:nw_dst] = nw_dst.match_nw
-        hash[:nw_dst_all] = nw_dst == '0.0.0.0'
-        hash[:dl_vlan_pcp] = dl_vlan_pcp == 0
-        hash[:nw_tos] = nw_tos == 0
-        hash.keep_if { |_k, v| v }
+      def nw_dst
+        get.fetch(:nw_dst)
+      rescue KeyError
+        0
       end
     end
-    # rubocop:enable AbcSize
+
+    # IP address
+    class MatchIpAddress < BinData::Primitive
+      default_parameter bitcount: 0
+
+      array :octets, type: :uint8, initial_length: 4
+
+      def set(value)
+        self.octets = IPv4Address.new(value).to_a
+      end
+
+      def get
+        ipaddr = octets.map { |each| format('%d', each) }.join('.')
+        prefixlen = 32 - eval_parameter(:bitcount)
+        IPv4Address.new(ipaddr + "/#{prefixlen}")
+      end
+
+      def ==(other)
+        get == other
+      end
+    end
+
+    # ofp_match format
+    class MatchFormat < BinData::Record
+      endian :big
+
+      wildcards :wildcards
+      uint16 :in_port
+      mac_address :dl_src
+      mac_address :dl_dst
+      uint16 :dl_vlan
+      uint8 :dl_vlan_pcp
+      uint8 :padding1
+      hide :padding1
+      uint16 :dl_type
+      uint8 :nw_tos
+      uint8 :nw_proto
+      uint16 :padding2
+      hide :padding2
+      match_ip_address :nw_src, bitcount: -> { wildcards.nw_src }
+      match_ip_address :nw_dst, bitcount: -> { wildcards.nw_dst }
+      uint16 :tp_src
+      uint16 :tp_dst
+    end
+
+    def self.read(binary)
+      MatchFormat.read binary
+    end
+
+    extend Forwardable
+
+    def_delegators :@format, :wildcards
+    def_delegators :@format, :in_port
+    def_delegators :@format, :dl_vlan
+    def_delegators :@format, :dl_src
+    def_delegators :@format, :dl_dst
+    def_delegators :@format, :dl_type
+    def_delegators :@format, :nw_proto
+    def_delegators :@format, :tp_src
+    def_delegators :@format, :tp_dst
+    def_delegators :@format, :nw_src
+    def_delegators :@format, :nw_src_all
+    def_delegators :@format, :nw_dst
+    def_delegators :@format, :nw_dst_all
+    def_delegators :@format, :dl_vlan_pcp
+    def_delegators :@format, :nw_tos
+    def_delegators :@format, :to_binary_s
+
+    # rubocop:disable MethodLength
+    # rubocop:disable AbcSize
+    def initialize(user_options)
+      wildcards = {}.tap do |hash|
+        hash[:in_port] = !user_options.key?(:in_port)
+        hash[:dl_vlan] = !user_options.key?(:dl_vlan)
+        hash[:dl_src] = !user_options.key?(:dl_src)
+        hash[:dl_dst] = !user_options.key?(:dl_dst)
+        hash[:dl_type] = !user_options.key?(:dl_type)
+        hash[:nw_proto] = !user_options.key?(:nw_proto)
+        hash[:tp_src] = !user_options.key?(:tp_src)
+        hash[:tp_dst] = !user_options.key?(:tp_dst)
+        if user_options[:nw_src]
+          hash[:nw_src] = 32 - IPv4Address.new(user_options[:nw_src]).prefixlen
+        end
+        hash[:nw_src_all] = !user_options.key?(:nw_src)
+        if user_options[:nw_dst]
+          hash[:nw_dst] = 32 - IPv4Address.new(user_options[:nw_dst]).prefixlen
+        end
+        hash[:nw_dst_all] = !user_options.key?(:nw_dst)
+        hash[:dl_vlan_pcp] = !user_options.key?(:dl_vlan_pcp)
+        hash[:nw_tos] = !user_options.key?(:nw_tos)
+        hash.keep_if { |_k, v| v }
+      end
+
+      @format = MatchFormat.new({ wildcards: wildcards }.merge user_options)
+    end
     # rubocop:enable MethodLength
+    # rubocop:enable AbcSize
   end
 end
