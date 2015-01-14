@@ -1,3 +1,4 @@
+require 'English'
 require 'bindata'
 require 'pio/open_flow'
 require 'pio/type/ip_address'
@@ -8,7 +9,7 @@ module Pio
   class Match < BinData::Record
     # Flow wildcards
     class Wildcards < BinData::Primitive
-      FLAGS = {
+      BITS = {
         in_port: 1 << 0,
         dl_vlan: 1 << 1,
         dl_src: 1 << 2,
@@ -17,12 +18,14 @@ module Pio
         nw_proto: 1 << 5,
         tp_src: 1 << 6,
         tp_dst: 1 << 7,
+        nw_src: 0,
         nw_src0: 1 << 8,
         nw_src1: 1 << 9,
         nw_src2: 1 << 10,
         nw_src3: 1 << 11,
         nw_src4: 1 << 12,
         nw_src_all: 1 << 13,
+        nw_dst: 0,
         nw_dst0: 1 << 14,
         nw_dst1: 1 << 15,
         nw_dst2: 1 << 16,
@@ -37,41 +40,40 @@ module Pio
 
       uint32 :flags
 
-      # rubocop:disable AbcSize
-      # rubocop:disable CyclomaticComplexity
-      # rubocop:disable MethodLength
       def get
-        nw_src = 0
-        nw_dst = 0
-        FLAGS.each_with_object([]) do |(key, value), result|
-          if flags & value != 0
-            case key
-            when /nw_src(\d)/
-              bit = Regexp.last_match[1].to_i
-              nw_src += 1 << bit
-              result << { nw_src: nw_src } if bit == 4 && nw_src > 0
-            when /nw_dst(\d)/
-              bit = Regexp.last_match[1].to_i
-              nw_dst += 1 << bit
-              result << { nw_dst: nw_dst } if bit == 4 && nw_dst > 0
+        BITS.each_with_object(Hash.new(0)) do |(key, bit), tmp|
+          if flags & bit != 0
+            if /(nw_src|nw_dst)(\d)/=~ key
+              tmp[$LAST_MATCH_INFO[1].intern] |= (1 << $LAST_MATCH_INFO[2].to_i)
             else
-              result << key
+              tmp[key] = true
             end
           end
-          result
+          tmp
         end
+      end
+
+      # rubocop:disable MethodLength
+      # rubocop:disable AbcSize
+      def set(value)
+        value[:nw_src0] = value[:nw_src] & 1
+        value[:nw_src1] = value[:nw_src] & 2
+        value[:nw_src2] = value[:nw_src] & 4
+        value[:nw_src3] = value[:nw_src] & 8
+        value[:nw_src4] = value[:nw_src] & 16
+
+        value[:nw_dst0] = value[:nw_dst] & 1
+        value[:nw_dst1] = value[:nw_dst] & 2
+        value[:nw_dst2] = value[:nw_dst] & 4
+        value[:nw_dst3] = value[:nw_dst] & 8
+        value[:nw_dst4] = value[:nw_dst] & 16
+
+        self.flags = value.keep_if { |_k, v| v && v != 0 }.keys.map do |each|
+          BITS.fetch(each)
+        end.inject(:|) || 0
       end
       # rubocop:enable MethodLength
-      # rubocop:enable CyclomaticComplexity
       # rubocop:enable AbcSize
-
-      def set(value)
-        value.each do |each|
-          fail "Invalid flag: #{each}" unless FLAGS.keys.include?(each)
-        end
-        self.flags =
-          value.empty? ? 0 : value.map { |each| FLAGS[each] }.inject(:|)
-      end
     end
 
     endian :big
@@ -97,30 +99,27 @@ module Pio
     private
 
     # rubocop:disable AbcSize
-    # rubocop:disable CyclomaticComplexity
-    # rubocop:disable PerceivedComplexity
     # rubocop:disable MethodLength
     def init_wildcards
-      result = []
-      result << :in_port if in_port == 0
-      result << :dl_vlan if dl_vlan == 0
-      result << :dl_src if dl_src == '00:00:00:00:00:00'
-      result << :dl_dst if dl_dst == '00:00:00:00:00:00'
-      result << :dl_type if dl_type == 0
-      result << :nw_proto if nw_proto == 0
-      result << :tp_src if tp_src == 0
-      result << :tp_dst if tp_dst == 0
-      result << { nw_src: nw_src.match_nw } if nw_src.match_nw
-      result << :nw_src_all if nw_src == '0.0.0.0'
-      result << { nw_dst: nw_dst.match_nw } if nw_dst.match_nw
-      result << :nw_dst_all if nw_dst == '0.0.0.0'
-      result << :dl_vlan_pcp if dl_vlan_pcp == 0
-      result << :nw_tos if nw_tos == 0
-      result
+      {}.tap do |hash|
+        hash[:in_port] = in_port == 0
+        hash[:dl_vlan] = dl_vlan == 0
+        hash[:dl_src] = dl_src == '00:00:00:00:00:00'
+        hash[:dl_dst] = dl_dst == '00:00:00:00:00:00'
+        hash[:dl_type] = dl_type == 0
+        hash[:nw_proto] = nw_proto == 0
+        hash[:tp_src] = tp_src == 0
+        hash[:tp_dst] = tp_dst == 0
+        hash[:nw_src] = nw_src.match_nw
+        hash[:nw_src_all] = nw_src == '0.0.0.0'
+        hash[:nw_dst] = nw_dst.match_nw
+        hash[:nw_dst_all] = nw_dst == '0.0.0.0'
+        hash[:dl_vlan_pcp] = dl_vlan_pcp == 0
+        hash[:nw_tos] = nw_tos == 0
+        hash.keep_if { |_k, v| v }
+      end
     end
     # rubocop:enable AbcSize
-    # rubocop:enable CyclomaticComplexity
-    # rubocop:enable PerceivedComplexity
     # rubocop:enable MethodLength
   end
 end

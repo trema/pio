@@ -38,7 +38,7 @@ describe Pio::FlowMod do
 
       Then { !flow_mod.body.empty? }
       Then do
-        flow_mod.match.wildcards == [
+        flow_mod.match.wildcards.keys == [
           :dl_vlan,
           :dl_src,
           :dl_dst,
@@ -103,7 +103,7 @@ describe Pio::FlowMod do
 
       Then { !flow_mod.body.empty? }
       Then do
-        flow_mod.match.wildcards == [
+        flow_mod.match.wildcards.keys == [
           :dl_vlan,
           :dl_src,
           :dl_dst,

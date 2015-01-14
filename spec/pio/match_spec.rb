@@ -25,7 +25,7 @@ describe Pio::Match do
     When(:match) { Pio::Match.read(dump) }
 
     Then do
-      match.wildcards == [
+      match.wildcards.keys == [
         :dl_vlan,
         :dl_src,
         :dl_dst,
@@ -58,7 +58,7 @@ describe Pio::Match do
       When(:match) { Pio::Match.new(in_port: 1) }
 
       Then do
-        match.wildcards == [
+        match.wildcards.keys == [
           :dl_vlan,
           :dl_src,
           :dl_dst,
@@ -90,7 +90,7 @@ describe Pio::Match do
       When(:match) { Pio::Match.new(nw_src: '192.168.1.0/24') }
 
       Then do
-        match.wildcards == [
+        match.wildcards.keys == [
           :in_port,
           :dl_vlan,
           :dl_src,
@@ -99,12 +99,13 @@ describe Pio::Match do
           :nw_proto,
           :tp_src,
           :tp_dst,
-          { nw_src: 8 },
+          :nw_src,
           :nw_dst_all,
           :dl_vlan_pcp,
           :nw_tos
         ]
       end
+      Then { match.wildcards.fetch(:nw_src) == 8 }
       Then { match.in_port == 0 }
       Then { match.dl_src == '00:00:00:00:00:00' }
       Then { match.dl_dst == '00:00:00:00:00:00' }
@@ -123,7 +124,7 @@ describe Pio::Match do
       When(:match) { Pio::Match.new(nw_dst: '192.168.1.0/24') }
 
       Then do
-        match.wildcards == [
+        match.wildcards.keys == [
           :in_port,
           :dl_vlan,
           :dl_src,
@@ -133,11 +134,12 @@ describe Pio::Match do
           :tp_src,
           :tp_dst,
           :nw_src_all,
-          { nw_dst: 8 },
+          :nw_dst,
           :dl_vlan_pcp,
           :nw_tos
         ]
       end
+      Then { match.wildcards.fetch(:nw_dst) == 8 }
       Then { match.in_port == 0 }
       Then { match.dl_src == '00:00:00:00:00:00' }
       Then { match.dl_dst == '00:00:00:00:00:00' }

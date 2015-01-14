@@ -10,7 +10,7 @@ Feature: Pio::FlowMod.read
     | message_length            |                                                                                                                   80 |
     | transaction_id            |                                                                                                                   21 |
     | xid                       |                                                                                                                   21 |
-    | match.wildcards           | [:dl_vlan, :dl_src, :dl_dst, :dl_type, :nw_proto, :tp_src, :tp_dst, :nw_src_all, :nw_dst_all, :dl_vlan_pcp, :nw_tos] |
+    | match.wildcards.keys      | [:dl_vlan, :dl_src, :dl_dst, :dl_type, :nw_proto, :tp_src, :tp_dst, :nw_src_all, :nw_dst_all, :dl_vlan_pcp, :nw_tos] |
     | cookie                    |                                                                                                                    1 |
     | command                   |                                                                                                                  add |
     | idle_timeout              |                                                                                                                    0 |
