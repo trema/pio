@@ -53,27 +53,17 @@ module Pio
         end
       end
 
-      # rubocop:disable MethodLength
-      # rubocop:disable AbcSize
-      def set(value)
-        value[:nw_src0] = value[:nw_src] & 1
-        value[:nw_src1] = value[:nw_src] & 2
-        value[:nw_src2] = value[:nw_src] & 4
-        value[:nw_src3] = value[:nw_src] & 8
-        value[:nw_src4] = value[:nw_src] & 16
-
-        value[:nw_dst0] = value[:nw_dst] & 1
-        value[:nw_dst1] = value[:nw_dst] & 2
-        value[:nw_dst2] = value[:nw_dst] & 4
-        value[:nw_dst3] = value[:nw_dst] & 8
-        value[:nw_dst4] = value[:nw_dst] & 16
-
-        self.flags = value.keep_if { |_k, v| v && v != 0 }.keys.map do |each|
-          BITS.fetch(each)
+      def set(params)
+        self.flags = params.keys.map do |each|
+          next unless params[each]
+          case each
+          when :nw_src, :nw_dst
+            (params.fetch(each) & 31) << (each == :nw_src ? 8 : 14)
+          else
+            BITS.fetch(each)
+          end
         end.inject(:|) || 0
       end
-      # rubocop:enable MethodLength
-      # rubocop:enable AbcSize
 
       def nw_src
         get.fetch(:nw_src)
