@@ -39,10 +39,10 @@ module Pio
 
       extend Flags
 
-      def_flags16 :flags,
-                  [:send_flow_rem,
-                   :check_overwrap,
-                   :emerg]
+      def_flags :flags, 16,
+                [:send_flow_rem,
+                 :check_overwrap,
+                 :emerg]
 
       endian :big
 

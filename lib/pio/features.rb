@@ -14,7 +14,7 @@ module Pio
         extend Flags
 
         # enum ofp_capabilities
-        def_flags :capabilities,
+        def_flags :capabilities, 32,
                   [:flow_stats,
                    :table_stats,
                    :port_stats,
@@ -25,7 +25,7 @@ module Pio
                    :arp_match_ip]
 
         # enum ofp_action_type
-        def_flags :actions_flag,
+        def_flags :actions_flag, 32,
                   [:output,
                    :set_vlan_vid,
                    :set_vlan_pcp,

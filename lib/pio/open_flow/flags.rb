@@ -1,16 +1,8 @@
 # bitmap functions.
 module Flags
-  def def_flags(name, flags)
-    _def_flags(32, name, flags)
-  end
-
-  def def_flags16(name, flags)
-    _def_flags(16, name, flags)
-  end
-
   # rubocop:disable MethodLength
   # This method smells of :reek:TooManyStatements
-  def _def_flags(size, name, flags)
+  def def_flags(name, size, flags)
     flag_value = case flags
                  when Array
                    shift = 0

@@ -9,7 +9,7 @@ module Pio
         extend Flags
 
         # enum ofp_port_config
-        def_flags :port_config,
+        def_flags :port_config, 32,
                   [:port_down,
                    :no_stp,
                    :no_recv,
@@ -19,7 +19,7 @@ module Pio
                    :no_packet_in]
 
         # enum ofp_port_state
-        def_flags :port_state,
+        def_flags :port_state, 32,
                   link_down: 1 << 0,
                   stp_listen: 0 << 8,
                   stp_learn: 1 << 8,
@@ -27,7 +27,7 @@ module Pio
                   stp_block: 3 << 8
 
         # enum ofp_port_features
-        def_flags :port_feature,
+        def_flags :port_feature, 32,
                   [:port_10mb_hd,
                    :port_10mb_fd,
                    :port_100mb_hd,
