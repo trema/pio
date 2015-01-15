@@ -23,6 +23,7 @@ supports the following packet formats:
     -   Features
     -   Packet-In
     -   Packet-Out
+    -   Flow Mod
 -   (&#x2026;currently there are just a few formats supported but I'm sure this list will grow)
 
 ## Features Overview
@@ -319,6 +320,36 @@ like below:
                                     actions: Pio::SendOutPort.new(2),
                                     data: data_dump)
     packet_out.to_binary  # => Packet-Out message in binary format.
+
+### Flow Mod
+
+To parse an OpenFlow 1.0 flow mod message, use the API
+`Pio::FlowMod.read` and you can access each field of the parsed
+flow mod message.
+
+    require 'pio'
+
+    flow_mod = Pio::FlowMod.read(binary_data)
+    flow_mod.match.in_port # => 1
+    flow_mod.match.dl_src # => '00:00:00:00:00:0a'
+    # ...
+
+Also you can use `Pio::FlowMod#new` and `Pio::Match#new` to generate a
+flow mod message like below:
+
+    require 'pio'
+
+    flow_mod = Pio::FlowMod.new(transaction_id: 0x15,
+                                buffer_id: 0xffffffff,
+                                match: Pio::Match.new(in_port: 1),
+                                cookie: 1,
+                                command: :add,
+                                priority: 0xffff,
+                                out_port: 2,
+                                flags: [:send_flow_rem, :check_overwrap],
+                                actions: Pio::SendOutPort.new(2))
+
+    flow_mod.to_binary  # => Flow mod message in binary format.
 
 ## Installation
 

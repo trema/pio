@@ -31,6 +31,7 @@ supports the following packet formats:
    - Features
    - Packet-In
    - Packet-Out
+   - Flow Mod
  - (...currently there are just a few formats supported but I'm sure this list will grow)
 
 ** Features Overview
@@ -142,6 +143,17 @@ Also you can use =Pio::PacketOut#new= to generate a Packet-Out message
 like below:
 
 #+INCLUDE: "./examples/packet_out_new.rb" src ruby
+*** Flow Mod
+To parse an OpenFlow 1.0 flow mod message, use the API
+=Pio::FlowMod.read= and you can access each field of the parsed
+flow mod message.
+
+#+INCLUDE: "./examples/flow_mod_read.rb" src ruby
+
+Also you can use =Pio::FlowMod#new= and =Pio::Match#new= to generate a
+flow mod message like below:
+
+#+INCLUDE: "./examples/flow_mod_new.rb" src ruby
 ** Installation
 The simplest way to install Pio is to use [[http://gembundler.com/][Bundler]].
 
