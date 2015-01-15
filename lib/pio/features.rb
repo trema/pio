@@ -14,30 +14,30 @@ module Pio
         extend Flags
 
         # enum ofp_capabilities
-        def_flags :capabilities, 32,
-                  [:flow_stats,
-                   :table_stats,
-                   :port_stats,
-                   :stp,
-                   :reserved,
-                   :ip_reasm,
-                   :queue_stats,
-                   :arp_match_ip]
+        flags_32bit :capabilities,
+                    [:flow_stats,
+                     :table_stats,
+                     :port_stats,
+                     :stp,
+                     :reserved,
+                     :ip_reasm,
+                     :queue_stats,
+                     :arp_match_ip]
 
         # enum ofp_action_type
-        def_flags :actions_flag, 32,
-                  [:output,
-                   :set_vlan_vid,
-                   :set_vlan_pcp,
-                   :strip_vlan,
-                   :set_dl_src,
-                   :set_dl_dst,
-                   :set_nw_src,
-                   :set_nw_dst,
-                   :set_nw_tos,
-                   :set_tp_src,
-                   :set_tp_dst,
-                   :enqueue]
+        flags_32bit :actions_flag,
+                    [:output,
+                     :set_vlan_vid,
+                     :set_vlan_pcp,
+                     :strip_vlan,
+                     :set_dl_src,
+                     :set_dl_dst,
+                     :set_nw_src,
+                     :set_nw_dst,
+                     :set_nw_tos,
+                     :set_tp_src,
+                     :set_tp_dst,
+                     :enqueue]
 
         endian :big
 

@@ -45,10 +45,10 @@ module Pio
 
       extend Flags
 
-      def_flags :flags, 16,
-                [:send_flow_rem,
-                 :check_overwrap,
-                 :emerg]
+      flags_16bit :flags,
+                  [:send_flow_rem,
+                   :check_overwrap,
+                   :emerg]
 
       endian :big
 

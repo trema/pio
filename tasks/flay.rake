@@ -6,6 +6,6 @@ FlayTask.new do |t|
   t.dirs = FileList['lib/**/*.rb'].map do |each|
     each[/[^\/]+/]
   end.uniq
-  t.threshold = 32
+  t.threshold = 0
   t.verbose = true
 end
