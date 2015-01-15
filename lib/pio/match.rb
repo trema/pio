@@ -54,15 +54,14 @@ module Pio
       end
 
       def set(params)
-        self.flags = params.keys.map do |each|
-          next unless params[each]
-          case each
-          when :nw_src, :nw_dst
-            (params.fetch(each) & 31) << (each == :nw_src ? 8 : 14)
-          else
-            BITS.fetch(each)
-          end
-        end.inject(:|) || 0
+        self.flags = params.inject(0) do |memo, (key, val)|
+          memo | case key
+                 when :nw_src, :nw_dst
+                   (params.fetch(key) & 31) << (key == :nw_src ? 8 : 14)
+                 else
+                   val ? BITS.fetch(key) : 0
+                 end
+        end
       end
 
       def nw_src
