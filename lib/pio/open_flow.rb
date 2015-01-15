@@ -1,3 +1,4 @@
+require 'pio/open_flow/actions'
 require 'pio/open_flow/flags'
 require 'pio/open_flow/message'
 require 'pio/open_flow/open_flow_header'

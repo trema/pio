@@ -1,14 +1,16 @@
-require 'pio/echo/reply'
-require 'pio/echo/request'
 require 'pio/open_flow'
-require 'pio/open_flow/parser'
 
 module Pio
-  # OpenFlow 1.0 Echo Request and Reply message parser.
-  class Echo
-    KLASS = { Pio::OpenFlow::Type::ECHO_REQUEST => Pio::Echo::Request,
-              Pio::OpenFlow::Type::ECHO_REPLY => Pio::Echo::Reply }
+  # OpenFlow 1.0 Echo Request and Reply message.
+  module Echo
+    # @!parse
+    #   # OpenFlow 1.0 Echo Request message.
+    #   class Request < OpenFlow::Message; end
+    class Request < OpenFlow::Message.factory(OpenFlow::Type::ECHO_REQUEST); end
 
-    extend Pio::OpenFlow::Parser
+    # @!parse
+    #   # OpenFlow 1.0 Echo Reply message.
+    #   class Reply < OpenFlow::Message; end
+    class Reply < OpenFlow::Message.factory(OpenFlow::Type::ECHO_REPLY); end
   end
 end

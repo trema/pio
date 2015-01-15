@@ -4,7 +4,7 @@ require 'pio/parse_error'
 
 module Pio
   # OpenFlow 1.0 Packet-In message
-  class PacketIn < Pio::OpenFlow::Message
+  class PacketIn < OpenFlow::Message.factory(OpenFlow::Type::PACKET_IN)
     # Why is this packet being sent to the controller?
     # (enum ofp_packet_in_reason)
     class Reason < BinData::Primitive
@@ -22,7 +22,7 @@ module Pio
     end
 
     # Message body of Packet-In.
-    class Body < BinData::Record
+    class PacketInBody < BinData::Record
       endian :big
 
       uint32 :buffer_id
@@ -40,16 +40,6 @@ module Pio
       def length
         10 + data.length
       end
-    end
-
-    def_format Pio::OpenFlow::Type::PACKET_IN
-
-    def self.read(raw_data)
-      packet_in = allocate
-      packet_in.instance_variable_set :@format, Format.read(raw_data)
-      packet_in
-    rescue BinData::ValidityError
-      raise Pio::ParseError, 'Invalid Packet-In message.'
     end
 
     def_delegators :body, :buffer_id

@@ -1,6 +1,7 @@
 require 'bindata'
 require 'forwardable'
 require 'pio/monkey_patch/integer'
+require 'pio/open_flow/port_number'
 
 module Pio
   # An action to output a packet to a port.

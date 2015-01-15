@@ -1,4 +1,4 @@
 require 'pio'
 
-features = Pio::Features.read(binary_data)
+features = Pio::Features::Request.read(binary_data)
 features.xid # => 123

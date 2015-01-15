@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.11.0 (1/15/2015)
+
+### New features
+* [#108](https://github.com/trema/pio/pull/108): Added new class `Pio::FlowMod` and `Pio::Match`.
+
+
 ## 0.10.1 (1/6/2015)
 
 ### Bugs fixed

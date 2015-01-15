@@ -13,6 +13,8 @@ describe Pio::PacketIn do
   end
 
   describe '.read' do
+    When(:result) { Pio::PacketIn.read(binary) }
+
     context 'with a packet_in message' do
       Given(:header_dump) do
         [
@@ -31,28 +33,25 @@ describe Pio::PacketIn do
           0x00
         ].pack('C*') + data_dump
       end
+      Given(:binary) { header_dump + body_dump }
 
-      When(:packet_in) do
-        Pio::PacketIn.read(header_dump + body_dump)
-      end
+      Then { result.class == Pio::PacketIn }
+      Then { result.ofp_version == 0x1 }
+      Then { result.message_type == 0xa }
+      Then { result.message_length == 0x4e }
+      Then { result.transaction_id == 0 }
+      Then { result.xid == 0 }
 
-      Then { packet_in.class == Pio::PacketIn }
-      Then { packet_in.ofp_version == 0x1 }
-      Then { packet_in.message_type == 0xa }
-      Then { packet_in.message_length == 0x4e }
-      Then { packet_in.transaction_id == 0 }
-      Then { packet_in.xid == 0 }
-
-      Then { !packet_in.body.empty? }
-      Then { packet_in.buffer_id == 0xffffff00 }
-      Then { packet_in.total_len == 0x3c }
-      Then { packet_in.in_port == 1 }
-      Then { packet_in.reason == :no_match }
-      Then { packet_in.data == data_dump }
+      Then { !result.body.empty? }
+      Then { result.buffer_id == 0xffffff00 }
+      Then { result.total_len == 0x3c }
+      Then { result.in_port == 1 }
+      Then { result.reason == :no_match }
+      Then { result.data == data_dump }
     end
 
-    context 'with a packet_in message generated with PacketIn.new' do
-      Given(:packet_in_dump) do
+    context 'with a Packet-In message generated with PacketIn.new' do
+      Given(:binary) do
         Pio::PacketIn.new(
           transaction_id: 0,
           buffer_id: 0xffffff00,
@@ -61,30 +60,28 @@ describe Pio::PacketIn do
           data: data_dump
         ).to_binary
       end
-      When(:packet_in) { Pio::PacketIn.read(packet_in_dump) }
 
-      Then { packet_in.class == Pio::PacketIn }
-      Then { packet_in.ofp_version == 0x1 }
-      Then { packet_in.message_type == 0xa }
-      Then { packet_in.message_length == 0x4e }
-      Then { packet_in.transaction_id == 0 }
-      Then { packet_in.xid == 0 }
+      Then { result.class == Pio::PacketIn }
+      Then { result.ofp_version == 0x1 }
+      Then { result.message_type == 0xa }
+      Then { result.message_length == 0x4e }
+      Then { result.transaction_id == 0 }
+      Then { result.xid == 0 }
 
-      Then { !packet_in.body.empty? }
-      Then { packet_in.buffer_id == 0xffffff00 }
-      Then { packet_in.total_len == 0x3c }
-      Then { packet_in.in_port == 1 }
-      Then { packet_in.reason == :no_match }
-      Then { packet_in.data == data_dump }
+      Then { !result.body.empty? }
+      Then { result.buffer_id == 0xffffff00 }
+      Then { result.total_len == 0x3c }
+      Then { result.in_port == 1 }
+      Then { result.reason == :no_match }
+      Then { result.data == data_dump }
     end
 
     context 'with a Hello message' do
-      Given(:hello_dump) { [1, 0, 0, 8, 0, 0, 0, 0].pack('C*') }
-
-      When(:result) { Pio::PacketIn.read(hello_dump) }
+      Given(:binary) { [1, 0, 0, 8, 0, 0, 0, 0].pack('C*') }
 
       Then do
-        result == Failure(Pio::ParseError, 'Invalid Packet-In message.')
+        result == Failure(Pio::ParseError,
+                          'Invalid PacketIn message.')
       end
     end
   end
