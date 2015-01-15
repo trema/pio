@@ -36,6 +36,8 @@ module Pio
         dl_vlan_pcp: 1 << 20,
         nw_tos: 1 << 21
       }
+      NW_FLAGS = [:nw_src, :nw_dst]
+      FLAGS = BITS.keys.select { |each| !(/^nw_(src|dst)/=~ each) }
 
       endian :big
 
@@ -145,33 +147,21 @@ module Pio
     def_delegators :@format, :to_binary_s
 
     # rubocop:disable MethodLength
-    # rubocop:disable AbcSize
+    # This method smells of :reek:FeatureEnvy
+    # This method smells of :reek:DuplicateMethodCall
     def initialize(user_options)
-      wildcards = {}.tap do |hash|
-        hash[:in_port] = !user_options.key?(:in_port)
-        hash[:dl_vlan] = !user_options.key?(:dl_vlan)
-        hash[:dl_src] = !user_options.key?(:dl_src)
-        hash[:dl_dst] = !user_options.key?(:dl_dst)
-        hash[:dl_type] = !user_options.key?(:dl_type)
-        hash[:nw_proto] = !user_options.key?(:nw_proto)
-        hash[:tp_src] = !user_options.key?(:tp_src)
-        hash[:tp_dst] = !user_options.key?(:tp_dst)
-        if user_options[:nw_src]
-          hash[:nw_src] = 32 - IPv4Address.new(user_options[:nw_src]).prefixlen
-        end
-        hash[:nw_src_all] = !user_options.key?(:nw_src)
-        if user_options[:nw_dst]
-          hash[:nw_dst] = 32 - IPv4Address.new(user_options[:nw_dst]).prefixlen
-        end
-        hash[:nw_dst_all] = !user_options.key?(:nw_dst)
-        hash[:dl_vlan_pcp] = !user_options.key?(:dl_vlan_pcp)
-        hash[:nw_tos] = !user_options.key?(:nw_tos)
-        hash.keep_if { |_k, v| v }
+      flags = Wildcards::FLAGS.each_with_object({}) do |each, memo|
+        memo[each] = true unless user_options.key?(each)
       end
-
-      @format = MatchFormat.new({ wildcards: wildcards }.merge user_options)
+      Wildcards::NW_FLAGS.each_with_object(flags) do |each, memo|
+        if user_options.key?(each)
+          memo[each] = 32 - IPv4Address.new(user_options[each]).prefixlen
+        else
+          memo["#{each}_all".intern] = true
+        end
+      end
+      @format = MatchFormat.new({ wildcards: flags }.merge user_options)
     end
     # rubocop:enable MethodLength
-    # rubocop:enable AbcSize
   end
 end
