@@ -9,6 +9,7 @@ module Pio
       FEATURES_REPLY = 6
       PACKET_IN = 10
       PACKET_OUT = 13
+      FLOW_MOD = 14
     end
   end
 end

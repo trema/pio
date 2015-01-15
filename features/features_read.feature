@@ -1,7 +1,7 @@
 Feature: Pio::Features.read
   Scenario: features_request.raw
     Given a packet data file "features_request.raw"
-    When I try to parse the file with "Features" class
+    When I try to parse the file with "Features::Request" class
     Then it should finish successfully
     And the parsed data have the following field and value:
     | field          |                  value |
@@ -15,7 +15,7 @@ Feature: Pio::Features.read
 
   Scenario: features_reply.raw
     Given a packet data file "features_reply.raw"
-    When I try to parse the file with "Features" class
+    When I try to parse the file with "Features::Reply" class
     Then it should finish successfully
     And the parsed data have the following field and value:
     | field                        | value                                                                                                                                                     |

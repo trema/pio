@@ -9,37 +9,37 @@ module Pio
         extend Flags
 
         # enum ofp_port_config
-        def_flags :port_config,
-                  [:port_down,
-                   :no_stp,
-                   :no_recv,
-                   :no_recv_stp,
-                   :no_flood,
-                   :no_fwd,
-                   :no_packet_in]
+        flags_32bit :port_config,
+                    [:port_down,
+                     :no_stp,
+                     :no_recv,
+                     :no_recv_stp,
+                     :no_flood,
+                     :no_fwd,
+                     :no_packet_in]
 
         # enum ofp_port_state
-        def_flags :port_state,
-                  link_down: 1 << 0,
-                  stp_listen: 0 << 8,
-                  stp_learn: 1 << 8,
-                  stp_forward: 2 << 8,
-                  stp_block: 3 << 8
+        flags_32bit :port_state,
+                    link_down: 1 << 0,
+                    stp_listen: 0 << 8,
+                    stp_learn: 1 << 8,
+                    stp_forward: 2 << 8,
+                    stp_block: 3 << 8
 
         # enum ofp_port_features
-        def_flags :port_feature,
-                  [:port_10mb_hd,
-                   :port_10mb_fd,
-                   :port_100mb_hd,
-                   :port_100mb_fd,
-                   :port_1gb_hd,
-                   :port_1gb_fd,
-                   :port_10gb_fd,
-                   :port_copper,
-                   :port_fiber,
-                   :port_autoneg,
-                   :port_pause,
-                   :port_pause_asym]
+        flags_32bit :port_feature,
+                    [:port_10mb_hd,
+                     :port_10mb_fd,
+                     :port_100mb_hd,
+                     :port_100mb_fd,
+                     :port_1gb_hd,
+                     :port_1gb_fd,
+                     :port_10gb_fd,
+                     :port_copper,
+                     :port_fiber,
+                     :port_autoneg,
+                     :port_pause,
+                     :port_pause_asym]
 
         endian :big
 

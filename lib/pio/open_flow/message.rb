@@ -42,7 +42,8 @@ module Pio
         message.instance_variable_set(:@format, format.read(raw_data))
         message
       rescue BinData::ValidityError
-        raise Pio::ParseError, $ERROR_INFO.message
+        message_name = name.split('::')[1..-1].join(' ')
+        raise Pio::ParseError, "Invalid #{message_name} message."
       end
 
       def self.format
@@ -94,15 +95,16 @@ module Pio
 
       # This method smells of :reek:FeatureEnvy
       def parse_header_options(options)
-        transaction_id = if options.respond_to?(:to_i)
-                           options.to_i
-                         elsif options.respond_to?(:fetch)
-                           options[:transaction_id] || options[:xid] || 0
-                         else
-                           fail TypeError
-                         end
-        return { transaction_id: transaction_id } if transaction_id < 2**32
-        fail ArgumentError, 'Transaction ID >= 2**32'
+        xid = if options.respond_to?(:to_i)
+                options.to_i
+              elsif options.respond_to?(:fetch)
+                options[:transaction_id] || options[:xid] || 0
+              else
+                fail TypeError
+              end
+        return { transaction_id: xid } if xid.unsigned_32bit?
+        fail(ArgumentError,
+             'Transaction ID should be an unsigned 32-bit integer.')
       end
 
       # rubocop:disable MethodLength

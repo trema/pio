@@ -1,7 +1,7 @@
 Feature: Pio::Echo.read
   Scenario: echo_request.raw
     Given a packet data file "echo_request.raw"
-    When I try to parse the file with "Echo" class
+    When I try to parse the file with "Echo::Request" class
     Then it should finish successfully
     And the parsed data have the following field and value:
     | field          |              value |
@@ -15,7 +15,7 @@ Feature: Pio::Echo.read
 
   Scenario: echo_reply.raw
     Given a packet data file "echo_reply.raw"
-    When I try to parse the file with "Echo" class
+    When I try to parse the file with "Echo::Reply" class
     Then it should finish successfully
     And the parsed data have the following field and value:
     | field          |            value |
