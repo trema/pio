@@ -32,7 +32,7 @@ module Pio
         fail TypeError
       end
     rescue ArgumentError, TypeError
-      raise InvalidValueError, "Invalid MAC address: #{ value.inspect }"
+      raise InvalidValueError, "Invalid MAC address: #{value.inspect}"
     end
 
     # @!group Converters
@@ -113,7 +113,7 @@ module Pio
     #   Mac.new("ff:ff:ff:ff:ff:ff").broadcast? #=> true
     #
     def broadcast?
-      to_a.all? { | each | each == 0xff }
+      to_a.all? { |each| each == 0xff }
     end
 
     #
@@ -196,9 +196,11 @@ module Pio
     private
 
     def parse_mac_string(mac)
-      octet_regex = '[0-9a-fA-F][0-9a-fA-F]'
-      if /^(#{ octet_regex }:){5}(#{ octet_regex })$/ =~ mac
-        mac.gsub(':', '').hex
+      octet = '[0-9a-fA-F][0-9a-fA-F]'
+      doctet = octet * 2
+      case mac
+      when /^(?:#{octet}(:)){5}#{octet}$/, /^(?:#{doctet}(\.)){2}#{doctet}$/
+        mac.gsub(Regexp.last_match[1], '').hex
       else
         fail ArgumentError
       end

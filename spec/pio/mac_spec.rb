@@ -46,6 +46,81 @@ describe Pio::Mac do
         subject { super().to_s }
         it { is_expected.to eq '11:22:33:44:55:66' }
       end
+
+      describe '#to_str' do
+        context 'when "MAC = " + subject' do
+          it { expect('MAC = ' + subject).to eq 'MAC = 11:22:33:44:55:66' }
+        end
+      end
+
+      describe '#multicast?' do
+        subject { super().multicast? }
+        it { is_expected.to be_truthy }
+      end
+
+      describe '#broadcast?' do
+        subject { super().broadcast? }
+        it { is_expected.to be_falsey }
+      end
+
+      describe '#reserved?' do
+        subject { super().reserved? }
+        it { is_expected.to be_falsey }
+      end
+    end
+
+    context 'with "1122.3344.5566" (Cisco style)' do
+      let(:value) { '1122.3344.5566' }
+
+      describe '#==' do
+        it { is_expected.to eq Pio::Mac.new('1122.3344.5566') }
+        it { is_expected.to eq Pio::Mac.new('11:22:33:44:55:66') }
+        it { is_expected.to eq '1122.3344.5566' }
+        it { is_expected.to eq '11:22:33:44:55:66' }
+        it { is_expected.not_to eq Pio::Mac.new('6655.4433.2211') }
+        it { is_expected.not_to eq Pio::Mac.new('66:55:44:33:22:11') }
+        it { is_expected.not_to eq '6655.4433.2211' }
+        it { is_expected.not_to eq '66:55:44:33:22:11' }
+        it { is_expected.to eq 0x112233445566 }
+        it { is_expected.not_to eq 42 }
+        it { is_expected.not_to eq 'INVALID_MAC_ADDRESS' }
+      end
+
+      describe '#eql?' do
+        it { expect(subject).to eql Pio::Mac.new('1122.3344.5566') }
+        it { expect(subject).to eql Pio::Mac.new('11:22:33:44:55:66') }
+        it { expect(subject).to eql '1122.3344.5566' }
+        it { expect(subject).to eql '11:22:33:44:55:66' }
+        it { expect(subject).not_to eql Pio::Mac.new('6655.4433.2211') }
+        it { expect(subject).not_to eql Pio::Mac.new('66:55:44:33:22:11') }
+        it { expect(subject).not_to eql '6655.4433.2211' }
+        it { expect(subject).not_to eql '66:55:44:33:22:11' }
+        it { expect(subject).to eql 0x112233445566 }
+        it { expect(subject).not_to eql 42 }
+        it { expect(subject).not_to eql 'INVALID_MAC_ADDRESS' }
+      end
+
+      describe '#hash' do
+        subject { super().hash }
+        it { is_expected.to eq Pio::Mac.new('1122.3344.5566').hash }
+        it { is_expected.to eq Pio::Mac.new('11:22:33:44:55:66').hash }
+      end
+
+      describe '#to_i' do
+        subject { super().to_i }
+        it { is_expected.to eq 0x112233445566 }
+      end
+
+      describe '#to_a' do
+        subject { super().to_a }
+        it { is_expected.to eq [0x11, 0x22, 0x33, 0x44, 0x55, 0x66] }
+      end
+
+      describe '#to_s' do
+        subject { super().to_s }
+        it { is_expected.to eq '11:22:33:44:55:66' }
+      end
+
       describe '#to_str' do
         context 'when "MAC = " + subject' do
           it { expect('MAC = ' + subject).to eq 'MAC = 11:22:33:44:55:66' }
