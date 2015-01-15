@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.11.1 (1/15/2015)
+
+### New features
+* [#116](https://github.com/trema/pio/issues/116): Support Cisco-style MAC addresses.
+
+
 ## 0.11.0 (1/15/2015)
 
 ### New features
