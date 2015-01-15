@@ -6,7 +6,13 @@ module Pio
   class FlowMod < OpenFlow::Message.factory(OpenFlow::Type::FLOW_MOD)
     # enum ofp_flow_mod_command
     class Command < BinData::Primitive
-      COMMANDS = { add: 0 }
+      COMMANDS = {
+        add: 0,
+        modify: 1,
+        modify_strict: 2,
+        delete: 3,
+        delete_strict: 4
+      }
 
       endian :big
       uint16 :command
