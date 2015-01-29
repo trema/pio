@@ -91,9 +91,10 @@ describe Pio::Match do
   end
 
   describe '.new' do
-    context 'with in_port: 1' do
-      When(:match) { Pio::Match.new(in_port: 1) }
+    When(:match) { Pio::Match.new(options) }
 
+    context 'with in_port: 1' do
+      Given(:options) { { in_port: 1 } }
       Then do
         match.wildcards.keys == [
           :dl_vlan,
@@ -121,11 +122,19 @@ describe Pio::Match do
       Then { match.nw_dst == '0.0.0.0' }
       Then { match.tp_src == 0 }
       Then { match.tp_dst == 0 }
+
+      describe '#==' do
+        When(:result) { match == other }
+
+        context 'with Match.new(in_port: 1)' do
+          Given(:other) { Pio::Match.new(in_port: 1) }
+          Then { result == true }
+        end
+      end
     end
 
     context "with nw_src: '192.168.1.0/24'" do
-      When(:match) { Pio::Match.new(nw_src: '192.168.1.0/24') }
-
+      Given(:options) { { nw_src: '192.168.1.0/24' } }
       Then do
         match.wildcards.keys == [
           :in_port,
@@ -158,8 +167,7 @@ describe Pio::Match do
     end
 
     context "with nw_dst: '192.168.1.0/24'" do
-      When(:match) { Pio::Match.new(nw_dst: '192.168.1.0/24') }
-
+      Given(:options) { { nw_dst: '192.168.1.0/24' } }
       Then do
         match.wildcards.keys == [
           :in_port,
