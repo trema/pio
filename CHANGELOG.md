@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.11.2 (1/29/2015)
+
+### Bugs fixed
+* [#121](https://github.com/trema/pio/pull/121): Fix behavior of `Pio::Match#==` and `Pio::SendOutPort#==`.
+
+
 ## 0.11.1 (1/15/2015)
 
 ### New features

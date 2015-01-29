@@ -71,5 +71,10 @@ module Pio
       @format = Format.new(options)
     end
     # rubocop:enable MethodLength
+
+    def ==(other)
+      return false unless other
+      to_binary == other.to_binary
+    end
   end
 end
