@@ -75,11 +75,11 @@ module Pio
       def self.body_type
         klass_name = name.split('::').last + 'Body'
         const_get(klass_name)
-        klass_name.sub(/.*::/, '')
-          .gsub(/([A-Z]+)([A-Z][a-z])/, '\1_\2')
-          .gsub(/([a-z\d])([A-Z])/, '\1_\2')
-          .tr('-', '_')
-          .downcase
+        klass_name.sub(/.*::/, '').
+          gsub(/([A-Z]+)([A-Z][a-z])/, '\1_\2').
+          gsub(/([a-z\d])([A-Z])/, '\1_\2').
+          tr('-', '_').
+          downcase
       rescue NameError
         'string'
       end

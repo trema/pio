@@ -145,6 +145,7 @@ module Pio
     def_delegators :@format, :dl_vlan_pcp
     def_delegators :@format, :nw_tos
     def_delegators :@format, :to_binary_s
+    def_delegator :@format, :to_binary_s, :to_binary
 
     # rubocop:disable MethodLength
     # This method smells of :reek:FeatureEnvy
@@ -163,5 +164,10 @@ module Pio
       @format = MatchFormat.new({ wildcards: flags }.merge user_options)
     end
     # rubocop:enable MethodLength
+
+    def ==(other)
+      return false unless other
+      to_binary == other.to_binary
+    end
   end
 end

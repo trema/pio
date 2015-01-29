@@ -9,3 +9,6 @@ AllCops:
 
 Style/StringLiterals:
   EnforcedStyle: single_quotes
+
+Style/DotPosition:
+  EnforcedStyle: trailing
