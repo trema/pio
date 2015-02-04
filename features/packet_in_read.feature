@@ -1,6 +1,6 @@
 Feature: Pio::PacketIn.read
-  Scenario: packet_in.raw
-    Given a packet data file "packet_in.raw"
+  Scenario: packet_in_arp_request.raw
+    Given a packet data file "packet_in_arp_request.raw"
     When I try to parse the file with "PacketIn" class
     Then it should finish successfully
     And the parsed data have the following field and value:
