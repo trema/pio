@@ -2,6 +2,9 @@
 
 ## develop (unreleased)
 
+
+## 0.12.0 (2/5/2015)
+
 ### New features
 * [#123](https://github.com/trema/pio/pull/123): Add new class `Pio::ExactMatch`.
 
