@@ -25,6 +25,10 @@ When(/^I try to parse the file with "(.*?)" class$/) do |parser|
   end
 end
 
+When(/^I try to create an exact match from the packet$/) do
+  @result = Pio::ExactMatch.new(Pio::PacketIn.read(IO.read(@raw)))
+end
+
 Then(/^it should finish successfully$/) do
   # Noop.
 end

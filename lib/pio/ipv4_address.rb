@@ -26,10 +26,8 @@ module Pio
         @value = IPAddr.new(addr, Socket::AF_INET)
       when String
         @value = IPAddr.new(addr)
-      when IPv4Address
-        @value = addr.value
       else
-        fail TypeError, "Invalid IPv4 address: #{addr.inspect}"
+        @value = addr.value
       end
     end
 
