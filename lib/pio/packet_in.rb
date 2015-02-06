@@ -42,10 +42,62 @@ module Pio
       end
     end
 
+    # Pio::PacketIn#data parser
+    class DataParser
+      # Ethernet header parser
+      class EthernetHeaderParser < BinData::Record
+        extend Pio::Type::EthernetHeader
+
+        endian :big
+
+        ethernet_header
+        rest :payload
+      end
+
+      # IPv4 packet parser
+      class IPv4Packet < BinData::Record
+        extend Pio::Type::EthernetHeader
+        extend Type::IPv4Header
+
+        endian :big
+
+        ethernet_header
+        ipv4_header
+
+        uint16 :transport_source_port
+        uint16 :transport_destination_port
+        rest :rest
+      end
+
+      def self.read(raw_data)
+        ethernet_header = EthernetHeaderParser.read(raw_data)
+        case ethernet_header.ether_type
+        when 0x0800
+          IPv4Packet.read raw_data
+        when 0x0806
+          Pio::Arp.read raw_data
+        else
+          fail 'Failed to parse packet_in data.'
+        end
+      end
+    end
+
     def_delegators :body, :buffer_id
     def_delegators :body, :total_len
     def_delegators :body, :in_port
     def_delegators :body, :reason
     def_delegators :body, :data
+
+    def parsed_data
+      @parsed_data ||= DataParser.read(data)
+    end
+
+    def source_mac
+      parsed_data.source_mac
+    end
+
+    def destination_mac
+      parsed_data.destination_mac
+    end
   end
 end
