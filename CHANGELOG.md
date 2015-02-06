@@ -2,6 +2,9 @@
 
 ## develop (unreleased)
 
+
+## 0.13.0 (2/6/2015)
+
 ### New features
 * [#124](https://github.com/trema/pio/pull/124): Add new methods `Pio::PacketIn#source_mac` and `Pio::PacketIn#destination_mac`.
 
