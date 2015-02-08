@@ -99,7 +99,10 @@ describe Pio::PacketIn do
           data: data_dump
         }
       end
+      When { packet_in.datapath_id = 0xabc }
 
+      Then { packet_in.datapath_id == 0xabc }
+      Then { packet_in.dpid == 0xabc }
       Then { packet_in.ofp_version == 1 }
       Then { packet_in.message_type == 10 }
       Then { packet_in.message_length == 78 }
@@ -123,7 +126,10 @@ describe Pio::PacketIn do
           data: data_dump
         }
       end
+      When { packet_in.dpid = 0xabc }
 
+      Then { packet_in.datapath_id == 0xabc }
+      Then { packet_in.dpid == 0xabc }
       Then { packet_in.ofp_version == 1 }
       Then { packet_in.message_type == 10 }
       Then { packet_in.message_length == 78 }

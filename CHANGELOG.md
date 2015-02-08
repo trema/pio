@@ -1,6 +1,7 @@
 # Changelog
 
 ## develop (unreleased)
+* Add new accessor methods `Pio::PacketIn#datapath_id` and `Pio::PacketIn#dpid`.
 
 
 ## 0.13.0 (2/6/2015)

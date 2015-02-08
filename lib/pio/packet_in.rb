@@ -82,6 +82,10 @@ module Pio
       end
     end
 
+    attr_accessor :datapath_id
+    alias_method :dpid, :datapath_id
+    alias_method :dpid=, :datapath_id=
+
     def_delegators :body, :buffer_id
     def_delegators :body, :total_len
     def_delegators :body, :in_port
