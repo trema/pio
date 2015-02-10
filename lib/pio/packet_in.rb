@@ -76,6 +76,8 @@ module Pio
           IPv4Packet.read raw_data
         when 0x0806
           Pio::Arp.read raw_data
+        when 0x88cc
+          Pio::Lldp.read raw_data
         else
           fail 'Failed to parse packet_in data.'
         end
@@ -94,6 +96,10 @@ module Pio
 
     def parsed_data
       @parsed_data ||= DataParser.read(data)
+    end
+
+    def lldp?
+      parsed_data.is_a? Lldp
     end
 
     def source_mac
