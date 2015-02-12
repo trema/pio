@@ -1,6 +1,11 @@
 # Changelog
 
 ## develop (unreleased)
+### New features
+* [#126](https://github.com/trema/pio/pull/126): Add new class `Pio::PortStatus`.
+* [#126](https://github.com/trema/pio/pull/126): Add new methods `Pio::Type::OpenFlow::PhyPort#up?`, `Pio::Type::OpenFlow::PhyPort#down?`, `Pio::Type::OpenFlow::PhyPort#local?`, `Pio::Type::OpenFlow::PhyPort#datapath_id` and `Pio::Type::OpenFlow::PhyPort#dpid`.
+* [#126](https://github.com/trema/pio/pull/126): Add new methods `Pio::PacketIn#lldp?`.
+* [#126](https://github.com/trema/pio/pull/126): Add new methods `Pio::Features::Reply#physical_ports`.
 
 
 ## 0.14.0 (2/9/2015)
