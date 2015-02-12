@@ -53,8 +53,27 @@ module Pio
         port_feature :supported
         port_feature :peer
 
+        attr_accessor :datapath_id
+        alias_method :dpid, :datapath_id
+
+        def number
+          port_no
+        end
+
         def mac_address
           hardware_address
+        end
+
+        def up?
+          !down?
+        end
+
+        def down?
+          config.include?(:port_down) || state.include?(:link_down)
+        end
+
+        def local?
+          port_no == PortNumber::NUMBERS[:local]
         end
       end
     end

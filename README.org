@@ -32,6 +32,7 @@ supports the following packet formats:
    - Packet-In
    - Packet-Out
    - Flow Mod
+   - Port Status
  - (...currently there are just a few formats supported but I'm sure this list will grow)
 
 ** Features Overview
