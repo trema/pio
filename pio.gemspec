@@ -37,7 +37,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'bindata', '~> 2.1.0'
 
   gem.add_development_dependency 'rake'
-  gem.add_development_dependency 'bundler', '~> 1.7.12'
+  gem.add_development_dependency 'bundler', '~> 1.8.0'
   gem.add_development_dependency 'pry', '~> 0.10.1'
 
   # Guard
