@@ -65,7 +65,19 @@ module Pio
       def_delegators :body, :n_tables
       def_delegators :body, :capabilities
       def_delegators :body, :actions
-      def_delegators :body, :ports
+
+      def ports
+        body.ports.map do |each|
+          each.datapath_id = datapath_id
+          each
+        end
+      end
+
+      def physical_ports
+        ports.select do |each|
+          each.port_no <= PortNumber::MAX
+        end
+      end
     end
   end
 end
