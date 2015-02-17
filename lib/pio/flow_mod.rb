@@ -1,9 +1,10 @@
 require 'pio/match'
 require 'pio/open_flow'
 
+# Base module.
 module Pio
-  # OpenFlow 1.0 flow setup and teardown message.
-  class FlowMod < OpenFlow::Message.factory(OpenFlow::Type::FLOW_MOD)
+  # OpenFlow 1.0 Flow Mod message.
+  class FlowMod
     # enum ofp_flow_mod_command
     class Command < BinData::Primitive
       COMMANDS = {
@@ -27,7 +28,7 @@ module Pio
     end
 
     # Message body of FlowMod.
-    class FlowModBody < BinData::Record
+    class Body < BinData::Record
       # Pio::MatchFormat wrapper.
       class Match < BinData::Primitive
         endian :big
@@ -43,7 +44,7 @@ module Pio
         end
       end
 
-      extend Flags
+      extend OpenFlow::Flags
 
       flags_16bit :flags,
                   [:send_flow_rem,
@@ -71,7 +72,9 @@ module Pio
         64 + actions.binary.length
       end
     end
+  end
 
+  OpenFlow::Message.factory(FlowMod, OpenFlow::FLOW_MOD) do
     def_delegators :body, :match
     def_delegators :body, :cookie
     def_delegators :body, :command

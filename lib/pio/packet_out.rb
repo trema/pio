@@ -1,11 +1,12 @@
 require 'bindata'
 require 'pio/open_flow'
 
+# Base module.
 module Pio
   # OpenFlow 1.0 Packet-Out message
-  class PacketOut < OpenFlow::Message.factory(OpenFlow::Type::PACKET_OUT)
+  class PacketOut
     # Message body of Packet-Out
-    class PacketOutBody < BinData::Record
+    class Body < BinData::Record
       endian :big
 
       uint32 :buffer_id
@@ -22,7 +23,9 @@ module Pio
         8 + actions_len + data.length
       end
     end
+  end
 
+  OpenFlow::Message.factory(PacketOut, OpenFlow::PACKET_OUT) do
     def_delegators :body, :buffer_id
     def_delegators :body, :in_port
     def_delegators :body, :actions_len
