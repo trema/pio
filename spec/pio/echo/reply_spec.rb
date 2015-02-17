@@ -8,7 +8,7 @@ describe Pio::Echo::Reply do
       Given(:binary) { [1, 3, 0, 8, 0, 0, 0, 0].pack('C*') }
 
       Then { echo_reply.ofp_version == 1 }
-      Then { echo_reply.message_type == Pio::OpenFlow::Type::ECHO_REPLY }
+      Then { echo_reply.message_type == Pio::OpenFlow::ECHO_REPLY }
       Then { echo_reply.message_length == 8 }
       Then { echo_reply.transaction_id == 0 }
       Then { echo_reply.xid == 0 }
@@ -34,7 +34,7 @@ describe Pio::Echo::Reply do
       When(:echo_reply) { Pio::Echo::Reply.new }
 
       Then { echo_reply.ofp_version == 1 }
-      Then { echo_reply.message_type == Pio::OpenFlow::Type::ECHO_REPLY }
+      Then { echo_reply.message_type == Pio::OpenFlow::ECHO_REPLY }
       Then { echo_reply.message_length == 8 }
       Then { echo_reply.transaction_id == 0 }
       Then { echo_reply.xid == 0 }
@@ -49,7 +49,7 @@ describe Pio::Echo::Reply do
       When(:echo_reply) { Pio::Echo::Reply.new(123) }
 
       Then { echo_reply.ofp_version == 1 }
-      Then { echo_reply.message_type == Pio::OpenFlow::Type::ECHO_REPLY }
+      Then { echo_reply.message_type == Pio::OpenFlow::ECHO_REPLY }
       Then { echo_reply.message_length == 8 }
       Then { echo_reply.transaction_id == 123 }
       Then { echo_reply.xid == 123 }
@@ -64,7 +64,7 @@ describe Pio::Echo::Reply do
       When(:echo_reply) { Pio::Echo::Reply.new(transaction_id: 123) }
 
       Then { echo_reply.ofp_version == 1 }
-      Then { echo_reply.message_type == Pio::OpenFlow::Type::ECHO_REPLY }
+      Then { echo_reply.message_type == Pio::OpenFlow::ECHO_REPLY }
       Then { echo_reply.message_length == 8 }
       Then { echo_reply.transaction_id == 123 }
       Then { echo_reply.xid == 123 }
@@ -79,7 +79,7 @@ describe Pio::Echo::Reply do
       When(:echo_reply) { Pio::Echo::Reply.new(xid: 123) }
 
       Then { echo_reply.ofp_version == 1 }
-      Then { echo_reply.message_type == Pio::OpenFlow::Type::ECHO_REPLY }
+      Then { echo_reply.message_type == Pio::OpenFlow::ECHO_REPLY }
       Then { echo_reply.message_length == 8 }
       Then { echo_reply.transaction_id == 123 }
       Then { echo_reply.xid == 123 }
@@ -94,7 +94,7 @@ describe Pio::Echo::Reply do
       When(:echo_reply) { Pio::Echo::Reply.new(xid: 123, user_data: 'foobar') }
 
       Then { echo_reply.ofp_version == 1 }
-      Then { echo_reply.message_type == Pio::OpenFlow::Type::ECHO_REPLY }
+      Then { echo_reply.message_type == Pio::OpenFlow::ECHO_REPLY }
       Then { echo_reply.message_length == 14 }
       Then { echo_reply.transaction_id == 123 }
       Then { echo_reply.xid == 123 }

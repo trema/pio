@@ -1,10 +1,13 @@
 require 'bindata'
 require 'pio/open_flow'
 require 'pio/parse_error'
+require 'pio/type/ethernet_header'
+require 'pio/type/ipv4_header'
 
+# Base module.
 module Pio
   # OpenFlow 1.0 Packet-In message
-  class PacketIn < OpenFlow::Message.factory(OpenFlow::Type::PACKET_IN)
+  class PacketIn
     # Why is this packet being sent to the controller?
     # (enum ofp_packet_in_reason)
     class Reason < BinData::Primitive
@@ -22,7 +25,7 @@ module Pio
     end
 
     # Message body of Packet-In.
-    class PacketInBody < BinData::Record
+    class Body < BinData::Record
       endian :big
 
       uint32 :buffer_id
@@ -85,7 +88,9 @@ module Pio
       end
       # rubocop:enable MethodLength
     end
+  end
 
+  OpenFlow::Message.factory(PacketIn, OpenFlow::PACKET_IN) do
     attr_accessor :datapath_id
     alias_method :dpid, :datapath_id
     alias_method :dpid=, :datapath_id=
@@ -97,7 +102,7 @@ module Pio
     def_delegators :body, :data
 
     def parsed_data
-      @parsed_data ||= DataParser.read(data)
+      @parsed_data ||= PacketIn::DataParser.read(data)
     end
 
     def lldp?

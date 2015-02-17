@@ -1,6 +1,8 @@
 # Changelog
 
 ## develop (unreleased)
+### Bugs fixed
+* [#127](https://github.com/trema/pio/pull/127): Make OpenFlow classes thread safe.
 
 
 ## 0.15.0 (2/12/2015)

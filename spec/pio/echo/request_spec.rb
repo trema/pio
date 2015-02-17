@@ -8,7 +8,7 @@ describe Pio::Echo::Request do
       Given(:binary) { [1, 2, 0, 8, 0, 0, 0, 0].pack('C*') }
 
       Then { echo_request.ofp_version == 1 }
-      Then { echo_request.message_type == Pio::OpenFlow::Type::ECHO_REQUEST }
+      Then { echo_request.message_type == Pio::OpenFlow::ECHO_REQUEST }
       Then { echo_request.message_length == 8 }
       Then { echo_request.transaction_id == 0 }
       Then { echo_request.xid == 0 }
@@ -34,7 +34,7 @@ describe Pio::Echo::Request do
       When(:echo_request) { Pio::Echo::Request.new }
 
       Then { echo_request.ofp_version == 1 }
-      Then { echo_request.message_type == Pio::OpenFlow::Type::ECHO_REQUEST }
+      Then { echo_request.message_type == Pio::OpenFlow::ECHO_REQUEST }
       Then { echo_request.message_length == 8 }
       Then { echo_request.transaction_id == 0 }
       Then { echo_request.xid == 0 }
@@ -49,7 +49,7 @@ describe Pio::Echo::Request do
       When(:echo_request) { Pio::Echo::Request.new(123) }
 
       Then { echo_request.ofp_version == 1 }
-      Then { echo_request.message_type == Pio::OpenFlow::Type::ECHO_REQUEST }
+      Then { echo_request.message_type == Pio::OpenFlow::ECHO_REQUEST }
       Then { echo_request.message_length == 8 }
       Then { echo_request.transaction_id == 123 }
       Then { echo_request.xid == 123 }
@@ -64,7 +64,7 @@ describe Pio::Echo::Request do
       When(:echo_request) { Pio::Echo::Request.new(transaction_id: 123) }
 
       Then { echo_request.ofp_version == 1 }
-      Then { echo_request.message_type == Pio::OpenFlow::Type::ECHO_REQUEST }
+      Then { echo_request.message_type == Pio::OpenFlow::ECHO_REQUEST }
       Then { echo_request.message_length == 8 }
       Then { echo_request.transaction_id == 123 }
       Then { echo_request.xid == 123 }
@@ -79,7 +79,7 @@ describe Pio::Echo::Request do
       When(:echo_request) { Pio::Echo::Request.new(xid: 123) }
 
       Then { echo_request.ofp_version == 1 }
-      Then { echo_request.message_type == Pio::OpenFlow::Type::ECHO_REQUEST }
+      Then { echo_request.message_type == Pio::OpenFlow::ECHO_REQUEST }
       Then { echo_request.message_length == 8 }
       Then { echo_request.transaction_id == 123 }
       Then { echo_request.xid == 123 }
@@ -96,7 +96,7 @@ describe Pio::Echo::Request do
       end
 
       Then { echo_request.ofp_version == 1 }
-      Then { echo_request.message_type == Pio::OpenFlow::Type::ECHO_REQUEST }
+      Then { echo_request.message_type == Pio::OpenFlow::ECHO_REQUEST }
       Then { echo_request.message_length == 14 }
       Then { echo_request.transaction_id == 123 }
       Then { echo_request.xid == 123 }

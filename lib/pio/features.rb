@@ -4,14 +4,13 @@ module Pio
   # OpenFlow 1.0 Features Request and Reply message.
   class Features
     # OpenFlow 1.0 Features Request message.
-    class Request < OpenFlow::Message.factory(OpenFlow::Type::FEATURES_REQUEST)
-    end
+    class Request; end
+    OpenFlow::Message.factory(Request, OpenFlow::FEATURES_REQUEST)
 
-    # OpenFlow 1.0 Features Reply message
-    class Reply < OpenFlow::Message.factory(OpenFlow::Type::FEATURES_REPLY)
+    class Reply
       # Message body of features reply.
-      class ReplyBody < BinData::Record
-        extend Flags
+      class Body < BinData::Record
+        extend OpenFlow::Flags
 
         # enum ofp_capabilities
         flags_32bit :capabilities,
@@ -58,7 +57,9 @@ module Pio
           24 + ports.to_binary_s.length
         end
       end
+    end
 
+    OpenFlow::Message.factory(Reply, OpenFlow::FEATURES_REPLY) do
       def_delegators :body, :datapath_id
       def_delegator :body, :datapath_id, :dpid
       def_delegators :body, :n_buffers
