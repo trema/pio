@@ -1,8 +1,9 @@
 require 'pio/open_flow'
 
+# Base module.
 module Pio
   # OpenFlow 1.0 Port Status message
-  class PortStatus < OpenFlow::Message.factory(OpenFlow::Type::PORT_STATUS)
+  class PortStatus
     # What changed about the physical port
     class Reason < BinData::Primitive
       REASONS = { add: 0, delete: 1, modify: 2 }
@@ -18,8 +19,8 @@ module Pio
       end
     end
 
-    # Message body of Packet-In.
-    class PortStatusBody < BinData::Record
+    # Message body of Port Status
+    class Body < BinData::Record
       endian :big
 
       reason :reason
@@ -27,7 +28,9 @@ module Pio
       hide :padding
       phy_port :desc
     end
+  end
 
+  OpenFlow::Message.factory(PortStatus, OpenFlow::PORT_STATUS) do
     def_delegators :body, :desc
 
     def reason

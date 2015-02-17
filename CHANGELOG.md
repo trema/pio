@@ -3,6 +3,11 @@
 ## develop (unreleased)
 
 
+## 0.15.1 (2/17/2015)
+### Bugs fixed
+* [#127](https://github.com/trema/pio/pull/127): Make OpenFlow classes thread safe.
+
+
 ## 0.15.0 (2/12/2015)
 ### New features
 * [#126](https://github.com/trema/pio/pull/126): Add new class `Pio::PortStatus`.

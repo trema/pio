@@ -1,5 +1,5 @@
 require 'pio'
 
-describe Pio::OpenFlow::Type do
-  Then { Pio::OpenFlow::Type.constants.include?(:HELLO) == true }
+describe Pio::OpenFlow do
+  Then { Pio::OpenFlow.constants.include?(:HELLO) == true }
 end

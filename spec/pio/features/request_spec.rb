@@ -11,7 +11,7 @@ describe Pio::Features::Request do
       Then { result.ofp_version == 1 }
       Then do
         result.message_type ==
-          Pio::OpenFlow::Type::FEATURES_REQUEST
+          Pio::OpenFlow::FEATURES_REQUEST
       end
       Then { result.message_length == 8 }
       Then { result.transaction_id == 0 }
@@ -35,7 +35,7 @@ describe Pio::Features::Request do
       When(:result) { Pio::Features::Request.new }
 
       Then { result.ofp_version == 1 }
-      Then { result.message_type == Pio::OpenFlow::Type::FEATURES_REQUEST }
+      Then { result.message_type == Pio::OpenFlow::FEATURES_REQUEST }
       Then { result.message_length == 8 }
       Then { result.transaction_id == 0 }
       Then { result.xid == 0 }
@@ -48,7 +48,7 @@ describe Pio::Features::Request do
       When(:result) { Pio::Features::Request.new(123) }
 
       Then { result.ofp_version == 1 }
-      Then { result.message_type == Pio::OpenFlow::Type::FEATURES_REQUEST }
+      Then { result.message_type == Pio::OpenFlow::FEATURES_REQUEST }
       Then { result.message_length == 8 }
       Then { result.transaction_id == 123 }
       Then { result.xid == 123 }
@@ -61,7 +61,7 @@ describe Pio::Features::Request do
       When(:result) { Pio::Features::Request.new(transaction_id: 123) }
 
       Then { result.ofp_version == 1 }
-      Then { result.message_type == Pio::OpenFlow::Type::FEATURES_REQUEST }
+      Then { result.message_type == Pio::OpenFlow::FEATURES_REQUEST }
       Then { result.message_length == 8 }
       Then { result.transaction_id == 123 }
       Then { result.xid == 123 }
@@ -74,7 +74,7 @@ describe Pio::Features::Request do
       When(:result) { Pio::Features::Request.new(xid: 123) }
 
       Then { result.ofp_version == 1 }
-      Then { result.message_type == Pio::OpenFlow::Type::FEATURES_REQUEST }
+      Then { result.message_type == Pio::OpenFlow::FEATURES_REQUEST }
       Then { result.message_length == 8 }
       Then { result.transaction_id == 123 }
       Then { result.xid == 123 }
