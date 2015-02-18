@@ -1,6 +1,8 @@
 # Changelog
 
 ## develop (unreleased)
+### Changes
+* [#128](https://github.com/trema/pio/pull/128): Field accessors return Ruby primitives (Fixnum, Symbol, etc.).
 
 
 ## 0.15.1 (2/17/2015)

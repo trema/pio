@@ -32,6 +32,7 @@ Feature: Pio::Features.read
     | capabilities                 | [:flow_stats, :table_stats, :port_stats, :arp_match_ip]                                                                                                   |
     | actions                      | [:output, :set_vlan_vid, :set_vlan_pcp, :strip_vlan, :set_dl_src, :set_dl_dst, :set_nw_src, :set_nw_dst, :set_nw_tos, :set_tp_src, :set_tp_dst, :enqueue] |
     | ports.length                 | 3                                                                                                                                                         |
+    | ports.first.datapath_id      | 1                                                                                                                                                         |
     | ports.first.port_no          | 2                                                                                                                                                         |
     | ports.first.mac_address      | 16:7d:a4:37:ba:10                                                                                                                                         |
     | ports.first.hardware_address | 16:7d:a4:37:ba:10                                                                                                                                         |
@@ -43,6 +44,7 @@ Feature: Pio::Features.read
     | ports.first.supported        | []                                                                                                                                                        |
     | ports.first.peer             | []                                                                                                                                                        |
     | ports.last.port_no           | 1                                                                                                                                                         |
+    | ports.last.number            | 1                                                                                                                                                         |
     | ports.last.mac_address       | 62:94:3a:f6:40:db                                                                                                                                         |
     | ports.last.hardware_address  | 62:94:3a:f6:40:db                                                                                                                                         |
     | ports.last.name              | trema1-0                                                                                                                                                  |
@@ -52,3 +54,6 @@ Feature: Pio::Features.read
     | ports.last.advertised        | []                                                                                                                                                        |
     | ports.last.supported         | []                                                                                                                                                        |
     | ports.last.peer              | []                                                                                                                                                        |
+    | ports.last.up?               | true                                                                                                                                                      |
+    | ports.last.down?             | false                                                                                                                                                     |
+    | ports.last.local?            | false                                                                                                                                                     |

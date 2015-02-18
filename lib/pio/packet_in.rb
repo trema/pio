@@ -91,15 +91,15 @@ module Pio
   end
 
   OpenFlow::Message.factory(PacketIn, OpenFlow::PACKET_IN) do
-    attr_accessor :datapath_id
-    alias_method :dpid, :datapath_id
-    alias_method :dpid=, :datapath_id=
-
     def_delegators :body, :buffer_id
     def_delegators :body, :total_len
     def_delegators :body, :in_port
     def_delegators :body, :reason
     def_delegators :body, :data
+
+    attr_accessor :datapath_id
+    alias_method :dpid, :datapath_id
+    alias_method :dpid=, :datapath_id=
 
     def parsed_data
       @parsed_data ||= PacketIn::DataParser.read(data)

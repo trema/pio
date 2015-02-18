@@ -31,10 +31,14 @@ module Pio
   end
 
   OpenFlow::Message.factory(PortStatus, OpenFlow::PORT_STATUS) do
-    def_delegators :body, :desc
+    def_delegators :body, :reason
 
-    def reason
-      body.reason.to_s.to_sym
+    attr_writer :datapath_id
+
+    def desc
+      @desc ||= @format.body.desc.snapshot
+      @desc.instance_variable_set :@datapath_id, @datapath_id
+      @desc
     end
   end
 end
