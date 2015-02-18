@@ -52,28 +52,39 @@ module Pio
       port_feature :supported
       port_feature :peer
 
-      attr_accessor :datapath_id
-      alias_method :dpid, :datapath_id
+      # rubocop:disable MethodLength
+      def snapshot
+        super.tap do |ss|
+          def ss.datapath_id
+            @datapath_id || fail
+          end
 
-      def number
-        port_no
-      end
+          def ss.dpid
+            @datapath_id || fail
+          end
 
-      def mac_address
-        hardware_address
-      end
+          def ss.number
+            port_no
+          end
 
-      def up?
-        !down?
-      end
+          def ss.mac_address
+            hardware_address
+          end
 
-      def down?
-        config.include?(:port_down) || state.include?(:link_down)
-      end
+          def ss.up?
+            !down?
+          end
 
-      def local?
-        port_no == PortNumber::NUMBERS[:local]
+          def ss.down?
+            config.include?(:port_down) || state.include?(:link_down)
+          end
+
+          def ss.local?
+            port_no == PortNumber::NUMBERS[:local]
+          end
+        end
       end
+      # rubocop:enable MethodLength
     end
   end
 end

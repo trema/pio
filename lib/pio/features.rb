@@ -68,8 +68,8 @@ module Pio
       def_delegators :body, :actions
 
       def ports
-        body.ports.map do |each|
-          each.datapath_id = datapath_id
+        @format.snapshot.body.ports.map do |each|
+          each.instance_variable_set :@datapath_id, datapath_id
           each
         end
       end
