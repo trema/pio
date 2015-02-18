@@ -144,7 +144,7 @@ describe Pio::Mac do
     end
 
     context 'with reserved address' do
-      (0x0..0xf).each do | each |
+      (0x0..0xf).each do |each|
         octet = format('%02x', each)
         reserved_address = "01:80:c2:00:00:#{ octet }"
 
