@@ -53,7 +53,7 @@ module Pio
       private
 
       def get_tlv(tlv_type)
-        tlv = optional_tlv.find do | each |
+        tlv = optional_tlv.find do |each|
           each['tlv_type'] == tlv_type
         end
         tlv['tlv_value'] if tlv

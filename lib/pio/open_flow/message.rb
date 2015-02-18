@@ -39,19 +39,22 @@ module Pio
       end
       # rubocop:enable MethodLength
 
+      # rubocop:disable MethodLength
       def self._define_open_flow_accessors
         proc do
-          def_delegators :@format, :open_flow_header
+          def_delegators :@format, :snapshot
+          def_delegators :snapshot, :open_flow_header
           def_delegators :open_flow_header, :ofp_version
           def_delegators :open_flow_header, :message_type
           def_delegators :open_flow_header, :message_length
           def_delegators :open_flow_header, :transaction_id
           def_delegator :open_flow_header, :transaction_id, :xid
 
-          def_delegators :@format, :body
-          def_delegator :@format, :body, :user_data
+          def_delegators :snapshot, :body
+          def_delegator :snapshot, :body, :user_data
         end
       end
+      # rubocop:enable MethodLength
 
       def self._define_self_read
         proc do

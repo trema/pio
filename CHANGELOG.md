@@ -3,6 +3,11 @@
 ## develop (unreleased)
 
 
+## 0.15.2 (2/18/2015)
+### Changes
+* [#128](https://github.com/trema/pio/pull/128): Field accessors return Ruby primitives (Fixnum, Symbol, etc.).
+
+
 ## 0.15.1 (2/17/2015)
 ### Bugs fixed
 * [#127](https://github.com/trema/pio/pull/127): Make OpenFlow classes thread safe.

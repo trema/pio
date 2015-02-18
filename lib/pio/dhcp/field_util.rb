@@ -85,7 +85,7 @@ module Pio
       private
 
       def get_tlv(tlv_type)
-        tlv = dhcp.optional_tlvs.find do | each |
+        tlv = dhcp.optional_tlvs.find do |each|
           each['tlv_type'] == tlv_type
         end
         tlv['tlv_value'] if tlv
