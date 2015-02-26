@@ -3,8 +3,6 @@ require 'pio/type/ipv4_header'
 require 'pio/type/udp_header'
 require 'pio/dhcp/dhcp_field'
 require 'pio/dhcp/field_util'
-require 'pio/dhcp/csum_util'
-
 module Pio
   class Dhcp
     # Dhcp frame parser.
@@ -13,38 +11,19 @@ module Pio
       extend Type::IPv4Header
       extend Type::UdpHeader
       include FieldUtil
-      include CsumUtil
 
-      ETHER_TYPE_IP = 0x0800
-      IP_PROTOCOL_UDP = 17
-      IP_HEADER_LENGTH = 20
-      UDP_HEADER_LENGTH = 8
       DHCP_OPTION_FIELD_LENGTH = 60
 
       endian :big
 
-      ethernet_header ether_type: ETHER_TYPE_IP
-      ipv4_header ip_protocol: IP_PROTOCOL_UDP,
-                  ip_header_checksum: -> { ip_sum },
-                  ip_total_length: -> { ip_len }
-      udp_header udp_length: -> { udp_len },
-                 udp_checksum: -> { udp_sum }
+      ethernet_header ether_type: Type::EthernetHeader::ETHER_TYPE_IP
+      ipv4_header ip_protocol: Type::IPv4Header::IP_PROTOCOL_UDP,
+                  ip_total_length: -> { ip_header_length * 4 + udp_length  }
+      udp_header
       dhcp_field :dhcp
 
-      def ip_sum
-        ~((ip_csum & 0xffff) + (ip_csum >> 16)) & 0xffff
-      end
-
-      def udp_sum
-        ~((udp_csum & 0xffff) + (udp_csum >> 16)) & 0xffff
-      end
-
-      def ip_len
-        IP_HEADER_LENGTH + udp_len
-      end
-
-      def udp_len
-        UDP_HEADER_LENGTH + dhcp_len
+      def udp_payload
+        dhcp.to_binary_s + trail_data
       end
 
       def to_binary
@@ -52,14 +31,6 @@ module Pio
       end
 
       private
-
-      def dhcp_len
-        dhcp.num_bytes + trail_data.bytesize
-      end
-
-      def dhcp_binary
-        dhcp.to_binary_s
-      end
 
       def should_padding?
         option_length < DHCP_OPTION_FIELD_LENGTH

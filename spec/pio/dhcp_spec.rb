@@ -208,13 +208,13 @@ describe Pio::Dhcp, '.read' do
       end
     end
 
-    describe '#udp_src_port' do
-      subject { super().udp_src_port }
+    describe '#udp_source_port' do
+      subject { super().udp_source_port }
       it { is_expected.to eq 68 }
     end
 
-    describe '#udp_dst_port' do
-      subject { super().udp_dst_port }
+    describe '#udp_destination_port' do
+      subject { super().udp_destination_port }
       it { is_expected.to eq 67 }
     end
 
@@ -530,13 +530,13 @@ describe Pio::Dhcp, '.read' do
       end
     end
 
-    describe '#udp_src_port' do
-      subject { super().udp_src_port }
+    describe '#udp_source_port' do
+      subject { super().udp_source_port }
       it { is_expected.to eq 67 }
     end
 
-    describe '#udp_dst_port' do
-      subject { super().udp_dst_port }
+    describe '#udp_destination_port' do
+      subject { super().udp_destination_port }
       it { is_expected.to eq 68 }
     end
 
@@ -860,13 +860,13 @@ describe Pio::Dhcp, '.read' do
       end
     end
 
-    describe '#udp_src_port' do
-      subject { super().udp_src_port }
+    describe '#udp_source_port' do
+      subject { super().udp_source_port }
       it { is_expected.to eq 68 }
     end
 
-    describe '#udp_dst_port' do
-      subject { super().udp_dst_port }
+    describe '#udp_destination_port' do
+      subject { super().udp_destination_port }
       it { is_expected.to eq 67 }
     end
 
@@ -1182,13 +1182,13 @@ describe Pio::Dhcp, '.read' do
       end
     end
 
-    describe '#udp_src_port' do
-      subject { super().udp_src_port }
+    describe '#udp_source_port' do
+      subject { super().udp_source_port }
       it { is_expected.to eq 67 }
     end
 
-    describe '#udp_dst_port' do
-      subject { super().udp_dst_port }
+    describe '#udp_destination_port' do
+      subject { super().udp_destination_port }
       it { is_expected.to eq 68 }
     end
 

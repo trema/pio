@@ -17,8 +17,11 @@ When(/^I try to parse the file with "(.*?)" class$/) do |parser|
     @result = parser_klass.read(IO.read(@raw))
   elsif @pcap
     File.open(@pcap) do |file|
+      @result = []
       pcap = Pio::Pcap::Frame.read(file)
-      pcap.records.each { |each| parser_klass.read each.data }
+      pcap.records.each do |each|
+        @result << parser_klass.read(each.data)
+      end
     end
   else
     fail 'Packet data file is not specified.'
@@ -41,3 +44,14 @@ Then(/^the parsed data have the following field and value:$/) do |table|
     expect(output.to_s).to eq(each['value'])
   end
 end
+
+# rubocop:disable LineLength
+Then(/^the parsed data \#(\d+) have the following field and value:$/) do |index, table|
+  table.hashes.each do |each|
+    output = each['field'].split('.').inject(@result[index.to_i - 1]) do |memo, method|
+      memo.__send__(method)
+    end
+    expect(output.to_s).to eq(each['value'])
+  end
+end
+# rubocop:enable LineLength

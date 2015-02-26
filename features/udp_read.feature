@@ -1,0 +1,30 @@
+@announce
+Feature: Pio::Udp.read
+  Scenario: dhcp.pcap
+    Given a packet data file "dhcp.pcap"
+    When I try to parse the file with "Udp" class
+    Then it should finish successfully
+    And the parsed data #1 have the following field and value:
+    | field                  |             value |
+    | class                  |          Pio::Udp |
+    | destination_mac        | ff:ff:ff:ff:ff:ff |
+    | source_mac             | 00:0b:82:01:fc:42 |
+    | ether_type             |              2048 |
+    | ip_version             |                 4 |
+    | ip_header_length       |                 5 |
+    | ip_type_of_service     |                 0 |
+    | ip_total_length        |               300 |
+    | ip_identifier          |             43062 |
+    | ip_flag                |                 0 |
+    | ip_fragment            |                 0 |
+    | ip_ttl                 |               250 |
+    | ip_protocol            |                17 |
+    | ip_header_checksum     |              6027 |
+    | ip_source_address      |           0.0.0.0 |
+    | ip_destination_address |   255.255.255.255 |
+    | option                 |                   |
+    | udp_source_port        |                68 |
+    | udp_destination_port   |                67 |
+    | udp_length             |               280 |
+    | udp_checksum           |             22815 |
+    | udp_payload.length     |               272 |

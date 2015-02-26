@@ -4,6 +4,8 @@ module Pio
   module Type
     # Adds ethernet_header macro.
     module EthernetHeader
+      ETHER_TYPE_IP = 0x0800
+
       # rubocop:disable MethodLength
       # rubocop:disable AbcSize
       def ethernet_header(options = { ether_type: 0x0800 })
