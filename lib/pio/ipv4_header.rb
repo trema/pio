@@ -4,10 +4,13 @@ require 'pio/type/ip_address'
 module Pio
   # IP Version 4 Header Format
   module IPv4Header
-    include Payload
+    # Internet protocol numbers for ipv4_header.ip_protocol
+    module ProtocolNumber
+      ICMP = 1
+      UDP = 17
+    end
 
-    IP_PROTOCOL_ICMP = 1
-    IP_PROTOCOL_UDP = 17
+    include Payload
 
     # rubocop:disable MethodLength
     # rubocop:disable AbcSize

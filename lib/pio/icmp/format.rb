@@ -14,7 +14,7 @@ module Pio
       endian :big
 
       ethernet_header ether_type: EtherType::IPV4
-      ipv4_header ip_protocol: IPv4Header::IP_PROTOCOL_ICMP
+      ipv4_header ip_protocol: ProtocolNumber::ICMP
       uint8 :icmp_type
       uint8 :icmp_code, initial_value: 0
       uint16 :icmp_checksum, value: :calculate_icmp_checksum
