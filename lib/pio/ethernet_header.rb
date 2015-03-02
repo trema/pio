@@ -8,6 +8,7 @@ module Pio
       ARP = 0x0806
       IPV4 = 0x0800
       VLAN = 0x8100
+      LLDP = 0x88cc
     end
 
     # This method smells of :reek:TooManyStatements

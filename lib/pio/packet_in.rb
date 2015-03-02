@@ -63,7 +63,7 @@ module Pio
 
         endian :big
 
-        ethernet_header ether_type: EthernetHeader::EtherType::IPV4
+        ethernet_header ether_type: EtherType::IPV4
         ipv4_header
 
         uint16 :transport_source_port
@@ -79,7 +79,7 @@ module Pio
           IPv4Packet.read raw_data
         when EthernetHeader::EtherType::ARP
           Pio::Arp.read raw_data
-        when 0x88cc
+        when EthernetHeader::EtherType::LLDP
           Pio::Lldp.read raw_data
         else
           fail 'Failed to parse packet_in data.'
