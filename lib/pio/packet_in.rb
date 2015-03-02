@@ -48,13 +48,12 @@ module Pio
     # Pio::PacketIn#data parser
     class DataParser
       # Ethernet header parser
-      class EthernetHeaderParser < BinData::Record
-        include EthernetHeader
-
+      class EtherTypeParser < BinData::Record
         endian :big
 
-        ethernet_header
-        rest :payload
+        mac_address :destination_mac
+        mac_address :source_mac
+        uint16 :ether_type
       end
 
       # IPv4 packet parser
@@ -64,7 +63,7 @@ module Pio
 
         endian :big
 
-        ethernet_header
+        ethernet_header ether_type: EthernetHeader::EtherType::IPV4
         ipv4_header
 
         uint16 :transport_source_port
@@ -74,11 +73,11 @@ module Pio
 
       # rubocop:disable MethodLength
       def self.read(raw_data)
-        ethernet_header = EthernetHeaderParser.read(raw_data)
+        ethernet_header = EtherTypeParser.read(raw_data)
         case ethernet_header.ether_type
-        when 0x0800
+        when EthernetHeader::EtherType::IPV4
           IPv4Packet.read raw_data
-        when 0x0806
+        when EthernetHeader::EtherType::ARP
           Pio::Arp.read raw_data
         when 0x88cc
           Pio::Lldp.read raw_data

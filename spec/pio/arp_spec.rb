@@ -33,7 +33,7 @@ describe Pio::Arp do
       Then { arp_request.source_mac.to_s == '00:26:82:eb:ea:d1' }
       Then { arp_request.ether_type == 0x0806 }
       Then { arp_request.hardware_type == 1 }
-      Then { arp_request.protocol_type == 0x800 }
+      Then { arp_request.protocol_type == 0x0800 }
       Then { arp_request.hardware_length == 6 }
       Then { arp_request.protocol_length == 4 }
       Then { arp_request.operation == 1 }
@@ -70,7 +70,7 @@ describe Pio::Arp do
       Then { arp_reply.source_mac.to_s == '00:16:9d:1d:9c:c4' }
       Then { arp_reply.ether_type == 0x0806 }
       Then { arp_reply.hardware_type == 1 }
-      Then { arp_reply.protocol_type == 0x800 }
+      Then { arp_reply.protocol_type == 0x0800 }
       Then { arp_reply.hardware_length == 6 }
       Then { arp_reply.protocol_length == 4 }
       Then { arp_reply.operation == 2 }
