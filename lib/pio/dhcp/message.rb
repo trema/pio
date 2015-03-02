@@ -22,8 +22,8 @@ module Pio
       def_delegators :@frame, :ip_header_checksum
       def_delegators :@frame, :ip_source_address
       def_delegators :@frame, :ip_destination_address
-      def_delegators :@frame, :udp_src_port
-      def_delegators :@frame, :udp_dst_port
+      def_delegators :@frame, :udp_source_port
+      def_delegators :@frame, :udp_destination_port
       def_delegators :@frame, :udp_length
       def_delegators :@frame, :udp_checksum
       def_delegators :@frame, :dhcp

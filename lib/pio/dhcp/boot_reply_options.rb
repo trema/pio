@@ -31,8 +31,8 @@ module Pio
           source_mac: source_mac,
           ip_destination_address: ip_destination_address,
           ip_source_address: ip_source_address,
-          udp_src_port: BOOTPS,
-          udp_dst_port: BOOTPC,
+          udp_source_port: BOOTPS,
+          udp_destination_port: BOOTPC,
           dhcp: dhcp_data
         }
       end

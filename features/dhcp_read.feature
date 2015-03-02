@@ -1,3 +1,4 @@
+@announce
 Feature: Pio::Dhcp.read
   Scenario: dhcp.pcap
     Given a packet data file "dhcp.pcap"

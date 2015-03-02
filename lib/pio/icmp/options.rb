@@ -4,8 +4,6 @@ module Pio
   class Icmp
     # User options for creating an ICMP messages.
     class Options < Pio::Options
-      DEFAULT_ECHO_DATA = ''.freeze
-
       def to_hash
         {
           icmp_type: @type,
