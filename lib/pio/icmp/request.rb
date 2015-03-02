@@ -22,45 +22,30 @@ module Pio
         option :sequence_number
         option :echo_data
 
-        def initialize(user_options)
+        # rubocop:disable MethodLength
+        # rubocop:disable AbcSize
+        def initialize(options)
+          validate options
           @type = TYPE
 
-          @options = user_options.dup
-          validate @options
-          set_mac_and_ip_address_options
-          set_identifier_option
-          set_sequence_number_option
-          set_echo_data_option
-        end
-
-        private
-
-        def set_mac_and_ip_address_options
-          @source_mac = Mac.new(@options[:source_mac]).freeze
-          @destination_mac = Mac.new(@options[:destination_mac]).freeze
+          @source_mac = Mac.new(options[:source_mac]).freeze
+          @destination_mac = Mac.new(options[:destination_mac]).freeze
           @ip_source_address =
-            IPv4Address.new(@options[:ip_source_address]).freeze
+            IPv4Address.new(options[:ip_source_address]).freeze
           @ip_destination_address =
-            IPv4Address.new(@options[:ip_destination_address]).freeze
-        end
-
-        def set_identifier_option
+            IPv4Address.new(options[:ip_destination_address]).freeze
           @identifier =
-            @options[:icmp_identifier] ||
-            @options[:identifier] ||
+            options[:icmp_identifier] ||
+            options[:identifier] ||
             DEFAULT_IDENTIFIER
-        end
-
-        def set_sequence_number_option
           @sequence_number =
-            @options[:icmp_sequence_number] ||
-            @options[:sequence_number] ||
+            options[:icmp_sequence_number] ||
+            options[:sequence_number] ||
             DEFAULT_SEQUENCE_NUMBER
+          @echo_data = options[:echo_data] || ''
         end
-
-        def set_echo_data_option
-          @echo_data = (@options[:echo_data] || DEFAULT_ECHO_DATA).freeze
-        end
+        # rubocop:enable AbcSize
+        # rubocop:enable MethodLength
       end
     end
   end

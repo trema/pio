@@ -24,6 +24,7 @@ module Pio
         def initialize(options)
           validate options
           @type = TYPE
+
           @source_mac = Mac.new(options[:source_mac]).freeze
           @destination_mac = Mac.new(options[:destination_mac]).freeze
           @ip_source_address =
@@ -32,7 +33,7 @@ module Pio
             IPv4Address.new(options[:ip_destination_address]).freeze
           @identifier = options[:identifier]
           @sequence_number = options[:sequence_number]
-          @echo_data = options[:echo_data] || DEFAULT_ECHO_DATA
+          @echo_data = options[:echo_data] || ''
         end
         # rubocop:enable AbcSize
         # rubocop:enable MethodLength

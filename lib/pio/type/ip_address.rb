@@ -15,6 +15,14 @@ module Pio
         IPv4Address.new(octets.map { |each| format('%d', each) }.join('.'))
       end
 
+      def >>(other)
+        get.to_i >> other
+      end
+
+      def &(other)
+        get.to_i & other
+      end
+
       def ==(other)
         get == other
       end

@@ -3,6 +3,11 @@
 ## develop (unreleased)
 
 
+## 0.16.0 (3/2/2015)
+### New features
+* [#129](https://github.com/trema/pio/pull/129): Add new class `Pio::Udp`.
+
+
 ## 0.15.2 (2/18/2015)
 ### Changes
 * [#128](https://github.com/trema/pio/pull/128): Field accessors return Ruby primitives (Fixnum, Symbol, etc.).

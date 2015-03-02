@@ -27,8 +27,8 @@ module Pio
           source_mac: source_mac,
           ip_source_address: QUAD_ZERO_IP_ADDRESS,
           ip_destination_address: BROADCAST_IP_ADDRESS,
-          udp_src_port: BOOTPC,
-          udp_dst_port: BOOTPS,
+          udp_source_port: BOOTPC,
+          udp_destination_port: BOOTPS,
           dhcp: dhcp_data
         }
       end

@@ -4,6 +4,25 @@ describe Pio::ICMP::Request do
   Then { Pio::ICMP::Request == Pio::Icmp::Request }
 end
 
+describe Pio::Icmp do
+  Given(:icmp_request) do
+    Pio::Icmp::Request.new(
+      destination_mac: '24:db:ac:41:e5:5b',
+      source_mac: '74:e5:0b:2a:18:f8',
+      ip_source_address: '192.168.1.101',
+      ip_destination_address: '8.8.8.8',
+      identifier: 0x123,
+      sequence_number: 0x321,
+      echo_data: 'abcdefghijklmnopqrstuvwabcdefghi'
+    ).to_binary
+  end
+
+  describe '.read' do
+    When(:result) { Pio::Icmp.read icmp_request }
+    Then { result.echo_data == 'abcdefghijklmnopqrstuvwabcdefghi' }
+  end
+end
+
 describe Pio::Icmp::Request, '.new' do
   context 'with echo_data' do
     Given(:icmp_request) do
@@ -22,7 +41,7 @@ describe Pio::Icmp::Request, '.new' do
       When(:result) { icmp_request.to_binary }
 
       Then do
-        result ==
+        result.unpack('C*') ==
           [
             # Destination MAC
             0x24, 0xdb, 0xac, 0x41, 0xe5, 0x5b,
@@ -66,7 +85,7 @@ describe Pio::Icmp::Request, '.new' do
             0x6f, 0x70, 0x71, 0x72, 0x73, 0x74, 0x75,
             0x76, 0x77, 0x61, 0x62, 0x63, 0x64, 0x65,
             0x66, 0x67, 0x68, 0x69
-          ].pack('C*')
+          ]
       end
     end
   end
@@ -87,7 +106,7 @@ describe Pio::Icmp::Request, '.new' do
       When(:result) { icmp_request.to_binary }
 
       Then do
-        result ==
+        result.unpack('C*') ==
           [
             # Destination MAC
             0x24, 0xdb, 0xac, 0x41, 0xe5, 0x5b,
@@ -130,7 +149,7 @@ describe Pio::Icmp::Request, '.new' do
             0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
             0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
             0x00, 0x00, 0x00, 0x00
-          ].pack('C*')
+          ]
       end
     end
   end

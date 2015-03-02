@@ -1,5 +1,4 @@
 require 'pio/match'
-require 'pio/type/ethernet_header'
 
 module Pio
   # OpenFlow 1.0 exact match
