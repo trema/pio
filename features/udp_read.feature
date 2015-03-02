@@ -1,4 +1,3 @@
-@announce
 Feature: Pio::Udp.read
   Scenario: dhcp.pcap
     Given a packet data file "dhcp.pcap"
@@ -22,7 +21,7 @@ Feature: Pio::Udp.read
     | ip_header_checksum     |              6027 |
     | ip_source_address      |           0.0.0.0 |
     | ip_destination_address |   255.255.255.255 |
-    | option                 |                   |
+    | ip_option              |                   |
     | udp_source_port        |                68 |
     | udp_destination_port   |                67 |
     | udp_length             |               280 |

@@ -1,8 +1,8 @@
 require 'bindata'
+require 'pio/ethernet_header'
+require 'pio/ipv4_header'
 require 'pio/open_flow'
 require 'pio/parse_error'
-require 'pio/type/ethernet_header'
-require 'pio/type/ipv4_header'
 
 # Base module.
 module Pio
@@ -49,7 +49,7 @@ module Pio
     class DataParser
       # Ethernet header parser
       class EthernetHeaderParser < BinData::Record
-        extend Pio::Type::EthernetHeader
+        include EthernetHeader
 
         endian :big
 
@@ -59,8 +59,8 @@ module Pio
 
       # IPv4 packet parser
       class IPv4Packet < BinData::Record
-        extend Pio::Type::EthernetHeader
-        extend Type::IPv4Header
+        include EthernetHeader
+        include IPv4Header
 
         endian :big
 

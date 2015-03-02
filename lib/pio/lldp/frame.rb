@@ -1,16 +1,16 @@
 require 'bindata'
 
+require 'pio/ethernet_header'
 require 'pio/lldp/chassis_id_tlv'
 require 'pio/lldp/optional_tlv'
 require 'pio/lldp/port_id_tlv'
 require 'pio/lldp/ttl_tlv'
-require 'pio/type/ethernet_header'
 
 module Pio
   class Lldp
     # LLDP frame
     class Frame < BinData::Record
-      extend Type::EthernetHeader
+      include EthernetHeader
 
       endian :big
 
