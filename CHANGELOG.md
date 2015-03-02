@@ -1,6 +1,9 @@
 # Changelog
 
 ## develop (unreleased)
+
+
+## 0.16.0 (3/2/2015)
 ### New features
 * [#129](https://github.com/trema/pio/pull/129): Add new class `Pio::Udp`.
 
