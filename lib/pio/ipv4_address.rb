@@ -42,6 +42,14 @@ module Pio
 
     def_delegator :value, :==
 
+    def eql?(other)
+      @value == other.value
+    end
+
+    def hash
+      to_s.hash
+    end
+
     # @return [Number] prefix length of IPv4 address.
     def prefixlen
       netmask = to_range.first.to_i ^ to_range.last.to_i

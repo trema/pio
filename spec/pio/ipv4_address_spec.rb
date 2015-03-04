@@ -1,302 +1,270 @@
 require 'pio/ipv4_address'
 
 describe Pio::IPv4Address do
-  context '.new' do
-    subject(:ipv4) { Pio::IPv4Address.new(ip_address) }
+  Given(:ipv4) { Pio::IPv4Address.new(ip_address) }
 
-    context 'with 10.1.1.1' do
-      let(:ip_address) { '10.1.1.1' }
+  context ".new('192.168.1.10')" do
+    Given(:ip_address) { '192.168.1.10' }
 
-      describe '#to_s' do
-        subject { super().to_s }
-        it { is_expected.to eq '10.1.1.1' }
+    describe '#to_s' do
+      When(:result) { ipv4.to_s }
+      Then { result == '192.168.1.10' }
+    end
+
+    describe '#to_i' do
+      When(:result) { ipv4.to_i }
+      Then { result == (((192 * 256 + 168) * 256 + 1) * 256 + 10) }
+    end
+
+    describe '#to_range' do
+      When(:result) { ipv4.to_range }
+      Then { result == (ipv4..ipv4) }
+    end
+
+    describe '#==' do
+      When(:result) { ipv4 == other }
+
+      context "with an IPv4Address ('192.168.1.10)" do
+        When(:other) { Pio::IPv4Address.new('192.168.1.10') }
+        Then { result == true }
       end
 
-      describe '#to_i' do
-        subject { super().to_i }
-        it { is_expected.to eq(((10 * 256 + 1) * 256 + 1) * 256 + 1) }
+      context "with an IPv4Address ('192.168.1.10/255.255.0.0)" do
+        When(:other) { Pio::IPv4Address.new('192.168.1.10/255.255.0.0') }
+        Then { result == false }
       end
 
-      describe '#prefixlen' do
-        subject { super().prefixlen }
-        it { is_expected.to eq 32 }
-      end
-
-      describe '#to_ary' do
-        subject { super().to_ary }
-        it { is_expected.to eq [0x0a, 0x01, 0x01, 0x01] }
-      end
-
-      describe '#class_a?' do
-        subject { super().class_a? }
-        it { is_expected.to be_truthy }
-      end
-
-      describe '#class_b?' do
-        subject { super().class_b? }
-        it { is_expected.to be_falsey }
-      end
-
-      describe '#class_c?' do
-        subject { super().class_c? }
-        it { is_expected.to be_falsey }
-      end
-
-      describe '#class_d?' do
-        subject { super().class_d? }
-        it { is_expected.to be_falsey }
-      end
-
-      describe '#class_e?' do
-        subject { super().class_e? }
-        it { is_expected.to be_falsey }
-      end
-
-      describe '#unicast?' do
-        subject { super().unicast? }
-        it { is_expected.to be_truthy }
-      end
-
-      describe '#multicast?' do
-        subject { super().multicast? }
-        it { is_expected.to be_falsey }
-      end
-
-      context '.mask!' do
-        subject { ipv4.mask!(mask) }
-
-        let(:mask) { 8 }
-
-        describe '#to_s' do
-          subject { super().to_s }
-          it { is_expected.to eq '10.0.0.0' }
-        end
-
-        describe '#to_i' do
-          subject { super().to_i }
-          it { is_expected.to eq 10 * 256 * 256 * 256 }
-        end
-
-        describe '#to_ary' do
-          subject { super().to_ary }
-          it { is_expected.to eq [0x0a, 0x00, 0x00, 0x00] }
-        end
-
-        describe '#class_a?' do
-          subject { super().class_a? }
-          it { is_expected.to be_truthy }
-        end
-
-        describe '#class_b?' do
-          subject { super().class_b? }
-          it { is_expected.to be_falsey }
-        end
-
-        describe '#class_c?' do
-          subject { super().class_c? }
-          it { is_expected.to be_falsey }
-        end
-
-        describe '#class_d?' do
-          subject { super().class_d? }
-          it { is_expected.to be_falsey }
-        end
-
-        describe '#class_e?' do
-          subject { super().class_e? }
-          it { is_expected.to be_falsey }
-        end
-
-        describe '#unicast?' do
-          subject { super().unicast? }
-          it { is_expected.to be_truthy }
-        end
-
-        describe '#multicast?' do
-          subject { super().multicast? }
-          it { is_expected.to be_falsey }
-        end
+      context "with an IPv4Address ('10.0.1.1')" do
+        When(:other) { Pio::IPv4Address.new('10.0.1.1') }
+        Then { result == false }
       end
     end
 
-    context 'with 172.20.1.1' do
-      let(:ip_address) { '172.20.1.1' }
+    describe '#eql?' do
+      When(:result) { ipv4.eql? other }
 
-      describe '#to_s' do
-        subject { super().to_s }
-        it { is_expected.to eq '172.20.1.1' }
+      context "with an IPv4Address ('192.168.1.10)" do
+        When(:other) { Pio::IPv4Address.new('192.168.1.10') }
+        Then { result == true }
       end
 
-      describe '#to_i' do
-        subject { super().to_i }
-        it { is_expected.to eq(((172 * 256 + 20) * 256 + 1) * 256 + 1) }
+      context "with an IPv4Address ('192.168.1.10/255.255.0.0)" do
+        When(:other) { Pio::IPv4Address.new('192.168.1.10/255.255.0.0') }
+        Then { result == false }
       end
 
-      describe '#to_ary' do
-        subject { super().to_ary }
-        it { is_expected.to eq [0xac, 0x14, 0x01, 0x01] }
-      end
-
-      describe '#class_a?' do
-        subject { super().class_a? }
-        it { is_expected.to be_falsey }
-      end
-
-      describe '#class_b?' do
-        subject { super().class_b? }
-        it { is_expected.to be_truthy }
-      end
-
-      describe '#class_c?' do
-        subject { super().class_c? }
-        it { is_expected.to be_falsey }
-      end
-
-      describe '#class_d?' do
-        subject { super().class_d? }
-        it { is_expected.to be_falsey }
-      end
-
-      describe '#class_e?' do
-        subject { super().class_e? }
-        it { is_expected.to be_falsey }
-      end
-
-      describe '#unicast?' do
-        subject { super().unicast? }
-        it { is_expected.to be_truthy }
-      end
-
-      describe '#multicast?' do
-        subject { super().multicast? }
-        it { is_expected.to be_falsey }
+      context "with an IPv4Address ('10.0.1.1')" do
+        When(:other) { Pio::IPv4Address.new('10.0.1.1') }
+        Then { result == false }
       end
     end
 
-    context 'with 192.168.1.1' do
-      let(:ip_address) { '192.168.1.1' }
-
-      describe '#to_s' do
-        subject { super().to_s }
-        it { is_expected.to eq '192.168.1.1' }
-      end
-
-      describe '#to_i' do
-        subject { super().to_i }
-        it { is_expected.to eq 3_232_235_777 }
-      end
-
-      describe '#to_ary' do
-        subject { super().to_ary }
-        it { is_expected.to eq [0xc0, 0xa8, 0x01, 0x01] }
-      end
-
-      describe '#class_a?' do
-        subject { super().class_a? }
-        it { is_expected.to be_falsey }
-      end
-
-      describe '#class_b?' do
-        subject { super().class_b? }
-        it { is_expected.to be_falsey }
-      end
-
-      describe '#class_c?' do
-        subject { super().class_c? }
-        it { is_expected.to be_truthy }
-      end
-
-      describe '#class_d?' do
-        subject { super().class_d? }
-        it { is_expected.to be_falsey }
-      end
-
-      describe '#class_e?' do
-        subject { super().class_e? }
-        it { is_expected.to be_falsey }
-      end
-
-      describe '#unicast?' do
-        subject { super().unicast? }
-        it { is_expected.to be_truthy }
-      end
-
-      describe '#multicast?' do
-        subject { super().multicast? }
-        it { is_expected.to be_falsey }
-      end
+    describe '#hash' do
+      When(:result) { ipv4.hash }
+      Then { result == Pio::IPv4Address.new('192.168.1.10').hash }
+      Then { result != Pio::IPv4Address.new('192.168.1.10/255.255.0.0').hash }
+      Then { result != Pio::IPv4Address.new('10.0.1.1').hash }
     end
 
-    context 'with 234.1.1.1' do
-      let(:ip_address) { '234.1.1.1' }
-
-      describe '#to_s' do
-        subject { super().to_s }
-        it { is_expected.to eq '234.1.1.1' }
-      end
-
-      describe '#to_i' do
-        subject { super().to_i }
-        it { is_expected.to eq(((234 * 256 + 1) * 256 + 1) * 256 + 1) }
-      end
-
-      describe '#to_ary' do
-        subject { super().to_ary }
-        it { is_expected.to eq [0xea, 0x01, 0x01, 0x01] }
-      end
-
-      describe '#class_a?' do
-        subject { super().class_a? }
-        it { is_expected.to be_falsey }
-      end
-
-      describe '#class_b?' do
-        subject { super().class_b? }
-        it { is_expected.to be_falsey }
-      end
-
-      describe '#class_c?' do
-        subject { super().class_c? }
-        it { is_expected.to be_falsey }
-      end
-
-      describe '#class_d?' do
-        subject { super().class_d? }
-        it { is_expected.to be_truthy }
-      end
-
-      describe '#class_e?' do
-        subject { super().class_e? }
-        it { is_expected.to be_falsey }
-      end
-
-      describe '#unicast?' do
-        subject { super().unicast? }
-        it { is_expected.to be_falsey }
-      end
-
-      describe '#multicast?' do
-        subject { super().multicast? }
-        it { is_expected.to be_truthy }
-      end
+    describe '#to_a' do
+      When(:result) { ipv4.to_a }
+      Then { result == [192, 168, 1, 10] }
     end
 
-    context 'with 192.168.0.1/16' do
-      let(:ip_address) { '192.168.0.1/16' }
-
-      describe '#prefixlen' do
-        subject { super().prefixlen }
-        it { is_expected.to eq 16 }
-      end
+    describe '#to_ary' do
+      When(:result) { ipv4.to_ary }
+      Then { result == [192, 168, 1, 10] }
     end
 
-    context 'with 192.168.0.1/255.255.255.0' do
-      let(:ip_address) { '192.168.0.1/255.255.255.0' }
+    describe '#mask' do
+      When(:result) { ipv4.mask(masklen) }
 
-      describe '#prefixlen' do
-        subject { super().prefixlen }
-        it { is_expected.to eq 24 }
+      context 'with 8' do
+        Given(:masklen) { 8 }
+        Then { result.to_s == '192.0.0.0' }
       end
+
+      context 'with 16' do
+        Given(:masklen) { 16 }
+        Then { result.to_s == '192.168.0.0' }
+      end
+
+      context 'with 24' do
+        Given(:masklen) { 24 }
+        Then { result.to_s == '192.168.1.0' }
+      end
+    end
+  end
+
+  describe '#class_a?' do
+    When(:result) { ipv4.class_a? }
+
+    context 'when IP address = 192.168.0.1' do
+      Given(:ip_address) { '192.168.0.1' }
+      Then { result == false }
+    end
+
+    context 'when IP address = 0.0.0.0' do
+      Given(:ip_address) { '0.0.0.0' }
+      Then { result == true }
+    end
+
+    context 'when IP address = 127.255.255.255' do
+      Given(:ip_address) { '127.255.255.255' }
+      Then { result == true }
+    end
+  end
+
+  describe '#class_b?' do
+    When(:result) { ipv4.class_b? }
+
+    context 'when IP address = 223.255.255.255' do
+      Given(:ip_address) { '223.255.255.255' }
+      Then { result == false }
+    end
+
+    context 'when IP address = 128.0.0.0' do
+      Given(:ip_address) { '128.0.0.0' }
+      Then { result == true }
+    end
+
+    context 'when IP address = 191.255.255.255' do
+      Given(:ip_address) { '191.255.255.255' }
+      Then { result == true }
+    end
+  end
+
+  describe '#class_c?' do
+    When(:result) { ipv4.class_c? }
+
+    context 'when IP address = 10.1.1.1' do
+      Given(:ip_address) { '10.1.1.1' }
+      Then { result == false }
+    end
+
+    context 'when IP address = 192.0.0.0' do
+      Given(:ip_address) { '192.0.0.0' }
+      Then { result == true }
+    end
+
+    context 'when IP address = 223.255.255.255' do
+      Given(:ip_address) { '223.255.255.255' }
+      Then { result == true }
+    end
+  end
+
+  describe '#class_d?' do
+    When(:result) { ipv4.class_d? }
+
+    context 'when IP address = 10.1.1.1' do
+      Given(:ip_address) { '10.1.1.1' }
+      Then { result == false }
+    end
+
+    context 'when IP address = 224.0.0.0' do
+      Given(:ip_address) { '224.0.0.0' }
+      Then { result == true }
+    end
+
+    context 'when IP address = 239.255.255.255' do
+      Given(:ip_address) { '239.255.255.255' }
+      Then { result == true }
+    end
+  end
+
+  describe '#class_e?' do
+    When(:result) { ipv4.class_e? }
+
+    context 'when IP address = 10.1.1.1' do
+      Given(:ip_address) { '10.1.1.1' }
+      Then { result == false }
+    end
+
+    context 'when IP address = 240.0.0.0' do
+      Given(:ip_address) { '240.0.0.0' }
+      Then { result == true }
+    end
+
+    context 'when IP address = 255.255.255.255' do
+      Given(:ip_address) { '255.255.255.255' }
+      Then { result == true }
+    end
+  end
+
+  describe '#unicast?' do
+    When(:result) { ipv4.unicast? }
+
+    context 'when IP address = 10.1.1.1' do
+      Given(:ip_address) { '10.1.1.1' }
+      Then { result == true }
+    end
+
+    context 'when IP address = 234.1.1.1' do
+      Given(:ip_address) { '234.1.1.1' }
+      Then { result == false }
+    end
+  end
+
+  describe '#multicast?' do
+    When(:result) { ipv4.multicast? }
+
+    context 'when IP address = 10.1.1.1' do
+      Given(:ip_address) { '10.1.1.1' }
+      Then { result == false }
+    end
+
+    context 'when IP address = 234.1.1.1' do
+      Given(:ip_address) { '234.1.1.1' }
+      Then { result == true }
+    end
+  end
+
+  describe '#prefixlen' do
+    When(:result) { ipv4.prefixlen }
+
+    context 'IP address = with 10.1.1.1' do
+      Given(:ip_address) { '10.1.1.1' }
+      Then { result == 32 }
+    end
+
+    context 'IP address = with 10.1.1.1/255.255.255.255' do
+      Given(:ip_address) { '10.1.1.1/255.255.255.255' }
+      Then { result == 32 }
+    end
+
+    context 'IP address = with 10.1.1.1/32' do
+      Given(:ip_address) { '10.1.1.1/32' }
+      Then { result == 32 }
+    end
+
+    context 'when IP address = 192.168.0.1/255.255.255.0' do
+      Given(:ip_address) { '192.168.0.1/255.255.255.0' }
+      Then { result == 24 }
+    end
+
+    context 'when IP address = 192.168.0.1/24' do
+      Given(:ip_address) { '192.168.0.1/24' }
+      Then { result == 24 }
+    end
+
+    context 'when IP address = 192.168.0.1/255.255.0.0' do
+      Given(:ip_address) { '192.168.0.1/255.255.0.0' }
+      Then { result == 16 }
+    end
+
+    context 'when IP address = 192.168.0.1/16' do
+      Given(:ip_address) { '192.168.0.1/16' }
+      Then { result == 16 }
+    end
+
+    context 'when IP address = 192.168.0.1/255.0.0.0' do
+      Given(:ip_address) { '192.168.0.1/255.0.0.0' }
+      Then { result == 8 }
+    end
+
+    context 'when IP address = 192.168.0.1/8' do
+      Given(:ip_address) { '192.168.0.1/8' }
+      Then { result == 8 }
     end
   end
 end
