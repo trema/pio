@@ -13,14 +13,14 @@ module Pio
       uint16 :in_port
       uint16 :actions_len, initial_value: -> { actions.binary.length }
       actions :actions, length: -> { actions_len }
-      rest :data
+      rest :raw_data
 
       def empty?
         false
       end
 
       def length
-        8 + actions_len + data.length
+        8 + actions_len + raw_data.length
       end
     end
   end
@@ -30,6 +30,6 @@ module Pio
     def_delegators :body, :in_port
     def_delegators :body, :actions_len
     def_delegators :body, :actions
-    def_delegators :body, :data
+    def_delegators :body, :raw_data
   end
 end
