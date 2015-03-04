@@ -15,6 +15,6 @@ Feature: Pio::PacketIn.read
     | total_len       |                60 |
     | in_port         |                 1 |
     | reason          |          no_match |
-    | data.length     |                60 |
+    | raw_data.length |                60 |
     | source_mac      | ac:5d:10:31:37:79 |
     | destination_mac | ff:ff:ff:ff:ff:ff |

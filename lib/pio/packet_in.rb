@@ -29,23 +29,23 @@ module Pio
       endian :big
 
       uint32 :buffer_id
-      uint16 :total_len, value: -> { data.length }
+      uint16 :total_len, value: -> { raw_data.length }
       uint16 :in_port
       reason :reason
       uint8 :padding
       hide :padding
-      string :data, read_length: :total_len
+      string :raw_data, read_length: :total_len
 
       def empty?
         false
       end
 
       def length
-        10 + data.length
+        10 + raw_data.length
       end
     end
 
-    # Pio::PacketIn#data parser
+    # Pio::PacketIn#raw_data parser
     class DataParser
       # Ethernet header parser
       class EthernetHeaderParser < BinData::Record
@@ -95,26 +95,22 @@ module Pio
     def_delegators :body, :total_len
     def_delegators :body, :in_port
     def_delegators :body, :reason
-    def_delegators :body, :data
+    def_delegators :body, :raw_data
 
     attr_accessor :datapath_id
     alias_method :dpid, :datapath_id
     alias_method :dpid=, :datapath_id=
 
-    def parsed_data
-      @parsed_data ||= PacketIn::DataParser.read(data)
+    def data
+      @data ||= PacketIn::DataParser.read(raw_data)
     end
 
     def lldp?
-      parsed_data.is_a? Lldp
+      data.is_a? Lldp
     end
 
-    def source_mac
-      parsed_data.source_mac
-    end
-
-    def destination_mac
-      parsed_data.destination_mac
+    def method_missing(method, *args)
+      data.__send__ method, *args
     end
   end
 end
