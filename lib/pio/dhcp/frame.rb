@@ -17,8 +17,8 @@ module Pio
       include UdpHeader
 
       endian :big
-      ethernet_header ether_type: EthernetHeader::ETHER_TYPE_IP
-      ipv4_header ip_protocol: IPv4Header::IP_PROTOCOL_UDP
+      ethernet_header ether_type: EtherType::IPV4
+      ipv4_header ip_protocol: ProtocolNumber::UDP
       udp_header
       dhcp_field :dhcp
       string :padding, read_length: 0, initial_value: :ff_and_padding

@@ -14,7 +14,7 @@ module Pio
 
       endian :big
 
-      ethernet_header ether_type: 0x88cc
+      ethernet_header ether_type: EtherType::LLDP
       chassis_id_tlv :chassis_id
       port_id_tlv :port_id
       ttl_tlv :ttl, initial_value: 120

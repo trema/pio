@@ -11,7 +11,7 @@ module Pio
 
       endian :big
 
-      ethernet_header ether_type: 0x0806
+      ethernet_header ether_type: EtherType::ARP
       uint16 :hardware_type, value: 1
       uint16 :protocol_type, value: 0x0800
       uint8 :hardware_length, value: 6
