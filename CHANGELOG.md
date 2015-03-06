@@ -3,6 +3,13 @@
 ## develop (unreleased)
 
 
+## 0.17.0 (3/6/2015)
+### Changes
+* Renamed `Pio::PacketIn#data` => `Pio::PacketIn#raw_data`.
+* Renamed `Pio::PacketOut#data` => `Pio::PacketOut#raw_data`.
+* Fix behavior of `IPv4Address#eql?` and `IPv4Address#hash`.
+
+
 ## 0.16.0 (3/2/2015)
 ### New features
 * [#129](https://github.com/trema/pio/pull/129): Add new class `Pio::Udp`.
