@@ -14,5 +14,5 @@ packet_out = Pio::PacketOut.new(transaction_id: 0x16,
                                 buffer_id: 0xffffffff,
                                 in_port: 0xffff,
                                 actions: Pio::SendOutPort.new(2),
-                                data: data_dump)
+                                raw_data: data_dump)
 packet_out.to_binary  # => Packet-Out message in binary format.
