@@ -29,32 +29,31 @@ module Pio
       endian :big
 
       uint32 :buffer_id
-      uint16 :total_len, value: -> { data.length }
+      uint16 :total_len, value: -> { raw_data.length }
       uint16 :in_port
       reason :reason
       uint8 :padding
       hide :padding
-      string :data, read_length: :total_len
+      string :raw_data, read_length: :total_len
 
       def empty?
         false
       end
 
       def length
-        10 + data.length
+        10 + raw_data.length
       end
     end
 
-    # Pio::PacketIn#data parser
+    # Pio::PacketIn#raw_data parser
     class DataParser
       # Ethernet header parser
-      class EthernetHeaderParser < BinData::Record
-        include EthernetHeader
-
+      class EtherTypeParser < BinData::Record
         endian :big
 
-        ethernet_header
-        rest :payload
+        mac_address :destination_mac
+        mac_address :source_mac
+        uint16 :ether_type
       end
 
       # IPv4 packet parser
@@ -64,7 +63,7 @@ module Pio
 
         endian :big
 
-        ethernet_header
+        ethernet_header ether_type: EtherType::IPV4
         ipv4_header
 
         uint16 :transport_source_port
@@ -74,13 +73,13 @@ module Pio
 
       # rubocop:disable MethodLength
       def self.read(raw_data)
-        ethernet_header = EthernetHeaderParser.read(raw_data)
+        ethernet_header = EtherTypeParser.read(raw_data)
         case ethernet_header.ether_type
-        when 0x0800
+        when EthernetHeader::EtherType::IPV4
           IPv4Packet.read raw_data
-        when 0x0806
+        when EthernetHeader::EtherType::ARP
           Pio::Arp.read raw_data
-        when 0x88cc
+        when EthernetHeader::EtherType::LLDP
           Pio::Lldp.read raw_data
         else
           fail 'Failed to parse packet_in data.'
@@ -95,26 +94,22 @@ module Pio
     def_delegators :body, :total_len
     def_delegators :body, :in_port
     def_delegators :body, :reason
-    def_delegators :body, :data
+    def_delegators :body, :raw_data
 
     attr_accessor :datapath_id
     alias_method :dpid, :datapath_id
     alias_method :dpid=, :datapath_id=
 
-    def parsed_data
-      @parsed_data ||= PacketIn::DataParser.read(data)
+    def data
+      @data ||= PacketIn::DataParser.read(raw_data)
     end
 
     def lldp?
-      parsed_data.is_a? Lldp
+      data.is_a? Lldp
     end
 
-    def source_mac
-      parsed_data.source_mac
-    end
-
-    def destination_mac
-      parsed_data.destination_mac
+    def method_missing(method, *args)
+      data.__send__ method, *args
     end
   end
 end

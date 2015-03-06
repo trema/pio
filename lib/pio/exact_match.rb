@@ -6,7 +6,7 @@ module Pio
     # rubocop:disable MethodLength
     # rubocop:disable AbcSize
     def initialize(packet_in)
-      data = packet_in.parsed_data
+      data = packet_in.data
       case data
       when PacketIn::DataParser::IPv4Packet
         options = {

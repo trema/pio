@@ -50,7 +50,7 @@ describe Pio::PacketOut do
       Then { result.actions[0].is_a? Pio::SendOutPort }
       Then { result.actions[0].port_number == 2 }
       Then { result.actions[0].max_len == 2**16 - 1 }
-      Then { result.data.length == 64 }
+      Then { result.raw_data.length == 64 }
     end
 
     context 'with a Packet-Out message generated with PacketOut.new' do
@@ -60,7 +60,7 @@ describe Pio::PacketOut do
           buffer_id: 0xffffffff,
           in_port: 0xffff,
           actions: Pio::SendOutPort.new(2),
-          data: data_dump
+          raw_data: data_dump
         ).to_binary
       end
 
@@ -79,7 +79,7 @@ describe Pio::PacketOut do
       Then { result.actions[0].is_a? Pio::SendOutPort }
       Then { result.actions[0].port_number == 2 }
       Then { result.actions[0].max_len == 2**16 - 1 }
-      Then { result.data.length == 64 }
+      Then { result.raw_data.length == 64 }
     end
 
     context 'with a Hello message' do
@@ -102,7 +102,7 @@ describe Pio::PacketOut do
           buffer_id: 0xffffffff,
           in_port: 0xffff,
           actions: Pio::SendOutPort.new(2),
-          data: data_dump
+          raw_data: data_dump
         }
       end
 
@@ -120,7 +120,7 @@ describe Pio::PacketOut do
       Then { result.actions[0].is_a? Pio::SendOutPort }
       Then { result.actions[0].port_number == 2 }
       Then { result.actions[0].max_len == 2**16 - 1 }
-      Then { result.data.length == 64 }
+      Then { result.raw_data.length == 64 }
 
       context '#to_binary' do
         When(:binary) { result.to_binary }
@@ -136,7 +136,7 @@ describe Pio::PacketOut do
           buffer_id: 0xffffffff,
           in_port: 0xffff,
           actions: Pio::SetVlanVid.new(10),
-          data: data_dump
+          raw_data: data_dump
         }
       end
 
@@ -154,7 +154,7 @@ describe Pio::PacketOut do
           buffer_id: 0xffffffff,
           in_port: 0xffff,
           actions: Pio::SetVlanPriority.new(3),
-          data: data_dump
+          raw_data: data_dump
         }
       end
 
@@ -172,7 +172,7 @@ describe Pio::PacketOut do
           buffer_id: 0xffffffff,
           in_port: 0xffff,
           actions: Pio::StripVlanHeader.new,
-          data: data_dump
+          raw_data: data_dump
         }
       end
 
@@ -189,7 +189,7 @@ describe Pio::PacketOut do
           buffer_id: 0xffffffff,
           in_port: 0xffff,
           actions: Pio::SetEthSrcAddr.new('11:22:33:44:55:66'),
-          data: data_dump
+          raw_data: data_dump
         }
       end
 
@@ -207,7 +207,7 @@ describe Pio::PacketOut do
           buffer_id: 0xffffffff,
           in_port: 0xffff,
           actions: Pio::SetEthDstAddr.new('11:22:33:44:55:66'),
-          data: data_dump
+          raw_data: data_dump
         }
       end
 
@@ -225,7 +225,7 @@ describe Pio::PacketOut do
           buffer_id: 0xffffffff,
           in_port: 0xffff,
           actions: Pio::SetIpSrcAddr.new('1.2.3.4'),
-          data: data_dump
+          raw_data: data_dump
         }
       end
 
@@ -243,7 +243,7 @@ describe Pio::PacketOut do
           buffer_id: 0xffffffff,
           in_port: 0xffff,
           actions: Pio::SetIpDstAddr.new('1.2.3.4'),
-          data: data_dump
+          raw_data: data_dump
         }
       end
 
@@ -261,7 +261,7 @@ describe Pio::PacketOut do
           buffer_id: 0xffffffff,
           in_port: 0xffff,
           actions: Pio::SetIpTos.new(32),
-          data: data_dump
+          raw_data: data_dump
         }
       end
 
@@ -279,7 +279,7 @@ describe Pio::PacketOut do
           buffer_id: 0xffffffff,
           in_port: 0xffff,
           actions: Pio::SetTransportSrcPort.new(100),
-          data: data_dump
+          raw_data: data_dump
         }
       end
 
@@ -297,7 +297,7 @@ describe Pio::PacketOut do
           buffer_id: 0xffffffff,
           in_port: 0xffff,
           actions: Pio::SetTransportDstPort.new(100),
-          data: data_dump
+          raw_data: data_dump
         }
       end
 
@@ -315,7 +315,7 @@ describe Pio::PacketOut do
           buffer_id: 0xffffffff,
           in_port: 0xffff,
           actions: Pio::Enqueue.new(port_number: 1, queue_id: 2),
-          data: data_dump
+          raw_data: data_dump
         }
       end
 
@@ -334,7 +334,7 @@ describe Pio::PacketOut do
           buffer_id: 0xffffffff,
           in_port: 0xffff,
           actions: [Pio::SendOutPort.new(2), Pio::SetVlanVid.new(10)],
-          data: data_dump
+          raw_data: data_dump
         }
       end
 

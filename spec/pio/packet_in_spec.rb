@@ -47,7 +47,7 @@ describe Pio::PacketIn do
       Then { result.total_len == 0x3c }
       Then { result.in_port == 1 }
       Then { result.reason == :no_match }
-      Then { result.data == data_dump }
+      Then { result.raw_data == data_dump }
     end
 
     context 'with a Packet-In message generated with PacketIn.new' do
@@ -57,7 +57,7 @@ describe Pio::PacketIn do
           buffer_id: 0xffffff00,
           in_port: 1,
           reason: :no_match,
-          data: data_dump
+          raw_data: data_dump
         ).to_binary
       end
 
@@ -73,7 +73,7 @@ describe Pio::PacketIn do
       Then { result.total_len == 0x3c }
       Then { result.in_port == 1 }
       Then { result.reason == :no_match }
-      Then { result.data == data_dump }
+      Then { result.raw_data == data_dump }
     end
 
     context 'with a Hello message' do
@@ -96,7 +96,7 @@ describe Pio::PacketIn do
           buffer_id: 0xffffff00,
           in_port: 1,
           reason: :no_match,
-          data: data_dump
+          raw_data: data_dump
         }
       end
       When { packet_in.datapath_id = 0xabc }
@@ -113,7 +113,7 @@ describe Pio::PacketIn do
       Then { packet_in.buffer_id == 0xffffff00 }
       Then { packet_in.in_port == 1 }
       Then { packet_in.reason == :no_match }
-      Then { packet_in.data == data_dump }
+      Then { packet_in.raw_data == data_dump }
     end
 
     context 'with xid: option' do
@@ -123,7 +123,7 @@ describe Pio::PacketIn do
           buffer_id: 0xffffff00,
           in_port: 1,
           reason: :no_match,
-          data: data_dump
+          raw_data: data_dump
         }
       end
       When { packet_in.dpid = 0xabc }
@@ -140,7 +140,7 @@ describe Pio::PacketIn do
       Then { packet_in.buffer_id == 0xffffff00 }
       Then { packet_in.in_port == 1 }
       Then { packet_in.reason == :no_match }
-      Then { packet_in.data == data_dump }
+      Then { packet_in.raw_data == data_dump }
     end
   end
 end

@@ -17,5 +17,4 @@ Feature: Pio::PacketOut.read
     | actions.first.class       | Pio::SendOutPort |
     | actions.first.port_number |                2 |
     | actions.first.max_len     |            65535 |
-    | data.length               |               64 |
-
+    | raw_data.length           |               64 |

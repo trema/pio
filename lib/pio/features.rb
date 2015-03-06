@@ -7,6 +7,7 @@ module Pio
     class Request; end
     OpenFlow::Message.factory(Request, OpenFlow::FEATURES_REQUEST)
 
+    # OpenFlow 1.0 Features Reply message.
     class Reply
       # Message body of features reply.
       class Body < BinData::Record
