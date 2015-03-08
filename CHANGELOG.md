@@ -1,6 +1,8 @@
 # Changelog
 
 ## develop (unreleased)
+### Changes
+* Deprecated `Pio::Mac#== Integer`.
 
 
 ## 0.17.0 (3/6/2015)
