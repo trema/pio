@@ -43,7 +43,7 @@ Gem::Specification.new do |gem|
   # Guard
   gem.add_development_dependency 'guard', '~> 2.12.4'
   gem.add_development_dependency 'guard-bundler', '~> 2.1.0'
-  gem.add_development_dependency 'guard-cucumber', '~> 1.5.3'
+  gem.add_development_dependency 'guard-cucumber', '~> 1.5.4'
   gem.add_development_dependency 'guard-rspec', '~> 4.5.0'
   gem.add_development_dependency 'guard-rubocop', '~> 1.2.0'
   gem.add_development_dependency 'rb-fchange', '~> 0.0.6'
