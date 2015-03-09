@@ -12,8 +12,7 @@ describe Pio::Mac do
         it { is_expected.to eq '11:22:33:44:55:66' }
         it { is_expected.not_to eq Pio::Mac.new('66:55:44:33:22:11') }
         it { is_expected.not_to eq '66:55:44:33:22:11' }
-        it { is_expected.to eq 0x112233445566 }
-        it { is_expected.not_to eq 42 }
+        it { is_expected.not_to eq 0x112233445566 }
         it { is_expected.not_to eq 'INVALID_MAC_ADDRESS' }
       end
 
@@ -22,8 +21,7 @@ describe Pio::Mac do
         it { expect(subject).to eql '11:22:33:44:55:66' }
         it { expect(subject).not_to eql Pio::Mac.new('66:55:44:33:22:11') }
         it { expect(subject).not_to eql '66:55:44:33:22:11' }
-        it { expect(subject).to eql 0x112233445566 }
-        it { expect(subject).not_to eql 42 }
+        it { expect(subject).not_to eql 0x112233445566 }
         it { expect(subject).not_to eql 'INVALID_MAC_ADDRESS' }
       end
 
@@ -81,8 +79,7 @@ describe Pio::Mac do
         it { is_expected.not_to eq Pio::Mac.new('66:55:44:33:22:11') }
         it { is_expected.not_to eq '6655.4433.2211' }
         it { is_expected.not_to eq '66:55:44:33:22:11' }
-        it { is_expected.to eq 0x112233445566 }
-        it { is_expected.not_to eq 42 }
+        it { is_expected.not_to eq 0x112233445566 }
         it { is_expected.not_to eq 'INVALID_MAC_ADDRESS' }
       end
 
@@ -95,8 +92,7 @@ describe Pio::Mac do
         it { expect(subject).not_to eql Pio::Mac.new('66:55:44:33:22:11') }
         it { expect(subject).not_to eql '6655.4433.2211' }
         it { expect(subject).not_to eql '66:55:44:33:22:11' }
-        it { expect(subject).to eql 0x112233445566 }
-        it { expect(subject).not_to eql 42 }
+        it { expect(subject).not_to eql 0x112233445566 }
         it { expect(subject).not_to eql 'INVALID_MAC_ADDRESS' }
       end
 

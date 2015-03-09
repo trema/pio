@@ -136,23 +136,23 @@ module Pio
 
     #
     # Returns +true+ if +other+ can be converted to a {Mac}
-    # object and its numeric representation is equal to +obj+'s.
+    # object and its string representation is equal to +obj+'s.
     #
     # @example
     #   mac_address = Mac.new("11:22:33:44:55:66")
     #
     #   mac_address == Mac.new("11:22:33:44:55:66") #=> true
     #   mac_address == "11:22:33:44:55:66" #=> true
-    #   mac_address == 0x112233445566 #=> true
     #   mac_address == "INVALID_MAC_ADDRESS" #=> false
     #
-    # @param other [#to_str, #to_int] a {Mac} object or an object
-    #   that can be converted to an Ethernet address.
+    # @param other [#to_s] a {Mac} object or an object that can be
+    #   converted to an Ethernet address.
     #
     # @return [Boolean]
     #
     def ==(other)
-      to_i == Mac.new(other).to_i
+      return false if other.is_a?(Integer)
+      to_s == Mac.new(other).to_s
     rescue InvalidValueError
       false
     end

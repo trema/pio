@@ -1,6 +1,9 @@
 # Changelog
 
 ## develop (unreleased)
+### Changes
+* Deprecated `Pio::Mac#== Integer`.
+* `Pio::PacketIn#source_mac` and `Pio::PacketIn#destination_mac` returns `Pio::Mac`.
 
 
 ## 0.17.0 (3/6/2015)
