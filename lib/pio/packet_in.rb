@@ -109,7 +109,7 @@ module Pio
     end
 
     def method_missing(method, *args)
-      data.__send__ method, *args
+      data.__send__(method, *args).snapshot
     end
   end
 end
