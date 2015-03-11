@@ -1,6 +1,14 @@
 # Changelog
 
 ## develop (unreleased)
+
+
+## 0.18.1 (3/11/2015)
+### Changes
+* `Lldp#port_number` returns primitive Ruby objects.
+
+
+## 0.18.0 (3/9/2015)
 ### Changes
 * Deprecated `Pio::Mac#== Integer`.
 * `Pio::PacketIn#source_mac` and `Pio::PacketIn#destination_mac` returns `Pio::Mac`.
