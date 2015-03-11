@@ -1,6 +1,9 @@
 # Changelog
 
 ## develop (unreleased)
+
+
+## 0.18.1 (3/11/2015)
 ### Changes
 * `Lldp#port_number` returns primitive Ruby objects.
 
