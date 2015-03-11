@@ -16,7 +16,6 @@ module Pio
     def_delegator :@frame, :dpid
     def_delegator :@frame, :optional_tlv
     def_delegator :@frame, :port_id
-    alias_method :port_number, :port_id
     def_delegator :@frame, :ttl
     def_delegator :@frame, :port_description
     def_delegator :@frame, :system_name
@@ -40,6 +39,10 @@ module Pio
 
     def initialize(options)
       @frame = Frame.new(Options.new(options).to_hash)
+    end
+
+    def port_number
+      @frame.port_id.get.snapshot
     end
 
     def to_binary

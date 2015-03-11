@@ -153,6 +153,7 @@ describe Pio::Lldp do
       Then { lldp.chassis_id == 0x192fa7b28d }
       Then { lldp.port_id == 'Uplink to S1' }
       Then { lldp.port_number == 'Uplink to S1' }
+      Then { lldp.port_number.class == String }
       Then { lldp.ttl == 120 }
       Then { lldp.port_description == nil }
       Then { lldp.system_name == nil }
@@ -214,6 +215,7 @@ describe Pio::Lldp do
       Then { lldp.chassis_id == 0x192fa7b28d }
       Then { lldp.port_id == 'Uplink to S1' }
       Then { lldp.port_number == 'Uplink to S1' }
+      Then { lldp.port_number.class == String }
       Then { lldp.ttl == 120 }
       Then { lldp.port_description == 'Summit300-48-Port 1001' }
       Then { lldp.system_name == 'Summit300-48' }
