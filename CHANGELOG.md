@@ -1,6 +1,9 @@
 # Changelog
 
 ## develop (unreleased)
+
+
+## 0.18.2 (3/12/2015)
 ### New features
 * Add attr writers to `Pio::Match` and `Pio::ExactMatch`.
 
