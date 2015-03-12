@@ -3,6 +3,11 @@
 ## develop (unreleased)
 
 
+## 0.18.2 (3/12/2015)
+### New features
+* Add attr writers to `Pio::Match` and `Pio::ExactMatch`.
+
+
 ## 0.18.1 (3/11/2015)
 ### Changes
 * `Lldp#port_number` returns primitive Ruby objects.

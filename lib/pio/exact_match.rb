@@ -44,22 +44,8 @@ module Pio
     # rubocop:enable MethodLength
     # rubocop:enable AbcSize
 
-    extend Forwardable
-
-    def_delegator :@match, :wildcards
-    def_delegator :@match, :in_port
-    def_delegator :@match, :dl_src
-    def_delegator :@match, :dl_dst
-    def_delegator :@match, :dl_vlan
-    def_delegator :@match, :dl_vlan_pcp
-    def_delegator :@match, :dl_type
-    def_delegator :@match, :nw_tos
-    def_delegator :@match, :nw_proto
-    def_delegator :@match, :nw_src
-    def_delegator :@match, :nw_dst
-    def_delegator :@match, :tp_src
-    def_delegator :@match, :tp_dst
-    def_delegator :@match, :to_binary_s
-    def_delegator :@match, :to_binary_s, :to_binary
+    def method_missing(method, *args, &block)
+      @match.__send__ method, *args, &block
+    end
   end
 end
