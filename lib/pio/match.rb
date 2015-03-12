@@ -3,7 +3,6 @@ require 'bindata'
 require 'pio/open_flow'
 require 'pio/type/ip_address'
 require 'pio/type/mac_address'
-require 'forwardable'
 
 module Pio
   # Fields to match against flows
@@ -127,26 +126,6 @@ module Pio
       MatchFormat.read binary
     end
 
-    extend Forwardable
-
-    def_delegators :@format, :wildcards
-    def_delegators :@format, :in_port
-    def_delegators :@format, :dl_vlan
-    def_delegators :@format, :dl_src
-    def_delegators :@format, :dl_dst
-    def_delegators :@format, :dl_type
-    def_delegators :@format, :nw_proto
-    def_delegators :@format, :tp_src
-    def_delegators :@format, :tp_dst
-    def_delegators :@format, :nw_src
-    def_delegators :@format, :nw_src_all
-    def_delegators :@format, :nw_dst
-    def_delegators :@format, :nw_dst_all
-    def_delegators :@format, :dl_vlan_pcp
-    def_delegators :@format, :nw_tos
-    def_delegators :@format, :to_binary_s
-    def_delegator :@format, :to_binary_s, :to_binary
-
     # rubocop:disable MethodLength
     # This method smells of :reek:FeatureEnvy
     # This method smells of :reek:DuplicateMethodCall
@@ -165,9 +144,17 @@ module Pio
     end
     # rubocop:enable MethodLength
 
+    def to_binary
+      @format.to_binary_s
+    end
+
     def ==(other)
       return false unless other
       to_binary == other.to_binary
+    end
+
+    def method_missing(method, *args, &block)
+      @format.__send__ method, *args, &block
     end
   end
 end
