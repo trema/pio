@@ -25,6 +25,8 @@ supports the following packet formats:
     -   Packet-Out
     -   Flow Mod
     -   Port Status
+-   OpenFlow 1.3
+    -   [Hello](https://relishapp.com/trema/pio/docs/openflow-1-3-hello-message)
 -   (&#x2026;currently there are just a few formats supported but I'm sure this list will grow)
 
 ## Features Overview
@@ -386,4 +388,5 @@ and install it by running Bundler:
 ## License
 
 Pio is released under the GNU General Public License version 3.0:
+
 -   <http://www.gnu.org/licenses/gpl.html>

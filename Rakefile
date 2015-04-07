@@ -1,5 +1,7 @@
 require 'bundler/gem_tasks'
 
+RELISH_PROJECT = 'trema/pio'
+
 # rubocop:disable HashSyntax
 
 task :default => :travis

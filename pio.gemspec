@@ -47,6 +47,7 @@ Gem::Specification.new do |gem|
 
   # Docs
   gem.add_development_dependency 'inch', '~> 0.5.10'
+  gem.add_development_dependency 'relish', '~> 0.7.1'
   gem.add_development_dependency 'yard', '~> 0.8.7.6'
 
   # Test
