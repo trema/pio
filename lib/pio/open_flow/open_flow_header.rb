@@ -1,28 +1,11 @@
 require 'bindata'
+require 'pio/open_flow/transaction_id'
 
 module Pio
   # OpenFlow 1.0 format.
   module OpenFlow
     # OpenFlow 1.0 message header format.
     class OpenFlowHeader < BinData::Record
-      # Transaction ID (uint32)
-      class TransactionId < BinData::Primitive
-        endian :big
-        uint32 :xid
-
-        def set(value)
-          unless value.unsigned_32bit?
-            fail(ArgumentError,
-                 'Transaction ID should be an unsigned 32-bit integer.')
-          end
-          self.xid = value
-        end
-
-        def get
-          xid
-        end
-      end
-
       endian :big
       uint8 :ofp_version, value: 1
       uint8 :message_type, initial_value: :message_type_value

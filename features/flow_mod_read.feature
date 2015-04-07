@@ -3,7 +3,7 @@ Feature: Pio::FlowMod.read
     Given a packet data file "flow_mod_add.raw"
     When I try to parse the file with "FlowMod" class
     Then it should finish successfully
-    And the parsed data have the following field and value:
+    And the message have the following field and value:
     | field                  |                      value |
     | ofp_version            |                          1 |
     | message_type           |                         14 |
@@ -41,7 +41,7 @@ Feature: Pio::FlowMod.read
     Given a packet data file "flow_mod_modify.raw"
     When I try to parse the file with "FlowMod" class
     Then it should finish successfully
-    And the parsed data have the following field and value:
+    And the message have the following field and value:
     | field                  |                      value |
     | ofp_version            |                          1 |
     | message_type           |                         14 |
@@ -79,7 +79,7 @@ Scenario: flow_mod_modify_strict.raw
     Given a packet data file "flow_mod_modify_strict.raw"
     When I try to parse the file with "FlowMod" class
     Then it should finish successfully
-    And the parsed data have the following field and value:
+    And the message have the following field and value:
     | field                  |                      value |
     | ofp_version            |                          1 |
     | message_type           |                         14 |
@@ -117,7 +117,7 @@ Scenario: flow_mod_modify_strict.raw
     Given a packet data file "flow_mod_delete.raw"
     When I try to parse the file with "FlowMod" class
     Then it should finish successfully
-    And the parsed data have the following field and value:
+    And the message have the following field and value:
     | field                  |                      value |
     | ofp_version            |                          1 |
     | message_type           |                         14 |
@@ -153,7 +153,7 @@ Scenario: flow_mod_delete_strict.raw
     Given a packet data file "flow_mod_delete_strict.raw"
     When I try to parse the file with "FlowMod" class
     Then it should finish successfully
-    And the parsed data have the following field and value:
+    And the message have the following field and value:
     | field                  |                      value |
     | ofp_version            |                          1 |
     | message_type           |                         14 |

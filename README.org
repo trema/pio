@@ -33,6 +33,8 @@ supports the following packet formats:
    - Packet-Out
    - Flow Mod
    - Port Status
+ - OpenFlow 1.3
+   - [[https://relishapp.com/trema/pio/docs/openflow-1-3-hello-message][Hello]]
  - (...currently there are just a few formats supported but I'm sure this list will grow)
 
 ** Features Overview
