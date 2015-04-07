@@ -21,7 +21,7 @@
 Pio is a ruby gem to easily parse and generate network packets. It
 supports the following packet formats:
 
- - ICMP
+ - [[https://relishapp.com/trema/pio/docs/icmp][ICMP]]
  - ARP
  - LLDP
  - DHCP
@@ -47,17 +47,6 @@ supports the following packet formats:
 
 ** Examples
 Its usage is dead simple.
-
-*** ICMP
-To parse an ICMP frame, use the API =Pio::Icmp.read= and you can
-access each field of the parsed ICMP frame.
-
-#+INCLUDE: "./examples/icmp_read.rb" src ruby
-
-Also you can use =Pio::Icmp::Request#new= or =Pio::Icmp::Reply#new= to
-generate an Icmp Request/Reply frame like below:
-
-#+INCLUDE: "./examples/icmp_new.rb" src ruby
 
 *** ARP
 To parse an ARP frame, use the API =Pio::Arp.read= and you can access

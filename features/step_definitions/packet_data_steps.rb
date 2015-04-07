@@ -15,6 +15,10 @@ When(/^I create an OpenFlow message with "([^"]*)"$/) do |ruby_code|
   @result = Pio.module_eval(ruby_code)
 end
 
+When(/^I create a packet with:$/) do |ruby_code|
+  @result = Pio.module_eval(ruby_code)
+end
+
 When(/^I try to parse the file with "(.*?)" class$/) do |parser|
   parser_klass = Pio.const_get(parser)
   if @raw
@@ -38,6 +42,15 @@ end
 
 Then(/^it should finish successfully$/) do
   # Noop.
+end
+
+Then(/^the packet have the following field and value:$/) do |table|
+  table.hashes.each do |each|
+    output = each['field'].split('.').inject(@result) do |memo, method|
+      memo.__send__(method)
+    end
+    expect(output.to_s).to eq(each['value'])
+  end
 end
 
 Then(/^the message have the following field and value:$/) do |table|
