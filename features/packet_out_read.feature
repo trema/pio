@@ -3,7 +3,7 @@ Feature: Pio::PacketOut.read
     Given a packet data file "packet_out.raw"
     When I try to parse the file with "PacketOut" class
     Then it should finish successfully
-    And the parsed data have the following field and value:
+    And the message have the following field and value:
     | field                     |            value |
     | class                     |   Pio::PacketOut |
     | ofp_version               |                1 |
