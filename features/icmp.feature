@@ -73,7 +73,7 @@ Feature: ICMP
       | icmp_sequence_number   |                 0 |
       | echo_data              |                   |
 
-  Scenario: parse
+  Scenario: parse icmp.pcap
     Given a packet data file "icmp.pcap"
     When I try to parse the file with "Pio::Icmp" class
     Then it should finish successfully
