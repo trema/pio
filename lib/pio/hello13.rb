@@ -1,5 +1,6 @@
 require 'bindata'
-require 'pio/open_flow/transaction_id'
+require 'forwardable'
+require 'pio/open_flow'
 require 'pio/parse_error'
 
 module Pio
@@ -29,22 +30,35 @@ module Pio
       end
     end
 
+    # OpenFlow 1.3 Hello message body.
+    class Body < BinData::Record
+      array :elements, type: :element, read_until: :eof
+
+      def length
+        if elements.empty?
+          0
+        else
+          elements.length * 4 + 4
+        end
+      end
+    end
+
     # OpenFlow 1.3 Hello message format
     class Format < BinData::Record
-      OFP_VERSION = 4
+      extend Forwardable
 
       endian :big
 
-      uint8 :ofp_version, initial_value: OFP_VERSION
-      virtual assert: -> { ofp_version == OFP_VERSION }
-      uint8 :message_type
-      uint16 :message_length, initial_value: :hello_message_length
-      transaction_id :transaction_id
-      array :elements, type: :element, read_until: :eof
+      open_flow_header :open_flow_header,
+                       ofp_version_value: 4, message_type_value: 0
+      body :body
 
-      def xid
-        transaction_id
-      end
+      def_delegators :open_flow_header, :ofp_version
+      def_delegators :open_flow_header, :message_type
+      def_delegators :open_flow_header, :message_length
+      def_delegators :open_flow_header, :transaction_id
+      def_delegator :open_flow_header, :transaction_id, :xid
+      def_delegators :body, :elements
 
       def supported_versions
         supported_versions_list.map do |each|
@@ -55,14 +69,6 @@ module Pio
       alias_method :to_binary, :to_binary_s
 
       private
-
-      def hello_message_length
-        8 + if elements.empty?
-              0
-            else
-              elements.length * 4 + 4
-            end
-      end
 
       def supported_versions_list
         (1..32).each_with_object([]) do |each, result|
@@ -76,24 +82,6 @@ module Pio
       end
     end
 
-    # Hello13.new argument
-    class Options
-      def initialize(user_attrs)
-        @attrs = { elements: [{ element_type: 1,
-                                element_length: 8,
-                                element_value: 16 }] }
-        @attrs = @attrs.merge(user_attrs)
-        @attrs[:transaction_id] = @attrs.fetch(:xid) if @attrs.key?(:xid)
-        unknown_keywords = @attrs.keys - [:transaction_id, :xid, :elements]
-        return if unknown_keywords.empty?
-        fail "Unknown keyword: #{unknown_keywords.first}"
-      end
-
-      def to_h
-        @attrs
-      end
-    end
-
     def self.read(raw_data)
       allocate.tap do |message|
         message.instance_variable_set(:@format, Format.read(raw_data))
@@ -102,8 +90,18 @@ module Pio
       raise Pio::ParseError, 'Invalid Hello 1.3 message.'
     end
 
-    def initialize(attrs = {})
-      @format = Format.new(Options.new(attrs).to_h)
+    def initialize(user_attrs = {})
+      unknown_keywords = user_attrs.keys - [:transaction_id, :xid]
+      unless unknown_keywords.empty?
+        fail "Unknown keyword: #{unknown_keywords.first}"
+      end
+
+      header_attrs = OpenFlowHeader::Options.parse(user_attrs)
+      body_attrs = { elements: [{ element_type: 1,
+                                  element_length: 8,
+                                  element_value: 16 }] }
+      @format = Format.new(open_flow_header: header_attrs,
+                           body: body_attrs)
     end
 
     def method_missing(method, *args, &block)

@@ -1,6 +1,5 @@
 @announce
 Feature: Pio::Dhcp.read
   Scenario: dhcp.pcap
-    Given a packet data file "dhcp.pcap"
-    When I try to parse the file with "Dhcp" class
+    When I try to parse a file named "dhcp.pcap" with "Dhcp" class
     Then it should finish successfully

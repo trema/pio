@@ -1,9 +1,8 @@
 Feature: Pio::Udp.read
   Scenario: dhcp.pcap
-    Given a packet data file "dhcp.pcap"
-    When I try to parse the file with "Udp" class
+    When I try to parse a file named "dhcp.pcap" with "Udp" class
     Then it should finish successfully
-    And the message #1 have the following field and value:
+    And the message #1 have the following fields and values:
     | field                  |             value |
     | class                  |          Pio::Udp |
     | destination_mac        | ff:ff:ff:ff:ff:ff |
