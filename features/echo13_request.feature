@@ -9,6 +9,7 @@ Feature: OpenFlow 1.3 Echo Request message
       | message_length |                    8 |
       | transaction_id |                    0 |
       | xid            |                    0 |
+      | body           |                      |
 
   Scenario: create (transaction_id: 123)
     When I create an OpenFlow message with "Pio::Echo13::Request.new(transaction_id: 123)"
@@ -20,6 +21,7 @@ Feature: OpenFlow 1.3 Echo Request message
       | message_length |                    8 |
       | transaction_id |                  123 |
       | xid            |                  123 |
+      | body           |                      |
 
   Scenario: create (xid: 123)
     When I create an OpenFlow message with "Pio::Echo13::Request.new(xid: 123)"
@@ -31,6 +33,7 @@ Feature: OpenFlow 1.3 Echo Request message
       | message_length |                    8 |
       | transaction_id |                  123 |
       | xid            |                  123 |
+      | body           |                      |
 
   Scenario: create (body: 'echo request body')
     When I create an OpenFlow message with "Pio::Echo13::Request.new(body: 'echo request body')"
@@ -56,6 +59,7 @@ Feature: OpenFlow 1.3 Echo Request message
       | message_length |                    8 |
       | transaction_id |                    0 |
       | xid            |                    0 |
+      | body           |                      |
 
   Scenario: parse
     Given a packet data file "echo13_request_body.raw"
@@ -70,4 +74,3 @@ Feature: OpenFlow 1.3 Echo Request message
       | transaction_id |                    0 |
       | xid            |                    0 |
       | body           | hogehogehogehogehoge |
-
