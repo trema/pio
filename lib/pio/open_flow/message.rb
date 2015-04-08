@@ -24,7 +24,8 @@ module Pio
             endian :big
 
             open_flow_header :open_flow_header,
-            message_type_value: #{message_type}
+                             ofp_version_value: 1,
+                             message_type_value: #{message_type}
             virtual assert: -> do
               open_flow_header.message_type == #{message_type}
             end

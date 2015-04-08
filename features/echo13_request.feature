@@ -74,3 +74,8 @@ Feature: OpenFlow 1.3 Echo Request message
       | transaction_id |                    0 |
       | xid            |                    0 |
       | body           | hogehogehogehogehoge |
+
+  Scenario: parse error
+    Given a packet data file "features_request.raw"
+    When I try to parse the file with "Pio::Echo13::Request" class
+    Then it should fail with "Pio::ParseError", "Invalid Echo Request 1.3 message."

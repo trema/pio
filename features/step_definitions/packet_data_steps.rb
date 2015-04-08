@@ -20,19 +20,23 @@ When(/^I create a packet with:$/) do |ruby_code|
 end
 
 When(/^I try to parse the file with "(.*?)" class$/) do |parser|
-  parser_klass = Pio.const_get(parser)
-  if @raw
-    @result = parser_klass.read(IO.read(@raw))
-  elsif @pcap
-    File.open(@pcap) do |file|
-      @result = []
-      pcap = Pio::Pcap::Frame.read(file)
-      pcap.records.each do |each|
-        @result << parser_klass.read(each.data)
+  begin
+    parser_klass = Pio.const_get(parser)
+    if @raw
+      @result = parser_klass.read(IO.read(@raw))
+    elsif @pcap
+      File.open(@pcap) do |file|
+        @result = []
+        pcap = Pio::Pcap::Frame.read(file)
+        pcap.records.each do |each|
+          @result << parser_klass.read(each.data)
+        end
       end
+    else
+      fail 'Packet data file is not specified.'
     end
-  else
-    fail 'Packet data file is not specified.'
+  rescue
+    @last_error = $ERROR_INFO
   end
 end
 
@@ -42,6 +46,11 @@ end
 
 Then(/^it should finish successfully$/) do
   # Noop.
+end
+
+Then(/^it should fail with "([^"]*)", "([^"]*)"$/) do |error, message|
+  expect(@last_error.class.to_s).to eq(error)
+  expect(@last_error.message).to eq(message)
 end
 
 Then(/^the packet have the following field and value:$/) do |table|
