@@ -1,6 +1,6 @@
 Feature: ICMP
   Scenario: create an ICMP request
-    When I create a packet with:
+    When I try to create a packet with:
       """
       Pio::Icmp::Request.new(
         source_mac: '00:16:9d:1d:9c:c4',
@@ -9,7 +9,8 @@ Feature: ICMP
         ip_destination_address: '192.168.83.254'
       )
       """
-    Then the packet have the following fields and values:
+    Then it should finish successfully
+    And the packet have the following fields and values:
       | field                  |              value |
       | class                  | Pio::Icmp::Request |
       | destination_mac        |  00:26:82:eb:ea:d1 |
@@ -36,7 +37,7 @@ Feature: ICMP
       | echo_data              |                    |
 
   Scenario: create an ICMP reply
-    When I create a packet with:
+    When I try to create a packet with:
       """
       Pio::Icmp::Reply.new(
         source_mac: '00:26:82:eb:ea:d1',
@@ -47,7 +48,8 @@ Feature: ICMP
         sequence_number: 0
       )
       """
-    Then the packet have the following fields and values:
+    Then it should finish successfully
+    And the packet have the following fields and values:
       | field                  |             value |
       | class                  |  Pio::Icmp::Reply |
       | destination_mac        | 00:16:9d:1d:9c:c4 |

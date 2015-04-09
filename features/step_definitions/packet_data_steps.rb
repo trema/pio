@@ -11,7 +11,7 @@ Given(/^a packet data file "(.*?)"$/) do |name|
   end
 end
 
-When(/^I try to create an OpenFlow message with:$/) do |ruby_code|
+When(/^I try to create a packet with:$/) do |ruby_code|
   begin
     @result = Pio.module_eval(ruby_code)
   rescue
@@ -19,8 +19,8 @@ When(/^I try to create an OpenFlow message with:$/) do |ruby_code|
   end
 end
 
-When(/^I create a packet with:$/) do |ruby_code|
-  @result = Pio.module_eval(ruby_code)
+When(/^I try to create an OpenFlow message with:$/) do |ruby_code|
+  step 'I try to create a packet with:', ruby_code
 end
 
 When(/^I try to parse the file with "(.*?)" class$/) do |parser|
