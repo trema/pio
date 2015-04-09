@@ -53,18 +53,6 @@ supports the following packet formats:
 ** Examples
 Its usage is dead simple.
 
-*** DHCP
-To parse a DHCP frame, use the API =Pio::Dhcp.read= and you can access
-each field of the parsed DHCP frame.
-
-#+INCLUDE: "./examples/dhcp_read.rb" src ruby
-
-Also you can use =Pio::Dhcp::Discover#new=,
-=Pio::Dhcp::Offer#new=, =Pio::Dhcp::Request#new= and
-=Pio::Dhcp::Ack#new= to generate a DHCP frame like below:
-
-#+INCLUDE: "./examples/dhcp_new.rb" src ruby
-
 *** Packet-Out
 To parse an OpenFlow 1.0 Packet-Out message, use the API
 =Pio::PacketOut.read= and you can access each field of the parsed
