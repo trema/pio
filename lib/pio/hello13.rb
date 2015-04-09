@@ -77,7 +77,7 @@ module Pio
       end
 
       def version_bitmap
-        bitmap = elements.select(&:version_bitmap?).first
+        bitmap = elements.find(&:version_bitmap?)
         bitmap ? bitmap.element_value : 0
       end
     end

@@ -91,7 +91,7 @@ describe Pio::FlowMod do
                          out_port: 2,
                          flags: [:send_flow_rem, :check_overwrap],
                          actions: Pio::SendOutPort.new(2)
-        )
+                        )
       end
 
       Then { flow_mod.class == Pio::FlowMod }
