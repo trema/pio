@@ -20,7 +20,8 @@ supports the following packet formats:
 -   [UDP](https://relishapp.com/trema/pio/docs/misc/udp)
 -   OpenFlow 1.0
     -   [Hello](https://relishapp.com/trema/pio/docs/open-flow10/hello)
-    -   Echo
+    -   [Echo Request](https://relishapp.com/trema/pio/docs/open-flow10/echo-request)
+    -   [Echo Reply](https://relishapp.com/trema/pio/docs/open-flow10/echo-reply)
     -   Features
     -   Packet-In
     -   Packet-Out
@@ -110,29 +111,6 @@ Also you can use `Pio::Dhcp::Discover#new`,
     ack = Pio::Dhcp::Ack.new(dhcp_server_options
                              .merge(transaction_id: request.transaction_id))
     ack.to_binary  # => DHCP Ack frame in binary format
-
-### Echo
-
-To parse an OpenFlow 1.0 Echo message, use the API `Pio::Echo.read`
-and you can access each field of the parsed Echo message.
-
-    require 'pio'
-
-    echo = Pio::Echo::Request.read(binary_data)
-    echo.xid # => 123
-
-Also you can use `Pio::Echo::Request#new` or `Pio::Echo::Reply#new` to
-generate an Echo Request/Reply message like below:
-
-    require 'pio'
-
-    request = Pio::Echo::Request.new
-    request.to_binary  # => ECHO Request message in binary format.
-
-    # The ECHO xid (transaction_id)
-    # should be same as that of the request.
-    reply = Pio::Echo::Reply.new(xid: request.xid)
-    reply.to_binary  # => ECHO Reply message in binary format.
 
 ### Features
 

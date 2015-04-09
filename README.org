@@ -28,7 +28,8 @@ supports the following packet formats:
  - [[https://relishapp.com/trema/pio/docs/misc/udp][UDP]]
  - OpenFlow 1.0
    - [[https://relishapp.com/trema/pio/docs/open-flow10/hello][Hello]]
-   - Echo
+   - [[https://relishapp.com/trema/pio/docs/open-flow10/echo-request][Echo Request]]
+   - [[https://relishapp.com/trema/pio/docs/open-flow10/echo-reply][Echo Reply]]
    - Features
    - Packet-In
    - Packet-Out
@@ -73,16 +74,6 @@ Also you can use =Pio::Dhcp::Discover#new=,
 
 #+INCLUDE: "./examples/dhcp_new.rb" src ruby
 
-*** Echo
-To parse an OpenFlow 1.0 Echo message, use the API =Pio::Echo.read=
-and you can access each field of the parsed Echo message.
-
-#+INCLUDE: "./examples/echo_read.rb" src ruby
-
-Also you can use =Pio::Echo::Request#new= or =Pio::Echo::Reply#new= to
-generate an Echo Request/Reply message like below:
-
-#+INCLUDE: "./examples/echo_new.rb" src ruby
 *** Features
 To parse an OpenFlow 1.0 Features message, use the API
 =Pio::Features.read= and you can access each field of the parsed
