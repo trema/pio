@@ -13,35 +13,36 @@
 Pio is a ruby gem to easily parse and generate network packets. It
 supports the following packet formats:
 
--   [ICMP](https://relishapp.com/trema/pio/docs/misc/icmp)
--   [ARP](https://relishapp.com/trema/pio/docs/misc/arp)
--   [LLDP](https://relishapp.com/trema/pio/docs/misc/lldp)
--   [DHCP](https://relishapp.com/trema/pio/docs/misc/dhcp)
--   [UDP](https://relishapp.com/trema/pio/docs/misc/udp)
--   OpenFlow 1.0
-    -   [Hello](https://relishapp.com/trema/pio/docs/open-flow10/hello)
-    -   [Echo Request](https://relishapp.com/trema/pio/docs/open-flow10/echo-request)
-    -   [Echo Reply](https://relishapp.com/trema/pio/docs/open-flow10/echo-reply)
-    -   [Features Request](https://relishapp.com/trema/pio/docs/open-flow10/features-request)
-    -   [Features Reply](https://relishapp.com/trema/pio/docs/open-flow10/features-reply)
-    -   [Packet In](https://relishapp.com/trema/pio/docs/open-flow10/packet-in)
-    -   [Packet Out](https://relishapp.com/trema/pio/docs/open-flow10/packet-out)
-    -   [Flow Mod](https://relishapp.com/trema/pio/docs/open-flow10/flow-mod)
-    -   Port Status
--   OpenFlow 1.3
-    -   [Hello](https://relishapp.com/trema/pio/docs/open-flow13/hello)
-    -   [Echo Request](https://relishapp.com/trema/pio/docs/open-flow13/echo-request)
-    -   [Echo Reply](https://relishapp.com/trema/pio/docs/open-flow13/echo-reply)
--   (&#x2026;currently there are just a few formats supported but I'm sure this list will grow)
+- [ICMP](https://relishapp.com/trema/pio/docs/misc/icmp)
+- [ARP](https://relishapp.com/trema/pio/docs/misc/arp)
+- [LLDP](https://relishapp.com/trema/pio/docs/misc/lldp)
+- [DHCP](https://relishapp.com/trema/pio/docs/misc/dhcp)
+- [UDP](https://relishapp.com/trema/pio/docs/misc/udp)
+- OpenFlow 1.0
+  - [Hello](https://relishapp.com/trema/pio/docs/open-flow10/hello)
+  - [Echo Request](https://relishapp.com/trema/pio/docs/open-flow10/echo-request)
+  - [Echo Reply](https://relishapp.com/trema/pio/docs/open-flow10/echo-reply)
+  - [Features Request](https://relishapp.com/trema/pio/docs/open-flow10/features-request)
+  - [Features Reply](https://relishapp.com/trema/pio/docs/open-flow10/features-reply)
+  - [Packet In](https://relishapp.com/trema/pio/docs/open-flow10/packet-in)
+  - [Packet Out](https://relishapp.com/trema/pio/docs/open-flow10/packet-out)
+  - [Flow Mod](https://relishapp.com/trema/pio/docs/open-flow10/flow-mod)
+  - Port Status
+- OpenFlow 1.3
+  - [Hello](https://relishapp.com/trema/pio/docs/open-flow13/hello)
+  - [Echo Request](https://relishapp.com/trema/pio/docs/open-flow13/echo-request)
+  - [Echo Reply](https://relishapp.com/trema/pio/docs/open-flow13/echo-reply)
+- (&#x2026;currently there are just a few formats supported but I'm sure this list will grow)
 
 ## Features Overview
 
--   Pure Ruby. No additional dependency on other external tools to
-    parse/generate packets.
--   Multi-Platform. Runs on major operating systems (recent Windows,
-    Linux, and MacOSX).
--   Clean Code. Pio is built on [BinData](https://github.com/dmendel/bindata)'s declarative binary format DSL
-    so that it is easy to read and debug by human beings.
+- Pure Ruby. No additional dependency on other external tools to
+  parse/generate packets.
+- Multi-Platform. Runs on major operating systems (recent Windows,
+  Linux, and MacOSX).
+- Clean Code. Pio is built on
+  [BinData](https://github.com/dmendel/bindata)'s declarative binary
+  format DSL so that it is easy to read and debug by human beings.
 
 ## Installation
 
@@ -49,20 +50,24 @@ The simplest way to install Pio is to use [Bundler](http://gembundler.com/).
 
 Add Pio to your `Gemfile`:
 
-    gem 'pio'
+```ruby
+gem 'pio'
+```
 
 and install it by running Bundler:
 
-    prompt> bundle
+```bash
+bundle
+```
 
 ## Documents
 
--   [API document generated with YARD](http://rubydoc.info/github/trema/pio/frames/file/README.md)
+- [API document generated with YARD](http://rubydoc.info/github/trema/pio/frames/file/README.md)
 
 ## Team
 
--   [Yasuhito Takamiya](https://github.com/yasuhito) ([@yasuhito](https://twitter.com/yasuhito))
--   [Eishun Kondoh](https://github.com/shun159) ([@Eishun\_Kondoh](https://twitter.com/Eishun_Kondoh))
+- [Yasuhito Takamiya](https://github.com/yasuhito) ([@yasuhito](https://twitter.com/yasuhito))
+- [Eishun Kondoh](https://github.com/shun159) ([@Eishun\_Kondoh](https://twitter.com/Eishun_Kondoh))
 
 ### Contributors
 
@@ -70,11 +75,11 @@ and install it by running Bundler:
 
 ## Alternatives
 
--   PacketFu: <https://github.com/todb/packetfu>
--   Racket: <http://spoofed.org/files/racket/>
+- PacketFu: <https://github.com/todb/packetfu>
+- Racket: <http://spoofed.org/files/racket/>
 
 ## License
 
 Pio is released under the GNU General Public License version 3.0:
 
--   <http://www.gnu.org/licenses/gpl.html>
+- <http://www.gnu.org/licenses/gpl.html>
