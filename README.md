@@ -111,24 +111,6 @@ Also you can use `Pio::Dhcp::Discover#new`,
                              .merge(transaction_id: request.transaction_id))
     ack.to_binary  # => DHCP Ack frame in binary format
 
-### Hello
-
-To parse an OpenFlow 1.0 Hello message, use the API `Pio::Hello.read`
-and you can access each field of the parsed Hello message.
-
-    require 'pio'
-
-    hello = Pio::Hello.read(binary_data)
-    hello.transaction_id # => 123
-
-Also you can use `Pio::Hello#new` to generate a Hello message like
-below:
-
-    require 'pio'
-
-    hello = Pio::Hello.new(transaction_id: 123)
-    hello.to_binary  # => HELLO message in binary format.
-
 ### Echo
 
 To parse an OpenFlow 1.0 Echo message, use the API `Pio::Echo.read`

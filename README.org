@@ -73,17 +73,6 @@ Also you can use =Pio::Dhcp::Discover#new=,
 
 #+INCLUDE: "./examples/dhcp_new.rb" src ruby
 
-*** Hello
-To parse an OpenFlow 1.0 Hello message, use the API =Pio::Hello.read=
-and you can access each field of the parsed Hello message.
-
-#+INCLUDE: "./examples/hello_read.rb" src ruby
-
-Also you can use =Pio::Hello#new= to generate a Hello message like
-below:
-
-#+INCLUDE: "./examples/hello_new.rb" src ruby
-
 *** Echo
 To parse an OpenFlow 1.0 Echo message, use the API =Pio::Echo.read=
 and you can access each field of the parsed Echo message.
