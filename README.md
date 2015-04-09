@@ -26,7 +26,7 @@ supports the following packet formats:
     -   [Features Reply](https://relishapp.com/trema/pio/docs/open-flow10/features-reply)
     -   [Packet In](https://relishapp.com/trema/pio/docs/open-flow10/packet-in)
     -   [Packet Out](https://relishapp.com/trema/pio/docs/open-flow10/packet-out)
-    -   Flow Mod
+    -   [Flow Mod](https://relishapp.com/trema/pio/docs/open-flow10/flow-mod)
     -   Port Status
 -   OpenFlow 1.3
     -   [Hello](https://relishapp.com/trema/pio/docs/open-flow13/hello)
@@ -42,40 +42,6 @@ supports the following packet formats:
     Linux, and MacOSX).
 -   Clean Code. Pio is built on [BinData](https://github.com/dmendel/bindata)'s declarative binary format DSL
     so that it is easy to read and debug by human beings.
-
-## Examples
-
-Its usage is dead simple.
-
-### Flow Mod
-
-To parse an OpenFlow 1.0 flow mod message, use the API
-`Pio::FlowMod.read` and you can access each field of the parsed
-flow mod message.
-
-    require 'pio'
-
-    flow_mod = Pio::FlowMod.read(binary_data)
-    flow_mod.match.in_port # => 1
-    flow_mod.match.dl_src # => '00:00:00:00:00:0a'
-    # ...
-
-Also you can use `Pio::FlowMod#new` and `Pio::Match#new` to generate a
-flow mod message like below:
-
-    require 'pio'
-
-    flow_mod = Pio::FlowMod.new(transaction_id: 0x15,
-                                buffer_id: 0xffffffff,
-                                match: Pio::Match.new(in_port: 1),
-                                cookie: 1,
-                                command: :add,
-                                priority: 0xffff,
-                                out_port: 2,
-                                flags: [:send_flow_rem, :check_overwrap],
-                                actions: Pio::SendOutPort.new(2))
-
-    flow_mod.to_binary  # => Flow mod message in binary format.
 
 ## Installation
 

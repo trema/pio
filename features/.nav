@@ -11,7 +11,7 @@
   - features_reply.feature
   - packet_in.feature
   - packet_out.feature
-  - flow_mod_read.feature
+  - flow_mod.feature
   - port_status_read.feature
 - open_flow13:
   - hello.feature
