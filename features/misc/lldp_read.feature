@@ -1,4 +1,4 @@
-Feature: Pio::Lldp.read
+Feature: LLDP
   Scenario: lldp.minimal.pcap
     When I try to parse a file named "lldp.minimal.pcap" with "Lldp" class
     Then it should finish successfully

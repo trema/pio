@@ -15,8 +15,9 @@ supports the following packet formats:
 
 -   [ICMP](https://relishapp.com/trema/pio/docs/misc/icmp)
 -   [ARP](https://relishapp.com/trema/pio/docs/misc/arp)
--   LLDP
--   DHCP
+-   [LLDP](https://relishapp.com/trema/pio/docs/misc/lldp)
+-   [DHCP](https://relishapp.com/trema/pio/docs/misc/dhcp)
+-   [UDP](https://relishapp.com/trema/pio/docs/misc/udp)
 -   OpenFlow 1.0
     -   Hello
     -   Echo
