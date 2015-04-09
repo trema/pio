@@ -21,8 +21,8 @@
 Pio is a ruby gem to easily parse and generate network packets. It
 supports the following packet formats:
 
- - [[https://relishapp.com/trema/pio/docs/icmp][ICMP]]
- - [[https://relishapp.com/trema/pio/docs/arp][ARP]]
+ - [[https://relishapp.com/trema/pio/docs/misc/icmp][ICMP]]
+ - [[https://relishapp.com/trema/pio/docs/misc/arp][ARP]]
  - LLDP
  - DHCP
  - OpenFlow 1.0
