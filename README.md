@@ -24,8 +24,7 @@ supports the following packet formats:
     -   [Echo Reply](https://relishapp.com/trema/pio/docs/open-flow10/echo-reply)
     -   [Features Request](https://relishapp.com/trema/pio/docs/open-flow10/features-request)
     -   [Features Reply](https://relishapp.com/trema/pio/docs/open-flow10/features-reply)
-    -   Features
-    -   Packet-In
+    -   [Packet In](https://relishapp.com/trema/pio/docs/open-flow10/packet-in)
     -   Packet-Out
     -   Flow Mod
     -   Port Status
@@ -113,39 +112,6 @@ Also you can use `Pio::Dhcp::Discover#new`,
     ack = Pio::Dhcp::Ack.new(dhcp_server_options
                              .merge(transaction_id: request.transaction_id))
     ack.to_binary  # => DHCP Ack frame in binary format
-
-### Packet-In
-
-To parse an OpenFlow 1.0 Packet-In message, use the API
-`Pio::PacketIn.read` and you can access each field of the parsed
-Packet-In message.
-
-    require 'pio'
-
-    packet_in = Pio::PacketIn.read(binary_data)
-    packet_in.in_port # => 1
-    packet_in.buffer_id # => 4294967040
-
-Also you can use `Pio::PacketIn#new` to generate a Packet-In message
-like below:
-
-    require 'pio'
-
-    data_dump = [
-      0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xac, 0x5d, 0x10, 0x31, 0x37,
-      0x79, 0x08, 0x06, 0x00, 0x01, 0x08, 0x00, 0x06, 0x04, 0x00, 0x01,
-      0xac, 0x5d, 0x10, 0x31, 0x37, 0x79, 0xc0, 0xa8, 0x02, 0xfe, 0xff,
-      0xff, 0xff, 0xff, 0xff, 0xff, 0xc0, 0xa8, 0x02, 0x05, 0x00, 0x00,
-      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-      0x00, 0x00, 0x00, 0x00, 0x00
-    ].pack('C*')
-
-    packet_in = Pio::PacketIn.new(transaction_id: 0,
-                                  buffer_id: 0xffffff00,
-                                  in_port: 1,
-                                  reason: :no_match,
-                                  raw_data: data_dump)
-    packet_in.to_binary  # => Packet-In message in binary format.
 
 ### Packet-Out
 

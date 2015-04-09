@@ -32,8 +32,7 @@ supports the following packet formats:
    - [[https://relishapp.com/trema/pio/docs/open-flow10/echo-reply][Echo Reply]]
    - [[https://relishapp.com/trema/pio/docs/open-flow10/features-request][Features Request]]
    - [[https://relishapp.com/trema/pio/docs/open-flow10/features-reply][Features Reply]]
-   - Features
-   - Packet-In
+   - [[https://relishapp.com/trema/pio/docs/open-flow10/packet-in][Packet In]]
    - Packet-Out
    - Flow Mod
    - Port Status
@@ -76,17 +75,6 @@ Also you can use =Pio::Dhcp::Discover#new=,
 
 #+INCLUDE: "./examples/dhcp_new.rb" src ruby
 
-*** Packet-In
-To parse an OpenFlow 1.0 Packet-In message, use the API
-=Pio::PacketIn.read= and you can access each field of the parsed
-Packet-In message.
-
-#+INCLUDE: "./examples/packet_in_read.rb" src ruby
-
-Also you can use =Pio::PacketIn#new= to generate a Packet-In message
-like below:
-
-#+INCLUDE: "./examples/packet_in_new.rb" src ruby
 *** Packet-Out
 To parse an OpenFlow 1.0 Packet-Out message, use the API
 =Pio::PacketOut.read= and you can access each field of the parsed
