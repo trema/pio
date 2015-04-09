@@ -13,6 +13,7 @@
   - packet_out.feature
   - flow_mod.feature
   - port_status.feature
+  - exact_match.feature
 - open_flow13:
   - hello.feature
   - echo_request.feature

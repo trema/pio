@@ -28,6 +28,7 @@ supports the following packet formats:
   - [Packet Out](https://relishapp.com/trema/pio/docs/open-flow10/packet-out)
   - [Flow Mod](https://relishapp.com/trema/pio/docs/open-flow10/flow-mod)
   - [Port Status](https://relishapp.com/trema/pio/docs/open-flow10/port-status)
+  - [Exact Match](https://relishapp.com/trema/pio/docs/open-flow10/exact-match)
 - OpenFlow 1.3
   - [Hello](https://relishapp.com/trema/pio/docs/open-flow13/hello)
   - [Echo Request](https://relishapp.com/trema/pio/docs/open-flow13/echo-request)
