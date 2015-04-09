@@ -1,9 +1,8 @@
 Feature: Pio::FlowMod.read
   Scenario: flow_mod_add.raw
-    Given a packet data file "flow_mod_add.raw"
-    When I try to parse the file with "FlowMod" class
+    When I try to parse a file named "flow_mod_add.raw" with "FlowMod" class
     Then it should finish successfully
-    And the message have the following field and value:
+    And the message have the following fields and values:
     | field                  |                      value |
     | ofp_version            |                          1 |
     | message_type           |                         14 |
@@ -38,10 +37,9 @@ Feature: Pio::FlowMod.read
     | actions.first.vlan_id  |                         10 |
 
   Scenario: flow_mod_modify.raw
-    Given a packet data file "flow_mod_modify.raw"
-    When I try to parse the file with "FlowMod" class
+    When I try to parse a file named "flow_mod_modify.raw" with "FlowMod" class
     Then it should finish successfully
-    And the message have the following field and value:
+    And the message have the following fields and values:
     | field                  |                      value |
     | ofp_version            |                          1 |
     | message_type           |                         14 |
@@ -76,10 +74,9 @@ Feature: Pio::FlowMod.read
     | actions.first.vlan_id  |                         10 |
 
 Scenario: flow_mod_modify_strict.raw
-    Given a packet data file "flow_mod_modify_strict.raw"
-    When I try to parse the file with "FlowMod" class
+    When I try to parse a file named "flow_mod_modify_strict.raw" with "FlowMod" class
     Then it should finish successfully
-    And the message have the following field and value:
+    And the message have the following fields and values:
     | field                  |                      value |
     | ofp_version            |                          1 |
     | message_type           |                         14 |
@@ -114,10 +111,9 @@ Scenario: flow_mod_modify_strict.raw
     | actions.first.vlan_id  |                         10 |
     
   Scenario: flow_mod_delete.raw
-    Given a packet data file "flow_mod_delete.raw"
-    When I try to parse the file with "FlowMod" class
+    When I try to parse a file named "flow_mod_delete.raw" with "FlowMod" class
     Then it should finish successfully
-    And the message have the following field and value:
+    And the message have the following fields and values:
     | field                  |                      value |
     | ofp_version            |                          1 |
     | message_type           |                         14 |
@@ -150,10 +146,9 @@ Scenario: flow_mod_modify_strict.raw
     | actions                |                         [] |
 
 Scenario: flow_mod_delete_strict.raw
-    Given a packet data file "flow_mod_delete_strict.raw"
-    When I try to parse the file with "FlowMod" class
+    When I try to parse a file named "flow_mod_delete_strict.raw" with "FlowMod" class
     Then it should finish successfully
-    And the message have the following field and value:
+    And the message have the following fields and values:
     | field                  |                      value |
     | ofp_version            |                          1 |
     | message_type           |                         14 |

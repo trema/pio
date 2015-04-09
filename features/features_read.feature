@@ -1,9 +1,8 @@
 Feature: Pio::Features.read
   Scenario: features_request.raw
-    Given a packet data file "features_request.raw"
-    When I try to parse the file with "Features::Request" class
+    When I try to parse a file named "features_request.raw" with "Features::Request" class
     Then it should finish successfully
-    And the message have the following field and value:
+    And the message have the following fields and values:
     | field          |                  value |
     | class          | Pio::Features::Request |
     | ofp_version    |                      1 |
@@ -14,10 +13,9 @@ Feature: Pio::Features.read
     | body           |                        |
 
   Scenario: features_reply.raw
-    Given a packet data file "features_reply.raw"
-    When I try to parse the file with "Features::Reply" class
+    When I try to parse a file named "features_reply.raw" with "Features::Reply" class
     Then it should finish successfully
-    And the message have the following field and value:
+    And the message have the following fields and values:
     | field                        | value                                                                                                                                                     |
     | class                        | Pio::Features::Reply                                                                                                                                      |
     | ofp_version                  | 1                                                                                                                                                         |

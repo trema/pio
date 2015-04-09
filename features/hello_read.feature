@@ -1,9 +1,8 @@
 Feature: Pio::Hello.read
   Scenario: hello.raw
-    Given a packet data file "hello.raw"
-    When I try to parse the file with "Hello" class
+    When I try to parse a file named "hello.raw" with "Hello" class
     Then it should finish successfully
-    And the message have the following field and value:
+    And the message have the following fields and values:
     | field          |      value |
     | class          | Pio::Hello |
     | ofp_version    |          1 |
