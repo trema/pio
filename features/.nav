@@ -1,3 +1,8 @@
+- icmp.feature
+- arp.feature
+- lldp.feature
+- dhcp.feature
+- udp.feature
 - open_flow10:
   - hello.feature
   - echo_request.feature
@@ -12,9 +17,3 @@
   - hello.feature
   - echo_request.feature
   - echo_reply.feature
-- misc:
-  - icmp.feature
-  - arp.feature
-  - lldp_read.feature
-  - dhcp.feature
-  - udp_read.feature
