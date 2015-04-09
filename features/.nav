@@ -7,9 +7,9 @@
   - flow_mod_read.feature
   - port_status_read.feature
 - open_flow13:
-  - hello13.feature
-  - echo13_request.feature
-  - echo13_reply.feature
+  - hello.feature
+  - echo_request.feature
+  - echo_reply.feature
 - misc:
   - icmp_read.feature
   - arp_read.feature
