@@ -27,12 +27,11 @@ supports the following packet formats:
   - [Packet In](https://relishapp.com/trema/pio/docs/open-flow10/packet-in)
   - [Packet Out](https://relishapp.com/trema/pio/docs/open-flow10/packet-out)
   - [Flow Mod](https://relishapp.com/trema/pio/docs/open-flow10/flow-mod)
-  - Port Status
+  - [Port Status](https://relishapp.com/trema/pio/docs/open-flow10/port-status)
 - OpenFlow 1.3
   - [Hello](https://relishapp.com/trema/pio/docs/open-flow13/hello)
   - [Echo Request](https://relishapp.com/trema/pio/docs/open-flow13/echo-request)
   - [Echo Reply](https://relishapp.com/trema/pio/docs/open-flow13/echo-reply)
-- (&#x2026;currently there are just a few formats supported but I'm sure this list will grow)
 
 ## Features Overview
 

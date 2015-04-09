@@ -12,7 +12,7 @@
   - packet_in.feature
   - packet_out.feature
   - flow_mod.feature
-  - port_status_read.feature
+  - port_status.feature
 - open_flow13:
   - hello.feature
   - echo_request.feature
