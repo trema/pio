@@ -1,7 +1,6 @@
 Feature: Pio::PacketIn.read
   Scenario: packet_in_arp_request.raw
-    Given a packet data file "packet_in_arp_request.raw"
-    When I try to parse the file with "PacketIn" class
+    When I try to parse a file named "packet_in_arp_request.raw" with "PacketIn" class
     Then it should finish successfully
     And the message have the following fields and values:
     | field                 |             value |

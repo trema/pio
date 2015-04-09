@@ -1,4 +1,4 @@
-Feature: OpenFlow 1.3 Hello message
+Feature: Hello
   Scenario: create
     When I try to create an OpenFlow message with:
       """
@@ -48,8 +48,7 @@ Feature: OpenFlow 1.3 Hello message
       | supported_versions | [:open_flow13] |
 
   Scenario: parse (no version bitmap)
-    Given a packet data file "hello13_no_version_bitmap.raw"
-    When I try to parse the file with "Hello13" class
+    When I try to parse a file named "hello13_no_version_bitmap.raw" with "Hello13" class
     Then it should finish successfully
     And the message have the following fields and values:
       | field              |        value |
@@ -62,8 +61,7 @@ Feature: OpenFlow 1.3 Hello message
       | supported_versions |           [] |
 
   Scenario: parse
-    Given a packet data file "hello13_version_bitmap.raw"
-    When I try to parse the file with "Hello13" class
+    When I try to parse a file named "hello13_version_bitmap.raw" with "Hello13" class
     Then it should finish successfully
     And the message have the following fields and values:
       | field              |                        value |

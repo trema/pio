@@ -1,4 +1,4 @@
-Feature: OpenFlow 1.3 Echo Reply message
+Feature: Echo Reply
   Scenario: create
     When I try to create an OpenFlow message with:
       """
@@ -85,8 +85,7 @@ Feature: OpenFlow 1.3 Echo Reply message
     Then it should fail with "RuntimeError", "Unknown keyword: unknown_attr"
 
   Scenario: parse (no message body)
-    Given a packet data file "echo13_reply_no_body.raw"
-    When I try to parse the file with "Pio::Echo13::Reply" class
+    When I try to parse a file named "echo13_reply_no_body.raw" with "Pio::Echo13::Reply" class
     Then it should finish successfully
     And the message have the following fields and values:
       | field          |              value |
@@ -99,8 +98,7 @@ Feature: OpenFlow 1.3 Echo Reply message
       | body           |                    |
 
   Scenario: parse
-    Given a packet data file "echo13_reply_body.raw"
-    When I try to parse the file with "Pio::Echo13::Reply" class
+    When I try to parse a file named "echo13_reply_body.raw" with "Pio::Echo13::Reply" class
     Then it should finish successfully
     And the message have the following fields and values:
       | field          |                value |
@@ -113,6 +111,5 @@ Feature: OpenFlow 1.3 Echo Reply message
       | body           | hogehogehogehogehoge |
 
   Scenario: parse error
-    Given a packet data file "features_request.raw"
-    When I try to parse the file with "Pio::Echo13::Reply" class
+    When I try to parse a file named "features_request.raw" with "Pio::Echo13::Reply" class
     Then it should fail with "Pio::ParseError", "Invalid Echo Reply 1.3 message."

@@ -76,8 +76,7 @@ Feature: ICMP
       | echo_data              |                   |
 
   Scenario: parse icmp.pcap
-    Given a packet data file "icmp.pcap"
-    When I try to parse the file with "Pio::Icmp" class
+    When I try to parse a file named "icmp.pcap" with "Pio::Icmp" class
     Then it should finish successfully
     And the message #1 have the following fields and values:
       | field                  |                            value |

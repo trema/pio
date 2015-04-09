@@ -1,0 +1,18 @@
+- open_flow10:
+  - hello_read.feature
+  - echo_read.feature
+  - features_read.feature
+  - packet_in_read.feature
+  - packet_out_read.feature
+  - flow_mod_read.feature
+  - port_status_read.feature
+- open_flow13:
+  - hello13.feature
+  - echo13_request.feature
+  - echo13_reply.feature
+- misc:
+  - icmp_read.feature
+  - arp_read.feature
+  - lldp_read.feature
+  - dhcp_read.feature
+  - udp_read.feature

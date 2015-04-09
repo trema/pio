@@ -53,11 +53,9 @@ Feature: ARP
       | target_protocol_address |      192.168.83.3 |
 
   Scenario: parse arp.pcap
-    Given a packet data file "arp.pcap"
-    When I try to parse the file with "Pio::Arp" class
+    When I try to parse a file named "arp.pcap" with "Pio::Arp" class
     Then it should finish successfully
 
   Scenario: parse arp-storm.pcap
-    Given a packet data file "arp-storm.pcap"
-    When I try to parse the file with "Pio::Arp" class
+    When I try to parse a file named "arp-storm.pcap" with "Pio::Arp" class
     Then it should finish successfully

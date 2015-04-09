@@ -1,7 +1,6 @@
-Feature: Pio::Lldp.read
+Feature: LLDP
   Scenario: lldp.minimal.pcap
-    Given a packet data file "lldp.minimal.pcap"
-    When I try to parse the file with "Lldp" class
+    When I try to parse a file named "lldp.minimal.pcap" with "Lldp" class
     Then it should finish successfully
     Then the message #1 have the following fields and values:
     | field                     | value             |
@@ -21,6 +20,5 @@ Feature: Pio::Lldp.read
     | organizationally_specific |                   |
 
   Scenario: lldp.detailed.pcap
-    Given a packet data file "lldp.detailed.pcap"
-    When I try to parse the file with "Lldp" class
+    When I try to parse a file named "lldp.detailed.pcap" with "Lldp" class
     Then it should finish successfully

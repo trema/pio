@@ -13,12 +13,13 @@
 Pio is a ruby gem to easily parse and generate network packets. It
 supports the following packet formats:
 
--   [ICMP](https://relishapp.com/trema/pio/docs/icmp)
--   [ARP](https://relishapp.com/trema/pio/docs/arp)
--   LLDP
--   DHCP
+-   [ICMP](https://relishapp.com/trema/pio/docs/misc/icmp)
+-   [ARP](https://relishapp.com/trema/pio/docs/misc/arp)
+-   [LLDP](https://relishapp.com/trema/pio/docs/misc/lldp)
+-   [DHCP](https://relishapp.com/trema/pio/docs/misc/dhcp)
+-   [UDP](https://relishapp.com/trema/pio/docs/misc/udp)
 -   OpenFlow 1.0
-    -   Hello
+    -   [Hello](https://relishapp.com/trema/pio/docs/open-flow10/hello)
     -   Echo
     -   Features
     -   Packet-In
@@ -26,9 +27,9 @@ supports the following packet formats:
     -   Flow Mod
     -   Port Status
 -   OpenFlow 1.3
-    -   [Hello](https://relishapp.com/trema/pio/docs/openflow-1-3-hello-message)
-    -   [Echo Request](https://relishapp.com/trema/pio/docs/openflow-1-3-echo-request-message)
-    -   [Echo Reply](https://relishapp.com/trema/pio/docs/openflow-1-3-echo-reply-message)
+    -   [Hello](https://relishapp.com/trema/pio/docs/open-flow13/hello)
+    -   [Echo Request](https://relishapp.com/trema/pio/docs/open-flow13/echo-request)
+    -   [Echo Reply](https://relishapp.com/trema/pio/docs/open-flow13/echo-reply)
 -   (&#x2026;currently there are just a few formats supported but I'm sure this list will grow)
 
 ## Features Overview
@@ -109,24 +110,6 @@ Also you can use `Pio::Dhcp::Discover#new`,
     ack = Pio::Dhcp::Ack.new(dhcp_server_options
                              .merge(transaction_id: request.transaction_id))
     ack.to_binary  # => DHCP Ack frame in binary format
-
-### Hello
-
-To parse an OpenFlow 1.0 Hello message, use the API `Pio::Hello.read`
-and you can access each field of the parsed Hello message.
-
-    require 'pio'
-
-    hello = Pio::Hello.read(binary_data)
-    hello.transaction_id # => 123
-
-Also you can use `Pio::Hello#new` to generate a Hello message like
-below:
-
-    require 'pio'
-
-    hello = Pio::Hello.new(transaction_id: 123)
-    hello.to_binary  # => HELLO message in binary format.
 
 ### Echo
 
