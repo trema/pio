@@ -10,7 +10,7 @@
   - features_request.feature
   - features_reply.feature
   - packet_in.feature
-  - packet_out_read.feature
+  - packet_out.feature
   - flow_mod_read.feature
   - port_status_read.feature
 - open_flow13:

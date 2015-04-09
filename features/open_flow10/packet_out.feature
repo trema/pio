@@ -1,5 +1,5 @@
-Feature: Pio::PacketOut.read
-  Scenario: packet_out.raw
+Feature: Packet Out
+  Scenario: parse
     When I try to parse a file named "packet_out.raw" with "PacketOut" class
     Then it should finish successfully
     And the message have the following fields and values:

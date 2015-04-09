@@ -25,7 +25,7 @@ supports the following packet formats:
     -   [Features Request](https://relishapp.com/trema/pio/docs/open-flow10/features-request)
     -   [Features Reply](https://relishapp.com/trema/pio/docs/open-flow10/features-reply)
     -   [Packet In](https://relishapp.com/trema/pio/docs/open-flow10/packet-in)
-    -   Packet-Out
+    -   [Packet Out](https://relishapp.com/trema/pio/docs/open-flow10/packet-out)
     -   Flow Mod
     -   Port Status
 -   OpenFlow 1.3
@@ -46,41 +46,6 @@ supports the following packet formats:
 ## Examples
 
 Its usage is dead simple.
-
-### Packet-Out
-
-To parse an OpenFlow 1.0 Packet-Out message, use the API
-`Pio::PacketOut.read` and you can access each field of the parsed
-Packet-Out message.
-
-    require 'pio'
-
-    packet_out = Pio::PacketOut.read(binary_data)
-    packet_out.actions.length # => 1
-    packet_out.actions[0] # => Pio::SendOutPort
-    packet_out.actions[0].port_number # => 2
-
-Also you can use `Pio::PacketOut#new` to generate a Packet-Out message
-like below:
-
-    require 'pio'
-
-    data_dump = [
-      0x01, 0x80, 0xc2, 0x00, 0x00, 0x0e, 0x01, 0x02, 0x03, 0x04,
-      0x05, 0x06, 0x88, 0xcc, 0x02, 0x09, 0x07, 0x00, 0x00, 0x00,
-      0x00, 0x00, 0x00, 0x01, 0x23, 0x04, 0x05, 0x07, 0x00, 0x00,
-      0x00, 0x0c, 0x06, 0x02, 0x00, 0x78, 0x00, 0x00, 0x00, 0x00,
-      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-      0x00, 0x00, 0x00, 0x00
-    ].pack('C*')
-
-    packet_out = Pio::PacketOut.new(transaction_id: 0x16,
-                                    buffer_id: 0xffffffff,
-                                    in_port: 0xffff,
-                                    actions: Pio::SendOutPort.new(2),
-                                    raw_data: data_dump)
-    packet_out.to_binary  # => Packet-Out message in binary format.
 
 ### Flow Mod
 
