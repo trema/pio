@@ -27,7 +27,7 @@ supports the following packet formats:
  - [[https://relishapp.com/trema/pio/docs/misc/dhcp][DHCP]]
  - [[https://relishapp.com/trema/pio/docs/misc/udp][UDP]]
  - OpenFlow 1.0
-   - Hello
+   - [[https://relishapp.com/trema/pio/docs/open-flow10/hello][Hello]]
    - Echo
    - Features
    - Packet-In
