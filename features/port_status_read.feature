@@ -3,7 +3,7 @@ Feature: Pio::PortStatus.read
     Given a packet data file "port_status.raw"
     When I try to parse the file with "PortStatus" class
     Then it should finish successfully
-    And the parsed data have the following field and value:
+    And the message have the following field and value:
     | field                 | value                      |
     | class                 | Pio::PortStatus            |
     | ofp_version           | 1                          |

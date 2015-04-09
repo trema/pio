@@ -21,8 +21,8 @@
 Pio is a ruby gem to easily parse and generate network packets. It
 supports the following packet formats:
 
- - ICMP
- - ARP
+ - [[https://relishapp.com/trema/pio/docs/icmp][ICMP]]
+ - [[https://relishapp.com/trema/pio/docs/arp][ARP]]
  - LLDP
  - DHCP
  - OpenFlow 1.0
@@ -33,6 +33,8 @@ supports the following packet formats:
    - Packet-Out
    - Flow Mod
    - Port Status
+ - OpenFlow 1.3
+   - [[https://relishapp.com/trema/pio/docs/openflow-1-3-hello-message][Hello]]
  - (...currently there are just a few formats supported but I'm sure this list will grow)
 
 ** Features Overview
@@ -45,28 +47,6 @@ supports the following packet formats:
 
 ** Examples
 Its usage is dead simple.
-
-*** ICMP
-To parse an ICMP frame, use the API =Pio::Icmp.read= and you can
-access each field of the parsed ICMP frame.
-
-#+INCLUDE: "./examples/icmp_read.rb" src ruby
-
-Also you can use =Pio::Icmp::Request#new= or =Pio::Icmp::Reply#new= to
-generate an Icmp Request/Reply frame like below:
-
-#+INCLUDE: "./examples/icmp_new.rb" src ruby
-
-*** ARP
-To parse an ARP frame, use the API =Pio::Arp.read= and you can access
-each field of the parsed ARP frame.
-
-#+INCLUDE: "./examples/arp_read.rb" src ruby
-
-Also you can use =Pio::Arp::Request#new= or =Pio::Arp::Reply#new= to
-generate an Arp Request/Reply frame like below:
-
-#+INCLUDE: "./examples/arp_new.rb" src ruby
 
 *** LLDP
 To parse an LLDP frame, use the API =Pio::Lldp.read= and you can

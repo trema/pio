@@ -1,21 +1,25 @@
 *.gem
 *.rbc
-.bundle
-.config
-Gemfile.lock
-InstalledFiles
-coverage
-lib/bundler/man
-pio.html
-pkg
-rdoc
-spec/reports
-test/tmp
-test/version_tmp
-tmp
-vendor/
+/.config
+/.idea/
+/Gemfile.lock
+/InstalledFiles
+/bin/
+/coverage/
+/pkg/
+/spec/reports/
+/test/tmp/
+/test/version_tmp/
+/tmp/
+/vendor/
 
-# YARD artifacts
-.yardoc
-_yardoc
-doc/
+## Documentation cache and generated files:
+/.yardoc/
+/_yardoc/
+/doc/
+/rdoc/
+pio.html
+
+## Environment normalisation:
+/.bundle/
+/lib/bundler/man/

@@ -3,7 +3,7 @@ Feature: Pio::Udp.read
     Given a packet data file "dhcp.pcap"
     When I try to parse the file with "Udp" class
     Then it should finish successfully
-    And the parsed data #1 have the following field and value:
+    And the message #1 have the following field and value:
     | field                  |             value |
     | class                  |          Pio::Udp |
     | destination_mac        | ff:ff:ff:ff:ff:ff |

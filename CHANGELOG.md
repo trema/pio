@@ -1,6 +1,8 @@
 # Changelog
 
 ## develop (unreleased)
+### New features
+* [#132](https://github.com/trema/pio/pull/132): Add new class `Pio::Hello13`.
 
 
 ## 0.18.2 (3/12/2015)

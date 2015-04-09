@@ -13,8 +13,8 @@
 Pio is a ruby gem to easily parse and generate network packets. It
 supports the following packet formats:
 
--   ICMP
--   ARP
+-   [ICMP](https://relishapp.com/trema/pio/docs/icmp)
+-   [ARP](https://relishapp.com/trema/pio/docs/arp)
 -   LLDP
 -   DHCP
 -   OpenFlow 1.0
@@ -25,6 +25,8 @@ supports the following packet formats:
     -   Packet-Out
     -   Flow Mod
     -   Port Status
+-   OpenFlow 1.3
+    -   [Hello](https://relishapp.com/trema/pio/docs/openflow-1-3-hello-message)
 -   (&#x2026;currently there are just a few formats supported but I'm sure this list will grow)
 
 ## Features Overview
@@ -39,71 +41,6 @@ supports the following packet formats:
 ## Examples
 
 Its usage is dead simple.
-
-### ICMP
-
-To parse an ICMP frame, use the API `Pio::Icmp.read` and you can
-access each field of the parsed ICMP frame.
-
-    require 'pio'
-
-    icmp = Pio::Icmp.read(binary_data)
-    icmp.source_mac.to_s # => '00:26:82:eb:ea:d1'
-
-Also you can use `Pio::Icmp::Request#new` or `Pio::Icmp::Reply#new` to
-generate an Icmp Request/Reply frame like below:
-
-    require 'pio'
-
-    request = Pio::Icmp::Request.new(
-      source_mac: '00:16:9d:1d:9c:c4',
-      destination_mac: '00:26:82:eb:ea:d1',
-      ip_source_address: '192.168.83.3',
-      ip_destination_address: '192.168.83.254'
-    )
-    request.to_binary  # => ICMP Request frame in binary format.
-
-    reply = Pio::Icmp::Reply.new(
-      source_mac: '00:26:82:eb:ea:d1',
-      destination_mac: '00:16:9d:1d:9c:c4',
-      ip_source_address: '192.168.83.254',
-      ip_destination_address: '192.168.83.3',
-      # The ICMP Identifier and the ICMP Sequence number
-      # should be same as those of the request.
-      identifier: request.icmp_identifier,
-      sequence_number: request.icmp_sequence_number
-    )
-    reply.to_binary  # => ICMP Reply frame in binary format.
-
-### ARP
-
-To parse an ARP frame, use the API `Pio::Arp.read` and you can access
-each field of the parsed ARP frame.
-
-    require 'pio'
-
-    arp = Pio::Arp.read(binary_data)
-    arp.source_mac.to_s # => '00:26:82:eb:ea:d1'
-
-Also you can use `Pio::Arp::Request#new` or `Pio::Arp::Reply#new` to
-generate an Arp Request/Reply frame like below:
-
-    require 'pio'
-
-    request = Pio::Arp::Request.new(
-      source_mac: '00:26:82:eb:ea:d1',
-      sender_protocol_address: '192.168.83.3',
-      target_protocol_address: '192.168.83.254'
-    )
-    request.to_binary  # => Arp Request frame in binary format.
-
-    reply = Pio::Arp::Reply.new(
-      source_mac: '00:16:9d:1d:9c:c4',
-      destination_mac: '00:26:82:eb:ea:d1',
-      sender_protocol_address: '192.168.83.254',
-      target_protocol_address: '192.168.83.3'
-    )
-    reply.to_binary  # => Arp Reply frame in binary format.
 
 ### LLDP
 
@@ -386,4 +323,5 @@ and install it by running Bundler:
 ## License
 
 Pio is released under the GNU General Public License version 3.0:
+
 -   <http://www.gnu.org/licenses/gpl.html>
