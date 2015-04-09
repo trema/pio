@@ -47,23 +47,6 @@ supports the following packet formats:
 
 Its usage is dead simple.
 
-### LLDP
-
-To parse an LLDP frame, use the API `Pio::Lldp.read` and you can
-access each field of the parsed LLDP frame.
-
-    require 'pio'
-
-    lldp = Pio::Lldp.read(binary_data)
-    lldp.ttl # => 120
-
-Also you can use `Pio::Lldp#new` to generate an LLDP frame like below:
-
-    require 'pio'
-
-    lldp = Pio::Lldp.new(dpid: 0x123, port_number: 12)
-    lldp.to_binary  # => LLDP frame in binary format.
-
 ### DHCP
 
 To parse a DHCP frame, use the API `Pio::Dhcp.read` and you can access

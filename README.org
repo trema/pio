@@ -53,16 +53,6 @@ supports the following packet formats:
 ** Examples
 Its usage is dead simple.
 
-*** LLDP
-To parse an LLDP frame, use the API =Pio::Lldp.read= and you can
-access each field of the parsed LLDP frame.
-
-#+INCLUDE: "./examples/lldp_read.rb" src ruby
-
-Also you can use =Pio::Lldp#new= to generate an LLDP frame like below:
-
-#+INCLUDE: "./examples/lldp_new.rb" src ruby
-
 *** DHCP
 To parse a DHCP frame, use the API =Pio::Dhcp.read= and you can access
 each field of the parsed DHCP frame.
