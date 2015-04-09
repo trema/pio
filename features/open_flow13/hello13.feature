@@ -1,4 +1,4 @@
-Feature: OpenFlow 1.3 Hello message
+Feature: Hello
   Scenario: create
     When I try to create an OpenFlow message with:
       """

@@ -26,9 +26,9 @@ supports the following packet formats:
     -   Flow Mod
     -   Port Status
 -   OpenFlow 1.3
-    -   [Hello](https://relishapp.com/trema/pio/docs/openflow-1-3-hello-message)
-    -   [Echo Request](https://relishapp.com/trema/pio/docs/openflow-1-3-echo-request-message)
-    -   [Echo Reply](https://relishapp.com/trema/pio/docs/openflow-1-3-echo-reply-message)
+    -   [Hello](https://relishapp.com/trema/pio/docs/open-flow13/hello)
+    -   [Echo Request](https://relishapp.com/trema/pio/docs/open-flow13/echo-request)
+    -   [Echo Reply](https://relishapp.com/trema/pio/docs/open-flow13/echo-reply)
 -   (&#x2026;currently there are just a few formats supported but I'm sure this list will grow)
 
 ## Features Overview

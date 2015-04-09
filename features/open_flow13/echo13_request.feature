@@ -1,4 +1,4 @@
-Feature: OpenFlow 1.3 Echo Request message
+Feature: Echo Request
   Scenario: create
     When I try to create an OpenFlow message with:
       """

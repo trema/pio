@@ -1,4 +1,4 @@
-Feature: OpenFlow 1.3 Echo Reply message
+Feature: Echo Reply
   Scenario: create
     When I try to create an OpenFlow message with:
       """
