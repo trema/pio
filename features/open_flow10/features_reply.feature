@@ -1,18 +1,53 @@
-Feature: Pio::Features.read
-  Scenario: features_request.raw
-    When I try to parse a file named "features_request.raw" with "Features::Request" class
+Feature: Features Reply
+  Scenario: create
+    When I try to create an OpenFlow message with:
+      """
+      Pio::Features::Reply.new(
+        dpid: 0x123,
+        n_buffers: 0x100,
+        n_tables: 0xfe,
+        capabilities: [:flow_stats, :table_stats, :port_stats, :queue_stats,
+                       :arp_match_ip],
+        actions: [:output, :set_vlan_vid, :set_vlan_pcp, :strip_vlan,
+                  :set_dl_src, :set_dl_dst, :set_nw_src, :set_nw_dst,
+                  :set_nw_tos, :set_tp_src, :set_tp_dst, :enqueue],
+        ports: [{ port_no: 1,
+                  hardware_address: '11:22:33:44:55:66',
+                  name: 'port123',
+                  config: [:port_down],
+                  state: [:link_down],
+                  curr: [:port_10gb_fd, :port_copper] }]
+      )
+      """
     Then it should finish successfully
     And the message have the following fields and values:
-    | field          |                  value |
-    | class          | Pio::Features::Request |
-    | ofp_version    |                      1 |
-    | message_type   |                      5 |
-    | message_length |                      8 |
-    | transaction_id |                      2 |
-    | xid            |                      2 |
-    | body           |                        |
+    | field                        |                                                                                                                                                     value |
+    | class                        |                                                                                                                                      Pio::Features::Reply |
+    | ofp_version                  |                                                                                                                                                         1 |
+    | message_type                 |                                                                                                                                                         6 |
+    | message_length               |                                                                                                                                                        80 |
+    | transaction_id               |                                                                                                                                                         0 |
+    | xid                          |                                                                                                                                                         0 |
+    | datapath_id                  |                                                                                                                                                       291 |
+    | dpid                         |                                                                                                                                                       291 |
+    | n_buffers                    |                                                                                                                                                       256 |
+    | n_tables                     |                                                                                                                                                       254 |
+    | capabilities                 |                                                                                     [:flow_stats, :table_stats, :port_stats, :queue_stats, :arp_match_ip] |
+    | actions                      | [:output, :set_vlan_vid, :set_vlan_pcp, :strip_vlan, :set_dl_src, :set_dl_dst, :set_nw_src, :set_nw_dst, :set_nw_tos, :set_tp_src, :set_tp_dst, :enqueue] |
+    | ports.length                 |                                                                                                                                                         1 |
+    | ports.first.datapath_id      |                                                                                                                                                       291 |
+    | ports.first.port_no          |                                                                                                                                                         1 |
+    | ports.first.mac_address      |                                                                                                                                         11:22:33:44:55:66 |
+    | ports.first.hardware_address |                                                                                                                                         11:22:33:44:55:66 |
+    | ports.first.name             |                                                                                                                                                   port123 |
+    | ports.first.config           |                                                                                                                                              [:port_down] |
+    | ports.first.state            |                                                                                                                                              [:link_down] |
+    | ports.first.curr             |                                                                                                                             [:port_10gb_fd, :port_copper] |
+    | ports.first.advertised       |                                                                                                                                                        [] |
+    | ports.first.supported        |                                                                                                                                                        [] |
+    | ports.first.peer             |                                                                                                                                                        [] |
 
-  Scenario: features_reply.raw
+  Scenario: parse
     When I try to parse a file named "features_reply.raw" with "Features::Reply" class
     Then it should finish successfully
     And the message have the following fields and values:
@@ -55,3 +90,7 @@ Feature: Pio::Features.read
     | ports.last.up?               | true                                                                                                                                                      |
     | ports.last.down?             | false                                                                                                                                                     |
     | ports.last.local?            | false                                                                                                                                                     |
+
+  Scenario: parse error
+    When I try to parse a file named "echo_reply.raw" with "Pio::Features::Reply" class
+    Then it should fail with "Pio::ParseError", "Invalid Features Reply message."
