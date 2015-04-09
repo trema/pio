@@ -8,7 +8,7 @@ Feature: ARP
         target_protocol_address: '192.168.83.254'
       )
       """
-    Then the packet have the following field and value:
+    Then the packet have the following fields and values:
       | field                   |             value |
       | class                   | Pio::Arp::Request |
       | destination_mac         | ff:ff:ff:ff:ff:ff |
@@ -34,7 +34,7 @@ Feature: ARP
         target_protocol_address: '192.168.83.3'
       )
       """
-    Then the packet have the following field and value:
+    Then the packet have the following fields and values:
       | field                   |             value |
       | class                   |   Pio::Arp::Reply |
       | destination_mac         | 00:26:82:eb:ea:d1 |

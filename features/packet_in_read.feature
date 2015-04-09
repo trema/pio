@@ -3,7 +3,7 @@ Feature: Pio::PacketIn.read
     Given a packet data file "packet_in_arp_request.raw"
     When I try to parse the file with "PacketIn" class
     Then it should finish successfully
-    And the message have the following field and value:
+    And the message have the following fields and values:
     | field                 |             value |
     | class                 |     Pio::PacketIn |
     | ofp_version           |                 1 |

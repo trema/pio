@@ -2,7 +2,7 @@ Feature: Pio::ExactMatch.new
   Scenario: packet_in_arp_request.raw 
     Given a packet data file "packet_in_arp_request.raw"
     When I try to create an exact match from the packet
-    And the message have the following field and value:
+    And the message have the following fields and values:
     | field       |             value |
     | wildcards   |                {} |
     | in_port     |                 1 |
@@ -21,7 +21,7 @@ Feature: Pio::ExactMatch.new
   Scenario: packet_in_cbench.raw (ARP request)
     Given a packet data file "packet_in_cbench.raw"
     When I try to create an exact match from the packet
-    And the message have the following field and value:
+    And the message have the following fields and values:
     | field       |             value |
     | wildcards   |                {} |
     | in_port     |                 1 |

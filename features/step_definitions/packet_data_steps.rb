@@ -11,7 +11,7 @@ Given(/^a packet data file "(.*?)"$/) do |name|
   end
 end
 
-When(/^I try to create an OpenFlow message with "([^"]*)"$/) do |ruby_code|
+When(/^I try to create an OpenFlow message with:$/) do |ruby_code|
   begin
     @result = Pio.module_eval(ruby_code)
   rescue
@@ -57,7 +57,7 @@ Then(/^it should fail with "([^"]*)", "([^"]*)"$/) do |error, message|
   expect(@last_error.message).to eq(message)
 end
 
-Then(/^the packet have the following field and value:$/) do |table|
+Then(/^the packet have the following fields and values:$/) do |table|
   table.hashes.each do |each|
     output = each['field'].split('.').inject(@result) do |memo, method|
       memo.__send__(method)
@@ -66,7 +66,7 @@ Then(/^the packet have the following field and value:$/) do |table|
   end
 end
 
-Then(/^the message have the following field and value:$/) do |table|
+Then(/^the message have the following fields and values:$/) do |table|
   table.hashes.each do |each|
     output = each['field'].split('.').inject(@result) do |memo, method|
       memo.__send__(method)
@@ -76,7 +76,7 @@ Then(/^the message have the following field and value:$/) do |table|
 end
 
 # rubocop:disable LineLength
-Then(/^the message \#(\d+) have the following field and value:$/) do |index, table|
+Then(/^the message \#(\d+) have the following fields and values:$/) do |index, table|
   table.hashes.each do |each|
     output = each['field'].split('.').inject(@result[index.to_i - 1]) do |memo, method|
       memo.__send__(method)

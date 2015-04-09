@@ -3,7 +3,7 @@ Feature: Pio::Echo.read
     Given a packet data file "echo_request.raw"
     When I try to parse the file with "Echo::Request" class
     Then it should finish successfully
-    And the message have the following field and value:
+    And the message have the following fields and values:
     | field          |              value |
     | class          | Pio::Echo::Request |
     | ofp_version    |                  1 |
@@ -17,7 +17,7 @@ Feature: Pio::Echo.read
     Given a packet data file "echo_reply.raw"
     When I try to parse the file with "Echo::Reply" class
     Then it should finish successfully
-    And the message have the following field and value:
+    And the message have the following fields and values:
     | field          |            value |
     | class          | Pio::Echo::Reply |
     | ofp_version    |                1 |

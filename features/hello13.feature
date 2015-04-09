@@ -1,8 +1,11 @@
 Feature: OpenFlow 1.3 Hello message
   Scenario: create
-    When I try to create an OpenFlow message with "Pio::Hello13.new"
+    When I try to create an OpenFlow message with:
+      """
+      Pio::Hello13.new
+      """
     Then it should finish successfully
-    And the message have the following field and value:
+    And the message have the following fields and values:
       | field              |          value |
       | class              |   Pio::Hello13 |
       | ofp_version        |              4 |
@@ -13,9 +16,12 @@ Feature: OpenFlow 1.3 Hello message
       | supported_versions | [:open_flow13] |
 
   Scenario: create (transaction_id: 123)
-    When I try to create an OpenFlow message with "Pio::Hello13.new(transaction_id: 123)"
+    When I try to create an OpenFlow message with:
+      """
+      Pio::Hello13.new(transaction_id: 123)
+      """
     Then it should finish successfully
-    And the message have the following field and value:
+    And the message have the following fields and values:
       | field              |          value |
       | class              |   Pio::Hello13 |
       | ofp_version        |              4 |
@@ -26,9 +32,12 @@ Feature: OpenFlow 1.3 Hello message
       | supported_versions | [:open_flow13] |
 
   Scenario: create (xid: 123)
-    When I try to create an OpenFlow message with "Pio::Hello13.new(xid: 123)"
+    When I try to create an OpenFlow message with:
+      """
+      Pio::Hello13.new(xid: 123)
+      """
     Then it should finish successfully
-    And the message have the following field and value:
+    And the message have the following fields and values:
       | field              |          value |
       | class              |   Pio::Hello13 |
       | ofp_version        |              4 |
@@ -42,7 +51,7 @@ Feature: OpenFlow 1.3 Hello message
     Given a packet data file "hello13_no_version_bitmap.raw"
     When I try to parse the file with "Hello13" class
     Then it should finish successfully
-    And the message have the following field and value:
+    And the message have the following fields and values:
       | field              |        value |
       | class              | Pio::Hello13 |
       | ofp_version        |            4 |
@@ -56,7 +65,7 @@ Feature: OpenFlow 1.3 Hello message
     Given a packet data file "hello13_version_bitmap.raw"
     When I try to parse the file with "Hello13" class
     Then it should finish successfully
-    And the message have the following field and value:
+    And the message have the following fields and values:
       | field              |                        value |
       | class              |                 Pio::Hello13 |
       | ofp_version        |                            4 |

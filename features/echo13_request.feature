@@ -1,8 +1,11 @@
 Feature: OpenFlow 1.3 Echo Request message
   Scenario: create
-    When I try to create an OpenFlow message with "Pio::Echo13::Request.new"
+    When I try to create an OpenFlow message with:
+      """
+      Pio::Echo13::Request.new
+      """
     Then it should finish successfully
-    And the message have the following field and value:
+    And the message have the following fields and values:
       | field          |                value |
       | class          | Pio::Echo13::Request |
       | ofp_version    |                    4 |
@@ -13,9 +16,12 @@ Feature: OpenFlow 1.3 Echo Request message
       | body           |                      |
 
   Scenario: create (transaction_id: 123)
-    When I try to create an OpenFlow message with "Pio::Echo13::Request.new(transaction_id: 123)"
+    When I try to create an OpenFlow message with:
+      """
+      Pio::Echo13::Request.new(transaction_id: 123)
+      """
     Then it should finish successfully
-    And the message have the following field and value:
+    And the message have the following fields and values:
       | field          |                value |
       | class          | Pio::Echo13::Request |
       | ofp_version    |                    4 |
@@ -26,9 +32,12 @@ Feature: OpenFlow 1.3 Echo Request message
       | body           |                      |
 
   Scenario: create (xid: 123)
-    When I try to create an OpenFlow message with "Pio::Echo13::Request.new(xid: 123)"
+    When I try to create an OpenFlow message with:
+      """
+      Pio::Echo13::Request.new(xid: 123)
+      """
     Then it should finish successfully
-    And the message have the following field and value:
+    And the message have the following fields and values:
       | field          |                value |
       | class          | Pio::Echo13::Request |
       | ofp_version    |                    4 |
@@ -39,17 +48,26 @@ Feature: OpenFlow 1.3 Echo Request message
       | body           |                      |
 
   Scenario: create (xid: -1) and error
-    When I try to create an OpenFlow message with "Pio::Echo13::Request.new(xid: -1)"
+    When I try to create an OpenFlow message with:
+      """
+      Pio::Echo13::Request.new(xid: -1)
+      """
     Then it should fail with "ArgumentError", "Transaction ID should be an unsigned 32-bit integer."
 
   Scenario: create (xid: 2**32) and error
-    When I try to create an OpenFlow message with "Pio::Echo13::Request.new(xid: 2**32)"
+    When I try to create an OpenFlow message with:
+      """
+      Pio::Echo13::Request.new(xid: 2**32)
+      """
     Then it should fail with "ArgumentError", "Transaction ID should be an unsigned 32-bit integer."
 
   Scenario: create (body: 'echo request body')
-    When I try to create an OpenFlow message with "Pio::Echo13::Request.new(body: 'echo request body')"
+    When I try to create an OpenFlow message with:
+      """
+      Pio::Echo13::Request.new(body: 'echo request body')
+      """
     Then it should finish successfully
-    And the message have the following field and value:
+    And the message have the following fields and values:
       | field          |                value |
       | class          | Pio::Echo13::Request |
       | ofp_version    |                    4 |
@@ -60,14 +78,17 @@ Feature: OpenFlow 1.3 Echo Request message
       | body           |    echo request body |
 
   Scenario: create (unknown_attr: 'foo') and error
-    When I try to create an OpenFlow message with "Pio::Echo13::Request.new(unknown_attr: 'foo')"
+    When I try to create an OpenFlow message with:
+      """
+      Pio::Echo13::Request.new(unknown_attr: 'foo')
+      """
     Then it should fail with "RuntimeError", "Unknown keyword: unknown_attr"
 
   Scenario: parse (no message body)
     Given a packet data file "echo13_request_no_body.raw"
     When I try to parse the file with "Pio::Echo13::Request" class
     Then it should finish successfully
-    And the message have the following field and value:
+    And the message have the following fields and values:
       | field          |                value |
       | class          | Pio::Echo13::Request |
       | ofp_version    |                    4 |
@@ -81,7 +102,7 @@ Feature: OpenFlow 1.3 Echo Request message
     Given a packet data file "echo13_request_body.raw"
     When I try to parse the file with "Pio::Echo13::Request" class
     Then it should finish successfully
-    And the message have the following field and value:
+    And the message have the following fields and values:
       | field          |                value |
       | class          | Pio::Echo13::Request |
       | ofp_version    |                    4 |

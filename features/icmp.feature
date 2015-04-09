@@ -9,7 +9,7 @@ Feature: ICMP
         ip_destination_address: '192.168.83.254'
       )
       """
-    Then the packet have the following field and value:
+    Then the packet have the following fields and values:
       | field                  |              value |
       | class                  | Pio::Icmp::Request |
       | destination_mac        |  00:26:82:eb:ea:d1 |
@@ -47,7 +47,7 @@ Feature: ICMP
         sequence_number: 0
       )
       """
-    Then the packet have the following field and value:
+    Then the packet have the following fields and values:
       | field                  |             value |
       | class                  |  Pio::Icmp::Reply |
       | destination_mac        | 00:16:9d:1d:9c:c4 |
@@ -77,7 +77,7 @@ Feature: ICMP
     Given a packet data file "icmp.pcap"
     When I try to parse the file with "Pio::Icmp" class
     Then it should finish successfully
-    And the message #1 have the following field and value:
+    And the message #1 have the following fields and values:
       | field                  |                            value |
       | class                  |               Pio::Icmp::Request |
       | destination_mac        |                00:13:46:0b:22:ba |
@@ -102,7 +102,7 @@ Feature: ICMP
       | icmp_identifier        |                              768 |
       | icmp_sequence_number   |                              256 |
       | echo_data              | abcdefghijklmnopqrstuvwabcdefghi |
-    And the message #2 have the following field and value:
+    And the message #2 have the following fields and values:
       | field                  |                            value |
       | class                  |                 Pio::Icmp::Reply |
       | destination_mac        |                00:16:ce:6e:8b:24 |
