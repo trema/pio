@@ -1,7 +1,8 @@
 Feature: OpenFlow 1.3 Hello message
   Scenario: create
-    When I create an OpenFlow message with "Pio::Hello13.new"
-    Then the message have the following field and value:
+    When I try to create an OpenFlow message with "Pio::Hello13.new"
+    Then it should finish successfully
+    And the message have the following field and value:
       | field              |          value |
       | class              |   Pio::Hello13 |
       | ofp_version        |              4 |
@@ -12,8 +13,9 @@ Feature: OpenFlow 1.3 Hello message
       | supported_versions | [:open_flow13] |
 
   Scenario: create (transaction_id: 123)
-    When I create an OpenFlow message with "Pio::Hello13.new(transaction_id: 123)"
-    Then the message have the following field and value:
+    When I try to create an OpenFlow message with "Pio::Hello13.new(transaction_id: 123)"
+    Then it should finish successfully
+    And the message have the following field and value:
       | field              |          value |
       | class              |   Pio::Hello13 |
       | ofp_version        |              4 |
@@ -24,8 +26,9 @@ Feature: OpenFlow 1.3 Hello message
       | supported_versions | [:open_flow13] |
 
   Scenario: create (xid: 123)
-    When I create an OpenFlow message with "Pio::Hello13.new(xid: 123)"
-    Then the message have the following field and value:
+    When I try to create an OpenFlow message with "Pio::Hello13.new(xid: 123)"
+    Then it should finish successfully
+    And the message have the following field and value:
       | field              |          value |
       | class              |   Pio::Hello13 |
       | ofp_version        |              4 |

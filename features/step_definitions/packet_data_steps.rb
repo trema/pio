@@ -11,8 +11,12 @@ Given(/^a packet data file "(.*?)"$/) do |name|
   end
 end
 
-When(/^I create an OpenFlow message with "([^"]*)"$/) do |ruby_code|
-  @result = Pio.module_eval(ruby_code)
+When(/^I try to create an OpenFlow message with "([^"]*)"$/) do |ruby_code|
+  begin
+    @result = Pio.module_eval(ruby_code)
+  rescue
+    @last_error = $ERROR_INFO
+  end
 end
 
 When(/^I create a packet with:$/) do |ruby_code|
@@ -45,7 +49,7 @@ When(/^I try to create an exact match from the packet$/) do
 end
 
 Then(/^it should finish successfully$/) do
-  # Noop.
+  expect(@last_error).to be_nil
 end
 
 Then(/^it should fail with "([^"]*)", "([^"]*)"$/) do |error, message|

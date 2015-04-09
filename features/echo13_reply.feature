@@ -1,7 +1,8 @@
 Feature: OpenFlow 1.3 Echo Reply message
   Scenario: create
-    When I create an OpenFlow message with "Pio::Echo13::Reply.new"
-    Then the message have the following field and value:
+    When I try to create an OpenFlow message with "Pio::Echo13::Reply.new"
+    Then it should finish successfully
+    And the message have the following field and value:
       | field          |              value |
       | class          | Pio::Echo13::Reply |
       | ofp_version    |                  4 |
@@ -12,8 +13,9 @@ Feature: OpenFlow 1.3 Echo Reply message
       | body           |                    |
 
   Scenario: create (transaction_id: 123)
-    When I create an OpenFlow message with "Pio::Echo13::Reply.new(transaction_id: 123)"
-    Then the message have the following field and value:
+    When I try to create an OpenFlow message with "Pio::Echo13::Reply.new(transaction_id: 123)"
+    Then it should finish successfully
+    And the message have the following field and value:
         | field          |              value |
         | class          | Pio::Echo13::Reply |
         | ofp_version    |                  4 |
@@ -24,8 +26,9 @@ Feature: OpenFlow 1.3 Echo Reply message
         | body           |                    |
 
   Scenario: create (xid: 123)
-    When I create an OpenFlow message with "Pio::Echo13::Reply.new(xid: 123)"
-    Then the message have the following field and value:
+    When I try to create an OpenFlow message with "Pio::Echo13::Reply.new(xid: 123)"
+    Then it should finish successfully
+    And the message have the following field and value:
         | field          |              value |
         | class          | Pio::Echo13::Reply |
         | ofp_version    |                  4 |
@@ -35,9 +38,18 @@ Feature: OpenFlow 1.3 Echo Reply message
         | xid            |                123 |
         | body           |                    |
 
+  Scenario: create (xid: -1) and error
+    When I try to create an OpenFlow message with "Pio::Echo13::Reply.new(xid: -1)"
+    Then it should fail with "ArgumentError", "Transaction ID should be an unsigned 32-bit integer."
+
+  Scenario: create (xid: 2**32) and error
+    When I try to create an OpenFlow message with "Pio::Echo13::Reply.new(xid: 2**32)"
+    Then it should fail with "ArgumentError", "Transaction ID should be an unsigned 32-bit integer."
+
   Scenario: create (body: 'echo reply body')
-    When I create an OpenFlow message with "Pio::Echo13::Reply.new(body: 'echo reply body')"
-    Then the message have the following field and value:
+    When I try to create an OpenFlow message with "Pio::Echo13::Reply.new(body: 'echo reply body')"
+    Then it should finish successfully
+    And the message have the following field and value:
         | field          |              value |
         | class          | Pio::Echo13::Reply |
         | ofp_version    |                  4 |
@@ -46,6 +58,10 @@ Feature: OpenFlow 1.3 Echo Reply message
         | transaction_id |                  0 |
         | xid            |                  0 |
         | body           |    echo reply body |
+
+  Scenario: create (unknown_attr: 'foo') and error
+    When I try to create an OpenFlow message with "Pio::Echo13::Reply.new(unknown_attr: 'foo')"
+    Then it should fail with "RuntimeError", "Unknown keyword: unknown_attr"
 
   Scenario: parse (no message body)
     Given a packet data file "echo13_reply_no_body.raw"
