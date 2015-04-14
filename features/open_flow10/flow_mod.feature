@@ -11,8 +11,8 @@ Feature: Flow Mod
     | xid                    |                          0 |
     | match.wildcards        | {:nw_src=>24, :nw_dst=>24} |
     | match.in_port          |                          1 |
-    | match.dl_src           |          00:00:00:00:00:0a |
-    | match.dl_dst           |          00:00:00:00:00:14 |
+    | match.eth_src_addr     |          00:00:00:00:00:0a |
+    | match.eth_dst_addr     |          00:00:00:00:00:14 |
     | match.dl_vlan          |                          0 |
     | match.dl_vlan_pcp      |                          0 |
     | match.dl_type          |                       2048 |
@@ -48,8 +48,8 @@ Feature: Flow Mod
     | xid                    |                          0 |
     | match.wildcards        | {:nw_src=>24, :nw_dst=>24} |
     | match.in_port          |                          1 |
-    | match.dl_src           |          00:00:00:00:00:0a |
-    | match.dl_dst           |          00:00:00:00:00:14 |
+    | match.eth_src_addr     |          00:00:00:00:00:0a |
+    | match.eth_dst_addr     |          00:00:00:00:00:14 |
     | match.dl_vlan          |                          0 |
     | match.dl_vlan_pcp      |                          0 |
     | match.dl_type          |                       2048 |
@@ -85,8 +85,8 @@ Scenario: parse (Flow Mod Modify Strict)
     | xid                    |                          0 |
     | match.wildcards        | {:nw_src=>24, :nw_dst=>24} |
     | match.in_port          |                          1 |
-    | match.dl_src           |          00:00:00:00:00:0a |
-    | match.dl_dst           |          00:00:00:00:00:14 |
+    | match.eth_src_addr     |          00:00:00:00:00:0a |
+    | match.eth_dst_addr     |          00:00:00:00:00:14 |
     | match.dl_vlan          |                          0 |
     | match.dl_vlan_pcp      |                          0 |
     | match.dl_type          |                       2048 |
@@ -122,8 +122,8 @@ Scenario: parse (Flow Mod Modify Strict)
     | xid                    |                          0 |
     | match.wildcards        | {:nw_src=>24, :nw_dst=>24} |
     | match.in_port          |                          1 |
-    | match.dl_src           |          00:00:00:00:00:0a |
-    | match.dl_dst           |          00:00:00:00:00:00 |
+    | match.eth_src_addr     |          00:00:00:00:00:0a |
+    | match.eth_dst_addr     |          00:00:00:00:00:00 |
     | match.dl_vlan          |                          0 |
     | match.dl_vlan_pcp      |                          0 |
     | match.dl_type          |                       2048 |
@@ -157,8 +157,8 @@ Scenario: parse (Flow Mod Delete Strict)
     | xid                    |                          0 |
     | match.wildcards        | {:nw_src=>24, :nw_dst=>24} |
     | match.in_port          |                          1 |
-    | match.dl_src           |          00:00:00:00:00:0a |
-    | match.dl_dst           |          00:00:00:00:00:14 |
+    | match.eth_src_addr     |          00:00:00:00:00:0a |
+    | match.eth_dst_addr     |          00:00:00:00:00:14 |
     | match.dl_vlan          |                          0 |
     | match.dl_vlan_pcp      |                          0 |
     | match.dl_type          |                       2048 |

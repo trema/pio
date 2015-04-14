@@ -12,8 +12,8 @@ module Pio
       BITS = {
         in_port: 1 << 0,
         dl_vlan: 1 << 1,
-        dl_src: 1 << 2,
-        dl_dst: 1 << 3,
+        eth_src_addr: 1 << 2,
+        eth_dst_addr: 1 << 3,
         dl_type: 1 << 4,
         nw_proto: 1 << 5,
         tp_src: 1 << 6,
@@ -105,8 +105,8 @@ module Pio
 
       wildcards :wildcards
       uint16 :in_port
-      mac_address :dl_src
-      mac_address :dl_dst
+      mac_address :eth_src_addr
+      mac_address :eth_dst_addr
       uint16 :dl_vlan
       uint8 :dl_vlan_pcp
       uint8 :padding1
