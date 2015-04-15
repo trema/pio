@@ -38,7 +38,7 @@ module Pio
   end
 
   # An action to modify the IPv4 source address of a packet.
-  class SetIpSrcAddr < SetIpAddr
+  class SetIpSourceAddr < SetIpAddr
     def_format 6
   end
 

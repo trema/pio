@@ -12,19 +12,19 @@ module Pio
       BITS = {
         in_port: 1 << 0,
         dl_vlan: 1 << 1,
-        ether_src_addr: 1 << 2,
+        ether_source_addr: 1 << 2,
         ether_dst_addr: 1 << 3,
         ether_type: 1 << 4,
         nw_proto: 1 << 5,
-        tp_src: 1 << 6,
+        tp_source: 1 << 6,
         tp_dst: 1 << 7,
-        nw_src: 0,
-        nw_src0: 1 << 8,
-        nw_src1: 1 << 9,
-        nw_src2: 1 << 10,
-        nw_src3: 1 << 11,
-        nw_src4: 1 << 12,
-        nw_src_all: 1 << 13,
+        nw_source: 0,
+        nw_source0: 1 << 8,
+        nw_source1: 1 << 9,
+        nw_source2: 1 << 10,
+        nw_source3: 1 << 11,
+        nw_source4: 1 << 12,
+        nw_source_all: 1 << 13,
         nw_dst: 0,
         nw_dst0: 1 << 14,
         nw_dst1: 1 << 15,
@@ -35,8 +35,8 @@ module Pio
         dl_vlan_pcp: 1 << 20,
         nw_tos: 1 << 21
       }
-      NW_FLAGS = [:nw_src, :nw_dst]
-      FLAGS = BITS.keys.select { |each| !(/^nw_(src|dst)/=~ each) }
+      NW_FLAGS = [:nw_source, :nw_dst]
+      FLAGS = BITS.keys.select { |each| !(/^nw_(source|dst)/=~ each) }
 
       endian :big
 
@@ -46,7 +46,7 @@ module Pio
       def get
         BITS.each_with_object(Hash.new(0)) do |(key, bit), memo|
           next if flags & bit == 0
-          if /(nw_src|nw_dst)(\d)/=~ key
+          if /(nw_source|nw_dst)(\d)/=~ key
             memo[$LAST_MATCH_INFO[1].intern] |= 1 << $LAST_MATCH_INFO[2].to_i
           else
             memo[key] = true
@@ -57,16 +57,16 @@ module Pio
       def set(params)
         self.flags = params.inject(0) do |memo, (key, val)|
           memo | case key
-                 when :nw_src, :nw_dst
-                   (params.fetch(key) & 31) << (key == :nw_src ? 8 : 14)
+                 when :nw_source, :nw_dst
+                   (params.fetch(key) & 31) << (key == :nw_source ? 8 : 14)
                  else
                    val ? BITS.fetch(key) : 0
                  end
         end
       end
 
-      def nw_src
-        get.fetch(:nw_src)
+      def nw_source
+        get.fetch(:nw_source)
       rescue KeyError
         0
       end
@@ -105,7 +105,7 @@ module Pio
 
       wildcards :wildcards
       uint16 :in_port
-      mac_address :ether_src_addr
+      mac_address :ether_source_addr
       mac_address :ether_dst_addr
       uint16 :dl_vlan
       uint8 :dl_vlan_pcp
@@ -116,9 +116,9 @@ module Pio
       uint8 :nw_proto
       uint16 :padding2
       hide :padding2
-      match_ip_address :nw_src, bitcount: -> { wildcards.nw_src }
+      match_ip_address :nw_source, bitcount: -> { wildcards.nw_source }
       match_ip_address :nw_dst, bitcount: -> { wildcards.nw_dst }
-      uint16 :tp_src
+      uint16 :tp_source
       uint16 :tp_dst
     end
 

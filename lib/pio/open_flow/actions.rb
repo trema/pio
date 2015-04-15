@@ -18,12 +18,12 @@ module Pio
         1 => Pio::SetVlanVid,
         2 => Pio::SetVlanPriority,
         3 => Pio::StripVlanHeader,
-        4 => Pio::SetEtherSrcAddr,
+        4 => Pio::SetEtherSourceAddr,
         5 => Pio::SetEtherDstAddr,
-        6 => Pio::SetIpSrcAddr,
+        6 => Pio::SetIpSourceAddr,
         7 => Pio::SetIpDstAddr,
         8 => Pio::SetIpTos,
-        9 => Pio::SetTransportSrcPort,
+        9 => Pio::SetTransportSourcePort,
         10 => Pio::SetTransportDstPort,
         11 => Pio::Enqueue
       }

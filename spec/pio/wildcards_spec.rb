@@ -22,14 +22,14 @@ describe Pio::Match::Wildcards do
       Then { binary == ['00000000000000000000000000000001'].pack('B*') }
     end
 
-    context 'with nw_src: 0b10101' do
-      Given(:parameters) { { nw_src: 0b10101 } }
+    context 'with nw_source: 0b10101' do
+      Given(:parameters) { { nw_source: 0b10101 } }
 
       Then { binary == ['00000000000000000001010100000000'].pack('B*') }
     end
 
-    context 'with nw_src_all: true' do
-      Given(:parameters) { { nw_src_all: true } }
+    context 'with nw_source_all: true' do
+      Given(:parameters) { { nw_source_all: true } }
 
       Then { binary == ['00000000000000000010000000000000'].pack('B*') }
     end
@@ -82,16 +82,16 @@ describe Pio::Match::Wildcards do
       Then { wildcards == { dl_vlan: true } }
     end
 
-    context 'with nw_src: 010101' do
+    context 'with nw_source: 010101' do
       Given(:binary) { ['00000000000000000001010100000000'].pack('B*') }
 
-      Then { wildcards == { nw_src: 0b10101 } }
+      Then { wildcards == { nw_source: 0b10101 } }
     end
 
-    context 'with nw_src: 100000' do
+    context 'with nw_source: 100000' do
       Given(:binary) { ['00000000000000000010000000000000'].pack('B*') }
 
-      Then { wildcards == { nw_src_all: true } }
+      Then { wildcards == { nw_source_all: true } }
     end
 
     context 'with nw_dst: 010101' do
@@ -106,10 +106,10 @@ describe Pio::Match::Wildcards do
       Then { wildcards == { nw_dst_all: true } }
     end
 
-    context 'with in_port: true, nw_src: 010101, nw_tos: true' do
+    context 'with in_port: true, nw_source: 010101, nw_tos: true' do
       Given(:binary) { ['00000000001000000001010100000001'].pack('B*') }
 
-      Then { wildcards == { in_port: true, nw_src: 0b10101, nw_tos: true } }
+      Then { wildcards == { in_port: true, nw_source: 0b10101, nw_tos: true } }
     end
   end
 end

@@ -47,7 +47,7 @@ module Pio
   end
 
   # An action to modify the source TCP/UDP port of a packet.
-  class SetTransportSrcPort < SetTransportPort
+  class SetTransportSourcePort < SetTransportPort
     def_format 9
   end
 
