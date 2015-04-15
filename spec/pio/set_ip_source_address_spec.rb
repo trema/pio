@@ -1,9 +1,9 @@
-require 'pio/set_ip_addr'
+require 'pio/set_ip_address'
 
-describe Pio::SetIpSourceAddr do
+describe Pio::SetIpSourceAddress do
   describe '.new' do
     context "with '1.2.3.4'" do
-      When(:set_ip_source_addr) { Pio::SetIpSourceAddr.new('1.2.3.4') }
+      When(:set_ip_source_addr) { Pio::SetIpSourceAddress.new('1.2.3.4') }
 
       describe '#ip_address' do
         Then { set_ip_source_addr.ip_address == '1.2.3.4' }

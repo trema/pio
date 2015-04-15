@@ -18,8 +18,8 @@ module Pio
           ether_type: data.ether_type,
           nw_tos: data.ip_type_of_service,
           nw_proto: data.ip_protocol,
-          nw_source: data.ip_source_address,
-          nw_destination: data.ip_destination_address,
+          ip_source_address: data.ip_source_address,
+          ip_destination_address: data.ip_destination_address,
           tp_source: data.transport_source_port,
           tp_destination: data.transport_destination_port
         }
@@ -33,8 +33,8 @@ module Pio
           ether_type: data.ether_type,
           nw_tos: 0,
           nw_proto: data.operation,
-          nw_source: data.sender_protocol_address,
-          nw_destination: data.target_protocol_address,
+          ip_source_address: data.sender_protocol_address,
+          ip_destination_address: data.target_protocol_address,
           tp_source: 0,
           tp_destination: 0
         }
