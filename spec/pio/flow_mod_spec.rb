@@ -40,9 +40,9 @@ describe Pio::FlowMod do
       Then do
         flow_mod.match.wildcards.keys == [
           :dl_vlan,
-          :eth_src_addr,
-          :eth_dst_addr,
-          :eth_type,
+          :ether_src_addr,
+          :ether_dst_addr,
+          :ether_type,
           :nw_proto,
           :tp_src,
           :tp_dst,
@@ -53,11 +53,11 @@ describe Pio::FlowMod do
         ]
       end
       Then { flow_mod.match.in_port == 1 }
-      Then { flow_mod.match.eth_src_addr == '00:00:00:00:00:00' }
-      Then { flow_mod.match.eth_dst_addr == '00:00:00:00:00:00' }
+      Then { flow_mod.match.ether_src_addr == '00:00:00:00:00:00' }
+      Then { flow_mod.match.ether_dst_addr == '00:00:00:00:00:00' }
       Then { flow_mod.match.dl_vlan == 0 }
       Then { flow_mod.match.dl_vlan_pcp == 0 }
-      Then { flow_mod.match.eth_type == 0 }
+      Then { flow_mod.match.ether_type == 0 }
       Then { flow_mod.match.nw_tos == 0 }
       Then { flow_mod.match.nw_proto == 0 }
       Then { flow_mod.match.nw_src == '0.0.0.0' }
@@ -105,9 +105,9 @@ describe Pio::FlowMod do
       Then do
         flow_mod.match.wildcards.keys == [
           :dl_vlan,
-          :eth_src_addr,
-          :eth_dst_addr,
-          :eth_type,
+          :ether_src_addr,
+          :ether_dst_addr,
+          :ether_type,
           :nw_proto,
           :tp_src,
           :tp_dst,
@@ -118,11 +118,11 @@ describe Pio::FlowMod do
         ]
       end
       Then { flow_mod.match.in_port == 1 }
-      Then { flow_mod.match.eth_src_addr == '00:00:00:00:00:00' }
-      Then { flow_mod.match.eth_dst_addr == '00:00:00:00:00:00' }
+      Then { flow_mod.match.ether_src_addr == '00:00:00:00:00:00' }
+      Then { flow_mod.match.ether_dst_addr == '00:00:00:00:00:00' }
       Then { flow_mod.match.dl_vlan == 0 }
       Then { flow_mod.match.dl_vlan_pcp == 0 }
-      Then { flow_mod.match.eth_type == 0 }
+      Then { flow_mod.match.ether_type == 0 }
       Then { flow_mod.match.nw_tos == 0 }
       Then { flow_mod.match.nw_proto == 0 }
       Then { flow_mod.match.nw_src == '0.0.0.0' }

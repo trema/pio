@@ -182,13 +182,13 @@ describe Pio::PacketOut do
       Then { result.actions[0].is_a? Pio::StripVlanHeader }
     end
 
-    context 'with a SetEthSrcAddr action' do
+    context 'with a SetEtherSrcAddr action' do
       When(:user_options) do
         {
           transaction_id: 0x16,
           buffer_id: 0xffffffff,
           in_port: 0xffff,
-          actions: Pio::SetEthSrcAddr.new('11:22:33:44:55:66'),
+          actions: Pio::SetEtherSrcAddr.new('11:22:33:44:55:66'),
           raw_data: data_dump
         }
       end
@@ -196,17 +196,17 @@ describe Pio::PacketOut do
       Then { result.message_length == 0x60 }
       Then { result.actions_len == 0x10 }
       Then { result.actions.length == 1 }
-      Then { result.actions[0].is_a? Pio::SetEthSrcAddr }
+      Then { result.actions[0].is_a? Pio::SetEtherSrcAddr }
       Then { result.actions[0].mac_address == '11:22:33:44:55:66' }
     end
 
-    context 'with a SetEthDstAddr action' do
+    context 'with a SetEtherDstAddr action' do
       When(:user_options) do
         {
           transaction_id: 0x16,
           buffer_id: 0xffffffff,
           in_port: 0xffff,
-          actions: Pio::SetEthDstAddr.new('11:22:33:44:55:66'),
+          actions: Pio::SetEtherDstAddr.new('11:22:33:44:55:66'),
           raw_data: data_dump
         }
       end
@@ -214,7 +214,7 @@ describe Pio::PacketOut do
       Then { result.message_length == 0x60 }
       Then { result.actions_len == 0x10 }
       Then { result.actions.length == 1 }
-      Then { result.actions[0].is_a? Pio::SetEthDstAddr }
+      Then { result.actions[0].is_a? Pio::SetEtherDstAddr }
       Then { result.actions[0].mac_address == '11:22:33:44:55:66' }
     end
 

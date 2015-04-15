@@ -28,9 +28,9 @@ describe Pio::Match do
       Then do
         match.wildcards.keys == [
           :dl_vlan,
-          :eth_src_addr,
-          :eth_dst_addr,
-          :eth_type,
+          :ether_src_addr,
+          :ether_dst_addr,
+          :ether_type,
           :nw_proto,
           :tp_src,
           :tp_dst,
@@ -41,11 +41,11 @@ describe Pio::Match do
         ]
       end
       Then { match.in_port == 1 }
-      Then { match.eth_src_addr == '00:00:00:00:00:00' }
-      Then { match.eth_dst_addr == '00:00:00:00:00:00' }
+      Then { match.ether_src_addr == '00:00:00:00:00:00' }
+      Then { match.ether_dst_addr == '00:00:00:00:00:00' }
       Then { match.dl_vlan == 0 }
       Then { match.dl_vlan_pcp == 0 }
-      Then { match.eth_type == 0 }
+      Then { match.ether_type == 0 }
       Then { match.nw_tos == 0 }
       Then { match.nw_proto == 0 }
       Then { match.nw_src == '0.0.0.0' }
@@ -61,9 +61,9 @@ describe Pio::Match do
         match.wildcards.keys == [
           :in_port,
           :dl_vlan,
-          :eth_src_addr,
-          :eth_dst_addr,
-          :eth_type,
+          :ether_src_addr,
+          :ether_dst_addr,
+          :ether_type,
           :nw_proto,
           :tp_src,
           :tp_dst,
@@ -75,11 +75,11 @@ describe Pio::Match do
       end
       And { match.wildcards[:nw_src] = 12 }
       Then { match.in_port == 0 }
-      Then { match.eth_src_addr == '00:00:00:00:00:00' }
-      Then { match.eth_dst_addr == '00:00:00:00:00:00' }
+      Then { match.ether_src_addr == '00:00:00:00:00:00' }
+      Then { match.ether_dst_addr == '00:00:00:00:00:00' }
       Then { match.dl_vlan == 0 }
       Then { match.dl_vlan_pcp == 0 }
-      Then { match.eth_type == 0 }
+      Then { match.ether_type == 0 }
       Then { match.nw_tos == 0 }
       Then { match.nw_proto == 0 }
       Then { match.nw_src == '192.168.1.0' }
@@ -98,9 +98,9 @@ describe Pio::Match do
       Then do
         match.wildcards.keys == [
           :dl_vlan,
-          :eth_src_addr,
-          :eth_dst_addr,
-          :eth_type,
+          :ether_src_addr,
+          :ether_dst_addr,
+          :ether_type,
           :nw_proto,
           :tp_src,
           :tp_dst,
@@ -111,11 +111,11 @@ describe Pio::Match do
         ]
       end
       Then { match.in_port == 1 }
-      Then { match.eth_src_addr == '00:00:00:00:00:00' }
-      Then { match.eth_dst_addr == '00:00:00:00:00:00' }
+      Then { match.ether_src_addr == '00:00:00:00:00:00' }
+      Then { match.ether_dst_addr == '00:00:00:00:00:00' }
       Then { match.dl_vlan == 0 }
       Then { match.dl_vlan_pcp == 0 }
-      Then { match.eth_type == 0 }
+      Then { match.ether_type == 0 }
       Then { match.nw_tos == 0 }
       Then { match.nw_proto == 0 }
       Then { match.nw_src == '0.0.0.0' }
@@ -139,9 +139,9 @@ describe Pio::Match do
         match.wildcards.keys == [
           :in_port,
           :dl_vlan,
-          :eth_src_addr,
-          :eth_dst_addr,
-          :eth_type,
+          :ether_src_addr,
+          :ether_dst_addr,
+          :ether_type,
           :nw_proto,
           :tp_src,
           :tp_dst,
@@ -153,11 +153,11 @@ describe Pio::Match do
       end
       Then { match.wildcards.fetch(:nw_src) == 8 }
       Then { match.in_port == 0 }
-      Then { match.eth_src_addr == '00:00:00:00:00:00' }
-      Then { match.eth_dst_addr == '00:00:00:00:00:00' }
+      Then { match.ether_src_addr == '00:00:00:00:00:00' }
+      Then { match.ether_dst_addr == '00:00:00:00:00:00' }
       Then { match.dl_vlan == 0 }
       Then { match.dl_vlan_pcp == 0 }
-      Then { match.eth_type == 0 }
+      Then { match.ether_type == 0 }
       Then { match.nw_tos == 0 }
       Then { match.nw_proto == 0 }
       Then { match.nw_src == '192.168.1.0/24' }
@@ -172,9 +172,9 @@ describe Pio::Match do
         match.wildcards.keys == [
           :in_port,
           :dl_vlan,
-          :eth_src_addr,
-          :eth_dst_addr,
-          :eth_type,
+          :ether_src_addr,
+          :ether_dst_addr,
+          :ether_type,
           :nw_proto,
           :tp_src,
           :tp_dst,
@@ -186,11 +186,11 @@ describe Pio::Match do
       end
       Then { match.wildcards.fetch(:nw_dst) == 8 }
       Then { match.in_port == 0 }
-      Then { match.eth_src_addr == '00:00:00:00:00:00' }
-      Then { match.eth_dst_addr == '00:00:00:00:00:00' }
+      Then { match.ether_src_addr == '00:00:00:00:00:00' }
+      Then { match.ether_dst_addr == '00:00:00:00:00:00' }
       Then { match.dl_vlan == 0 }
       Then { match.dl_vlan_pcp == 0 }
-      Then { match.eth_type == 0 }
+      Then { match.ether_type == 0 }
       Then { match.nw_tos == 0 }
       Then { match.nw_proto == 0 }
       Then { match.nw_src == '0.0.0.0' }
