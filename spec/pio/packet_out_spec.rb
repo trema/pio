@@ -182,13 +182,13 @@ describe Pio::PacketOut do
       Then { result.actions[0].is_a? Pio::StripVlanHeader }
     end
 
-    context 'with a SetEtherSrcAddr action' do
+    context 'with a SetEtherSourceAddr action' do
       When(:user_options) do
         {
           transaction_id: 0x16,
           buffer_id: 0xffffffff,
           in_port: 0xffff,
-          actions: Pio::SetEtherSrcAddr.new('11:22:33:44:55:66'),
+          actions: Pio::SetEtherSourceAddr.new('11:22:33:44:55:66'),
           raw_data: data_dump
         }
       end
@@ -196,7 +196,7 @@ describe Pio::PacketOut do
       Then { result.message_length == 0x60 }
       Then { result.actions_len == 0x10 }
       Then { result.actions.length == 1 }
-      Then { result.actions[0].is_a? Pio::SetEtherSrcAddr }
+      Then { result.actions[0].is_a? Pio::SetEtherSourceAddr }
       Then { result.actions[0].mac_address == '11:22:33:44:55:66' }
     end
 
@@ -218,13 +218,13 @@ describe Pio::PacketOut do
       Then { result.actions[0].mac_address == '11:22:33:44:55:66' }
     end
 
-    context 'with a SetIpSrcAddr action' do
+    context 'with a SetIpSourceAddr action' do
       When(:user_options) do
         {
           transaction_id: 0x16,
           buffer_id: 0xffffffff,
           in_port: 0xffff,
-          actions: Pio::SetIpSrcAddr.new('1.2.3.4'),
+          actions: Pio::SetIpSourceAddr.new('1.2.3.4'),
           raw_data: data_dump
         }
       end
@@ -232,7 +232,7 @@ describe Pio::PacketOut do
       Then { result.message_length == 0x58 }
       Then { result.actions_len == 0x8 }
       Then { result.actions.length == 1 }
-      Then { result.actions[0].is_a? Pio::SetIpSrcAddr }
+      Then { result.actions[0].is_a? Pio::SetIpSourceAddr }
       Then { result.actions[0].ip_address == '1.2.3.4' }
     end
 
@@ -272,13 +272,13 @@ describe Pio::PacketOut do
       Then { result.actions[0].type_of_service == 32 }
     end
 
-    context 'with a SetTransportSrcPort action' do
+    context 'with a SetTransportSourcePort action' do
       When(:user_options) do
         {
           transaction_id: 0x16,
           buffer_id: 0xffffffff,
           in_port: 0xffff,
-          actions: Pio::SetTransportSrcPort.new(100),
+          actions: Pio::SetTransportSourcePort.new(100),
           raw_data: data_dump
         }
       end
@@ -286,7 +286,7 @@ describe Pio::PacketOut do
       Then { result.message_length == 0x58 }
       Then { result.actions_len == 0x8 }
       Then { result.actions.length == 1 }
-      Then { result.actions[0].is_a? Pio::SetTransportSrcPort }
+      Then { result.actions[0].is_a? Pio::SetTransportSourcePort }
       Then { result.actions[0].port_number == 100 }
     end
 

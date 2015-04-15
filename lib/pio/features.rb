@@ -30,12 +30,12 @@ module Pio
                      :set_vlan_vid,
                      :set_vlan_pcp,
                      :strip_vlan,
-                     :set_dl_src,
+                     :set_dl_source,
                      :set_dl_dst,
-                     :set_nw_src,
+                     :set_nw_source,
                      :set_nw_dst,
                      :set_nw_tos,
-                     :set_tp_src,
+                     :set_tp_source,
                      :set_tp_dst,
                      :enqueue]
 

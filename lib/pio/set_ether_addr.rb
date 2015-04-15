@@ -41,7 +41,7 @@ module Pio
   end
 
   # An action to modify the source Ethernet address of a packet.
-  class SetEtherSrcAddr < SetEtherAddr
+  class SetEtherSourceAddr < SetEtherAddr
     def_format 4
   end
 
