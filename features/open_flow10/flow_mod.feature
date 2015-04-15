@@ -11,11 +11,11 @@ Feature: Flow Mod
       | xid                    |                          0 |
       | match.wildcards        | {:nw_src=>24, :nw_dst=>24} |
       | match.in_port          |                          1 |
-      | match.eth_src_addr     |          00:00:00:00:00:0a |
-      | match.eth_dst_addr     |          00:00:00:00:00:14 |
+      | match.ether_src_addr   |          00:00:00:00:00:0a |
+      | match.ether_dst_addr   |          00:00:00:00:00:14 |
       | match.dl_vlan          |                          0 |
       | match.dl_vlan_pcp      |                          0 |
-      | match.eth_type         |                       2048 |
+      | match.ether_type       |                       2048 |
       | match.nw_tos           |                          0 |
       | match.nw_proto         |                          1 |
       | match.nw_src           |                   10.0.0.0 |
@@ -48,11 +48,11 @@ Feature: Flow Mod
       | xid                    |                          0 |
       | match.wildcards        | {:nw_src=>24, :nw_dst=>24} |
       | match.in_port          |                          1 |
-      | match.eth_src_addr     |          00:00:00:00:00:0a |
-      | match.eth_dst_addr     |          00:00:00:00:00:14 |
+      | match.ether_src_addr   |          00:00:00:00:00:0a |
+      | match.ether_dst_addr   |          00:00:00:00:00:14 |
       | match.dl_vlan          |                          0 |
       | match.dl_vlan_pcp      |                          0 |
-      | match.eth_type         |                       2048 |
+      | match.ether_type       |                       2048 |
       | match.nw_tos           |                          0 |
       | match.nw_proto         |                          1 |
       | match.nw_src           |                   10.0.0.0 |
@@ -85,11 +85,11 @@ Scenario: parse (Flow Mod Modify Strict)
       | xid                    |                          0 |
       | match.wildcards        | {:nw_src=>24, :nw_dst=>24} |
       | match.in_port          |                          1 |
-      | match.eth_src_addr     |          00:00:00:00:00:0a |
-      | match.eth_dst_addr     |          00:00:00:00:00:14 |
+      | match.ether_src_addr   |          00:00:00:00:00:0a |
+      | match.ether_dst_addr   |          00:00:00:00:00:14 |
       | match.dl_vlan          |                          0 |
       | match.dl_vlan_pcp      |                          0 |
-      | match.eth_type         |                       2048 |
+      | match.ether_type       |                       2048 |
       | match.nw_tos           |                          0 |
       | match.nw_proto         |                          1 |
       | match.nw_src           |                   10.0.0.0 |
@@ -122,11 +122,11 @@ Scenario: parse (Flow Mod Modify Strict)
       | xid                    |                          0 |
       | match.wildcards        | {:nw_src=>24, :nw_dst=>24} |
       | match.in_port          |                          1 |
-      | match.eth_src_addr     |          00:00:00:00:00:0a |
-      | match.eth_dst_addr     |          00:00:00:00:00:00 |
+      | match.ether_src_addr   |          00:00:00:00:00:0a |
+      | match.ether_dst_addr   |          00:00:00:00:00:00 |
       | match.dl_vlan          |                          0 |
       | match.dl_vlan_pcp      |                          0 |
-      | match.eth_type         |                       2048 |
+      | match.ether_type       |                       2048 |
       | match.nw_tos           |                          0 |
       | match.nw_proto         |                          1 |
       | match.nw_src           |                   10.0.0.0 |
@@ -157,11 +157,11 @@ Scenario: parse (Flow Mod Delete Strict)
       | xid                    |                          0 |
       | match.wildcards        | {:nw_src=>24, :nw_dst=>24} |
       | match.in_port          |                          1 |
-      | match.eth_src_addr     |          00:00:00:00:00:0a |
-      | match.eth_dst_addr     |          00:00:00:00:00:14 |
+      | match.ether_src_addr   |          00:00:00:00:00:0a |
+      | match.ether_dst_addr   |          00:00:00:00:00:14 |
       | match.dl_vlan          |                          0 |
       | match.dl_vlan_pcp      |                          0 |
-      | match.eth_type         |                       2048 |
+      | match.ether_type       |                       2048 |
       | match.nw_tos           |                          0 |
       | match.nw_proto         |                          1 |
       | match.nw_src           |                   10.0.0.0 |

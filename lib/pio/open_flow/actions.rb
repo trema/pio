@@ -1,7 +1,7 @@
 require 'bindata'
 require 'pio/enqueue'
 require 'pio/send_out_port'
-require 'pio/set_eth_addr'
+require 'pio/set_ether_addr'
 require 'pio/set_ip_addr'
 require 'pio/set_ip_tos'
 require 'pio/set_transport_port'
@@ -18,8 +18,8 @@ module Pio
         1 => Pio::SetVlanVid,
         2 => Pio::SetVlanPriority,
         3 => Pio::StripVlanHeader,
-        4 => Pio::SetEthSrcAddr,
-        5 => Pio::SetEthDstAddr,
+        4 => Pio::SetEtherSrcAddr,
+        5 => Pio::SetEtherDstAddr,
         6 => Pio::SetIpSrcAddr,
         7 => Pio::SetIpDstAddr,
         8 => Pio::SetIpTos,
