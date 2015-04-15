@@ -28,8 +28,8 @@ describe Pio::Match do
       Then do
         match.wildcards.keys == [
           :dl_vlan,
-          :ether_source_addr,
-          :ether_destination_addr,
+          :ether_source_address,
+          :ether_destination_address,
           :ether_type,
           :nw_proto,
           :tp_source,
@@ -41,8 +41,8 @@ describe Pio::Match do
         ]
       end
       Then { match.in_port == 1 }
-      Then { match.ether_source_addr == '00:00:00:00:00:00' }
-      Then { match.ether_destination_addr == '00:00:00:00:00:00' }
+      Then { match.ether_source_address == '00:00:00:00:00:00' }
+      Then { match.ether_destination_address == '00:00:00:00:00:00' }
       Then { match.dl_vlan == 0 }
       Then { match.dl_vlan_pcp == 0 }
       Then { match.ether_type == 0 }
@@ -63,8 +63,8 @@ describe Pio::Match do
         match.wildcards.keys == [
           :in_port,
           :dl_vlan,
-          :ether_source_addr,
-          :ether_destination_addr,
+          :ether_source_address,
+          :ether_destination_address,
           :ether_type,
           :nw_proto,
           :tp_source,
@@ -77,8 +77,8 @@ describe Pio::Match do
       end
       And { match.wildcards[:ip_source_address] = 12 }
       Then { match.in_port == 0 }
-      Then { match.ether_source_addr == '00:00:00:00:00:00' }
-      Then { match.ether_destination_addr == '00:00:00:00:00:00' }
+      Then { match.ether_source_address == '00:00:00:00:00:00' }
+      Then { match.ether_destination_address == '00:00:00:00:00:00' }
       Then { match.dl_vlan == 0 }
       Then { match.dl_vlan_pcp == 0 }
       Then { match.ether_type == 0 }
@@ -100,8 +100,8 @@ describe Pio::Match do
       Then do
         match.wildcards.keys == [
           :dl_vlan,
-          :ether_source_addr,
-          :ether_destination_addr,
+          :ether_source_address,
+          :ether_destination_address,
           :ether_type,
           :nw_proto,
           :tp_source,
@@ -113,8 +113,8 @@ describe Pio::Match do
         ]
       end
       Then { match.in_port == 1 }
-      Then { match.ether_source_addr == '00:00:00:00:00:00' }
-      Then { match.ether_destination_addr == '00:00:00:00:00:00' }
+      Then { match.ether_source_address == '00:00:00:00:00:00' }
+      Then { match.ether_destination_address == '00:00:00:00:00:00' }
       Then { match.dl_vlan == 0 }
       Then { match.dl_vlan_pcp == 0 }
       Then { match.ether_type == 0 }
@@ -141,8 +141,8 @@ describe Pio::Match do
         match.wildcards.keys == [
           :in_port,
           :dl_vlan,
-          :ether_source_addr,
-          :ether_destination_addr,
+          :ether_source_address,
+          :ether_destination_address,
           :ether_type,
           :nw_proto,
           :tp_source,
@@ -155,8 +155,8 @@ describe Pio::Match do
       end
       Then { match.wildcards.fetch(:ip_source_address) == 8 }
       Then { match.in_port == 0 }
-      Then { match.ether_source_addr == '00:00:00:00:00:00' }
-      Then { match.ether_destination_addr == '00:00:00:00:00:00' }
+      Then { match.ether_source_address == '00:00:00:00:00:00' }
+      Then { match.ether_destination_address == '00:00:00:00:00:00' }
       Then { match.dl_vlan == 0 }
       Then { match.dl_vlan_pcp == 0 }
       Then { match.ether_type == 0 }
@@ -174,8 +174,8 @@ describe Pio::Match do
         match.wildcards.keys == [
           :in_port,
           :dl_vlan,
-          :ether_source_addr,
-          :ether_destination_addr,
+          :ether_source_address,
+          :ether_destination_address,
           :ether_type,
           :nw_proto,
           :tp_source,
@@ -188,8 +188,8 @@ describe Pio::Match do
       end
       Then { match.wildcards.fetch(:ip_destination_address) == 8 }
       Then { match.in_port == 0 }
-      Then { match.ether_source_addr == '00:00:00:00:00:00' }
-      Then { match.ether_destination_addr == '00:00:00:00:00:00' }
+      Then { match.ether_source_address == '00:00:00:00:00:00' }
+      Then { match.ether_destination_address == '00:00:00:00:00:00' }
       Then { match.dl_vlan == 0 }
       Then { match.dl_vlan_pcp == 0 }
       Then { match.ether_type == 0 }
