@@ -11,8 +11,8 @@ module Pio
       when PacketIn::DataParser::IPv4Packet
         options = {
           in_port: packet_in.in_port,
-          ether_source_addr: packet_in.source_mac,
-          ether_destination_addr: packet_in.destination_mac,
+          ether_source_address: packet_in.source_mac,
+          ether_destination_address: packet_in.destination_mac,
           dl_vlan: data.vlan_vid,
           dl_vlan_pcp: data.vlan_pcp,
           ether_type: data.ether_type,
@@ -26,8 +26,8 @@ module Pio
       when Arp::Request
         options = {
           in_port: packet_in.in_port,
-          ether_source_addr: packet_in.source_mac,
-          ether_destination_addr: packet_in.destination_mac,
+          ether_source_address: packet_in.source_mac,
+          ether_destination_address: packet_in.destination_mac,
           dl_vlan: data.vlan_vid,
           dl_vlan_pcp: data.vlan_pcp,
           ether_type: data.ether_type,

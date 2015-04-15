@@ -11,8 +11,8 @@ Feature: Flow Mod
       | xid                                    |                                                     0 |
       | match.wildcards                        | {:ip_source_address=>24, :ip_destination_address=>24} |
       | match.in_port                          |                                                     1 |
-      | match.ether_source_addr                |                                     00:00:00:00:00:0a |
-      | match.ether_destination_addr           |                                     00:00:00:00:00:14 |
+      | match.ether_source_address             |                                     00:00:00:00:00:0a |
+      | match.ether_destination_address        |                                     00:00:00:00:00:14 |
       | match.dl_vlan                          |                                                     0 |
       | match.dl_vlan_pcp                      |                                                     0 |
       | match.ether_type                       |                                                  2048 |
@@ -48,8 +48,8 @@ Feature: Flow Mod
       | xid                                    |                                                     0 |
       | match.wildcards                        | {:ip_source_address=>24, :ip_destination_address=>24} |
       | match.in_port                          |                                                     1 |
-      | match.ether_source_addr                |                                     00:00:00:00:00:0a |
-      | match.ether_destination_addr           |                                     00:00:00:00:00:14 |
+      | match.ether_source_address             |                                     00:00:00:00:00:0a |
+      | match.ether_destination_address        |                                     00:00:00:00:00:14 |
       | match.dl_vlan                          |                                                     0 |
       | match.dl_vlan_pcp                      |                                                     0 |
       | match.ether_type                       |                                                  2048 |
@@ -85,8 +85,8 @@ Feature: Flow Mod
       | xid                                    |                                                     0 |
       | match.wildcards                        | {:ip_source_address=>24, :ip_destination_address=>24} |
       | match.in_port                          |                                                     1 |
-      | match.ether_source_addr                |                                     00:00:00:00:00:0a |
-      | match.ether_destination_addr           |                                     00:00:00:00:00:14 |
+      | match.ether_source_address             |                                     00:00:00:00:00:0a |
+      | match.ether_destination_address        |                                     00:00:00:00:00:14 |
       | match.dl_vlan                          |                                                     0 |
       | match.dl_vlan_pcp                      |                                                     0 |
       | match.ether_type                       |                                                  2048 |
@@ -122,8 +122,8 @@ Feature: Flow Mod
       | xid                                    |                                                     0 |
       | match.wildcards                        | {:ip_source_address=>24, :ip_destination_address=>24} |
       | match.in_port                          |                                                     1 |
-      | match.ether_source_addr                |                                     00:00:00:00:00:0a |
-      | match.ether_destination_addr           |                                     00:00:00:00:00:00 |
+      | match.ether_source_address             |                                     00:00:00:00:00:0a |
+      | match.ether_destination_address        |                                     00:00:00:00:00:00 |
       | match.dl_vlan                          |                                                     0 |
       | match.dl_vlan_pcp                      |                                                     0 |
       | match.ether_type                       |                                                  2048 |
@@ -157,8 +157,8 @@ Feature: Flow Mod
       | xid                                    |                                                     0 |
       | match.wildcards                        | {:ip_source_address=>24, :ip_destination_address=>24} |
       | match.in_port                          |                                                     1 |
-      | match.ether_source_addr                |                                     00:00:00:00:00:0a |
-      | match.ether_destination_addr           |                                     00:00:00:00:00:14 |
+      | match.ether_source_address             |                                     00:00:00:00:00:0a |
+      | match.ether_destination_address        |                                     00:00:00:00:00:14 |
       | match.dl_vlan                          |                                                     0 |
       | match.dl_vlan_pcp                      |                                                     0 |
       | match.ether_type                       |                                                  2048 |

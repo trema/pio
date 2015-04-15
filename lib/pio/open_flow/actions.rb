@@ -1,7 +1,7 @@
 require 'bindata'
 require 'pio/enqueue'
 require 'pio/send_out_port'
-require 'pio/set_ether_addr'
+require 'pio/set_ether_address'
 require 'pio/set_ip_address'
 require 'pio/set_ip_tos'
 require 'pio/set_transport_port'
