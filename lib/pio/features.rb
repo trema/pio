@@ -34,7 +34,7 @@ module Pio
                      :set_dl_destination,
                      :set_ip_source_address,
                      :set_ip_destination_address,
-                     :set_nw_tos,
+                     :set_ip_tos,
                      :set_tp_source,
                      :set_tp_destination,
                      :enqueue]

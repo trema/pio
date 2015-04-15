@@ -10,7 +10,7 @@ Feature: Features Reply
                        :arp_match_ip],
         actions: [:output, :set_vlan_vid, :set_vlan_pcp, :strip_vlan,
                   :set_dl_source, :set_dl_destination, :set_ip_source_address, :set_ip_destination_address,
-                  :set_nw_tos, :set_tp_source, :set_tp_destination, :enqueue],
+                  :set_ip_tos, :set_tp_source, :set_tp_destination, :enqueue],
         ports: [{ port_no: 1,
                   hardware_address: '11:22:33:44:55:66',
                   name: 'port123',
@@ -33,7 +33,7 @@ Feature: Features Reply
     | n_buffers                    |                                                                                                                                                                                                        256 |
     | n_tables                     |                                                                                                                                                                                                        254 |
     | capabilities                 |                                                                                                                                      [:flow_stats, :table_stats, :port_stats, :queue_stats, :arp_match_ip] |
-    | actions                      | [:output, :set_vlan_vid, :set_vlan_pcp, :strip_vlan, :set_dl_source, :set_dl_destination, :set_ip_source_address, :set_ip_destination_address, :set_nw_tos, :set_tp_source, :set_tp_destination, :enqueue] |
+    | actions                      | [:output, :set_vlan_vid, :set_vlan_pcp, :strip_vlan, :set_dl_source, :set_dl_destination, :set_ip_source_address, :set_ip_destination_address, :set_ip_tos, :set_tp_source, :set_tp_destination, :enqueue] |
     | ports.length                 |                                                                                                                                                                                                          1 |
     | ports.first.datapath_id      |                                                                                                                                                                                                        291 |
     | ports.first.port_no          |                                                                                                                                                                                                          1 |
@@ -63,7 +63,7 @@ Feature: Features Reply
       | n_buffers                    | 256                                                                                                                                                                                                        |
       | n_tables                     | 1                                                                                                                                                                                                          |
       | capabilities                 | [:flow_stats, :table_stats, :port_stats, :arp_match_ip]                                                                                                                                                    |
-      | actions                      | [:output, :set_vlan_vid, :set_vlan_pcp, :strip_vlan, :set_dl_source, :set_dl_destination, :set_ip_source_address, :set_ip_destination_address, :set_nw_tos, :set_tp_source, :set_tp_destination, :enqueue] |
+      | actions                      | [:output, :set_vlan_vid, :set_vlan_pcp, :strip_vlan, :set_dl_source, :set_dl_destination, :set_ip_source_address, :set_ip_destination_address, :set_ip_tos, :set_tp_source, :set_tp_destination, :enqueue] |
       | ports.length                 | 3                                                                                                                                                                                                          |
       | ports.first.datapath_id      | 1                                                                                                                                                                                                          |
       | ports.first.port_no          | 2                                                                                                                                                                                                          |

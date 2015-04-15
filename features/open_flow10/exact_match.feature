@@ -10,7 +10,7 @@ Feature: Exact Match
       | dl_vlan                   |             65535 |
       | dl_vlan_pcp               |                 0 |
       | ether_type                |              2054 |
-      | nw_tos                    |                 0 |
+      | ip_tos                    |                 0 |
       | ip_protocol               |                 1 |
       | ip_source_address         |     192.168.2.254 |
       | ip_destination_address    |       192.168.2.5 |
@@ -28,7 +28,7 @@ Feature: Exact Match
       | dl_vlan                   |             65535 |
       | dl_vlan_pcp               |                 0 |
       | ether_type                |              2048 |
-      | nw_tos                    |                 0 |
+      | ip_tos                    |                 0 |
       | ip_protocol               |               255 |
       | ip_source_address         |      192.168.0.40 |
       | ip_destination_address    |      192.168.1.40 |
