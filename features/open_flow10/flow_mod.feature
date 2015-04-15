@@ -17,7 +17,7 @@ Feature: Flow Mod
       | match.dl_vlan_pcp                      |                                                     0 |
       | match.ether_type                       |                                                  2048 |
       | match.nw_tos                           |                                                     0 |
-      | match.nw_proto                         |                                                     1 |
+      | match.ip_protocol                      |                                                     1 |
       | match.ip_source_address                |                                              10.0.0.0 |
       | match.ip_source_address.prefixlen      |                                                     8 |
       | match.ip_destination_address           |                                              20.0.0.0 |
@@ -54,7 +54,7 @@ Feature: Flow Mod
       | match.dl_vlan_pcp                      |                                                     0 |
       | match.ether_type                       |                                                  2048 |
       | match.nw_tos                           |                                                     0 |
-      | match.nw_proto                         |                                                     1 |
+      | match.ip_protocol                      |                                                     1 |
       | match.ip_source_address                |                                              10.0.0.0 |
       | match.ip_source_address.prefixlen      |                                                     8 |
       | match.ip_destination_address           |                                              20.0.0.0 |
@@ -91,7 +91,7 @@ Feature: Flow Mod
       | match.dl_vlan_pcp                      |                                                     0 |
       | match.ether_type                       |                                                  2048 |
       | match.nw_tos                           |                                                     0 |
-      | match.nw_proto                         |                                                     1 |
+      | match.ip_protocol                      |                                                     1 |
       | match.ip_source_address                |                                              10.0.0.0 |
       | match.ip_source_address.prefixlen      |                                                     8 |
       | match.ip_destination_address           |                                              20.0.0.0 |
@@ -128,7 +128,7 @@ Feature: Flow Mod
       | match.dl_vlan_pcp                      |                                                     0 |
       | match.ether_type                       |                                                  2048 |
       | match.nw_tos                           |                                                     0 |
-      | match.nw_proto                         |                                                     1 |
+      | match.ip_protocol                      |                                                     1 |
       | match.ip_source_address                |                                              10.0.0.0 |
       | match.ip_source_address.prefixlen      |                                                     8 |
       | match.ip_destination_address           |                                              20.0.0.0 |
@@ -163,7 +163,7 @@ Feature: Flow Mod
       | match.dl_vlan_pcp                      |                                                     0 |
       | match.ether_type                       |                                                  2048 |
       | match.nw_tos                           |                                                     0 |
-      | match.nw_proto                         |                                                     1 |
+      | match.ip_protocol                      |                                                     1 |
       | match.ip_source_address                |                                              10.0.0.0 |
       | match.ip_source_address.prefixlen      |                                                     8 |
       | match.ip_destination_address           |                                              20.0.0.0 |

@@ -15,7 +15,7 @@ module Pio
         ether_source_address: 1 << 2,
         ether_destination_address: 1 << 3,
         ether_type: 1 << 4,
-        nw_proto: 1 << 5,
+        ip_protocol: 1 << 5,
         tp_source: 1 << 6,
         tp_destination: 1 << 7,
         ip_source_address: 0,
@@ -114,7 +114,7 @@ module Pio
       hide :padding1
       uint16 :ether_type
       uint8 :nw_tos
-      uint8 :nw_proto
+      uint8 :ip_protocol
       uint16 :padding2
       hide :padding2
       match_ip_address :ip_source_address,
