@@ -21,7 +21,7 @@ module Pio
         4 => Pio::SetEtherSourceAddr,
         5 => Pio::SetEtherDestinationAddr,
         6 => Pio::SetIpSourceAddress,
-        7 => Pio::SetIpDestinationAddr,
+        7 => Pio::SetIpDestinationAddress,
         8 => Pio::SetIpTos,
         9 => Pio::SetTransportSourcePort,
         10 => Pio::SetTransportDestinationPort,

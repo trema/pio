@@ -1,10 +1,10 @@
 require 'pio/set_ip_address'
 
-describe Pio::SetIpDestinationAddr do
+describe Pio::SetIpDestinationAddress do
   describe '.new' do
     context "with '1.2.3.4'" do
       When(:set_ip_destination_addr) do
-        Pio::SetIpDestinationAddr.new('1.2.3.4')
+        Pio::SetIpDestinationAddress.new('1.2.3.4')
       end
 
       describe '#ip_address' do
