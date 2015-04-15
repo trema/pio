@@ -22,26 +22,26 @@ describe Pio::Match::Wildcards do
       Then { binary == ['00000000000000000000000000000001'].pack('B*') }
     end
 
-    context 'with nw_source: 0b10101' do
-      Given(:parameters) { { nw_source: 0b10101 } }
+    context 'with ip_source_address: 0b10101' do
+      Given(:parameters) { { ip_source_address: 0b10101 } }
 
       Then { binary == ['00000000000000000001010100000000'].pack('B*') }
     end
 
-    context 'with nw_source_all: true' do
-      Given(:parameters) { { nw_source_all: true } }
+    context 'with ip_source_address_all: true' do
+      Given(:parameters) { { ip_source_address_all: true } }
 
       Then { binary == ['00000000000000000010000000000000'].pack('B*') }
     end
 
-    context 'with nw_destination: 010101' do
-      Given(:parameters) { { nw_destination: 0b10101 } }
+    context 'with ip_destination_address: 010101' do
+      Given(:parameters) { { ip_destination_address: 0b10101 } }
 
       Then { binary == ['00000000000001010100000000000000'].pack('B*') }
     end
 
-    context 'with nw_destination_all: true' do
-      Given(:parameters) { { nw_destination_all: true } }
+    context 'with ip_destination_address_all: true' do
+      Given(:parameters) { { ip_destination_address_all: true } }
 
       Then { binary == ['00000000000010000000000000000000'].pack('B*') }
     end
@@ -82,34 +82,36 @@ describe Pio::Match::Wildcards do
       Then { wildcards == { dl_vlan: true } }
     end
 
-    context 'with nw_source: 010101' do
+    context 'with ip_source_address: 010101' do
       Given(:binary) { ['00000000000000000001010100000000'].pack('B*') }
 
-      Then { wildcards == { nw_source: 0b10101 } }
+      Then { wildcards == { ip_source_address: 0b10101 } }
     end
 
-    context 'with nw_source: 100000' do
+    context 'with ip_source_address: 100000' do
       Given(:binary) { ['00000000000000000010000000000000'].pack('B*') }
 
-      Then { wildcards == { nw_source_all: true } }
+      Then { wildcards == { ip_source_address_all: true } }
     end
 
-    context 'with nw_destination: 010101' do
+    context 'with ip_destination_address: 010101' do
       Given(:binary) { ['00000000000001010100000000000000'].pack('B*') }
 
-      Then { wildcards == { nw_destination: 0b10101 } }
+      Then { wildcards == { ip_destination_address: 0b10101 } }
     end
 
-    context 'with nw_destination: 100000' do
+    context 'with ip_destination_address: 100000' do
       Given(:binary) { ['00000000000010000000000000000000'].pack('B*') }
 
-      Then { wildcards == { nw_destination_all: true } }
+      Then { wildcards == { ip_destination_address_all: true } }
     end
 
-    context 'with in_port: true, nw_source: 010101, nw_tos: true' do
+    context 'with in_port: true, ip_source_address: 010101, nw_tos: true' do
       Given(:binary) { ['00000000001000000001010100000001'].pack('B*') }
 
-      Then { wildcards == { in_port: true, nw_source: 0b10101, nw_tos: true } }
+      Then do
+        wildcards == { in_port: true, ip_source_address: 0b10101, nw_tos: true }
+      end
     end
   end
 end

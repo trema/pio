@@ -1,4 +1,4 @@
-require 'pio/set_ip_addr'
+require 'pio/set_ip_address'
 
 describe Pio::SetIpDestinationAddr do
   describe '.new' do

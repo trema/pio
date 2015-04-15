@@ -218,13 +218,13 @@ describe Pio::PacketOut do
       Then { result.actions[0].mac_address == '11:22:33:44:55:66' }
     end
 
-    context 'with a SetIpSourceAddr action' do
+    context 'with a SetIpSourceAddress action' do
       When(:user_options) do
         {
           transaction_id: 0x16,
           buffer_id: 0xffffffff,
           in_port: 0xffff,
-          actions: Pio::SetIpSourceAddr.new('1.2.3.4'),
+          actions: Pio::SetIpSourceAddress.new('1.2.3.4'),
           raw_data: data_dump
         }
       end
@@ -232,7 +232,7 @@ describe Pio::PacketOut do
       Then { result.message_length == 0x58 }
       Then { result.actions_len == 0x8 }
       Then { result.actions.length == 1 }
-      Then { result.actions[0].is_a? Pio::SetIpSourceAddr }
+      Then { result.actions[0].is_a? Pio::SetIpSourceAddress }
       Then { result.actions[0].ip_address == '1.2.3.4' }
     end
 

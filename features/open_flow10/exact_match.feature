@@ -12,8 +12,8 @@ Feature: Exact Match
       | ether_type             |              2054 |
       | nw_tos                 |                 0 |
       | nw_proto               |                 1 |
-      | nw_source              |     192.168.2.254 |
-      | nw_destination         |       192.168.2.5 |
+      | ip_source_address      |     192.168.2.254 |
+      | ip_destination_address |       192.168.2.5 |
       | tp_source              |                 0 |
       | tp_destination         |                 0 |
 
@@ -30,7 +30,7 @@ Feature: Exact Match
       | ether_type             |              2048 |
       | nw_tos                 |                 0 |
       | nw_proto               |               255 |
-      | nw_source              |      192.168.0.40 |
-      | nw_destination         |      192.168.1.40 |
+      | ip_source_address      |      192.168.0.40 |
+      | ip_destination_address |      192.168.1.40 |
       | tp_source              |             31256 |
       | tp_destination         |             22635 |
