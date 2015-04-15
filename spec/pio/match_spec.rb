@@ -29,29 +29,29 @@ describe Pio::Match do
         match.wildcards.keys == [
           :dl_vlan,
           :ether_source_addr,
-          :ether_dst_addr,
+          :ether_destination_addr,
           :ether_type,
           :nw_proto,
           :tp_source,
-          :tp_dst,
+          :tp_destination,
           :nw_source_all,
-          :nw_dst_all,
+          :nw_destination_all,
           :dl_vlan_pcp,
           :nw_tos
         ]
       end
       Then { match.in_port == 1 }
       Then { match.ether_source_addr == '00:00:00:00:00:00' }
-      Then { match.ether_dst_addr == '00:00:00:00:00:00' }
+      Then { match.ether_destination_addr == '00:00:00:00:00:00' }
       Then { match.dl_vlan == 0 }
       Then { match.dl_vlan_pcp == 0 }
       Then { match.ether_type == 0 }
       Then { match.nw_tos == 0 }
       Then { match.nw_proto == 0 }
       Then { match.nw_source == '0.0.0.0' }
-      Then { match.nw_dst == '0.0.0.0' }
+      Then { match.nw_destination == '0.0.0.0' }
       Then { match.tp_source == 0 }
-      Then { match.tp_dst == 0 }
+      Then { match.tp_destination == 0 }
     end
 
     context 'with a Match binary generated with Pio::Match.new' do
@@ -62,13 +62,13 @@ describe Pio::Match do
           :in_port,
           :dl_vlan,
           :ether_source_addr,
-          :ether_dst_addr,
+          :ether_destination_addr,
           :ether_type,
           :nw_proto,
           :tp_source,
-          :tp_dst,
+          :tp_destination,
           :nw_source,
-          :nw_dst_all,
+          :nw_destination_all,
           :dl_vlan_pcp,
           :nw_tos
         ]
@@ -76,7 +76,7 @@ describe Pio::Match do
       And { match.wildcards[:nw_source] = 12 }
       Then { match.in_port == 0 }
       Then { match.ether_source_addr == '00:00:00:00:00:00' }
-      Then { match.ether_dst_addr == '00:00:00:00:00:00' }
+      Then { match.ether_destination_addr == '00:00:00:00:00:00' }
       Then { match.dl_vlan == 0 }
       Then { match.dl_vlan_pcp == 0 }
       Then { match.ether_type == 0 }
@@ -84,9 +84,9 @@ describe Pio::Match do
       Then { match.nw_proto == 0 }
       Then { match.nw_source == '192.168.1.0' }
       Then { match.nw_source.prefixlen == 24 }
-      Then { match.nw_dst == '0.0.0.0' }
+      Then { match.nw_destination == '0.0.0.0' }
       Then { match.tp_source == 0 }
-      Then { match.tp_dst == 0 }
+      Then { match.tp_destination == 0 }
     end
   end
 
@@ -99,29 +99,29 @@ describe Pio::Match do
         match.wildcards.keys == [
           :dl_vlan,
           :ether_source_addr,
-          :ether_dst_addr,
+          :ether_destination_addr,
           :ether_type,
           :nw_proto,
           :tp_source,
-          :tp_dst,
+          :tp_destination,
           :nw_source_all,
-          :nw_dst_all,
+          :nw_destination_all,
           :dl_vlan_pcp,
           :nw_tos
         ]
       end
       Then { match.in_port == 1 }
       Then { match.ether_source_addr == '00:00:00:00:00:00' }
-      Then { match.ether_dst_addr == '00:00:00:00:00:00' }
+      Then { match.ether_destination_addr == '00:00:00:00:00:00' }
       Then { match.dl_vlan == 0 }
       Then { match.dl_vlan_pcp == 0 }
       Then { match.ether_type == 0 }
       Then { match.nw_tos == 0 }
       Then { match.nw_proto == 0 }
       Then { match.nw_source == '0.0.0.0' }
-      Then { match.nw_dst == '0.0.0.0' }
+      Then { match.nw_destination == '0.0.0.0' }
       Then { match.tp_source == 0 }
-      Then { match.tp_dst == 0 }
+      Then { match.tp_destination == 0 }
 
       describe '#==' do
         When(:result) { match == other }
@@ -140,13 +140,13 @@ describe Pio::Match do
           :in_port,
           :dl_vlan,
           :ether_source_addr,
-          :ether_dst_addr,
+          :ether_destination_addr,
           :ether_type,
           :nw_proto,
           :tp_source,
-          :tp_dst,
+          :tp_destination,
           :nw_source,
-          :nw_dst_all,
+          :nw_destination_all,
           :dl_vlan_pcp,
           :nw_tos
         ]
@@ -154,49 +154,49 @@ describe Pio::Match do
       Then { match.wildcards.fetch(:nw_source) == 8 }
       Then { match.in_port == 0 }
       Then { match.ether_source_addr == '00:00:00:00:00:00' }
-      Then { match.ether_dst_addr == '00:00:00:00:00:00' }
+      Then { match.ether_destination_addr == '00:00:00:00:00:00' }
       Then { match.dl_vlan == 0 }
       Then { match.dl_vlan_pcp == 0 }
       Then { match.ether_type == 0 }
       Then { match.nw_tos == 0 }
       Then { match.nw_proto == 0 }
       Then { match.nw_source == '192.168.1.0/24' }
-      Then { match.nw_dst == '0.0.0.0' }
+      Then { match.nw_destination == '0.0.0.0' }
       Then { match.tp_source == 0 }
-      Then { match.tp_dst == 0 }
+      Then { match.tp_destination == 0 }
     end
 
-    context "with nw_dst: '192.168.1.0/24'" do
-      Given(:options) { { nw_dst: '192.168.1.0/24' } }
+    context "with nw_destination: '192.168.1.0/24'" do
+      Given(:options) { { nw_destination: '192.168.1.0/24' } }
       Then do
         match.wildcards.keys == [
           :in_port,
           :dl_vlan,
           :ether_source_addr,
-          :ether_dst_addr,
+          :ether_destination_addr,
           :ether_type,
           :nw_proto,
           :tp_source,
-          :tp_dst,
+          :tp_destination,
           :nw_source_all,
-          :nw_dst,
+          :nw_destination,
           :dl_vlan_pcp,
           :nw_tos
         ]
       end
-      Then { match.wildcards.fetch(:nw_dst) == 8 }
+      Then { match.wildcards.fetch(:nw_destination) == 8 }
       Then { match.in_port == 0 }
       Then { match.ether_source_addr == '00:00:00:00:00:00' }
-      Then { match.ether_dst_addr == '00:00:00:00:00:00' }
+      Then { match.ether_destination_addr == '00:00:00:00:00:00' }
       Then { match.dl_vlan == 0 }
       Then { match.dl_vlan_pcp == 0 }
       Then { match.ether_type == 0 }
       Then { match.nw_tos == 0 }
       Then { match.nw_proto == 0 }
       Then { match.nw_source == '0.0.0.0' }
-      Then { match.nw_dst == '192.168.1.0/24' }
+      Then { match.nw_destination == '192.168.1.0/24' }
       Then { match.tp_source == 0 }
-      Then { match.tp_dst == 0 }
+      Then { match.tp_destination == 0 }
     end
   end
 end

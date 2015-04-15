@@ -41,29 +41,29 @@ describe Pio::FlowMod do
         flow_mod.match.wildcards.keys == [
           :dl_vlan,
           :ether_source_addr,
-          :ether_dst_addr,
+          :ether_destination_addr,
           :ether_type,
           :nw_proto,
           :tp_source,
-          :tp_dst,
+          :tp_destination,
           :nw_source_all,
-          :nw_dst_all,
+          :nw_destination_all,
           :dl_vlan_pcp,
           :nw_tos
         ]
       end
       Then { flow_mod.match.in_port == 1 }
       Then { flow_mod.match.ether_source_addr == '00:00:00:00:00:00' }
-      Then { flow_mod.match.ether_dst_addr == '00:00:00:00:00:00' }
+      Then { flow_mod.match.ether_destination_addr == '00:00:00:00:00:00' }
       Then { flow_mod.match.dl_vlan == 0 }
       Then { flow_mod.match.dl_vlan_pcp == 0 }
       Then { flow_mod.match.ether_type == 0 }
       Then { flow_mod.match.nw_tos == 0 }
       Then { flow_mod.match.nw_proto == 0 }
       Then { flow_mod.match.nw_source == '0.0.0.0' }
-      Then { flow_mod.match.nw_dst == '0.0.0.0' }
+      Then { flow_mod.match.nw_destination == '0.0.0.0' }
       Then { flow_mod.match.tp_source == 0 }
-      Then { flow_mod.match.tp_dst == 0 }
+      Then { flow_mod.match.tp_destination == 0 }
       Then { flow_mod.cookie == 1 }
       Then { flow_mod.command == :add }
       Then { flow_mod.idle_timeout == 0 }
@@ -106,29 +106,29 @@ describe Pio::FlowMod do
         flow_mod.match.wildcards.keys == [
           :dl_vlan,
           :ether_source_addr,
-          :ether_dst_addr,
+          :ether_destination_addr,
           :ether_type,
           :nw_proto,
           :tp_source,
-          :tp_dst,
+          :tp_destination,
           :nw_source_all,
-          :nw_dst_all,
+          :nw_destination_all,
           :dl_vlan_pcp,
           :nw_tos
         ]
       end
       Then { flow_mod.match.in_port == 1 }
       Then { flow_mod.match.ether_source_addr == '00:00:00:00:00:00' }
-      Then { flow_mod.match.ether_dst_addr == '00:00:00:00:00:00' }
+      Then { flow_mod.match.ether_destination_addr == '00:00:00:00:00:00' }
       Then { flow_mod.match.dl_vlan == 0 }
       Then { flow_mod.match.dl_vlan_pcp == 0 }
       Then { flow_mod.match.ether_type == 0 }
       Then { flow_mod.match.nw_tos == 0 }
       Then { flow_mod.match.nw_proto == 0 }
       Then { flow_mod.match.nw_source == '0.0.0.0' }
-      Then { flow_mod.match.nw_dst == '0.0.0.0' }
+      Then { flow_mod.match.nw_destination == '0.0.0.0' }
       Then { flow_mod.match.tp_source == 0 }
-      Then { flow_mod.match.tp_dst == 0 }
+      Then { flow_mod.match.tp_destination == 0 }
       Then { flow_mod.cookie == 1 }
       Then { flow_mod.command == :add }
       Then { flow_mod.idle_timeout == 0 }

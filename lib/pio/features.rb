@@ -31,12 +31,12 @@ module Pio
                      :set_vlan_pcp,
                      :strip_vlan,
                      :set_dl_source,
-                     :set_dl_dst,
+                     :set_dl_destination,
                      :set_nw_source,
-                     :set_nw_dst,
+                     :set_nw_destination,
                      :set_nw_tos,
                      :set_tp_source,
-                     :set_tp_dst,
+                     :set_tp_destination,
                      :enqueue]
 
         endian :big

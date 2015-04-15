@@ -34,14 +34,14 @@ describe Pio::Match::Wildcards do
       Then { binary == ['00000000000000000010000000000000'].pack('B*') }
     end
 
-    context 'with nw_dst: 010101' do
-      Given(:parameters) { { nw_dst: 0b10101 } }
+    context 'with nw_destination: 010101' do
+      Given(:parameters) { { nw_destination: 0b10101 } }
 
       Then { binary == ['00000000000001010100000000000000'].pack('B*') }
     end
 
-    context 'with nw_dst_all: true' do
-      Given(:parameters) { { nw_dst_all: true } }
+    context 'with nw_destination_all: true' do
+      Given(:parameters) { { nw_destination_all: true } }
 
       Then { binary == ['00000000000010000000000000000000'].pack('B*') }
     end
@@ -94,16 +94,16 @@ describe Pio::Match::Wildcards do
       Then { wildcards == { nw_source_all: true } }
     end
 
-    context 'with nw_dst: 010101' do
+    context 'with nw_destination: 010101' do
       Given(:binary) { ['00000000000001010100000000000000'].pack('B*') }
 
-      Then { wildcards == { nw_dst: 0b10101 } }
+      Then { wildcards == { nw_destination: 0b10101 } }
     end
 
-    context 'with nw_dst: 100000' do
+    context 'with nw_destination: 100000' do
       Given(:binary) { ['00000000000010000000000000000000'].pack('B*') }
 
-      Then { wildcards == { nw_dst_all: true } }
+      Then { wildcards == { nw_destination_all: true } }
     end
 
     context 'with in_port: true, nw_source: 010101, nw_tos: true' do
