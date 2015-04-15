@@ -43,7 +43,7 @@ describe Pio::FlowMod do
           :ether_source_address,
           :ether_destination_address,
           :ether_type,
-          :nw_proto,
+          :ip_protocol,
           :tp_source,
           :tp_destination,
           :ip_source_address_all,
@@ -59,7 +59,7 @@ describe Pio::FlowMod do
       Then { flow_mod.match.dl_vlan_pcp == 0 }
       Then { flow_mod.match.ether_type == 0 }
       Then { flow_mod.match.nw_tos == 0 }
-      Then { flow_mod.match.nw_proto == 0 }
+      Then { flow_mod.match.ip_protocol == 0 }
       Then { flow_mod.match.ip_source_address == '0.0.0.0' }
       Then { flow_mod.match.ip_destination_address == '0.0.0.0' }
       Then { flow_mod.match.tp_source == 0 }
@@ -108,7 +108,7 @@ describe Pio::FlowMod do
           :ether_source_address,
           :ether_destination_address,
           :ether_type,
-          :nw_proto,
+          :ip_protocol,
           :tp_source,
           :tp_destination,
           :ip_source_address_all,
@@ -124,7 +124,7 @@ describe Pio::FlowMod do
       Then { flow_mod.match.dl_vlan_pcp == 0 }
       Then { flow_mod.match.ether_type == 0 }
       Then { flow_mod.match.nw_tos == 0 }
-      Then { flow_mod.match.nw_proto == 0 }
+      Then { flow_mod.match.ip_protocol == 0 }
       Then { flow_mod.match.ip_source_address == '0.0.0.0' }
       Then { flow_mod.match.ip_destination_address == '0.0.0.0' }
       Then { flow_mod.match.tp_source == 0 }

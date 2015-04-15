@@ -11,7 +11,7 @@ Feature: Exact Match
       | dl_vlan_pcp               |                 0 |
       | ether_type                |              2054 |
       | nw_tos                    |                 0 |
-      | nw_proto                  |                 1 |
+      | ip_protocol               |                 1 |
       | ip_source_address         |     192.168.2.254 |
       | ip_destination_address    |       192.168.2.5 |
       | tp_source                 |                 0 |
@@ -29,7 +29,7 @@ Feature: Exact Match
       | dl_vlan_pcp               |                 0 |
       | ether_type                |              2048 |
       | nw_tos                    |                 0 |
-      | nw_proto                  |               255 |
+      | ip_protocol               |               255 |
       | ip_source_address         |      192.168.0.40 |
       | ip_destination_address    |      192.168.1.40 |
       | tp_source                 |             31256 |
