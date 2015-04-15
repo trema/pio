@@ -42,7 +42,7 @@ describe Pio::FlowMod do
           :dl_vlan,
           :eth_src_addr,
           :eth_dst_addr,
-          :dl_type,
+          :eth_type,
           :nw_proto,
           :tp_src,
           :tp_dst,
@@ -57,7 +57,7 @@ describe Pio::FlowMod do
       Then { flow_mod.match.eth_dst_addr == '00:00:00:00:00:00' }
       Then { flow_mod.match.dl_vlan == 0 }
       Then { flow_mod.match.dl_vlan_pcp == 0 }
-      Then { flow_mod.match.dl_type == 0 }
+      Then { flow_mod.match.eth_type == 0 }
       Then { flow_mod.match.nw_tos == 0 }
       Then { flow_mod.match.nw_proto == 0 }
       Then { flow_mod.match.nw_src == '0.0.0.0' }
@@ -107,7 +107,7 @@ describe Pio::FlowMod do
           :dl_vlan,
           :eth_src_addr,
           :eth_dst_addr,
-          :dl_type,
+          :eth_type,
           :nw_proto,
           :tp_src,
           :tp_dst,
@@ -122,7 +122,7 @@ describe Pio::FlowMod do
       Then { flow_mod.match.eth_dst_addr == '00:00:00:00:00:00' }
       Then { flow_mod.match.dl_vlan == 0 }
       Then { flow_mod.match.dl_vlan_pcp == 0 }
-      Then { flow_mod.match.dl_type == 0 }
+      Then { flow_mod.match.eth_type == 0 }
       Then { flow_mod.match.nw_tos == 0 }
       Then { flow_mod.match.nw_proto == 0 }
       Then { flow_mod.match.nw_src == '0.0.0.0' }

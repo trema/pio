@@ -9,7 +9,7 @@ Feature: Exact Match
       | eth_dst_addr | ff:ff:ff:ff:ff:ff |
       | dl_vlan      |             65535 |
       | dl_vlan_pcp  |                 0 |
-      | dl_type      |              2054 |
+      | eth_type     |              2054 |
       | nw_tos       |                 0 |
       | nw_proto     |                 1 |
       | nw_src       |     192.168.2.254 |
@@ -27,7 +27,7 @@ Feature: Exact Match
       | eth_dst_addr | 80:00:00:00:00:01 |
       | dl_vlan      |             65535 |
       | dl_vlan_pcp  |                 0 |
-      | dl_type      |              2048 |
+      | eth_type     |              2048 |
       | nw_tos       |                 0 |
       | nw_proto     |               255 |
       | nw_src       |      192.168.0.40 |

@@ -14,7 +14,7 @@ module Pio
         dl_vlan: 1 << 1,
         eth_src_addr: 1 << 2,
         eth_dst_addr: 1 << 3,
-        dl_type: 1 << 4,
+        eth_type: 1 << 4,
         nw_proto: 1 << 5,
         tp_src: 1 << 6,
         tp_dst: 1 << 7,
@@ -111,7 +111,7 @@ module Pio
       uint8 :dl_vlan_pcp
       uint8 :padding1
       hide :padding1
-      uint16 :dl_type
+      uint16 :eth_type
       uint8 :nw_tos
       uint8 :nw_proto
       uint16 :padding2

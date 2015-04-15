@@ -30,7 +30,7 @@ describe Pio::Match do
           :dl_vlan,
           :eth_src_addr,
           :eth_dst_addr,
-          :dl_type,
+          :eth_type,
           :nw_proto,
           :tp_src,
           :tp_dst,
@@ -45,7 +45,7 @@ describe Pio::Match do
       Then { match.eth_dst_addr == '00:00:00:00:00:00' }
       Then { match.dl_vlan == 0 }
       Then { match.dl_vlan_pcp == 0 }
-      Then { match.dl_type == 0 }
+      Then { match.eth_type == 0 }
       Then { match.nw_tos == 0 }
       Then { match.nw_proto == 0 }
       Then { match.nw_src == '0.0.0.0' }
@@ -63,7 +63,7 @@ describe Pio::Match do
           :dl_vlan,
           :eth_src_addr,
           :eth_dst_addr,
-          :dl_type,
+          :eth_type,
           :nw_proto,
           :tp_src,
           :tp_dst,
@@ -79,7 +79,7 @@ describe Pio::Match do
       Then { match.eth_dst_addr == '00:00:00:00:00:00' }
       Then { match.dl_vlan == 0 }
       Then { match.dl_vlan_pcp == 0 }
-      Then { match.dl_type == 0 }
+      Then { match.eth_type == 0 }
       Then { match.nw_tos == 0 }
       Then { match.nw_proto == 0 }
       Then { match.nw_src == '192.168.1.0' }
@@ -100,7 +100,7 @@ describe Pio::Match do
           :dl_vlan,
           :eth_src_addr,
           :eth_dst_addr,
-          :dl_type,
+          :eth_type,
           :nw_proto,
           :tp_src,
           :tp_dst,
@@ -115,7 +115,7 @@ describe Pio::Match do
       Then { match.eth_dst_addr == '00:00:00:00:00:00' }
       Then { match.dl_vlan == 0 }
       Then { match.dl_vlan_pcp == 0 }
-      Then { match.dl_type == 0 }
+      Then { match.eth_type == 0 }
       Then { match.nw_tos == 0 }
       Then { match.nw_proto == 0 }
       Then { match.nw_src == '0.0.0.0' }
@@ -141,7 +141,7 @@ describe Pio::Match do
           :dl_vlan,
           :eth_src_addr,
           :eth_dst_addr,
-          :dl_type,
+          :eth_type,
           :nw_proto,
           :tp_src,
           :tp_dst,
@@ -157,7 +157,7 @@ describe Pio::Match do
       Then { match.eth_dst_addr == '00:00:00:00:00:00' }
       Then { match.dl_vlan == 0 }
       Then { match.dl_vlan_pcp == 0 }
-      Then { match.dl_type == 0 }
+      Then { match.eth_type == 0 }
       Then { match.nw_tos == 0 }
       Then { match.nw_proto == 0 }
       Then { match.nw_src == '192.168.1.0/24' }
@@ -174,7 +174,7 @@ describe Pio::Match do
           :dl_vlan,
           :eth_src_addr,
           :eth_dst_addr,
-          :dl_type,
+          :eth_type,
           :nw_proto,
           :tp_src,
           :tp_dst,
@@ -190,7 +190,7 @@ describe Pio::Match do
       Then { match.eth_dst_addr == '00:00:00:00:00:00' }
       Then { match.dl_vlan == 0 }
       Then { match.dl_vlan_pcp == 0 }
-      Then { match.dl_type == 0 }
+      Then { match.eth_type == 0 }
       Then { match.nw_tos == 0 }
       Then { match.nw_proto == 0 }
       Then { match.nw_src == '0.0.0.0' }
