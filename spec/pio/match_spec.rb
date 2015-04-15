@@ -37,7 +37,7 @@ describe Pio::Match do
           :ip_source_address_all,
           :ip_destination_address_all,
           :dl_vlan_pcp,
-          :nw_tos
+          :ip_tos
         ]
       end
       Then { match.in_port == 1 }
@@ -46,7 +46,7 @@ describe Pio::Match do
       Then { match.dl_vlan == 0 }
       Then { match.dl_vlan_pcp == 0 }
       Then { match.ether_type == 0 }
-      Then { match.nw_tos == 0 }
+      Then { match.ip_tos == 0 }
       Then { match.ip_protocol == 0 }
       Then { match.ip_source_address == '0.0.0.0' }
       Then { match.ip_destination_address == '0.0.0.0' }
@@ -72,7 +72,7 @@ describe Pio::Match do
           :ip_source_address,
           :ip_destination_address_all,
           :dl_vlan_pcp,
-          :nw_tos
+          :ip_tos
         ]
       end
       And { match.wildcards[:ip_source_address] = 12 }
@@ -82,7 +82,7 @@ describe Pio::Match do
       Then { match.dl_vlan == 0 }
       Then { match.dl_vlan_pcp == 0 }
       Then { match.ether_type == 0 }
-      Then { match.nw_tos == 0 }
+      Then { match.ip_tos == 0 }
       Then { match.ip_protocol == 0 }
       Then { match.ip_source_address == '192.168.1.0' }
       Then { match.ip_source_address.prefixlen == 24 }
@@ -109,7 +109,7 @@ describe Pio::Match do
           :ip_source_address_all,
           :ip_destination_address_all,
           :dl_vlan_pcp,
-          :nw_tos
+          :ip_tos
         ]
       end
       Then { match.in_port == 1 }
@@ -118,7 +118,7 @@ describe Pio::Match do
       Then { match.dl_vlan == 0 }
       Then { match.dl_vlan_pcp == 0 }
       Then { match.ether_type == 0 }
-      Then { match.nw_tos == 0 }
+      Then { match.ip_tos == 0 }
       Then { match.ip_protocol == 0 }
       Then { match.ip_source_address == '0.0.0.0' }
       Then { match.ip_destination_address == '0.0.0.0' }
@@ -150,7 +150,7 @@ describe Pio::Match do
           :ip_source_address,
           :ip_destination_address_all,
           :dl_vlan_pcp,
-          :nw_tos
+          :ip_tos
         ]
       end
       Then { match.wildcards.fetch(:ip_source_address) == 8 }
@@ -160,7 +160,7 @@ describe Pio::Match do
       Then { match.dl_vlan == 0 }
       Then { match.dl_vlan_pcp == 0 }
       Then { match.ether_type == 0 }
-      Then { match.nw_tos == 0 }
+      Then { match.ip_tos == 0 }
       Then { match.ip_protocol == 0 }
       Then { match.ip_source_address == '192.168.1.0/24' }
       Then { match.ip_destination_address == '0.0.0.0' }
@@ -183,7 +183,7 @@ describe Pio::Match do
           :ip_source_address_all,
           :ip_destination_address,
           :dl_vlan_pcp,
-          :nw_tos
+          :ip_tos
         ]
       end
       Then { match.wildcards.fetch(:ip_destination_address) == 8 }
@@ -193,7 +193,7 @@ describe Pio::Match do
       Then { match.dl_vlan == 0 }
       Then { match.dl_vlan_pcp == 0 }
       Then { match.ether_type == 0 }
-      Then { match.nw_tos == 0 }
+      Then { match.ip_tos == 0 }
       Then { match.ip_protocol == 0 }
       Then { match.ip_source_address == '0.0.0.0' }
       Then { match.ip_destination_address == '192.168.1.0/24' }

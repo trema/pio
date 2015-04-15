@@ -33,7 +33,7 @@ module Pio
         ip_destination_address4: 1 << 18,
         ip_destination_address_all: 1 << 19,
         dl_vlan_pcp: 1 << 20,
-        nw_tos: 1 << 21
+        ip_tos: 1 << 21
       }
       NW_FLAGS = [:ip_source_address, :ip_destination_address]
       FLAGS = BITS.keys.select { |each| !(/^ip_(source|destination)/=~ each) }
@@ -113,7 +113,7 @@ module Pio
       uint8 :padding1
       hide :padding1
       uint16 :ether_type
-      uint8 :nw_tos
+      uint8 :ip_tos
       uint8 :ip_protocol
       uint16 :padding2
       hide :padding2
