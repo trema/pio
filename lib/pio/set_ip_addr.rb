@@ -43,7 +43,7 @@ module Pio
   end
 
   # An action to modify the IPv4 source address of a packet.
-  class SetIpDstAddr < SetIpAddr
+  class SetIpDestinationAddr < SetIpAddr
     def_format 7
   end
 end

@@ -200,13 +200,13 @@ describe Pio::PacketOut do
       Then { result.actions[0].mac_address == '11:22:33:44:55:66' }
     end
 
-    context 'with a SetEtherDstAddr action' do
+    context 'with a SetEtherDestinationAddr action' do
       When(:user_options) do
         {
           transaction_id: 0x16,
           buffer_id: 0xffffffff,
           in_port: 0xffff,
-          actions: Pio::SetEtherDstAddr.new('11:22:33:44:55:66'),
+          actions: Pio::SetEtherDestinationAddr.new('11:22:33:44:55:66'),
           raw_data: data_dump
         }
       end
@@ -214,7 +214,7 @@ describe Pio::PacketOut do
       Then { result.message_length == 0x60 }
       Then { result.actions_len == 0x10 }
       Then { result.actions.length == 1 }
-      Then { result.actions[0].is_a? Pio::SetEtherDstAddr }
+      Then { result.actions[0].is_a? Pio::SetEtherDestinationAddr }
       Then { result.actions[0].mac_address == '11:22:33:44:55:66' }
     end
 
@@ -236,13 +236,13 @@ describe Pio::PacketOut do
       Then { result.actions[0].ip_address == '1.2.3.4' }
     end
 
-    context 'with a SetIpDstAddr action' do
+    context 'with a SetIpDestinationAddr action' do
       When(:user_options) do
         {
           transaction_id: 0x16,
           buffer_id: 0xffffffff,
           in_port: 0xffff,
-          actions: Pio::SetIpDstAddr.new('1.2.3.4'),
+          actions: Pio::SetIpDestinationAddr.new('1.2.3.4'),
           raw_data: data_dump
         }
       end
@@ -250,7 +250,7 @@ describe Pio::PacketOut do
       Then { result.message_length == 0x58 }
       Then { result.actions_len == 0x8 }
       Then { result.actions.length == 1 }
-      Then { result.actions[0].is_a? Pio::SetIpDstAddr }
+      Then { result.actions[0].is_a? Pio::SetIpDestinationAddr }
       Then { result.actions[0].ip_address == '1.2.3.4' }
     end
 
@@ -290,13 +290,13 @@ describe Pio::PacketOut do
       Then { result.actions[0].port_number == 100 }
     end
 
-    context 'with a SetTransportDstPort action' do
+    context 'with a SetTransportDestinationPort action' do
       When(:user_options) do
         {
           transaction_id: 0x16,
           buffer_id: 0xffffffff,
           in_port: 0xffff,
-          actions: Pio::SetTransportDstPort.new(100),
+          actions: Pio::SetTransportDestinationPort.new(100),
           raw_data: data_dump
         }
       end
@@ -304,7 +304,7 @@ describe Pio::PacketOut do
       Then { result.message_length == 0x58 }
       Then { result.actions_len == 0x8 }
       Then { result.actions.length == 1 }
-      Then { result.actions[0].is_a? Pio::SetTransportDstPort }
+      Then { result.actions[0].is_a? Pio::SetTransportDestinationPort }
       Then { result.actions[0].port_number == 100 }
     end
 

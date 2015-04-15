@@ -12,31 +12,31 @@ module Pio
         options = {
           in_port: packet_in.in_port,
           ether_source_addr: packet_in.source_mac,
-          ether_dst_addr: packet_in.destination_mac,
+          ether_destination_addr: packet_in.destination_mac,
           dl_vlan: data.vlan_vid,
           dl_vlan_pcp: data.vlan_pcp,
           ether_type: data.ether_type,
           nw_tos: data.ip_type_of_service,
           nw_proto: data.ip_protocol,
           nw_source: data.ip_source_address,
-          nw_dst: data.ip_destination_address,
+          nw_destination: data.ip_destination_address,
           tp_source: data.transport_source_port,
-          tp_dst: data.transport_destination_port
+          tp_destination: data.transport_destination_port
         }
       when Arp::Request
         options = {
           in_port: packet_in.in_port,
           ether_source_addr: packet_in.source_mac,
-          ether_dst_addr: packet_in.destination_mac,
+          ether_destination_addr: packet_in.destination_mac,
           dl_vlan: data.vlan_vid,
           dl_vlan_pcp: data.vlan_pcp,
           ether_type: data.ether_type,
           nw_tos: 0,
           nw_proto: data.operation,
           nw_source: data.sender_protocol_address,
-          nw_dst: data.target_protocol_address,
+          nw_destination: data.target_protocol_address,
           tp_source: 0,
-          tp_dst: 0
+          tp_destination: 0
         }
       end
       @match = Pio::Match.new(options)
