@@ -13,7 +13,7 @@ Feature: Flow Mod
       | match.in_port                          |                                                     1 |
       | match.ether_source_address             |                                     00:00:00:00:00:0a |
       | match.ether_destination_address        |                                     00:00:00:00:00:14 |
-      | match.dl_vlan                          |                                                     0 |
+      | match.vlan_vid                         |                                                     0 |
       | match.dl_vlan_pcp                      |                                                     0 |
       | match.ether_type                       |                                                  2048 |
       | match.ip_tos                           |                                                     0 |
@@ -50,7 +50,7 @@ Feature: Flow Mod
       | match.in_port                          |                                                     1 |
       | match.ether_source_address             |                                     00:00:00:00:00:0a |
       | match.ether_destination_address        |                                     00:00:00:00:00:14 |
-      | match.dl_vlan                          |                                                     0 |
+      | match.vlan_vid                         |                                                     0 |
       | match.dl_vlan_pcp                      |                                                     0 |
       | match.ether_type                       |                                                  2048 |
       | match.ip_tos                           |                                                     0 |
@@ -87,7 +87,7 @@ Feature: Flow Mod
       | match.in_port                          |                                                     1 |
       | match.ether_source_address             |                                     00:00:00:00:00:0a |
       | match.ether_destination_address        |                                     00:00:00:00:00:14 |
-      | match.dl_vlan                          |                                                     0 |
+      | match.vlan_vid                         |                                                     0 |
       | match.dl_vlan_pcp                      |                                                     0 |
       | match.ether_type                       |                                                  2048 |
       | match.ip_tos                           |                                                     0 |
@@ -124,7 +124,7 @@ Feature: Flow Mod
       | match.in_port                          |                                                     1 |
       | match.ether_source_address             |                                     00:00:00:00:00:0a |
       | match.ether_destination_address        |                                     00:00:00:00:00:00 |
-      | match.dl_vlan                          |                                                     0 |
+      | match.vlan_vid                         |                                                     0 |
       | match.dl_vlan_pcp                      |                                                     0 |
       | match.ether_type                       |                                                  2048 |
       | match.ip_tos                           |                                                     0 |
@@ -159,7 +159,7 @@ Feature: Flow Mod
       | match.in_port                          |                                                     1 |
       | match.ether_source_address             |                                     00:00:00:00:00:0a |
       | match.ether_destination_address        |                                     00:00:00:00:00:14 |
-      | match.dl_vlan                          |                                                     0 |
+      | match.vlan_vid                         |                                                     0 |
       | match.dl_vlan_pcp                      |                                                     0 |
       | match.ether_type                       |                                                  2048 |
       | match.ip_tos                           |                                                     0 |

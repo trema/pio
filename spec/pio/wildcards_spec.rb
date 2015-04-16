@@ -76,10 +76,10 @@ describe Pio::Match::Wildcards do
       Then { wildcards == { in_port: true } }
     end
 
-    context 'with dl_vlan: true' do
+    context 'with vlan_vid: true' do
       Given(:binary) { ['00000000000000000000000000000010'].pack('B*') }
 
-      Then { wildcards == { dl_vlan: true } }
+      Then { wildcards == { vlan_vid: true } }
     end
 
     context 'with ip_source_address: 010101' do
