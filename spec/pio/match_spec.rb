@@ -32,7 +32,7 @@ describe Pio::Match do
           :ether_destination_address,
           :ether_type,
           :ip_protocol,
-          :tp_source,
+          :transport_source_port,
           :tp_destination,
           :ip_source_address_all,
           :ip_destination_address_all,
@@ -50,7 +50,7 @@ describe Pio::Match do
       Then { match.ip_protocol == 0 }
       Then { match.ip_source_address == '0.0.0.0' }
       Then { match.ip_destination_address == '0.0.0.0' }
-      Then { match.tp_source == 0 }
+      Then { match.transport_source_port == 0 }
       Then { match.tp_destination == 0 }
     end
 
@@ -67,7 +67,7 @@ describe Pio::Match do
           :ether_destination_address,
           :ether_type,
           :ip_protocol,
-          :tp_source,
+          :transport_source_port,
           :tp_destination,
           :ip_source_address,
           :ip_destination_address_all,
@@ -87,7 +87,7 @@ describe Pio::Match do
       Then { match.ip_source_address == '192.168.1.0' }
       Then { match.ip_source_address.prefixlen == 24 }
       Then { match.ip_destination_address == '0.0.0.0' }
-      Then { match.tp_source == 0 }
+      Then { match.transport_source_port == 0 }
       Then { match.tp_destination == 0 }
     end
   end
@@ -104,7 +104,7 @@ describe Pio::Match do
           :ether_destination_address,
           :ether_type,
           :ip_protocol,
-          :tp_source,
+          :transport_source_port,
           :tp_destination,
           :ip_source_address_all,
           :ip_destination_address_all,
@@ -122,7 +122,7 @@ describe Pio::Match do
       Then { match.ip_protocol == 0 }
       Then { match.ip_source_address == '0.0.0.0' }
       Then { match.ip_destination_address == '0.0.0.0' }
-      Then { match.tp_source == 0 }
+      Then { match.transport_source_port == 0 }
       Then { match.tp_destination == 0 }
 
       describe '#==' do
@@ -145,7 +145,7 @@ describe Pio::Match do
           :ether_destination_address,
           :ether_type,
           :ip_protocol,
-          :tp_source,
+          :transport_source_port,
           :tp_destination,
           :ip_source_address,
           :ip_destination_address_all,
@@ -164,7 +164,7 @@ describe Pio::Match do
       Then { match.ip_protocol == 0 }
       Then { match.ip_source_address == '192.168.1.0/24' }
       Then { match.ip_destination_address == '0.0.0.0' }
-      Then { match.tp_source == 0 }
+      Then { match.transport_source_port == 0 }
       Then { match.tp_destination == 0 }
     end
 
@@ -178,7 +178,7 @@ describe Pio::Match do
           :ether_destination_address,
           :ether_type,
           :ip_protocol,
-          :tp_source,
+          :transport_source_port,
           :tp_destination,
           :ip_source_address_all,
           :ip_destination_address,
@@ -197,7 +197,7 @@ describe Pio::Match do
       Then { match.ip_protocol == 0 }
       Then { match.ip_source_address == '0.0.0.0' }
       Then { match.ip_destination_address == '192.168.1.0/24' }
-      Then { match.tp_source == 0 }
+      Then { match.transport_source_port == 0 }
       Then { match.tp_destination == 0 }
     end
   end

@@ -14,7 +14,7 @@ Feature: Exact Match
       | ip_protocol               |                 1 |
       | ip_source_address         |     192.168.2.254 |
       | ip_destination_address    |       192.168.2.5 |
-      | tp_source                 |                 0 |
+      | transport_source_port     |                 0 |
       | tp_destination            |                 0 |
 
   Scenario: parse #2
@@ -32,5 +32,5 @@ Feature: Exact Match
       | ip_protocol               |               255 |
       | ip_source_address         |      192.168.0.40 |
       | ip_destination_address    |      192.168.1.40 |
-      | tp_source                 |             31256 |
+      | transport_source_port     |             31256 |
       | tp_destination            |             22635 |

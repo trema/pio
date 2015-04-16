@@ -16,7 +16,7 @@ module Pio
         ether_destination_address: 1 << 3,
         ether_type: 1 << 4,
         ip_protocol: 1 << 5,
-        tp_source: 1 << 6,
+        transport_source_port: 1 << 6,
         tp_destination: 1 << 7,
         ip_source_address: 0,
         ip_source_address0: 1 << 8,
@@ -121,7 +121,7 @@ module Pio
                        bitcount: -> { wildcards.ip_source_address }
       match_ip_address :ip_destination_address,
                        bitcount: -> { wildcards.ip_destination_address }
-      uint16 :tp_source
+      uint16 :transport_source_port
       uint16 :tp_destination
     end
 
