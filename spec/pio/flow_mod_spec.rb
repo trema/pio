@@ -48,7 +48,7 @@ describe Pio::FlowMod do
           :transport_destination_port,
           :ip_source_address_all,
           :ip_destination_address_all,
-          :dl_vlan_pcp,
+          :vlan_priority,
           :ip_tos
         ]
       end
@@ -56,7 +56,7 @@ describe Pio::FlowMod do
       Then { flow_mod.match.ether_source_address == '00:00:00:00:00:00' }
       Then { flow_mod.match.ether_destination_address == '00:00:00:00:00:00' }
       Then { flow_mod.match.vlan_vid == 0 }
-      Then { flow_mod.match.dl_vlan_pcp == 0 }
+      Then { flow_mod.match.vlan_priority == 0 }
       Then { flow_mod.match.ether_type == 0 }
       Then { flow_mod.match.ip_tos == 0 }
       Then { flow_mod.match.ip_protocol == 0 }
@@ -113,7 +113,7 @@ describe Pio::FlowMod do
           :transport_destination_port,
           :ip_source_address_all,
           :ip_destination_address_all,
-          :dl_vlan_pcp,
+          :vlan_priority,
           :ip_tos
         ]
       end
@@ -121,7 +121,7 @@ describe Pio::FlowMod do
       Then { flow_mod.match.ether_source_address == '00:00:00:00:00:00' }
       Then { flow_mod.match.ether_destination_address == '00:00:00:00:00:00' }
       Then { flow_mod.match.vlan_vid == 0 }
-      Then { flow_mod.match.dl_vlan_pcp == 0 }
+      Then { flow_mod.match.vlan_priority == 0 }
       Then { flow_mod.match.ether_type == 0 }
       Then { flow_mod.match.ip_tos == 0 }
       Then { flow_mod.match.ip_protocol == 0 }

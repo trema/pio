@@ -36,7 +36,7 @@ describe Pio::Match do
           :transport_destination_port,
           :ip_source_address_all,
           :ip_destination_address_all,
-          :dl_vlan_pcp,
+          :vlan_priority,
           :ip_tos
         ]
       end
@@ -44,7 +44,7 @@ describe Pio::Match do
       Then { match.ether_source_address == '00:00:00:00:00:00' }
       Then { match.ether_destination_address == '00:00:00:00:00:00' }
       Then { match.vlan_vid == 0 }
-      Then { match.dl_vlan_pcp == 0 }
+      Then { match.vlan_priority == 0 }
       Then { match.ether_type == 0 }
       Then { match.ip_tos == 0 }
       Then { match.ip_protocol == 0 }
@@ -71,7 +71,7 @@ describe Pio::Match do
           :transport_destination_port,
           :ip_source_address,
           :ip_destination_address_all,
-          :dl_vlan_pcp,
+          :vlan_priority,
           :ip_tos
         ]
       end
@@ -80,7 +80,7 @@ describe Pio::Match do
       Then { match.ether_source_address == '00:00:00:00:00:00' }
       Then { match.ether_destination_address == '00:00:00:00:00:00' }
       Then { match.vlan_vid == 0 }
-      Then { match.dl_vlan_pcp == 0 }
+      Then { match.vlan_priority == 0 }
       Then { match.ether_type == 0 }
       Then { match.ip_tos == 0 }
       Then { match.ip_protocol == 0 }
@@ -108,7 +108,7 @@ describe Pio::Match do
           :transport_destination_port,
           :ip_source_address_all,
           :ip_destination_address_all,
-          :dl_vlan_pcp,
+          :vlan_priority,
           :ip_tos
         ]
       end
@@ -116,7 +116,7 @@ describe Pio::Match do
       Then { match.ether_source_address == '00:00:00:00:00:00' }
       Then { match.ether_destination_address == '00:00:00:00:00:00' }
       Then { match.vlan_vid == 0 }
-      Then { match.dl_vlan_pcp == 0 }
+      Then { match.vlan_priority == 0 }
       Then { match.ether_type == 0 }
       Then { match.ip_tos == 0 }
       Then { match.ip_protocol == 0 }
@@ -149,7 +149,7 @@ describe Pio::Match do
           :transport_destination_port,
           :ip_source_address,
           :ip_destination_address_all,
-          :dl_vlan_pcp,
+          :vlan_priority,
           :ip_tos
         ]
       end
@@ -158,7 +158,7 @@ describe Pio::Match do
       Then { match.ether_source_address == '00:00:00:00:00:00' }
       Then { match.ether_destination_address == '00:00:00:00:00:00' }
       Then { match.vlan_vid == 0 }
-      Then { match.dl_vlan_pcp == 0 }
+      Then { match.vlan_priority == 0 }
       Then { match.ether_type == 0 }
       Then { match.ip_tos == 0 }
       Then { match.ip_protocol == 0 }
@@ -182,7 +182,7 @@ describe Pio::Match do
           :transport_destination_port,
           :ip_source_address_all,
           :ip_destination_address,
-          :dl_vlan_pcp,
+          :vlan_priority,
           :ip_tos
         ]
       end
@@ -191,7 +191,7 @@ describe Pio::Match do
       Then { match.ether_source_address == '00:00:00:00:00:00' }
       Then { match.ether_destination_address == '00:00:00:00:00:00' }
       Then { match.vlan_vid == 0 }
-      Then { match.dl_vlan_pcp == 0 }
+      Then { match.vlan_priority == 0 }
       Then { match.ether_type == 0 }
       Then { match.ip_tos == 0 }
       Then { match.ip_protocol == 0 }
