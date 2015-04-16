@@ -39,7 +39,7 @@ describe Pio::FlowMod do
       Then { !flow_mod.body.empty? }
       Then do
         flow_mod.match.wildcards.keys == [
-          :dl_vlan,
+          :vlan_vid,
           :ether_source_address,
           :ether_destination_address,
           :ether_type,
@@ -55,7 +55,7 @@ describe Pio::FlowMod do
       Then { flow_mod.match.in_port == 1 }
       Then { flow_mod.match.ether_source_address == '00:00:00:00:00:00' }
       Then { flow_mod.match.ether_destination_address == '00:00:00:00:00:00' }
-      Then { flow_mod.match.dl_vlan == 0 }
+      Then { flow_mod.match.vlan_vid == 0 }
       Then { flow_mod.match.dl_vlan_pcp == 0 }
       Then { flow_mod.match.ether_type == 0 }
       Then { flow_mod.match.ip_tos == 0 }
@@ -104,7 +104,7 @@ describe Pio::FlowMod do
       Then { !flow_mod.body.empty? }
       Then do
         flow_mod.match.wildcards.keys == [
-          :dl_vlan,
+          :vlan_vid,
           :ether_source_address,
           :ether_destination_address,
           :ether_type,
@@ -120,7 +120,7 @@ describe Pio::FlowMod do
       Then { flow_mod.match.in_port == 1 }
       Then { flow_mod.match.ether_source_address == '00:00:00:00:00:00' }
       Then { flow_mod.match.ether_destination_address == '00:00:00:00:00:00' }
-      Then { flow_mod.match.dl_vlan == 0 }
+      Then { flow_mod.match.vlan_vid == 0 }
       Then { flow_mod.match.dl_vlan_pcp == 0 }
       Then { flow_mod.match.ether_type == 0 }
       Then { flow_mod.match.ip_tos == 0 }

@@ -27,7 +27,7 @@ describe Pio::Match do
 
       Then do
         match.wildcards.keys == [
-          :dl_vlan,
+          :vlan_vid,
           :ether_source_address,
           :ether_destination_address,
           :ether_type,
@@ -43,7 +43,7 @@ describe Pio::Match do
       Then { match.in_port == 1 }
       Then { match.ether_source_address == '00:00:00:00:00:00' }
       Then { match.ether_destination_address == '00:00:00:00:00:00' }
-      Then { match.dl_vlan == 0 }
+      Then { match.vlan_vid == 0 }
       Then { match.dl_vlan_pcp == 0 }
       Then { match.ether_type == 0 }
       Then { match.ip_tos == 0 }
@@ -62,7 +62,7 @@ describe Pio::Match do
       Then do
         match.wildcards.keys == [
           :in_port,
-          :dl_vlan,
+          :vlan_vid,
           :ether_source_address,
           :ether_destination_address,
           :ether_type,
@@ -79,7 +79,7 @@ describe Pio::Match do
       Then { match.in_port == 0 }
       Then { match.ether_source_address == '00:00:00:00:00:00' }
       Then { match.ether_destination_address == '00:00:00:00:00:00' }
-      Then { match.dl_vlan == 0 }
+      Then { match.vlan_vid == 0 }
       Then { match.dl_vlan_pcp == 0 }
       Then { match.ether_type == 0 }
       Then { match.ip_tos == 0 }
@@ -99,7 +99,7 @@ describe Pio::Match do
       Given(:options) { { in_port: 1 } }
       Then do
         match.wildcards.keys == [
-          :dl_vlan,
+          :vlan_vid,
           :ether_source_address,
           :ether_destination_address,
           :ether_type,
@@ -115,7 +115,7 @@ describe Pio::Match do
       Then { match.in_port == 1 }
       Then { match.ether_source_address == '00:00:00:00:00:00' }
       Then { match.ether_destination_address == '00:00:00:00:00:00' }
-      Then { match.dl_vlan == 0 }
+      Then { match.vlan_vid == 0 }
       Then { match.dl_vlan_pcp == 0 }
       Then { match.ether_type == 0 }
       Then { match.ip_tos == 0 }
@@ -140,7 +140,7 @@ describe Pio::Match do
       Then do
         match.wildcards.keys == [
           :in_port,
-          :dl_vlan,
+          :vlan_vid,
           :ether_source_address,
           :ether_destination_address,
           :ether_type,
@@ -157,7 +157,7 @@ describe Pio::Match do
       Then { match.in_port == 0 }
       Then { match.ether_source_address == '00:00:00:00:00:00' }
       Then { match.ether_destination_address == '00:00:00:00:00:00' }
-      Then { match.dl_vlan == 0 }
+      Then { match.vlan_vid == 0 }
       Then { match.dl_vlan_pcp == 0 }
       Then { match.ether_type == 0 }
       Then { match.ip_tos == 0 }
@@ -173,7 +173,7 @@ describe Pio::Match do
       Then do
         match.wildcards.keys == [
           :in_port,
-          :dl_vlan,
+          :vlan_vid,
           :ether_source_address,
           :ether_destination_address,
           :ether_type,
@@ -190,7 +190,7 @@ describe Pio::Match do
       Then { match.in_port == 0 }
       Then { match.ether_source_address == '00:00:00:00:00:00' }
       Then { match.ether_destination_address == '00:00:00:00:00:00' }
-      Then { match.dl_vlan == 0 }
+      Then { match.vlan_vid == 0 }
       Then { match.dl_vlan_pcp == 0 }
       Then { match.ether_type == 0 }
       Then { match.ip_tos == 0 }
