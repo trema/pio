@@ -32,7 +32,7 @@ module Pio
         ip_destination_address3: 1 << 17,
         ip_destination_address4: 1 << 18,
         ip_destination_address_all: 1 << 19,
-        dl_vlan_pcp: 1 << 20,
+        vlan_priority: 1 << 20,
         ip_tos: 1 << 21
       }
       NW_FLAGS = [:ip_source_address, :ip_destination_address]
@@ -109,7 +109,7 @@ module Pio
       mac_address :ether_source_address
       mac_address :ether_destination_address
       uint16 :vlan_vid
-      uint8 :dl_vlan_pcp
+      uint8 :vlan_priority
       uint8 :padding1
       hide :padding1
       uint16 :ether_type

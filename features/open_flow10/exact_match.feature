@@ -8,7 +8,7 @@ Feature: Exact Match
       | ether_source_address       | ac:5d:10:31:37:79 |
       | ether_destination_address  | ff:ff:ff:ff:ff:ff |
       | vlan_vid                   |             65535 |
-      | dl_vlan_pcp                |                 0 |
+      | vlan_priority              |                 0 |
       | ether_type                 |              2054 |
       | ip_tos                     |                 0 |
       | ip_protocol                |                 1 |
@@ -26,7 +26,7 @@ Feature: Exact Match
       | ether_source_address       | 00:00:00:00:00:01 |
       | ether_destination_address  | 80:00:00:00:00:01 |
       | vlan_vid                   |             65535 |
-      | dl_vlan_pcp                |                 0 |
+      | vlan_priority              |                 0 |
       | ether_type                 |              2048 |
       | ip_tos                     |                 0 |
       | ip_protocol                |               255 |
