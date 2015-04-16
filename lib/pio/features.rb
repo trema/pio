@@ -36,7 +36,7 @@ module Pio
                      :set_ip_destination_address,
                      :set_ip_tos,
                      :set_transport_source_port,
-                     :set_tp_destination,
+                     :set_transport_destination_port,
                      :enqueue]
 
         endian :big

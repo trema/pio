@@ -45,7 +45,7 @@ describe Pio::FlowMod do
           :ether_type,
           :ip_protocol,
           :transport_source_port,
-          :tp_destination,
+          :transport_destination_port,
           :ip_source_address_all,
           :ip_destination_address_all,
           :dl_vlan_pcp,
@@ -63,7 +63,7 @@ describe Pio::FlowMod do
       Then { flow_mod.match.ip_source_address == '0.0.0.0' }
       Then { flow_mod.match.ip_destination_address == '0.0.0.0' }
       Then { flow_mod.match.transport_source_port == 0 }
-      Then { flow_mod.match.tp_destination == 0 }
+      Then { flow_mod.match.transport_destination_port == 0 }
       Then { flow_mod.cookie == 1 }
       Then { flow_mod.command == :add }
       Then { flow_mod.idle_timeout == 0 }
@@ -110,7 +110,7 @@ describe Pio::FlowMod do
           :ether_type,
           :ip_protocol,
           :transport_source_port,
-          :tp_destination,
+          :transport_destination_port,
           :ip_source_address_all,
           :ip_destination_address_all,
           :dl_vlan_pcp,
@@ -128,7 +128,7 @@ describe Pio::FlowMod do
       Then { flow_mod.match.ip_source_address == '0.0.0.0' }
       Then { flow_mod.match.ip_destination_address == '0.0.0.0' }
       Then { flow_mod.match.transport_source_port == 0 }
-      Then { flow_mod.match.tp_destination == 0 }
+      Then { flow_mod.match.transport_destination_port == 0 }
       Then { flow_mod.cookie == 1 }
       Then { flow_mod.command == :add }
       Then { flow_mod.idle_timeout == 0 }
