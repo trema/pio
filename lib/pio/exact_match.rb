@@ -20,7 +20,7 @@ module Pio
           ip_protocol: data.ip_protocol,
           ip_source_address: data.ip_source_address,
           ip_destination_address: data.ip_destination_address,
-          tp_source: data.transport_source_port,
+          transport_source_port: data.transport_source_port,
           tp_destination: data.transport_destination_port
         }
       when Arp::Request
@@ -35,7 +35,7 @@ module Pio
           ip_protocol: data.operation,
           ip_source_address: data.sender_protocol_address,
           ip_destination_address: data.target_protocol_address,
-          tp_source: 0,
+          transport_source_port: 0,
           tp_destination: 0
         }
       end

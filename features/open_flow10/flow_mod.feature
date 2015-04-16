@@ -22,7 +22,7 @@ Feature: Flow Mod
       | match.ip_source_address.prefixlen      |                                                     8 |
       | match.ip_destination_address           |                                              20.0.0.0 |
       | match.ip_destination_address.prefixlen |                                                     8 |
-      | match.tp_source                        |                                                     8 |
+      | match.transport_source_port            |                                                     8 |
       | match.tp_destination                   |                                                     0 |
       | cookie                                 |                                                     0 |
       | command                                |                                                   add |
@@ -59,7 +59,7 @@ Feature: Flow Mod
       | match.ip_source_address.prefixlen      |                                                     8 |
       | match.ip_destination_address           |                                              20.0.0.0 |
       | match.ip_destination_address.prefixlen |                                                     8 |
-      | match.tp_source                        |                                                     8 |
+      | match.transport_source_port            |                                                     8 |
       | match.tp_destination                   |                                                     0 |
       | cookie                                 |                                                     0 |
       | command                                |                                                modify |
@@ -96,7 +96,7 @@ Feature: Flow Mod
       | match.ip_source_address.prefixlen      |                                                     8 |
       | match.ip_destination_address           |                                              20.0.0.0 |
       | match.ip_destination_address.prefixlen |                                                     8 |
-      | match.tp_source                        |                                                     8 |
+      | match.transport_source_port            |                                                     8 |
       | match.tp_destination                   |                                                     0 |
       | cookie                                 |                                                     0 |
       | command                                |                                         modify_strict |
@@ -133,7 +133,7 @@ Feature: Flow Mod
       | match.ip_source_address.prefixlen      |                                                     8 |
       | match.ip_destination_address           |                                              20.0.0.0 |
       | match.ip_destination_address.prefixlen |                                                     8 |
-      | match.tp_source                        |                                                     8 |
+      | match.transport_source_port            |                                                     8 |
       | match.tp_destination                   |                                                     0 |
       | cookie                                 |                                                     0 |
       | command                                |                                                delete |
@@ -168,7 +168,7 @@ Feature: Flow Mod
       | match.ip_source_address.prefixlen      |                                                     8 |
       | match.ip_destination_address           |                                              20.0.0.0 |
       | match.ip_destination_address.prefixlen |                                                     8 |
-      | match.tp_source                        |                                                     8 |
+      | match.transport_source_port            |                                                     8 |
       | match.tp_destination                   |                                                     0 |
       | cookie                                 |                                                     1 |
       | command                                |                                         delete_strict |
