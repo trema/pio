@@ -21,7 +21,7 @@ module Pio
           ip_source_address: data.ip_source_address,
           ip_destination_address: data.ip_destination_address,
           transport_source_port: data.transport_source_port,
-          tp_destination: data.transport_destination_port
+          transport_destination_port: data.transport_destination_port
         }
       when Arp::Request
         options = {
@@ -36,7 +36,7 @@ module Pio
           ip_source_address: data.sender_protocol_address,
           ip_destination_address: data.target_protocol_address,
           transport_source_port: 0,
-          tp_destination: 0
+          transport_destination_port: 0
         }
       end
       @match = Pio::Match.new(options)

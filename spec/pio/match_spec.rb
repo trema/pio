@@ -33,7 +33,7 @@ describe Pio::Match do
           :ether_type,
           :ip_protocol,
           :transport_source_port,
-          :tp_destination,
+          :transport_destination_port,
           :ip_source_address_all,
           :ip_destination_address_all,
           :dl_vlan_pcp,
@@ -51,7 +51,7 @@ describe Pio::Match do
       Then { match.ip_source_address == '0.0.0.0' }
       Then { match.ip_destination_address == '0.0.0.0' }
       Then { match.transport_source_port == 0 }
-      Then { match.tp_destination == 0 }
+      Then { match.transport_destination_port == 0 }
     end
 
     context 'with a Match binary generated with Pio::Match.new' do
@@ -68,7 +68,7 @@ describe Pio::Match do
           :ether_type,
           :ip_protocol,
           :transport_source_port,
-          :tp_destination,
+          :transport_destination_port,
           :ip_source_address,
           :ip_destination_address_all,
           :dl_vlan_pcp,
@@ -88,7 +88,7 @@ describe Pio::Match do
       Then { match.ip_source_address.prefixlen == 24 }
       Then { match.ip_destination_address == '0.0.0.0' }
       Then { match.transport_source_port == 0 }
-      Then { match.tp_destination == 0 }
+      Then { match.transport_destination_port == 0 }
     end
   end
 
@@ -105,7 +105,7 @@ describe Pio::Match do
           :ether_type,
           :ip_protocol,
           :transport_source_port,
-          :tp_destination,
+          :transport_destination_port,
           :ip_source_address_all,
           :ip_destination_address_all,
           :dl_vlan_pcp,
@@ -123,7 +123,7 @@ describe Pio::Match do
       Then { match.ip_source_address == '0.0.0.0' }
       Then { match.ip_destination_address == '0.0.0.0' }
       Then { match.transport_source_port == 0 }
-      Then { match.tp_destination == 0 }
+      Then { match.transport_destination_port == 0 }
 
       describe '#==' do
         When(:result) { match == other }
@@ -146,7 +146,7 @@ describe Pio::Match do
           :ether_type,
           :ip_protocol,
           :transport_source_port,
-          :tp_destination,
+          :transport_destination_port,
           :ip_source_address,
           :ip_destination_address_all,
           :dl_vlan_pcp,
@@ -165,7 +165,7 @@ describe Pio::Match do
       Then { match.ip_source_address == '192.168.1.0/24' }
       Then { match.ip_destination_address == '0.0.0.0' }
       Then { match.transport_source_port == 0 }
-      Then { match.tp_destination == 0 }
+      Then { match.transport_destination_port == 0 }
     end
 
     context "with ip_destination_address: '192.168.1.0/24'" do
@@ -179,7 +179,7 @@ describe Pio::Match do
           :ether_type,
           :ip_protocol,
           :transport_source_port,
-          :tp_destination,
+          :transport_destination_port,
           :ip_source_address_all,
           :ip_destination_address,
           :dl_vlan_pcp,
@@ -198,7 +198,7 @@ describe Pio::Match do
       Then { match.ip_source_address == '0.0.0.0' }
       Then { match.ip_destination_address == '192.168.1.0/24' }
       Then { match.transport_source_port == 0 }
-      Then { match.tp_destination == 0 }
+      Then { match.transport_destination_port == 0 }
     end
   end
 end

@@ -17,7 +17,7 @@ module Pio
         ether_type: 1 << 4,
         ip_protocol: 1 << 5,
         transport_source_port: 1 << 6,
-        tp_destination: 1 << 7,
+        transport_destination_port: 1 << 7,
         ip_source_address: 0,
         ip_source_address0: 1 << 8,
         ip_source_address1: 1 << 9,
@@ -122,7 +122,7 @@ module Pio
       match_ip_address :ip_destination_address,
                        bitcount: -> { wildcards.ip_destination_address }
       uint16 :transport_source_port
-      uint16 :tp_destination
+      uint16 :transport_destination_port
     end
 
     def self.read(binary)
