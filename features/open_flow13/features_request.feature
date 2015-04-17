@@ -67,3 +67,20 @@ Feature: Features Request
       Pio::Features13::Request.new(unknown_attr: 'foo')
       """
     Then it should fail with "RuntimeError", "Unknown keyword: unknown_attr"
+
+  Scenario: parse
+    When I try to parse a file named "features_request13.raw" with "Pio::Features13::Request" class
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field          |                    value |
+      | class          | Pio::Features13::Request |
+      | ofp_version    |                        4 |
+      | message_type   |                        5 |
+      | message_length |                        8 |
+      | transaction_id |                        0 |
+      | xid            |                        0 |
+      | body           |                          |
+
+  Scenario: parse error
+    When I try to parse a file named "hello.raw" with "Pio::Features13::Request" class
+    Then it should fail with "Pio::ParseError", "Invalid Features Request 1.3 message."

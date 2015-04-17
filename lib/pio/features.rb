@@ -26,6 +26,8 @@ module Pio
         allocate.tap do |message|
           message.instance_variable_set(:@format, Format.read(raw_data))
         end
+      rescue BinData::ValidityError
+        raise Pio::ParseError, 'Invalid Features Request 1.3 message.'
       end
 
       def initialize(user_attrs = {})
