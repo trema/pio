@@ -19,7 +19,7 @@ supports the following packet formats:
 - [DHCP](https://relishapp.com/trema/pio/docs/misc/dhcp)
 - [UDP](https://relishapp.com/trema/pio/docs/misc/udp)
 - OpenFlow 1.0
-  - [Hello](https://relishapp.com/trema/pio/docs/open-flow10/hello)
+  - [Hello](https://relishapp.com/trema/pio/docs/open-flow10/pio-hello)
   - [Echo Request](https://relishapp.com/trema/pio/docs/open-flow10/echo-request)
   - [Echo Reply](https://relishapp.com/trema/pio/docs/open-flow10/echo-reply)
   - [Features Request](https://relishapp.com/trema/pio/docs/open-flow10/features-request)
