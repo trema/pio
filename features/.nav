@@ -18,3 +18,4 @@
   - hello.feature
   - echo_request.feature
   - echo_reply.feature
+  - features_request.feature
