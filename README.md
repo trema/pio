@@ -33,7 +33,7 @@ supports the following packet formats:
   - [Hello](https://relishapp.com/trema/pio/docs/open-flow13/pio-hello)
   - [Echo Request](https://relishapp.com/trema/pio/docs/open-flow13/pio-echo-request)
   - [Echo Reply](https://relishapp.com/trema/pio/docs/open-flow13/pio-echo-reply)
-  - [Features Request](https://relishapp.com/trema/pio/docs/open-flow13/features-request)
+  - [Features Request](https://relishapp.com/trema/pio/docs/open-flow13/pio-features-request)
 
 ## Features Overview
 
