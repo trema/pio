@@ -2,7 +2,6 @@ require 'pio/parse_error'
 
 require 'pio/arp'
 require 'pio/dhcp'
-require 'pio/exact_match'
 require 'pio/icmp'
 require 'pio/lldp'
 require 'pio/mac'

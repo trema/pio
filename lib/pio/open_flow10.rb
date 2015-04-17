@@ -1,4 +1,5 @@
 require 'pio/open_flow10/echo'
+require 'pio/open_flow10/exact_match'
 require 'pio/open_flow10/features'
 require 'pio/open_flow10/flow_mod'
 require 'pio/open_flow10/hello'
