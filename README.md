@@ -31,8 +31,8 @@ supports the following packet formats:
   - [Exact Match](https://relishapp.com/trema/pio/docs/open-flow10/exact-match)
 - OpenFlow 1.3
   - [Hello](https://relishapp.com/trema/pio/docs/open-flow13/pio-hello)
-  - [Echo Request](https://relishapp.com/trema/pio/docs/open-flow13/echo-request)
-  - [Echo Reply](https://relishapp.com/trema/pio/docs/open-flow13/echo-reply)
+  - [Echo Request](https://relishapp.com/trema/pio/docs/open-flow13/pio-echo-request)
+  - [Echo Reply](https://relishapp.com/trema/pio/docs/open-flow13/pio-echo-reply)
   - [Features Request](https://relishapp.com/trema/pio/docs/open-flow13/features-request)
 
 ## Features Overview
