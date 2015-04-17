@@ -1,4 +1,4 @@
-require 'pio/match'
+require 'pio/open_flow10/match'
 
 module Pio
   # OpenFlow 1.0 exact match
