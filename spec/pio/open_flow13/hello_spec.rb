@@ -1,13 +1,13 @@
-require 'pio/hello13'
+require 'pio/open_flow13/hello'
 
-describe Pio::Hello13 do
+describe Pio::Hello do
   describe '.read' do
-    When(:result) { Pio::Hello13.read(binary) }
+    When(:result) { Pio::Hello.read(binary) }
 
     context 'with a hello message (no version bitmap)' do
       Given(:binary) { [4, 0, 0, 8, 0, 0, 0, 0].pack('C*') }
 
-      Then { result.class == Pio::Hello13 }
+      Then { result.class == Pio::Hello }
       Then { result.ofp_version == 4 }
       Then { result.message_type == 0 }
       Then { result.message_length == 8 }
@@ -21,7 +21,7 @@ describe Pio::Hello13 do
         [4, 0, 0, 16, 0, 0, 0, 0, 0, 1, 0, 8, 0, 0, 0, 18].pack('C*')
       end
 
-      Then { result.class == Pio::Hello13 }
+      Then { result.class == Pio::Hello }
       Then { result.ofp_version == 4 }
       Then { result.message_type == 0 }
       Then { result.message_length == 16 }
@@ -39,7 +39,7 @@ describe Pio::Hello13 do
 
   describe '.new' do
     context 'with no arguments' do
-      When(:result) { Pio::Hello13.new }
+      When(:result) { Pio::Hello.new }
 
       Then { result.ofp_version == 4 }
       Then { result.message_type == 0 }
@@ -54,7 +54,7 @@ describe Pio::Hello13 do
     end
 
     context 'with transaction_id: 123' do
-      When(:result) { Pio::Hello13.new(transaction_id: 123) }
+      When(:result) { Pio::Hello.new(transaction_id: 123) }
 
       Then { result.ofp_version == 4 }
       Then { result.message_type == 0 }
@@ -69,7 +69,7 @@ describe Pio::Hello13 do
     end
 
     context 'with xid: 123' do
-      When(:result) { Pio::Hello13.new(xid: 123) }
+      When(:result) { Pio::Hello.new(xid: 123) }
 
       Then { result.ofp_version == 4 }
       Then { result.message_type == 0 }
@@ -84,7 +84,7 @@ describe Pio::Hello13 do
     end
 
     context 'with xid: -1' do
-      When(:result) { Pio::Hello13.new(xid: -1) }
+      When(:result) { Pio::Hello.new(xid: -1) }
 
       Then do
         result ==
@@ -94,7 +94,7 @@ describe Pio::Hello13 do
     end
 
     context 'with xid: 2**32' do
-      When(:result) { Pio::Hello13.new(xid: 2**32) }
+      When(:result) { Pio::Hello.new(xid: 2**32) }
 
       Then do
         result ==
@@ -104,7 +104,7 @@ describe Pio::Hello13 do
     end
 
     context 'with invalid_keyword: :foo' do
-      When(:result) { Pio::Hello13.new(invalid_keyword: :foo) }
+      When(:result) { Pio::Hello.new(invalid_keyword: :foo) }
 
       Then do
         result == Failure(RuntimeError, 'Unknown keyword: invalid_keyword')

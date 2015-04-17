@@ -3,9 +3,12 @@ require 'forwardable'
 require 'pio/open_flow'
 require 'pio/parse_error'
 
+# Base module.
 module Pio
+  remove_const :Hello
+
   # OpenFlow 1.3 Hello message parser and generator
-  class Hello13
+  class Hello
     # ofp_hello_elem_header and value
     class Element < BinData::Record
       VERSION_BITMAP = 1

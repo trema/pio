@@ -30,7 +30,7 @@ supports the following packet formats:
   - [Port Status](https://relishapp.com/trema/pio/docs/open-flow10/port-status)
   - [Exact Match](https://relishapp.com/trema/pio/docs/open-flow10/exact-match)
 - OpenFlow 1.3
-  - [Hello](https://relishapp.com/trema/pio/docs/open-flow13/hello)
+  - [Hello](https://relishapp.com/trema/pio/docs/open-flow13/pio-hello)
   - [Echo Request](https://relishapp.com/trema/pio/docs/open-flow13/echo-request)
   - [Echo Reply](https://relishapp.com/trema/pio/docs/open-flow13/echo-reply)
   - [Features Request](https://relishapp.com/trema/pio/docs/open-flow13/features-request)
