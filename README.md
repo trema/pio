@@ -19,7 +19,7 @@ supports the following packet formats:
 - [DHCP](https://relishapp.com/trema/pio/docs/misc/dhcp)
 - [UDP](https://relishapp.com/trema/pio/docs/misc/udp)
 - OpenFlow 1.0
-  - [Hello](https://relishapp.com/trema/pio/docs/open-flow10/hello)
+  - [Hello](https://relishapp.com/trema/pio/docs/open-flow10/pio-hello)
   - [Echo Request](https://relishapp.com/trema/pio/docs/open-flow10/echo-request)
   - [Echo Reply](https://relishapp.com/trema/pio/docs/open-flow10/echo-reply)
   - [Features Request](https://relishapp.com/trema/pio/docs/open-flow10/features-request)
@@ -30,10 +30,10 @@ supports the following packet formats:
   - [Port Status](https://relishapp.com/trema/pio/docs/open-flow10/port-status)
   - [Exact Match](https://relishapp.com/trema/pio/docs/open-flow10/exact-match)
 - OpenFlow 1.3
-  - [Hello](https://relishapp.com/trema/pio/docs/open-flow13/hello)
-  - [Echo Request](https://relishapp.com/trema/pio/docs/open-flow13/echo-request)
-  - [Echo Reply](https://relishapp.com/trema/pio/docs/open-flow13/echo-reply)
-  - [Features Request](https://relishapp.com/trema/pio/docs/open-flow13/features-request)
+  - [Hello](https://relishapp.com/trema/pio/docs/open-flow13/pio-hello)
+  - [Echo Request](https://relishapp.com/trema/pio/docs/open-flow13/pio-echo-request)
+  - [Echo Reply](https://relishapp.com/trema/pio/docs/open-flow13/pio-echo-reply)
+  - [Features Request](https://relishapp.com/trema/pio/docs/open-flow13/pio-features-request)
 
 ## Features Overview
 

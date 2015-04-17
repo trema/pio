@@ -1,4 +1,4 @@
-Feature: Hello
+Feature: Pio::Hello
   Scenario: create
     When I try to create an OpenFlow message with:
       """
@@ -15,7 +15,7 @@ Feature: Hello
       | xid            |          0 |
       | body           |            |
 
-  Scenario: create (transaction_id: 123)
+  Scenario: new(transaction_id: 123)
     When I try to create an OpenFlow message with:
       """
       Pio::Hello.new(transaction_id: 123)
@@ -31,7 +31,7 @@ Feature: Hello
       | xid            |        123 |
       | body           |            |
 
-  Scenario: create (xid: 123)
+  Scenario: new(xid: 123)
     When I try to create an OpenFlow message with:
       """
       Pio::Hello.new(xid: 123)
@@ -47,21 +47,21 @@ Feature: Hello
       | xid            |        123 |
       | body           |            |
 
-  Scenario: create (xid: -1) and error
+  Scenario: new(xid: -1) and error
     When I try to create an OpenFlow message with:
       """
       Pio::Hello.new(xid: -1)
       """
     Then it should fail with "ArgumentError", "Transaction ID should be an unsigned 32-bit integer."
 
-  Scenario: create (xid: 2**32) and error
+  Scenario: new(xid: 2**32) and error
     When I try to create an OpenFlow message with:
       """
       Pio::Hello.new(xid: 2**32)
       """
     Then it should fail with "ArgumentError", "Transaction ID should be an unsigned 32-bit integer."
 
-  Scenario: parse
+  Scenario: read
     When I try to parse a file named "hello.raw" with "Hello" class
     Then it should finish successfully
     And the message have the following fields and values:

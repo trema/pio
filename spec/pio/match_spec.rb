@@ -1,4 +1,4 @@
-require 'pio/match'
+require 'pio/open_flow10/match'
 
 describe Pio::Match do
   describe '.read' do

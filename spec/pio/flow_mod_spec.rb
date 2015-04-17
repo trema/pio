@@ -1,4 +1,4 @@
-require 'pio/flow_mod'
+require 'pio/open_flow10/flow_mod'
 
 describe Pio::FlowMod do
   Given(:dump) do
