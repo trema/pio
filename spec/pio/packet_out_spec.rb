@@ -1,4 +1,4 @@
-require 'pio/packet_out'
+require 'pio/open_flow10/packet_out'
 
 describe Pio::PacketOut do
   Given(:header_dump) do
