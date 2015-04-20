@@ -1,7 +1,34 @@
-Feature: Features Reply
+Feature: Pio::Features::Reply
   Background:
     Given I use OpenFlow 1.3
 
+  Scenario: new
+    When I try to create an OpenFlow message with:
+      """
+      Pio::Features::Reply.new(
+        dpid: 0x123,
+        n_buffers: 0x100,
+        n_tables: 0xfe,
+        capabilities: [:flow_stats, :table_stats, :port_stats, :group_stats, :ip_reasm, :queue_stats, :port_blocked]
+      )
+      """
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field          |                                                                                          value |
+      | class          |                                                                           Pio::Features::Reply |
+      | ofp_version    |                                                                                              4 |
+      | message_type   |                                                                                              6 |
+      | message_length |                                                                                             32 |
+      | transaction_id |                                                                                              0 |
+      | xid            |                                                                                              0 |
+      | datapath_id    |                                                                                            291 |
+      | dpid           |                                                                                            291 |
+      | n_buffers      |                                                                                            256 |
+      | n_tables       |                                                                                            254 |
+      | auxiliary_id   |                                                                                              0 |
+      | capabilities   | [:flow_stats, :table_stats, :port_stats, :group_stats, :ip_reasm, :queue_stats, :port_blocked] |
+      | reserved       |                                                                                              0 |
+  
   Scenario: read
     When I try to parse a file named "features_reply13.raw" with "Pio::Features::Reply" class
     Then it should finish successfully
@@ -20,3 +47,7 @@ Feature: Features Reply
     | auxiliary_id   |                                                                                              0 |
     | capabilities   | [:flow_stats, :table_stats, :port_stats, :group_stats, :ip_reasm, :queue_stats, :port_blocked] |
     | reserved       |                                                                                              0 |
+
+  Scenario: parse error
+    When I try to parse a file named "echo_request.raw" with "Pio::Features::Reply" class
+    Then it should fail with "Pio::ParseError", "Invalid Features Reply 1.3 message."
