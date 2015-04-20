@@ -3,10 +3,10 @@ require 'pio/open_flow'
 
 # Base module.
 module Pio
-  remove_const :Features
-
   # OpenFlow 1.3 Features Request and Reply message.
   class Features
+    remove_const :Request
+
     # OpenFlow 1.3 Features Request message.
     class Request
       # OpenFlow 1.3 Features Request message format.
