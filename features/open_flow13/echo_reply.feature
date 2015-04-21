@@ -88,7 +88,7 @@ Feature: Pio::Echo::Reply
     Then it should fail with "RuntimeError", "Unknown keyword: unknown_attr"
 
   Scenario: read (no message body)
-    When I try to parse a file named "echo13_reply_no_body.raw" with "Pio::Echo::Reply" class
+    When I try to parse a file named "open_flow13/echo_reply_no_body.raw" with "Pio::Echo::Reply" class
     Then it should finish successfully
     And the message have the following fields and values:
       | field          |            value |
@@ -101,7 +101,7 @@ Feature: Pio::Echo::Reply
       | body           |                  |
 
   Scenario: read
-    When I try to parse a file named "echo13_reply_body.raw" with "Pio::Echo::Reply" class
+    When I try to parse a file named "open_flow13/echo_reply_body.raw" with "Pio::Echo::Reply" class
     Then it should finish successfully
     And the message have the following fields and values:
       | field          |                value |
@@ -114,5 +114,5 @@ Feature: Pio::Echo::Reply
       | body           | hogehogehogehogehoge |
 
   Scenario: parse error
-    When I try to parse a file named "features_request.raw" with "Pio::Echo::Reply" class
+    When I try to parse a file named "open_flow10/features_request.raw" with "Pio::Echo::Reply" class
     Then it should fail with "Pio::ParseError", "Invalid Echo Reply 1.3 message."

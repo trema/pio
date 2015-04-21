@@ -30,7 +30,7 @@ Feature: Pio::Features::Reply
       | reserved       |                                                                                              0 |
   
   Scenario: read
-    When I try to parse a file named "features_reply13.raw" with "Pio::Features::Reply" class
+    When I try to parse a file named "open_flow13/features_reply.raw" with "Pio::Features::Reply" class
     Then it should finish successfully
     And the message have the following fields and values:
     | field          |                                                                                          value |
@@ -49,5 +49,5 @@ Feature: Pio::Features::Reply
     | reserved       |                                                                                              0 |
 
   Scenario: parse error
-    When I try to parse a file named "echo_request.raw" with "Pio::Features::Reply" class
+    When I try to parse a file named "open_flow10/echo_request.raw" with "Pio::Features::Reply" class
     Then it should fail with "Pio::ParseError", "Invalid Features Reply 1.3 message."

@@ -62,7 +62,7 @@ Feature: Pio::Features::Request
     Then it should fail with "ArgumentError", "Transaction ID should be an unsigned 32-bit integer."
 
   Scenario: read
-    When I try to parse a file named "features_request.raw" with "Pio::Features::Request" class
+    When I try to parse a file named "open_flow10/features_request.raw" with "Pio::Features::Request" class
     Then it should finish successfully
     And the message have the following fields and values:
       | field          |                  value |
@@ -75,5 +75,5 @@ Feature: Pio::Features::Request
       | user_data      |                        |
 
   Scenario: parse error
-    When I try to parse a file named "echo_request.raw" with "Pio::Features::Request" class
+    When I try to parse a file named "open_flow10/echo_request.raw" with "Pio::Features::Request" class
     Then it should fail with "Pio::ParseError", "Invalid Features Request message."

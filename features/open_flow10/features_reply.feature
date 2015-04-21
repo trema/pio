@@ -48,7 +48,7 @@ Feature: Pio::Features::Reply
       | ports.first.peer             |                                                                                                                                                                                                                                 [] |
 
   Scenario: read
-    When I try to parse a file named "features_reply.raw" with "Features::Reply" class
+    When I try to parse a file named "open_flow10/features_reply.raw" with "Features::Reply" class
     Then it should finish successfully
     And the message have the following fields and values:
       | field                        | value                                                                                                                                                                                                                              |
@@ -92,5 +92,5 @@ Feature: Pio::Features::Reply
       | ports.last.local?            | false                                                                                                                                                                                                                              |
 
   Scenario: parse error
-    When I try to parse a file named "echo_reply.raw" with "Pio::Features::Reply" class
+    When I try to parse a file named "open_flow10/echo_reply.raw" with "Pio::Features::Reply" class
     Then it should fail with "Pio::ParseError", "Invalid Features Reply message."

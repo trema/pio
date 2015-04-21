@@ -88,7 +88,7 @@ Feature: Pio::Echo::Request
     Then it should fail with "RuntimeError", "Unknown keyword: unknown_attr"
 
   Scenario: read (no message body)
-    When I try to parse a file named "echo13_request_no_body.raw" with "Pio::Echo::Request" class
+    When I try to parse a file named "open_flow13/echo_request_no_body.raw" with "Pio::Echo::Request" class
     Then it should finish successfully
     And the message have the following fields and values:
       | field          |              value |
@@ -101,7 +101,7 @@ Feature: Pio::Echo::Request
       | body           |                    |
 
   Scenario: read
-    When I try to parse a file named "echo13_request_body.raw" with "Pio::Echo::Request" class
+    When I try to parse a file named "open_flow13/echo_request_body.raw" with "Pio::Echo::Request" class
     Then it should finish successfully
     And the message have the following fields and values:
       | field          |                value |
@@ -114,5 +114,5 @@ Feature: Pio::Echo::Request
       | body           | hogehogehogehogehoge |
 
   Scenario: parse error
-    When I try to parse a file named "features_request.raw" with "Pio::Echo::Request" class
+    When I try to parse a file named "open_flow10/features_request.raw" with "Pio::Echo::Request" class
     Then it should fail with "Pio::ParseError", "Invalid Echo Request 1.3 message."

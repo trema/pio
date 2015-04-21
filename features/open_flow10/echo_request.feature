@@ -78,7 +78,7 @@ Feature: Pio::Echo::Request
       | user_data      |  echo request body |
 
   Scenario: read (no message body)
-    When I try to parse a file named "echo_request.raw" with "Pio::Echo::Request" class
+    When I try to parse a file named "open_flow10/echo_request.raw" with "Pio::Echo::Request" class
     Then it should finish successfully
     And the message have the following fields and values:
       | field          |              value |
@@ -91,5 +91,5 @@ Feature: Pio::Echo::Request
       | user_data      |                    |
 
   Scenario: parse error
-    When I try to parse a file named "features_request.raw" with "Pio::Echo::Request" class
+    When I try to parse a file named "open_flow10/features_request.raw" with "Pio::Echo::Request" class
     Then it should fail with "Pio::ParseError", "Invalid Echo Request message."

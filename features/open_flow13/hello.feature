@@ -51,7 +51,7 @@ Feature: Pio::Hello
       | supported_versions | [:open_flow13] |
 
   Scenario: read (no version bitmap)
-    When I try to parse a file named "hello13_no_version_bitmap.raw" with "Hello" class
+    When I try to parse a file named "open_flow13/hello_no_version_bitmap.raw" with "Pio::Hello" class
     Then it should finish successfully
     And the message have the following fields and values:
       | field              |      value |
@@ -64,7 +64,7 @@ Feature: Pio::Hello
       | supported_versions |         [] |
 
   Scenario: read
-    When I try to parse a file named "hello13_version_bitmap.raw" with "Hello" class
+    When I try to parse a file named "open_flow13/hello_version_bitmap.raw" with "Pio::Hello" class
     Then it should finish successfully
     And the message have the following fields and values:
       | field              |                        value |

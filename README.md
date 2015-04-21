@@ -13,11 +13,11 @@
 Pio is a ruby gem to easily parse and generate network packets. It
 supports the following packet formats:
 
-- [ICMP](https://relishapp.com/trema/pio/docs/misc/icmp)
-- [ARP](https://relishapp.com/trema/pio/docs/misc/arp)
-- [LLDP](https://relishapp.com/trema/pio/docs/misc/lldp)
-- [DHCP](https://relishapp.com/trema/pio/docs/misc/dhcp)
-- [UDP](https://relishapp.com/trema/pio/docs/misc/udp)
+- [ICMP](https://relishapp.com/trema/pio/docs/pio-icmp)
+- [ARP](https://relishapp.com/trema/pio/docs/pio-arp)
+- [LLDP](https://relishapp.com/trema/pio/docs/pio-lldp)
+- [DHCP](https://relishapp.com/trema/pio/docs/pio-dhcp)
+- [UDP](https://relishapp.com/trema/pio/docs/pio-udp)
 - OpenFlow 1.0
   - [Hello](https://relishapp.com/trema/pio/docs/open-flow10/pio-hello)
   - [Echo Request](https://relishapp.com/trema/pio/docs/open-flow10/pio-echo-request)

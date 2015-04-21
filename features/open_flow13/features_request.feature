@@ -72,7 +72,7 @@ Feature: Pio::Features::Request
     Then it should fail with "RuntimeError", "Unknown keyword: unknown_attr"
 
   Scenario: read
-    When I try to parse a file named "features_request13.raw" with "Pio::Features::Request" class
+    When I try to parse a file named "open_flow13/features_request.raw" with "Pio::Features::Request" class
     Then it should finish successfully
     And the message have the following fields and values:
       | field          |                  value |
@@ -85,5 +85,5 @@ Feature: Pio::Features::Request
       | body           |                        |
 
   Scenario: parse error
-    When I try to parse a file named "hello.raw" with "Pio::Features::Request" class
+    When I try to parse a file named "open_flow10/hello.raw" with "Pio::Features::Request" class
     Then it should fail with "Pio::ParseError", "Invalid Features Request 1.3 message."
