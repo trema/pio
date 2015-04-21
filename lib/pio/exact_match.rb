@@ -11,32 +11,32 @@ module Pio
       when PacketIn::DataParser::IPv4Packet
         options = {
           in_port: packet_in.in_port,
-          dl_src: packet_in.source_mac,
-          dl_dst: packet_in.destination_mac,
-          dl_vlan: data.vlan_vid,
-          dl_vlan_pcp: data.vlan_pcp,
-          dl_type: data.ether_type,
-          nw_tos: data.ip_type_of_service,
-          nw_proto: data.ip_protocol,
-          nw_src: data.ip_source_address,
-          nw_dst: data.ip_destination_address,
-          tp_src: data.transport_source_port,
-          tp_dst: data.transport_destination_port
+          ether_source_address: packet_in.source_mac,
+          ether_destination_address: packet_in.destination_mac,
+          vlan_vid: data.vlan_vid,
+          vlan_priority: data.vlan_pcp,
+          ether_type: data.ether_type,
+          ip_tos: data.ip_type_of_service,
+          ip_protocol: data.ip_protocol,
+          ip_source_address: data.ip_source_address,
+          ip_destination_address: data.ip_destination_address,
+          transport_source_port: data.transport_source_port,
+          transport_destination_port: data.transport_destination_port
         }
       when Arp::Request
         options = {
           in_port: packet_in.in_port,
-          dl_src: packet_in.source_mac,
-          dl_dst: packet_in.destination_mac,
-          dl_vlan: data.vlan_vid,
-          dl_vlan_pcp: data.vlan_pcp,
-          dl_type: data.ether_type,
-          nw_tos: 0,
-          nw_proto: data.operation,
-          nw_src: data.sender_protocol_address,
-          nw_dst: data.target_protocol_address,
-          tp_src: 0,
-          tp_dst: 0
+          ether_source_address: packet_in.source_mac,
+          ether_destination_address: packet_in.destination_mac,
+          vlan_vid: data.vlan_vid,
+          vlan_priority: data.vlan_pcp,
+          ether_type: data.ether_type,
+          ip_tos: 0,
+          ip_protocol: data.operation,
+          ip_source_address: data.sender_protocol_address,
+          ip_destination_address: data.target_protocol_address,
+          transport_source_port: 0,
+          transport_destination_port: 0
         }
       end
       @match = Pio::Match.new(options)

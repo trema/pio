@@ -11,32 +11,32 @@ module Pio
     class Wildcards < BinData::Primitive
       BITS = {
         in_port: 1 << 0,
-        dl_vlan: 1 << 1,
-        dl_src: 1 << 2,
-        dl_dst: 1 << 3,
-        dl_type: 1 << 4,
-        nw_proto: 1 << 5,
-        tp_src: 1 << 6,
-        tp_dst: 1 << 7,
-        nw_src: 0,
-        nw_src0: 1 << 8,
-        nw_src1: 1 << 9,
-        nw_src2: 1 << 10,
-        nw_src3: 1 << 11,
-        nw_src4: 1 << 12,
-        nw_src_all: 1 << 13,
-        nw_dst: 0,
-        nw_dst0: 1 << 14,
-        nw_dst1: 1 << 15,
-        nw_dst2: 1 << 16,
-        nw_dst3: 1 << 17,
-        nw_dst4: 1 << 18,
-        nw_dst_all: 1 << 19,
-        dl_vlan_pcp: 1 << 20,
-        nw_tos: 1 << 21
+        vlan_vid: 1 << 1,
+        ether_source_address: 1 << 2,
+        ether_destination_address: 1 << 3,
+        ether_type: 1 << 4,
+        ip_protocol: 1 << 5,
+        transport_source_port: 1 << 6,
+        transport_destination_port: 1 << 7,
+        ip_source_address: 0,
+        ip_source_address0: 1 << 8,
+        ip_source_address1: 1 << 9,
+        ip_source_address2: 1 << 10,
+        ip_source_address3: 1 << 11,
+        ip_source_address4: 1 << 12,
+        ip_source_address_all: 1 << 13,
+        ip_destination_address: 0,
+        ip_destination_address0: 1 << 14,
+        ip_destination_address1: 1 << 15,
+        ip_destination_address2: 1 << 16,
+        ip_destination_address3: 1 << 17,
+        ip_destination_address4: 1 << 18,
+        ip_destination_address_all: 1 << 19,
+        vlan_priority: 1 << 20,
+        ip_tos: 1 << 21
       }
-      NW_FLAGS = [:nw_src, :nw_dst]
-      FLAGS = BITS.keys.select { |each| !(/^nw_(src|dst)/=~ each) }
+      NW_FLAGS = [:ip_source_address, :ip_destination_address]
+      FLAGS = BITS.keys.select { |each| !(/^ip_(source|destination)/=~ each) }
 
       endian :big
 
@@ -46,7 +46,7 @@ module Pio
       def get
         BITS.each_with_object(Hash.new(0)) do |(key, bit), memo|
           next if flags & bit == 0
-          if /(nw_src|nw_dst)(\d)/=~ key
+          if /(ip_source_address|ip_destination_address)(\d)/=~ key
             memo[$LAST_MATCH_INFO[1].intern] |= 1 << $LAST_MATCH_INFO[2].to_i
           else
             memo[key] = true
@@ -57,22 +57,23 @@ module Pio
       def set(params)
         self.flags = params.inject(0) do |memo, (key, val)|
           memo | case key
-                 when :nw_src, :nw_dst
-                   (params.fetch(key) & 31) << (key == :nw_src ? 8 : 14)
+                 when :ip_source_address, :ip_destination_address
+                   (params.fetch(key) & 31) <<
+                     (key == :ip_source_address ? 8 : 14)
                  else
                    val ? BITS.fetch(key) : 0
                  end
         end
       end
 
-      def nw_src
-        get.fetch(:nw_src)
+      def ip_source_address
+        get.fetch(:ip_source_address)
       rescue KeyError
         0
       end
 
-      def nw_dst
-        get.fetch(:nw_dst)
+      def ip_destination_address
+        get.fetch(:ip_destination_address)
       rescue KeyError
         0
       end
@@ -105,21 +106,23 @@ module Pio
 
       wildcards :wildcards
       uint16 :in_port
-      mac_address :dl_src
-      mac_address :dl_dst
-      uint16 :dl_vlan
-      uint8 :dl_vlan_pcp
+      mac_address :ether_source_address
+      mac_address :ether_destination_address
+      uint16 :vlan_vid
+      uint8 :vlan_priority
       uint8 :padding1
       hide :padding1
-      uint16 :dl_type
-      uint8 :nw_tos
-      uint8 :nw_proto
+      uint16 :ether_type
+      uint8 :ip_tos
+      uint8 :ip_protocol
       uint16 :padding2
       hide :padding2
-      match_ip_address :nw_src, bitcount: -> { wildcards.nw_src }
-      match_ip_address :nw_dst, bitcount: -> { wildcards.nw_dst }
-      uint16 :tp_src
-      uint16 :tp_dst
+      match_ip_address :ip_source_address,
+                       bitcount: -> { wildcards.ip_source_address }
+      match_ip_address :ip_destination_address,
+                       bitcount: -> { wildcards.ip_destination_address }
+      uint16 :transport_source_port
+      uint16 :transport_destination_port
     end
 
     def self.read(binary)

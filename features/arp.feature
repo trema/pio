@@ -1,6 +1,6 @@
 Feature: ARP
   Scenario: create an ARP request
-    When I create a packet with:
+    When I try to create a packet with:
       """
       Pio::Arp::Request.new(
         source_mac: '00:26:82:eb:ea:d1',
@@ -8,7 +8,8 @@ Feature: ARP
         target_protocol_address: '192.168.83.254'
       )
       """
-    Then the packet have the following field and value:
+    Then it should finish successfully
+    And the packet have the following fields and values:
       | field                   |             value |
       | class                   | Pio::Arp::Request |
       | destination_mac         | ff:ff:ff:ff:ff:ff |
@@ -25,7 +26,7 @@ Feature: ARP
       | target_protocol_address |    192.168.83.254 |
 
   Scenario: create an ARP reply
-    When I create a packet with:
+    When I try to create a packet with:
       """
       Pio::Arp::Reply.new(
         source_mac: '00:16:9d:1d:9c:c4',
@@ -34,7 +35,8 @@ Feature: ARP
         target_protocol_address: '192.168.83.3'
       )
       """
-    Then the packet have the following field and value:
+    Then it should finish successfully
+    And the packet have the following fields and values:
       | field                   |             value |
       | class                   |   Pio::Arp::Reply |
       | destination_mac         | 00:26:82:eb:ea:d1 |
@@ -51,11 +53,9 @@ Feature: ARP
       | target_protocol_address |      192.168.83.3 |
 
   Scenario: parse arp.pcap
-    Given a packet data file "arp.pcap"
-    When I try to parse the file with "Pio::Arp" class
+    When I try to parse a file named "arp.pcap" with "Pio::Arp" class
     Then it should finish successfully
 
   Scenario: parse arp-storm.pcap
-    Given a packet data file "arp-storm.pcap"
-    When I try to parse the file with "Pio::Arp" class
+    When I try to parse a file named "arp-storm.pcap" with "Pio::Arp" class
     Then it should finish successfully

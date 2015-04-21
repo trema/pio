@@ -30,7 +30,7 @@ module Pio
     def_delegator :@format, :to_binary_s, :to_binary
 
     def initialize(type_of_service)
-      # nw_tos (IP ToS) value consists of 8 bits, of which only the 6
+      # ip_tos (IP ToS) value consists of 8 bits, of which only the 6
       # high-order bits belong to DSCP, the 2 low-order bits must be
       # zero.
       unless type_of_service.unsigned_8bit? && type_of_service % 4 == 0

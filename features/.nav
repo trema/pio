@@ -1,0 +1,20 @@
+- icmp.feature
+- arp.feature
+- lldp.feature
+- dhcp.feature
+- udp.feature
+- open_flow10:
+  - hello.feature
+  - echo_request.feature
+  - echo_reply.feature
+  - features_request.feature
+  - features_reply.feature
+  - packet_in.feature
+  - packet_out.feature
+  - flow_mod.feature
+  - port_status.feature
+  - exact_match.feature
+- open_flow13:
+  - hello.feature
+  - echo_request.feature
+  - echo_reply.feature
