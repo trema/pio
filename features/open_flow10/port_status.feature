@@ -1,5 +1,5 @@
-Feature: Port Status
-  Scenario: parse
+Feature: Pio::PortStatus
+  Scenario: read
     When I try to parse a file named "port_status.raw" with "PortStatus" class
     Then it should finish successfully
     And the message have the following fields and values:

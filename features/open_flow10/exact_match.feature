@@ -1,5 +1,5 @@
-Feature: Exact Match
-  Scenario: parse #1
+Feature: Pio::ExactMatch
+  Scenario: new (from ARP request Packet In)
     When I create an exact match from "packet_in_arp_request.raw"
     And the message have the following fields and values:
       | field                      |             value |
@@ -17,7 +17,7 @@ Feature: Exact Match
       | transport_source_port      |                 0 |
       | transport_destination_port |                 0 |
 
-  Scenario: parse #2
+  Scenario: new (from Cbench Packet In)
     When I create an exact match from "packet_in_cbench.raw"
     And the message have the following fields and values:
       | field                      |             value |

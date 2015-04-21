@@ -1,5 +1,5 @@
-Feature: Features Reply
-  Scenario: create
+Feature: Pio::Features::Reply
+  Scenario: new
     When I try to create an OpenFlow message with:
       """
       Pio::Features::Reply.new(
@@ -47,7 +47,7 @@ Feature: Features Reply
       | ports.first.supported        |                                                                                                                                                                                                                                 [] |
       | ports.first.peer             |                                                                                                                                                                                                                                 [] |
 
-  Scenario: parse
+  Scenario: read
     When I try to parse a file named "features_reply.raw" with "Features::Reply" class
     Then it should finish successfully
     And the message have the following fields and values:
