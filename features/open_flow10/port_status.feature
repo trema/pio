@@ -1,6 +1,6 @@
-Feature: Port Status
-  Scenario: parse
-    When I try to parse a file named "port_status.raw" with "PortStatus" class
+Feature: Pio::PortStatus
+  Scenario: read
+    When I try to parse a file named "open_flow10/port_status.raw" with "PortStatus" class
     Then it should finish successfully
     And the message have the following fields and values:
       | field                 | value                      |

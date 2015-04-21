@@ -1,4 +1,4 @@
-Feature: ARP
+Feature: Pio::Arp
   Scenario: create an ARP request
     When I try to create a packet with:
       """

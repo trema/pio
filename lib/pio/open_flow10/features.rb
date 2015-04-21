@@ -1,3 +1,4 @@
+require 'forwardable'
 require 'pio/open_flow'
 
 module Pio

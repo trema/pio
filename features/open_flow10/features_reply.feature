@@ -1,5 +1,5 @@
-Feature: Features Reply
-  Scenario: create
+Feature: Pio::Features::Reply
+  Scenario: new
     When I try to create an OpenFlow message with:
       """
       Pio::Features::Reply.new(
@@ -47,8 +47,8 @@ Feature: Features Reply
       | ports.first.supported        |                                                                                                                                                                                                                                 [] |
       | ports.first.peer             |                                                                                                                                                                                                                                 [] |
 
-  Scenario: parse
-    When I try to parse a file named "features_reply.raw" with "Features::Reply" class
+  Scenario: read
+    When I try to parse a file named "open_flow10/features_reply.raw" with "Features::Reply" class
     Then it should finish successfully
     And the message have the following fields and values:
       | field                        | value                                                                                                                                                                                                                              |
@@ -92,5 +92,5 @@ Feature: Features Reply
       | ports.last.local?            | false                                                                                                                                                                                                                              |
 
   Scenario: parse error
-    When I try to parse a file named "echo_reply.raw" with "Pio::Features::Reply" class
+    When I try to parse a file named "open_flow10/echo_reply.raw" with "Pio::Features::Reply" class
     Then it should fail with "Pio::ParseError", "Invalid Features Reply message."

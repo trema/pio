@@ -1,5 +1,5 @@
 require 'bindata'
-require 'pio/match'
+require 'pio/open_flow10/match'
 
 describe Pio::Match::Wildcards do
   # This class has wildcards field.

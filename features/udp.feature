@@ -1,6 +1,6 @@
-Feature: UDP
-  Scenario: dhcp.pcap
-    When I try to parse a file named "dhcp.pcap" with "Udp" class
+Feature: Pio::Udp
+  Scenario: parse dhcp.pcap
+    When I try to parse a file named "dhcp.pcap" with "Pio::Udp" class
     Then it should finish successfully
     And the message #1 have the following fields and values:
     | field                  |             value |

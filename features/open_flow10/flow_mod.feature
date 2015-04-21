@@ -1,6 +1,6 @@
-Feature: Flow Mod
-  Scenario: parse (Flow Mod Add)
-    When I try to parse a file named "flow_mod_add.raw" with "FlowMod" class
+Feature: Pio::FlowMod
+  Scenario: read (Flow Mod Add)
+    When I try to parse a file named "open_flow10/flow_mod_add.raw" with "Pio::FlowMod" class
     Then it should finish successfully
     And the message have the following fields and values:
       | field                                  |                                                 value |
@@ -36,8 +36,8 @@ Feature: Flow Mod
       | actions.first.class                    |                                       Pio::SetVlanVid |
       | actions.first.vlan_id                  |                                                    10 |
 
-  Scenario: parse (Flow Mod Modify)
-    When I try to parse a file named "flow_mod_modify.raw" with "FlowMod" class
+  Scenario: read (Flow Mod Modify)
+    When I try to parse a file named "open_flow10/flow_mod_modify.raw" with "Pio::FlowMod" class
     Then it should finish successfully
     And the message have the following fields and values:
       | field                                  |                                                 value |
@@ -73,8 +73,8 @@ Feature: Flow Mod
       | actions.first.class                    |                                       Pio::SetVlanVid |
       | actions.first.vlan_id                  |                                                    10 |
 
-  Scenario: parse (Flow Mod Modify Strict)
-    When I try to parse a file named "flow_mod_modify_strict.raw" with "FlowMod" class
+  Scenario: read (Flow Mod Modify Strict)
+    When I try to parse a file named "open_flow10/flow_mod_modify_strict.raw" with "Pio::FlowMod" class
     Then it should finish successfully
     And the message have the following fields and values:
       | field                                  |                                                 value |
@@ -110,8 +110,8 @@ Feature: Flow Mod
       | actions.first.class                    |                                       Pio::SetVlanVid |
       | actions.first.vlan_id                  |                                                    10 |
     
-  Scenario: parse (Flow Mod Delete)
-    When I try to parse a file named "flow_mod_delete.raw" with "FlowMod" class
+  Scenario: read (Flow Mod Delete)
+    When I try to parse a file named "open_flow10/flow_mod_delete.raw" with "Pio::FlowMod" class
     Then it should finish successfully
     And the message have the following fields and values:
       | field                                  |                                                 value |
@@ -145,8 +145,8 @@ Feature: Flow Mod
       | flags                                  |                                                    [] |
       | actions                                |                                                    [] |
 
-  Scenario: parse (Flow Mod Delete Strict)
-    When I try to parse a file named "flow_mod_delete_strict.raw" with "FlowMod" class
+  Scenario: read (Flow Mod Delete Strict)
+    When I try to parse a file named "open_flow10/flow_mod_delete_strict.raw" with "Pio::FlowMod" class
     Then it should finish successfully
     And the message have the following fields and values:
       | field                                  |                                                 value |

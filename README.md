@@ -13,26 +13,28 @@
 Pio is a ruby gem to easily parse and generate network packets. It
 supports the following packet formats:
 
-- [ICMP](https://relishapp.com/trema/pio/docs/misc/icmp)
-- [ARP](https://relishapp.com/trema/pio/docs/misc/arp)
-- [LLDP](https://relishapp.com/trema/pio/docs/misc/lldp)
-- [DHCP](https://relishapp.com/trema/pio/docs/misc/dhcp)
-- [UDP](https://relishapp.com/trema/pio/docs/misc/udp)
+- [ICMP](https://relishapp.com/trema/pio/docs/pio-icmp)
+- [ARP](https://relishapp.com/trema/pio/docs/pio-arp)
+- [LLDP](https://relishapp.com/trema/pio/docs/pio-lldp)
+- [DHCP](https://relishapp.com/trema/pio/docs/pio-dhcp)
+- [UDP](https://relishapp.com/trema/pio/docs/pio-udp)
 - OpenFlow 1.0
-  - [Hello](https://relishapp.com/trema/pio/docs/open-flow10/hello)
-  - [Echo Request](https://relishapp.com/trema/pio/docs/open-flow10/echo-request)
-  - [Echo Reply](https://relishapp.com/trema/pio/docs/open-flow10/echo-reply)
-  - [Features Request](https://relishapp.com/trema/pio/docs/open-flow10/features-request)
-  - [Features Reply](https://relishapp.com/trema/pio/docs/open-flow10/features-reply)
-  - [Packet In](https://relishapp.com/trema/pio/docs/open-flow10/packet-in)
-  - [Packet Out](https://relishapp.com/trema/pio/docs/open-flow10/packet-out)
-  - [Flow Mod](https://relishapp.com/trema/pio/docs/open-flow10/flow-mod)
-  - [Port Status](https://relishapp.com/trema/pio/docs/open-flow10/port-status)
-  - [Exact Match](https://relishapp.com/trema/pio/docs/open-flow10/exact-match)
+  - [Hello](https://relishapp.com/trema/pio/docs/open-flow10/pio-hello)
+  - [Echo Request](https://relishapp.com/trema/pio/docs/open-flow10/pio-echo-request)
+  - [Echo Reply](https://relishapp.com/trema/pio/docs/open-flow10/pio-echo-reply)
+  - [Features Request](https://relishapp.com/trema/pio/docs/open-flow10/pio-features-request)
+  - [Features Reply](https://relishapp.com/trema/pio/docs/open-flow10/pio-features-reply)
+  - [Packet In](https://relishapp.com/trema/pio/docs/open-flow10/pio-packetin)
+  - [Packet Out](https://relishapp.com/trema/pio/docs/open-flow10/pio-packetout)
+  - [Flow Mod](https://relishapp.com/trema/pio/docs/open-flow10/pio-flowmod)
+  - [Port Status](https://relishapp.com/trema/pio/docs/open-flow10/pio-portstatus)
+  - [Exact Match](https://relishapp.com/trema/pio/docs/open-flow10/pio-exactmatch)
 - OpenFlow 1.3
-  - [Hello](https://relishapp.com/trema/pio/docs/open-flow13/hello)
-  - [Echo Request](https://relishapp.com/trema/pio/docs/open-flow13/echo-request)
-  - [Echo Reply](https://relishapp.com/trema/pio/docs/open-flow13/echo-reply)
+  - [Hello](https://relishapp.com/trema/pio/docs/open-flow13/pio-hello)
+  - [Echo Request](https://relishapp.com/trema/pio/docs/open-flow13/pio-echo-request)
+  - [Echo Reply](https://relishapp.com/trema/pio/docs/open-flow13/pio-echo-reply)
+  - [Features Request](https://relishapp.com/trema/pio/docs/open-flow13/pio-features-request)
+  - [Features Reply](https://relishapp.com/trema/pio/docs/open-flow13/pio-features-reply)
 
 ## Features Overview
 
