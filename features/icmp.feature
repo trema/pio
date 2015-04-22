@@ -1,4 +1,4 @@
-Feature: ICMP
+Feature: Pio::Icmp
   Scenario: create an ICMP request
     When I try to create a packet with:
       """

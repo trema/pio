@@ -4,7 +4,7 @@ require 'pio/type/mac_address'
 
 module Pio
   # An action to modify the source/destination Ethernet address of a packet.
-  class SetEthAddr
+  class SetEtherAddress
     # rubocop:disable MethodLength
     def self.def_format(action_type)
       str = %(
@@ -23,10 +23,10 @@ module Pio
     # rubocop:enable MethodLength
 
     def self.read(raw_data)
-      set_eth_addr = allocate
-      set_eth_addr.instance_variable_set(:@format,
-                                         const_get(:Format).read(raw_data))
-      set_eth_addr
+      set_ether_address = allocate
+      set_ether_address.instance_variable_set(:@format,
+                                              const_get(:Format).read(raw_data))
+      set_ether_address
     end
 
     extend Forwardable
@@ -41,12 +41,12 @@ module Pio
   end
 
   # An action to modify the source Ethernet address of a packet.
-  class SetEthSrcAddr < SetEthAddr
+  class SetEtherSourceAddr < SetEtherAddress
     def_format 4
   end
 
   # An action to modify the destination Ethernet address of a packet.
-  class SetEthDstAddr < SetEthAddr
+  class SetEtherDestinationAddr < SetEtherAddress
     def_format 5
   end
 end

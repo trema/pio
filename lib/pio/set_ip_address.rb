@@ -4,7 +4,7 @@ require 'pio/type/ip_address'
 
 module Pio
   # An action to modify the IPv4 source/destination address of a packet.
-  class SetIpAddr
+  class SetIpAddress
     def self.def_format(action_type)
       str = %(
         class Format < BinData::Record
@@ -19,10 +19,10 @@ module Pio
     end
 
     def self.read(raw_data)
-      set_ip_addr = allocate
-      set_ip_addr.instance_variable_set(:@format,
-                                        const_get(:Format).read(raw_data))
-      set_ip_addr
+      set_ip_address = allocate
+      set_ip_address.instance_variable_set(:@format,
+                                           const_get(:Format).read(raw_data))
+      set_ip_address
     end
 
     extend Forwardable
@@ -38,12 +38,12 @@ module Pio
   end
 
   # An action to modify the IPv4 source address of a packet.
-  class SetIpSrcAddr < SetIpAddr
+  class SetIpSourceAddress < SetIpAddress
     def_format 6
   end
 
   # An action to modify the IPv4 source address of a packet.
-  class SetIpDstAddr < SetIpAddr
+  class SetIpDestinationAddress < SetIpAddress
     def_format 7
   end
 end

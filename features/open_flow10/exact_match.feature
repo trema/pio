@@ -1,36 +1,36 @@
-Feature: Exact Match
-  Scenario: parse #1
-    When I create an exact match from "packet_in_arp_request.raw"
+Feature: Pio::ExactMatch
+  Scenario: new (from ARP request Packet In)
+    When I create an exact match from "open_flow10/packet_in_arp_request.raw"
     And the message have the following fields and values:
-      | field       |             value |
-      | wildcards   |                {} |
-      | in_port     |                 1 |
-      | dl_src      | ac:5d:10:31:37:79 |
-      | dl_dst      | ff:ff:ff:ff:ff:ff |
-      | dl_vlan     |             65535 |
-      | dl_vlan_pcp |                 0 |
-      | dl_type     |              2054 |
-      | nw_tos      |                 0 |
-      | nw_proto    |                 1 |
-      | nw_src      |     192.168.2.254 |
-      | nw_dst      |       192.168.2.5 |
-      | tp_src      |                 0 |
-      | tp_dst      |                 0 |
+      | field                      |             value |
+      | wildcards                  |                {} |
+      | in_port                    |                 1 |
+      | ether_source_address       | ac:5d:10:31:37:79 |
+      | ether_destination_address  | ff:ff:ff:ff:ff:ff |
+      | vlan_vid                   |             65535 |
+      | vlan_priority              |                 0 |
+      | ether_type                 |              2054 |
+      | ip_tos                     |                 0 |
+      | ip_protocol                |                 1 |
+      | ip_source_address          |     192.168.2.254 |
+      | ip_destination_address     |       192.168.2.5 |
+      | transport_source_port      |                 0 |
+      | transport_destination_port |                 0 |
 
-  Scenario: parse #2
-    When I create an exact match from "packet_in_cbench.raw"
+  Scenario: new (from Cbench Packet In)
+    When I create an exact match from "open_flow10/packet_in_cbench.raw"
     And the message have the following fields and values:
-      | field       |             value |
-      | wildcards   |                {} |
-      | in_port     |                 1 |
-      | dl_src      | 00:00:00:00:00:01 |
-      | dl_dst      | 80:00:00:00:00:01 |
-      | dl_vlan     |             65535 |
-      | dl_vlan_pcp |                 0 |
-      | dl_type     |              2048 |
-      | nw_tos      |                 0 |
-      | nw_proto    |               255 |
-      | nw_src      |      192.168.0.40 |
-      | nw_dst      |      192.168.1.40 |
-      | tp_src      |             31256 |
-      | tp_dst      |             22635 |
+      | field                      |             value |
+      | wildcards                  |                {} |
+      | in_port                    |                 1 |
+      | ether_source_address       | 00:00:00:00:00:01 |
+      | ether_destination_address  | 80:00:00:00:00:01 |
+      | vlan_vid                   |             65535 |
+      | vlan_priority              |                 0 |
+      | ether_type                 |              2048 |
+      | ip_tos                     |                 0 |
+      | ip_protocol                |               255 |
+      | ip_source_address          |      192.168.0.40 |
+      | ip_destination_address     |      192.168.1.40 |
+      | transport_source_port      |             31256 |
+      | transport_destination_port |             22635 |

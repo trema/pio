@@ -1,3 +1,4 @@
+require 'forwardable'
 require 'pio/open_flow'
 
 module Pio
@@ -30,13 +31,13 @@ module Pio
                      :set_vlan_vid,
                      :set_vlan_pcp,
                      :strip_vlan,
-                     :set_dl_src,
-                     :set_dl_dst,
-                     :set_nw_src,
-                     :set_nw_dst,
-                     :set_nw_tos,
-                     :set_tp_src,
-                     :set_tp_dst,
+                     :set_ether_source_address,
+                     :set_ether_destination_address,
+                     :set_ip_source_address,
+                     :set_ip_destination_address,
+                     :set_ip_tos,
+                     :set_transport_source_port,
+                     :set_transport_destination_port,
                      :enqueue]
 
         endian :big

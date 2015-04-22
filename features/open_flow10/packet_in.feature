@@ -1,5 +1,5 @@
-Feature: Packet In
-  Scenario: create
+Feature: Pio::PacketIn
+  Scenario: new
     When I try to create an OpenFlow message with:
       """
       data_dump = [
@@ -36,8 +36,8 @@ Feature: Packet In
       | destination_mac       | ff:ff:ff:ff:ff:ff |
       | destination_mac.class |          Pio::Mac |
 
-  Scenario: parse
-    When I try to parse a file named "packet_in_arp_request.raw" with "PacketIn" class
+  Scenario: read
+    When I try to parse a file named "open_flow10/packet_in_arp_request.raw" with "PacketIn" class
     Then it should finish successfully
     And the message have the following fields and values:
       | field                 |             value |

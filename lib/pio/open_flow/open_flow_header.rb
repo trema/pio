@@ -2,6 +2,16 @@ require 'bindata'
 require 'pio/open_flow/transaction_id'
 
 module Pio
+  # OpenFlow message header parser
+  class OpenFlowHeaderParser < BinData::Record
+    endian :big
+
+    uint8 :ofp_version
+    uint8 :message_type
+    uint16 :message_length
+    transaction_id :transaction_id
+  end
+
   # OpenFlow message header.
   class OpenFlowHeader < BinData::Record
     endian :big

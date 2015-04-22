@@ -1,6 +1,6 @@
-Feature: Packet Out
-  Scenario: parse
-    When I try to parse a file named "packet_out.raw" with "PacketOut" class
+Feature: Pio::PacketOut
+  Scenario: read
+    When I try to parse a file named "open_flow10/packet_out.raw" with "PacketOut" class
     Then it should finish successfully
     And the message have the following fields and values:
     | field                     |            value |

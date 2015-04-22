@@ -11,9 +11,9 @@ When(/^I try to create an OpenFlow message with:$/) do |ruby_code|
 end
 
 # rubocop:disable LineLength
-When(/^I try to parse a file named "(.*?)\.raw" with "(.*?)" class$/) do |file_name, klass|
-  path = File.expand_path(File.join(__dir__, '..', 'packet_data', file_name + '.raw'))
-  raw_data = IO.read(path)
+When(/^I try to parse a file named "(.*?\.raw)" with "(.*?)" class$/) do |path, klass|
+  full_path = File.expand_path(File.join(__dir__, '..', path))
+  raw_data = IO.read(full_path)
   parser_klass = Pio.const_get(klass)
   begin
     @result = parser_klass.read(raw_data)
@@ -24,9 +24,9 @@ end
 # rubocop:enable LineLength
 
 # rubocop:disable LineLength
-When(/^I try to parse a file named "(.*?)\.pcap" with "(.*?)" class$/) do |file_name, klass|
-  path = File.expand_path(File.join(__dir__, '..', 'packet_data', file_name + '.pcap'))
-  pcap = Pio::Pcap::Frame.read(IO.read(path))
+When(/^I try to parse a file named "(.*?\.pcap)" with "(.*?)" class$/) do |path, klass|
+  full_path = File.expand_path(File.join(__dir__, '..', path))
+  pcap = Pio::Pcap::Frame.read(IO.read(full_path))
   parser_klass = Pio.const_get(klass)
   begin
     @result = pcap.records.each_with_object([]) do |each, result|
@@ -47,9 +47,9 @@ Then(/^it should fail with "([^"]*)", "([^"]*)"$/) do |error, message|
   expect(@last_error.message).to eq(message)
 end
 
-When(/^I create an exact match from "(.*?)"$/) do |file_name|
-  path = File.expand_path(File.join(__dir__, '..', 'packet_data', file_name))
-  @result = Pio::ExactMatch.new(Pio::PacketIn.read(IO.read(path)))
+When(/^I create an exact match from "(.*?)"$/) do |path|
+  full_path = File.expand_path(File.join(__dir__, '..', path))
+  @result = Pio::ExactMatch.new(Pio::PacketIn.read(IO.read(full_path)))
 end
 
 Then(/^the packet have the following fields and values:$/) do |table|

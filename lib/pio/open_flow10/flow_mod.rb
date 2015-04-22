@@ -1,5 +1,5 @@
-require 'pio/match'
 require 'pio/open_flow'
+require 'pio/open_flow10/match'
 
 # Base module.
 module Pio

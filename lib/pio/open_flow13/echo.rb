@@ -1,19 +1,11 @@
 require 'forwardable'
 require 'pio/open_flow'
 
+# Base module.
 module Pio
-  # OpenFlow 1.0 Echo Request and Reply message.
+  remove_const :Echo
+
   module Echo
-    # OpenFlow 1.0 Echo Request message.
-    class Request; end
-    OpenFlow::Message.factory(Request, OpenFlow::ECHO_REQUEST)
-
-    # OpenFlow 1.0 Echo Reply message.
-    class Reply; end
-    OpenFlow::Message.factory(Reply, OpenFlow::ECHO_REPLY)
-  end
-
-  module Echo13
     # Base class of Echo Request and Reply.
     class Message
       def self.message_name
@@ -54,12 +46,16 @@ module Pio
       def_delegators :open_flow_header, :message_length
       def_delegators :open_flow_header, :transaction_id
       def_delegator :open_flow_header, :transaction_id, :xid
+
+      def to_binary
+        to_binary_s
+      end
     end
 
     # OpenFlow 1.3 Echo Request message.
     class Request < Message
       # OpenFlow 1.3 Echo Request message format.
-      class Format < Echo13::Format
+      class Format < Echo::Format
         endian :big
         open_flow_header :open_flow_header,
                          ofp_version_value: 4, message_type_value: 2
@@ -70,7 +66,7 @@ module Pio
     # OpenFlow 1.3 Echo Reply message.
     class Reply < Message
       # OpenFlow 1.3 Echo Request message format.
-      class Format < Echo13::Format
+      class Format < Echo::Format
         endian :big
         open_flow_header :open_flow_header,
                          ofp_version_value: 4, message_type_value: 3

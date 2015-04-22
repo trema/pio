@@ -1,4 +1,4 @@
-Feature: LLDP
+Feature: Pio::Lldp
   Scenario: create
     When I try to create an OpenFlow message with:
       """
@@ -22,8 +22,8 @@ Feature: LLDP
       | management_address        |                   |
       | organizationally_specific |                   |
 
-  Scenario: parse
-    When I try to parse a file named "lldp.minimal.pcap" with "Lldp" class
+  Scenario: parse lldp.minimal.pcap
+    When I try to parse a file named "lldp.minimal.pcap" with "Pio::Lldp" class
     Then it should finish successfully
     Then the message #1 have the following fields and values:
       | field                     | value             |
@@ -42,6 +42,6 @@ Feature: LLDP
       | management_address        |                   |
       | organizationally_specific |                   |
 
-  Scenario: parse 2
-    When I try to parse a file named "lldp.detailed.pcap" with "Lldp" class
+  Scenario: parse lldp.detailed.pcap
+    When I try to parse a file named "lldp.detailed.pcap" with "Pio::Lldp" class
     Then it should finish successfully
