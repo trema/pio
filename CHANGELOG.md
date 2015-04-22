@@ -1,6 +1,9 @@
 # Changelog
 
 ## develop (unreleased)
+
+
+## 0.20.0 (4/22/2015)
 ### New features
 * [#138](https://github.com/trema/pio/pull/138): Add new class `Pio::Features::Request`.
 * [#153](https://github.com/trema/pio/pull/153): Add new class `Pio::Features::Reply`.
