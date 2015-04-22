@@ -2,6 +2,12 @@
 
 ## develop (unreleased)
 ### New features
+* [#138](https://github.com/trema/pio/pull/138): Add new class `Pio::Features::Request`.
+* [#153](https://github.com/trema/pio/pull/153): Add new class `Pio::Features::Reply`.
+
+
+## 0.19.0 (4/9/2015)
+### New features
 * [#132](https://github.com/trema/pio/pull/132): Add new class `Pio::Hello13`.
 * [#136](https://github.com/trema/pio/pull/136): Add new class `Pio::Echo13::Request` and `Pio::Echo13::Reply`.
 
