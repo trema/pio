@@ -46,6 +46,10 @@ module Pio
       def_delegators :open_flow_header, :message_length
       def_delegators :open_flow_header, :transaction_id
       def_delegator :open_flow_header, :transaction_id, :xid
+
+      def to_binary
+        to_binary_s
+      end
     end
 
     # OpenFlow 1.3 Echo Request message.
