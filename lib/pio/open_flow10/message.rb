@@ -1,6 +1,7 @@
 require 'English'
 require 'bindata'
 require 'forwardable'
+require 'pio/open_flow/open_flow_header'
 require 'pio/parse_error'
 
 module Pio

@@ -1,5 +1,6 @@
 require 'forwardable'
 require 'pio/open_flow'
+require 'pio/open_flow10/message'
 
 module Pio
   # OpenFlow 1.0 Echo Request and Reply message.
