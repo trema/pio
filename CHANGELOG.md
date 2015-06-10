@@ -3,6 +3,11 @@
 ## develop (unreleased)
 
 
+## 0.20.1 (6/10/2015)
+### Bugs fixed
+* [#167](https://github.com/trema/pio/pull/167): Fix PacketIn accessor methods (raw_data = VLAN tagged UDP).
+
+
 ## 0.20.0 (4/22/2015)
 ### New features
 * [#138](https://github.com/trema/pio/pull/138): Add new class `Pio::Features::Request`.

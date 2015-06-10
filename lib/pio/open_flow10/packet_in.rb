@@ -75,7 +75,7 @@ module Pio
       def self.read(raw_data)
         ethernet_header = EtherTypeParser.read(raw_data)
         case ethernet_header.ether_type
-        when EthernetHeader::EtherType::IPV4
+        when EthernetHeader::EtherType::IPV4, EthernetHeader::EtherType::VLAN
           IPv4Packet.read raw_data
         when EthernetHeader::EtherType::ARP
           Pio::Arp.read raw_data
