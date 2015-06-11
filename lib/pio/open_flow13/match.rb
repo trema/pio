@@ -27,6 +27,31 @@ module Pio
         end
       end
 
+      # The value of OXM_OF_METADATA match field
+      class Metadata < BinData::Record
+        OXM_FIELD = 2
+
+        endian :big
+
+        uint64 :metadata
+
+        def length
+          8
+        end
+      end
+
+      # Masked OXM_OF_METADATA match field
+      class MaskedMetadata < BinData::Record
+        endian :big
+
+        uint64 :metadata
+        uint64 :metadata_mask
+
+        def length
+          16
+        end
+      end
+
       # The value of OXM_OF_ETH_DST match field.
       class EtherDestinationAddress < BinData::Record
         OXM_FIELD = 3
@@ -275,6 +300,8 @@ module Pio
                  read_length: :oxm_length,
                  selection: :choose_tlv_value do
             in_port InPort
+            metadata Metadata
+            masked_metadata MaskedMetadata
             ether_destination_address EtherDestinationAddress
             masked_ether_destination_address MaskedEtherDestinationAddress
             ether_source_address EtherSourceAddress
@@ -317,6 +344,8 @@ module Pio
             case oxm_field
             when InPort::OXM_FIELD
               InPort
+            when Metadata::OXM_FIELD
+              masked? ? MaskedMetadata : Metadata
             when EtherDestinationAddress::OXM_FIELD
               masked? ? MaskedEtherDestinationAddress : EtherDestinationAddress
             when EtherSourceAddress::OXM_FIELD
@@ -405,7 +434,7 @@ module Pio
                                tlv_value: { each => user_attrs.fetch(each) } }
           end
 
-          [:ether_destination_address, :ether_source_address,
+          [:metadata, :ether_destination_address, :ether_source_address,
            :ipv4_source_address, :ipv4_destination_address,
            :ipv6_source_address, :ipv6_destination_address].each do |each|
             next unless user_attrs.key?(each)
