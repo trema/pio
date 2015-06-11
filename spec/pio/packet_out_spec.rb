@@ -86,8 +86,7 @@ describe Pio::PacketOut do
       When(:binary) { [1, 0, 0, 8, 0, 0, 0, 0].pack('C*') }
 
       Then do
-        result == Failure(Pio::ParseError,
-                          'Invalid PacketOut message.')
+        result == Failure(Pio::ParseError, 'Invalid PacketOut message.')
       end
     end
   end

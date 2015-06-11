@@ -13,7 +13,6 @@ module Pio
     include Payload
 
     # rubocop:disable MethodLength
-    # rubocop:disable AbcSize
     # This method smells of :reek:TooManyStatements
     def self.included(klass)
       def klass.ipv4_header(options = {})
@@ -33,7 +32,6 @@ module Pio
       end
     end
     # rubocop:enable MethodLength
-    # rubocop:enable AbcSize
 
     private
 
