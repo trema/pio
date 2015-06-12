@@ -52,6 +52,51 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields[0].oxm_length == 6 }
     end
 
+    context 'with metadata: 1' do
+      When(:match) do
+        Pio::OpenFlow13::Match.new(metadata: 1)
+      end
+      Then { match.metadata == 1 }
+      And { match.class == Pio::OpenFlow13::Match }
+      And { match.length == 16 }
+      And { match.match_type == Pio::OpenFlow13::MATCH_TYPE_OXM }
+      And { match.match_length == 16 }
+      And { match.match_fields.size == 1 }
+      And do
+        match.match_fields[0].oxm_class ==
+          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+      end
+      And do
+        match.match_fields[0].oxm_field ==
+          Pio::OpenFlow13::Match::Metadata::OXM_FIELD
+      end
+      And { match.match_fields[0].masked? == false }
+      And { match.match_fields[0].oxm_length == 8 }
+    end
+
+    context 'with metadata: 1, metadata_mask: 1' do
+      When(:match) do
+        Pio::OpenFlow13::Match.new(metadata: 1, metadata_mask: 1)
+      end
+      Then { match.metadata == 1 }
+      Then { match.metadata_mask == 1 }
+      And { match.class == Pio::OpenFlow13::Match }
+      And { match.length == 24 }
+      And { match.match_type == Pio::OpenFlow13::MATCH_TYPE_OXM }
+      And { match.match_length == 24 }
+      And { match.match_fields.size == 1 }
+      And do
+        match.match_fields[0].oxm_class ==
+          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+      end
+      And do
+        match.match_fields[0].oxm_field ==
+          Pio::OpenFlow13::Match::Metadata::OXM_FIELD
+      end
+      And { match.match_fields[0].masked? == true }
+      And { match.match_fields[0].oxm_length == 16 }
+    end
+
     context "with ether_source_address: '01:02:03:04:05:06', ether_source_address_mask: 'ff:ff:ff:00:00:00'" do
       When(:match) do
         Pio::OpenFlow13::Match.new(ether_source_address: '01:02:03:04:05:06',

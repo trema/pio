@@ -22,6 +22,27 @@ Feature: Pio::Match
       | field   | value |
       | in_port |     1 |
 
+  Scenario: new(metadata: 1)
+    When I try to create an OpenFlow message with:
+      """
+      Pio::Match.new(metadata: 1)
+      """
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field    | value |
+      | metadata |     1 |
+
+  Scenario: new(metadata: 1, metadata_mask: 1)
+    When I try to create an OpenFlow message with:
+      """
+      Pio::Match.new(metadata: 1, metadata_mask: 1)
+      """
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field         | value |
+      | metadata      |     1 |
+      | metadata_mask |     1 |
+
   Scenario: new(ether_source_address: '01:02:03:04:05:06')
     When I try to create an OpenFlow message with:
       """
@@ -227,6 +248,21 @@ Feature: Pio::Match
     And the message have the following fields and values:
       | field   | value |
       | in_port |     1 |
+
+  Scenario: read (file: open_flow13/oxm_metadata_field.raw)
+    When I try to parse a file named "open_flow13/oxm_metadata_field.raw" with "Pio::Match" class
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field    | value |
+      | metadata |     1 |
+
+  Scenario: read (file: open_flow13/oxm_metadata_masked_field.raw)
+    When I try to parse a file named "open_flow13/oxm_metadata_masked_field.raw" with "Pio::Match" class
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field         |                value |
+      | metadata      |                    1 |
+      | metadata_mask | 18446744069414584320 |
 
   Scenario: read (file: open_flow13/oxm_ether_destination_field.raw)
     When I try to parse a file named "open_flow13/oxm_ether_destination_field.raw" with "Pio::Match" class
