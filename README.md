@@ -70,7 +70,7 @@ bundle
 ## Team
 
 - [Yasuhito Takamiya](https://github.com/yasuhito) ([@yasuhito](https://twitter.com/yasuhito))
-- [Eishun Kondoh](https://github.com/shun159) ([@Eishun\_Kondoh](https://twitter.com/Eishun_Kondoh))
+- [Eishun Kondoh](https://github.com/shun159) ([@shunichigokew](https://twitter.com/shunichigokew))
 
 ### Contributors
 
