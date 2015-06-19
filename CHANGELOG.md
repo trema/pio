@@ -1,6 +1,8 @@
 # Changelog
 
 ## develop (unreleased)
+### New features
+* [#164](https://github.com/trema/pio/pull/164): Add new classes `Pio::FlowMod`, `Pio::Apply`, `Pio::GotoTable`, `Pio::WriteMetadata`, `Pio::Meter` and `Pio::SendOutPort`.
 
 
 ## 0.20.1 (6/10/2015)

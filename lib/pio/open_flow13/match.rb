@@ -287,7 +287,7 @@ module Pio
       end
 
       # OXM format
-      class Format < BinData::Record
+      class Oxm < BinData::Record
         # OXM match field.
         class MatchField < BinData::Record
           endian :big
@@ -391,6 +391,10 @@ module Pio
         string :padding, length: :padding_length
         hide :padding
 
+        def length
+          match_length + padding_length
+        end
+
         def method_missing(method, *args, &block)
           match_fields.each do |each|
             next unless each.tlv_value.respond_to?(method)
@@ -457,15 +461,15 @@ module Pio
 
       def self.read(raw_data)
         allocate.tap do |message|
-          message.instance_variable_set(:@format, Format.read(raw_data))
+          message.instance_variable_set(:@format, Oxm.read(raw_data))
         end
       end
 
       def initialize(user_attrs = {})
         @format = if user_attrs.empty?
-                    Format.new
+                    Oxm.new
                   else
-                    Format.new(Options.new(user_attrs).to_hash)
+                    Oxm.new(Options.new(user_attrs).to_hash)
                   end
       end
 

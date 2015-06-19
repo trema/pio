@@ -1,15 +1,3 @@
-When(/^I try to create a packet with:$/) do |ruby_code|
-  begin
-    @result = Pio.module_eval(ruby_code)
-  rescue
-    @last_error = $ERROR_INFO
-  end
-end
-
-When(/^I try to create an OpenFlow message with:$/) do |ruby_code|
-  step 'I try to create a packet with:', ruby_code
-end
-
 # rubocop:disable LineLength
 When(/^I try to parse a file named "(.*?\.raw)" with "(.*?)" class$/) do |path, klass|
   full_path = File.expand_path(File.join(__dir__, '..', path))
@@ -54,10 +42,12 @@ end
 
 Then(/^the packet have the following fields and values:$/) do |table|
   table.hashes.each do |each|
-    output = each['field'].split('.').inject(@result) do |memo, method|
-      memo.__send__(method)
+    output = @result.instance_eval("self.#{each['field']}")
+    if /^:/ =~ output.inspect
+      expect(output.inspect).to eq(each['value'])
+    else
+      expect(output.to_s).to eq(each['value'])
     end
-    expect(output.to_s).to eq(each['value'])
   end
 end
 

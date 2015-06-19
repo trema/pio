@@ -1,17 +1,14 @@
 require 'bundler/gem_tasks'
 
 RELISH_PROJECT = 'trema/pio'
+FLAY_THRESHOLD = 300
 
-# rubocop:disable HashSyntax
-
-task :default => :travis
-task :test => [:spec, :cucumber]
-task :travis => [:test, :quality, 'coveralls:push']
+task default: :travis
+task test: [:spec, :cucumber]
+task travis: [:test, :quality, 'coveralls:push']
 
 desc 'Check for code quality'
-task :quality => [:reek, :flog, :flay, :rubocop]
-
-# rubocop:enable HashSyntax
+task quality: [:reek, :flog, :flay, :rubocop]
 
 Dir.glob('tasks/*.rake').each { |each| import each }
 
