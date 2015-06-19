@@ -103,8 +103,7 @@ module Pio
       body_attrs = { elements: [{ element_type: 1,
                                   element_length: 8,
                                   element_value: 16 }] }
-      @format = Format.new(open_flow_header: header_attrs,
-                           body: body_attrs)
+      @format = Format.new(open_flow_header: header_attrs, body: body_attrs)
     end
 
     def method_missing(method, *args, &block)

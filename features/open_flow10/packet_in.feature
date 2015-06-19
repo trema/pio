@@ -29,7 +29,7 @@ Feature: Pio::PacketIn
       | buffer_id             |        4294967040 |
       | total_len             |                60 |
       | in_port               |                 1 |
-      | reason                |          no_match |
+      | reason                |         :no_match |
       | raw_data.length       |                60 |
       | source_mac            | ac:5d:10:31:37:79 |
       | source_mac.class      |          Pio::Mac |
@@ -50,7 +50,7 @@ Feature: Pio::PacketIn
       | buffer_id             |        4294967040 |
       | total_len             |                60 |
       | in_port               |                 1 |
-      | reason                |          no_match |
+      | reason                |         :no_match |
       | raw_data.length       |                60 |
       | source_mac            | ac:5d:10:31:37:79 |
       | source_mac.class      |          Pio::Mac |

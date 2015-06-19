@@ -1,4 +1,4 @@
-require 'pio/send_out_port'
+require 'pio/open_flow10/send_out_port'
 
 describe Pio::SendOutPort do
   describe '.new' do

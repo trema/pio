@@ -10,7 +10,7 @@ Feature: Pio::PortStatus
       | message_length        | 64                         |
       | transaction_id        | 4                          |
       | xid                   | 4                          |
-      | reason                | delete                     |
+      | reason                | :delete                    |
       | desc.port_no          | 65533                      |
       | desc.hardware_address | 01:02:03:04:05:06          |
       | desc.name             | foo                        |

@@ -1,6 +1,6 @@
 require 'bindata'
 require 'pio/enqueue'
-require 'pio/send_out_port'
+require 'pio/open_flow10/send_out_port'
 require 'pio/set_ether_address'
 require 'pio/set_ip_address'
 require 'pio/set_ip_tos'

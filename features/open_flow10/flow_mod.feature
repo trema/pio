@@ -25,7 +25,7 @@ Feature: Pio::FlowMod
       | match.transport_source_port            |                                                     8 |
       | match.transport_destination_port       |                                                     0 |
       | cookie                                 |                                                     0 |
-      | command                                |                                                   add |
+      | command                                |                                                  :add |
       | idle_timeout                           |                                                     0 |
       | hard_timeout                           |                                                     0 |
       | priority                               |                                                 65535 |
@@ -62,7 +62,7 @@ Feature: Pio::FlowMod
       | match.transport_source_port            |                                                     8 |
       | match.transport_destination_port       |                                                     0 |
       | cookie                                 |                                                     0 |
-      | command                                |                                                modify |
+      | command                                |                                               :modify |
       | idle_timeout                           |                                                     0 |
       | hard_timeout                           |                                                     0 |
       | priority                               |                                                 65535 |
@@ -99,7 +99,7 @@ Feature: Pio::FlowMod
       | match.transport_source_port            |                                                     8 |
       | match.transport_destination_port       |                                                     0 |
       | cookie                                 |                                                     0 |
-      | command                                |                                         modify_strict |
+      | command                                |                                        :modify_strict |
       | idle_timeout                           |                                                     0 |
       | hard_timeout                           |                                                     0 |
       | priority                               |                                                 65535 |
@@ -136,7 +136,7 @@ Feature: Pio::FlowMod
       | match.transport_source_port            |                                                     8 |
       | match.transport_destination_port       |                                                     0 |
       | cookie                                 |                                                     0 |
-      | command                                |                                                delete |
+      | command                                |                                               :delete |
       | idle_timeout                           |                                                     0 |
       | hard_timeout                           |                                                     0 |
       | priority                               |                                                 65535 |
@@ -171,7 +171,7 @@ Feature: Pio::FlowMod
       | match.transport_source_port            |                                                     8 |
       | match.transport_destination_port       |                                                     0 |
       | cookie                                 |                                                     1 |
-      | command                                |                                         delete_strict |
+      | command                                |                                        :delete_strict |
       | idle_timeout                           |                                                     0 |
       | hard_timeout                           |                                                     0 |
       | priority                               |                                                 65535 |
