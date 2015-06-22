@@ -182,6 +182,48 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields[0].oxm_length == 2 }
     end
 
+    context 'with ether_type: 0x0800, ip_dscp: 0x2e' do
+      When(:match) { Pio::OpenFlow13::Match.new(ether_type: 0x0800, ip_dscp: 0x2e) }
+      Then { match.ether_type == 0x0800 }
+      Then { match.ip_dscp == 0x2e }
+      And { match.class == Pio::OpenFlow13::Match }
+      And { match.length == 16 }
+      And { match.match_type == Pio::OpenFlow13::MATCH_TYPE_OXM }
+      And { match.match_length == 15 }
+      And { match.match_fields.size == 2 }
+      And do
+        match.match_fields[1].oxm_class ==
+          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+      end
+      And do
+        match.match_fields[1].oxm_field ==
+          Pio::OpenFlow13::Match::IpDscp::OXM_FIELD
+      end
+      And { match.match_fields[1].masked? == false }
+      And { match.match_fields[0].oxm_length == 2 }
+    end
+
+    context 'with ether_type: 0x0800, ip_ecn: 3' do
+      When(:match) { Pio::OpenFlow13::Match.new(ether_type: 0x0800, ip_ecn: 3) }
+      Then { match.ether_type == 0x0800 }
+      Then { match.ip_ecn == 3 }
+      And { match.class == Pio::OpenFlow13::Match }
+      And { match.length == 16 }
+      And { match.match_type == Pio::OpenFlow13::MATCH_TYPE_OXM }
+      And { match.match_length == 15 }
+      And { match.match_fields.size == 2 }
+      And do
+        match.match_fields[1].oxm_class ==
+          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+      end
+      And do
+        match.match_fields[1].oxm_field ==
+          Pio::OpenFlow13::Match::IpEcn::OXM_FIELD
+      end
+      And { match.match_fields[1].masked? == false }
+      And { match.match_fields[0].oxm_length == 2 }
+    end
+
     context "with ether_type: 0x0800, ipv4_source_address: '1.2.3.4'" do
       When(:match) do
         Pio::OpenFlow13::Match.new(ether_type: 0x0800,
@@ -442,6 +484,50 @@ describe Pio::OpenFlow13::Match do
       And do
         match.match_fields[0].oxm_field ==
           Pio::OpenFlow13::Match::VlanVid::OXM_FIELD
+      end
+      And { match.match_fields[0].masked? == false }
+      And { match.match_fields[0].oxm_length == 2 }
+    end
+
+    context 'with file "features/open_flow13/oxm_ip_dscp_field.raw"' do
+      Given(:raw_data) do
+        read_raw_data_file 'features/open_flow13/oxm_ip_dscp_field.raw'
+      end
+      Then { match.ip_dscp == 0x2e }
+      And { match.class == Pio::OpenFlow13::Match }
+      And { match.length == 16 }
+      And { match.match_type == Pio::OpenFlow13::MATCH_TYPE_OXM }
+      And { match.match_length == 15 }
+      And { match.match_fields.size == 2 }
+      And do
+        match.match_fields[1].oxm_class ==
+          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+      end
+      And do
+        match.match_fields[1].oxm_field ==
+          Pio::OpenFlow13::Match::IpDscp::OXM_FIELD
+      end
+      And { match.match_fields[0].masked? == false }
+      And { match.match_fields[0].oxm_length == 2 }
+    end
+
+    context 'with file "features/open_flow13/oxm_ip_ecn_field.raw"' do
+      Given(:raw_data) do
+        read_raw_data_file 'features/open_flow13/oxm_ip_ecn_field.raw'
+      end
+      Then { match.ip_ecn == 3 }
+      And { match.class == Pio::OpenFlow13::Match }
+      And { match.length == 16 }
+      And { match.match_type == Pio::OpenFlow13::MATCH_TYPE_OXM }
+      And { match.match_length == 15 }
+      And { match.match_fields.size == 2 }
+      And do
+        match.match_fields[1].oxm_class ==
+          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+      end
+      And do
+        match.match_fields[1].oxm_field ==
+          Pio::OpenFlow13::Match::IpEcn::OXM_FIELD
       end
       And { match.match_fields[0].masked? == false }
       And { match.match_fields[0].oxm_length == 2 }
