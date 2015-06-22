@@ -107,14 +107,36 @@ Feature: Pio::Match
 
   Scenario: new(vlan_vid: 10, vlan_pcp: 5)
     When I try to create an OpenFlow message with:
-    """
-    Pio::Match.new(vlan_vid: 10, vlan_pcp: 5)
-    """
+      """
+      Pio::Match.new(vlan_vid: 10, vlan_pcp: 5)
+      """
     Then it should finish successfully
     And the message have the following fields and values:
     | field    | value |
     | vlan_vid |    10 |
     | vlan_pcp |     5 |
+
+  Scenario: new(eth_type: 2048, ip_dscp: 46)
+    When I try to create an OpenFlow message with:
+      """
+      Pio::Match.new(ether_type: 2048, ip_dscp: 46)
+      """
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field      | value |
+      | ether_type |  2048 |
+      | ip_dscp    |    46 |
+
+  Scenario: new(eth_type: 2048, ip_ecn: 3)
+    When I try to create an OpenFlow message with:
+      """
+      Pio::Match.new(ether_type: 2048, ip_ecn: 46)
+      """
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field      | value |
+      | ether_type |  2048 |
+      | ip_ecn     |     3 |
 
   Scenario: new(ether_type: 0x0800, ipv4_source_address: '192.168.0.1')
     When I try to create an OpenFlow message with:
@@ -336,6 +358,22 @@ Feature: Pio::Match
       | field    | value |
       | vlan_vid |    10 |
       | vlan_pcp |     5 |
+
+  Scenario: read (file: open_flow13/oxm_ip_dscp_field.raw)
+    When I try to parse a file named "open_flow13/oxm_ip_dscp_field.raw" with "Pio::Match" class
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field      | value |
+      | ether_type |  2048 |
+      | ip_dscp    |    46 |
+
+  Scenario: read (file: open_flow13/oxm_ip_ecn_field.raw)
+    When I try to parse a file named "open_flow13/oxm_ip_ecn_field.raw" with "Pio::Match" class
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field      | value |
+      | ether_type |  2048 |
+      | ip_ecn     |     3 |
 
   Scenario: read (file: open_flow13/oxm_ipv4_source_field.raw)
     When I try to parse a file named "open_flow13/oxm_ipv4_source_field.raw" with "Pio::Match" class

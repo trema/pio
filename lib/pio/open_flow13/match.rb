@@ -147,6 +147,38 @@ module Pio
         end
       end
 
+      # The value of OXM_OF_IP_DSCP match field
+      class IpDscp < BinData::Record
+        OXM_FIELD = 8
+
+        endian :big
+
+        bit2 :padding
+        bit6 :ip_dscp
+
+        hide :padding
+
+        def length
+          1
+        end
+      end
+
+      # The value of OXM_OF_IP_ECN match field
+      class IpEcn < BinData::Record
+        OXM_FIELD = 9
+
+        endian :big
+
+        bit6 :padding
+        bit2 :ip_ecn
+
+        hide :padding
+
+        def length
+          1
+        end
+      end
+
       # The value of OXM_OF_IP_PROTO
       class IpProtocol < BinData::Record
         OXM_FIELD = 10
@@ -341,6 +373,8 @@ module Pio
             ether_type EtherType
             vlan_vid VlanVid
             vlan_pcp VlanPcp
+            ip_dscp IpDscp
+            ip_ecn IpEcn
             ipv4_source_address Ipv4SourceAddress
             masked_ipv4_source_address MaskedIpv4SourceAddress
             ipv4_destination_address Ipv4DestinationAddress
@@ -390,6 +424,10 @@ module Pio
               VlanVid
             when VlanPcp::OXM_FIELD
               VlanPcp
+            when IpDscp::OXM_FIELD
+              IpDscp
+            when IpEcn::OXM_FIELD
+              IpEcn
             when Ipv4SourceAddress::OXM_FIELD
               masked? ? MaskedIpv4SourceAddress : Ipv4SourceAddress
             when Ipv4DestinationAddress::OXM_FIELD
@@ -468,7 +506,7 @@ module Pio
           @match_fields = []
 
           [:in_port, :ether_type, :ip_protocol, :vlan_vid, :vlan_pcp,
-           :tcp_source_port, :tcp_destination_port,
+           :ip_dscp, :ip_ecn, :tcp_source_port, :tcp_destination_port,
            :udp_source_port, :udp_destination_port].each do |each|
             next unless user_attrs.key?(each)
             klass = Match.const_get(each.to_s.split('_').map(&:capitalize).join)
