@@ -115,6 +115,38 @@ module Pio
         end
       end
 
+      # The value of OXM_OF_VLAN_VID match field
+      class VlanVid < BinData::Record
+        OXM_FIELD = 6
+
+        endian :big
+
+        bit3 :padding
+        bit13 :vlan_vid
+
+        hide :padding
+
+        def length
+          2
+        end
+      end
+
+      # The value of OXM_OF_VLAN_PCP match field
+      class VlanPcp < BinData::Record
+        OXM_FIELD = 7
+
+        endian :big
+
+        bit5 :padding
+        bit3 :vlan_pcp
+
+        hide :padding
+
+        def length
+          1
+        end
+      end
+
       # The value of OXM_OF_IP_PROTO
       class IpProtocol < BinData::Record
         OXM_FIELD = 10
@@ -307,6 +339,8 @@ module Pio
             ether_source_address EtherSourceAddress
             masked_ether_source_address MaskedEtherSourceAddress
             ether_type EtherType
+            vlan_vid VlanVid
+            vlan_pcp VlanPcp
             ipv4_source_address Ipv4SourceAddress
             masked_ipv4_source_address MaskedIpv4SourceAddress
             ipv4_destination_address Ipv4DestinationAddress
@@ -352,6 +386,10 @@ module Pio
               masked? ? MaskedEtherSourceAddress : EtherSourceAddress
             when EtherType::OXM_FIELD
               EtherType
+            when VlanVid::OXM_FIELD
+              VlanVid
+            when VlanPcp::OXM_FIELD
+              VlanPcp
             when Ipv4SourceAddress::OXM_FIELD
               masked? ? MaskedIpv4SourceAddress : Ipv4SourceAddress
             when Ipv4DestinationAddress::OXM_FIELD
@@ -429,7 +467,7 @@ module Pio
         def initialize(user_attrs)
           @match_fields = []
 
-          [:in_port, :ether_type, :ip_protocol,
+          [:in_port, :ether_type, :ip_protocol, :vlan_vid, :vlan_pcp,
            :tcp_source_port, :tcp_destination_port,
            :udp_source_port, :udp_destination_port].each do |each|
             next unless user_attrs.key?(each)

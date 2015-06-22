@@ -95,6 +95,27 @@ Feature: Pio::Match
       | field      | value |
       | ether_type |  2048 |
 
+  Scenario: new(vlan_vid: 10)
+    When I try to create an OpenFlow message with:
+    """
+    Pio::Match.new(vlan_vid: 10)
+    """
+    Then it should finish successfully
+    And the message have the following fields and values:
+    | field    | value |
+    | vlan_vid |    10 |
+
+  Scenario: new(vlan_vid: 10, vlan_pcp: 5)
+    When I try to create an OpenFlow message with:
+    """
+    Pio::Match.new(vlan_vid: 10, vlan_pcp: 5)
+    """
+    Then it should finish successfully
+    And the message have the following fields and values:
+    | field    | value |
+    | vlan_vid |    10 |
+    | vlan_pcp |     5 |
+
   Scenario: new(ether_type: 0x0800, ipv4_source_address: '192.168.0.1')
     When I try to create an OpenFlow message with:
       """
@@ -300,6 +321,21 @@ Feature: Pio::Match
     And the message have the following fields and values:
       | field      | value |
       | ether_type |     0 |
+
+  Scenario: read (file: open_flow13/oxm_vlan_vid_field.raw)
+    When I try to parse a file named "open_flow13/oxm_vlan_vid_field.raw" with "Pio::Match" class
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field    | value |
+      | vlan_vid |    10 |
+
+  Scenario: read (file: open_flow13/oxm_vlan_pcp_field.raw)
+    When I try to parse a file named "open_flow13/oxm_vlan_pcp_field.raw" with "Pio::Match" class
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field    | value |
+      | vlan_vid |    10 |
+      | vlan_pcp |     5 |
 
   Scenario: read (file: open_flow13/oxm_ipv4_source_field.raw)
     When I try to parse a file named "open_flow13/oxm_ipv4_source_field.raw" with "Pio::Match" class
