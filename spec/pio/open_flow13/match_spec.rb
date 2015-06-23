@@ -291,6 +291,62 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields[1].masked? == false }
       And { match.match_fields[1].oxm_length == 4 }
     end
+
+    context 'with ether_type: 0x0800, ip_protocol: 132, sctp_source_port: 22' do
+      When(:match) do
+        Pio::OpenFlow13::Match.new(
+          ether_type: 0x0800,
+          ip_protocol: 132,
+          sctp_source_port: 22
+        )
+      end
+      Then { match.ether_type == 0x0800 }
+      Then { match.ip_protocol == 132 }
+      Then { match.sctp_source_port == 22 }
+      And { match.class == Pio::OpenFlow13::Match }
+      And { match.length == 24 }
+      And { match.match_type == Pio::OpenFlow13::MATCH_TYPE_OXM }
+      And { match.match_length == 21 }
+      And { match.match_fields.size == 3 }
+      And do
+        match.match_fields[2].oxm_class ==
+          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+      end
+      And do
+        match.match_fields[2].oxm_field ==
+          Pio::OpenFlow13::Match::SctpSourcePort::OXM_FIELD
+      end
+      And { match.match_fields[2].masked? == false }
+      And { match.match_fields[0].oxm_length == 2 }
+    end
+
+    context 'with ether_type: 0x0800, ip_protocol: 132, sctp_destination_port: 22' do
+      When(:match) do
+        Pio::OpenFlow13::Match.new(
+          ether_type: 0x0800,
+          ip_protocol: 132,
+          sctp_destination_port: 22
+        )
+      end
+      Then { match.ether_type == 0x0800 }
+      Then { match.ip_protocol == 132 }
+      Then { match.sctp_destination_port == 22 }
+      And { match.class == Pio::OpenFlow13::Match }
+      And { match.length == 24 }
+      And { match.match_type == Pio::OpenFlow13::MATCH_TYPE_OXM }
+      And { match.match_length == 21 }
+      And { match.match_fields.size == 3 }
+      And do
+        match.match_fields[2].oxm_class ==
+          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+      end
+      And do
+        match.match_fields[2].oxm_field ==
+          Pio::OpenFlow13::Match::SctpDestinationPort::OXM_FIELD
+      end
+      And { match.match_fields[2].masked? == false }
+      And { match.match_fields[0].oxm_length == 2 }
+    end
   end
 
   def read_raw_data_file(name)
