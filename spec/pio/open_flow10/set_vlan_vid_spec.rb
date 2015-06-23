@@ -1,4 +1,4 @@
-require 'pio/set_vlan_vid'
+require 'pio/open_flow10/set_vlan_vid'
 
 describe Pio::SetVlanVid do
   describe '.new' do

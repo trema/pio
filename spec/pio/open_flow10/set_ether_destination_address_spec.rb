@@ -1,4 +1,4 @@
-require 'pio/set_ether_address'
+require 'pio/open_flow10/set_ether_address'
 
 describe Pio::SetEtherDestinationAddr do
   describe '.new' do

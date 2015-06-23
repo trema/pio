@@ -1,4 +1,4 @@
-require 'pio/set_ip_tos'
+require 'pio/open_flow10/set_ip_tos'
 
 describe Pio::SetIpTos do
   describe '.new' do
