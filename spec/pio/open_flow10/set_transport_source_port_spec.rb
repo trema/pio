@@ -1,4 +1,4 @@
-require 'pio/set_transport_port'
+require 'pio/open_flow10/set_transport_port'
 
 describe Pio::SetTransportSourcePort do
   describe '.new' do

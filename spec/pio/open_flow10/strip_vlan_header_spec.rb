@@ -1,4 +1,4 @@
-require 'pio/strip_vlan_header'
+require 'pio/open_flow10/strip_vlan_header'
 
 describe Pio::StripVlanHeader do
   Given(:strip_vlan_header) { Pio::StripVlanHeader.new }
