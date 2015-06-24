@@ -232,6 +232,30 @@ Feature: Pio::Match
       | ip_protocol          |    17 |
       | udp_destination_port |  3333 |
 
+  Scenario: new(ether_type: 0x0800, ip_protocol: 132, sctp_source_port: 22)
+    When I try to create an OpenFlow message with:
+      """
+      Pio::Match.new(ether_type: 0x0800, ip_protocol: 132, sctp_source_port: 22)
+      """
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field            | value |
+      | ether_type       |  2048 |
+      | ip_protocol      |   132 |
+      | sctp_source_port |    22 |
+
+  Scenario: new(ether_type: 0x0800, ip_protocol: 132, sctp_destination_port: 22)
+    When I try to create an OpenFlow message with:
+      """
+      Pio::Match.new(ether_type: 0x0800, ip_protocol: 132, sctp_destination_port: 22)
+      """
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field                 | value |
+      | ether_type            |  2048 |
+      | ip_protocol           |   132 |
+      | sctp_destination_port |    22 |
+
   Scenario: new(ether_type: 0x86dd, ipv6_source_address: '2001:db8:bd05:1d2:288a:1fc0:1:10ee')
     When I try to create an OpenFlow message with:
       """
@@ -444,6 +468,24 @@ Feature: Pio::Match
       | ether_type           |  2048 |
       | ip_protocol          |    17 |
       | udp_destination_port |  3333 |
+
+  Scenario: read (file: open_flow13/oxm_sctp_source_field.raw)
+    When I try to parse a file named "open_flow13/oxm_sctp_source_field.raw" with "Pio::Match" class
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field            | value |
+      | ether_type       |  2048 |
+      | ip_protocol      |   132 |
+      | sctp_source_port |    22 |
+
+  Scenario: read (file: open_flow13/oxm_sctp_destination_field.raw)
+    When I try to parse a file named "open_flow13/oxm_sctp_destination_field.raw" with "Pio::Match" class
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field                 | value |
+      | ether_type            |  2048 |
+      | ip_protocol           |   132 |
+      | sctp_destination_port |    22 |
 
   Scenario: read (file: open_flow13/oxm_ipv6_source_field.raw)
     When I try to parse a file named "open_flow13/oxm_ipv6_source_field.raw" with "Pio::Match" class

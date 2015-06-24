@@ -296,6 +296,32 @@ module Pio
         end
       end
 
+      # The value of OXM_OF_SCTP_SRC
+      class SctpSourcePort < BinData::Record
+        OXM_FIELD = 17
+
+        endian :big
+
+        uint16 :sctp_source_port
+
+        def length
+          2
+        end
+      end
+
+      # The value of OXM_OF_SCTP_DST
+      class SctpDestinationPort < BinData::Record
+        OXM_FIELD = 18
+
+        endian :big
+
+        uint16 :sctp_destination_port
+
+        def length
+          2
+        end
+      end
+
       # The value of OXM_OF_IPV6_SRC
       class Ipv6SourceAddress < BinData::Record
         OXM_FIELD = 26
@@ -384,6 +410,8 @@ module Pio
             tcp_destination_port TcpDestinationPort
             udp_source_port UdpSourcePort
             udp_destination_port UdpDestinationPort
+            sctp_source_port SctpSourcePort
+            sctp_destination_port SctpDestinationPort
             ipv6_source_address Ipv6SourceAddress
             masked_ipv6_source_address MaskedIpv6SourceAddress
             ipv6_destination_address Ipv6DestinationAddress
@@ -442,6 +470,10 @@ module Pio
               UdpSourcePort
             when UdpDestinationPort::OXM_FIELD
               UdpDestinationPort
+            when SctpSourcePort::OXM_FIELD
+              SctpSourcePort
+            when SctpDestinationPort::OXM_FIELD
+              SctpDestinationPort
             when Ipv6SourceAddress::OXM_FIELD
               masked? ? MaskedIpv6SourceAddress : Ipv6SourceAddress
             when Ipv6DestinationAddress::OXM_FIELD
@@ -507,7 +539,8 @@ module Pio
 
           [:in_port, :ether_type, :ip_protocol, :vlan_vid, :vlan_pcp,
            :ip_dscp, :ip_ecn, :tcp_source_port, :tcp_destination_port,
-           :udp_source_port, :udp_destination_port].each do |each|
+           :udp_source_port, :udp_destination_port,
+           :sctp_source_port, :sctp_destination_port].each do |each|
             next unless user_attrs.key?(each)
             klass = Match.const_get(each.to_s.split('_').map(&:capitalize).join)
             @match_fields << { oxm_field: klass.const_get(:OXM_FIELD),
