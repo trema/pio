@@ -2,9 +2,10 @@
 
 ## develop (unreleased)
 ### New features
-* [#173](https://github.com/trema/pio/pull/173): Add support for the OFPXMT\_OFB\_VLAN_{ VID & PCP }.
-* [#174](https://github.com/trema/pio/pull/174): Add support for the OFPXMT\_OFB\_IP\_{ DSCP & ECN }
-* [#178](https://github.com/trema/pio/pull/178): Add support for the OFPXMT\_OFB\_SCTP\_{ SRC & DST }
+* [#173](https://github.com/trema/pio/pull/173): Add new classes `Pio::Match::VlanVid`, `Pio::Match::VlanPcp`
+* [#174](https://github.com/trema/pio/pull/174): Add new classes `Pio::Match::IpDscp`, `Pio::Match::IpEcn`
+* [#178](https://github.com/trema/pio/pull/178): Add new classes `Pio::Match::SctpSourcePort`, `Pio::Match::SctpDestinationPort`
+* [#180](https://github.com/trema/pio/pull/180): Add new classes `Pio::Match::Icmpv4Type`, `Pio::Match::Icmpv4Code`
 
 ## 0.21.1 (6/24/2015)
 ### Bugs fixed
