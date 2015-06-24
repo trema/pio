@@ -253,7 +253,7 @@ module Pio
         uint16 :tcp_source_port
 
         def length
-          16
+          2
         end
       end
 
@@ -266,7 +266,7 @@ module Pio
         uint16 :tcp_destination_port
 
         def length
-          16
+          2
         end
       end
 
@@ -279,7 +279,7 @@ module Pio
         uint16 :udp_source_port
 
         def length
-          16
+          2
         end
       end
 
@@ -292,7 +292,7 @@ module Pio
         uint16 :udp_destination_port
 
         def length
-          16
+          2
         end
       end
 
@@ -357,7 +357,7 @@ module Pio
         ipv6_address :ipv6_source_address
 
         def length
-          128
+          16
         end
       end
 
@@ -371,7 +371,7 @@ module Pio
         ipv6_address :ipv6_source_address_mask
 
         def length
-          256
+          32
         end
       end
 
@@ -384,7 +384,7 @@ module Pio
         ipv6_address :ipv6_destination_address
 
         def length
-          128
+          16
         end
       end
 
@@ -398,7 +398,7 @@ module Pio
         ipv6_address :ipv6_destination_address_mask
 
         def length
-          256
+          32
         end
       end
 

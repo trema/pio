@@ -1,4 +1,4 @@
-require 'pio/enqueue'
+require 'pio/open_flow10/enqueue'
 
 describe Pio::Enqueue do
   describe '.new' do

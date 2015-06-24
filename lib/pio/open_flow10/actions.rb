@@ -1,13 +1,13 @@
 require 'bindata'
-require 'pio/enqueue'
+require 'pio/open_flow10/enqueue'
 require 'pio/open_flow10/send_out_port'
-require 'pio/set_ether_address'
-require 'pio/set_ip_address'
-require 'pio/set_ip_tos'
-require 'pio/set_transport_port'
-require 'pio/set_vlan_priority'
-require 'pio/set_vlan_vid'
-require 'pio/strip_vlan_header'
+require 'pio/open_flow10/set_ether_address'
+require 'pio/open_flow10/set_ip_address'
+require 'pio/open_flow10/set_ip_tos'
+require 'pio/open_flow10/set_transport_port'
+require 'pio/open_flow10/set_vlan_priority'
+require 'pio/open_flow10/set_vlan_vid'
+require 'pio/open_flow10/strip_vlan_header'
 
 module Pio
   module OpenFlow

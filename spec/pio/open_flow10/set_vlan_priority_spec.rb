@@ -1,4 +1,4 @@
-require 'pio/set_vlan_priority'
+require 'pio/open_flow10/set_vlan_priority'
 
 describe Pio::SetVlanPriority do
   describe '.new' do

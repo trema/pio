@@ -1,4 +1,4 @@
-require 'pio/set_vlan'
+require 'pio/open_flow10/set_vlan'
 
 module Pio
   # An action to modify the VLAN priority of a packet.

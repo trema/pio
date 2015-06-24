@@ -1,4 +1,4 @@
-require 'pio/set_ip_address'
+require 'pio/open_flow10/set_ip_address'
 
 describe Pio::SetIpSourceAddress do
   describe '.new' do
