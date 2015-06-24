@@ -3,6 +3,11 @@
 ## develop (unreleased)
 
 
+## 0.21.1 (6/24/2015)
+### Bugs fixed
+* [#179](https://github.com/trema/pio/pull/179): Fix wrong OXM length.
+
+
 ## 0.21.0 (6/19/2015)
 ### New features
 * [#164](https://github.com/trema/pio/pull/164): Add new classes `Pio::FlowMod`, `Pio::Apply`, `Pio::GotoTable`, `Pio::WriteMetadata`, `Pio::Meter` and `Pio::SendOutPort`.
