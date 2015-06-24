@@ -347,6 +347,62 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields[2].masked? == false }
       And { match.match_fields[0].oxm_length == 2 }
     end
+
+    context 'with ether_type: 0x0800, ip_protocol: 1, icmpv4_type: 8' do
+      When(:match) do
+        Pio::OpenFlow13::Match.new(
+          ether_type: 0x0800,
+          ip_protocol: 1,
+          icmpv4_type: 8
+        )
+      end
+      Then { match.ether_type == 0x0800 }
+      Then { match.ip_protocol == 1 }
+      Then { match.icmpv4_type == 8 }
+      And { match.class == Pio::OpenFlow13::Match }
+      And { match.length == 24 }
+      And { match.match_type == Pio::OpenFlow13::MATCH_TYPE_OXM }
+      And { match.match_length == 20 }
+      And { match.match_fields.size == 3 }
+      And do
+        match.match_fields[2].oxm_class ==
+          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+      end
+      And do
+        match.match_fields[2].oxm_field ==
+          Pio::OpenFlow13::Match::Icmpv4Type::OXM_FIELD
+      end
+      And { match.match_fields[2].masked? == false }
+      And { match.match_fields[2].oxm_length == 1 }
+    end
+
+    context 'with ether_type: 0x0800, ip_protocol: 1, icmpv4_code: 0' do
+      When(:match) do
+        Pio::OpenFlow13::Match.new(
+          ether_type: 0x0800,
+          ip_protocol: 1,
+          icmpv4_code: 0
+        )
+      end
+      Then { match.ether_type == 0x0800 }
+      Then { match.ip_protocol == 1 }
+      Then { match.icmpv4_code == 0 }
+      And { match.class == Pio::OpenFlow13::Match }
+      And { match.length == 24 }
+      And { match.match_type == Pio::OpenFlow13::MATCH_TYPE_OXM }
+      And { match.match_length == 20 }
+      And { match.match_fields.size == 3 }
+      And do
+        match.match_fields[2].oxm_class ==
+          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+      end
+      And do
+        match.match_fields[2].oxm_field ==
+          Pio::OpenFlow13::Match::Icmpv4Code::OXM_FIELD
+      end
+      And { match.match_fields[2].masked? == false }
+      And { match.match_fields[2].oxm_length == 1 }
+    end
   end
 
   def read_raw_data_file(name)

@@ -256,6 +256,30 @@ Feature: Pio::Match
       | ip_protocol           |   132 |
       | sctp_destination_port |    22 |
 
+  Scenario: new(ether_type: 0x0800, ip_protocol: 1, icmpv4_type: 8)
+    When I try to create an OpenFlow message with:
+      """
+      Pio::Match.new(ether_type: 0x0800, ip_protocol: 1, icmpv4_type: 8)
+      """
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field       | value |
+      | ether_type  |  2048 |
+      | ip_protocol |     1 |
+      | icmpv4_type |     8 |
+
+  Scenario: new(ether_type: 0x0800, ip_protocol: 1, icmpv4_code: 0)
+    When I try to create an OpenFlow message with:
+      """
+      Pio::Match.new(ether_type: 0x0800, ip_protocol: 1, icmpv4_code: 0)
+      """
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field       | value |
+      | ether_type  |  2048 |
+      | ip_protocol |     1 |
+      | icmpv4_code |     0 |
+
   Scenario: new(ether_type: 0x86dd, ipv6_source_address: '2001:db8:bd05:1d2:288a:1fc0:1:10ee')
     When I try to create an OpenFlow message with:
       """
@@ -486,6 +510,24 @@ Feature: Pio::Match
       | ether_type            |  2048 |
       | ip_protocol           |   132 |
       | sctp_destination_port |    22 |
+
+  Scenario: read (file: open_flow13/oxm_icmpv4_type_field.raw)
+    When I try to parse a file named "open_flow13/oxm_icmpv4_type_field.raw" with "Pio::Match" class
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field       | value |
+      | ether_type  |  2048 |
+      | ip_protocol |     1 |
+      | icmpv4_type |     8 |
+
+  Scenario: read (file: open_flow13/oxm_icmpv4_code_field.raw)
+    When I try to parse a file named "open_flow13/oxm_icmpv4_code_field.raw" with "Pio::Match" class
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field       | value |
+      | ether_type  |  2048 |
+      | ip_protocol |     1 |
+      | icmpv4_code |     0 |
 
   Scenario: read (file: open_flow13/oxm_ipv6_source_field.raw)
     When I try to parse a file named "open_flow13/oxm_ipv6_source_field.raw" with "Pio::Match" class
