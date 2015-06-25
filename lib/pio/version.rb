@@ -1,5 +1,5 @@
 # Base module.
 module Pio
   # gem version.
-  VERSION = '0.21.1'.freeze
+  VERSION = '0.22.0'.freeze
 end
