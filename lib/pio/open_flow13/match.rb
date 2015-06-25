@@ -348,6 +348,125 @@ module Pio
         end
       end
 
+      # The value of OXM_OF_ARP_OP
+      class ArpOp < BinData::Record
+        OXM_FIELD = 21
+
+        endian :big
+
+        uint16 :arp_op
+
+        def length
+          2
+        end
+      end
+
+      # The value of OXM_OF_ARP_SPA
+      class ArpSenderProtocolAddress < BinData::Record
+        OXM_FIELD = 22
+
+        endian :big
+
+        ip_address :arp_sender_protocol_address
+
+        def length
+          4
+        end
+      end
+
+      # The value of masked OXM_OF_ARP_SPA
+      class MaskedArpSenderProtocolAddress < BinData::Record
+        OXM_FIELD = 22
+
+        endian :big
+        ip_address :arp_sender_protocol_address
+        ip_address :arp_sender_protocol_address_mask
+
+        def length
+          8
+        end
+      end
+
+      # The value of OXM_OF_ARP_TPA
+      class ArpTargetProtocolAddress < BinData::Record
+        OXM_FIELD = 23
+
+        endian :big
+
+        ip_address :arp_target_protocol_address
+
+        def length
+          4
+        end
+      end
+
+      # The value of masked OXM_OF_ARP_TPA
+      class MaskedArpTargetProtocolAddress < BinData::Record
+        OXM_FIELD = 23
+
+        endian :big
+        ip_address :arp_target_protocol_address
+        ip_address :arp_target_protocol_address_mask
+
+        def length
+          8
+        end
+      end
+
+      # The value of OXM_OF_ARP_SHA match field.
+      class ArpSenderHardwareAddress < BinData::Record
+        OXM_FIELD = 24
+
+        endian :big
+
+        mac_address :arp_sender_hardware_address
+
+        def length
+          6
+        end
+      end
+
+      # Masked OXM_OF_ARP_SHA match field.
+      class MaskedArpSenderHardwareAddress < BinData::Record
+        OXM_FIELD = 24
+
+        endian :big
+
+        mac_address :arp_sender_hardware_address
+        mac_address :arp_sender_hardware_address_mask
+
+        def length
+          12
+        end
+      end
+
+      # The value of OXM_OF_ARP_THA match field.
+      class ArpTargetHardwareAddress < BinData::Record
+        OXM_FIELD = 25
+
+        endian :big
+
+        mac_address :arp_target_hardware_address
+
+        def length
+          6
+        end
+      end
+
+      # Masked OXM_OF_ARP_THA match field.
+      class MaskedArpTargetHardwareAddress < BinData::Record
+        OXM_FIELD = 25
+
+        endian :big
+
+        mac_address :arp_target_hardware_address
+        mac_address :arp_target_hardware_address_mask
+
+        def length
+          12
+        end
+      end
+
       # The value of OXM_OF_IPV6_SRC
       class Ipv6SourceAddress < BinData::Record
         OXM_FIELD = 26
@@ -405,6 +524,7 @@ module Pio
       # OXM format
       class Oxm < BinData::Record
         # OXM match field.
+        # rubocop:disable ClassLength
         class MatchField < BinData::Record
           endian :big
 
@@ -438,6 +558,15 @@ module Pio
             udp_destination_port UdpDestinationPort
             sctp_source_port SctpSourcePort
             sctp_destination_port SctpDestinationPort
+            arp_op ArpOp
+            arp_sender_protocol_address ArpSenderProtocolAddress
+            masked_arp_sender_protocol_address MaskedArpSenderProtocolAddress
+            arp_target_protocol_address ArpTargetProtocolAddress
+            masked_arp_target_protocol_address MaskedArpTargetProtocolAddress
+            arp_sender_hardware_address ArpSenderHardwareAddress
+            masked_arp_sender_hardware_address MaskedArpSenderHardwareAddress
+            arp_target_hardware_address ArpTargetHardwareAddress
+            masked_arp_target_hardware_address MaskedArpTargetHardwareAddress
             icmpv4_type Icmpv4Type
             icmpv4_code Icmpv4Code
             ipv6_source_address Ipv6SourceAddress
@@ -506,8 +635,38 @@ module Pio
               Icmpv4Type
             when Icmpv4Code::OXM_FIELD
               Icmpv4Code
+            when ArpOp::OXM_FIELD
+              ArpOp
+            when ArpSenderProtocolAddress::OXM_FIELD
+              if masked?
+                MaskedArpSenderProtocolAddress
+              else
+                ArpSenderProtocolAddress
+              end
+            when ArpTargetProtocolAddress::OXM_FIELD
+              if masked?
+                MaskedArpTargetProtocolAddress
+              else
+                ArpTargetProtocolAddress
+              end
+            when ArpSenderHardwareAddress::OXM_FIELD
+              if masked?
+                MaskedArpSenderHardwareAddress
+              else
+                ArpSenderHardwareAddress
+              end
+            when ArpTargetHardwareAddress::OXM_FIELD
+              if masked?
+                MaskedArpTargetHardwareAddress
+              else
+                ArpTargetHardwareAddress
+              end
             when Ipv6SourceAddress::OXM_FIELD
-              masked? ? MaskedIpv6SourceAddress : Ipv6SourceAddress
+              if masked?
+                MaskedIpv6SourceAddress
+              else
+                Ipv6SourceAddress
+              end
             when Ipv6DestinationAddress::OXM_FIELD
               masked? ? MaskedIpv6DestinationAddress : Ipv6DestinationAddress
             else
@@ -519,6 +678,7 @@ module Pio
           # rubocop:enable PerceivedComplexity
           # rubocop:enable AbcSize
         end
+        # rubocop:enable MethodLength
 
         endian :big
 
@@ -571,8 +731,9 @@ module Pio
 
           [:in_port, :ether_type, :ip_protocol, :vlan_vid, :vlan_pcp,
            :ip_dscp, :ip_ecn, :tcp_source_port, :tcp_destination_port,
-           :udp_source_port, :udp_destination_port, :sctp_source_port,
-           :sctp_destination_port, :icmpv4_type, :icmpv4_code].each do |each|
+           :udp_source_port, :udp_destination_port,
+           :sctp_source_port, :sctp_destination_port,
+           :icmpv4_type, :icmpv4_code, :arp_op].each do |each|
             next unless user_attrs.key?(each)
             klass = Match.const_get(each.to_s.split('_').map(&:capitalize).join)
             @match_fields << { oxm_field: klass.const_get(:OXM_FIELD),
@@ -581,6 +742,8 @@ module Pio
 
           [:metadata, :ether_destination_address, :ether_source_address,
            :ipv4_source_address, :ipv4_destination_address,
+           :arp_sender_protocol_address, :arp_target_protocol_address,
+           :arp_sender_hardware_address, :arp_target_hardware_address,
            :ipv6_source_address, :ipv6_destination_address].each do |each|
             next unless user_attrs.key?(each)
             klass = Match.const_get(each.to_s.split('_').map(&:capitalize).join)

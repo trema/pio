@@ -1,7 +1,8 @@
 # Changelog
 
 ## develop (unreleased)
-
+### New features
+* [#184](https://github.com/trema/pio/pull/184): Add new classes `Pio::Match::ArpOp`, `Pio::Match::ArpSenderProtocolAddress`, `Pio::Match::ArpTargetProtocolAddress`, `Pio::Match::ArpSenderHardwareAddress`, `Pio::Match::ArpTargetHardwareAddress`, `Pio::Match::MaskedArpSenderProtocolAddress`,`Pio::Match::MaskedArpTargetProtocolAddress`, `Pio::Match::MaskedArpSenderHardwareAddress` and `Pio::Match::MaskedArpTargetHardwareAddress`
 
 ## 0.22.0 (6/25/2015)
 ### New features
