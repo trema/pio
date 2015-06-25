@@ -1,4 +1,5 @@
 require 'pio/open_flow10/match'
+require 'pio/parser'
 
 module Pio
   # OpenFlow 1.0 exact match
@@ -8,7 +9,7 @@ module Pio
     def initialize(packet_in)
       data = packet_in.data
       case data
-      when PacketIn::DataParser::IPv4Packet
+      when Pio::Parser::IPv4Packet
         options = {
           in_port: packet_in.in_port,
           ether_source_address: packet_in.source_mac,

@@ -35,6 +35,7 @@ supports the following packet formats:
   - [Echo Reply](https://relishapp.com/trema/pio/docs/open-flow13/pio-echo-reply)
   - [Features Request](https://relishapp.com/trema/pio/docs/open-flow13/pio-features-request)
   - [Features Reply](https://relishapp.com/trema/pio/docs/open-flow13/pio-features-reply)
+  - [Packet In](https://relishapp.com/trema/pio/docs/open-flow13/pio-packetin)
   - [Flow Mod](https://relishapp.com/trema/pio/docs/open-flow13/pio-flowmod)
 
 ## Features Overview
