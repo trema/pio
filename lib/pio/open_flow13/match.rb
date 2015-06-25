@@ -115,6 +115,70 @@ module Pio
         end
       end
 
+      # The value of OXM_OF_VLAN_VID match field
+      class VlanVid < BinData::Record
+        OXM_FIELD = 6
+
+        endian :big
+
+        bit3 :padding
+        bit13 :vlan_vid
+
+        hide :padding
+
+        def length
+          2
+        end
+      end
+
+      # The value of OXM_OF_VLAN_PCP match field
+      class VlanPcp < BinData::Record
+        OXM_FIELD = 7
+
+        endian :big
+
+        bit5 :padding
+        bit3 :vlan_pcp
+
+        hide :padding
+
+        def length
+          1
+        end
+      end
+
+      # The value of OXM_OF_IP_DSCP match field
+      class IpDscp < BinData::Record
+        OXM_FIELD = 8
+
+        endian :big
+
+        bit2 :padding
+        bit6 :ip_dscp
+
+        hide :padding
+
+        def length
+          1
+        end
+      end
+
+      # The value of OXM_OF_IP_ECN match field
+      class IpEcn < BinData::Record
+        OXM_FIELD = 9
+
+        endian :big
+
+        bit6 :padding
+        bit2 :ip_ecn
+
+        hide :padding
+
+        def length
+          1
+        end
+      end
+
       # The value of OXM_OF_IP_PROTO
       class IpProtocol < BinData::Record
         OXM_FIELD = 10
@@ -232,6 +296,58 @@ module Pio
         end
       end
 
+      # The value of OXM_OF_SCTP_SRC
+      class SctpSourcePort < BinData::Record
+        OXM_FIELD = 17
+
+        endian :big
+
+        uint16 :sctp_source_port
+
+        def length
+          2
+        end
+      end
+
+      # The value of OXM_OF_SCTP_DST
+      class SctpDestinationPort < BinData::Record
+        OXM_FIELD = 18
+
+        endian :big
+
+        uint16 :sctp_destination_port
+
+        def length
+          2
+        end
+      end
+
+      # The value of OXM_OF_ICMPV4_TYPE
+      class Icmpv4Type < BinData::Record
+        OXM_FIELD = 19
+
+        endian :big
+
+        uint8 :icmpv4_type
+
+        def length
+          1
+        end
+      end
+
+      # The value of OXM_OF_ICMPV4_CODE
+      class Icmpv4Code < BinData::Record
+        OXM_FIELD = 20
+
+        endian :big
+
+        uint8 :icmpv4_code
+
+        def length
+          1
+        end
+      end
+
       # The value of OXM_OF_IPV6_SRC
       class Ipv6SourceAddress < BinData::Record
         OXM_FIELD = 26
@@ -307,6 +423,10 @@ module Pio
             ether_source_address EtherSourceAddress
             masked_ether_source_address MaskedEtherSourceAddress
             ether_type EtherType
+            vlan_vid VlanVid
+            vlan_pcp VlanPcp
+            ip_dscp IpDscp
+            ip_ecn IpEcn
             ipv4_source_address Ipv4SourceAddress
             masked_ipv4_source_address MaskedIpv4SourceAddress
             ipv4_destination_address Ipv4DestinationAddress
@@ -316,6 +436,10 @@ module Pio
             tcp_destination_port TcpDestinationPort
             udp_source_port UdpSourcePort
             udp_destination_port UdpDestinationPort
+            sctp_source_port SctpSourcePort
+            sctp_destination_port SctpDestinationPort
+            icmpv4_type Icmpv4Type
+            icmpv4_code Icmpv4Code
             ipv6_source_address Ipv6SourceAddress
             masked_ipv6_source_address MaskedIpv6SourceAddress
             ipv6_destination_address Ipv6DestinationAddress
@@ -352,6 +476,14 @@ module Pio
               masked? ? MaskedEtherSourceAddress : EtherSourceAddress
             when EtherType::OXM_FIELD
               EtherType
+            when VlanVid::OXM_FIELD
+              VlanVid
+            when VlanPcp::OXM_FIELD
+              VlanPcp
+            when IpDscp::OXM_FIELD
+              IpDscp
+            when IpEcn::OXM_FIELD
+              IpEcn
             when Ipv4SourceAddress::OXM_FIELD
               masked? ? MaskedIpv4SourceAddress : Ipv4SourceAddress
             when Ipv4DestinationAddress::OXM_FIELD
@@ -366,6 +498,14 @@ module Pio
               UdpSourcePort
             when UdpDestinationPort::OXM_FIELD
               UdpDestinationPort
+            when SctpSourcePort::OXM_FIELD
+              SctpSourcePort
+            when SctpDestinationPort::OXM_FIELD
+              SctpDestinationPort
+            when Icmpv4Type::OXM_FIELD
+              Icmpv4Type
+            when Icmpv4Code::OXM_FIELD
+              Icmpv4Code
             when Ipv6SourceAddress::OXM_FIELD
               masked? ? MaskedIpv6SourceAddress : Ipv6SourceAddress
             when Ipv6DestinationAddress::OXM_FIELD
@@ -429,9 +569,10 @@ module Pio
         def initialize(user_attrs)
           @match_fields = []
 
-          [:in_port, :ether_type, :ip_protocol,
-           :tcp_source_port, :tcp_destination_port,
-           :udp_source_port, :udp_destination_port].each do |each|
+          [:in_port, :ether_type, :ip_protocol, :vlan_vid, :vlan_pcp,
+           :ip_dscp, :ip_ecn, :tcp_source_port, :tcp_destination_port,
+           :udp_source_port, :udp_destination_port, :sctp_source_port,
+           :sctp_destination_port, :icmpv4_type, :icmpv4_code].each do |each|
             next unless user_attrs.key?(each)
             klass = Match.const_get(each.to_s.split('_').map(&:capitalize).join)
             @match_fields << { oxm_field: klass.const_get(:OXM_FIELD),

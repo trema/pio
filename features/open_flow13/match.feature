@@ -95,6 +95,49 @@ Feature: Pio::Match
       | field      | value |
       | ether_type |  2048 |
 
+  Scenario: new(vlan_vid: 10)
+    When I try to create an OpenFlow message with:
+    """
+    Pio::Match.new(vlan_vid: 10)
+    """
+    Then it should finish successfully
+    And the message have the following fields and values:
+    | field    | value |
+    | vlan_vid |    10 |
+
+  Scenario: new(vlan_vid: 10, vlan_pcp: 5)
+    When I try to create an OpenFlow message with:
+      """
+      Pio::Match.new(vlan_vid: 10, vlan_pcp: 5)
+      """
+    Then it should finish successfully
+    And the message have the following fields and values:
+    | field    | value |
+    | vlan_vid |    10 |
+    | vlan_pcp |     5 |
+
+  Scenario: new(eth_type: 2048, ip_dscp: 46)
+    When I try to create an OpenFlow message with:
+      """
+      Pio::Match.new(ether_type: 2048, ip_dscp: 46)
+      """
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field      | value |
+      | ether_type |  2048 |
+      | ip_dscp    |    46 |
+
+  Scenario: new(eth_type: 2048, ip_ecn: 3)
+    When I try to create an OpenFlow message with:
+      """
+      Pio::Match.new(ether_type: 2048, ip_ecn: 46)
+      """
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field      | value |
+      | ether_type |  2048 |
+      | ip_ecn     |     3 |
+
   Scenario: new(ether_type: 0x0800, ipv4_source_address: '192.168.0.1')
     When I try to create an OpenFlow message with:
       """
@@ -188,6 +231,54 @@ Feature: Pio::Match
       | ether_type           |  2048 |
       | ip_protocol          |    17 |
       | udp_destination_port |  3333 |
+
+  Scenario: new(ether_type: 0x0800, ip_protocol: 132, sctp_source_port: 22)
+    When I try to create an OpenFlow message with:
+      """
+      Pio::Match.new(ether_type: 0x0800, ip_protocol: 132, sctp_source_port: 22)
+      """
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field            | value |
+      | ether_type       |  2048 |
+      | ip_protocol      |   132 |
+      | sctp_source_port |    22 |
+
+  Scenario: new(ether_type: 0x0800, ip_protocol: 132, sctp_destination_port: 22)
+    When I try to create an OpenFlow message with:
+      """
+      Pio::Match.new(ether_type: 0x0800, ip_protocol: 132, sctp_destination_port: 22)
+      """
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field                 | value |
+      | ether_type            |  2048 |
+      | ip_protocol           |   132 |
+      | sctp_destination_port |    22 |
+
+  Scenario: new(ether_type: 0x0800, ip_protocol: 1, icmpv4_type: 8)
+    When I try to create an OpenFlow message with:
+      """
+      Pio::Match.new(ether_type: 0x0800, ip_protocol: 1, icmpv4_type: 8)
+      """
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field       | value |
+      | ether_type  |  2048 |
+      | ip_protocol |     1 |
+      | icmpv4_type |     8 |
+
+  Scenario: new(ether_type: 0x0800, ip_protocol: 1, icmpv4_code: 0)
+    When I try to create an OpenFlow message with:
+      """
+      Pio::Match.new(ether_type: 0x0800, ip_protocol: 1, icmpv4_code: 0)
+      """
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field       | value |
+      | ether_type  |  2048 |
+      | ip_protocol |     1 |
+      | icmpv4_code |     0 |
 
   Scenario: new(ether_type: 0x86dd, ipv6_source_address: '2001:db8:bd05:1d2:288a:1fc0:1:10ee')
     When I try to create an OpenFlow message with:
@@ -301,6 +392,37 @@ Feature: Pio::Match
       | field      | value |
       | ether_type |     0 |
 
+  Scenario: read (file: open_flow13/oxm_vlan_vid_field.raw)
+    When I try to parse a file named "open_flow13/oxm_vlan_vid_field.raw" with "Pio::Match" class
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field    | value |
+      | vlan_vid |    10 |
+
+  Scenario: read (file: open_flow13/oxm_vlan_pcp_field.raw)
+    When I try to parse a file named "open_flow13/oxm_vlan_pcp_field.raw" with "Pio::Match" class
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field    | value |
+      | vlan_vid |    10 |
+      | vlan_pcp |     5 |
+
+  Scenario: read (file: open_flow13/oxm_ip_dscp_field.raw)
+    When I try to parse a file named "open_flow13/oxm_ip_dscp_field.raw" with "Pio::Match" class
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field      | value |
+      | ether_type |  2048 |
+      | ip_dscp    |    46 |
+
+  Scenario: read (file: open_flow13/oxm_ip_ecn_field.raw)
+    When I try to parse a file named "open_flow13/oxm_ip_ecn_field.raw" with "Pio::Match" class
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field      | value |
+      | ether_type |  2048 |
+      | ip_ecn     |     3 |
+
   Scenario: read (file: open_flow13/oxm_ipv4_source_field.raw)
     When I try to parse a file named "open_flow13/oxm_ipv4_source_field.raw" with "Pio::Match" class
     Then it should finish successfully
@@ -370,6 +492,42 @@ Feature: Pio::Match
       | ether_type           |  2048 |
       | ip_protocol          |    17 |
       | udp_destination_port |  3333 |
+
+  Scenario: read (file: open_flow13/oxm_sctp_source_field.raw)
+    When I try to parse a file named "open_flow13/oxm_sctp_source_field.raw" with "Pio::Match" class
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field            | value |
+      | ether_type       |  2048 |
+      | ip_protocol      |   132 |
+      | sctp_source_port |    22 |
+
+  Scenario: read (file: open_flow13/oxm_sctp_destination_field.raw)
+    When I try to parse a file named "open_flow13/oxm_sctp_destination_field.raw" with "Pio::Match" class
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field                 | value |
+      | ether_type            |  2048 |
+      | ip_protocol           |   132 |
+      | sctp_destination_port |    22 |
+
+  Scenario: read (file: open_flow13/oxm_icmpv4_type_field.raw)
+    When I try to parse a file named "open_flow13/oxm_icmpv4_type_field.raw" with "Pio::Match" class
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field       | value |
+      | ether_type  |  2048 |
+      | ip_protocol |     1 |
+      | icmpv4_type |     8 |
+
+  Scenario: read (file: open_flow13/oxm_icmpv4_code_field.raw)
+    When I try to parse a file named "open_flow13/oxm_icmpv4_code_field.raw" with "Pio::Match" class
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field       | value |
+      | ether_type  |  2048 |
+      | ip_protocol |     1 |
+      | icmpv4_code |     0 |
 
   Scenario: read (file: open_flow13/oxm_ipv6_source_field.raw)
     When I try to parse a file named "open_flow13/oxm_ipv6_source_field.raw" with "Pio::Match" class
