@@ -1,12 +1,15 @@
 # Changelog
 
 ## develop (unreleased)
+
+
+## 0.22.0 (6/25/2015)
 ### New features
 * [#177](https://github.com/trema/pio/pull/177): Add new class `Pio::PacketIn` (OpenFlow1.3).
-* [#173](https://github.com/trema/pio/pull/173): Add new classes `Pio::Match::VlanVid`, `Pio::Match::VlanPcp`
-* [#174](https://github.com/trema/pio/pull/174): Add new classes `Pio::Match::IpDscp`, `Pio::Match::IpEcn`
-* [#178](https://github.com/trema/pio/pull/178): Add new classes `Pio::Match::SctpSourcePort`, `Pio::Match::SctpDestinationPort`
-* [#180](https://github.com/trema/pio/pull/180): Add new classes `Pio::Match::Icmpv4Type`, `Pio::Match::Icmpv4Code`
+* [#173](https://github.com/trema/pio/pull/173): Add new classes `Pio::Match::VlanVid`, `Pio::Match::VlanPcp`.
+* [#174](https://github.com/trema/pio/pull/174): Add new classes `Pio::Match::IpDscp`, `Pio::Match::IpEcn`.
+* [#178](https://github.com/trema/pio/pull/178): Add new classes `Pio::Match::SctpSourcePort`, `Pio::Match::SctpDestinationPort`.
+* [#180](https://github.com/trema/pio/pull/180): Add new classes `Pio::Match::Icmpv4Type`, `Pio::Match::Icmpv4Code`.
 
 
 ## 0.21.1 (6/24/2015)
