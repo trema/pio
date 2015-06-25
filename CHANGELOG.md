@@ -2,6 +2,7 @@
 
 ## develop (unreleased)
 ### New features
+* [#183](https://github.com/trema/pio/pull/183): Add new class `Pio::PacketIn` (OpenFlow1.3).
 * [#185](https://github.com/trema/pio/pull/185): Add new classes `Pio::Match::TunnelId` and `Pio::Match::MaskedTunnelId`
 * [#184](https://github.com/trema/pio/pull/184): Add new classes `Pio::Match::ArpOp`, `Pio::Match::ArpSenderProtocolAddress`, `Pio::Match::ArpTargetProtocolAddress`, `Pio::Match::ArpSenderHardwareAddress`, `Pio::Match::ArpTargetHardwareAddress`, `Pio::Match::MaskedArpSenderProtocolAddress`,`Pio::Match::MaskedArpTargetProtocolAddress`, `Pio::Match::MaskedArpSenderHardwareAddress` and `Pio::Match::MaskedArpTargetHardwareAddress`
 

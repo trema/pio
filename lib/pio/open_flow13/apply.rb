@@ -1,48 +1,10 @@
 require 'bindata'
 require 'forwardable'
+require 'pio/open_flow13/actions'
 
 module Pio
   # An instruction to apply a list of actions to a packet in-order.
   class Apply
-    # Actions not yet implemented.
-    class UnsupportedAction < BinData::Record
-      endian :big
-
-      uint16 :action_type
-      uint16 :action_length
-    end
-
-    # Actions list of actions-apply instruction.
-    class Actions < BinData::Primitive
-      mandatory_parameter :length
-
-      endian :big
-
-      string :binary, read_length: :length
-
-      def set(value)
-        self.binary = [value].flatten.map(&:to_binary).join
-      end
-
-      # rubocop:disable MethodLength
-      def get
-        actions = []
-        tmp = binary
-        while tmp.length > 0
-          action = case BinData::Uint16be.read(tmp)
-                   when 0
-                     SendOutPort.read(tmp)
-                   else
-                     UnsupportedAction.read(tmp)
-                   end
-          tmp = tmp[action.action_length..-1]
-          actions << action
-        end
-        actions
-      end
-      # rubocop:enable MethodLength
-    end
-
     # OpenFlow 1.3.4 OFPIT_APPLY_ACTIONS instruction format.
     class Format < BinData::Record
       endian :big
