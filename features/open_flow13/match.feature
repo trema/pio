@@ -429,6 +429,27 @@ Feature: Pio::Match
       | ipv6_destination_address      | 2001:db8:bd05:1d2:288a:1fc0:1:10ee |
       | ipv6_destination_address_mask | ffff:ffff:ffff:ffff::              |
 
+  Scenario: new(tunnel_id: 1)
+    When I try to create an OpenFlow message with:
+      """
+      Pio::Match.new(tunnel_id: 1)
+      """
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field     | value |
+      | tunnel_id |     1 |
+
+  Scenario: new(tunnel_id: 1, tunnel_id_mask: 9223372036854775808)
+    When I try to create an OpenFlow message with:
+      """
+      Pio::Match.new(tunnel_id: 1, tunnel_id_mask: 9223372036854775808)
+      """
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field          |               value |
+      | tunnel_id      |                   1 |
+      | tunnel_id_mask | 9223372036854775808 |
+
   Scenario: read (file: open_flow13/oxm_no_fields.raw)
     When I try to parse a file named "open_flow13/oxm_no_fields.raw" with "Pio::Match" class
     Then it should finish successfully
@@ -741,3 +762,18 @@ Feature: Pio::Match
       | ether_type                    | 34525                              |
       | ipv6_destination_address      | 2001:db8:bd05:1d2:288a:1fc0:1:10ee |
       | ipv6_destination_address_mask | ffff:ffff:ffff:ffff::              |
+
+  Scenario: read (file: open_flow13/oxm_tunnel_id_field.raw)
+    When I try to parse a file named "open_flow13/oxm_tunnel_id_field.raw" with "Pio::Match" class
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field     | value |
+      | tunnel_id |     1 |
+
+  Scenario: read (file: open_flow13/oxm_masked_tunnel_id_field.raw)
+    When I try to parse a file named "open_flow13/oxm_masked_tunnel_id_field.raw" with "Pio::Match" class
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field          |               value |
+      | tunnel_id      |                   1 |
+      | tunnel_id_mask | 9223372036854775808 |

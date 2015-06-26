@@ -521,6 +521,31 @@ module Pio
         end
       end
 
+      # The value of OXM_OF_TUNNEL_ID match field
+      class TunnelId < BinData::Record
+        OXM_FIELD = 38
+
+        endian :big
+
+        uint64 :tunnel_id
+
+        def length
+          8
+        end
+      end
+
+      # Masked OXM_OF_TUNNEL_ID match field
+      class MaskedTunnelId < BinData::Record
+        endian :big
+
+        uint64 :tunnel_id
+        uint64 :tunnel_id_mask
+
+        def length
+          16
+        end
+      end
+
       # OXM format
       class Oxm < BinData::Record
         # OXM match field.
@@ -573,6 +598,8 @@ module Pio
             masked_ipv6_source_address MaskedIpv6SourceAddress
             ipv6_destination_address Ipv6DestinationAddress
             masked_ipv6_destination_address MaskedIpv6DestinationAddress
+            tunnel_id TunnelId
+            masked_tunnel_id MaskedTunnelId
           end
 
           def length
@@ -669,6 +696,8 @@ module Pio
               end
             when Ipv6DestinationAddress::OXM_FIELD
               masked? ? MaskedIpv6DestinationAddress : Ipv6DestinationAddress
+            when TunnelId::OXM_FIELD
+              masked? ? MaskedTunnelId : TunnelId
             else
               fail "Unknown OXM field value: #{oxm_field}"
             end
@@ -744,7 +773,8 @@ module Pio
            :ipv4_source_address, :ipv4_destination_address,
            :arp_sender_protocol_address, :arp_target_protocol_address,
            :arp_sender_hardware_address, :arp_target_hardware_address,
-           :ipv6_source_address, :ipv6_destination_address].each do |each|
+           :ipv6_source_address, :ipv6_destination_address,
+           :tunnel_id].each do |each|
             next unless user_attrs.key?(each)
             klass = Match.const_get(each.to_s.split('_').map(&:capitalize).join)
             mask_key = "#{each}_mask".to_sym
