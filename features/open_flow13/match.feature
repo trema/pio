@@ -280,6 +280,109 @@ Feature: Pio::Match
       | ip_protocol |     1 |
       | icmpv4_code |     0 |
 
+  Scenario: new(eth_type: 2054, arp_op: 1)
+    When I try to create an OpenFlow message with:
+      """
+      Pio::Match.new(ether_type: 2054, arp_op: 1)
+      """
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field      | value |
+      | ether_type |  2054 |
+      | arp_op     |     1 |
+
+  Scenario: new(eth_type: 2054, arp_sender_protocol_address: '1.2.3.4')
+    When I try to create an OpenFlow message with:
+      """
+      Pio::Match.new(ether_type: 2054, arp_sender_protocol_address: '1.2.3.4')
+      """
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field                       |   value |
+      | ether_type                  |    2054 |
+      | arp_sender_protocol_address | 1.2.3.4 |
+
+  Scenario: new(eth_type: 2054, arp_sender_protocol_address: '1.2.3.4', arp_sender_protocol_address_mask: '255.255.0.0')
+    When I try to create an OpenFlow message with:
+      """
+      Pio::Match.new(ether_type: 2054, arp_sender_protocol_address: '1.2.3.4', arp_sender_protocol_address_mask: '255.255.0.0')
+      """
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field                            |       value |
+      | ether_type                       |        2054 |
+      | arp_sender_protocol_address      |     1.2.3.4 |
+      | arp_sender_protocol_address_mask | 255.255.0.0 |
+
+  Scenario: new(eth_type: 2054, arp_target_protocol_address: '1.2.3.4')
+    When I try to create an OpenFlow message with:
+      """
+      Pio::Match.new(ether_type: 2054, arp_target_protocol_address: '1.2.3.4')
+      """
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field                       |   value |
+      | ether_type                  |    2054 |
+      | arp_target_protocol_address | 1.2.3.4 |
+
+  Scenario: new(eth_type: 2054, arp_target_protocol_address: '1.2.3.4', arp_target_protocol_address_mask: '255.255.0.0')
+    When I try to create an OpenFlow message with:
+      """
+      Pio::Match.new(ether_type: 2054, arp_target_protocol_address: '1.2.3.4', arp_target_protocol_address_mask: '255.255.0.0')
+      """
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field                            |       value |
+      | ether_type                       |        2054 |
+      | arp_target_protocol_address      |     1.2.3.4 |
+      | arp_target_protocol_address_mask | 255.255.0.0 |
+
+  Scenario: new(eth_type: 2054, arp_sender_hardware_address: '11:22:33:44:55:66')
+    When I try to create an OpenFlow message with:
+      """
+      Pio::Match.new(ether_type: 2054, arp_sender_hardware_address: '11:22:33:44:55:66')
+      """
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field                       |             value |
+      | ether_type                  |              2054 |
+      | arp_sender_hardware_address | 11:22:33:44:55:66 |
+
+  Scenario: new(eth_type: 2054, arp_sender_hardware_address: '11:22:33:44:55:66', arp_sender_hardware_address_mask: 'ff:ff:ff:00:00:00')
+    When I try to create an OpenFlow message with:
+      """
+      Pio::Match.new(ether_type: 2054, arp_sender_hardware_address: '11:22:33:44:55:66', arp_sender_hardware_address_mask: 'ff:ff:ff:00:00:00')
+      """
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field                            |             value |
+      | ether_type                       |              2054 |
+      | arp_sender_hardware_address      | 11:22:33:44:55:66 |
+      | arp_sender_hardware_address_mask | ff:ff:ff:00:00:00 |
+
+  Scenario: new(eth_type: 2054, arp_target_hardware_address: '11:22:33:44:55:66')
+    When I try to create an OpenFlow message with:
+      """
+      Pio::Match.new(ether_type: 2054, arp_target_hardware_address: '11:22:33:44:55:66')
+      """
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field                       |             value |
+      | ether_type                  |              2054 |
+      | arp_target_hardware_address | 11:22:33:44:55:66 |
+
+  Scenario: new(eth_type: 2054, arp_target_hardware_address: '11:22:33:44:55:66', arp_target_hardware_address_mask: 'ff:ff:ff:00:00:00')
+    When I try to create an OpenFlow message with:
+      """
+      Pio::Match.new(ether_type: 2054, arp_target_hardware_address: '11:22:33:44:55:66', arp_target_hardware_address_mask: 'ff:ff:ff:00:00:00')
+      """
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field                            |             value |
+      | ether_type                       |              2054 |
+      | arp_target_hardware_address      | 11:22:33:44:55:66 |
+      | arp_target_hardware_address_mask | ff:ff:ff:00:00:00 |
+
   Scenario: new(ether_type: 0x86dd, ipv6_source_address: '2001:db8:bd05:1d2:288a:1fc0:1:10ee')
     When I try to create an OpenFlow message with:
       """
@@ -325,6 +428,27 @@ Feature: Pio::Match
       | ether_type                    | 34525                              |
       | ipv6_destination_address      | 2001:db8:bd05:1d2:288a:1fc0:1:10ee |
       | ipv6_destination_address_mask | ffff:ffff:ffff:ffff::              |
+
+  Scenario: new(tunnel_id: 1)
+    When I try to create an OpenFlow message with:
+      """
+      Pio::Match.new(tunnel_id: 1)
+      """
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field     | value |
+      | tunnel_id |     1 |
+
+  Scenario: new(tunnel_id: 1, tunnel_id_mask: 9223372036854775808)
+    When I try to create an OpenFlow message with:
+      """
+      Pio::Match.new(tunnel_id: 1, tunnel_id_mask: 9223372036854775808)
+      """
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field          |               value |
+      | tunnel_id      |                   1 |
+      | tunnel_id_mask | 9223372036854775808 |
 
   Scenario: read (file: open_flow13/oxm_no_fields.raw)
     When I try to parse a file named "open_flow13/oxm_no_fields.raw" with "Pio::Match" class
@@ -529,6 +653,82 @@ Feature: Pio::Match
       | ip_protocol |     1 |
       | icmpv4_code |     0 |
 
+  Scenario: read (file: open_flow13/oxm_arp_op_field.raw)
+    When I try to parse a file named "open_flow13/oxm_arp_op_field.raw" with "Pio::Match" class
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field      | value |
+      | ether_type |  2054 |
+      | arp_op     |     1 |
+
+  Scenario: read (file: open_flow13/oxm_arp_spa_field.raw)
+    When I try to parse a file named "open_flow13/oxm_arp_spa_field.raw" with "Pio::Match" class
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field                       |   value |
+      | ether_type                  |    2054 |
+      | arp_sender_protocol_address | 1.2.3.4 |
+
+  Scenario: read (file: open_flow13/oxm_masked_arp_spa_field.raw)
+    When I try to parse a file named "open_flow13/oxm_masked_arp_spa_field.raw" with "Pio::Match" class
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field                            |       value |
+      | ether_type                       |        2054 |
+      | arp_sender_protocol_address      |     1.2.3.4 |
+      | arp_sender_protocol_address_mask | 255.255.0.0 |
+
+  Scenario: read (file: open_flow13/oxm_arp_tpa_field.raw)
+    When I try to parse a file named "open_flow13/oxm_arp_tpa_field.raw" with "Pio::Match" class
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field                       |   value |
+      | ether_type                  |    2054 |
+      | arp_target_protocol_address | 1.2.3.4 |
+
+  Scenario: read (file: open_flow13/oxm_masked_arp_tpa_field.raw)
+    When I try to parse a file named "open_flow13/oxm_masked_arp_tpa_field.raw" with "Pio::Match" class
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field                            |       value |
+      | ether_type                       |        2054 |
+      | arp_target_protocol_address      |     1.2.3.4 |
+      | arp_target_protocol_address_mask | 255.255.0.0 |
+
+  Scenario: read (file: open_flow13/oxm_arp_sha_field.raw)
+    When I try to parse a file named "open_flow13/oxm_arp_sha_field.raw" with "Pio::Match" class
+    Then it should finish successfully
+    And the message have the following fields and values:
+    | field                       |             value |
+    | ether_type                  |              2054 |
+    | arp_sender_hardware_address | 11:22:33:44:55:66 |
+
+  Scenario: read (file: open_flow13/oxm_masked_arp_sha_field.raw)
+    When I try to parse a file named "open_flow13/oxm_masked_arp_sha_field.raw" with "Pio::Match" class
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field                            |             value |
+      | ether_type                       |              2054 |
+      | arp_sender_hardware_address      | 11:22:33:44:55:66 |
+      | arp_sender_hardware_address_mask | ff:ff:ff:ff:ff:ff |
+
+  Scenario: read (file: open_flow13/oxm_arp_tha_field.raw)
+    When I try to parse a file named "open_flow13/oxm_arp_tha_field.raw" with "Pio::Match" class
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field                       |             value |
+      | ether_type                  |              2054 |
+      | arp_target_hardware_address | 11:22:33:44:55:66 |
+
+  Scenario: read (file: open_flow13/oxm_masked_arp_tha_field.raw)
+    When I try to parse a file named "open_flow13/oxm_masked_arp_tha_field.raw" with "Pio::Match" class
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field                            |             value |
+      | ether_type                       |              2054 |
+      | arp_target_hardware_address      | 11:22:33:44:55:66 |
+      | arp_target_hardware_address_mask | ff:ff:ff:ff:ff:ff |
+
   Scenario: read (file: open_flow13/oxm_ipv6_source_field.raw)
     When I try to parse a file named "open_flow13/oxm_ipv6_source_field.raw" with "Pio::Match" class
     Then it should finish successfully
@@ -562,3 +762,18 @@ Feature: Pio::Match
       | ether_type                    | 34525                              |
       | ipv6_destination_address      | 2001:db8:bd05:1d2:288a:1fc0:1:10ee |
       | ipv6_destination_address_mask | ffff:ffff:ffff:ffff::              |
+
+  Scenario: read (file: open_flow13/oxm_tunnel_id_field.raw)
+    When I try to parse a file named "open_flow13/oxm_tunnel_id_field.raw" with "Pio::Match" class
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field     | value |
+      | tunnel_id |     1 |
+
+  Scenario: read (file: open_flow13/oxm_masked_tunnel_id_field.raw)
+    When I try to parse a file named "open_flow13/oxm_masked_tunnel_id_field.raw" with "Pio::Match" class
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field          |               value |
+      | tunnel_id      |                   1 |
+      | tunnel_id_mask | 9223372036854775808 |

@@ -36,6 +36,7 @@ supports the following packet formats:
   - [Features Request](https://relishapp.com/trema/pio/docs/open-flow13/pio-features-request)
   - [Features Reply](https://relishapp.com/trema/pio/docs/open-flow13/pio-features-reply)
   - [Packet In](https://relishapp.com/trema/pio/docs/open-flow13/pio-packetin)
+  - [Packet Out](https://relishapp.com/trema/pio/docs/open-flow13/pio-packetout)
   - [Flow Mod](https://relishapp.com/trema/pio/docs/open-flow13/pio-flowmod)
 
 ## Features Overview
