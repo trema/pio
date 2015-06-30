@@ -3,6 +3,11 @@
 ## develop (unreleased)
 
 
+## 0.23.1 (6/30/2015)
+### Bugs fixed
+* [#186](https://github.com/trema/pio/issues/186): Add the missing `FlowMod#to_binary` method.
+
+
 ## 0.23.0 (6/29/2015)
 ### New features
 * [#183](https://github.com/trema/pio/pull/183): Add new class `Pio::PacketIn` (OpenFlow1.3).
