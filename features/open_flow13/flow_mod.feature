@@ -14,6 +14,7 @@ Feature: Pio::FlowMod
       | ofp_version        |            4 |
       | message_type       |           14 |
       | message_length     |           56 |
+      | to_binary.length   |           56 |
       | transaction_id     |            0 |
       | xid                |            0 |
       | cookie             |            0 |
