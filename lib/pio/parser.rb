@@ -1,3 +1,6 @@
+require 'pio/ethernet_header'
+require 'pio/ipv4_header'
+
 module Pio
   # Raw data parser.
   class Parser
