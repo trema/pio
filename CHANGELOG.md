@@ -5,6 +5,7 @@
 * [#188](https://github.com/trema/pio/pull/188): Add PacketIn#in_port (OpenFlow1.3).
 * [#189](https://github.com/trema/pio/pull/189): Add PacketIn#datapath_id= (OpenFlow1.3).
 * [#190](https://github.com/trema/pio/pull/190): Add PacketOut#to_binary (OpenFlow1.3).
+* [#192](https://github.com/trema/pio/pull/192): Add Meter#to_binary_s.
 
 
 ## 0.23.1 (6/30/2015)
