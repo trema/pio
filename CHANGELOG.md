@@ -1,6 +1,8 @@
 # Changelog
 
 ## develop (unreleased)
+### Bugs fixed
+* [#189](https://github.com/trema/pio/pull/189): Add PacketIn#datapath_id= (OpenFlow1.3).
 
 
 ## 0.23.1 (6/30/2015)

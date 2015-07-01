@@ -1,6 +1,11 @@
+require 'bindata'
+require 'pio/open_flow/open_flow_header'
+require 'pio/open_flow13/match'
+require 'pio/parser'
+
 # Base module.
 module Pio
-  remove_const :PacketIn
+  remove_const :PacketIn if const_defined?(:PacketIn)
 
   # OpenFlow 1.3 PacketIn message parser and generator
   class PacketIn
@@ -62,6 +67,10 @@ module Pio
       def_delegators :open_flow_header, :message_length
       def_delegators :open_flow_header, :transaction_id
       def_delegator :open_flow_header, :transaction_id, :xid
+
+      attr_accessor :datapath_id
+      alias_method :dpid, :datapath_id
+      alias_method :dpid=, :datapath_id=
 
       def method_missing(method, *args, &block)
         body.__send__ method, *args, &block
