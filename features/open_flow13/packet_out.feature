@@ -9,17 +9,18 @@ Feature: Pio::PacketOut
       """
     Then it should finish successfully
     And the message have the following fields and values:
-      | field           |          value |
-      | class           | Pio::PacketOut |
-      | ofp_version     |              4 |
-      | message_type    |             13 |
-      | message_length  |             24 |
-      | transaction_id  |              0 |
-      | xid             |              0 |
-      | buffer_id       |     :no_buffer |
-      | in_port         |              0 |
-      | actions_length  |              0 |
-      | raw_data.length |              0 |
+      | field            |          value |
+      | class            | Pio::PacketOut |
+      | ofp_version      |              4 |
+      | message_type     |             13 |
+      | message_length   |             24 |
+      | to_binary.length |             24 |
+      | transaction_id   |              0 |
+      | xid              |              0 |
+      | buffer_id        |     :no_buffer |
+      | in_port          |              0 |
+      | actions_length   |              0 |
+      | raw_data.length  |              0 |
 
   Scenario: new (actions = SendOutPort(1), raw_data = ARP Request)
     When I try to create an OpenFlow message with:
@@ -42,6 +43,7 @@ Feature: Pio::PacketOut
       | ofp_version             |                 4 |
       | message_type            |                13 |
       | message_length          |               100 |
+      | to_binary.length        |               100 |
       | transaction_id          |                 0 |
       | xid                     |                 0 |
       | buffer_id               |        :no_buffer |
