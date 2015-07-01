@@ -13,6 +13,7 @@ Feature: Pio::WriteMetadata
       | class              | Pio::WriteMetadata |
       | instruction_type   |                  2 |
       | instruction_length |                 24 |
+      | to_binary_s.length |                 24 |
       | metadata           |                  1 |
       | metadata_mask      |                  0 |
 
@@ -24,5 +25,6 @@ Feature: Pio::WriteMetadata
       | class              | Pio::WriteMetadata |
       | instruction_type   |                  2 |
       | instruction_length |                 24 |
+      | to_binary_s.length |                 24 |
       | metadata           |                  1 |
       | metadata_mask      |                  1 |

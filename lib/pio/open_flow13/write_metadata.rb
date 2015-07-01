@@ -27,6 +27,7 @@ module Pio
     def_delegators :@format, :instruction_length
     def_delegators :@format, :metadata
     def_delegators :@format, :metadata_mask
+    def_delegators :@format, :to_binary_s
 
     def initialize(user_options)
       @options = user_options
