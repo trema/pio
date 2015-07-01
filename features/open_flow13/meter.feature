@@ -13,6 +13,7 @@ Feature: Pio::Meter
     | class              | Pio::Meter |
     | instruction_type   |          6 |
     | instruction_length |          8 |
+    | to_binary_s.length |          8 |
     | meter_id           |          1 |
 
   Scenario: read
@@ -23,4 +24,5 @@ Feature: Pio::Meter
       | class              | Pio::Meter |
       | instruction_type   |          6 |
       | instruction_length |          8 |
+      | to_binary_s.length |          8 |
       | meter_id           |          1 |

@@ -25,6 +25,7 @@ module Pio
     def_delegators :@format, :instruction_type
     def_delegators :@format, :instruction_length
     def_delegators :@format, :table_id
+    def_delegators :@format, :to_binary_s
 
     def initialize(table_id)
       @format = Format.new(table_id: table_id)

@@ -13,6 +13,7 @@ Feature: Pio::GotoTable
       | class              | Pio::GotoTable |
       | instruction_type   |              1 |
       | instruction_length |              8 |
+      | to_binary_s.length |              8 |
       | table_id           |              1 |
 
   Scenario: read
@@ -22,5 +23,6 @@ Feature: Pio::GotoTable
       | field              |          value |
       | class              | Pio::GotoTable |
       | instruction_type   |              1 |
-      | instruction_length |              8 |
+      | instruction_length |              8 | 
+      | to_binary_s.length |              8 |
       | table_id           |              1 |
