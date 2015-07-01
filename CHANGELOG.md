@@ -2,6 +2,7 @@
 
 ## develop (unreleased)
 ### Bugs fixed
+* [#188](https://github.com/trema/pio/pull/188): Add PacketIn#in_port (OpenFlow1.3).
 * [#189](https://github.com/trema/pio/pull/189): Add PacketIn#datapath_id= (OpenFlow1.3).
 
 

@@ -70,6 +70,7 @@ Feature: Pio::PacketIn
       | xid                           |               123 |
       | buffer_id.to_hex              |        0xcafebabe |
       | total_len                     |                60 |
+      | in_port                       |                 1 |
       | reason                        |         :no_match |
       | table_id                      |                 0 |
       | cookie                        |                 0 |
