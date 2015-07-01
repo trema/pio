@@ -64,6 +64,8 @@ module Pio
       def_delegators :open_flow_header, :transaction_id
       def_delegator :open_flow_header, :transaction_id, :xid
 
+      alias_method :to_binary, :to_binary_s
+
       def method_missing(method, *args, &block)
         body.__send__ method, *args, &block
       end
