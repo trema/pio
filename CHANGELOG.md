@@ -1,6 +1,8 @@
 # Changelog
 
 ## develop (unreleased)
+### Bugs fixed
+* [#188](https://github.com/trema/pio/pull/188): Add PacketIn#in_port (OpenFlow1.3).
 
 
 ## 0.23.1 (6/30/2015)

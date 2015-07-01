@@ -44,6 +44,10 @@ module Pio
           @data ||= Pio::Parser.read(raw_data)
         end
 
+        def in_port
+          match.in_port
+        end
+
         def method_missing(method, *args)
           data.__send__(method, *args).snapshot
         end
