@@ -57,11 +57,7 @@ module Pio
                              user_options.delete :xid
                              dpid = user_options[:dpid]
                              user_options[:datapath_id] = dpid if dpid
-                             if user_options.keys.size > 1
-                               user_options
-                             else
-                               user_options[:user_data] || ''
-                             end
+                             user_options
                            else
                              ''
                            end

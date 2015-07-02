@@ -14,6 +14,10 @@ module MonkeyPatch
         _within_range? 32
       end
 
+      def unsigned_64bit?
+        _within_range? 64
+      end
+
       def _within_range?(nbit)
         (0 <= self) && (self < 2**nbit)
       end

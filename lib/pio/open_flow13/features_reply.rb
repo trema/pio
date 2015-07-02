@@ -5,7 +5,7 @@ require 'pio/open_flow'
 module Pio
   # OpenFlow 1.3 Features Request and Reply message.
   class Features
-    remove_const :Reply
+    remove_const :Reply if const_defined?(:Reply)
 
     # OpenFlow 1.3 Features Reply message.
     class Reply
@@ -26,7 +26,7 @@ module Pio
 
         endian :big
 
-        uint64 :datapath_id
+        datapath_id :datapath_id
         uint32 :n_buffers
         uint8 :n_tables
         uint8 :auxiliary_id

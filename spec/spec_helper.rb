@@ -12,3 +12,4 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[*formatters]
 SimpleCov.start { add_filter '/vendor/' }
 
 require 'rspec/given'
+Dir['./spec/support/**/*.rb'].sort.each { |f| require f }
