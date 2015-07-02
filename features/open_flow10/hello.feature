@@ -61,6 +61,22 @@ Feature: Pio::Hello
       """
     Then it should fail with "ArgumentError", "Transaction ID should be an unsigned 32-bit integer."
 
+  Scenario: new(body: 'hello')
+    When I try to create an OpenFlow message with:
+      """
+      Pio::Hello.new(body: 'hello')
+      """
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field          |      value |
+      | class          | Pio::Hello |
+      | ofp_version    |          1 |
+      | message_type   |          0 |
+      | message_length |         13 |
+      | transaction_id |          0 |
+      | xid            |          0 |
+      | body           |      hello |
+
   Scenario: read
     When I try to parse a file named "open_flow10/hello.raw" with "Hello" class
     Then it should finish successfully
