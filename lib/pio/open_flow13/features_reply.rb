@@ -42,24 +42,10 @@ module Pio
 
       # OpenFlow 1.3 Features Reply message format.
       class Format < BinData::Record
-        extend Forwardable
+        extend OpenFlow::Format
 
-        endian :big
-        open_flow_header(:open_flow_header,
-                         ofp_version_value: 4, message_type_value: 6)
+        header version: 4, message_type: 6
         body :body
-
-        def_delegators :open_flow_header, :ofp_version
-        def_delegators :open_flow_header, :message_type
-        def_delegators :open_flow_header, :message_length
-        def_delegators :open_flow_header, :transaction_id
-        def_delegator :open_flow_header, :transaction_id, :xid
-        def_delegators :body, :datapath_id
-        def_delegators :body, :n_buffers
-        def_delegators :body, :n_tables
-        def_delegators :body, :auxiliary_id
-        def_delegators :body, :capabilities
-        def_delegators :body, :reserved
 
         def dpid
           datapath_id
@@ -79,8 +65,7 @@ module Pio
         body_options = user_attrs.dup
         body_options[:datapath_id] =
           body_options[:dpid] || body_options[:datapath_id]
-        @format = Format.new(open_flow_header: header_options,
-                             body: body_options)
+        @format = Format.new(header: header_options, body: body_options)
       end
 
       def method_missing(method, *args, &block)

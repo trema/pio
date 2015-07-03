@@ -14,32 +14,15 @@ module Pio
         klass.module_eval(&block) if block
         klass.module_eval <<-EOT, __FILE__, __LINE__
           class Format < BinData::Record
-            endian :big
+            extend OpenFlow::Format
 
-            open_flow_header :open_flow_header,
-                             ofp_version_value: 1,
-                             message_type_value: #{message_type}
-            virtual assert: -> do
-              open_flow_header.message_type == #{message_type}
-            end
-
+            header version: 1, message_type: #{message_type}
             #{klass.const_defined?(:Body) ? 'body' : 'string'} :body
           end
 
           def self.format
             const_get :Format
           end
-
-          def_delegators :@format, :snapshot
-          def_delegators :snapshot, :open_flow_header
-          def_delegators :open_flow_header, :ofp_version
-          def_delegators :open_flow_header, :message_type
-          def_delegators :open_flow_header, :message_length
-          def_delegators :open_flow_header, :transaction_id
-          def_delegator :open_flow_header, :transaction_id, :xid
-
-          def_delegators :snapshot, :body
-          def_delegator :snapshot, :body, :user_data
 
           def self.read(raw_data)
             allocate.tap do |message|
@@ -61,11 +44,13 @@ module Pio
                            else
                              ''
                            end
-            @format = self.class.format.new(open_flow_header: header_options,
+            @format = self.class.format.new(header: header_options,
                                             body: body_options)
           end
 
-          def_delegator :@format, :to_binary_s, :to_binary
+          def method_missing(method, *args, &block)
+            @format.__send__ method, *args, &block
+          end
         EOT
       end
       # rubocop:enable MethodLength

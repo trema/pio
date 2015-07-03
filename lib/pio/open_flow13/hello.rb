@@ -48,28 +48,16 @@ module Pio
 
     # OpenFlow 1.3 Hello message format
     class Format < BinData::Record
-      extend Forwardable
+      extend OpenFlow::Format
 
-      endian :big
-
-      open_flow_header :open_flow_header,
-                       ofp_version_value: 4, message_type_value: 0
+      header version: 4, message_type: 0
       body :body
-
-      def_delegators :open_flow_header, :ofp_version
-      def_delegators :open_flow_header, :message_type
-      def_delegators :open_flow_header, :message_length
-      def_delegators :open_flow_header, :transaction_id
-      def_delegator :open_flow_header, :transaction_id, :xid
-      def_delegators :body, :elements
 
       def supported_versions
         supported_versions_list.map do |each|
           "open_flow1#{each - 1}".to_sym
         end
       end
-
-      alias_method :to_binary, :to_binary_s
 
       private
 
@@ -103,7 +91,7 @@ module Pio
       body_attrs = { elements: [{ element_type: 1,
                                   element_length: 8,
                                   element_value: 16 }] }
-      @format = Format.new(open_flow_header: header_attrs, body: body_attrs)
+      @format = Format.new(header: header_attrs, body: body_attrs)
     end
 
     def method_missing(method, *args, &block)

@@ -9,29 +9,15 @@ module Pio
     class Request
       # OpenFlow 1.0 Features Request message
       class Format < BinData::Record
-        endian :big
+        extend OpenFlow::Format
 
-        open_flow_header :header,
-                         ofp_version_value: 1,
-                         message_type_value: OpenFlow::FEATURES_REQUEST
-        virtual assert: -> { header.message_type == OpenFlow::FEATURES_REQUEST }
-
+        header version: 1, message_type: OpenFlow::FEATURES_REQUEST
         string :body
+
+        def user_data
+          body
+        end
       end
-
-      extend Forwardable
-
-      def_delegators :@format, :snapshot
-      def_delegators :snapshot, :header
-      def_delegators :header, :ofp_version
-      def_delegators :header, :message_type
-      def_delegators :header, :message_length
-      def_delegators :header, :transaction_id
-      def_delegator :header, :transaction_id, :xid
-
-      def_delegators :snapshot, :body
-      def_delegator :snapshot, :body, :user_data
-      def_delegator :@format, :to_binary_s, :to_binary
 
       def self.read(raw_data)
         allocate.tap do |message|
@@ -45,6 +31,10 @@ module Pio
         header_options = OpenFlowHeader::Options.parse(user_options)
         body_options = user_options[:body] || user_options[:user_data] || ''
         @format = Format.new(header: header_options, body: body_options)
+      end
+
+      def method_missing(method, *args, &block)
+        @format.__send__ method, *args, &block
       end
     end
 
@@ -91,6 +81,10 @@ module Pio
         actions_flag :actions
         array :ports, type: :phy_port, read_until: :eof
 
+        def dpid
+          datapath_id
+        end
+
         def empty?
           false
         end
@@ -99,27 +93,54 @@ module Pio
           24 + ports.to_binary_s.length
         end
       end
-    end
 
-    OpenFlow::Message.factory(Reply, OpenFlow::FEATURES_REPLY) do
-      def_delegators :body, :datapath_id
-      def_delegator :body, :datapath_id, :dpid
-      def_delegators :body, :n_buffers
-      def_delegators :body, :n_tables
-      def_delegators :body, :capabilities
-      def_delegators :body, :actions
+      # OpenFlow 1.0 Features Reply message
+      class Format < BinData::Record
+        extend OpenFlow::Format
 
-      def ports
-        @format.snapshot.body.ports.map do |each|
-          each.instance_variable_set :@datapath_id, datapath_id
-          each
+        header version: 1, message_type: OpenFlow::FEATURES_REPLY
+        body :body
+
+        def ports
+          body.snapshot.ports.map do |each|
+            each.instance_variable_set :@datapath_id, datapath_id
+            each
+          end
+        end
+
+        def physical_ports
+          ports.select do |each|
+            each.port_no <= PortNumber::MAX
+          end
         end
       end
 
-      def physical_ports
-        ports.select do |each|
-          each.port_no <= PortNumber::MAX
+      def self.read(raw_data)
+        allocate.tap do |message|
+          message.instance_variable_set(:@format, Format.read(raw_data))
         end
+      rescue BinData::ValidityError
+        raise Pio::ParseError, 'Invalid Features Reply message.'
+      end
+
+      # rubocop:disable MethodLength
+      def initialize(user_options = {})
+        header_options = OpenFlowHeader::Options.parse(user_options)
+        body_options = if user_options.respond_to?(:fetch)
+                         user_options.delete :transaction_id
+                         user_options.delete :xid
+                         dpid = user_options[:dpid]
+                         user_options[:datapath_id] = dpid if dpid
+                         user_options
+                       else
+                         ''
+                       end
+        @format = Format.new(header: header_options, body: body_options)
+      end
+      # rubocop:enable MethodLength
+
+      def method_missing(method, *args, &block)
+        @format.__send__ method, *args, &block
       end
     end
   end
