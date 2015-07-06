@@ -1,5 +1,7 @@
 require 'pio/open_flow'
+require 'pio/open_flow10/actions'
 require 'pio/open_flow10/match'
+require 'pio/open_flow10/message'
 
 # Base module.
 module Pio
@@ -62,7 +64,7 @@ module Pio
       uint32 :buffer_id
       uint16 :out_port
       flags :flags
-      actions :actions, length: -> { open_flow_header.message_length - 72 }
+      actions :actions, length: -> { header.message_length - 72 }
 
       def empty?
         false

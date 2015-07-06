@@ -140,26 +140,10 @@ module Pio
 
     # OpenFlow 1.3 FlowMod message format
     class Format < BinData::Record
-      extend Forwardable
+      extend OpenFlow::Format
 
-      endian :big
-
-      open_flow_header :open_flow_header,
-                       ofp_version_value: 4,
-                       message_type_value: OpenFlow::FLOW_MOD
+      header version: 4, message_type: OpenFlow::FLOW_MOD
       body :body
-
-      def_delegators :open_flow_header, :ofp_version
-      def_delegators :open_flow_header, :message_type
-      def_delegators :open_flow_header, :message_length
-      def_delegators :open_flow_header, :transaction_id
-      def_delegator :open_flow_header, :transaction_id, :xid
-
-      alias_method :to_binary, :to_binary_s
-
-      def method_missing(method, *args, &block)
-        body.__send__ method, *args, &block
-      end
     end
 
     def self.read(raw_data)
@@ -174,7 +158,7 @@ module Pio
                      match: user_attrs[:match],
                      priority: user_attrs[:priority],
                      instructions: user_attrs[:instructions] }
-      @format = Format.new(open_flow_header: header_attrs, body: body_attrs)
+      @format = Format.new(header: header_attrs, body: body_attrs)
     end
 
     def method_missing(method, *args, &block)

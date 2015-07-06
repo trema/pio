@@ -37,6 +37,10 @@ module Pio
       hide :padding
       string :raw_data, read_length: :total_len
 
+      def data
+        @data ||= Pio::Parser.read(raw_data)
+      end
+
       def empty?
         false
       end
@@ -44,30 +48,20 @@ module Pio
       def length
         10 + raw_data.length
       end
+
+      def lldp?
+        data.is_a? Lldp
+      end
+
+      def method_missing(method, *args)
+        data.__send__(method, *args).snapshot
+      end
     end
   end
 
   OpenFlow::Message.factory(PacketIn, OpenFlow::PACKET_IN) do
-    def_delegators :body, :buffer_id
-    def_delegators :body, :total_len
-    def_delegators :body, :in_port
-    def_delegators :body, :reason
-    def_delegators :body, :raw_data
-
     attr_accessor :datapath_id
     alias_method :dpid, :datapath_id
     alias_method :dpid=, :datapath_id=
-
-    def data
-      @data ||= Pio::Parser.read(raw_data)
-    end
-
-    def lldp?
-      data.is_a? Lldp
-    end
-
-    def method_missing(method, *args)
-      data.__send__(method, *args).snapshot
-    end
   end
 end

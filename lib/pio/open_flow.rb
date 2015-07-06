@@ -16,6 +16,6 @@ end
 
 require 'pio/open_flow/datapath_id'
 require 'pio/open_flow/flags'
-require 'pio/open_flow/open_flow_header'
+require 'pio/open_flow/format'
 require 'pio/open_flow/phy_port'
 require 'pio/open_flow/port_number'

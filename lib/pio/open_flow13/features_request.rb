@@ -11,22 +11,10 @@ module Pio
     class Request
       # OpenFlow 1.3 Features Request message format.
       class Format < BinData::Record
-        extend Forwardable
+        extend OpenFlow::Format
 
-        endian :big
-        open_flow_header(:open_flow_header,
-                         ofp_version_value: 4, message_type_value: 5)
+        header version: 4, message_type: 5
         string :body, value: ''
-
-        def_delegators :open_flow_header, :ofp_version
-        def_delegators :open_flow_header, :message_type
-        def_delegators :open_flow_header, :message_length
-        def_delegators :open_flow_header, :transaction_id
-        def_delegator :open_flow_header, :transaction_id, :xid
-
-        def to_binary
-          to_binary_s
-        end
       end
 
       def self.read(raw_data)
@@ -43,7 +31,7 @@ module Pio
           fail "Unknown keyword: #{unknown_attrs.first}"
         end
         header_options = OpenFlowHeader::Options.parse(user_attrs)
-        @format = Format.new(open_flow_header: header_options)
+        @format = Format.new(header: header_options)
       end
 
       def method_missing(method, *args, &block)
