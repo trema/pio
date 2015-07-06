@@ -115,4 +115,4 @@ Feature: Pio::Echo::Request
 
   Scenario: parse error
     When I try to parse a file named "open_flow10/features_request.raw" with "Pio::Echo::Request" class
-    Then it should fail with "Pio::ParseError", "Invalid Echo Request 1.3 message."
+    Then it should fail with "Pio::ParseError", "Invalid Echo Request message."

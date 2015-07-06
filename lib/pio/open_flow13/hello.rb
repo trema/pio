@@ -1,14 +1,11 @@
-require 'bindata'
-require 'forwardable'
 require 'pio/open_flow'
-require 'pio/parse_error'
 
 # Base module.
 module Pio
   remove_const :Hello
 
   # OpenFlow 1.3 Hello message parser and generator
-  class Hello
+  class Hello < OpenFlow::Message
     # ofp_hello_elem_header and value
     class Element < BinData::Record
       VERSION_BITMAP = 1
@@ -73,14 +70,6 @@ module Pio
       end
     end
 
-    def self.read(raw_data)
-      allocate.tap do |message|
-        message.instance_variable_set(:@format, Format.read(raw_data))
-      end
-    rescue BinData::ValidityError
-      raise Pio::ParseError, 'Invalid Hello 1.3 message.'
-    end
-
     def initialize(user_attrs = {})
       unknown_keywords = user_attrs.keys - [:transaction_id, :xid]
       unless unknown_keywords.empty?
@@ -92,10 +81,6 @@ module Pio
                                   element_length: 8,
                                   element_value: 16 }] }
       @format = Format.new(header: header_attrs, body: body_attrs)
-    end
-
-    def method_missing(method, *args, &block)
-      @format.__send__ method, *args, &block
     end
   end
 end
