@@ -1,12 +1,11 @@
 require 'pio/open_flow'
 require 'pio/open_flow10/actions'
 require 'pio/open_flow10/match'
-require 'pio/open_flow10/message'
 
 # Base module.
 module Pio
   # OpenFlow 1.0 Flow Mod message.
-  class FlowMod
+  class FlowMod < OpenFlow::Message
     # enum ofp_flow_mod_command
     class Command < BinData::Primitive
       COMMANDS = {
@@ -74,18 +73,29 @@ module Pio
         64 + actions.binary.length
       end
     end
-  end
 
-  OpenFlow::Message.factory(FlowMod, OpenFlow::FLOW_MOD) do
-    def_delegators :body, :match
-    def_delegators :body, :cookie
-    def_delegators :body, :command
-    def_delegators :body, :idle_timeout
-    def_delegators :body, :hard_timeout
-    def_delegators :body, :priority
-    def_delegators :body, :buffer_id
-    def_delegators :body, :out_port
-    def_delegators :body, :flags
-    def_delegators :body, :actions
+    # OpenFlow 1.0 Flow Mod message format.
+    class Format < BinData::Record
+      extend OpenFlow::Format
+
+      header version: 1, message_type: OpenFlow::FLOW_MOD
+      body :body
+    end
+
+    # rubocop:disable MethodLength
+    def initialize(user_options = {})
+      header_options = OpenFlowHeader::Options.parse(user_options)
+      body_options = if user_options.respond_to?(:fetch)
+                       user_options.delete :transaction_id
+                       user_options.delete :xid
+                       dpid = user_options[:dpid]
+                       user_options[:datapath_id] = dpid if dpid
+                       user_options
+                     else
+                       ''
+                     end
+      @format = Format.new(header: header_options, body: body_options)
+    end
+    # rubocop:enable MethodLength
   end
 end

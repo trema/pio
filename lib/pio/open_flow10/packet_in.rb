@@ -1,4 +1,3 @@
-require 'bindata'
 require 'pio/ethernet_header'
 require 'pio/ipv4_header'
 require 'pio/open_flow'
@@ -8,7 +7,7 @@ require 'pio/parser'
 # Base module.
 module Pio
   # OpenFlow 1.0 Packet-In message
-  class PacketIn
+  class PacketIn < OpenFlow::Message
     # Why is this packet being sent to the controller?
     # (enum ofp_packet_in_reason)
     class Reason < BinData::Primitive
@@ -57,11 +56,33 @@ module Pio
         data.__send__(method, *args).snapshot
       end
     end
-  end
 
-  OpenFlow::Message.factory(PacketIn, OpenFlow::PACKET_IN) do
     attr_accessor :datapath_id
     alias_method :dpid, :datapath_id
     alias_method :dpid=, :datapath_id=
+
+    # OpenFlow 1.0 Flow Mod message format.
+    class Format < BinData::Record
+      extend OpenFlow::Format
+
+      header version: 1, message_type: OpenFlow::PACKET_IN
+      body :body
+    end
+
+    # rubocop:disable MethodLength
+    def initialize(user_options = {})
+      header_options = OpenFlowHeader::Options.parse(user_options)
+      body_options = if user_options.respond_to?(:fetch)
+                       user_options.delete :transaction_id
+                       user_options.delete :xid
+                       dpid = user_options[:dpid]
+                       user_options[:datapath_id] = dpid if dpid
+                       user_options
+                     else
+                       ''
+                     end
+      @format = Format.new(header: header_options, body: body_options)
+    end
+    # rubocop:enable MethodLength
   end
 end

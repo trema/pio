@@ -33,7 +33,7 @@ describe Pio::Hello do
     context 'with a hello message (OpenFlow 1.0)' do
       Given(:binary) { [1, 0, 0, 8, 0, 0, 0, 0].pack('C*') }
 
-      Then { result == Failure(Pio::ParseError, 'Invalid Hello 1.3 message.') }
+      Then { result == Failure(Pio::ParseError, 'Invalid Hello message.') }
     end
   end
 

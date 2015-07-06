@@ -1,5 +1,4 @@
-require 'bindata'
-require 'pio/open_flow/open_flow_header'
+require 'pio/open_flow'
 require 'pio/open_flow13/match'
 require 'pio/parser'
 
@@ -8,7 +7,7 @@ module Pio
   remove_const :PacketIn if const_defined?(:PacketIn)
 
   # OpenFlow 1.3 PacketIn message parser and generator
-  class PacketIn
+  class PacketIn < OpenFlow::Message
     # OpenFlow 1.3 PacketIn message format
     class Format < BinData::Record
       # OpenFlow 1.3 PacketIn message body
@@ -68,20 +67,10 @@ module Pio
       alias_method :dpid=, :datapath_id=
     end
 
-    def self.read(raw_data)
-      allocate.tap do |message|
-        message.instance_variable_set(:@format, Format.read(raw_data))
-      end
-    end
-
     def initialize(user_attrs = {})
       header_attrs = OpenFlowHeader::Options.parse(user_attrs)
       body_attrs = { raw_data: user_attrs[:raw_data] }
       @format = Format.new(header: header_attrs, body: body_attrs)
-    end
-
-    def method_missing(method, *args, &block)
-      @format.__send__ method, *args, &block
     end
   end
 end

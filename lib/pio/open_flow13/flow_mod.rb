@@ -1,4 +1,3 @@
-require 'forwardable'
 require 'pio/open_flow'
 require 'pio/open_flow13/buffer_id'
 require 'pio/open_flow13/match'
@@ -8,7 +7,7 @@ module Pio
   remove_const :FlowMod if const_defined?(:FlowMod)
 
   # OpenFlow 1.3 FlowMod message parser and generator
-  class FlowMod
+  class FlowMod < OpenFlow::Message
     # enum ofp_flow_mod_command
     class Command < BinData::Primitive
       COMMANDS = {
@@ -146,12 +145,6 @@ module Pio
       body :body
     end
 
-    def self.read(raw_data)
-      allocate.tap do |message|
-        message.instance_variable_set(:@format, Format.read(raw_data))
-      end
-    end
-
     def initialize(user_attrs = {})
       header_attrs = OpenFlowHeader::Options.parse(user_attrs)
       body_attrs = { table_id: user_attrs[:table_id],
@@ -159,10 +152,6 @@ module Pio
                      priority: user_attrs[:priority],
                      instructions: user_attrs[:instructions] }
       @format = Format.new(header: header_attrs, body: body_attrs)
-    end
-
-    def method_missing(method, *args, &block)
-      @format.__send__ method, *args, &block
     end
   end
 end

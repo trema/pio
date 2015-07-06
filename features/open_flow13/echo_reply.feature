@@ -115,4 +115,4 @@ Feature: Pio::Echo::Reply
 
   Scenario: parse error
     When I try to parse a file named "open_flow10/features_request.raw" with "Pio::Echo::Reply" class
-    Then it should fail with "Pio::ParseError", "Invalid Echo Reply 1.3 message."
+    Then it should fail with "Pio::ParseError", "Invalid Echo Reply message."

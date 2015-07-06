@@ -1,4 +1,4 @@
-require 'bindata'
+require 'pio/open_flow'
 require 'pio/open_flow13/actions'
 require 'pio/open_flow13/buffer_id'
 
@@ -7,7 +7,7 @@ module Pio
   remove_const :PacketOut
 
   # OpenFlow 1.3 PacketOut message parser and generator
-  class PacketOut
+  class PacketOut < OpenFlow::Message
     # Packet's input port or :controller
     class InPort < BinData::Primitive
       CONTROLLER = 0xfffffffd
@@ -56,21 +56,11 @@ module Pio
       body :body
     end
 
-    def self.read(raw_data)
-      allocate.tap do |message|
-        message.instance_variable_set(:@format, Format.read(raw_data))
-      end
-    end
-
     def initialize(user_attrs = {})
       header_attrs = OpenFlowHeader::Options.parse(user_attrs)
       body_attrs = { actions: user_attrs[:actions],
                      raw_data: user_attrs[:raw_data] }
       @format = Format.new(header: header_attrs, body: body_attrs)
-    end
-
-    def method_missing(method, *args, &block)
-      @format.__send__ method, *args, &block
     end
   end
 end

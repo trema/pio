@@ -1,4 +1,3 @@
-require 'forwardable'
 require 'pio/open_flow'
 
 # Base module.
@@ -8,7 +7,7 @@ module Pio
     remove_const :Reply if const_defined?(:Reply)
 
     # OpenFlow 1.3 Features Reply message.
-    class Reply
+    class Reply < OpenFlow::Message
       # OpenFlow 1.3 Features Reply message body.
       class Body < BinData::Record
         extend OpenFlow::Flags
@@ -52,24 +51,12 @@ module Pio
         end
       end
 
-      def self.read(raw_data)
-        allocate.tap do |message|
-          message.instance_variable_set(:@format, Format.read(raw_data))
-        end
-      rescue BinData::ValidityError
-        raise Pio::ParseError, 'Invalid Features Reply 1.3 message.'
-      end
-
       def initialize(user_attrs = {})
         header_options = OpenFlowHeader::Options.parse(user_attrs)
         body_options = user_attrs.dup
         body_options[:datapath_id] =
           body_options[:dpid] || body_options[:datapath_id]
         @format = Format.new(header: header_options, body: body_options)
-      end
-
-      def method_missing(method, *args, &block)
-        @format.__send__ method, *args, &block
       end
     end
   end

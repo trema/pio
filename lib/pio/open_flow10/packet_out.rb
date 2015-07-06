@@ -1,10 +1,9 @@
-require 'bindata'
 require 'pio/open_flow'
 
 # Base module.
 module Pio
   # OpenFlow 1.0 Packet-Out message
-  class PacketOut
+  class PacketOut < OpenFlow::Message
     # Message body of Packet-Out
     class Body < BinData::Record
       endian :big
@@ -23,13 +22,29 @@ module Pio
         8 + actions_len + raw_data.length
       end
     end
-  end
 
-  OpenFlow::Message.factory(PacketOut, OpenFlow::PACKET_OUT) do
-    def_delegators :body, :buffer_id
-    def_delegators :body, :in_port
-    def_delegators :body, :actions_len
-    def_delegators :body, :actions
-    def_delegators :body, :raw_data
+    # OpenFlow 1.0 Flow Mod message format.
+    class Format < BinData::Record
+      extend OpenFlow::Format
+
+      header version: 1, message_type: OpenFlow::PACKET_OUT
+      body :body
+    end
+
+    # rubocop:disable MethodLength
+    def initialize(user_options = {})
+      header_options = OpenFlowHeader::Options.parse(user_options)
+      body_options = if user_options.respond_to?(:fetch)
+                       user_options.delete :transaction_id
+                       user_options.delete :xid
+                       dpid = user_options[:dpid]
+                       user_options[:datapath_id] = dpid if dpid
+                       user_options
+                     else
+                       ''
+                     end
+      @format = Format.new(header: header_options, body: body_options)
+    end
+    # rubocop:enable MethodLength
   end
 end
