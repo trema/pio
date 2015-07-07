@@ -9,6 +9,10 @@ module Pio
       # rubocop:disable NestedMethodDefinition
       def self.extended(base)
         base.module_eval do
+          def header_length
+            8
+          end
+
           def method_missing(method, *args, &block)
             body.__send__ method, *args, &block
           end
@@ -17,7 +21,6 @@ module Pio
       # rubocop:enable NestedMethodDefinition
 
       # rubocop:disable MethodLength
-      # rubocop:disable AbcSize
       def header(options)
         module_eval do
           endian :big
@@ -25,8 +28,6 @@ module Pio
           open_flow_header :header,
                            ofp_version_value: options.fetch(:version),
                            message_type_value: options.fetch(:message_type)
-          virtual assert:
-                    -> { header.message_type == options.fetch(:message_type) }
 
           def_delegators :header, :snapshot
           def_delegators :snapshot, :ofp_version
@@ -39,7 +40,6 @@ module Pio
         end
       end
       # rubocop:enable MethodLength
-      # rubocop:enable AbcSize
     end
   end
 end
