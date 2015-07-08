@@ -19,12 +19,20 @@ module Pio
       end
       # rubocop:enable MethodLength
 
-      def self.user_option(name)
-        unless class_variable_defined?(:@@valid_options)
-          class_variable_set(:@@valid_options, [])
+      def self.body_option(name)
+        unless class_variable_defined?(:@@valid_body_options)
+          class_variable_set(:@@valid_body_options, [])
         end
-        class_variable_set(:@@valid_options,
-                           class_variable_get(:@@valid_options) + [name])
+        class_variable_set(:@@valid_body_options,
+                           class_variable_get(:@@valid_body_options) + [name])
+      end
+
+      def initialize(user_options = {})
+        validate_user_options user_options
+        @format =
+          self.class.const_get(:Format).
+          new(header: parse_header_options(user_options),
+              body: parse_body_options(user_options))
       end
 
       def method_missing(method, *args, &block)
@@ -34,13 +42,40 @@ module Pio
       private
 
       def validate_user_options(user_options)
-        unknown_options = user_options.keys - valid_options
+        unknown_options =
+          user_options.keys - valid_header_options - valid_body_options
         return if unknown_options.empty?
         fail "Unknown option: #{unknown_options.first}"
       end
 
-      def valid_options
-        self.class.class_variable_get(:@@valid_options)
+      def parse_header_options(user_options)
+        transaction_id =
+          user_options[:transaction_id] || user_options[:xid] || 0
+        { transaction_id: transaction_id }
+      end
+
+      def parse_body_options(user_options)
+        if valid_body_options.include?(:body)
+          return user_options[:body] || user_options[:user_data] || ''
+        end
+        options = user_options.dup
+        options.delete :transaction_id
+        options.delete :xid
+        dpid = options[:dpid]
+        options[:datapath_id] = dpid if dpid
+        options
+      end
+
+      def valid_header_options
+        [:transaction_id, :xid]
+      end
+
+      def valid_body_options
+        if self.class.class_variable_defined?(:@@valid_body_options)
+          self.class.class_variable_get(:@@valid_body_options)
+        else
+          []
+        end
       end
     end
   end

@@ -10,7 +10,7 @@ module Pio
         extend OpenFlow::Format
 
         header version: 1, message_type: OpenFlow::FEATURES_REQUEST
-        string :body
+        string :body, value: ''
 
         def user_data
           body
@@ -18,9 +18,8 @@ module Pio
       end
 
       def initialize(user_options = {})
-        header_options = OpenFlowHeader::Options.parse(user_options)
-        body_options = user_options[:body] || user_options[:user_data] || ''
-        @format = Format.new(header: header_options, body: body_options)
+        validate_user_options user_options
+        @format = Format.new(header: parse_header_options(user_options))
       end
     end
 
@@ -101,21 +100,20 @@ module Pio
         end
       end
 
-      # rubocop:disable MethodLength
+      body_option :dpid
+      body_option :datapath_id
+      body_option :n_buffers
+      body_option :n_tables
+      body_option :capabilities
+      body_option :actions
+      body_option :ports
+
       def initialize(user_options = {})
-        header_options = OpenFlowHeader::Options.parse(user_options)
-        body_options = if user_options.respond_to?(:fetch)
-                         user_options.delete :transaction_id
-                         user_options.delete :xid
-                         dpid = user_options[:dpid]
-                         user_options[:datapath_id] = dpid if dpid
-                         user_options
-                       else
-                         ''
-                       end
+        validate_user_options user_options
+        header_options = parse_header_options(user_options)
+        body_options = parse_body_options(user_options)
         @format = Format.new(header: header_options, body: body_options)
       end
-      # rubocop:enable MethodLength
     end
   end
 end

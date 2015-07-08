@@ -146,7 +146,7 @@ module Pio
     end
 
     def initialize(user_attrs = {})
-      header_attrs = OpenFlowHeader::Options.parse(user_attrs)
+      header_attrs = parse_header_options(user_attrs)
       body_attrs = { table_id: user_attrs[:table_id],
                      match: user_attrs[:match],
                      priority: user_attrs[:priority],
