@@ -47,20 +47,6 @@ Feature: Pio::Features::Request
       | xid            |                    123 |
       | user_data      |                        |
 
-  Scenario: new(xid: -1) and error
-    When I try to create an OpenFlow message with:
-      """
-      Pio::Features::Request.new(xid: -1)
-      """
-    Then it should fail with "ArgumentError", "Transaction ID should be an unsigned 32-bit integer."
-
-  Scenario: new(xid: 2**32) and error
-    When I try to create an OpenFlow message with:
-      """
-      Pio::Features::Request.new(xid: 2**32)
-      """
-    Then it should fail with "ArgumentError", "Transaction ID should be an unsigned 32-bit integer."
-
   Scenario: read
     When I try to parse a file named "open_flow10/features_request.raw" with "Pio::Features::Request" class
     Then it should finish successfully

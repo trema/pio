@@ -36,18 +36,8 @@ module Pio
         end
       end
 
-      user_option :transaction_id
-      user_option :xid
-      user_option :body
-      user_option :user_data
-
-      def initialize(user_options = {})
-        validate_user_options user_options
-        header_options = OpenFlowHeader::Options.parse(user_options)
-        body_options = user_options[:body] || user_options[:user_data] || ''
-        @format = self.class.const_get(:Format).new(header: header_options,
-                                                    body: body_options)
-      end
+      body_option :body
+      body_option :user_data
     end
   end
 end

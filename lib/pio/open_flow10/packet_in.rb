@@ -71,7 +71,7 @@ module Pio
 
     # rubocop:disable MethodLength
     def initialize(user_options = {})
-      header_options = OpenFlowHeader::Options.parse(user_options)
+      header_options = parse_header_options(user_options)
       body_options = if user_options.respond_to?(:fetch)
                        user_options.delete :transaction_id
                        user_options.delete :xid

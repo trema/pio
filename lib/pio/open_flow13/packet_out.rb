@@ -57,7 +57,7 @@ module Pio
     end
 
     def initialize(user_attrs = {})
-      header_attrs = OpenFlowHeader::Options.parse(user_attrs)
+      header_attrs = parse_header_options(user_attrs)
       body_attrs = { actions: user_attrs[:actions],
                      raw_data: user_attrs[:raw_data] }
       @format = Format.new(header: header_attrs, body: body_attrs)

@@ -51,13 +51,11 @@ module Pio
         end
       end
 
-      def initialize(user_attrs = {})
-        header_options = OpenFlowHeader::Options.parse(user_attrs)
-        body_options = user_attrs.dup
-        body_options[:datapath_id] =
-          body_options[:dpid] || body_options[:datapath_id]
-        @format = Format.new(header: header_options, body: body_options)
-      end
+      body_option :dpid
+      body_option :datapath_id
+      body_option :n_buffers
+      body_option :n_tables
+      body_option :capabilities
     end
   end
 end

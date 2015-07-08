@@ -70,12 +70,9 @@ module Pio
       end
     end
 
-    user_option :transaction_id
-    user_option :xid
-
     def initialize(user_options = {})
       validate_user_options user_options
-      header_options = OpenFlowHeader::Options.parse(user_options)
+      header_options = parse_header_options(user_options)
       body_options = { elements: [{ element_type: VERSION_BITMAP,
                                     element_length: 8,
                                     element_value: 0b10000 }] }
