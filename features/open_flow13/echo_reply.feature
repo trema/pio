@@ -106,7 +106,7 @@ Feature: Pio::Echo::Reply
       """
       Pio::Echo::Reply.new(unknown_attr: 'foo')
       """
-    Then it should fail with "RuntimeError", "Unknown keyword: unknown_attr"
+    Then it should fail with "RuntimeError", "Unknown option: unknown_attr"
 
   Scenario: read (no message body)
     When I try to parse a file named "open_flow13/echo_reply_no_body.raw" with "Pio::Echo::Reply" class

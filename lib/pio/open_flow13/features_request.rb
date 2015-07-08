@@ -19,7 +19,7 @@ module Pio
       def initialize(user_attrs = {})
         unknown_attrs = user_attrs.keys - [:transaction_id, :xid]
         unless unknown_attrs.empty?
-          fail "Unknown keyword: #{unknown_attrs.first}"
+          fail "Unknown option: #{unknown_attrs.first}"
         end
         header_options = OpenFlowHeader::Options.parse(user_attrs)
         @format = Format.new(header: header_options)

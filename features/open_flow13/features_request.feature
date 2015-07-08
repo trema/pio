@@ -69,7 +69,7 @@ Feature: Pio::Features::Request
       """
       Pio::Features::Request.new(unknown_attr: 'foo')
       """
-    Then it should fail with "RuntimeError", "Unknown keyword: unknown_attr"
+    Then it should fail with "RuntimeError", "Unknown option: unknown_attr"
 
   Scenario: read
     When I try to parse a file named "open_flow13/features_request.raw" with "Pio::Features::Request" class

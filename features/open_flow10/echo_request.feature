@@ -50,20 +50,6 @@ Feature: Pio::Echo::Request
       | body           |                    |
       | user_data      |                    |
 
-  Scenario: new(xid: -1) and error
-    When I try to create an OpenFlow message with:
-      """
-      Pio::Echo::Request.new(xid: -1)
-      """
-    Then it should fail with "ArgumentError", "Transaction ID should be an unsigned 32-bit integer."
-
-  Scenario: new(xid: 2**32) and error
-    When I try to create an OpenFlow message with:
-      """
-      Pio::Echo::Request.new(xid: 2**32)
-      """
-    Then it should fail with "ArgumentError", "Transaction ID should be an unsigned 32-bit integer."
-
   Scenario: new(body: 'echo request body')
     When I try to create an OpenFlow message with:
       """

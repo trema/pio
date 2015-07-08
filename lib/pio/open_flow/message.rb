@@ -19,8 +19,28 @@ module Pio
       end
       # rubocop:enable MethodLength
 
+      def self.user_option(name)
+        unless class_variable_defined?(:@@valid_options)
+          class_variable_set(:@@valid_options, [])
+        end
+        class_variable_set(:@@valid_options,
+                           class_variable_get(:@@valid_options) + [name])
+      end
+
       def method_missing(method, *args, &block)
         @format.__send__ method, *args, &block
+      end
+
+      private
+
+      def validate_user_options(user_options)
+        unknown_options = user_options.keys - valid_options
+        return if unknown_options.empty?
+        fail "Unknown option: #{unknown_options.first}"
+      end
+
+      def valid_options
+        self.class.class_variable_get(:@@valid_options)
       end
     end
   end

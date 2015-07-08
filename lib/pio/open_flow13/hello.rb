@@ -2,14 +2,14 @@ require 'pio/open_flow'
 
 # Base module.
 module Pio
-  remove_const :Hello
+  remove_const :Hello if const_defined?(:Hello)
 
   # OpenFlow 1.3 Hello message parser and generator
   class Hello < OpenFlow::Message
+    VERSION_BITMAP = 1
+
     # ofp_hello_elem_header and value
     class Element < BinData::Record
-      VERSION_BITMAP = 1
-
       endian :big
 
       uint16 :element_type
@@ -70,17 +70,16 @@ module Pio
       end
     end
 
-    def initialize(user_attrs = {})
-      unknown_keywords = user_attrs.keys - [:transaction_id, :xid]
-      unless unknown_keywords.empty?
-        fail "Unknown keyword: #{unknown_keywords.first}"
-      end
+    user_option :transaction_id
+    user_option :xid
 
-      header_attrs = OpenFlowHeader::Options.parse(user_attrs)
-      body_attrs = { elements: [{ element_type: 1,
-                                  element_length: 8,
-                                  element_value: 16 }] }
-      @format = Format.new(header: header_attrs, body: body_attrs)
+    def initialize(user_options = {})
+      validate_user_options user_options
+      header_options = OpenFlowHeader::Options.parse(user_options)
+      body_options = { elements: [{ element_type: VERSION_BITMAP,
+                                    element_length: 8,
+                                    element_value: 0b10000 }] }
+      @format = Format.new(header: header_options, body: body_options)
     end
   end
 end

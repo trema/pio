@@ -36,12 +36,13 @@ module Pio
         end
       end
 
+      user_option :transaction_id
+      user_option :xid
+      user_option :body
+      user_option :user_data
+
       def initialize(user_options = {})
-        unknown_options =
-          user_options.keys - [:transaction_id, :xid, :body, :user_data]
-        unless unknown_options.empty?
-          fail "Unknown keyword: #{unknown_options.first}"
-        end
+        validate_user_options user_options
         header_options = OpenFlowHeader::Options.parse(user_options)
         body_options = user_options[:body] || user_options[:user_data] || ''
         @format = self.class.const_get(:Format).new(header: header_options,
