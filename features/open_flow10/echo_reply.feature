@@ -50,26 +50,12 @@ Feature: Pio::Echo::Reply
       | body           |                  |
       | user_data      |                  |
 
-  Scenario: new(xid: -1) and error
-    When I try to create an OpenFlow message with:
-      """
-      Pio::Echo::Reply.new(xid: -1)
-      """
-    Then it should fail with "ArgumentError", "Transaction ID should be an unsigned 32-bit integer."
-
-  Scenario: new(xid: 2**32) and error
-    When I try to create an OpenFlow message with:
-      """
-      Pio::Echo::Reply.new(xid: 2**32)
-      """
-    Then it should fail with "ArgumentError", "Transaction ID should be an unsigned 32-bit integer."
-
   Scenario: new(unknown_attr: 'foo') and error
     When I try to create an OpenFlow message with:
       """
       Pio::Echo::Reply.new(unknown_attr: 'foo')
       """
-    Then it should fail with "RuntimeError", "Unknown keyword: unknown_attr"
+    Then it should fail with "RuntimeError", "Unknown option: unknown_attr"
 
   Scenario: new(body: 'echo reply body')
     When I try to create an OpenFlow message with:
