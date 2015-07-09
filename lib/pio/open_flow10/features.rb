@@ -107,13 +107,6 @@ module Pio
       body_option :capabilities
       body_option :actions
       body_option :ports
-
-      def initialize(user_options = {})
-        validate_user_options user_options
-        header_options = parse_header_options(user_options)
-        body_options = parse_body_options(user_options)
-        @format = Format.new(header: header_options, body: body_options)
-      end
     end
   end
 end

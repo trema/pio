@@ -1,4 +1,4 @@
-require 'pio/open_flow13/packet_in'
+require 'pio/open_flow10/packet_in'
 
 describe Pio::PacketIn do
   Given(:packet_in) { Pio::PacketIn.new }
