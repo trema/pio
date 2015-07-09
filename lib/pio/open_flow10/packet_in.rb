@@ -57,10 +57,6 @@ module Pio
       end
     end
 
-    attr_accessor :datapath_id
-    alias_method :dpid, :datapath_id
-    alias_method :dpid=, :datapath_id=
-
     # OpenFlow 1.0 Flow Mod message format.
     class Format < BinData::Record
       extend OpenFlow::Format
@@ -69,20 +65,15 @@ module Pio
       body :body
     end
 
-    # rubocop:disable MethodLength
-    def initialize(user_options = {})
-      header_options = parse_header_options(user_options)
-      body_options = if user_options.respond_to?(:fetch)
-                       user_options.delete :transaction_id
-                       user_options.delete :xid
-                       dpid = user_options[:dpid]
-                       user_options[:datapath_id] = dpid if dpid
-                       user_options
-                     else
-                       ''
-                     end
-      @format = Format.new(header: header_options, body: body_options)
-    end
-    # rubocop:enable MethodLength
+    attr_accessor :datapath_id
+    alias_method :dpid, :datapath_id
+    alias_method :dpid=, :datapath_id=
+
+    body_option :transaction_id
+    body_option :xid
+    body_option :buffer_id
+    body_option :in_port
+    body_option :reason
+    body_option :raw_data
   end
 end
