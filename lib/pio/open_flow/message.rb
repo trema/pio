@@ -29,10 +29,7 @@ module Pio
 
       def initialize(user_options = {})
         validate_user_options user_options
-        @format =
-          self.class.const_get(:Format).
-          new(header: parse_header_options(user_options),
-              body: parse_body_options(user_options))
+        @format = self.class.const_get(:Format).new(parse_options(user_options))
       end
 
       def method_missing(method, *args, &block)
@@ -46,6 +43,15 @@ module Pio
           user_options.keys - valid_header_options - valid_body_options
         return if unknown_options.empty?
         fail "Unknown option: #{unknown_options.first}"
+      end
+
+      def parse_options(user_options)
+        if valid_body_options.empty?
+          { header: parse_header_options(user_options) }
+        else
+          { header: parse_header_options(user_options),
+            body: parse_body_options(user_options) }
+        end
       end
 
       def parse_header_options(user_options)
@@ -63,7 +69,7 @@ module Pio
         options.delete :xid
         dpid = options[:dpid]
         options[:datapath_id] = dpid if dpid
-        options
+        options.empty? ? {} : options
       end
 
       def valid_header_options

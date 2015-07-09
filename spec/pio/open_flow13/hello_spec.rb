@@ -1,14 +1,14 @@
 require 'pio/open_flow13/hello'
 require 'pio/parse_error'
 
-describe Pio::Hello do
+describe Pio::OpenFlow13::Hello do
   describe '.read' do
-    When(:result) { Pio::Hello.read(binary) }
+    When(:result) { Pio::OpenFlow13::Hello.read(binary) }
 
     context 'with a hello message (no version bitmap)' do
       Given(:binary) { [4, 0, 0, 8, 0, 0, 0, 0].pack('C*') }
 
-      Then { result.class == Pio::Hello }
+      Then { result.class == Pio::OpenFlow13::Hello }
       Then { result.ofp_version == 4 }
       Then { result.message_type == 0 }
       Then { result.message_length == 8 }
@@ -22,7 +22,7 @@ describe Pio::Hello do
         [4, 0, 0, 16, 0, 0, 0, 0, 0, 1, 0, 8, 0, 0, 0, 18].pack('C*')
       end
 
-      Then { result.class == Pio::Hello }
+      Then { result.class == Pio::OpenFlow13::Hello }
       Then { result.ofp_version == 4 }
       Then { result.message_type == 0 }
       Then { result.message_length == 16 }
@@ -34,15 +34,17 @@ describe Pio::Hello do
     context 'with a hello message (OpenFlow 1.0)' do
       Given(:binary) { [1, 0, 0, 8, 0, 0, 0, 0].pack('C*') }
 
-      Then { result == Failure(Pio::ParseError, 'Invalid Hello message.') }
+      Then do
+        result == Failure(Pio::ParseError, 'Invalid OpenFlow13 Hello message.')
+      end
     end
   end
 
   describe '.new' do
-    it_should_behave_like('an OpenFlow message', Pio::Hello)
+    it_should_behave_like('an OpenFlow message', Pio::OpenFlow13::Hello)
 
     context 'with no arguments' do
-      When(:result) { Pio::Hello.new }
+      When(:result) { Pio::OpenFlow13::Hello.new }
 
       Then { result.ofp_version == 4 }
       Then { result.message_type == 0 }
@@ -57,7 +59,7 @@ describe Pio::Hello do
     end
 
     context 'with invalid_option: :foo' do
-      When(:result) { Pio::Hello.new(invalid_option: :foo) }
+      When(:result) { Pio::OpenFlow13::Hello.new(invalid_option: :foo) }
 
       Then do
         result == Failure(RuntimeError, 'Unknown option: invalid_option')

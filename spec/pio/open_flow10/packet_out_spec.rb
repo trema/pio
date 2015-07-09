@@ -1,6 +1,7 @@
 require 'pio/open_flow10/packet_out'
+require 'pio/parse_error'
 
-describe Pio::PacketOut do
+describe Pio::OpenFlow10::PacketOut do
   Given(:header_dump) do
     [
       0x01,
@@ -9,6 +10,7 @@ describe Pio::PacketOut do
       0x00, 0x00, 0x00, 0x16
     ].pack('C*')
   end
+
   Given(:data_dump) do
     [
       0x01, 0x80, 0xc2, 0x00, 0x00, 0x0e, 0x01, 0x02, 0x03, 0x04,
@@ -20,6 +22,7 @@ describe Pio::PacketOut do
       0x00, 0x00, 0x00, 0x00
     ].pack('C*')
   end
+
   Given(:body_dump) do
     [
       0xff, 0xff, 0xff, 0xff,
@@ -30,12 +33,12 @@ describe Pio::PacketOut do
   end
 
   describe '.read' do
-    When(:result) { Pio::PacketOut.read(binary) }
+    When(:result) { Pio::OpenFlow10::PacketOut.read(binary) }
 
     context 'with a Packet-Out message' do
       When(:binary) { header_dump + body_dump }
 
-      Then { result.class == Pio::PacketOut }
+      Then { result.class == Pio::OpenFlow10::PacketOut }
       Then { result.ofp_version == 0x1 }
       Then { result.message_type == 0xd }
       Then { result.message_length == 0x58 }
@@ -47,7 +50,7 @@ describe Pio::PacketOut do
       Then { result.in_port == 0xffff }
       Then { result.actions_len == 0x8 }
       Then { result.actions.length == 1 }
-      Then { result.actions[0].is_a? Pio::SendOutPort }
+      Then { result.actions[0].is_a? Pio::OpenFlow10::SendOutPort }
       Then { result.actions[0].port_number == 2 }
       Then { result.actions[0].max_len == 2**16 - 1 }
       Then { result.raw_data.length == 64 }
@@ -55,16 +58,16 @@ describe Pio::PacketOut do
 
     context 'with a Packet-Out message generated with PacketOut.new' do
       When(:binary) do
-        Pio::PacketOut.new(
+        Pio::OpenFlow10::PacketOut.new(
           transaction_id: 0x16,
           buffer_id: 0xffffffff,
           in_port: 0xffff,
-          actions: Pio::SendOutPort.new(2),
+          actions: Pio::OpenFlow10::SendOutPort.new(2),
           raw_data: data_dump
         ).to_binary
       end
 
-      Then { result.class == Pio::PacketOut }
+      Then { result.class == Pio::OpenFlow10::PacketOut }
       Then { result.ofp_version == 0x1 }
       Then { result.message_type == 0xd }
       Then { result.message_length == 0x58 }
@@ -76,7 +79,7 @@ describe Pio::PacketOut do
       Then { result.in_port == 0xffff }
       Then { result.actions_len == 0x8 }
       Then { result.actions.length == 1 }
-      Then { result.actions[0].is_a? Pio::SendOutPort }
+      Then { result.actions[0].is_a? Pio::OpenFlow10::SendOutPort }
       Then { result.actions[0].port_number == 2 }
       Then { result.actions[0].max_len == 2**16 - 1 }
       Then { result.raw_data.length == 64 }
@@ -86,13 +89,16 @@ describe Pio::PacketOut do
       When(:binary) { [1, 0, 0, 8, 0, 0, 0, 0].pack('C*') }
 
       Then do
-        result == Failure(Pio::ParseError, 'Invalid PacketOut message.')
+        result == Failure(Pio::ParseError,
+                          'Invalid OpenFlow10 PacketOut message.')
       end
     end
   end
 
   describe '.new' do
-    When(:result) { Pio::PacketOut.new(user_options) }
+    it_should_behave_like('an OpenFlow message', Pio::OpenFlow10::PacketOut)
+
+    When(:result) { Pio::OpenFlow10::PacketOut.new(user_options) }
 
     context 'with a SendOutPort action' do
       When(:user_options) do
@@ -100,7 +106,7 @@ describe Pio::PacketOut do
           transaction_id: 0x16,
           buffer_id: 0xffffffff,
           in_port: 0xffff,
-          actions: Pio::SendOutPort.new(2),
+          actions: Pio::OpenFlow10::SendOutPort.new(2),
           raw_data: data_dump
         }
       end
@@ -116,7 +122,7 @@ describe Pio::PacketOut do
       Then { result.in_port == 0xffff }
       Then { result.actions_len == 0x8 }
       Then { result.actions.length == 1 }
-      Then { result.actions[0].is_a? Pio::SendOutPort }
+      Then { result.actions[0].is_a? Pio::OpenFlow10::SendOutPort }
       Then { result.actions[0].port_number == 2 }
       Then { result.actions[0].max_len == 2**16 - 1 }
       Then { result.raw_data.length == 64 }
@@ -332,7 +338,8 @@ describe Pio::PacketOut do
           transaction_id: 0x16,
           buffer_id: 0xffffffff,
           in_port: 0xffff,
-          actions: [Pio::SendOutPort.new(2), Pio::SetVlanVid.new(10)],
+          actions: [Pio::OpenFlow10::SendOutPort.new(2),
+                    Pio::SetVlanVid.new(10)],
           raw_data: data_dump
         }
       end
@@ -340,7 +347,7 @@ describe Pio::PacketOut do
       Then { result.message_length == 0x60 }
       Then { result.actions_len == 0x10 }
       Then { result.actions.length == 2 }
-      Then { result.actions[0].is_a? Pio::SendOutPort }
+      Then { result.actions[0].is_a? Pio::OpenFlow10::SendOutPort }
       Then { result.actions[0].port_number == 2 }
       Then { result.actions[0].max_len == 2**16 - 1 }
       Then { result.actions[1].is_a? Pio::SetVlanVid }

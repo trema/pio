@@ -10,7 +10,6 @@ Feature: Pio::Features::Request
     Then it should finish successfully
     And the message have the following fields and values:
       | field          |                  value |
-      | class          | Pio::Features::Request |
       | ofp_version    |                      4 |
       | message_type   |                      5 |
       | message_length |                      8 |
@@ -26,7 +25,6 @@ Feature: Pio::Features::Request
     Then it should finish successfully
     And the message have the following fields and values:
       | field          |                  value |
-      | class          | Pio::Features::Request |
       | ofp_version    |                      4 |
       | message_type   |                      5 |
       | message_length |                      8 |
@@ -42,7 +40,6 @@ Feature: Pio::Features::Request
     Then it should finish successfully
     And the message have the following fields and values:
       | field          |                  value |
-      | class          | Pio::Features::Request |
       | ofp_version    |                      4 |
       | message_type   |                      5 |
       | message_length |                      8 |
@@ -62,7 +59,6 @@ Feature: Pio::Features::Request
     Then it should finish successfully
     And the message have the following fields and values:
       | field          |                  value |
-      | class          | Pio::Features::Request |
       | ofp_version    |                      4 |
       | message_type   |                      5 |
       | message_length |                      8 |
@@ -72,4 +68,4 @@ Feature: Pio::Features::Request
 
   Scenario: parse error
     When I try to parse a file named "open_flow10/hello.raw" with "Pio::Features::Request" class
-    Then it should fail with "Pio::ParseError", "Invalid Features Request message."
+    Then it should fail with "Pio::ParseError", "Invalid OpenFlow13 Features Request message."

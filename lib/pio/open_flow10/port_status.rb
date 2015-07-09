@@ -33,7 +33,7 @@ module Pio
     class Format < BinData::Record
       extend OpenFlow::Format
 
-      header version: 1, message_type: OpenFlow::PORT_STATUS
+      header version: 1, message_type: 12
       body :body
     end
 

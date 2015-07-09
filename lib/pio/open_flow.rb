@@ -1,16 +1,26 @@
 module Pio
   # OpenFlow specific types.
   module OpenFlow
-    # OFPT_* constants.
-    HELLO = 0
-    ECHO_REQUEST = 2
-    ECHO_REPLY = 3
-    FEATURES_REQUEST = 5
-    FEATURES_REPLY = 6
-    PACKET_IN = 10
-    PORT_STATUS = 12
-    PACKET_OUT = 13
-    FLOW_MOD = 14
+    def self.set_class_name(klass_name, open_flow_module)
+      if Pio.__send__(:const_defined?, klass_name)
+        Pio.__send__ :remove_const, klass_name
+      end
+      Pio.__send__(:const_set,
+                   klass_name,
+                   Pio.const_get(open_flow_module).const_get(klass_name))
+      nil
+    end
+
+    def self.switch_version(open_flow_module)
+      set_class_name :Echo, open_flow_module
+      set_class_name :Features, open_flow_module
+      set_class_name :FlowMod, open_flow_module
+      set_class_name :Hello, open_flow_module
+      set_class_name :Match, open_flow_module
+      set_class_name :PacketIn, open_flow_module
+      set_class_name :PacketOut, open_flow_module
+      set_class_name :SendOutPort, open_flow_module
+    end
   end
 end
 

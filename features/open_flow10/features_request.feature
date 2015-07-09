@@ -1,4 +1,7 @@
 Feature: Pio::Features::Request
+  Background:
+    Given I use OpenFlow 1.0
+
   Scenario: new
     When I try to create an OpenFlow message with:
       """
@@ -7,7 +10,6 @@ Feature: Pio::Features::Request
     Then it should finish successfully
     And the message have the following fields and values:
     | field          |                  value |
-    | class          | Pio::Features::Request |
     | ofp_version    |                      1 |
     | message_type   |                      5 |
     | message_length |                      8 |
@@ -23,7 +25,6 @@ Feature: Pio::Features::Request
     Then it should finish successfully
     And the message have the following fields and values:
       | field          |                  value |
-      | class          | Pio::Features::Request |
       | ofp_version    |                      1 |
       | message_type   |                      5 |
       | message_length |                      8 |
@@ -39,7 +40,6 @@ Feature: Pio::Features::Request
     Then it should finish successfully
     And the message have the following fields and values:
       | field          |                  value |
-      | class          | Pio::Features::Request |
       | ofp_version    |                      1 |
       | message_type   |                      5 |
       | message_length |                      8 |
@@ -52,7 +52,6 @@ Feature: Pio::Features::Request
     Then it should finish successfully
     And the message have the following fields and values:
       | field          |                  value |
-      | class          | Pio::Features::Request |
       | ofp_version    |                      1 |
       | message_type   |                      5 |
       | message_length |                      8 |
@@ -62,4 +61,4 @@ Feature: Pio::Features::Request
 
   Scenario: parse error
     When I try to parse a file named "open_flow10/echo_request.raw" with "Pio::Features::Request" class
-    Then it should fail with "Pio::ParseError", "Invalid Features Request message."
+    Then it should fail with "Pio::ParseError", "Invalid OpenFlow10 Features Request message."

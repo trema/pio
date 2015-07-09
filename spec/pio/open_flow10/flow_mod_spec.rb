@@ -1,6 +1,6 @@
 require 'pio/open_flow10/flow_mod'
 
-describe Pio::FlowMod do
+describe Pio::OpenFlow10::FlowMod do
   Given(:dump) do
     [
       0x01,
@@ -26,10 +26,10 @@ describe Pio::FlowMod do
   describe '.read' do
     context 'with a flow_mod message' do
       When(:flow_mod) do
-        Pio::FlowMod.read(dump)
+        Pio::OpenFlow10::FlowMod.read(dump)
       end
 
-      Then { flow_mod.class == Pio::FlowMod }
+      Then { flow_mod.class == Pio::OpenFlow10::FlowMod }
       Then { flow_mod.ofp_version == 0x1 }
       Then { flow_mod.message_type == 0xe }
       Then { flow_mod.message_length == 0x50 }
@@ -73,7 +73,7 @@ describe Pio::FlowMod do
       Then { flow_mod.out_port == 2 }
       Then { flow_mod.flags == [:send_flow_rem, :check_overwrap] }
       Then { flow_mod.actions.length == 1 }
-      Then { flow_mod.actions[0].is_a? Pio::SendOutPort }
+      Then { flow_mod.actions[0].is_a? Pio::OpenFlow10::SendOutPort }
       Then { flow_mod.actions[0].port_number == 2 }
       Then { flow_mod.actions[0].max_len == 2**16 - 1 }
     end
@@ -82,19 +82,20 @@ describe Pio::FlowMod do
   describe '.new' do
     context 'with a SendOutPort action' do
       When(:flow_mod) do
-        Pio::FlowMod.new(transaction_id: 0x15,
-                         buffer_id: 0xffffffff,
-                         match: Pio::Match.new(in_port: 1),
-                         cookie: 1,
-                         command: :add,
-                         priority: 0xffff,
-                         out_port: 2,
-                         flags: [:send_flow_rem, :check_overwrap],
-                         actions: Pio::SendOutPort.new(2)
-                        )
+        Pio::OpenFlow10::FlowMod.new(
+          transaction_id: 0x15,
+          buffer_id: 0xffffffff,
+          match: Pio::OpenFlow10::Match.new(in_port: 1),
+          cookie: 1,
+          command: :add,
+          priority: 0xffff,
+          out_port: 2,
+          flags: [:send_flow_rem, :check_overwrap],
+          actions: Pio::OpenFlow10::SendOutPort.new(2)
+        )
       end
 
-      Then { flow_mod.class == Pio::FlowMod }
+      Then { flow_mod.class == Pio::OpenFlow10::FlowMod }
       Then { flow_mod.ofp_version == 0x1 }
       Then { flow_mod.message_type == 0xe }
       Then { flow_mod.message_length == 0x50 }
@@ -138,7 +139,7 @@ describe Pio::FlowMod do
       Then { flow_mod.out_port == 2 }
       Then { flow_mod.flags == [:send_flow_rem, :check_overwrap] }
       Then { flow_mod.actions.length == 1 }
-      Then { flow_mod.actions[0].is_a? Pio::SendOutPort }
+      Then { flow_mod.actions[0].is_a? Pio::OpenFlow10::SendOutPort }
       Then { flow_mod.actions[0].port_number == 2 }
       Then { flow_mod.actions[0].max_len == 2**16 - 1 }
 
