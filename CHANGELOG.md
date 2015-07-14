@@ -1,6 +1,9 @@
 # Changelog
 
 ## develop (unreleased)
+### New features
+* [#201](https://github.com/trema/pio/pull/201): Add oxm experimenter support (OpenFlow1.3).
+
 ### Bugs fixed
 * [#188](https://github.com/trema/pio/pull/188): Add PacketIn#in_port (OpenFlow1.3).
 * [#189](https://github.com/trema/pio/pull/189): Add PacketIn#datapath_id= (OpenFlow1.3).
