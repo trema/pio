@@ -3,6 +3,7 @@ require 'pio/open_flow'
 # Base module.
 module Pio
   # OpenFlow 1.3 messages
+  # This module smells of :reek:UncommunicativeModuleName
   module OpenFlow13
     # OpenFlow 1.3 Features Request and Reply message.
     class Features

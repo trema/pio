@@ -1,6 +1,7 @@
 require 'pio/open_flow/echo'
 
 module Pio
+  # This module smells of :reek:UncommunicativeModuleName
   module OpenFlow10
     # OpenFlow 1.0 Echo Request and Reply message.
     module Echo

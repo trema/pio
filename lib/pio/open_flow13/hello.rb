@@ -3,6 +3,7 @@ require 'pio/open_flow'
 # Base module.
 module Pio
   # OpenFlow 1.0 messages
+  # This module smells of :reek:UncommunicativeModuleName
   module OpenFlow13
     # OpenFlow 1.3 Hello message parser and generator
     class Hello < OpenFlow::Message

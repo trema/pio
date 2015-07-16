@@ -1,6 +1,7 @@
 require 'pio/open_flow'
 
 module Pio
+  # This module smells of :reek:UncommunicativeModuleName
   module OpenFlow10
     # OpenFlow 1.0 Features Request and Reply message.
     class Features

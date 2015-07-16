@@ -2,6 +2,7 @@ require 'forwardable'
 
 # Base module.
 module Pio
+  # This module smells of :reek:UncommunicativeModuleName
   module OpenFlow13
     # Output to switch port.
     class SendOutPort

@@ -4,6 +4,7 @@ require 'pio/monkey_patch/integer'
 require 'pio/open_flow/port_number'
 
 module Pio
+  # This module smells of :reek:UncommunicativeModuleName
   module OpenFlow10
     # An action to output a packet to a port.
     class SendOutPort

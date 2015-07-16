@@ -5,6 +5,7 @@ require 'pio/type/ip_address'
 require 'pio/type/mac_address'
 
 module Pio
+  # This module smells of :reek:UncommunicativeModuleName
   module OpenFlow10
     # Fields to match against flows
     class Match

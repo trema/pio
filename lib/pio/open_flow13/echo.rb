@@ -2,6 +2,7 @@ require 'pio/open_flow/echo'
 
 # Base module.
 module Pio
+  # This module smells of :reek:UncommunicativeModuleName
   module OpenFlow13
     module Echo
       # OpenFlow 1.3 Echo Request message.
