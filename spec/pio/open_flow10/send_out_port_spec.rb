@@ -1,8 +1,8 @@
 require 'pio/open_flow10/send_out_port'
 
-describe Pio::SendOutPort do
+describe Pio::OpenFlow10::SendOutPort do
   describe '.new' do
-    When(:send_out_port) { Pio::SendOutPort.new(options) }
+    When(:send_out_port) { Pio::OpenFlow10::SendOutPort.new(options) }
 
     context 'with 1' do
       Given(:options) { 1 }
@@ -13,12 +13,12 @@ describe Pio::SendOutPort do
         When(:result) { send_out_port == other }
 
         context 'with SendOutPort.new(1)' do
-          Given(:other) { Pio::SendOutPort.new(1) }
+          Given(:other) { Pio::OpenFlow10::SendOutPort.new(1) }
           Then { result == true }
         end
 
         context 'with SendOutPort.new(2)' do
-          Given(:other) { Pio::SendOutPort.new(2) }
+          Given(:other) { Pio::OpenFlow10::SendOutPort.new(2) }
           Then { result == false }
         end
       end

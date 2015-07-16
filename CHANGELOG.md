@@ -3,6 +3,8 @@
 ## develop (unreleased)
 ### New features
 * [#201](https://github.com/trema/pio/pull/201): Add oxm experimenter support (OpenFlow1.3).
+* [#202](https://github.com/trema/pio/pull/202): Add `Pio::OpenFlow.switch_version` method.
+
 
 ### Bugs fixed
 * [#188](https://github.com/trema/pio/pull/188): Add PacketIn#in_port (OpenFlow1.3).

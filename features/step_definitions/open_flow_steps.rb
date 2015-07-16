@@ -1,5 +1,9 @@
+Given(/^I use OpenFlow 1\.0$/) do
+  Pio::OpenFlow.switch_version :OpenFlow10
+end
+
 Given(/^I use OpenFlow 1\.3$/) do
-  require 'pio/open_flow13'
+  Pio::OpenFlow.switch_version :OpenFlow13
 end
 
 When(/^I try to create a packet with:$/) do |ruby_code|

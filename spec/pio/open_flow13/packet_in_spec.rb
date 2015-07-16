@@ -1,10 +1,10 @@
 require 'pio/open_flow13/packet_in'
 
-describe Pio::PacketIn do
-  Given(:packet_in) { Pio::PacketIn.new }
+describe Pio::OpenFlow13::PacketIn do
+  Given(:packet_in) { Pio::OpenFlow13::PacketIn.new }
 
   describe '.new' do
-    it_should_behave_like('an OpenFlow message', Pio::PacketIn)
+    it_should_behave_like('an OpenFlow message', Pio::OpenFlow13::PacketIn)
   end
 
   describe 'datapath_id=' do

@@ -1,7 +1,7 @@
 require 'pio/open_flow10/echo'
 
-describe Pio::Echo::Reply do
+describe Pio::OpenFlow10::Echo::Reply do
   describe '.new' do
-    it_should_behave_like('an OpenFlow message', Pio::Echo::Reply)
+    it_should_behave_like('an OpenFlow message', Pio::OpenFlow10::Echo::Reply)
   end
 end

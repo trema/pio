@@ -1,4 +1,5 @@
-require 'pio/open_flow'
+require 'pio/open_flow/format'
+require 'pio/open_flow/message'
 
 module Pio
   module OpenFlow
