@@ -1,6 +1,7 @@
 require 'bindata'
 
 module Pio
+  # LLDP frame parser and generator.
   class Lldp
     # Chassis ID TLV
     class ChassisIdTlv < BinData::Primitive
