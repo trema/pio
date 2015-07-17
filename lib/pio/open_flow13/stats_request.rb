@@ -1,7 +1,6 @@
 require 'pio/open_flow'
 
 module Pio
-  # This module smells of :reek:UncommunicativeModuleName
   module OpenFlow13
     # OpenFlow 1.3 Stats Request message
     class StatsRequest < OpenFlow::Message

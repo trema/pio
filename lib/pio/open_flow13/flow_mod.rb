@@ -4,7 +4,6 @@ require 'pio/open_flow13/match'
 
 # Base module.
 module Pio
-  # This module smells of :reek:UncommunicativeModuleName
   module OpenFlow13
     # OpenFlow 1.3 FlowMod message parser and generator
     class FlowMod < OpenFlow::Message

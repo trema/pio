@@ -6,7 +6,6 @@ require 'pio/type/mac_address'
 # Base module.
 module Pio
   # OpenFlow 1.3.
-  # This module smells of :reek:UncommunicativeModuleName
   module OpenFlow13
     # OFPMT_OXM
     MATCH_TYPE_OXM = 1

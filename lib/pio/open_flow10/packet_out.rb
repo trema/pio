@@ -3,7 +3,6 @@ require 'pio/open_flow10/actions'
 
 # Base module.
 module Pio
-  # This module smells of :reek:UncommunicativeModuleName
   module OpenFlow10
     # OpenFlow 1.0 Packet-Out message
     class PacketOut < OpenFlow::Message

@@ -4,7 +4,6 @@ require 'pio/open_flow/message'
 # Base module.
 module Pio
   # OpenFlow 1.0 messages
-  # This module smells of :reek:UncommunicativeModuleName
   module OpenFlow10
     # OpenFlow 1.0 Hello message
     class Hello < OpenFlow::Message

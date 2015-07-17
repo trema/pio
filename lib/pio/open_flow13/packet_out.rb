@@ -4,7 +4,6 @@ require 'pio/open_flow13/buffer_id'
 
 # Base module.
 module Pio
-  # This module smells of :reek:UncommunicativeModuleName
   module OpenFlow13
     # OpenFlow 1.3 PacketOut message parser and generator
     class PacketOut < OpenFlow::Message

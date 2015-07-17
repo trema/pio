@@ -1,2 +1,5 @@
 UncommunicativeModuleName:
-  accept: ['Pio::Hello13']
+  accept: ['Pio::OpenFlow10', 'Pio::OpenFlow13']
+
+TooManyStatements:
+  enabled: false

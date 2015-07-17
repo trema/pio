@@ -6,7 +6,6 @@ require 'pio/parser'
 
 # Base module.
 module Pio
-  # This module smells of :reek:UncommunicativeModuleName
   module OpenFlow10
     # OpenFlow 1.0 Packet-In message
     class PacketIn < OpenFlow::Message
