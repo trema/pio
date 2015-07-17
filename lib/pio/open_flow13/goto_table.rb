@@ -12,6 +12,7 @@ module Pio
       uint16 :instruction_length, value: 8
       uint8 :table_id
       bit24 :padding
+      hide :padding
     end
 
     def self.read(raw_data)

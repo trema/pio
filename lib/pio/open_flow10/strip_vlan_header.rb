@@ -10,7 +10,7 @@ module Pio
 
       uint16 :type, value: 3
       uint16 :message_length, value: 8
-      uint32 :padding
+      bit32 :padding
       hide :padding
     end
 

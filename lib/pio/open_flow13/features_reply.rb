@@ -34,6 +34,10 @@ module Pio
           capabilities :capabilities
           uint32 :reserved
 
+          def dpid
+            datapath_id
+          end
+
           def length
             24
           end
@@ -45,10 +49,6 @@ module Pio
 
           header version: 4, message_type: 6
           body :body
-
-          def dpid
-            datapath_id
-          end
         end
 
         body_option :dpid
