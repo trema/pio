@@ -1,7 +1,5 @@
+@open_flow10
 Feature: Pio::Features::Request
-  Background:
-    Given I use OpenFlow 1.0
-
   Scenario: new
     When I try to create an OpenFlow message with:
       """

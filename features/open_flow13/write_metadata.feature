@@ -1,7 +1,5 @@
+@open_flow13
 Feature: Pio::WriteMetadata
-  Background:
-    Given I use OpenFlow 1.3
-
   Scenario: new(metadata: 1)
     When I try to create an OpenFlow instruction with:
       """

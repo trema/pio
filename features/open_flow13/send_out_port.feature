@@ -1,7 +1,5 @@
+@open_flow13
 Feature: Pio::SendOutPort
-  Background:
-    Given I use OpenFlow 1.3
-
   Scenario: new(1)
     When I try to create an OpenFlow action with:
       """
