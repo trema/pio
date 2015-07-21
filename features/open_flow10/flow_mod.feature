@@ -1,7 +1,5 @@
+@open_flow10
 Feature: Pio::FlowMod
-  Background:
-    Given I use OpenFlow 1.0
-
   Scenario: read (Flow Mod Add)
     When I try to parse a file named "open_flow10/flow_mod_add.raw" with "Pio::FlowMod" class
     Then it should finish successfully
