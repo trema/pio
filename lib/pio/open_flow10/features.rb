@@ -12,10 +12,6 @@ module Pio
 
           header version: 1, message_type: 5
           string :body, value: ''
-
-          def user_data
-            body
-          end
         end
 
         def initialize(user_options = {})
