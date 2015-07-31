@@ -144,10 +144,16 @@ module Pio
         body :body
       end
 
-      body_option :table_id
+      body_option :actions
+      body_option :buffer_id
+      body_option :command
+      body_option :flags
+      body_option :hard_timeout
+      body_option :idle_timeout
+      body_option :instructions
       body_option :match
       body_option :priority
-      body_option :instructions
+      body_option :table_id
     end
   end
 end

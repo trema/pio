@@ -12,16 +12,35 @@ module Pio
   # Common OpenFlow modules/classes.
   module OpenFlow
     def self.version
-      @version || 'OpenFlow10'
+      fail unless @version
+      @version
     end
 
     def self.switch_version(version)
       [:Barrier, :Echo, :Features, :FlowMod, :Hello, :Match,
-       :PacketIn, :PacketOut, :SendOutPort].each do |each|
+       :PacketIn, :PacketOut, :SendOutPort, :PortStatus].each do |each|
         set_message_class_name each, version
         @version = version.to_s
       end
     end
+
+    # rubocop:disable MethodLength
+    def self.read(binary)
+      parser = {
+        0 => Pio::Hello,
+        2 => Pio::Echo::Request,
+        3 => Pio::Echo::Reply,
+        5 => Pio::Features::Request,
+        6 => Pio::Features::Reply,
+        10 => Pio::PacketIn,
+        12 => Pio::PortStatus
+      }
+      header = OpenFlowHeaderParser.read(binary)
+      parser.fetch(header.message_type).read(binary)
+    rescue
+      raise "Unknown message type #{header.message_type}"
+    end
+    # rubocop:enable MethodLength
 
     def self.set_message_class_name(klass_name, version)
       open_flow_module = Pio.const_get(version)
@@ -32,5 +51,8 @@ module Pio
       raise "#{version} is not supported yet."
     end
     private_class_method :set_message_class_name
+
+    # The default OpenFlow version is 1.0
+    switch_version 'OpenFlow10'
   end
 end
