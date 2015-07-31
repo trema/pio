@@ -6,7 +6,7 @@ When(/^I get the OpenFlow version string$/) do
   @version = Pio::OpenFlow.version
 end
 
-When(/^the version string should be "([^"]*)"$/) do |expected_version_string|
+Then(/^the version string should be "([^"]*)"$/) do |expected_version_string|
   expect(@version).to eq(expected_version_string)
 end
 

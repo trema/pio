@@ -34,6 +34,14 @@ shared_examples 'an OpenFlow message' do |klass|
                 'Transaction ID should be an unsigned 32-bit integer.')
     end
   end
+
+  context 'with UNKNOWN_OPTION: :UNKNOWN_VALUE' do
+    When(:options) { { UNKNOWN_OPTION: :UNKNOWN_VALUE } }
+
+    Then do
+      message == Failure(RuntimeError, 'Unknown option: UNKNOWN_OPTION')
+    end
+  end
 end
 
 shared_examples 'an OpenFlow message with Datapath ID' do |klass|
