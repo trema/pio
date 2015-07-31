@@ -4,6 +4,7 @@
 ### New features
 * [#201](https://github.com/trema/pio/pull/201): Add oxm experimenter support (OpenFlow1.3).
 * [#202](https://github.com/trema/pio/pull/202): Add `Pio::OpenFlow.switch_version` method.
+* [#205](https://github.com/trema/pio/pull/205): Add new classes `Pio::OpenFlow10::Barrier::Request`, `Pio::OpenFlow10::Barrier::Reply`.
 
 
 ### Bugs fixed
