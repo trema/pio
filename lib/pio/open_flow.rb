@@ -2,11 +2,17 @@ module Pio
   # OpenFlow specific types.
   module OpenFlow
     def self.set_class_name(klass_name, open_flow_module)
+      Pio.__send__ :remove_const, :VERSION
+      Pio.const_set :VERSION, open_flow_module.to_s
       return unless Pio.const_get(open_flow_module).const_defined?(klass_name)
       Pio.__send__ :remove_const, klass_name if Pio.const_defined?(klass_name)
       Pio.const_set(klass_name,
                     Pio.const_get(open_flow_module).const_get(klass_name))
       nil
+    end
+
+    def self.version
+      Pio.const_get :VERSION
     end
 
     def self.switch_version(open_flow_module)
