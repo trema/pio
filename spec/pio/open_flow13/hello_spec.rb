@@ -1,13 +1,14 @@
 require 'pio/open_flow13/hello'
+require 'pio/parse_error'
 
-describe Pio::Hello do
+describe Pio::OpenFlow13::Hello do
   describe '.read' do
-    When(:result) { Pio::Hello.read(binary) }
+    When(:result) { Pio::OpenFlow13::Hello.read(binary) }
 
     context 'with a hello message (no version bitmap)' do
       Given(:binary) { [4, 0, 0, 8, 0, 0, 0, 0].pack('C*') }
 
-      Then { result.class == Pio::Hello }
+      Then { result.class == Pio::OpenFlow13::Hello }
       Then { result.ofp_version == 4 }
       Then { result.message_type == 0 }
       Then { result.message_length == 8 }
@@ -21,7 +22,7 @@ describe Pio::Hello do
         [4, 0, 0, 16, 0, 0, 0, 0, 0, 1, 0, 8, 0, 0, 0, 18].pack('C*')
       end
 
-      Then { result.class == Pio::Hello }
+      Then { result.class == Pio::OpenFlow13::Hello }
       Then { result.ofp_version == 4 }
       Then { result.message_type == 0 }
       Then { result.message_length == 16 }
@@ -33,13 +34,17 @@ describe Pio::Hello do
     context 'with a hello message (OpenFlow 1.0)' do
       Given(:binary) { [1, 0, 0, 8, 0, 0, 0, 0].pack('C*') }
 
-      Then { result == Failure(Pio::ParseError, 'Invalid Hello 1.3 message.') }
+      Then do
+        result == Failure(Pio::ParseError, 'Invalid OpenFlow13 Hello message.')
+      end
     end
   end
 
   describe '.new' do
+    it_should_behave_like('an OpenFlow message', Pio::OpenFlow13::Hello)
+
     context 'with no arguments' do
-      When(:result) { Pio::Hello.new }
+      When(:result) { Pio::OpenFlow13::Hello.new }
 
       Then { result.ofp_version == 4 }
       Then { result.message_type == 0 }
@@ -53,61 +58,11 @@ describe Pio::Hello do
       end
     end
 
-    context 'with transaction_id: 123' do
-      When(:result) { Pio::Hello.new(transaction_id: 123) }
-
-      Then { result.ofp_version == 4 }
-      Then { result.message_type == 0 }
-      Then { result.message_length == 16 }
-      Then { result.transaction_id == 123 }
-      Then { result.xid == 123 }
-      Then { result.supported_versions == [:open_flow13] }
-      Then do
-        result.to_binary ==
-          [4, 0, 0, 16, 0, 0, 0, 123, 0, 1, 0, 8, 0, 0, 0, 16].pack('C*')
-      end
-    end
-
-    context 'with xid: 123' do
-      When(:result) { Pio::Hello.new(xid: 123) }
-
-      Then { result.ofp_version == 4 }
-      Then { result.message_type == 0 }
-      Then { result.message_length == 16 }
-      Then { result.transaction_id == 123 }
-      Then { result.xid == 123 }
-      Then { result.supported_versions == [:open_flow13] }
-      Then do
-        result.to_binary ==
-          [4, 0, 0, 16, 0, 0, 0, 123, 0, 1, 0, 8, 0, 0, 0, 16].pack('C*')
-      end
-    end
-
-    context 'with xid: -1' do
-      When(:result) { Pio::Hello.new(xid: -1) }
+    context 'with invalid_option: :foo' do
+      When(:result) { Pio::OpenFlow13::Hello.new(invalid_option: :foo) }
 
       Then do
-        result ==
-          Failure(ArgumentError,
-                  'Transaction ID should be an unsigned 32-bit integer.')
-      end
-    end
-
-    context 'with xid: 2**32' do
-      When(:result) { Pio::Hello.new(xid: 2**32) }
-
-      Then do
-        result ==
-          Failure(ArgumentError,
-                  'Transaction ID should be an unsigned 32-bit integer.')
-      end
-    end
-
-    context 'with invalid_keyword: :foo' do
-      When(:result) { Pio::Hello.new(invalid_keyword: :foo) }
-
-      Then do
-        result == Failure(RuntimeError, 'Unknown keyword: invalid_keyword')
+        result == Failure(RuntimeError, 'Unknown option: invalid_option')
       end
     end
   end

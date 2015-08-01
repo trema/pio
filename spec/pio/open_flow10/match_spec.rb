@@ -1,8 +1,8 @@
 require 'pio/open_flow10/match'
 
-describe Pio::Match do
+describe Pio::OpenFlow10::Match do
   describe '.read' do
-    When(:match) { Pio::Match.read(binary) }
+    When(:match) { Pio::OpenFlow10::Match.read(binary) }
 
     context 'with a Match binary' do
       Given(:binary) do
@@ -54,9 +54,11 @@ describe Pio::Match do
       Then { match.transport_destination_port == 0 }
     end
 
-    context 'with a Match binary generated with Pio::Match.new' do
+    context 'with a Match binary generated with Pio::OpenFlow10::Match.new' do
       Given(:binary) do
-        Pio::Match.new(ip_source_address: '192.168.1.0/24').to_binary_s
+        Pio::OpenFlow10::Match
+          .new(ip_source_address: '192.168.1.0/24')
+          .to_binary_s
       end
 
       Then do
@@ -93,7 +95,7 @@ describe Pio::Match do
   end
 
   describe '.new' do
-    When(:match) { Pio::Match.new(options) }
+    When(:match) { Pio::OpenFlow10::Match.new(options) }
 
     context 'with in_port: 1' do
       Given(:options) { { in_port: 1 } }
@@ -129,7 +131,7 @@ describe Pio::Match do
         When(:result) { match == other }
 
         context 'with Match.new(in_port: 1)' do
-          Given(:other) { Pio::Match.new(in_port: 1) }
+          Given(:other) { Pio::OpenFlow10::Match.new(in_port: 1) }
           Then { result == true }
         end
       end

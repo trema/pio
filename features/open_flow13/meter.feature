@@ -1,7 +1,5 @@
+@open_flow13
 Feature: Pio::Meter
-  Background:
-    Given I use OpenFlow 1.3
-
   Scenario: new(1)
     When I try to create an OpenFlow instruction with:
     """
@@ -13,6 +11,7 @@ Feature: Pio::Meter
     | class              | Pio::Meter |
     | instruction_type   |          6 |
     | instruction_length |          8 |
+    | to_binary_s.length |          8 |
     | meter_id           |          1 |
 
   Scenario: read
@@ -23,4 +22,5 @@ Feature: Pio::Meter
       | class              | Pio::Meter |
       | instruction_type   |          6 |
       | instruction_length |          8 |
+      | to_binary_s.length |          8 |
       | meter_id           |          1 |

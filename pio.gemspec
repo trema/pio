@@ -31,14 +31,14 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'bindata', '~> 2.1.0'
 
   gem.add_development_dependency 'rake'
-  gem.add_development_dependency 'bundler', '~> 1.10.5'
+  gem.add_development_dependency 'bundler', '~> 1.10.6'
   gem.add_development_dependency 'pry', '~> 0.10.1'
 
   # Guard
-  gem.add_development_dependency 'guard', '~> 2.12.6'
+  gem.add_development_dependency 'guard', '~> 2.13.0'
   gem.add_development_dependency 'guard-bundler', '~> 2.1.0'
   gem.add_development_dependency 'guard-cucumber', '~> 1.6.0'
-  gem.add_development_dependency 'guard-rspec', '~> 4.5.2'
+  gem.add_development_dependency 'guard-rspec', '~> 4.6.3'
   gem.add_development_dependency 'guard-rubocop', '~> 1.2.0'
   gem.add_development_dependency 'rb-fchange', '~> 0.0.6'
   gem.add_development_dependency 'rb-fsevent', '~> 0.9.5'
@@ -53,11 +53,11 @@ Gem::Specification.new do |gem|
   # Test
   gem.add_development_dependency 'codeclimate-test-reporter', '~> 0.4.7'
   gem.add_development_dependency 'coveralls', '~> 0.8.2'
-  gem.add_development_dependency 'cucumber', '~> 2.0.0'
+  gem.add_development_dependency 'cucumber', '~> 2.0.2'
   gem.add_development_dependency 'flay', '~> 2.6.1'
   gem.add_development_dependency 'flog', '~> 4.3.2'
-  gem.add_development_dependency 'reek', '~> 2.2.1'
+  gem.add_development_dependency 'reek', '~> 3.1'
   gem.add_development_dependency 'rspec', '~> 3.3.0'
-  gem.add_development_dependency 'rspec-given', '~> 3.7.0'
+  gem.add_development_dependency 'rspec-given', '~> 3.7.1'
   gem.add_development_dependency 'rubocop', '~> 0.32.1'
 end

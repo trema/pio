@@ -24,6 +24,7 @@ module Pio
     def_delegators :@format, :instruction_type
     def_delegators :@format, :instruction_length
     def_delegators :@format, :meter_id
+    def_delegators :@format, :to_binary_s
 
     def initialize(meter_id)
       @format = Format.new(meter_id: meter_id)

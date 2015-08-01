@@ -13,6 +13,7 @@ module Pio
     # OpenFlow eXtensible Match (OXM)
     class Match
       OXM_CLASS_OPENFLOW_BASIC = 0x8000
+      OXM_CLASS_EXPERIMENTER = 0xFFFF
 
       # The value of OXM_OF_IN_PORT match field.
       class InPort < BinData::Record
@@ -548,17 +549,30 @@ module Pio
 
       # OXM format
       class Oxm < BinData::Record
-        # OXM match field.
-        # rubocop:disable ClassLength
-        class MatchField < BinData::Record
+        # Experimenter part, data will use oxm_length
+        class Experimenter < BinData::Record
           endian :big
 
-          uint16 :oxm_class, value: OXM_CLASS_OPENFLOW_BASIC
+          bit7 :oxm_field
+          bit1 :oxm_hasmask
+          uint8 :oxm_length, value: -> { data.length + 4 }
+          uint32 :experimenter
+          string :data, read_length: -> { oxm_length - 4 }
+
+          def length
+            oxm_length + 2
+          end
+        end
+
+        # rubocop:disable ClassLength
+        # OpenflowBasic part, tlv_value will use oxm_field, oxm_hasmask
+        class OpenflowBasic < BinData::Record
+          endian :big
+
           bit7 :oxm_field
           bit1 :oxm_hasmask
           uint8 :oxm_length, value: -> { tlv_value.length }
           choice :tlv_value,
-                 read_length: :oxm_length,
                  selection: :choose_tlv_value do
             in_port InPort
             metadata Metadata
@@ -603,7 +617,7 @@ module Pio
           end
 
           def length
-            tlv_value.length + 4
+            tlv_value.length + 2
           end
 
           def masked?
@@ -709,6 +723,44 @@ module Pio
         end
         # rubocop:enable MethodLength
 
+        # OXM match field.
+        class MatchField < BinData::Record
+          endian :big
+
+          uint16 :oxm_class, initial_value: OXM_CLASS_OPENFLOW_BASIC
+          choice :class_payload, selection: :oxm_class do
+            OpenflowBasic OXM_CLASS_OPENFLOW_BASIC
+            Experimenter OXM_CLASS_EXPERIMENTER
+          end
+
+          def oxm_field
+            class_payload.oxm_field
+          end
+
+          def masked?
+            class_payload.oxm_hasmask == 1
+          end
+
+          def oxm_length
+            class_payload.oxm_length
+          end
+
+          def length
+            class_payload.length + 2
+          end
+
+          def method_missing(method, *args, &block)
+            case oxm_class
+            when OXM_CLASS_OPENFLOW_BASIC
+              return class_payload.tlv_value.__send__(method, *args, &block)
+            when OXM_CLASS_EXPERIMENTER
+              return class_payload.__send__(method, *args, &block)
+            else
+              fail NoMethodError, method.to_s
+            end
+          end
+        end
+
         endian :big
 
         uint16 :match_type, value: MATCH_TYPE_OXM
@@ -724,13 +776,18 @@ module Pio
           match_length + padding_length
         end
 
+        # rubocop:disable Next
         def method_missing(method, *args, &block)
           match_fields.each do |each|
-            next unless each.tlv_value.respond_to?(method)
-            return each.tlv_value.__send__(method, *args, &block)
+            if each.oxm_class == OXM_CLASS_OPENFLOW_BASIC
+              next unless each.class_payload.tlv_value.respond_to?(method)
+              return each.class_payload.tlv_value.__send__(
+                method, *args, &block)
+            end
           end
           fail NoMethodError, method.to_s
         end
+        # rubocop:enable Next
 
         private
 
@@ -765,8 +822,9 @@ module Pio
            :icmpv4_type, :icmpv4_code, :arp_op].each do |each|
             next unless user_attrs.key?(each)
             klass = Match.const_get(each.to_s.split('_').map(&:capitalize).join)
-            @match_fields << { oxm_field: klass.const_get(:OXM_FIELD),
-                               tlv_value: { each => user_attrs.fetch(each) } }
+            @match_fields << { class_payload:
+              { oxm_field: klass.const_get(:OXM_FIELD),
+                tlv_value: { each => user_attrs.fetch(each) } } }
           end
 
           [:metadata, :ether_destination_address, :ether_source_address,
@@ -778,11 +836,11 @@ module Pio
             next unless user_attrs.key?(each)
             klass = Match.const_get(each.to_s.split('_').map(&:capitalize).join)
             mask_key = "#{each}_mask".to_sym
-            @match_fields <<
+            @match_fields << { class_payload:
               { oxm_field: klass.const_get(:OXM_FIELD),
                 oxm_hasmask: user_attrs.key?(mask_key) ? 1 : 0,
                 tlv_value: { each => user_attrs[each],
-                             mask_key => user_attrs[mask_key] } }
+                             mask_key => user_attrs[mask_key] } } }
           end
         end
         # rubocop:enable MethodLength

@@ -1,7 +1,7 @@
 require 'bindata'
 require 'pio/open_flow10/match'
 
-describe Pio::Match::Wildcards do
+describe Pio::OpenFlow10::Match::Wildcards do
   # This class has wildcards field.
   class WildcardTest < BinData::Record
     wildcards :wildcards
@@ -62,7 +62,7 @@ describe Pio::Match::Wildcards do
   end
 
   describe '.read' do
-    When(:wildcards) { Pio::Match::Wildcards.read(binary) }
+    When(:wildcards) { Pio::OpenFlow10::Match::Wildcards.read(binary) }
 
     context 'with all 0' do
       Given(:binary) { ['00000000000000000000000000000000'].pack('B*') }

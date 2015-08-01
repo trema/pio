@@ -1,7 +1,5 @@
+@open_flow13
 Feature: Pio::Match
-  Background:
-    Given I use OpenFlow 1.3
-
   Scenario: new
     When I try to create an OpenFlow message with:
       """
@@ -777,3 +775,16 @@ Feature: Pio::Match
       | field          |               value |
       | tunnel_id      |                   1 |
       | tunnel_id_mask | 9223372036854775808 |
+
+  Scenario: read (file: open_flow13/oxm_invalid_field.raw)
+    When I try to parse a file named "open_flow13/oxm_invalid_field.raw" with "Pio::Match" class
+    Then it should fail with "RuntimeError", "Unknown OXM field value: 40"
+
+  Scenario: read (file: open_flow13/oxm_experimenter_stratos_basic_dot11.raw)
+    When I try to parse a file named "open_flow13/oxm_experimenter_stratos_basic_dot11.raw" with "Pio::Match" class
+    Then it should finish successfully
+    And the message have the following fields and values:
+      | field                           |               value |
+      | match_fields.at(0).oxm_field    |                   0 |
+      | match_fields.at(0).experimenter |          4278247501 |
+      | match_fields.at(0).data.inspect |      "\x00\x01\x01" |

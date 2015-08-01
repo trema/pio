@@ -1,7 +1,5 @@
+@open_flow13
 Feature: Pio::Features::Reply
-  Background:
-    Given I use OpenFlow 1.3
-
   Scenario: new
     When I try to create an OpenFlow message with:
       """
@@ -15,7 +13,6 @@ Feature: Pio::Features::Reply
     Then it should finish successfully
     And the message have the following fields and values:
       | field          |                                                                                          value |
-      | class          |                                                                           Pio::Features::Reply |
       | ofp_version    |                                                                                              4 |
       | message_type   |                                                                                              6 |
       | message_length |                                                                                             32 |
@@ -34,7 +31,6 @@ Feature: Pio::Features::Reply
     Then it should finish successfully
     And the message have the following fields and values:
     | field          |                                                                                          value |
-    | class          |                                                                           Pio::Features::Reply |
     | ofp_version    |                                                                                              4 |
     | message_type   |                                                                                              6 |
     | message_length |                                                                                             32 |
@@ -50,4 +46,4 @@ Feature: Pio::Features::Reply
 
   Scenario: parse error
     When I try to parse a file named "open_flow10/echo_request.raw" with "Pio::Features::Reply" class
-    Then it should fail with "Pio::ParseError", "Invalid Features Reply 1.3 message."
+    Then it should fail with "Pio::ParseError", "Invalid OpenFlow13 Features Reply message."

@@ -1,3 +1,4 @@
+@open_flow10
 Feature: Pio::FlowMod
   Scenario: read (Flow Mod Add)
     When I try to parse a file named "open_flow10/flow_mod_add.raw" with "Pio::FlowMod" class

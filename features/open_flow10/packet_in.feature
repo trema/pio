@@ -1,3 +1,4 @@
+@open_flow10
 Feature: Pio::PacketIn
   Scenario: new
     When I try to create an OpenFlow message with:
@@ -20,7 +21,6 @@ Feature: Pio::PacketIn
     Then it should finish successfully
     And the message have the following fields and values:
       | field                 |             value |
-      | class                 |     Pio::PacketIn |
       | ofp_version           |                 1 |
       | message_type          |                10 |
       | message_length        |                78 |
@@ -41,7 +41,6 @@ Feature: Pio::PacketIn
     Then it should finish successfully
     And the message have the following fields and values:
       | field                 |             value |
-      | class                 |     Pio::PacketIn |
       | ofp_version           |                 1 |
       | message_type          |                10 |
       | message_length        |                78 |

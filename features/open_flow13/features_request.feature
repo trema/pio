@@ -1,7 +1,5 @@
+@open_flow13
 Feature: Pio::Features::Request
-  Background:
-    Given I use OpenFlow 1.3
-
   Scenario: new
     When I try to create an OpenFlow message with:
       """
@@ -10,7 +8,6 @@ Feature: Pio::Features::Request
     Then it should finish successfully
     And the message have the following fields and values:
       | field          |                  value |
-      | class          | Pio::Features::Request |
       | ofp_version    |                      4 |
       | message_type   |                      5 |
       | message_length |                      8 |
@@ -26,7 +23,6 @@ Feature: Pio::Features::Request
     Then it should finish successfully
     And the message have the following fields and values:
       | field          |                  value |
-      | class          | Pio::Features::Request |
       | ofp_version    |                      4 |
       | message_type   |                      5 |
       | message_length |                      8 |
@@ -42,7 +38,6 @@ Feature: Pio::Features::Request
     Then it should finish successfully
     And the message have the following fields and values:
       | field          |                  value |
-      | class          | Pio::Features::Request |
       | ofp_version    |                      4 |
       | message_type   |                      5 |
       | message_length |                      8 |
@@ -50,33 +45,18 @@ Feature: Pio::Features::Request
       | xid            |                    123 |
       | body           |                        |
 
-  Scenario: new(xid: -1) and error
-    When I try to create an OpenFlow message with:
-      """
-      Pio::Features::Request.new(xid: -1)
-      """
-    Then it should fail with "ArgumentError", "Transaction ID should be an unsigned 32-bit integer."
-
-  Scenario: new(xid: 2**32) and error
-    When I try to create an OpenFlow message with:
-      """
-      Pio::Features::Request.new(xid: 2**32)
-      """
-    Then it should fail with "ArgumentError", "Transaction ID should be an unsigned 32-bit integer."
-
   Scenario: new(unknown_attr: 'foo') and error
     When I try to create an OpenFlow message with:
       """
       Pio::Features::Request.new(unknown_attr: 'foo')
       """
-    Then it should fail with "RuntimeError", "Unknown keyword: unknown_attr"
+    Then it should fail with "RuntimeError", "Unknown option: unknown_attr"
 
   Scenario: read
     When I try to parse a file named "open_flow13/features_request.raw" with "Pio::Features::Request" class
     Then it should finish successfully
     And the message have the following fields and values:
       | field          |                  value |
-      | class          | Pio::Features::Request |
       | ofp_version    |                      4 |
       | message_type   |                      5 |
       | message_length |                      8 |
@@ -86,4 +66,4 @@ Feature: Pio::Features::Request
 
   Scenario: parse error
     When I try to parse a file named "open_flow10/hello.raw" with "Pio::Features::Request" class
-    Then it should fail with "Pio::ParseError", "Invalid Features Request 1.3 message."
+    Then it should fail with "Pio::ParseError", "Invalid OpenFlow13 Features Request message."

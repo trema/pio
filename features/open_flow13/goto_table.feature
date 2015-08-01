@@ -1,7 +1,5 @@
+@open_flow13
 Feature: Pio::GotoTable
-  Background:
-    Given I use OpenFlow 1.3
-
   Scenario: new(1)
     When I try to create an OpenFlow instruction with:
       """
@@ -13,6 +11,7 @@ Feature: Pio::GotoTable
       | class              | Pio::GotoTable |
       | instruction_type   |              1 |
       | instruction_length |              8 |
+      | to_binary_s.length |              8 |
       | table_id           |              1 |
 
   Scenario: read
@@ -22,5 +21,6 @@ Feature: Pio::GotoTable
       | field              |          value |
       | class              | Pio::GotoTable |
       | instruction_type   |              1 |
-      | instruction_length |              8 |
+      | instruction_length |              8 | 
+      | to_binary_s.length |              8 |
       | table_id           |              1 |

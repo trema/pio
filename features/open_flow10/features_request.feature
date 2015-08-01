@@ -1,3 +1,4 @@
+@open_flow10
 Feature: Pio::Features::Request
   Scenario: new
     When I try to create an OpenFlow message with:
@@ -7,7 +8,6 @@ Feature: Pio::Features::Request
     Then it should finish successfully
     And the message have the following fields and values:
     | field          |                  value |
-    | class          | Pio::Features::Request |
     | ofp_version    |                      1 |
     | message_type   |                      5 |
     | message_length |                      8 |
@@ -23,7 +23,6 @@ Feature: Pio::Features::Request
     Then it should finish successfully
     And the message have the following fields and values:
       | field          |                  value |
-      | class          | Pio::Features::Request |
       | ofp_version    |                      1 |
       | message_type   |                      5 |
       | message_length |                      8 |
@@ -39,7 +38,6 @@ Feature: Pio::Features::Request
     Then it should finish successfully
     And the message have the following fields and values:
       | field          |                  value |
-      | class          | Pio::Features::Request |
       | ofp_version    |                      1 |
       | message_type   |                      5 |
       | message_length |                      8 |
@@ -47,26 +45,11 @@ Feature: Pio::Features::Request
       | xid            |                    123 |
       | user_data      |                        |
 
-  Scenario: new(xid: -1) and error
-    When I try to create an OpenFlow message with:
-      """
-      Pio::Features::Request.new(xid: -1)
-      """
-    Then it should fail with "ArgumentError", "Transaction ID should be an unsigned 32-bit integer."
-
-  Scenario: new(xid: 2**32) and error
-    When I try to create an OpenFlow message with:
-      """
-      Pio::Features::Request.new(xid: 2**32)
-      """
-    Then it should fail with "ArgumentError", "Transaction ID should be an unsigned 32-bit integer."
-
   Scenario: read
     When I try to parse a file named "open_flow10/features_request.raw" with "Pio::Features::Request" class
     Then it should finish successfully
     And the message have the following fields and values:
       | field          |                  value |
-      | class          | Pio::Features::Request |
       | ofp_version    |                      1 |
       | message_type   |                      5 |
       | message_length |                      8 |
@@ -76,4 +59,4 @@ Feature: Pio::Features::Request
 
   Scenario: parse error
     When I try to parse a file named "open_flow10/echo_request.raw" with "Pio::Features::Request" class
-    Then it should fail with "Pio::ParseError", "Invalid Features Request message."
+    Then it should fail with "Pio::ParseError", "Invalid OpenFlow10 Features Request message."

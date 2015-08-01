@@ -1,7 +1,5 @@
+@open_flow13
 Feature: Pio::PacketIn
-  Background:
-    Given I use OpenFlow 1.3
-
   Scenario: new
     When I try to create an OpenFlow message with:
       """
@@ -9,20 +7,19 @@ Feature: Pio::PacketIn
       """
     Then it should finish successfully
     And the message have the following fields and values:
-      | field                   |         value |
-      | class                   | Pio::PacketIn |
-      | ofp_version             |             4 |
-      | message_type            |            10 |
-      | message_length          |            34 |
-      | transaction_id          |             0 |
-      | xid                     |             0 |
-      | buffer_id               |             0 |
-      | total_len               |             0 |
-      | reason                  |     :no_match |
-      | table_id                |             0 |
-      | cookie                  |             0 |
-      | match.match_fields.size |             0 |
-      | raw_data.length         |             0 |
+      | field                   |     value |
+      | ofp_version             |         4 |
+      | message_type            |        10 |
+      | message_length          |        34 |
+      | transaction_id          |         0 |
+      | xid                     |         0 |
+      | buffer_id               |         0 |
+      | total_len               |         0 |
+      | reason                  | :no_match |
+      | table_id                |         0 |
+      | cookie                  |         0 |
+      | match.match_fields.size |         0 |
+      | raw_data.length         |         0 |
 
   Scenario: new (raw_data = ARP request)
     When I try to create an OpenFlow message with:
@@ -41,9 +38,7 @@ Feature: Pio::PacketIn
     Then it should finish successfully
     And the message have the following fields and values:
       | field                   |             value |
-      | class                   |     Pio::PacketIn |
       | ofp_version             |                 4 |
-      | message_type            |                10 |
       | message_length          |                94 |
       | transaction_id          |                 0 |
       | xid                     |                 0 |
@@ -62,7 +57,6 @@ Feature: Pio::PacketIn
     Then it should finish successfully
     And the message have the following fields and values:
       | field                         |             value |
-      | class                         |     Pio::PacketIn |
       | ofp_version                   |                 4 |
       | message_type                  |                10 |
       | message_length                |               102 |
@@ -70,6 +64,7 @@ Feature: Pio::PacketIn
       | xid                           |               123 |
       | buffer_id.to_hex              |        0xcafebabe |
       | total_len                     |                60 |
+      | in_port                       |                 1 |
       | reason                        |         :no_match |
       | table_id                      |                 0 |
       | cookie                        |                 0 |
