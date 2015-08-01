@@ -1,12 +1,14 @@
 # Changelog
 
 ## develop (unreleased)
+
+
+## 0.24.0 (8/1/2015)
 ### New features
 * [#201](https://github.com/trema/pio/pull/201): Add oxm experimenter support (OpenFlow1.3).
 * [#202](https://github.com/trema/pio/pull/202): Add `Pio::OpenFlow.switch_version` method.
 * [#205](https://github.com/trema/pio/pull/205): Add new classes `Pio::OpenFlow10::Barrier::Request`, `Pio::OpenFlow10::Barrier::Reply`.
 * [#207](https://github.com/trema/pio/pull/207): Add new method `Pio::OpenFlow.read`
-
 
 ### Bugs fixed
 * [#188](https://github.com/trema/pio/pull/188): Add PacketIn#in_port (OpenFlow1.3).
