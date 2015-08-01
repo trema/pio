@@ -40,6 +40,10 @@ When(/^I create an exact match from "(.*?)"$/) do |path|
   @result = Pio::ExactMatch.new(Pio::PacketIn.read(IO.read(full_path)))
 end
 
+Then(/^the message should be a "([^"]*)"$/) do |expected_klass|
+  expect(@result.class.to_s).to eq(expected_klass)
+end
+
 Then(/^the packet have the following fields and values:$/) do |table|
   table.hashes.each do |each|
     output = @result.instance_eval("self.#{each['field']}")
