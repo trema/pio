@@ -3,6 +3,11 @@
 ## develop (unreleased)
 
 
+## 0.24.1 (8/4/2015)
+### Bugs fixed
+* [#208](https://github.com/trema/pio/issues/208): `Pio::FlowMod.new` doesn't allow `:idle_timeout` and `:hard_timeout` options.
+
+
 ## 0.24.0 (8/1/2015)
 ### New features
 * [#201](https://github.com/trema/pio/pull/201): Add oxm experimenter support (OpenFlow1.3).

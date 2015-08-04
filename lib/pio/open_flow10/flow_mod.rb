@@ -88,6 +88,8 @@ module Pio
       body_option :command
       body_option :cookie
       body_option :flags
+      body_option :hard_timeout
+      body_option :idle_timeout
       body_option :match
       body_option :out_port
       body_option :priority
