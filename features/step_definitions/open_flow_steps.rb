@@ -29,3 +29,13 @@ end
 When(/^I try to create an OpenFlow instruction with:$/) do |ruby_code|
   step 'I try to create a packet with:', ruby_code
 end
+
+# rubocop:disable LineLength
+Then(/^the following each raw file should be parsed into its corresponding object using OpenFlow\.read$/) do |table|
+  table.hashes.each do |each|
+    step %(I try to parse a file named "#{each['raw file']}" with "OpenFlow" class)
+    step 'it should finish successfully'
+    step %(the message should be a "#{each['result object']}")
+  end
+end
+# rubocop:enable LineLength

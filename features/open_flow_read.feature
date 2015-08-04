@@ -1,43 +1,14 @@
 Feature: Pio::OpenFlow.read
-  Scenario: Hello
+  Scenario: OpenFlow10
     Given I switch the Pio::OpenFlow version to "OpenFlow10"
-    When I try to parse a file named "open_flow10/hello.raw" with "OpenFlow" class
-    Then it should finish successfully
-    And the message should be a "Pio::OpenFlow10::Hello"
-
-  Scenario: Echo::Request
-    Given I switch the Pio::OpenFlow version to "OpenFlow10"
-    When I try to parse a file named "open_flow10/echo_request.raw" with "OpenFlow" class
-    Then it should finish successfully
-    And the message should be a "Pio::OpenFlow10::Echo::Request"
-
-  Scenario: Echo::Reply
-    Given I switch the Pio::OpenFlow version to "OpenFlow10"
-    When I try to parse a file named "open_flow10/echo_reply.raw" with "OpenFlow" class
-    Then it should finish successfully
-    And the message should be a "Pio::OpenFlow10::Echo::Reply"
-
-  Scenario: Features::Request
-    Given I switch the Pio::OpenFlow version to "OpenFlow10"
-    When I try to parse a file named "open_flow10/features_request.raw" with "OpenFlow" class
-    Then it should finish successfully
-    And the message should be a "Pio::OpenFlow10::Features::Request"
-
-  Scenario: Features::Reply
-    Given I switch the Pio::OpenFlow version to "OpenFlow10"
-    When I try to parse a file named "open_flow10/features_reply.raw" with "OpenFlow" class
-    Then it should finish successfully
-    And the message should be a "Pio::OpenFlow10::Features::Reply"
-
-  Scenario: PacketIn
-    Given I switch the Pio::OpenFlow version to "OpenFlow10"
-    When I try to parse a file named "open_flow10/packet_in.raw" with "OpenFlow" class
-    Then it should finish successfully
-    And the message should be a "Pio::OpenFlow10::PacketIn"
-
-  Scenario: PortStatus
-    Given I switch the Pio::OpenFlow version to "OpenFlow10"
-    When I try to parse a file named "open_flow10/port_status.raw" with "OpenFlow" class
-    Then it should finish successfully
-    And the message should be a "Pio::OpenFlow10::PortStatus"
-
+    Then the following each raw file should be parsed into its corresponding object using OpenFlow.read
+      | raw file                         | result object                      |
+      | open_flow10/hello.raw            | Pio::OpenFlow10::Hello             |
+      | open_flow10/echo_request.raw     | Pio::OpenFlow10::Echo::Request     |
+      | open_flow10/echo_reply.raw       | Pio::OpenFlow10::Echo::Reply       |
+      | open_flow10/features_request.raw | Pio::OpenFlow10::Features::Request |
+      | open_flow10/features_reply.raw   | Pio::OpenFlow10::Features::Reply   |
+      | open_flow10/packet_in.raw        | Pio::OpenFlow10::PacketIn          |
+      | open_flow10/port_status.raw      | Pio::OpenFlow10::PortStatus        |
+      | open_flow10/barrier_request.raw  | Pio::OpenFlow10::Barrier::Request  |
+      | open_flow10/barrier_reply.raw    | Pio::OpenFlow10::Barrier::Reply    |
