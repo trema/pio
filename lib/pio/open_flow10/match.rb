@@ -133,7 +133,7 @@ module Pio
       # rubocop:disable MethodLength
       # This method smells of :reek:FeatureEnvy
       # This method smells of :reek:DuplicateMethodCall
-      def initialize(user_options)
+      def initialize(user_options = {})
         flags = Wildcards::FLAGS.each_with_object({}) do |each, memo|
           memo[each] = true unless user_options.key?(each)
         end
