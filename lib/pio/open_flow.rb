@@ -33,7 +33,9 @@ module Pio
         5 => Pio::Features::Request,
         6 => Pio::Features::Reply,
         10 => Pio::PacketIn,
-        12 => Pio::PortStatus
+        12 => Pio::PortStatus,
+        18 => Pio::Barrier::Request,
+        19 => Pio::Barrier::Reply
       }
       header = OpenFlowHeaderParser.read(binary)
       parser.fetch(header.message_type).read(binary)
