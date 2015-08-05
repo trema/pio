@@ -6,7 +6,7 @@ Feature: Pio::Barrier::Request
       Pio::Barrier::Request.new
       """
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field          | value |
       | ofp_version    |     1 |
       | message_type   |    18 |
@@ -21,7 +21,7 @@ Feature: Pio::Barrier::Request
       Pio::Barrier::Request.new(transaction_id: 123)
       """
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field          | value |
       | ofp_version    |     1 |
       | message_type   |    18 |
@@ -36,7 +36,7 @@ Feature: Pio::Barrier::Request
       Pio::Barrier::Request.new(xid: 123)
       """
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field          | value |
       | ofp_version    |     1 |
       | message_type   |    18 |
@@ -48,7 +48,7 @@ Feature: Pio::Barrier::Request
   Scenario: read
     When I try to parse a file named "open_flow10/barrier_request.raw" with "Barrier::Request" class
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field          | value |
       | ofp_version    |     1 |
       | message_type   |    18 |

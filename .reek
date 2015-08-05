@@ -1,2 +1,2 @@
 UncommunicativeModuleName:
-  accept: ['Pio::Hello13']
+  accept: ['Pio::Hello13', 'Pio::OpenFlow10', 'Pio::OpenFlow13']

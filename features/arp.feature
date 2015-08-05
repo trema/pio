@@ -9,7 +9,7 @@ Feature: Pio::Arp
       )
       """
     Then it should finish successfully
-    And the packet have the following fields and values:
+    And the packet has the following fields and values:
       | field                   |             value |
       | class                   | Pio::Arp::Request |
       | destination_mac         | ff:ff:ff:ff:ff:ff |
@@ -36,7 +36,7 @@ Feature: Pio::Arp
       )
       """
     Then it should finish successfully
-    And the packet have the following fields and values:
+    And the packet has the following fields and values:
       | field                   |             value |
       | class                   |   Pio::Arp::Reply |
       | destination_mac         | 00:26:82:eb:ea:d1 |

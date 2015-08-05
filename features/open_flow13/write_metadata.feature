@@ -6,7 +6,7 @@ Feature: Pio::WriteMetadata
       Pio::WriteMetadata.new(metadata: 1)
       """
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field              |              value |
       | class              | Pio::WriteMetadata |
       | instruction_type   |                  2 |
@@ -18,7 +18,7 @@ Feature: Pio::WriteMetadata
   Scenario: read
     When I try to parse a file named "open_flow13/instruction_write_metadata.raw" with "Pio::WriteMetadata" class
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field              |              value |
       | class              | Pio::WriteMetadata |
       | instruction_type   |                  2 |

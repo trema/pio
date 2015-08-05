@@ -6,7 +6,7 @@ Feature: Pio::Features::Request
       Pio::Features::Request.new
       """
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field          |                  value |
       | ofp_version    |                      4 |
       | message_type   |                      5 |
@@ -21,7 +21,7 @@ Feature: Pio::Features::Request
       Pio::Features::Request.new(transaction_id: 123)
       """
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field          |                  value |
       | ofp_version    |                      4 |
       | message_type   |                      5 |
@@ -36,7 +36,7 @@ Feature: Pio::Features::Request
       Pio::Features::Request.new(xid: 123)
       """
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field          |                  value |
       | ofp_version    |                      4 |
       | message_type   |                      5 |
@@ -55,7 +55,7 @@ Feature: Pio::Features::Request
   Scenario: read
     When I try to parse a file named "open_flow13/features_request.raw" with "Pio::Features::Request" class
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field          |                  value |
       | ofp_version    |                      4 |
       | message_type   |                      5 |

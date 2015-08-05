@@ -6,7 +6,7 @@ Feature: Pio::Hello
       Pio::Hello.new
       """
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field              |          value |
       | ofp_version        |              4 |
       | message_type       |              0 |
@@ -21,7 +21,7 @@ Feature: Pio::Hello
       Pio::Hello.new(transaction_id: 123)
       """
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field              |          value |
       | ofp_version        |              4 |
       | message_type       |              0 |
@@ -36,7 +36,7 @@ Feature: Pio::Hello
       Pio::Hello.new(xid: 123)
       """
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field              |          value |
       | ofp_version        |              4 |
       | message_type       |              0 |
@@ -48,7 +48,7 @@ Feature: Pio::Hello
   Scenario: read (no version bitmap)
     When I try to parse a file named "open_flow13/hello_no_version_bitmap.raw" with "Pio::Hello" class
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field              | value |
       | ofp_version        |     4 |
       | message_type       |     0 |
@@ -60,7 +60,7 @@ Feature: Pio::Hello
   Scenario: read
     When I try to parse a file named "open_flow13/hello_version_bitmap.raw" with "Pio::Hello" class
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field              |                        value |
       | ofp_version        |                            4 |
       | message_type       |                            0 |
