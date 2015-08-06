@@ -6,7 +6,7 @@ Feature: Pio::GotoTable
       Pio::GotoTable.new(1)
       """
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field              |          value |
       | class              | Pio::GotoTable |
       | instruction_type   |              1 |
@@ -17,7 +17,7 @@ Feature: Pio::GotoTable
   Scenario: read
     When I try to parse a file named "open_flow13/instruction_goto_table.raw" with "Pio::GotoTable" class
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field              |          value |
       | class              | Pio::GotoTable |
       | instruction_type   |              1 |

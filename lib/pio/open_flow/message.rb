@@ -1,3 +1,6 @@
+require 'bindata'
+require 'pio/parse_error'
+
 module Pio
   module OpenFlow
     # OpenFlow messages.

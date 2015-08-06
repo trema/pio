@@ -16,7 +16,7 @@ Feature: Pio::FlowMod
       )
       """
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field                                             | value |
       | ofp_version                                       | 1     |
       | message_type                                      | 14    |
@@ -45,7 +45,7 @@ Feature: Pio::FlowMod
   Scenario: read (Flow Mod Add)
     When I try to parse a file named "open_flow10/flow_mod_add.raw" with "Pio::FlowMod" class
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field                                  |                                                 value |
       | ofp_version                            |                                                     1 |
       | message_type                           |                                                    14 |
@@ -82,7 +82,7 @@ Feature: Pio::FlowMod
   Scenario: read (Flow Mod Modify)
     When I try to parse a file named "open_flow10/flow_mod_modify.raw" with "Pio::FlowMod" class
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field                                  |                                                 value |
       | ofp_version                            |                                                     1 |
       | message_type                           |                                                    14 |
@@ -119,7 +119,7 @@ Feature: Pio::FlowMod
   Scenario: read (Flow Mod Modify Strict)
     When I try to parse a file named "open_flow10/flow_mod_modify_strict.raw" with "Pio::FlowMod" class
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field                                  |                                                 value |
       | ofp_version                            |                                                     1 |
       | message_type                           |                                                    14 |
@@ -156,7 +156,7 @@ Feature: Pio::FlowMod
   Scenario: read (Flow Mod Delete)
     When I try to parse a file named "open_flow10/flow_mod_delete.raw" with "Pio::FlowMod" class
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field                                  |                                                 value |
       | ofp_version                            |                                                     1 |
       | message_type                           |                                                    14 |
@@ -191,7 +191,7 @@ Feature: Pio::FlowMod
   Scenario: read (Flow Mod Delete Strict)
     When I try to parse a file named "open_flow10/flow_mod_delete_strict.raw" with "Pio::FlowMod" class
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field                                  |                                                 value |
       | ofp_version                            |                                                     1 |
       | message_type                           |                                                    14 |

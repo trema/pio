@@ -44,7 +44,7 @@ Then(/^the message should be a "([^"]*)"$/) do |expected_klass|
   expect(@result.class.to_s).to eq(expected_klass)
 end
 
-Then(/^the packet have the following fields and values:$/) do |table|
+Then(/^the packet has the following fields and values:$/) do |table|
   table.hashes.each do |each|
     output = @result.instance_eval("self.#{each['field']}")
     if /^:/ =~ output.inspect
@@ -55,8 +55,8 @@ Then(/^the packet have the following fields and values:$/) do |table|
   end
 end
 
-Then(/^the message have the following fields and values:$/) do |table|
-  step 'the packet have the following fields and values:', table
+Then(/^the message has the following fields and values:$/) do |table|
+  step 'the packet has the following fields and values:', table
 end
 
 # rubocop:disable LineLength

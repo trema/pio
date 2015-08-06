@@ -5,7 +5,7 @@ Feature: Pio::Lldp
       Pio::Lldp.new(dpid: 0x123, port_number: 12, source_mac: '11:22:33:44:55:66')
       """
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field                     |             value |
       | class                     |         Pio::Lldp |
       | destination_mac           | 01:80:c2:00:00:0e |

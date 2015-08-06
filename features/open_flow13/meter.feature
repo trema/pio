@@ -6,7 +6,7 @@ Feature: Pio::Meter
     Pio::Meter.new(1)
     """
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
     | field              |      value |
     | class              | Pio::Meter |
     | instruction_type   |          6 |
@@ -17,7 +17,7 @@ Feature: Pio::Meter
   Scenario: read
     When I try to parse a file named "open_flow13/instruction_meter.raw" with "Pio::Meter" class
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field              |      value |
       | class              | Pio::Meter |
       | instruction_type   |          6 |
