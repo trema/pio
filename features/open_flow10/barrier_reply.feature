@@ -6,7 +6,7 @@ Feature: Pio::Barrier::Reply
       Pio::Barrier::Reply.new
       """
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field          | value |
       | ofp_version    |     1 |
       | message_type   |    19 |
@@ -21,7 +21,7 @@ Feature: Pio::Barrier::Reply
       Pio::Barrier::Reply.new(transaction_id: 123)
       """
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field          | value |
       | ofp_version    |     1 |
       | message_type   |    19 |
@@ -36,7 +36,7 @@ Feature: Pio::Barrier::Reply
       Pio::Barrier::Reply.new(xid: 123)
       """
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field          | value |
       | ofp_version    |     1 |
       | message_type   |    19 |
@@ -48,7 +48,7 @@ Feature: Pio::Barrier::Reply
   Scenario: read
     When I try to parse a file named "open_flow10/barrier_reply.raw" with "Barrier::Reply" class
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field          | value |
       | ofp_version    |     1 |
       | message_type   |    19 |

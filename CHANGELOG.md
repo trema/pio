@@ -1,6 +1,8 @@
 # Changelog
 
 ## develop (unreleased)
+### New features
+* [#211](https://github.com/trema/pio/pull/211): Add new classes `Pio::FlowStats::Request` and `Pio::FlowStats::Reply`.
 
 
 ## 0.24.2 (8/4/2015)
