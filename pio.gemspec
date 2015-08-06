@@ -38,7 +38,7 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'guard', '~> 2.13.0'
   gem.add_development_dependency 'guard-bundler', '~> 2.1.0'
   gem.add_development_dependency 'guard-cucumber', '~> 1.6.0'
-  gem.add_development_dependency 'guard-rspec', '~> 4.6.3'
+  gem.add_development_dependency 'guard-rspec', '~> 4.6.4'
   gem.add_development_dependency 'guard-rubocop', '~> 1.2.0'
   gem.add_development_dependency 'rb-fchange', '~> 0.0.6'
   gem.add_development_dependency 'rb-fsevent', '~> 0.9.5'
@@ -59,5 +59,5 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'reek', '~> 3.1'
   gem.add_development_dependency 'rspec', '~> 3.3.0'
   gem.add_development_dependency 'rspec-given', '~> 3.7.1'
-  gem.add_development_dependency 'rubocop', '~> 0.32.1'
+  gem.add_development_dependency 'rubocop', '~> 0.33.0'
 end
