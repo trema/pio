@@ -1,14 +1,12 @@
+@open_flow10
 Feature: Pio::Echo::Reply
-  Background:
-    Given I use OpenFlow 1.0
-
   Scenario: new
     When I try to create an OpenFlow message with:
       """
       Pio::Echo::Reply.new
       """
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field          | value |
       | ofp_version    |     1 |
       | message_type   |     3 |
@@ -24,7 +22,7 @@ Feature: Pio::Echo::Reply
       Pio::Echo::Reply.new(transaction_id: 123)
       """
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field          | value |
       | ofp_version    |     1 |
       | message_type   |     3 |
@@ -40,7 +38,7 @@ Feature: Pio::Echo::Reply
       Pio::Echo::Reply.new(xid: 123)
       """
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field          | value |
       | ofp_version    |     1 |
       | message_type   |     3 |
@@ -63,7 +61,7 @@ Feature: Pio::Echo::Reply
       Pio::Echo::Reply.new(body: 'echo reply body')
       """
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field          |           value |
       | ofp_version    |               1 |
       | message_type   |               3 |
@@ -79,7 +77,7 @@ Feature: Pio::Echo::Reply
       Pio::Echo::Reply.new(user_data: 'echo reply body')
       """
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field          |           value |
       | ofp_version    |               1 |
       | message_type   |               3 |
@@ -92,7 +90,7 @@ Feature: Pio::Echo::Reply
   Scenario: read (no message body)
     When I try to parse a file named "open_flow10/echo_reply.raw" with "Pio::Echo::Reply" class
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field          |            value |
       | ofp_version    |                1 |
       | message_type   |                3 |

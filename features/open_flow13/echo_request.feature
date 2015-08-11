@@ -1,14 +1,12 @@
+@open_flow13
 Feature: Pio::Echo::Request
-  Background:
-    Given I use OpenFlow 1.3
-
   Scenario: new
     When I try to create an OpenFlow message with:
       """
       Pio::Echo::Request.new
       """
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field          | value |
       | ofp_version    |     4 |
       | message_type   |     2 |
@@ -24,7 +22,7 @@ Feature: Pio::Echo::Request
       Pio::Echo::Request.new(transaction_id: 123)
       """
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field          | value |
       | ofp_version    |     4 |
       | message_type   |     2 |
@@ -40,7 +38,7 @@ Feature: Pio::Echo::Request
       Pio::Echo::Request.new(xid: 123)
       """
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field          | value |
       | ofp_version    |     4 |
       | message_type   |     2 |
@@ -56,7 +54,7 @@ Feature: Pio::Echo::Request
       Pio::Echo::Request.new(body: 'echo request body')
       """
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field          |             value |
       | ofp_version    |                 4 |
       | message_type   |                 2 |
@@ -72,7 +70,7 @@ Feature: Pio::Echo::Request
       Pio::Echo::Request.new(user_data: 'echo request body')
       """
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field          |             value |
       | ofp_version    |                 4 |
       | message_type   |                 2 |
@@ -92,7 +90,7 @@ Feature: Pio::Echo::Request
   Scenario: read (no message body)
     When I try to parse a file named "open_flow13/echo_request_no_body.raw" with "Pio::Echo::Request" class
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field          | value |
       | ofp_version    |     4 |
       | message_type   |     2 |
@@ -105,7 +103,7 @@ Feature: Pio::Echo::Request
   Scenario: read
     When I try to parse a file named "open_flow13/echo_request_body.raw" with "Pio::Echo::Request" class
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field          |                value |
       | ofp_version    |                    4 |
       | message_type   |                    2 |
