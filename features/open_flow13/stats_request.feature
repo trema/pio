@@ -2,6 +2,7 @@ Feature: Pio::StatsRequest
   Background:
     Given I use OpenFlow 1.3
 
+  @wip
   Scenario: new
     When I try to create an OpenFlow message with:
       """
