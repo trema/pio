@@ -1,8 +1,8 @@
 AllCops:
   Include:
-    - Gemfile
-    - Guardfile
-    - Rakefile
+    - '**/Gemfile'
+    - '**/Guardfile'
+    - '**/Rakefile'
     - examples
     - pio.gemspec
     - tasks/*.rake
@@ -10,6 +10,10 @@ AllCops:
     - bin/*
     - vendor/**/*
 
+Metrics/LineLength:
+  Exclude:
+    - 'spec/support/*.rb'
+    
 Style/StringLiterals:
   EnforcedStyle: single_quotes
 
