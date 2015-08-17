@@ -19,7 +19,7 @@ module Pio
     def self.switch_version(version)
       [:Barrier, :Echo, :Features, :FlowMod, :Hello, :Match,
        :PacketIn, :PacketOut, :SendOutPort, :PortStatus,
-       :FlowStats].each do |each|
+       :FlowStats, :HelloFailed].each do |each|
         set_message_class_name each, version
         @version = version.to_s
       end
@@ -29,6 +29,7 @@ module Pio
     def self.read(binary)
       parser = {
         0 => Pio::Hello,
+        1 => Pio::HelloFailed,
         2 => Pio::Echo::Request,
         3 => Pio::Echo::Reply,
         5 => Pio::Features::Request,

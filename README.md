@@ -20,6 +20,7 @@ supports the following packet formats:
 - [UDP](https://relishapp.com/trema/pio/docs/pio-udp)
 - OpenFlow 1.0
   - [Hello](https://relishapp.com/trema/pio/docs/open-flow10/pio-hello)
+  - [HelloFailed](https://relishapp.com/trema/pio/docs/open-flow10/pio-hellofailed)
   - [Echo Request](https://relishapp.com/trema/pio/docs/open-flow10/pio-echo-request)
   - [Echo Reply](https://relishapp.com/trema/pio/docs/open-flow10/pio-echo-reply)
   - [Features Request](https://relishapp.com/trema/pio/docs/open-flow10/pio-features-request)
