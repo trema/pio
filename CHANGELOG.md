@@ -3,6 +3,7 @@
 ## develop (unreleased)
 ### New features
 * [#214](https://github.com/trema/pio/pull/214): Add new classes `Pio::OpenFlow10::HelloFailed`.
+* [#215](https://github.com/trema/pio/pull/215): Add new classes `Pio::OpenFlow13::HelloFailed`.
 
 
 ## 0.25.0 (8/6/2015)
