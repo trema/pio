@@ -2,23 +2,34 @@ require 'pio/open_flow/hello_failed_code'
 require 'pio/open_flow/format'
 require 'pio/open_flow/message'
 
+# Base module.
 module Pio
-  module OpenFlow10
+  # OpenFlow 1.3 messages
+  module OpenFlow13
     # Error Message (Hello Failed).
     class HelloFailed < OpenFlow::Message
       # Error Message (Hello Failed) format.
       class Format < BinData::Record
-        # OpenFlow 1.0 Error Message (Hello Failed) body.
+        # Error Message (Hello Failed) body.
         class Body < BinData::Record
           # enum ofp_error_type
-          class ErrorType10 < BinData::Primitive
+          class ErrorType13 < BinData::Primitive
             ERROR_TYPES = {
               hello_failed: 0,
               bad_request: 1,
               bad_action: 2,
-              flow_mod_failed: 3,
-              port_mod_failed: 4,
-              queue_operation_failed: 5
+              bad_instruction: 3,
+              bad_match: 4,
+              flow_mod_failed: 5,
+              group_mod_failed: 6,
+              port_mod_failed: 7,
+              table_mod_failed: 8,
+              queue_operation_failed: 9,
+              switch_config_failed: 10,
+              role_request_failed: 11,
+              meter_mod_failed: 12,
+              table_features_failed: 13,
+              experimenter: 0xffff
             }
 
             endian :big
@@ -35,7 +46,7 @@ module Pio
 
           endian :big
 
-          error_type10 :error_type
+          error_type13 :error_type
           hello_failed_code :error_code
           rest :description
 
@@ -46,7 +57,7 @@ module Pio
 
         extend OpenFlow::Format
 
-        header version: 1, message_type: 1
+        header version: 4, message_type: 1
         body :body
 
         def length
