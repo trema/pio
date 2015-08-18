@@ -1,6 +1,8 @@
 # Changelog
 
 ## develop (unreleased)
+### New features
+* [#214](https://github.com/trema/pio/pull/214): Add new classes `Pio::OpenFlow10::HelloFailed`.
 
 
 ## 0.25.0 (8/6/2015)
