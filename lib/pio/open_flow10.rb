@@ -1,6 +1,8 @@
+require 'pio/open_flow10/bad_request'
 require 'pio/open_flow10/barrier_reply'
 require 'pio/open_flow10/barrier_request'
 require 'pio/open_flow10/echo'
+require 'pio/open_flow10/error'
 require 'pio/open_flow10/exact_match'
 require 'pio/open_flow10/features'
 require 'pio/open_flow10/flow_mod'

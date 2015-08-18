@@ -1,10 +1,11 @@
 require 'pio/open_flow13/hello_failed'
 
-describe Pio::OpenFlow13::HelloFailed do
-  it_should_behave_like('an OpenFlow message', Pio::OpenFlow13::HelloFailed)
+describe Pio::OpenFlow13::Error::HelloFailed do
+  it_should_behave_like('an OpenFlow message',
+                        Pio::OpenFlow13::Error::HelloFailed)
 
   describe '.new' do
-    When(:hello_failed) { Pio::OpenFlow13::HelloFailed.new(options) }
+    When(:hello_failed) { Pio::OpenFlow13::Error::HelloFailed.new(options) }
 
     context 'with {}' do
       Given(:options) { {} }
