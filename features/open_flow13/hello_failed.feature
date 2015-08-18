@@ -1,12 +1,12 @@
 @open_flow13
-Feature: Pio::HelloFailed
+Feature: Pio::Error::HelloFailed
 
   Hello protocol failed
 
   Scenario: new
     When I try to create an OpenFlow message with:
       """
-      Pio::HelloFailed.new
+      Pio::Error::HelloFailed.new
       """
     Then it should finish successfully
     And the message has the following fields and values:
@@ -23,7 +23,7 @@ Feature: Pio::HelloFailed
   Scenario: new(description: 'error description')
     When I try to create an OpenFlow message with:
       """
-      Pio::HelloFailed.new(description: 'error description')
+      Pio::Error::HelloFailed.new(description: 'error description')
       """
     Then it should finish successfully
     And the message has the following fields and values:
@@ -40,7 +40,7 @@ Feature: Pio::HelloFailed
   Scenario: new(error_code: :permissions_error)
     When I try to create an OpenFlow message with:
       """
-      Pio::HelloFailed.new(error_code: :permissions_error)
+      Pio::Error::HelloFailed.new(error_code: :permissions_error)
       """
     Then it should finish successfully
     And the message has the following fields and values:
@@ -55,7 +55,7 @@ Feature: Pio::HelloFailed
       | description    |                    |
 
   Scenario: read
-    When I try to parse a file named "open_flow13/hello_failed.raw" with "HelloFailed" class
+    When I try to parse a file named "open_flow13/hello_failed.raw" with "Pio::Error::HelloFailed" class
     Then it should finish successfully
     And the message has the following fields and values:
       | field          |             value |

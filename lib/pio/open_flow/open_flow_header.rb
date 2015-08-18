@@ -10,6 +10,7 @@ module Pio
     uint8 :message_type
     uint16 :message_length
     transaction_id :transaction_id
+    rest :body
   end
 
   # OpenFlow message header.

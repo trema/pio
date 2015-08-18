@@ -6,6 +6,7 @@
 - open_flow10:
   - hello.feature
   - hello_failed.feature
+  - bad_request.feature
   - echo_request.feature
   - echo_reply.feature
   - features_request.feature
