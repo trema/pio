@@ -5,7 +5,9 @@ Feature: Pio::OpenFlow.read
       | raw file                           | result object                       |
       | open_flow10/hello.raw              | Pio::OpenFlow10::Hello              |
       | open_flow10/hello_failed.raw       | Pio::OpenFlow10::Error::HelloFailed |
+      | open_flow13/hello_failed.raw       | Pio::OpenFlow13::Error::HelloFailed |
       | open_flow10/bad_request.raw        | Pio::OpenFlow10::Error::BadRequest  |
+      | open_flow13/bad_request.raw        | Pio::OpenFlow13::Error::BadRequest  |
       | open_flow10/echo_request.raw       | Pio::OpenFlow10::Echo::Request      |
       | open_flow10/echo_reply.raw         | Pio::OpenFlow10::Echo::Reply        |
       | open_flow10/features_request.raw   | Pio::OpenFlow10::Features::Request  |

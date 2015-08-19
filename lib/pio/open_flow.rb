@@ -1,4 +1,5 @@
 require 'pio/open_flow/datapath_id'
+require 'pio/open_flow/error'
 require 'pio/open_flow/flags'
 require 'pio/open_flow/format'
 require 'pio/open_flow/message'
@@ -29,7 +30,7 @@ module Pio
     def self.read(binary)
       parser = {
         0 => Pio::Hello,
-        1 => Pio::OpenFlow10::Error,
+        1 => Pio::OpenFlow::Error,
         2 => Pio::Echo::Request,
         3 => Pio::Echo::Reply,
         5 => Pio::Features::Request,
@@ -45,8 +46,6 @@ module Pio
       }
       header = OpenFlowHeaderParser.read(binary)
       parser.fetch(header.message_type).read(binary)
-    rescue
-      raise "Unknown message type #{header.message_type}"
     end
     # rubocop:enable MethodLength
 
