@@ -15,7 +15,7 @@ module Pio
         class FlowStatsRequestBody < BinData::Record
           endian :big
 
-          match_open_flow10 :match
+          match10 :match
           uint8 :table_id, initial_value: 0xff
           string :padding, length: 1
           hide :padding
