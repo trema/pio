@@ -1,4 +1,4 @@
-require 'pio/open_flow10/hello_failed'
+require 'pio/open_flow10/error/hello_failed'
 
 describe Pio::OpenFlow10::Error::HelloFailed do
   it_should_behave_like('an OpenFlow message',
