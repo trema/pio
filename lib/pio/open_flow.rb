@@ -1,4 +1,5 @@
 require 'pio/open_flow/datapath_id'
+require 'pio/open_flow/error'
 require 'pio/open_flow/flags'
 require 'pio/open_flow/format'
 require 'pio/open_flow/message'
@@ -19,7 +20,7 @@ module Pio
     def self.switch_version(version)
       [:Barrier, :Echo, :Features, :FlowMod, :Hello, :Match,
        :PacketIn, :PacketOut, :SendOutPort, :PortStatus,
-       :FlowStats, :DescriptionStats].each do |each|
+       :FlowStats, :DescriptionStats, :Error].each do |each|
         set_message_class_name each, version
         @version = version.to_s
       end
@@ -29,12 +30,15 @@ module Pio
     def self.read(binary)
       parser = {
         0 => Pio::Hello,
+        1 => Pio::OpenFlow::Error,
         2 => Pio::Echo::Request,
         3 => Pio::Echo::Reply,
         5 => Pio::Features::Request,
         6 => Pio::Features::Reply,
         10 => Pio::PacketIn,
         12 => Pio::PortStatus,
+        13 => Pio::PacketOut,
+        14 => Pio::FlowMod,
         16 => Pio::FlowStats::Request,
         17 => Pio::FlowStats::Reply,
         18 => Pio::Barrier::Request,
@@ -42,8 +46,6 @@ module Pio
       }
       header = OpenFlowHeaderParser.read(binary)
       parser.fetch(header.message_type).read(binary)
-    rescue
-      raise "Unknown message type #{header.message_type}"
     end
     # rubocop:enable MethodLength
 
