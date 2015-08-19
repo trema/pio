@@ -1,7 +1,7 @@
 require 'pio/open_flow/format'
 require 'pio/open_flow/hello_failed_code'
 require 'pio/open_flow/message'
-require 'pio/open_flow10/error_type10'
+require 'pio/open_flow10/error/error_type10'
 
 module Pio
   module OpenFlow10
