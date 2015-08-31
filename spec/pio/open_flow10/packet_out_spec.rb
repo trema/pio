@@ -52,7 +52,7 @@ describe Pio::OpenFlow10::PacketOut do
       Then { result.actions.length == 1 }
       Then { result.actions[0].is_a? Pio::OpenFlow10::SendOutPort }
       Then { result.actions[0].port_number == 2 }
-      Then { result.actions[0].max_len == 2**16 - 1 }
+      Then { result.actions[0].max_length == 2**16 - 1 }
       Then { result.raw_data.length == 64 }
     end
 
@@ -81,7 +81,7 @@ describe Pio::OpenFlow10::PacketOut do
       Then { result.actions.length == 1 }
       Then { result.actions[0].is_a? Pio::OpenFlow10::SendOutPort }
       Then { result.actions[0].port_number == 2 }
-      Then { result.actions[0].max_len == 2**16 - 1 }
+      Then { result.actions[0].max_length == 2**16 - 1 }
       Then { result.raw_data.length == 64 }
     end
 
@@ -124,7 +124,7 @@ describe Pio::OpenFlow10::PacketOut do
       Then { result.actions.length == 1 }
       Then { result.actions[0].is_a? Pio::OpenFlow10::SendOutPort }
       Then { result.actions[0].port_number == 2 }
-      Then { result.actions[0].max_len == 2**16 - 1 }
+      Then { result.actions[0].max_length == 2**16 - 1 }
       Then { result.raw_data.length == 64 }
 
       context '#to_binary' do
@@ -349,7 +349,7 @@ describe Pio::OpenFlow10::PacketOut do
       Then { result.actions.length == 2 }
       Then { result.actions[0].is_a? Pio::OpenFlow10::SendOutPort }
       Then { result.actions[0].port_number == 2 }
-      Then { result.actions[0].max_len == 2**16 - 1 }
+      Then { result.actions[0].max_length == 2**16 - 1 }
       Then { result.actions[1].is_a? Pio::SetVlanVid }
       Then { result.actions[1].vlan_id == 10 }
     end

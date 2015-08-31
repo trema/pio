@@ -7,7 +7,7 @@ describe Pio::OpenFlow10::SendOutPort do
     context 'with 1' do
       Given(:options) { 1 }
       Then { send_out_port.port_number == 1 }
-      Then { send_out_port.max_len == 2**16 - 1 }
+      Then { send_out_port.max_length == 2**16 - 1 }
 
       describe '#==' do
         When(:result) { send_out_port == other }
@@ -90,27 +90,27 @@ describe Pio::OpenFlow10::SendOutPort do
       Then { send_out_port.port_number == :flood }
     end
 
-    context 'with port_number: and max_len: option' do
-      Given(:options) { { port_number: 1, max_len: 256 } }
+    context 'with port_number: and max_length: option' do
+      Given(:options) { { port_number: 1, max_length: 256 } }
       Then { send_out_port.port_number == 1 }
-      Then { send_out_port.max_len == 256 }
+      Then { send_out_port.max_length == 256 }
     end
 
-    context 'with invalid max_len: (-1) option' do
-      Given(:options) { { port_number: 1, max_len: -1 } }
+    context 'with invalid max_length: (-1) option' do
+      Given(:options) { { port_number: 1, max_length: -1 } }
       Then do
         send_out_port ==
           Failure(ArgumentError,
-                  'The max_len should be an unsigned 16bit integer.')
+                  'The max_length should be an unsigned 16bit integer.')
       end
     end
 
-    context 'with invalid max_len: (2**16) option' do
-      Given(:options) { { port_number: 1, max_len: 2**16 } }
+    context 'with invalid max_length: (2**16) option' do
+      Given(:options) { { port_number: 1, max_length: 2**16 } }
       Then do
         send_out_port ==
           Failure(ArgumentError,
-                  'The max_len should be an unsigned 16bit integer.')
+                  'The max_length should be an unsigned 16bit integer.')
       end
     end
   end
