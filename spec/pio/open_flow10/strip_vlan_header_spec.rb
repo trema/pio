@@ -3,9 +3,9 @@ require 'pio/open_flow10/strip_vlan_header'
 describe Pio::StripVlanHeader do
   Given(:strip_vlan_header) { Pio::StripVlanHeader.new }
 
-  describe '#type' do
-    When(:type) { strip_vlan_header.type }
-    Then { type == 3 }
+  describe '#action_type' do
+    When(:action_type) { strip_vlan_header.action_type }
+    Then { action_type == 3 }
   end
 
   describe '#message_length' do
