@@ -11,8 +11,8 @@ describe Pio::SetIpDestinationAddress do
         Then { set_ip_destination_addr.ip_address == '1.2.3.4' }
       end
 
-      describe '#type' do
-        Then { set_ip_destination_addr.type == 7 }
+      describe '#action_type' do
+        Then { set_ip_destination_addr.action_type == 7 }
       end
 
       describe '#message_length' do
