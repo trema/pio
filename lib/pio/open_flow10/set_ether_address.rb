@@ -47,7 +47,7 @@ module Pio
   end
 
   # An action to modify the destination Ethernet address of a packet.
-  class SetEtherDestinationAddr < SetEtherAddress
+  class SetEtherDestinationAddress < SetEtherAddress
     action_type 5
   end
 end
