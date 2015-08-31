@@ -18,7 +18,7 @@ module Pio
         1 => Pio::SetVlanVid,
         2 => Pio::SetVlanPriority,
         3 => Pio::StripVlanHeader,
-        4 => Pio::SetEtherSourceAddr,
+        4 => Pio::SetEtherSourceAddress,
         5 => Pio::SetEtherDestinationAddr,
         6 => Pio::SetIpSourceAddress,
         7 => Pio::SetIpDestinationAddress,
