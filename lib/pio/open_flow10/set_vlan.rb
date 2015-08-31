@@ -12,7 +12,7 @@ module Pio
         class Format < BinData::Record
           endian :big
 
-          uint16 :type, value: #{action_type}
+          uint16 :action_type, value: #{action_type}
           uint16 :message_length, value: 8
           uint16 :#{field_name}
           uint16 :padding
@@ -30,7 +30,7 @@ module Pio
       set_vlan
     end
 
-    def_delegators :@format, :type
+    def_delegators :@format, :action_type
     def_delegators :@format, :message_length
     def_delegator :@format, :to_binary_s, :to_binary
   end

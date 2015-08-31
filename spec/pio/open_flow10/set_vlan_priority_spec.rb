@@ -11,8 +11,8 @@ describe Pio::SetVlanPriority do
         Then { set_vlan_priority.vlan_priority == 3 }
       end
 
-      describe '#type' do
-        Then { set_vlan_priority.type == 2 }
+      describe '#action_type' do
+        Then { set_vlan_priority.action_type == 2 }
       end
 
       describe '#message_length' do
