@@ -1,9 +1,9 @@
 require 'pio/open_flow10/set_ether_address'
 
-describe Pio::SetEtherSourceAddr do
+describe Pio::SetEtherSourceAddress do
   describe '.new' do
     Given(:set_ether_source_address) do
-      Pio::SetEtherSourceAddr.new(mac_address)
+      Pio::SetEtherSourceAddress.new(mac_address)
     end
 
     context "with '11:22:33:44:55:66'" do
