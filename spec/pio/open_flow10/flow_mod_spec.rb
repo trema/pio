@@ -75,7 +75,7 @@ describe Pio::OpenFlow10::FlowMod do
       Then { flow_mod.actions.length == 1 }
       Then { flow_mod.actions[0].is_a? Pio::OpenFlow10::SendOutPort }
       Then { flow_mod.actions[0].port_number == 2 }
-      Then { flow_mod.actions[0].max_len == 2**16 - 1 }
+      Then { flow_mod.actions[0].max_length == 2**16 - 1 }
     end
   end
 
@@ -141,7 +141,7 @@ describe Pio::OpenFlow10::FlowMod do
       Then { flow_mod.actions.length == 1 }
       Then { flow_mod.actions[0].is_a? Pio::OpenFlow10::SendOutPort }
       Then { flow_mod.actions[0].port_number == 2 }
-      Then { flow_mod.actions[0].max_len == 2**16 - 1 }
+      Then { flow_mod.actions[0].max_length == 2**16 - 1 }
 
       context '#to_binary' do
         When(:binary) { flow_mod.to_binary }

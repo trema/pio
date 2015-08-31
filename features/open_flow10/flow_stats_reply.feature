@@ -64,10 +64,10 @@ Feature: Pio::FlowStats::Reply
       | stats[0].actions.length                                     |                            2 |
       | stats[0].actions[0].class                                   | Pio::OpenFlow10::SendOutPort |
       | stats[0].actions[0].port_number                             |                            1 |
-      | stats[0].actions[0].max_len                                 |                            0 |
+      | stats[0].actions[0].max_length                              |                            0 |
       | stats[0].actions[1].class                                   | Pio::OpenFlow10::SendOutPort |
       | stats[0].actions[1].port_number                             |                            2 |
-      | stats[0].actions[1].max_len                                 |                            0 |
+      | stats[0].actions[1].max_length                              |                            0 |
       | stats[1].entry_length                                       |                          112 |
       | stats[1].table_id                                           |                            4 |
       | stats[1].match.wildcards.keys.size                          |                           14 |
@@ -96,10 +96,10 @@ Feature: Pio::FlowStats::Reply
       | stats[1].actions.length                                     |                            3 |
       | stats[1].actions[0].class                                   | Pio::OpenFlow10::SendOutPort |
       | stats[1].actions[0].port_number                             |                            1 |
-      | stats[1].actions[0].max_len                                 |                            0 |
+      | stats[1].actions[0].max_length                              |                            0 |
       | stats[1].actions[1].class                                   | Pio::OpenFlow10::SendOutPort |
       | stats[1].actions[1].port_number                             |                            2 |
-      | stats[1].actions[1].max_len                                 |                            0 |
+      | stats[1].actions[1].max_length                              |                            0 |
       | stats[1].actions[2].class                                   | Pio::OpenFlow10::SendOutPort |
       | stats[1].actions[2].port_number                             |                            3 |
-      | stats[1].actions[2].max_len                                 |                            0 |
+      | stats[1].actions[2].max_length                              |                            0 |

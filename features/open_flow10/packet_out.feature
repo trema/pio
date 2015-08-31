@@ -15,5 +15,5 @@ Feature: Pio::PacketOut
     | actions.length            |                            1 |
     | actions.first.class       | Pio::OpenFlow10::SendOutPort |
     | actions.first.port_number |                            2 |
-    | actions.first.max_len     |                        65535 |
+    | actions.first.max_length  |                        65535 |
     | raw_data.length           |                           64 |
