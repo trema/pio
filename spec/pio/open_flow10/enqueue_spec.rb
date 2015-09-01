@@ -13,8 +13,8 @@ describe Pio::Enqueue do
         Then { enqueue.queue_id == 2 }
       end
 
-      describe '#type' do
-        Then { enqueue.type == 11 }
+      describe '#action_type' do
+        Then { enqueue.action_type == 11 }
       end
 
       describe '#message_length' do

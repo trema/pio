@@ -11,7 +11,7 @@ module Pio
     class Format < BinData::Record
       endian :big
 
-      uint16 :type, value: 11
+      uint16 :action_type, value: 11
       uint16 :message_length, value: 16
       port_number :port_number
       uint48 :padding
@@ -27,7 +27,7 @@ module Pio
 
     extend Forwardable
 
-    def_delegators :@format, :type
+    def_delegators :@format, :action_type
     def_delegators :@format, :message_length
     def_delegators :@format, :port_number
     def_delegators :@format, :queue_id
