@@ -9,8 +9,8 @@ describe Pio::SetIpTos do
         Then { set_ip_tos.type_of_service == 32 }
       end
 
-      describe '#type' do
-        Then { set_ip_tos.type == 8 }
+      describe '#action_type' do
+        Then { set_ip_tos.action_type == 8 }
       end
 
       describe '#message_length' do
