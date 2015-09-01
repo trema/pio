@@ -13,8 +13,8 @@ describe Pio::SetTransportSourcePort do
         Then { set_transport_source_port.port_number == 100 }
       end
 
-      describe '#type' do
-        Then { set_transport_source_port.type == 9 }
+      describe '#action_type' do
+        Then { set_transport_source_port.action_type == 9 }
       end
 
       describe '#message_length' do

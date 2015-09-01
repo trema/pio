@@ -13,8 +13,8 @@ describe Pio::SetTransportDestinationPort do
         Then { set_transport_destination_port.port_number == 100 }
       end
 
-      describe '#type' do
-        Then { set_transport_destination_port.type == 10 }
+      describe '#action_type' do
+        Then { set_transport_destination_port.action_type == 10 }
       end
 
       describe '#message_length' do

@@ -6,12 +6,12 @@ module Pio
   # An action to modify the source/destination TCP/UDP port of a packet.
   class SetTransportPort
     # rubocop:disable MethodLength
-    def self.def_format(action_type)
+    def self.action_type(action_type)
       str = %(
         class Format < BinData::Record
           endian :big
 
-          uint16 :type, value: #{action_type}
+          uint16 :action_type, value: #{action_type}
           uint16 :message_length, value: 8
           uint16 :port_number
           uint16 :padding
@@ -30,7 +30,7 @@ module Pio
 
     extend Forwardable
 
-    def_delegators :@format, :type
+    def_delegators :@format, :action_type
     def_delegators :@format, :message_length
     def_delegators :@format, :port_number
     def_delegator :@format, :to_binary_s, :to_binary
@@ -48,11 +48,11 @@ module Pio
 
   # An action to modify the source TCP/UDP port of a packet.
   class SetTransportSourcePort < SetTransportPort
-    def_format 9
+    action_type 9
   end
 
   # An action to modify the source TCP/UDP port of a packet.
   class SetTransportDestinationPort < SetTransportPort
-    def_format 10
+    action_type 10
   end
 end
