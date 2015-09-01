@@ -8,6 +8,7 @@ require 'pio/open_flow10/set_transport_port'
 require 'pio/open_flow10/set_vlan_priority'
 require 'pio/open_flow10/set_vlan_vid'
 require 'pio/open_flow10/strip_vlan_header'
+require 'pio/open_flow10/vendor_action'
 
 module Pio
   module OpenFlow
@@ -25,7 +26,8 @@ module Pio
         8 => Pio::SetIpTos,
         9 => Pio::SetTransportSourcePort,
         10 => Pio::SetTransportDestinationPort,
-        11 => Pio::Enqueue
+        11 => Pio::Enqueue,
+        0xffff => Pio::VendorAction
       }
 
       mandatory_parameter :length
