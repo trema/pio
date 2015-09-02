@@ -10,7 +10,7 @@ Feature: Pio::PacketIn
       | field                   |     value |
       | ofp_version             |         4 |
       | message_type            |        10 |
-      | message_length          |        34 |
+      | length                  |        34 |
       | transaction_id          |         0 |
       | xid                     |         0 |
       | buffer_id               |         0 |
@@ -39,7 +39,7 @@ Feature: Pio::PacketIn
     And the message has the following fields and values:
       | field                   |             value |
       | ofp_version             |                 4 |
-      | message_length          |                94 |
+      | length                  |                94 |
       | transaction_id          |                 0 |
       | xid                     |                 0 |
       | buffer_id               |                 0 |
@@ -59,7 +59,7 @@ Feature: Pio::PacketIn
       | field                         |             value |
       | ofp_version                   |                 4 |
       | message_type                  |                10 |
-      | message_length                |               102 |
+      | length                        |               102 |
       | transaction_id                |               123 |
       | xid                           |               123 |
       | buffer_id.to_hex              |        0xcafebabe |

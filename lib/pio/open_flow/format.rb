@@ -32,10 +32,11 @@ module Pio
           def_delegators :header, :snapshot
           def_delegators :snapshot, :ofp_version
           def_delegators :snapshot, :message_type
-          def_delegators :snapshot, :message_length
+          def_delegators :snapshot, :_length
           def_delegators :snapshot, :transaction_id
           def_delegator :snapshot, :transaction_id, :xid
 
+          alias_method :length, :_length
           alias_method :to_binary, :to_binary_s
         end
       end

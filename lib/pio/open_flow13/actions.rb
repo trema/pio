@@ -32,7 +32,7 @@ module Pio
                  else
                    UnsupportedAction.read(tmp)
                  end
-        tmp = tmp[action.action_length..-1]
+        tmp = tmp[action.length..-1]
         actions << action
       end
       actions

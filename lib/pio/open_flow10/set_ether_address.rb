@@ -12,7 +12,7 @@ module Pio
           endian :big
 
           uint16 :action_type, value: #{action_type}
-          uint16 :message_length, value: 16
+          uint16 :action_length, value: 16
           mac_address :mac_address
           uint48 :padding
           hide :padding
@@ -32,7 +32,7 @@ module Pio
     extend Forwardable
 
     def_delegators :@format, :action_type
-    def_delegators :@format, :message_length
+    def_delegator :@format, :action_length, :length
     def_delegators :@format, :mac_address
     def_delegator :@format, :to_binary_s, :to_binary
 

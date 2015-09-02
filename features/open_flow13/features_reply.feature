@@ -15,7 +15,7 @@ Feature: Pio::Features::Reply
       | field          |                                                                                          value |
       | ofp_version    |                                                                                              4 |
       | message_type   |                                                                                              6 |
-      | message_length |                                                                                             32 |
+      | length         |                                                                                             32 |
       | transaction_id |                                                                                              0 |
       | xid            |                                                                                              0 |
       | datapath_id    |                                                                                            291 |
@@ -33,7 +33,7 @@ Feature: Pio::Features::Reply
     | field          |                                                                                          value |
     | ofp_version    |                                                                                              4 |
     | message_type   |                                                                                              6 |
-    | message_length |                                                                                             32 |
+    | length         |                                                                                             32 |
     | transaction_id |                                                                                              0 |
     | xid            |                                                                                              0 |
     | datapath_id    |                                                                                281474976710657 |

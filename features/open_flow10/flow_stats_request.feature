@@ -10,7 +10,7 @@ Feature: Pio::FlowStats::Request
       | field                                              | value |
       | ofp_version                                        | 1     |
       | message_type                                       | 16    |
-      | message_length                                     | 56    |
+      | length                                             | 56    |
       | transaction_id                                     | 0     |
       | xid                                                | 0     |
       | stats_type                                         | :flow |
@@ -40,7 +40,7 @@ Feature: Pio::FlowStats::Request
       | field                                              | value |
       | ofp_version                                        | 1     |
       | message_type                                       | 16    |
-      | message_length                                     | 56    |
+      | length                                             | 56    |
       | transaction_id                                     | 0     |
       | xid                                                | 0     |
       | stats_type                                         | :flow |
@@ -68,7 +68,7 @@ Feature: Pio::FlowStats::Request
       | field                                              | value |
       | ofp_version                                        | 1     |
       | message_type                                       | 16    |
-      | message_length                                     | 56    |
+      | length                                             | 56    |
       | transaction_id                                     | 13    |
       | xid                                                | 13    |
       | stats_type                                         | :flow |

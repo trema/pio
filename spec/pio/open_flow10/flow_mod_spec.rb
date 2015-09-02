@@ -32,7 +32,7 @@ describe Pio::OpenFlow10::FlowMod do
       Then { flow_mod.class == Pio::OpenFlow10::FlowMod }
       Then { flow_mod.ofp_version == 0x1 }
       Then { flow_mod.message_type == 0xe }
-      Then { flow_mod.message_length == 0x50 }
+      Then { flow_mod.length == 0x50 }
       Then { flow_mod.transaction_id == 0x15 }
       Then { flow_mod.xid == 0x15 }
 
@@ -74,7 +74,7 @@ describe Pio::OpenFlow10::FlowMod do
       Then { flow_mod.flags == [:send_flow_rem, :check_overwrap] }
       Then { flow_mod.actions.length == 1 }
       Then { flow_mod.actions[0].is_a? Pio::OpenFlow10::SendOutPort }
-      Then { flow_mod.actions[0].port_number == 2 }
+      Then { flow_mod.actions[0].port == 2 }
       Then { flow_mod.actions[0].max_length == 2**16 - 1 }
     end
   end
@@ -98,7 +98,7 @@ describe Pio::OpenFlow10::FlowMod do
       Then { flow_mod.class == Pio::OpenFlow10::FlowMod }
       Then { flow_mod.ofp_version == 0x1 }
       Then { flow_mod.message_type == 0xe }
-      Then { flow_mod.message_length == 0x50 }
+      Then { flow_mod.length == 0x50 }
       Then { flow_mod.transaction_id == 0x15 }
       Then { flow_mod.xid == 0x15 }
 
@@ -140,7 +140,7 @@ describe Pio::OpenFlow10::FlowMod do
       Then { flow_mod.flags == [:send_flow_rem, :check_overwrap] }
       Then { flow_mod.actions.length == 1 }
       Then { flow_mod.actions[0].is_a? Pio::OpenFlow10::SendOutPort }
-      Then { flow_mod.actions[0].port_number == 2 }
+      Then { flow_mod.actions[0].port == 2 }
       Then { flow_mod.actions[0].max_length == 2**16 - 1 }
 
       context '#to_binary' do

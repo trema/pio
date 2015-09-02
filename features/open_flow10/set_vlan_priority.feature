@@ -8,9 +8,9 @@ Feature: Pio::SetVlanPriority
       """
     Then it should finish successfully
     And the action has the following fields and values:
-      | field          | value |
-      | action_type    |     2 |
-      | message_length |     8 |
-      | vlan_priority  |     1 |
+      | field         | value |
+      | action_type   |     2 |
+      | length        |     8 |
+      | vlan_priority |     1 |
 
 
