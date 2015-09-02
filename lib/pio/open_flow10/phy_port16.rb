@@ -80,7 +80,7 @@ module Pio
           end
 
           def ss.local?
-            port_no == OpenFlow10::Port16::NUMBERS.fetch(:local)
+            port_no == OpenFlow10::Port16.reserved_port_number(:local)
           end
         end
       end

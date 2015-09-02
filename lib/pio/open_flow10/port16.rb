@@ -1,41 +1,21 @@
+require 'pio/open_flow/port'
+
 module Pio
   module OpenFlow10
-    # Port numbering.
-    class Port16 < BinData::Primitive
-      NUMBERS = {
-        in_port: 0xfff8,
-        table: 0xfff9,
-        normal: 0xfffa,
-        flood: 0xfffb,
-        all: 0xfffc,
-        controller: 0xfffd,
-        local: 0xfffe,
-        none: 0xffff
-      }
-      MAX = 0xff00
+    # Port numbering (16bit).
+    class Port16 < OpenFlow::Port
+      port_size_in_bytes 16
 
-      endian :big
+      max_port_number 0xff00
 
-      uint16 :port
-
-      def get
-        NUMBERS.invert.fetch(port)
-      rescue KeyError
-        port
-      end
-
-      def set(port)
-        if NUMBERS.key?(port)
-          self.port = NUMBERS.fetch(port)
-        else
-          port_number = port.to_i
-          fail ArgumentError, 'The port should be > 0' if port_number < 1
-          if port_number >= MAX
-            fail ArgumentError, "The port should be < #{MAX.to_hex}"
-          end
-          self.port = port_number
-        end
-      end
+      reserved_ports(in_port: 0xfff8,
+                     table: 0xfff9,
+                     normal: 0xfffa,
+                     flood: 0xfffb,
+                     all: 0xfffc,
+                     controller: 0xfffd,
+                     local: 0xfffe,
+                     none: 0xffff)
     end
   end
 end

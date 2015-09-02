@@ -35,7 +35,7 @@ module Pio
       def initialize(user_options)
         options = if user_options.respond_to?(:to_i)
                     { port: user_options.to_i }
-                  elsif Port16::NUMBERS.key?(user_options)
+                  elsif Port16.reserved_port_name?(user_options)
                     { port: user_options }
                   else
                     user_options
