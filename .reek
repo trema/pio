@@ -1,2 +1,2 @@
 UncommunicativeModuleName:
-  accept: ['Pio::Hello13', 'Pio::OpenFlow10', 'Pio::OpenFlow13']
+  accept: ['Pio::Hello13', 'Pio::OpenFlow10', 'Pio::OpenFlow13', 'Pio::OpenFlow10::Port16', 'Pio::OpenFlow10::PhyPort16', 'Pio::OpenFlow10::ErrorType10', 'Pio::OpenFlow10::MatchOpenFlow10', 'Pio::OpenFlow13::Error::ErrorType13', 'Pio::OpenFlow10::Port32',]

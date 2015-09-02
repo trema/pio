@@ -1,7 +1,7 @@
 module Pio
   module OpenFlow13
     # Port numbering.
-    class PortNumber32 < BinData::Primitive
+    class Port32 < BinData::Primitive
       NUMBERS = {
         in_port: 0xfffffff8,
         table: 0xfffffff9,
@@ -16,24 +16,24 @@ module Pio
 
       endian :big
 
-      uint32 :port_number
+      uint32 :port
 
       def get
-        NUMBERS.invert.fetch(port_number)
+        NUMBERS.invert.fetch(port)
       rescue KeyError
-        port_number
+        port
       end
 
-      def set(value)
-        if NUMBERS.key?(value)
-          self.port_number = NUMBERS.fetch(value)
+      def set(port)
+        if NUMBERS.key?(port)
+          self.port = NUMBERS.fetch(port)
         else
-          port_number = value.to_i
-          fail ArgumentError, 'The port_number should be > 0' if port_number < 1
+          port_number = port.to_i
+          fail ArgumentError, 'The port should be > 0' if port_number < 1
           if port_number >= MAX
-            fail ArgumentError, "The port_number should be < #{MAX.to_hex}"
+            fail ArgumentError, "The port should be < #{MAX.to_hex}"
           end
-          self.port_number = port_number
+          self.port = port_number
         end
       end
     end

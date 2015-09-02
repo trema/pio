@@ -92,7 +92,7 @@ module Pio
 
           def physical_ports
             ports.select do |each|
-              each.port_no <= PortNumber16::MAX
+              each.port_no <= Port16::MAX
             end
           end
         end

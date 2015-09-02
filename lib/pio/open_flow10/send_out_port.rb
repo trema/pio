@@ -1,7 +1,7 @@
 require 'bindata'
 require 'forwardable'
 require 'pio/monkey_patch/integer'
-require 'pio/open_flow10/port_number16'
+require 'pio/open_flow10/port16'
 
 module Pio
   module OpenFlow10
@@ -13,7 +13,7 @@ module Pio
 
         uint16 :action_type, value: 0
         uint16 :action_length, value: 8
-        port_number16 :port
+        port16 :port
         uint16 :max_length, initial_value: 2**16 - 1
       end
 
@@ -35,7 +35,7 @@ module Pio
       def initialize(user_options)
         options = if user_options.respond_to?(:to_i)
                     { port: user_options.to_i }
-                  elsif PortNumber16::NUMBERS.key?(user_options)
+                  elsif Port16::NUMBERS.key?(user_options)
                     { port: user_options }
                   else
                     user_options

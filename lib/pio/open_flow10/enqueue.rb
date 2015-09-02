@@ -1,7 +1,7 @@
 require 'bindata'
 require 'forwardable'
 require 'pio/monkey_patch/integer'
-require 'pio/open_flow10/port_number16'
+require 'pio/open_flow10/port16'
 
 module Pio
   # An action to enqueue the packet on the specified queue attached to
@@ -13,7 +13,7 @@ module Pio
 
       uint16 :action_type, value: 11
       uint16 :action_length, value: 16
-      port_number16 :port
+      port16 :port
       uint48 :padding
       hide :padding
       uint32 :queue_id
