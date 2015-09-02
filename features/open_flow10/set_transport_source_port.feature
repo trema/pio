@@ -8,9 +8,9 @@ Feature: Pio::SetTransportSourcePort
       """
     Then it should finish successfully
     And the action has the following fields and values:
-      | field          | value |
-      | action_type    |     9 |
-      | message_length |     8 |
-      | port_number    |   100 |
+      | field       | value |
+      | action_type |     9 |
+      | length      |     8 |
+      | port        |   100 |
 
 

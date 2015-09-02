@@ -10,5 +10,5 @@ Feature: Pio::VendorAction
     And the action has the following fields and values:
       | field              |  value |
       | action_type.to_hex | 0xffff |
-      | message_length     |      8 |
+      | length             |      8 |
       | vendor             |      1 |

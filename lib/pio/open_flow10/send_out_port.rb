@@ -1,6 +1,7 @@
 require 'bindata'
+require 'forwardable'
 require 'pio/monkey_patch/integer'
-require 'pio/open_flow/port_number'
+require 'pio/open_flow10/port_number16'
 
 module Pio
   module OpenFlow10
@@ -11,8 +12,8 @@ module Pio
         endian :big
 
         uint16 :action_type, value: 0
-        uint16 :message_length, value: 8
-        port_number :port_number
+        uint16 :action_length, value: 8
+        port_number16 :port
         uint16 :max_length, initial_value: 2**16 - 1
       end
 
@@ -22,12 +23,20 @@ module Pio
         send_out_port
       end
 
+      extend Forwardable
+
+      def_delegators :@format, :action_type
+      def_delegator :@format, :action_length, :length
+      def_delegators :@format, :port
+      def_delegators :@format, :max_length
+      def_delegator :@format, :to_binary_s, :to_binary
+
       # rubocop:disable MethodLength
       def initialize(user_options)
         options = if user_options.respond_to?(:to_i)
-                    { port_number: user_options.to_i }
-                  elsif PortNumber::NUMBERS.key?(user_options)
-                    { port_number: user_options }
+                    { port: user_options.to_i }
+                  elsif PortNumber16::NUMBERS.key?(user_options)
+                    { port: user_options }
                   else
                     user_options
                   end
@@ -42,15 +51,7 @@ module Pio
 
       def ==(other)
         return false unless other
-        to_binary_s == other.to_binary_s
-      end
-
-      def to_binary
-        @format.to_binary_s
-      end
-
-      def method_missing(method, *args, &block)
-        @format.__send__ method, *args, &block
+        to_binary == other.to_binary
       end
     end
   end

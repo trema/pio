@@ -10,7 +10,7 @@ Feature: Pio::Hello
       | field              |          value |
       | ofp_version        |              4 |
       | message_type       |              0 |
-      | message_length     |             16 |
+      | length             |             16 |
       | transaction_id     |              0 |
       | xid                |              0 |
       | supported_versions | [:open_flow13] |
@@ -25,7 +25,7 @@ Feature: Pio::Hello
       | field              |          value |
       | ofp_version        |              4 |
       | message_type       |              0 |
-      | message_length     |             16 |
+      | length             |             16 |
       | transaction_id     |            123 |
       | xid                |            123 |
       | supported_versions | [:open_flow13] |
@@ -40,7 +40,7 @@ Feature: Pio::Hello
       | field              |          value |
       | ofp_version        |              4 |
       | message_type       |              0 |
-      | message_length     |             16 |
+      | length             |             16 |
       | transaction_id     |            123 |
       | xid                |            123 |
       | supported_versions | [:open_flow13] |
@@ -52,7 +52,7 @@ Feature: Pio::Hello
       | field              | value |
       | ofp_version        |     4 |
       | message_type       |     0 |
-      | message_length     |     8 |
+      | length             |     8 |
       | transaction_id     |     0 |
       | xid                |     0 |
       | supported_versions |    [] |
@@ -64,7 +64,7 @@ Feature: Pio::Hello
       | field              |                        value |
       | ofp_version        |                            4 |
       | message_type       |                            0 |
-      | message_length     |                           16 |
+      | length             |                           16 |
       | transaction_id     |                            0 |
       | xid                |                            0 |
       | supported_versions | [:open_flow10, :open_flow13] |

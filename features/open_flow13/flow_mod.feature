@@ -7,26 +7,26 @@ Feature: Pio::FlowMod
       """
     Then it should finish successfully
     And the message has the following fields and values:
-      | field              |        value |
-      | ofp_version        |            4 |
-      | message_type       |           14 |
-      | message_length     |           56 |
-      | to_binary.length   |           56 |
-      | transaction_id     |            0 |
-      | xid                |            0 |
-      | cookie             |            0 |
-      | cookie_mask        |            0 |
-      | table_id           |            0 |
-      | command            |         :add |
-      | idle_timeout       |            0 |
-      | hard_timeout       |            0 |
-      | priority.to_hex    |       0xffff |
-      | buffer_id          |   :no_buffer |
-      | out_port           |         :any |
-      | out_group          |         :any |
-      | flags              |           [] |
-      | match.match_fields |           [] |
-      | instructions       |           [] |
+      | field              |      value |
+      | ofp_version        |          4 |
+      | message_type       |         14 |
+      | length             |         56 |
+      | to_binary.length   |         56 |
+      | transaction_id     |          0 |
+      | xid                |          0 |
+      | cookie             |          0 |
+      | cookie_mask        |          0 |
+      | table_id           |          0 |
+      | command            |       :add |
+      | idle_timeout       |          0 |
+      | hard_timeout       |          0 |
+      | priority.to_hex    |     0xffff |
+      | buffer_id          | :no_buffer |
+      | out_port           |       :any |
+      | out_group          |       :any |
+      | flags              |         [] |
+      | match.match_fields |         [] |
+      | instructions       |         [] |
 
   Scenario: new(instructions: Pio::Apply.new(SendOutPort.new(1)))
     When I try to create an OpenFlow message with:
@@ -38,7 +38,7 @@ Feature: Pio::FlowMod
       | field                                  |                        value |
       | ofp_version                            |                            4 |
       | message_type                           |                           14 |
-      | message_length                         |                           80 |
+      | length                                 |                           80 |
       | transaction_id                         |                            0 |
       | xid                                    |                            0 |
       | cookie                                 |                            0 |
@@ -68,7 +68,7 @@ Feature: Pio::FlowMod
       | field                                  |                        value |
       | ofp_version                            |                            4 |
       | message_type                           |                           14 |
-      | message_length                         |                           88 |
+      | length                                 |                           88 |
       | transaction_id                         |                            0 |
       | xid                                    |                            0 |
       | cookie                                 |                            0 |
@@ -95,7 +95,7 @@ Feature: Pio::FlowMod
       | field              |      value |
       | ofp_version        |          4 |
       | message_type       |         14 |
-      | message_length     |         56 |
+      | length             |         56 |
       | transaction_id     |          0 |
       | xid                |          0 |
       | cookie             |          0 |
@@ -119,7 +119,7 @@ Feature: Pio::FlowMod
       | field                                  |                        value |
       | ofp_version                            |                            4 |
       | message_type                           |                           14 |
-      | message_length                         |                           80 |
+      | length                                 |                           80 |
       | transaction_id                         |                            0 |
       | xid                                    |                            0 |
       | cookie                                 |                            0 |

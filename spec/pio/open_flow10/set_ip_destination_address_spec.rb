@@ -15,8 +15,8 @@ describe Pio::SetIpDestinationAddress do
         Then { set_ip_destination_addr.action_type == 7 }
       end
 
-      describe '#message_length' do
-        Then { set_ip_destination_addr.message_length == 8 }
+      describe '#length' do
+        Then { set_ip_destination_addr.length == 8 }
       end
 
       describe '#to_binary' do

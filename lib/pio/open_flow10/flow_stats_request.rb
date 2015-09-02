@@ -19,7 +19,7 @@ module Pio
           uint8 :table_id, initial_value: 0xff
           string :padding, length: 1
           hide :padding
-          port_number :out_port, initial_value: -> { :none }
+          port_number16 :out_port, initial_value: -> { :none }
         end
 
         # Message body of Flow Stats Request.

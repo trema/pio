@@ -1,4 +1,5 @@
 require 'forwardable'
+require 'pio/open_flow13/port_number32'
 
 # Base module.
 module Pio
@@ -13,7 +14,7 @@ module Pio
 
         uint16 :action_type, value: 0
         uint16 :action_length, value: 16
-        uint32 :port
+        port_number32 :port
         uint16 :max_length, initial_value: NO_BUFFER
         uint48 :padding
       end
@@ -27,7 +28,7 @@ module Pio
       extend Forwardable
 
       def_delegators :@format, :action_type
-      def_delegators :@format, :action_length
+      def_delegator :@format, :action_length, :length
       def_delegators :@format, :port
       def_delegator :@format, :to_binary_s, :to_binary
 

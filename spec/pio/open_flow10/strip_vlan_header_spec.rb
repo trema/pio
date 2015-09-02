@@ -8,9 +8,9 @@ describe Pio::StripVlanHeader do
     Then { action_type == 3 }
   end
 
-  describe '#message_length' do
-    When(:message_length) { strip_vlan_header.message_length }
-    Then { message_length == 8 }
+  describe '#length' do
+    When(:length) { strip_vlan_header.length }
+    Then { length == 8 }
   end
 
   describe '#to_binary' do

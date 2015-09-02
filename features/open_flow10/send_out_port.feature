@@ -8,11 +8,11 @@ Feature: Pio::SendOutPort
       """
     Then it should finish successfully
     And the action has the following fields and values:
-      | field          | value |
-      | action_type    |     0 |
-      | message_length |     8 |
-      | port_number    |     1 |
-      | max_length     | 65535 |
+      | field       | value |
+      | action_type |     0 |
+      | length      |     8 |
+      | port        |     1 |
+      | max_length  | 65535 |
 
   Scenario: new(:all)
     When I try to create an OpenFlow action with:
@@ -21,11 +21,11 @@ Feature: Pio::SendOutPort
       """
     Then it should finish successfully
     And the action has the following fields and values:
-      | field          | value |
-      | action_type    |     0 |
-      | message_length |     8 |
-      | port_number    |  :all |
-      | max_length     | 65535 |
+      | field       | value |
+      | action_type |     0 |
+      | length      |     8 |
+      | port        |  :all |
+      | max_length  | 65535 |
 
   Scenario: new(:controller)
     When I try to create an OpenFlow action with:
@@ -34,11 +34,11 @@ Feature: Pio::SendOutPort
       """
     Then it should finish successfully
     And the action has the following fields and values:
-      | field          |       value |
-      | action_type    |           0 |
-      | message_length |           8 |
-      | port_number    | :controller |
-      | max_length     |       65535 |
+      | field       |       value |
+      | action_type |           0 |
+      | length      |           8 |
+      | port        | :controller |
+      | max_length  |       65535 |
 
   Scenario: new(:local)
     When I try to create an OpenFlow action with:
@@ -47,11 +47,11 @@ Feature: Pio::SendOutPort
       """
     Then it should finish successfully
     And the action has the following fields and values:
-      | field          |  value |
-      | action_type    |      0 |
-      | message_length |      8 |
-      | port_number    | :local |
-      | max_length     |  65535 |
+      | field       |  value |
+      | action_type |      0 |
+      | length      |      8 |
+      | port        | :local |
+      | max_length  |  65535 |
 
   Scenario: new(:table)
     When I try to create an OpenFlow action with:
@@ -60,11 +60,11 @@ Feature: Pio::SendOutPort
       """
     Then it should finish successfully
     And the action has the following fields and values:
-      | field          |  value |
-      | action_type    |      0 |
-      | message_length |      8 |
-      | port_number    | :table |
-      | max_length     |  65535 |
+      | field       |  value |
+      | action_type |      0 |
+      | length      |      8 |
+      | port        | :table |
+      | max_length  |  65535 |
 
   Scenario: new(:in_port)
     When I try to create an OpenFlow action with:
@@ -73,11 +73,11 @@ Feature: Pio::SendOutPort
       """
     Then it should finish successfully
     And the action has the following fields and values:
-      | field          |    value |
-      | action_type    |        0 |
-      | message_length |        8 |
-      | port_number    | :in_port |
-      | max_length     |    65535 |
+      | field       |    value |
+      | action_type |        0 |
+      | length      |        8 |
+      | port        | :in_port |
+      | max_length  |    65535 |
 
   Scenario: new(:normal)
     When I try to create an OpenFlow action with:
@@ -86,11 +86,11 @@ Feature: Pio::SendOutPort
       """
     Then it should finish successfully
     And the action has the following fields and values:
-      | field          |   value |
-      | action_type    |       0 |
-      | message_length |       8 |
-      | port_number    | :normal |
-      | max_length     |   65535 |
+      | field       |   value |
+      | action_type |       0 |
+      | length      |       8 |
+      | port        | :normal |
+      | max_length  |   65535 |
 
   Scenario: new(:flood)
     When I try to create an OpenFlow action with:
@@ -99,8 +99,8 @@ Feature: Pio::SendOutPort
       """
     Then it should finish successfully
     And the action has the following fields and values:
-      | field          |  value |
-      | action_type    |      0 |
-      | message_length |      8 |
-      | port_number    | :flood |
-      | max_length     |  65535 |
+      | field       |  value |
+      | action_type |      0 |
+      | length      |      8 |
+      | port        | :flood |
+      | max_length  |  65535 |

@@ -9,7 +9,7 @@ module Pio
       endian :big
 
       uint16 :action_type, value: 0xffff
-      uint16 :message_length, value: 8
+      uint16 :action_length, value: 8
       uint32 :vendor
     end
 
@@ -22,7 +22,7 @@ module Pio
     extend Forwardable
 
     def_delegators :@format, :action_type
-    def_delegators :@format, :message_length
+    def_delegator :@format, :action_length, :length
     def_delegators :@format, :vendor
     def_delegator :@format, :to_binary_s, :to_binary
 

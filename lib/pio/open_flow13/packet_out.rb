@@ -33,7 +33,7 @@ module Pio
         string :padding, length: 6
         actions :actions, length: :actions_length
         string :raw_data,
-               read_length: -> { message_length - 24 - actions_length }
+               read_length: -> { _length - 24 - actions_length }
 
         def length
           10 + padding.length + actions_length + raw_data.length

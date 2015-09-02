@@ -49,7 +49,7 @@ Feature: Pio::FlowMod
       | field                                  |                                                 value |
       | ofp_version                            |                                                     1 |
       | message_type                           |                                                    14 |
-      | message_length                         |                                                   192 |
+      | length                                 |                                                   192 |
       | transaction_id                         |                                                     0 |
       | xid                                    |                                                     0 |
       | match.wildcards                        | {:ip_source_address=>24, :ip_destination_address=>24} |
@@ -86,7 +86,7 @@ Feature: Pio::FlowMod
       | field                                  |                                                 value |
       | ofp_version                            |                                                     1 |
       | message_type                           |                                                    14 |
-      | message_length                         |                                                   192 |
+      | length                                 |                                                   192 |
       | transaction_id                         |                                                     0 |
       | xid                                    |                                                     0 |
       | match.wildcards                        | {:ip_source_address=>24, :ip_destination_address=>24} |
@@ -123,7 +123,7 @@ Feature: Pio::FlowMod
       | field                                  |                                                 value |
       | ofp_version                            |                                                     1 |
       | message_type                           |                                                    14 |
-      | message_length                         |                                                   192 |
+      | length                                 |                                                   192 |
       | transaction_id                         |                                                     0 |
       | xid                                    |                                                     0 |
       | match.wildcards                        | {:ip_source_address=>24, :ip_destination_address=>24} |
@@ -160,7 +160,7 @@ Feature: Pio::FlowMod
       | field                                  |                                                 value |
       | ofp_version                            |                                                     1 |
       | message_type                           |                                                    14 |
-      | message_length                         |                                                    72 |
+      | length                                 |                                                    72 |
       | transaction_id                         |                                                     0 |
       | xid                                    |                                                     0 |
       | match.wildcards                        | {:ip_source_address=>24, :ip_destination_address=>24} |
@@ -195,7 +195,7 @@ Feature: Pio::FlowMod
       | field                                  |                                                 value |
       | ofp_version                            |                                                     1 |
       | message_type                           |                                                    14 |
-      | message_length                         |                                                    72 |
+      | length                                 |                                                    72 |
       | transaction_id                         |                                                     0 |
       | xid                                    |                                                     0 |
       | match.wildcards                        | {:ip_source_address=>24, :ip_destination_address=>24} |

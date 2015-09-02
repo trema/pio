@@ -8,9 +8,9 @@ Feature: Pio::SetIpSourceAddress
       """
     Then it should finish successfully
     And the action has the following fields and values:
-      | field          |       value |
-      | action_type    |           6 |
-      | message_length |           8 |
-      | ip_address     | 192.168.0.1 |
+      | field       |       value |
+      | action_type |           6 |
+      | length      |           8 |
+      | ip_address  | 192.168.0.1 |
 
 
