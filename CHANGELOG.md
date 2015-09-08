@@ -1,6 +1,9 @@
 # Changelog
 
 ## develop (unreleased)
+
+
+## 0.26.0 (9/8/2015)
 ### New features
 * [#214](https://github.com/trema/pio/pull/214): Add new class `Pio::OpenFlow10::Error::HelloFailed`.
 * [#215](https://github.com/trema/pio/pull/215): Add new class `Pio::OpenFlow13::Error::HelloFailed`.
