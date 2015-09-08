@@ -13,7 +13,7 @@ module Pio
 
             header version: :of_version,
                    message_type: :of_message_type
-            string :body, read_length: -> { message_length - header_length }
+            string :body, read_length: -> { length - header_length }
 
             def user_data
               body

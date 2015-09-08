@@ -8,8 +8,13 @@ module Pio
 
     uint8 :ofp_version
     uint8 :message_type
-    uint16 :message_length
+    uint16 :_length
     transaction_id :transaction_id
+    rest :body
+
+    def length
+      _length
+    end
   end
 
   # OpenFlow message header.
@@ -20,7 +25,11 @@ module Pio
     virtual assert: -> { ofp_version == ofp_version_value }
     uint8 :message_type, value: :message_type_value
     virtual assert: -> { message_type == message_type_value }
-    uint16 :message_length, initial_value: -> { 8 + body.length }
+    uint16 :_length, initial_value: -> { 8 + body.length }
     transaction_id :transaction_id, initial_value: 0
+
+    def length
+      _length
+    end
   end
 end

@@ -28,7 +28,7 @@ module Pio
         reason :reason
         uint56 :padding
         hide :padding
-        phy_port :desc
+        phy_port16 :desc
       end
 
       # OpenFlow 1.0 Flow Mod message format.

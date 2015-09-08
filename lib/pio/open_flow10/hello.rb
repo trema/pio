@@ -5,9 +5,9 @@ require 'pio/open_flow/message'
 module Pio
   # OpenFlow 1.0 messages
   module OpenFlow10
-    # OpenFlow 1.0 Hello message
+    # Hello message
     class Hello < OpenFlow::Message
-      # OpenFlow 1.0 Hello message format
+      # Hello message format
       class Format < BinData::Record
         extend OpenFlow::Format
 

@@ -10,7 +10,7 @@ Feature: Pio::Echo::Request
       | field          | value |
       | ofp_version    |     4 |
       | message_type   |     2 |
-      | message_length |     8 |
+      | length         |     8 |
       | transaction_id |     0 |
       | xid            |     0 |
       | body           |       |
@@ -26,7 +26,7 @@ Feature: Pio::Echo::Request
       | field          | value |
       | ofp_version    |     4 |
       | message_type   |     2 |
-      | message_length |     8 |
+      | length         |     8 |
       | transaction_id |   123 |
       | xid            |   123 |
       | body           |       |
@@ -42,7 +42,7 @@ Feature: Pio::Echo::Request
       | field          | value |
       | ofp_version    |     4 |
       | message_type   |     2 |
-      | message_length |     8 |
+      | length         |     8 |
       | transaction_id |   123 |
       | xid            |   123 |
       | body           |       |
@@ -58,7 +58,7 @@ Feature: Pio::Echo::Request
       | field          |             value |
       | ofp_version    |                 4 |
       | message_type   |                 2 |
-      | message_length |                25 |
+      | length         |                25 |
       | transaction_id |                 0 |
       | xid            |                 0 |
       | body           | echo request body |
@@ -74,7 +74,7 @@ Feature: Pio::Echo::Request
       | field          |             value |
       | ofp_version    |                 4 |
       | message_type   |                 2 |
-      | message_length |                25 |
+      | length         |                25 |
       | transaction_id |                 0 |
       | xid            |                 0 |
       | body           | echo request body |
@@ -94,7 +94,7 @@ Feature: Pio::Echo::Request
       | field          | value |
       | ofp_version    |     4 |
       | message_type   |     2 |
-      | message_length |     8 |
+      | length         |     8 |
       | transaction_id |     0 |
       | xid            |     0 |
       | body           |       |
@@ -107,7 +107,7 @@ Feature: Pio::Echo::Request
       | field          |                value |
       | ofp_version    |                    4 |
       | message_type   |                    2 |
-      | message_length |                   28 |
+      | length         |                   28 |
       | transaction_id |                    0 |
       | xid            |                    0 |
       | body           | hogehogehogehogehoge |

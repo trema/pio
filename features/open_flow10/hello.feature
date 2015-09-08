@@ -1,5 +1,9 @@
 @open_flow10
 Feature: Pio::Hello
+
+  Hello messages are exchanged between the switch and controller upon
+  connection startup.
+
   Scenario: new
     When I try to create an OpenFlow message with:
       """
@@ -10,7 +14,7 @@ Feature: Pio::Hello
       | field          | value |
       | ofp_version    |     1 |
       | message_type   |     0 |
-      | message_length |     8 |
+      | length         |     8 |
       | transaction_id |     0 |
       | xid            |     0 |
       | body           |       |
@@ -26,7 +30,7 @@ Feature: Pio::Hello
       | field          | value |
       | ofp_version    |     1 |
       | message_type   |     0 |
-      | message_length |     8 |
+      | length         |     8 |
       | transaction_id |   123 |
       | xid            |   123 |
       | body           |       |
@@ -42,18 +46,11 @@ Feature: Pio::Hello
       | field          | value |
       | ofp_version    |     1 |
       | message_type   |     0 |
-      | message_length |     8 |
+      | length         |     8 |
       | transaction_id |   123 |
       | xid            |   123 |
       | body           |       |
       | user_data      |       |
-
-  Scenario: new(unknown_attr: 'foo') and error
-    When I try to create an OpenFlow message with:
-      """
-      Pio::Hello.new(unknown_attr: 'foo')
-      """
-    Then it should fail with "RuntimeError", "Unknown option: unknown_attr"
 
   Scenario: read
     When I try to parse a file named "open_flow10/hello.raw" with "Hello" class
@@ -62,12 +59,8 @@ Feature: Pio::Hello
       | field          | value |
       | ofp_version    |     1 |
       | message_type   |     0 |
-      | message_length |     8 |
+      | length         |     8 |
       | transaction_id |    23 |
       | xid            |    23 |
       | body           |       |
       | user_data      |       |
-
-  Scenario: parse error
-    When I try to parse a file named "open_flow10/features_request.raw" with "Pio::Hello" class
-    Then it should fail with "Pio::ParseError", "Invalid OpenFlow10 Hello message."

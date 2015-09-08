@@ -69,8 +69,8 @@ module Pio
         count_bytes_remaining :instructions_length
         string :instructions, read_length: :instructions_length
 
-        def set(object)
-          self.instructions = [object].flatten.map(&:to_binary_s).join
+        def set(instructions)
+          self.instructions = Array(instructions).map(&:to_binary_s).join
         end
 
         # rubocop:disable MethodLength

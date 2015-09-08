@@ -41,7 +41,7 @@ describe Pio::OpenFlow10::PacketOut do
       Then { result.class == Pio::OpenFlow10::PacketOut }
       Then { result.ofp_version == 0x1 }
       Then { result.message_type == 0xd }
-      Then { result.message_length == 0x58 }
+      Then { result.length == 0x58 }
       Then { result.transaction_id == 0x16 }
       Then { result.xid == 0x16 }
 
@@ -51,8 +51,8 @@ describe Pio::OpenFlow10::PacketOut do
       Then { result.actions_len == 0x8 }
       Then { result.actions.length == 1 }
       Then { result.actions[0].is_a? Pio::OpenFlow10::SendOutPort }
-      Then { result.actions[0].port_number == 2 }
-      Then { result.actions[0].max_len == 2**16 - 1 }
+      Then { result.actions[0].port == 2 }
+      Then { result.actions[0].max_length == 2**16 - 1 }
       Then { result.raw_data.length == 64 }
     end
 
@@ -70,7 +70,7 @@ describe Pio::OpenFlow10::PacketOut do
       Then { result.class == Pio::OpenFlow10::PacketOut }
       Then { result.ofp_version == 0x1 }
       Then { result.message_type == 0xd }
-      Then { result.message_length == 0x58 }
+      Then { result.length == 0x58 }
       Then { result.transaction_id == 0x16 }
       Then { result.xid == 0x16 }
 
@@ -80,8 +80,8 @@ describe Pio::OpenFlow10::PacketOut do
       Then { result.actions_len == 0x8 }
       Then { result.actions.length == 1 }
       Then { result.actions[0].is_a? Pio::OpenFlow10::SendOutPort }
-      Then { result.actions[0].port_number == 2 }
-      Then { result.actions[0].max_len == 2**16 - 1 }
+      Then { result.actions[0].port == 2 }
+      Then { result.actions[0].max_length == 2**16 - 1 }
       Then { result.raw_data.length == 64 }
     end
 
@@ -113,7 +113,7 @@ describe Pio::OpenFlow10::PacketOut do
 
       Then { result.ofp_version == 0x1 }
       Then { result.message_type == 0xd }
-      Then { result.message_length == 0x58 }
+      Then { result.length == 0x58 }
       Then { result.transaction_id == 0x16 }
       Then { result.xid == 0x16 }
 
@@ -123,8 +123,8 @@ describe Pio::OpenFlow10::PacketOut do
       Then { result.actions_len == 0x8 }
       Then { result.actions.length == 1 }
       Then { result.actions[0].is_a? Pio::OpenFlow10::SendOutPort }
-      Then { result.actions[0].port_number == 2 }
-      Then { result.actions[0].max_len == 2**16 - 1 }
+      Then { result.actions[0].port == 2 }
+      Then { result.actions[0].max_length == 2**16 - 1 }
       Then { result.raw_data.length == 64 }
 
       context '#to_binary' do
@@ -145,7 +145,7 @@ describe Pio::OpenFlow10::PacketOut do
         }
       end
 
-      Then { result.message_length == 0x58 }
+      Then { result.length == 0x58 }
       Then { result.actions_len == 0x8 }
       Then { result.actions.length == 1 }
       Then { result.actions[0].is_a? Pio::SetVlanVid }
@@ -163,7 +163,7 @@ describe Pio::OpenFlow10::PacketOut do
         }
       end
 
-      Then { result.message_length == 0x58 }
+      Then { result.length == 0x58 }
       Then { result.actions_len == 0x8 }
       Then { result.actions.length == 1 }
       Then { result.actions[0].is_a? Pio::SetVlanPriority }
@@ -181,45 +181,45 @@ describe Pio::OpenFlow10::PacketOut do
         }
       end
 
-      Then { result.message_length == 0x58 }
+      Then { result.length == 0x58 }
       Then { result.actions_len == 0x8 }
       Then { result.actions.length == 1 }
       Then { result.actions[0].is_a? Pio::StripVlanHeader }
     end
 
-    context 'with a SetEtherSourceAddr action' do
+    context 'with a SetEtherSourceAddress action' do
       When(:user_options) do
         {
           transaction_id: 0x16,
           buffer_id: 0xffffffff,
           in_port: 0xffff,
-          actions: Pio::SetEtherSourceAddr.new('11:22:33:44:55:66'),
+          actions: Pio::SetEtherSourceAddress.new('11:22:33:44:55:66'),
           raw_data: data_dump
         }
       end
 
-      Then { result.message_length == 0x60 }
+      Then { result.length == 0x60 }
       Then { result.actions_len == 0x10 }
       Then { result.actions.length == 1 }
-      Then { result.actions[0].is_a? Pio::SetEtherSourceAddr }
+      Then { result.actions[0].is_a? Pio::SetEtherSourceAddress }
       Then { result.actions[0].mac_address == '11:22:33:44:55:66' }
     end
 
-    context 'with a SetEtherDestinationAddr action' do
+    context 'with a SetEtherDestinationAddress action' do
       When(:user_options) do
         {
           transaction_id: 0x16,
           buffer_id: 0xffffffff,
           in_port: 0xffff,
-          actions: Pio::SetEtherDestinationAddr.new('11:22:33:44:55:66'),
+          actions: Pio::SetEtherDestinationAddress.new('11:22:33:44:55:66'),
           raw_data: data_dump
         }
       end
 
-      Then { result.message_length == 0x60 }
+      Then { result.length == 0x60 }
       Then { result.actions_len == 0x10 }
       Then { result.actions.length == 1 }
-      Then { result.actions[0].is_a? Pio::SetEtherDestinationAddr }
+      Then { result.actions[0].is_a? Pio::SetEtherDestinationAddress }
       Then { result.actions[0].mac_address == '11:22:33:44:55:66' }
     end
 
@@ -234,7 +234,7 @@ describe Pio::OpenFlow10::PacketOut do
         }
       end
 
-      Then { result.message_length == 0x58 }
+      Then { result.length == 0x58 }
       Then { result.actions_len == 0x8 }
       Then { result.actions.length == 1 }
       Then { result.actions[0].is_a? Pio::SetIpSourceAddress }
@@ -252,7 +252,7 @@ describe Pio::OpenFlow10::PacketOut do
         }
       end
 
-      Then { result.message_length == 0x58 }
+      Then { result.length == 0x58 }
       Then { result.actions_len == 0x8 }
       Then { result.actions.length == 1 }
       Then { result.actions[0].is_a? Pio::SetIpDestinationAddress }
@@ -270,7 +270,7 @@ describe Pio::OpenFlow10::PacketOut do
         }
       end
 
-      Then { result.message_length == 0x58 }
+      Then { result.length == 0x58 }
       Then { result.actions_len == 0x8 }
       Then { result.actions.length == 1 }
       Then { result.actions[0].is_a? Pio::SetIpTos }
@@ -288,11 +288,11 @@ describe Pio::OpenFlow10::PacketOut do
         }
       end
 
-      Then { result.message_length == 0x58 }
+      Then { result.length == 0x58 }
       Then { result.actions_len == 0x8 }
       Then { result.actions.length == 1 }
       Then { result.actions[0].is_a? Pio::SetTransportSourcePort }
-      Then { result.actions[0].port_number == 100 }
+      Then { result.actions[0].port == 100 }
     end
 
     context 'with a SetTransportDestinationPort action' do
@@ -306,11 +306,11 @@ describe Pio::OpenFlow10::PacketOut do
         }
       end
 
-      Then { result.message_length == 0x58 }
+      Then { result.length == 0x58 }
       Then { result.actions_len == 0x8 }
       Then { result.actions.length == 1 }
       Then { result.actions[0].is_a? Pio::SetTransportDestinationPort }
-      Then { result.actions[0].port_number == 100 }
+      Then { result.actions[0].port == 100 }
     end
 
     context 'with a Enqueue action' do
@@ -319,16 +319,16 @@ describe Pio::OpenFlow10::PacketOut do
           transaction_id: 0x16,
           buffer_id: 0xffffffff,
           in_port: 0xffff,
-          actions: Pio::Enqueue.new(port_number: 1, queue_id: 2),
+          actions: Pio::Enqueue.new(port: 1, queue_id: 2),
           raw_data: data_dump
         }
       end
 
-      Then { result.message_length == 0x60 }
+      Then { result.length == 0x60 }
       Then { result.actions_len == 0x10 }
       Then { result.actions.length == 1 }
       Then { result.actions[0].is_a? Pio::Enqueue }
-      Then { result.actions[0].port_number == 1 }
+      Then { result.actions[0].port == 1 }
       Then { result.actions[0].queue_id == 2 }
     end
 
@@ -344,12 +344,12 @@ describe Pio::OpenFlow10::PacketOut do
         }
       end
 
-      Then { result.message_length == 0x60 }
+      Then { result.length == 0x60 }
       Then { result.actions_len == 0x10 }
       Then { result.actions.length == 2 }
       Then { result.actions[0].is_a? Pio::OpenFlow10::SendOutPort }
-      Then { result.actions[0].port_number == 2 }
-      Then { result.actions[0].max_len == 2**16 - 1 }
+      Then { result.actions[0].port == 2 }
+      Then { result.actions[0].max_length == 2**16 - 1 }
       Then { result.actions[1].is_a? Pio::SetVlanVid }
       Then { result.actions[1].vlan_id == 10 }
     end

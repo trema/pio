@@ -1,5 +1,8 @@
 require 'pio/open_flow13/apply'
 require 'pio/open_flow13/echo'
+require 'pio/open_flow13/error'
+require 'pio/open_flow13/error/bad_request'
+require 'pio/open_flow13/error/hello_failed'
 require 'pio/open_flow13/features_reply'
 require 'pio/open_flow13/features_request'
 require 'pio/open_flow13/flow_mod'

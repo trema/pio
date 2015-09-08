@@ -10,7 +10,7 @@ Feature: Pio::PacketOut
       | field            |      value |
       | ofp_version      |          4 |
       | message_type     |         13 |
-      | message_length   |         24 |
+      | length           |         24 |
       | to_binary.length |         24 |
       | transaction_id   |          0 |
       | xid              |          0 |
@@ -38,7 +38,7 @@ Feature: Pio::PacketOut
       | field                   |             value |
       | ofp_version             |                 4 |
       | message_type            |                13 |
-      | message_length          |               100 |
+      | length                  |               100 |
       | to_binary.length        |               100 |
       | transaction_id          |                 0 |
       | xid                     |                 0 |
@@ -67,7 +67,7 @@ Feature: Pio::PacketOut
       | field                    |                        value |
       | ofp_version              |                            4 |
       | message_type             |                           13 |
-      | message_length           |                          100 |
+      | length                   |                          100 |
       | transaction_id           |                          123 |
       | xid                      |                          123 |
       | buffer_id                |                   :no_buffer |

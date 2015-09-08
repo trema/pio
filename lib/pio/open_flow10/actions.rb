@@ -8,6 +8,7 @@ require 'pio/open_flow10/set_transport_port'
 require 'pio/open_flow10/set_vlan_priority'
 require 'pio/open_flow10/set_vlan_vid'
 require 'pio/open_flow10/strip_vlan_header'
+require 'pio/open_flow10/vendor_action'
 
 module Pio
   module OpenFlow
@@ -18,14 +19,15 @@ module Pio
         1 => Pio::SetVlanVid,
         2 => Pio::SetVlanPriority,
         3 => Pio::StripVlanHeader,
-        4 => Pio::SetEtherSourceAddr,
-        5 => Pio::SetEtherDestinationAddr,
+        4 => Pio::SetEtherSourceAddress,
+        5 => Pio::SetEtherDestinationAddress,
         6 => Pio::SetIpSourceAddress,
         7 => Pio::SetIpDestinationAddress,
         8 => Pio::SetIpTos,
         9 => Pio::SetTransportSourcePort,
         10 => Pio::SetTransportDestinationPort,
-        11 => Pio::Enqueue
+        11 => Pio::Enqueue,
+        0xffff => Pio::VendorAction
       }
 
       mandatory_parameter :length
@@ -34,8 +36,8 @@ module Pio
 
       string :binary, read_length: :length
 
-      def set(value)
-        self.binary = [value].flatten.map(&:to_binary).join
+      def set(actions)
+        self.binary = Array(actions).map(&:to_binary).join
       end
 
       # rubocop:disable MethodLength
@@ -47,7 +49,7 @@ module Pio
           type = BinData::Uint16be.read(tmp)
           begin
             action = ACTION_CLASS.fetch(type).read(tmp)
-            tmp = tmp[action.message_length..-1]
+            tmp = tmp[action.length..-1]
             actions << action
           rescue KeyError
             raise "action type #{type} is not supported."
