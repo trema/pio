@@ -1,5 +1,6 @@
 require 'pio/open_flow10/barrier_reply'
 require 'pio/open_flow10/barrier_request'
+require 'pio/open_flow10/description_stats_reply'
 require 'pio/open_flow10/description_stats_request'
 require 'pio/open_flow10/echo'
 require 'pio/open_flow10/error'
