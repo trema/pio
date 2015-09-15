@@ -2,21 +2,16 @@ require 'pio/open_flow'
 
 module Pio
   module OpenFlow10
-    # OpenFlow 1.0 Features Request and Reply message.
+    # Features Request and Reply message.
     class Features
-      # OpenFlow 1.0 Features Request message.
+      # Features Request message.
       class Request < OpenFlow::Message
-        # OpenFlow 1.0 Features Request message
+        # Features Request message format.
         class Format < BinData::Record
           extend OpenFlow::Format
 
           header version: 1, message_type: 5
           string :body, value: ''
-        end
-
-        def initialize(user_options = {})
-          validate_user_options user_options
-          @format = Format.new(header: parse_header_options(user_options))
         end
       end
 

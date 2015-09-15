@@ -1,3 +1,4 @@
+require 'bindata'
 require 'forwardable'
 
 # Base module.

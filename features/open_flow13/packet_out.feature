@@ -1,14 +1,12 @@
+@open_flow13
 Feature: Pio::PacketOut
-  Background:
-    Given I use OpenFlow 1.3
-
   Scenario: new
     When I try to create an OpenFlow message with:
       """
       Pio::PacketOut.new
       """
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field            |      value |
       | ofp_version      |          4 |
       | message_type     |         13 |
@@ -36,7 +34,7 @@ Feature: Pio::PacketOut
       Pio::PacketOut.new(raw_data: data_dump, actions: Pio::SendOutPort.new(1))
       """
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field                   |             value |
       | ofp_version             |                 4 |
       | message_type            |                13 |
@@ -65,7 +63,7 @@ Feature: Pio::PacketOut
   Scenario: read
     When I try to parse a file named "open_flow13/packet_out.raw" with "PacketOut" class
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field                    |                        value |
       | ofp_version              |                            4 |
       | message_type             |                           13 |

@@ -1,11 +1,9 @@
+@open_flow10
 Feature: Pio::PacketOut
-  Background:
-    Given I use OpenFlow 1.0
-
   Scenario: read
     When I try to parse a file named "open_flow10/packet_out.raw" with "PacketOut" class
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
     | field                     |                        value |
     | ofp_version               |                            1 |
     | message_type              |                           13 |

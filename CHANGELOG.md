@@ -2,9 +2,33 @@
 
 ## develop (unreleased)
 ### New features
+* [#214](https://github.com/trema/pio/pull/214): Add new classes `Pio::OpenFlow10::Error::HelloFailed`.
+* [#215](https://github.com/trema/pio/pull/215): Add new classes `Pio::OpenFlow13::Error::HelloFailed`.
+* [#216](https://github.com/trema/pio/pull/216): Add new classes `Pio::OpenFlow10::Error::BadRequest`.
+* [#217](https://github.com/trema/pio/pull/217): Add new classes `Pio::OpenFlow13::Error::BadRequest`.
+
+
+## 0.25.0 (8/6/2015)
+### New features
+* [#211](https://github.com/trema/pio/pull/211): Add new classes `Pio::FlowStats::Request` and `Pio::FlowStats::Reply`.
+
+
+## 0.24.2 (8/4/2015)
+### Bugs fixed
+* [#209](https://github.com/trema/pio/issues/209): `Pio::OpenFlow.read` cannot parse Barrier messages.
+
+
+## 0.24.1 (8/4/2015)
+### Bugs fixed
+* [#208](https://github.com/trema/pio/issues/208): `Pio::FlowMod.new` doesn't allow `:idle_timeout` and `:hard_timeout` options.
+
+
+## 0.24.0 (8/1/2015)
+### New features
 * [#201](https://github.com/trema/pio/pull/201): Add oxm experimenter support (OpenFlow1.3).
 * [#202](https://github.com/trema/pio/pull/202): Add `Pio::OpenFlow.switch_version` method.
-
+* [#205](https://github.com/trema/pio/pull/205): Add new classes `Pio::OpenFlow10::Barrier::Request`, `Pio::OpenFlow10::Barrier::Reply`.
+* [#207](https://github.com/trema/pio/pull/207): Add new method `Pio::OpenFlow.read`
 
 ### Bugs fixed
 * [#188](https://github.com/trema/pio/pull/188): Add PacketIn#in_port (OpenFlow1.3).

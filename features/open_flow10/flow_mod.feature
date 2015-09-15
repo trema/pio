@@ -1,11 +1,51 @@
+@open_flow10
 Feature: Pio::FlowMod
-  Background:
-    Given I use OpenFlow 1.0
+  Scenario: new
+    When I try to create an OpenFlow message with:
+      """
+      Pio::FlowMod.new(
+        actions: [],
+        buffer_id: 0,
+        command: :add,
+        flags: [],
+        hard_timeout: 0,
+        idle_timeout: 0,
+        match: Match.new(),
+        out_port: 0,
+        priority: 0
+      )
+      """
+    Then it should finish successfully
+    And the message has the following fields and values:
+      | field                                             | value |
+      | ofp_version                                       | 1     |
+      | message_type                                      | 14    |
+      | actions                                           | []    |
+      | buffer_id                                         | 0     |
+      | command                                           | :add  |
+      | flags                                             | []    |
+      | hard_timeout                                      | 0     |
+      | idle_timeout                                      | 0     |
+      | match.wildcards.keys.size                         | 12    |
+      | match.wildcards.key?(:in_port)                    | true  |
+      | match.wildcards.key?(:vlan_vid)                   | true  |
+      | match.wildcards.key?(:ether_source_address)       | true  |
+      | match.wildcards.key?(:ether_destination_address)  | true  |
+      | match.wildcards.key?(:ether_type)                 | true  |
+      | match.wildcards.key?(:ip_protocol)                | true  |
+      | match.wildcards.key?(:transport_source_port)      | true  |
+      | match.wildcards.key?(:transport_destination_port) | true  |
+      | match.wildcards.key?(:ip_source_address_all)      | true  |
+      | match.wildcards.key?(:ip_destination_address_all) | true  |
+      | match.wildcards.key?(:vlan_priority)              | true  |
+      | match.wildcards.key?(:ip_tos)                     | true  |
+      | out_port                                          | 0     |
+      | priority                                          | 0     |
 
   Scenario: read (Flow Mod Add)
     When I try to parse a file named "open_flow10/flow_mod_add.raw" with "Pio::FlowMod" class
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field                                  |                                                 value |
       | ofp_version                            |                                                     1 |
       | message_type                           |                                                    14 |
@@ -42,7 +82,7 @@ Feature: Pio::FlowMod
   Scenario: read (Flow Mod Modify)
     When I try to parse a file named "open_flow10/flow_mod_modify.raw" with "Pio::FlowMod" class
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field                                  |                                                 value |
       | ofp_version                            |                                                     1 |
       | message_type                           |                                                    14 |
@@ -79,7 +119,7 @@ Feature: Pio::FlowMod
   Scenario: read (Flow Mod Modify Strict)
     When I try to parse a file named "open_flow10/flow_mod_modify_strict.raw" with "Pio::FlowMod" class
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field                                  |                                                 value |
       | ofp_version                            |                                                     1 |
       | message_type                           |                                                    14 |
@@ -116,7 +156,7 @@ Feature: Pio::FlowMod
   Scenario: read (Flow Mod Delete)
     When I try to parse a file named "open_flow10/flow_mod_delete.raw" with "Pio::FlowMod" class
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field                                  |                                                 value |
       | ofp_version                            |                                                     1 |
       | message_type                           |                                                    14 |
@@ -151,7 +191,7 @@ Feature: Pio::FlowMod
   Scenario: read (Flow Mod Delete Strict)
     When I try to parse a file named "open_flow10/flow_mod_delete_strict.raw" with "Pio::FlowMod" class
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field                                  |                                                 value |
       | ofp_version                            |                                                     1 |
       | message_type                           |                                                    14 |

@@ -1,14 +1,12 @@
+@open_flow13
 Feature: Pio::FlowMod
-  Background:
-    Given I use OpenFlow 1.3
-
   Scenario: new
     When I try to create an OpenFlow message with:
       """
       Pio::FlowMod.new
       """
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field              |        value |
       | ofp_version        |            4 |
       | message_type       |           14 |
@@ -36,7 +34,7 @@ Feature: Pio::FlowMod
       Pio::FlowMod.new(instructions: Pio::Apply.new(SendOutPort.new(1)))
       """
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field                                  |                        value |
       | ofp_version                            |                            4 |
       | message_type                           |                           14 |
@@ -66,7 +64,7 @@ Feature: Pio::FlowMod
       Pio::FlowMod.new(match: Pio::Match.new(in_port: 1), instructions: Pio::Apply.new(SendOutPort.new(1)))
       """
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field                                  |                        value |
       | ofp_version                            |                            4 |
       | message_type                           |                           14 |
@@ -93,7 +91,7 @@ Feature: Pio::FlowMod
   Scenario: read (no match or instructions)
     When I try to parse a file named "open_flow13/flow_mod_no_match_or_instructions.raw" with "Pio::FlowMod" class
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field              |      value |
       | ofp_version        |          4 |
       | message_type       |         14 |
@@ -117,7 +115,7 @@ Feature: Pio::FlowMod
   Scenario: read (instruction = apply, action = SendOutPort(port: 1))
     When I try to parse a file named "open_flow13/flow_mod_add_apply_no_match.raw" with "Pio::FlowMod" class
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field                                  |                        value |
       | ofp_version                            |                            4 |
       | message_type                           |                           14 |

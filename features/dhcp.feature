@@ -15,7 +15,7 @@ Feature: Pio::Dhcp
       )
       """
     Then it should finish successfully
-    And the packet have the following fields and values:
+    And the packet has the following fields and values:
     | field                  |             value |
     | class                  |    Pio::Dhcp::Ack |
     | destination_mac        | 11:22:33:44:55:66 |
@@ -64,7 +64,7 @@ Feature: Pio::Dhcp
       )
     """
     Then it should finish successfully
-    And the packet have the following fields and values:
+    And the packet has the following fields and values:
     | field                  |               value |
     | class                  | Pio::Dhcp::Discover |
     | destination_mac        |   ff:ff:ff:ff:ff:ff |
@@ -112,7 +112,7 @@ Feature: Pio::Dhcp
       )
     """
     Then it should finish successfully
-    And the packet have the following fields and values:
+    And the packet has the following fields and values:
     | field                  |              value |
     | class                  | Pio::Dhcp::Request |
     | destination_mac        |  ff:ff:ff:ff:ff:ff |
@@ -166,7 +166,7 @@ Feature: Pio::Dhcp
       )
       """
     Then it should finish successfully
-    And the packet have the following fields and values:
+    And the packet has the following fields and values:
     | field                  |             value |
     | class                  |  Pio::Dhcp::Offer |
     | destination_mac        | 11:22:33:44:55:66 |

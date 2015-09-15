@@ -1,5 +1,9 @@
 UncommunicativeModuleName:
-  accept: ['Pio::OpenFlow10', 'Pio::OpenFlow13']
+  accept: ['Pio::OpenFlow10',
+           'Pio::OpenFlow13',
+           'Pio::OpenFlow10::Error::ErrorType10',
+           'Pio::OpenFlow13::Error::ErrorType13',
+           'Pio::OpenFlow10::Match10']
 
 TooManyStatements:
   enabled: false

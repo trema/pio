@@ -1,7 +1,5 @@
+@open_flow10
 Feature: Pio::Features::Reply
-  Background:
-    Given I use OpenFlow 1.0
-
   Scenario: new
     When I try to create an OpenFlow message with:
       """
@@ -23,7 +21,7 @@ Feature: Pio::Features::Reply
       )
       """
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field                        |                                                                                                                                                                                                                                                    value |
       | ofp_version                  |                                                                                                                                                                                                                                                        1 |
       | message_type                 |                                                                                                                                                                                                                                                        6 |
@@ -52,7 +50,7 @@ Feature: Pio::Features::Reply
   Scenario: read
     When I try to parse a file named "open_flow10/features_reply.raw" with "Features::Reply" class
     Then it should finish successfully
-    And the message have the following fields and values:
+    And the message has the following fields and values:
       | field                        | value                                                                                                                                                                                                                                                    |
       | ofp_version                  | 1                                                                                                                                                                                                                                                        |
       | message_type                 | 6                                                                                                                                                                                                                                                        |

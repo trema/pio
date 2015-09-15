@@ -4,11 +4,11 @@ require 'pio/open_flow'
 module Pio
   # OpenFlow 1.3 messages
   module OpenFlow13
-    # OpenFlow 1.3 Features Request and Reply message.
+    # Features Request and Reply message.
     class Features
-      # OpenFlow 1.3 Features Request message.
+      # Features Request message.
       class Request < OpenFlow::Message
-        # OpenFlow 1.3 Features Request message format.
+        # Features Request message format.
         class Format < BinData::Record
           extend OpenFlow::Format
 

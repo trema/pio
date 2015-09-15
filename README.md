@@ -20,6 +20,8 @@ supports the following packet formats:
 - [UDP](https://relishapp.com/trema/pio/docs/pio-udp)
 - OpenFlow 1.0
   - [Hello](https://relishapp.com/trema/pio/docs/open-flow10/pio-hello)
+  - [HelloFailed](https://relishapp.com/trema/pio/docs/open-flow10/pio-error-hellofailed)
+  - [BadRequest](https://relishapp.com/trema/pio/docs/open-flow10/pio-error-badrequest)
   - [Echo Request](https://relishapp.com/trema/pio/docs/open-flow10/pio-echo-request)
   - [Echo Reply](https://relishapp.com/trema/pio/docs/open-flow10/pio-echo-reply)
   - [Features Request](https://relishapp.com/trema/pio/docs/open-flow10/pio-features-request)
@@ -29,8 +31,14 @@ supports the following packet formats:
   - [Flow Mod](https://relishapp.com/trema/pio/docs/open-flow10/pio-flowmod)
   - [Port Status](https://relishapp.com/trema/pio/docs/open-flow10/pio-portstatus)
   - [Exact Match](https://relishapp.com/trema/pio/docs/open-flow10/pio-exactmatch)
+  - [Barrier Request](https://relishapp.com/trema/pio/docs/open-flow10/pio-barrier-request)
+  - [Barrier Reply](https://relishapp.com/trema/pio/docs/open-flow10/pio-barrier-reply)
+  - [Flow Stats Request](https://relishapp.com/trema/pio/docs/open-flow10/pio-flowstats-request)
+  - [Flow Stats Reply](https://relishapp.com/trema/pio/docs/open-flow10/pio-flowstats-reply)
 - OpenFlow 1.3
   - [Hello](https://relishapp.com/trema/pio/docs/open-flow13/pio-hello)
+  - [HelloFailed](https://relishapp.com/trema/pio/docs/open-flow13/pio-error-hellofailed)
+  - [BadRequest](https://relishapp.com/trema/pio/docs/open-flow13/pio-error-badrequest)
   - [Echo Request](https://relishapp.com/trema/pio/docs/open-flow13/pio-echo-request)
   - [Echo Reply](https://relishapp.com/trema/pio/docs/open-flow13/pio-echo-reply)
   - [Features Request](https://relishapp.com/trema/pio/docs/open-flow13/pio-features-request)

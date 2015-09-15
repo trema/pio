@@ -133,7 +133,7 @@ module Pio
       # rubocop:disable MethodLength
       # This method smells of :reek:FeatureEnvy
       # This method smells of :reek:DuplicateMethodCall
-      def initialize(user_options)
+      def initialize(user_options = {})
         flags = Wildcards::FLAGS.each_with_object({}) do |each, memo|
           memo[each] = true unless user_options.key?(each)
         end
@@ -159,6 +159,23 @@ module Pio
 
       def method_missing(method, *args, &block)
         @format.__send__ method, *args, &block
+      end
+    end
+
+    # Pio::MatchFormat wrapper.
+    class Match10 < BinData::Primitive
+      endian :big
+
+      string :match,
+             read_length: 40,
+             initial_value: Pio::OpenFlow10::Match.new.to_binary_s
+
+      def set(object)
+        self.match = object.to_binary_s
+      end
+
+      def get
+        Pio::OpenFlow10::Match.read match
       end
     end
   end

@@ -15,9 +15,9 @@ module Pio
     end
 
     def self.read(raw_data)
-      strip_vlan = allocate
-      strip_vlan.instance_variable_set :@format, Format.read(raw_data)
-      strip_vlan
+      allocate.tap do |strip_vlan|
+        strip_vlan.instance_variable_set :@format, Format.read(raw_data)
+      end
     end
 
     extend Forwardable
