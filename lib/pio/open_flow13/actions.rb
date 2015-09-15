@@ -17,8 +17,8 @@ module Pio
 
     string :binary, read_length: :length
 
-    def set(value)
-      self.binary = [value].flatten.map(&:to_binary).join
+    def set(actions)
+      self.binary = Array(actions).map(&:to_binary).join
     end
 
     # rubocop:disable MethodLength
@@ -32,7 +32,7 @@ module Pio
                  else
                    UnsupportedAction.read(tmp)
                  end
-        tmp = tmp[action.action_length..-1]
+        tmp = tmp[action.length..-1]
         actions << action
       end
       actions

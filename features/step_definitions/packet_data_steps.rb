@@ -59,6 +59,10 @@ Then(/^the message has the following fields and values:$/) do |table|
   step 'the packet has the following fields and values:', table
 end
 
+Then(/^the action has the following fields and values:$/) do |table|
+  step 'the packet has the following fields and values:', table
+end
+
 # rubocop:disable LineLength
 Then(/^the message \#(\d+) have the following fields and values:$/) do |index, table|
   table.hashes.each do |each|

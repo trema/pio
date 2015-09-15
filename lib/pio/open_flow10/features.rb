@@ -1,4 +1,5 @@
 require 'pio/open_flow'
+require 'pio/open_flow10/phy_port16'
 
 module Pio
   module OpenFlow10
@@ -12,6 +13,10 @@ module Pio
 
           header version: 1, message_type: 5
           string :body, value: ''
+
+          def user_data
+            body
+          end
         end
       end
 
@@ -56,7 +61,7 @@ module Pio
           hide :padding
           capabilities :capabilities
           actions_flag :actions
-          array :ports, type: :phy_port, read_until: :eof
+          array :ports, type: :phy_port16, read_until: :eof
 
           def dpid
             datapath_id
@@ -87,7 +92,7 @@ module Pio
 
           def physical_ports
             ports.select do |each|
-              each.port_no <= PortNumber::MAX
+              each.port_no <= Port16::MAX
             end
           end
         end

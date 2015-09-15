@@ -10,7 +10,7 @@ Feature: Pio::Echo::Reply
       | field          | value |
       | ofp_version    |     1 |
       | message_type   |     3 |
-      | message_length |     8 |
+      | length         |     8 |
       | transaction_id |     0 |
       | xid            |     0 |
       | body           |       |
@@ -26,7 +26,7 @@ Feature: Pio::Echo::Reply
       | field          | value |
       | ofp_version    |     1 |
       | message_type   |     3 |
-      | message_length |     8 |
+      | length         |     8 |
       | transaction_id |   123 |
       | xid            |   123 |
       | body           |       |
@@ -42,7 +42,7 @@ Feature: Pio::Echo::Reply
       | field          | value |
       | ofp_version    |     1 |
       | message_type   |     3 |
-      | message_length |     8 |
+      | length         |     8 |
       | transaction_id |   123 |
       | xid            |   123 |
       | body           |       |
@@ -65,7 +65,7 @@ Feature: Pio::Echo::Reply
       | field          |           value |
       | ofp_version    |               1 |
       | message_type   |               3 |
-      | message_length |              23 |
+      | length         |              23 |
       | transaction_id |               0 |
       | xid            |               0 |
       | body           | echo reply body |
@@ -81,7 +81,7 @@ Feature: Pio::Echo::Reply
       | field          |           value |
       | ofp_version    |               1 |
       | message_type   |               3 |
-      | message_length |              23 |
+      | length         |              23 |
       | transaction_id |               0 |
       | xid            |               0 |
       | body           | echo reply body |
@@ -91,14 +91,14 @@ Feature: Pio::Echo::Reply
     When I try to parse a file named "open_flow10/echo_reply.raw" with "Pio::Echo::Reply" class
     Then it should finish successfully
     And the message has the following fields and values:
-      | field          |            value |
-      | ofp_version    |                1 |
-      | message_type   |                3 |
-      | message_length |                8 |
-      | transaction_id |                6 |
-      | xid            |                6 |
-      | body           |                  |
-      | user_data      |                  |
+      | field          | value |
+      | ofp_version    |     1 |
+      | message_type   |     3 |
+      | length         |     8 |
+      | transaction_id |     6 |
+      | xid            |     6 |
+      | body           |       |
+      | user_data      |       |
 
   Scenario: parse error
     When I try to parse a file named "open_flow10/features_reply.raw" with "Pio::Echo::Reply" class

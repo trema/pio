@@ -7,13 +7,13 @@ Feature: Pio::Features::Request
       """
     Then it should finish successfully
     And the message has the following fields and values:
-      | field          |                  value |
-      | ofp_version    |                      4 |
-      | message_type   |                      5 |
-      | message_length |                      8 |
-      | transaction_id |                      0 |
-      | xid            |                      0 |
-      | body           |                        |
+      | field          | value |
+      | ofp_version    |     4 |
+      | message_type   |     5 |
+      | length         |     8 |
+      | transaction_id |     0 |
+      | xid            |     0 |
+      | body           |       |
 
   Scenario: new(transaction_id: 123)
     When I try to create an OpenFlow message with:
@@ -22,13 +22,13 @@ Feature: Pio::Features::Request
       """
     Then it should finish successfully
     And the message has the following fields and values:
-      | field          |                  value |
-      | ofp_version    |                      4 |
-      | message_type   |                      5 |
-      | message_length |                      8 |
-      | transaction_id |                    123 |
-      | xid            |                    123 |
-      | body           |                        |
+      | field          | value |
+      | ofp_version    |     4 |
+      | message_type   |     5 |
+      | length         |     8 |
+      | transaction_id |   123 |
+      | xid            |   123 |
+      | body           |       |
 
   Scenario: new(xid: 123)
     When I try to create an OpenFlow message with:
@@ -37,13 +37,13 @@ Feature: Pio::Features::Request
       """
     Then it should finish successfully
     And the message has the following fields and values:
-      | field          |                  value |
-      | ofp_version    |                      4 |
-      | message_type   |                      5 |
-      | message_length |                      8 |
-      | transaction_id |                    123 |
-      | xid            |                    123 |
-      | body           |                        |
+      | field          | value |
+      | ofp_version    |     4 |
+      | message_type   |     5 |
+      | length         |     8 |
+      | transaction_id |   123 |
+      | xid            |   123 |
+      | body           |       |
 
   Scenario: new(unknown_attr: 'foo') and error
     When I try to create an OpenFlow message with:
@@ -56,13 +56,13 @@ Feature: Pio::Features::Request
     When I try to parse a file named "open_flow13/features_request.raw" with "Pio::Features::Request" class
     Then it should finish successfully
     And the message has the following fields and values:
-      | field          |                  value |
-      | ofp_version    |                      4 |
-      | message_type   |                      5 |
-      | message_length |                      8 |
-      | transaction_id |                      0 |
-      | xid            |                      0 |
-      | body           |                        |
+      | field          | value |
+      | ofp_version    |     4 |
+      | message_type   |     5 |
+      | length         |     8 |
+      | transaction_id |     0 |
+      | xid            |     0 |
+      | body           |       |
 
   Scenario: parse error
     When I try to parse a file named "open_flow10/hello.raw" with "Pio::Features::Request" class

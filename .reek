@@ -1,9 +1,15 @@
 UncommunicativeModuleName:
-  accept: ['Pio::OpenFlow10',
-           'Pio::OpenFlow13',
+  accept: ['Pio::Hello13',
            'Pio::OpenFlow10::Error::ErrorType10',
+           'Pio::OpenFlow10::Match10',
+           'Pio::OpenFlow10::MatchOpenFlow10',
+           'Pio::OpenFlow10::PhyPort16',
+           'Pio::OpenFlow10::Port16',
+           'Pio::OpenFlow10::Port32',
+           'Pio::OpenFlow13',
            'Pio::OpenFlow13::Error::ErrorType13',
-           'Pio::OpenFlow10::Match10']
+           'Pio::OpenFlow13::Port32',
+           'Pio::OpenFlow10']
 
 TooManyStatements:
   enabled: false

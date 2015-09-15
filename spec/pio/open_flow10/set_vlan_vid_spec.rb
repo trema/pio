@@ -11,12 +11,12 @@ describe Pio::SetVlanVid do
         Then { set_vlan_vid.vlan_id == 10 }
       end
 
-      describe '#type' do
-        Then { set_vlan_vid.type == 1 }
+      describe '#action_type' do
+        Then { set_vlan_vid.action_type == 1 }
       end
 
-      describe '#message_length' do
-        Then { set_vlan_vid.message_length == 8 }
+      describe '#length' do
+        Then { set_vlan_vid.length == 8 }
       end
 
       describe '#to_binary' do

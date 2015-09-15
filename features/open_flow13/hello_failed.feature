@@ -13,7 +13,7 @@ Feature: Pio::Error::HelloFailed
       | field          |         value |
       | ofp_version    |             4 |
       | message_type   |             1 |
-      | message_length |            12 |
+      | length         |            12 |
       | transaction_id |             0 |
       | xid            |             0 |
       | error_type     | :hello_failed |
@@ -30,7 +30,7 @@ Feature: Pio::Error::HelloFailed
       | field          |             value |
       | ofp_version    |                 4 |
       | message_type   |                 1 |
-      | message_length |                29 |
+      | length         |                29 |
       | transaction_id |                 0 |
       | xid            |                 0 |
       | error_type     |     :hello_failed |
@@ -47,7 +47,7 @@ Feature: Pio::Error::HelloFailed
       | field          |              value |
       | ofp_version    |                  4 |
       | message_type   |                  1 |
-      | message_length |                 12 |
+      | length         |                 12 |
       | transaction_id |                  0 |
       | xid            |                  0 |
       | error_type     |      :hello_failed |
@@ -61,7 +61,7 @@ Feature: Pio::Error::HelloFailed
       | field          |             value |
       | ofp_version    |                 4 |
       | message_type   |                 1 |
-      | message_length |                29 |
+      | length         |                29 |
       | transaction_id |                 0 |
       | xid            |                 0 |
       | error_type     |     :hello_failed |

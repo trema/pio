@@ -9,12 +9,12 @@ describe Pio::SetIpSourceAddress do
         Then { set_ip_source_addr.ip_address == '1.2.3.4' }
       end
 
-      describe '#type' do
-        Then { set_ip_source_addr.type == 6 }
+      describe '#action_type' do
+        Then { set_ip_source_addr.action_type == 6 }
       end
 
-      describe '#message_length' do
-        Then { set_ip_source_addr.message_length == 8 }
+      describe '#length' do
+        Then { set_ip_source_addr.length == 8 }
       end
 
       describe '#to_binary' do

@@ -2,10 +2,10 @@ require 'bindata'
 require 'pio/type/mac_address'
 
 module Pio
-  module OpenFlow
+  module OpenFlow10
     # Description of a physical port
-    class PhyPort < BinData::Record
-      extend Flags
+    class PhyPort16 < BinData::Record
+      extend OpenFlow::Flags
 
       # enum ofp_port_config
       flags_32bit :port_config,
@@ -80,7 +80,7 @@ module Pio
           end
 
           def ss.local?
-            port_no == PortNumber::NUMBERS[:local]
+            port_no == OpenFlow10::Port16.reserved_port_number(:local)
           end
         end
       end

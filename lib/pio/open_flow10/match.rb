@@ -48,7 +48,7 @@ module Pio
           BITS.each_with_object(Hash.new(0)) do |(key, bit), memo|
             next if flags & bit == 0
             if /(ip_source_address|ip_destination_address)(\d)/=~ key
-              memo[$LAST_MATCH_INFO[1].intern] |= 1 << $LAST_MATCH_INFO[2].to_i
+              memo[$LAST_MATCH_INFO[1].to_sym] |= 1 << $LAST_MATCH_INFO[2].to_i
             else
               memo[key] = true
             end
@@ -141,7 +141,7 @@ module Pio
           if user_options.key?(each)
             memo[each] = 32 - IPv4Address.new(user_options[each]).prefixlen
           else
-            memo["#{each}_all".intern] = true
+            memo["#{each}_all".to_sym] = true
           end
         end
         @format = MatchFormat.new({ wildcards: flags }.merge user_options)

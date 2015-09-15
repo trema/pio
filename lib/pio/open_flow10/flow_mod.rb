@@ -49,7 +49,7 @@ module Pio
         uint32 :buffer_id
         uint16 :out_port
         flags :flags
-        actions :actions, length: -> { header.message_length - 72 }
+        actions :actions, length: -> { header.length - 72 }
 
         def empty?
           false
