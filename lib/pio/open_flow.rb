@@ -17,8 +17,8 @@ module Pio
 
     def self.switch_version(version)
       [:Barrier, :Echo, :Features, :FlowMod, :Hello, :Match,
-       :PacketIn, :PacketOut, :SendOutPort, :PortStatus,
-       :FlowStats, :DescriptionStats, :Error].each do |each|
+       :PacketIn, :PacketOut, :SendOutPort, :PortStatus, :Stats,
+       :FlowStats, :DescriptionStats, :AggregateStats, :Error].each do |each|
         set_message_class_name each, version
         @version = version.to_s
       end
@@ -37,8 +37,8 @@ module Pio
         12 => Pio::PortStatus,
         13 => Pio::PacketOut,
         14 => Pio::FlowMod,
-        16 => Pio::FlowStats::Request,
-        17 => Pio::FlowStats::Reply,
+        16 => Pio::Stats::Request,
+        17 => Pio::Stats::Reply,
         18 => Pio::Barrier::Request,
         19 => Pio::Barrier::Reply
       }
