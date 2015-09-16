@@ -3,6 +3,7 @@ Feature: Pio::OpenFlow.read
     Given I switch the Pio::OpenFlow version to "OpenFlow10"
     Then the following each raw file should be parsed into its corresponding object using OpenFlow.read
       | raw file                                  | result object                              |
+      | open_flow10/aggregate_stats_reply.raw     | Pio::OpenFlow10::AggregateStats::Reply     |
       | open_flow10/aggregate_stats_request.raw   | Pio::OpenFlow10::AggregateStats::Request   |
       | open_flow10/bad_request.raw               | Pio::OpenFlow10::Error::BadRequest         |
       | open_flow10/barrier_reply.raw             | Pio::OpenFlow10::Barrier::Reply            |

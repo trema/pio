@@ -1,3 +1,4 @@
+require 'pio/open_flow10/aggregate_stats_reply.rb'
 require 'pio/open_flow10/aggregate_stats_request.rb'
 require 'pio/open_flow10/barrier_reply'
 require 'pio/open_flow10/barrier_request'

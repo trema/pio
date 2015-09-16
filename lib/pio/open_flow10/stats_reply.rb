@@ -13,7 +13,8 @@ module Pio
 
         TYPES = {
           description: OpenFlow10::DescriptionStats::Reply,
-          flow: OpenFlow10::FlowStats::Reply
+          flow: OpenFlow10::FlowStats::Reply,
+          aggregate: OpenFlow10::AggregateStats::Reply
         }
 
         def self.read(binary)
