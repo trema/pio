@@ -82,7 +82,7 @@ bundle
 
 ## Documents
 
-- [API document generated with YARD](http://rubydoc.info/github/trema/pio/frames/file/README.md)
+- [API document](https://relishapp.com/trema/pio/docs)
 
 ## Team
 
