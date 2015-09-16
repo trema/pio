@@ -3,6 +3,7 @@ require 'pio/ethernet_header'
 require 'pio/ipv4_header'
 
 module Pio
+  # Icmp parser and generator.
   class Icmp
     # Icmp parser.
     class Format < BinData::Record

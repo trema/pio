@@ -3,6 +3,11 @@
 ## develop (unreleased)
 
 
+## 0.27.0 (9/16/2015)
+### New features
+* [#203](https://github.com/trema/pio/pull/203): Add new classes `Pio::OpenFlow10::DescriptionStats::Request`, `Pio::OpenFlow10::DescriptionStats::Reply`, `Pio::OpenFlow10::FlowStats::Request`, `Pio::OpenFlow10::FlowStats::Reply`, `Pio::OpenFlow10::AggregateStats::Request`, `Pio::OpenFlow10::AggregateStats::Reply`.
+
+
 ## 0.26.0 (9/8/2015)
 ### New features
 * [#214](https://github.com/trema/pio/pull/214): Add new class `Pio::OpenFlow10::Error::HelloFailed`.

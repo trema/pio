@@ -10,8 +10,21 @@
 
 <a href="http://www.flickr.com/photos/mongogushi/4226014070/" title="pio pencil by mongo gushi, on Flickr"><img src="http://farm5.staticflickr.com/4022/4226014070_cdeb7c1e5d_n.jpg" width="320" height="290" alt="pio pencil"></a>
 
-Pio is a ruby gem to easily parse and generate network packets. It
-supports the following packet formats:
+Pio is a ruby gem to easily parse and generate network packets.
+
+## Features Overview
+
+- Pure Ruby. No additional dependency on other external tools to
+  parse/generate packets.
+- Multi-Platform. Runs on major operating systems (recent Windows,
+  Linux, and MacOSX).
+- Clean Code. Pio is built on
+  [BinData](https://github.com/dmendel/bindata)'s declarative binary
+  format DSL so that it is easy to read and debug by human beings.
+
+## Supported packet formats
+
+Pio supports the following packet formats:
 
 - [ICMP](https://relishapp.com/trema/pio/docs/pio-icmp)
 - [ARP](https://relishapp.com/trema/pio/docs/pio-arp)
@@ -33,8 +46,12 @@ supports the following packet formats:
   - [Exact Match](https://relishapp.com/trema/pio/docs/open-flow10/pio-exactmatch)
   - [Barrier Request](https://relishapp.com/trema/pio/docs/open-flow10/pio-barrier-request)
   - [Barrier Reply](https://relishapp.com/trema/pio/docs/open-flow10/pio-barrier-reply)
+  - [Description Stats Request](https://relishapp.com/trema/pio/docs/open-flow10/pio-descriptionstats-request)
+  - [Description Stats Reply](https://relishapp.com/trema/pio/docs/open-flow10/pio-descriptionstats-reply)
   - [Flow Stats Request](https://relishapp.com/trema/pio/docs/open-flow10/pio-flowstats-request)
   - [Flow Stats Reply](https://relishapp.com/trema/pio/docs/open-flow10/pio-flowstats-reply)
+  - [Aggregate Stats Request](https://relishapp.com/trema/pio/docs/open-flow10/pio-aggregatestats-request)
+  - [Aggregate Stats Reply](https://relishapp.com/trema/pio/docs/open-flow10/pio-aggregatestats-reply)
 - OpenFlow 1.3
   - [Hello](https://relishapp.com/trema/pio/docs/open-flow13/pio-hello)
   - [HelloFailed](https://relishapp.com/trema/pio/docs/open-flow13/pio-error-hellofailed)
@@ -46,16 +63,6 @@ supports the following packet formats:
   - [Packet In](https://relishapp.com/trema/pio/docs/open-flow13/pio-packetin)
   - [Packet Out](https://relishapp.com/trema/pio/docs/open-flow13/pio-packetout)
   - [Flow Mod](https://relishapp.com/trema/pio/docs/open-flow13/pio-flowmod)
-
-## Features Overview
-
-- Pure Ruby. No additional dependency on other external tools to
-  parse/generate packets.
-- Multi-Platform. Runs on major operating systems (recent Windows,
-  Linux, and MacOSX).
-- Clean Code. Pio is built on
-  [BinData](https://github.com/dmendel/bindata)'s declarative binary
-  format DSL so that it is easy to read and debug by human beings.
 
 ## Installation
 
@@ -75,7 +82,7 @@ bundle
 
 ## Documents
 
-- [API document generated with YARD](http://rubydoc.info/github/trema/pio/frames/file/README.md)
+- [API document](https://relishapp.com/trema/pio/docs)
 
 ## Team
 

@@ -17,7 +17,7 @@ module Pio
           uint8 :table_id
           string :padding1, length: 1
           hide :padding1
-          match_open_flow10 :match
+          match10 :match
           uint32 :duration_sec
           uint32 :duration_nsec
           uint16 :priority

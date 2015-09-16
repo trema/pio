@@ -163,7 +163,7 @@ module Pio
     end
 
     # Pio::MatchFormat wrapper.
-    class MatchOpenFlow10 < BinData::Primitive
+    class Match10 < BinData::Primitive
       endian :big
 
       string :match,

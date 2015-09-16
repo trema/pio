@@ -2,7 +2,7 @@ require 'forwardable'
 
 # Base module.
 module Pio
-  # Metering
+  # Apply meter (rate limiter)
   class Meter
     # OpenFlow 1.3.4 OFPIT_METER instruction format
     class Format < BinData::Record

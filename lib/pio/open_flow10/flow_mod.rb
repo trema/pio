@@ -40,7 +40,7 @@ module Pio
 
         endian :big
 
-        match_open_flow10 :match
+        match10 :match
         uint64 :cookie
         command :command
         uint16 :idle_timeout
