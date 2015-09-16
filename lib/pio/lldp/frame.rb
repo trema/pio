@@ -7,6 +7,7 @@ require 'pio/lldp/port_id_tlv'
 require 'pio/lldp/ttl_tlv'
 
 module Pio
+  # LLDP frame parser and generator.
   class Lldp
     # LLDP frame
     class Frame < BinData::Record

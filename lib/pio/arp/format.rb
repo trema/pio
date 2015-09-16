@@ -4,6 +4,7 @@ require 'pio/type/ip_address'
 require 'pio/type/mac_address'
 
 module Pio
+  # ARP parser and generator.
   class Arp
     # ARP parser.
     class Format < BinData::Record

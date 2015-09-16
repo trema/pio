@@ -14,10 +14,6 @@ module Pio
 
           header version: 4, message_type: 5
           string :body, value: ''
-
-          def user_data
-            body
-          end
         end
       end
     end

@@ -33,8 +33,12 @@ supports the following packet formats:
   - [Exact Match](https://relishapp.com/trema/pio/docs/open-flow10/pio-exactmatch)
   - [Barrier Request](https://relishapp.com/trema/pio/docs/open-flow10/pio-barrier-request)
   - [Barrier Reply](https://relishapp.com/trema/pio/docs/open-flow10/pio-barrier-reply)
+  - [Description Stats Request](https://relishapp.com/trema/pio/docs/open-flow10/pio-descriptionstats-request)
+  - [Description Stats Reply](https://relishapp.com/trema/pio/docs/open-flow10/pio-descriptionstats-reply)
   - [Flow Stats Request](https://relishapp.com/trema/pio/docs/open-flow10/pio-flowstats-request)
   - [Flow Stats Reply](https://relishapp.com/trema/pio/docs/open-flow10/pio-flowstats-reply)
+  - [Aggregate Stats Request](https://relishapp.com/trema/pio/docs/open-flow10/pio-aggregatestats-request)
+  - [Aggregate Stats Reply](https://relishapp.com/trema/pio/docs/open-flow10/pio-aggregatestats-reply)
 - OpenFlow 1.3
   - [Hello](https://relishapp.com/trema/pio/docs/open-flow13/pio-hello)
   - [HelloFailed](https://relishapp.com/trema/pio/docs/open-flow13/pio-error-hellofailed)

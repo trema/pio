@@ -1,6 +1,8 @@
 # Changelog
 
 ## develop (unreleased)
+### New features
+* [#203](https://github.com/trema/pio/pull/203): Add new classes `Pio::OpenFlow10::DescriptionStats::Request`, `Pio::OpenFlow10::DescriptionStats::Reply`, `Pio::OpenFlow10::FlowStats::Request`, `Pio::OpenFlow10::FlowStats::Reply`, `Pio::OpenFlow10::AggregateStats::Request`, `Pio::OpenFlow10::AggregateStats::Reply`.
 
 
 ## 0.26.0 (9/8/2015)
