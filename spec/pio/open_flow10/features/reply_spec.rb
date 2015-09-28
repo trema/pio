@@ -1,4 +1,4 @@
-require 'pio/open_flow10/features'
+require 'pio/open_flow10/features/reply'
 
 describe Pio::OpenFlow10::Features::Reply do
   describe '.new' do

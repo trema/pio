@@ -1,4 +1,4 @@
-require 'pio/open_flow13/features_request'
+require 'pio/open_flow13/features/request'
 
 describe Pio::OpenFlow13::Features::Request do
   describe '.new' do
