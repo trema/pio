@@ -1,4 +1,4 @@
-require 'pio/open_flow10/features'
+require 'pio/open_flow10/features/request.rb'
 
 describe Pio::OpenFlow10::Features::Request do
   describe '.new' do

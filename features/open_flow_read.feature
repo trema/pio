@@ -16,8 +16,6 @@ Feature: Pio::OpenFlow.read
       | open_flow10/features_request.raw          | Pio::OpenFlow10::Features::Request         |
       | open_flow10/flow_mod_add.raw              | Pio::OpenFlow10::FlowMod                   |
       | open_flow10/flow_stats_reply.raw          | Pio::OpenFlow10::FlowStats::Reply          |
-      | open_flow10/flow_stats_reply.raw          | Pio::OpenFlow10::FlowStats::Reply          |
-      | open_flow10/flow_stats_request.raw        | Pio::OpenFlow10::FlowStats::Request        |
       | open_flow10/flow_stats_request.raw        | Pio::OpenFlow10::FlowStats::Request        |
       | open_flow10/hello.raw                     | Pio::OpenFlow10::Hello                     |
       | open_flow10/hello_failed.raw              | Pio::OpenFlow10::Error::HelloFailed        |
