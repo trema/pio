@@ -3,6 +3,11 @@
 ## develop (unreleased)
 
 
+## 0.27.1 (9/28/2015)
+### Bugs fixed
+* [#238](https://github.com/trema/pio/issues/238): `Features::Reply#datapath_id` doesn't return an Integer.
+
+
 ## 0.27.0 (9/16/2015)
 ### New features
 * [#203](https://github.com/trema/pio/pull/203): Add new classes `Pio::OpenFlow10::DescriptionStats::Request`, `Pio::OpenFlow10::DescriptionStats::Reply`, `Pio::OpenFlow10::FlowStats::Request`, `Pio::OpenFlow10::FlowStats::Reply`, `Pio::OpenFlow10::AggregateStats::Request`, `Pio::OpenFlow10::AggregateStats::Reply`.
