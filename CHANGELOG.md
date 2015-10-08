@@ -1,6 +1,8 @@
 # Changelog
 
 ## develop (unreleased)
+### New features
+* [#244](https://github.com/trema/pio/pull/244): Support ARP in `ExactMatch.new`.
 
 
 ## 0.27.1 (9/28/2015)

@@ -1,4 +1,4 @@
-require 'pio/open_flow10/match'
+require 'pio/open_flow10/match10'
 require 'pio/open_flow10/port16'
 require 'pio/open_flow10/stats_type'
 
