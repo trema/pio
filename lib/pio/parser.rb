@@ -5,12 +5,13 @@ module Pio
   # Raw data parser.
   class Parser
     # Ethernet header parser
-    class EtherTypeParser < BinData::Record
+    class EthernetFrame < BinData::Record
       endian :big
 
       mac_address :destination_mac
       mac_address :source_mac
       uint16 :ether_type
+      rest :rest
     end
 
     # IPv4 packet parser
@@ -30,8 +31,8 @@ module Pio
 
     # rubocop:disable MethodLength
     def self.read(raw_data)
-      ethernet_header = EtherTypeParser.read(raw_data)
-      case ethernet_header.ether_type
+      ethernet_frame = EthernetFrame.read(raw_data)
+      case ethernet_frame.ether_type
       when EthernetHeader::EtherType::IPV4, EthernetHeader::EtherType::VLAN
         IPv4Packet.read raw_data
       when EthernetHeader::EtherType::ARP
@@ -39,7 +40,7 @@ module Pio
       when EthernetHeader::EtherType::LLDP
         Pio::Lldp.read raw_data
       else
-        fail 'Failed to parse packet_in data.'
+        ethernet_frame
       end
     end
     # rubocop:enable MethodLength
