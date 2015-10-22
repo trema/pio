@@ -7,7 +7,7 @@ Feature: Pio::DescriptionStats::Reply
       | field          |        value |
       | ofp_version    |            1 |
       | message_type   |           17 |
-      | length         |         1068 |
+      | message_length |         1068 |
       | transaction_id |           12 |
       | xid            |           12 |
       | stats_type     | :description |

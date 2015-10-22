@@ -10,7 +10,7 @@ Feature: Pio::FlowMod
       | field              |      value |
       | ofp_version        |          4 |
       | message_type       |         14 |
-      | length             |         56 |
+      | message_length     |         56 |
       | to_binary.length   |         56 |
       | transaction_id     |          0 |
       | xid                |          0 |
@@ -38,7 +38,7 @@ Feature: Pio::FlowMod
       | field                                  |                        value |
       | ofp_version                            |                            4 |
       | message_type                           |                           14 |
-      | length                                 |                           80 |
+      | message_length                         |                           80 |
       | transaction_id                         |                            0 |
       | xid                                    |                            0 |
       | cookie                                 |                            0 |
@@ -68,7 +68,7 @@ Feature: Pio::FlowMod
       | field                                  |                        value |
       | ofp_version                            |                            4 |
       | message_type                           |                           14 |
-      | length                                 |                           88 |
+      | message_length                         |                           88 |
       | transaction_id                         |                            0 |
       | xid                                    |                            0 |
       | cookie                                 |                            0 |
@@ -95,7 +95,7 @@ Feature: Pio::FlowMod
       | field              |      value |
       | ofp_version        |          4 |
       | message_type       |         14 |
-      | length             |         56 |
+      | message_length     |         56 |
       | transaction_id     |          0 |
       | xid                |          0 |
       | cookie             |          0 |
@@ -119,7 +119,7 @@ Feature: Pio::FlowMod
       | field                                  |                        value |
       | ofp_version                            |                            4 |
       | message_type                           |                           14 |
-      | length                                 |                           80 |
+      | message_length                         |                           80 |
       | transaction_id                         |                            0 |
       | xid                                    |                            0 |
       | cookie                                 |                            0 |

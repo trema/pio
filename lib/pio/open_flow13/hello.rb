@@ -1,8 +1,6 @@
 require 'pio/open_flow'
 
-# Base module.
 module Pio
-  # OpenFlow 1.0 messages
   module OpenFlow13
     # OpenFlow 1.3 Hello message parser and generator
     class Hello < OpenFlow::Message
@@ -43,40 +41,38 @@ module Pio
         end
       end
 
-      # OpenFlow 1.3 Hello message format
-      class Format < BinData::Record
-        extend OpenFlow::Format
+      open_flow_header version: 4, message_type: 0
+      body :body
 
-        header version: 4, message_type: 0
-        body :body
+      def elements
+        body.elements
+      end
 
-        def supported_versions
-          supported_versions_list.map do |each|
-            "open_flow1#{each - 1}".to_sym
-          end
+      def supported_versions
+        supported_versions_list.map do |each|
+          "open_flow1#{each - 1}".to_sym
         end
+      end
 
-        private
+      private
 
-        def supported_versions_list
-          (1..32).each_with_object([]) do |each, result|
-            result << each if (version_bitmap >> each & 1) == 1
-          end
+      def supported_versions_list
+        (1..32).each_with_object([]) do |each, result|
+          result << each if (version_bitmap >> each & 1) == 1
         end
+      end
 
-        def version_bitmap
-          bitmap = elements.detect(&:version_bitmap?)
-          bitmap ? bitmap.element_value : 0
-        end
+      def version_bitmap
+        bitmap = elements.detect(&:version_bitmap?)
+        bitmap ? bitmap.element_value : 0
       end
 
       def initialize(user_options = {})
         validate_user_options user_options
-        header_options = parse_header_options(user_options)
         body_options = { elements: [{ element_type: VERSION_BITMAP,
                                       element_length: 8,
                                       element_value: 0b10000 }] }
-        @format = Format.new(header: header_options, body: body_options)
+        @format = Format.new(user_options.merge(body: body_options))
       end
     end
   end

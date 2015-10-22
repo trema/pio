@@ -10,7 +10,7 @@ Feature: Pio::AggregateStats::Request
       | field                                              | value      |
       | ofp_version                                        | 1          |
       | message_type                                       | 16         |
-      | length                                             | 56         |
+      | message_length                                     | 56         |
       | transaction_id                                     | 0          |
       | xid                                                | 0          |
       | stats_type                                         | :aggregate |
@@ -38,7 +38,7 @@ Feature: Pio::AggregateStats::Request
       | field                                              | value      |
       | ofp_version                                        | 1          |
       | message_type                                       | 16         |
-      | length                                             | 56         |
+      | message_length                                     | 56         |
       | transaction_id                                     | 14         |
       | xid                                                | 14         |
       | stats_type                                         | :aggregate |

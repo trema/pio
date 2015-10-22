@@ -11,7 +11,7 @@ describe Pio::OpenFlow13::Hello do
       Then { result.class == Pio::OpenFlow13::Hello }
       Then { result.ofp_version == 4 }
       Then { result.message_type == 0 }
-      Then { result.length == 8 }
+      Then { result.message_length == 8 }
       Then { result.transaction_id == 0 }
       Then { result.xid == 0 }
       Then { result.supported_versions.empty? }
@@ -25,7 +25,7 @@ describe Pio::OpenFlow13::Hello do
       Then { result.class == Pio::OpenFlow13::Hello }
       Then { result.ofp_version == 4 }
       Then { result.message_type == 0 }
-      Then { result.length == 16 }
+      Then { result.message_length == 16 }
       Then { result.transaction_id == 0 }
       Then { result.xid == 0 }
       Then { result.supported_versions == [:open_flow10, :open_flow13] }
@@ -48,7 +48,7 @@ describe Pio::OpenFlow13::Hello do
 
       Then { result.ofp_version == 4 }
       Then { result.message_type == 0 }
-      Then { result.length == 16 }
+      Then { result.message_length == 16 }
       Then { result.transaction_id == 0 }
       Then { result.xid == 0 }
       Then { result.supported_versions == [:open_flow13] }

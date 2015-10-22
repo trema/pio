@@ -1,9 +1,8 @@
 require 'pio/open_flow10/actions'
+require 'pio/open_flow10/match10'
 require 'pio/open_flow10/stats_type'
 
-# Base module.
 module Pio
-  # OpenFlow 1.0 messages
   module OpenFlow10
     # OpenFlow 1.0 FlowStats messages
     module FlowStats
@@ -31,28 +30,13 @@ module Pio
           actions :actions, length: -> { entry_length - 88 }
         end
 
-        # Message body of Flow Stats Reply.
-        class Body < BinData::Record
-          endian :big
+        open_flow_header version: 1,
+                         message_type: 17,
+                         message_length: -> { 12 + stats.to_binary_s.length }
 
-          stats_type :stats_type, value: -> { :flow }
-          uint16 :flags
-          array(:stats,
-                type: :flow_stats_entry,
-                read_until: :eof)
-
-          def length
-            4 + stats.to_binary_s.length
-          end
-        end
-
-        # OpenFlow 1.0 Flow Stats Reply message format.
-        class Format < BinData::Record
-          extend OpenFlow::Format
-
-          header version: 1, message_type: 17
-          body :body
-        end
+        stats_type :stats_type, value: -> { :flow }
+        uint16 :flags
+        array :stats, type: :flow_stats_entry, read_until: :eof
       end
     end
   end

@@ -7,7 +7,7 @@ Feature: Pio::AggregateStats::Reply
       | field          |      value |
       | ofp_version    |          1 |
       | message_type   |         17 |
-      | length         |         36 |
+      | message_length |         36 |
       | transaction_id |         15 |
       | xid            |         15 |
       | stats_type     | :aggregate |

@@ -10,7 +10,7 @@ Feature: Pio::FlowStats::Request
       | field                                              | value |
       | ofp_version                                        | 1     |
       | message_type                                       | 16    |
-      | length                                             | 56    |
+      | message_length                                     | 56    |
       | transaction_id                                     | 0     |
       | xid                                                | 0     |
       | stats_type                                         | :flow |
@@ -40,7 +40,7 @@ Feature: Pio::FlowStats::Request
       | field                                              | value |
       | ofp_version                                        | 1     |
       | message_type                                       | 16    |
-      | length                                             | 56    |
+      | message_length                                     | 56    |
       | transaction_id                                     | 0     |
       | xid                                                | 0     |
       | stats_type                                         | :flow |
@@ -68,7 +68,7 @@ Feature: Pio::FlowStats::Request
       | field                                              | value |
       | ofp_version                                        | 1     |
       | message_type                                       | 16    |
-      | length                                             | 56    |
+      | message_length                                     | 56    |
       | transaction_id                                     | 13    |
       | xid                                                | 13    |
       | stats_type                                         | :flow |
@@ -87,4 +87,3 @@ Feature: Pio::FlowStats::Request
       | match.wildcards.fetch(:vlan_vid)                   | true  |
       | table_id.to_hex                                    | 0xff  |
       | out_port                                           | :none |
-

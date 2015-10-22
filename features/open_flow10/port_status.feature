@@ -7,7 +7,7 @@ Feature: Pio::PortStatus
       | class                 | Pio::OpenFlow10::PortStatus |
       | ofp_version           | 1                           |
       | message_type          | 12                          |
-      | length                | 64                          |
+      | message_length        | 64                          |
       | transaction_id        | 4                           |
       | xid                   | 4                           |
       | reason                | :delete                     |
