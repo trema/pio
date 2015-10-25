@@ -1,6 +1,8 @@
 # Changelog
 
 ## develop (unreleased)
+### New features
+* [#250](https://github.com/trema/pio/pull/250): Add Flow Removed message parser.
 
 
 ## 0.27.2 (10/25/2015)
