@@ -784,7 +784,7 @@ Feature: Pio::Match
     When I try to parse a file named "open_flow13/oxm_experimenter_stratos_basic_dot11.raw" with "Pio::Match" class
     Then it should finish successfully
     And the message has the following fields and values:
-      | field                           |               value |
-      | match_fields.at(0).oxm_field    |                   0 |
-      | match_fields.at(0).experimenter |          4278247501 |
-      | match_fields.at(0).data.inspect |      "\x00\x01\x01" |
+      | field                                |      value |
+      | match_fields.at(0).oxm_field         |          0 |
+      | match_fields.at(0).experimenter      | 4278247501 |
+      | match_fields.at(0).data.unpack('C*') |  [0, 1, 1] |
