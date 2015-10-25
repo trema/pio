@@ -41,11 +41,10 @@ describe Pio::OpenFlow10::PacketOut do
       Then { result.class == Pio::OpenFlow10::PacketOut }
       Then { result.ofp_version == 0x1 }
       Then { result.message_type == 0xd }
-      Then { result.length == 0x58 }
+      Then { result.message_length == 0x58 }
       Then { result.transaction_id == 0x16 }
       Then { result.xid == 0x16 }
 
-      Then { !result.body.empty? }
       Then { result.buffer_id == 0xffffffff }
       Then { result.in_port == 0xffff }
       Then { result.actions_len == 0x8 }
@@ -70,11 +69,10 @@ describe Pio::OpenFlow10::PacketOut do
       Then { result.class == Pio::OpenFlow10::PacketOut }
       Then { result.ofp_version == 0x1 }
       Then { result.message_type == 0xd }
-      Then { result.length == 0x58 }
+      Then { result.message_length == 0x58 }
       Then { result.transaction_id == 0x16 }
       Then { result.xid == 0x16 }
 
-      Then { !result.body.empty? }
       Then { result.buffer_id == 0xffffffff }
       Then { result.in_port == 0xffff }
       Then { result.actions_len == 0x8 }
@@ -113,11 +111,10 @@ describe Pio::OpenFlow10::PacketOut do
 
       Then { result.ofp_version == 0x1 }
       Then { result.message_type == 0xd }
-      Then { result.length == 0x58 }
+      Then { result.message_length == 0x58 }
       Then { result.transaction_id == 0x16 }
       Then { result.xid == 0x16 }
 
-      Then { !result.body.empty? }
       Then { result.buffer_id == 0xffffffff }
       Then { result.in_port == 0xffff }
       Then { result.actions_len == 0x8 }
@@ -145,7 +142,7 @@ describe Pio::OpenFlow10::PacketOut do
         }
       end
 
-      Then { result.length == 0x58 }
+      Then { result.message_length == 0x58 }
       Then { result.actions_len == 0x8 }
       Then { result.actions.length == 1 }
       Then { result.actions[0].is_a? Pio::SetVlanVid }
@@ -163,7 +160,7 @@ describe Pio::OpenFlow10::PacketOut do
         }
       end
 
-      Then { result.length == 0x58 }
+      Then { result.message_length == 0x58 }
       Then { result.actions_len == 0x8 }
       Then { result.actions.length == 1 }
       Then { result.actions[0].is_a? Pio::SetVlanPriority }
@@ -181,7 +178,7 @@ describe Pio::OpenFlow10::PacketOut do
         }
       end
 
-      Then { result.length == 0x58 }
+      Then { result.message_length == 0x58 }
       Then { result.actions_len == 0x8 }
       Then { result.actions.length == 1 }
       Then { result.actions[0].is_a? Pio::StripVlanHeader }
@@ -198,7 +195,7 @@ describe Pio::OpenFlow10::PacketOut do
         }
       end
 
-      Then { result.length == 0x60 }
+      Then { result.message_length == 0x60 }
       Then { result.actions_len == 0x10 }
       Then { result.actions.length == 1 }
       Then { result.actions[0].is_a? Pio::SetEtherSourceAddress }
@@ -216,7 +213,7 @@ describe Pio::OpenFlow10::PacketOut do
         }
       end
 
-      Then { result.length == 0x60 }
+      Then { result.message_length == 0x60 }
       Then { result.actions_len == 0x10 }
       Then { result.actions.length == 1 }
       Then { result.actions[0].is_a? Pio::SetEtherDestinationAddress }
@@ -234,7 +231,7 @@ describe Pio::OpenFlow10::PacketOut do
         }
       end
 
-      Then { result.length == 0x58 }
+      Then { result.message_length == 0x58 }
       Then { result.actions_len == 0x8 }
       Then { result.actions.length == 1 }
       Then { result.actions[0].is_a? Pio::SetIpSourceAddress }
@@ -252,7 +249,7 @@ describe Pio::OpenFlow10::PacketOut do
         }
       end
 
-      Then { result.length == 0x58 }
+      Then { result.message_length == 0x58 }
       Then { result.actions_len == 0x8 }
       Then { result.actions.length == 1 }
       Then { result.actions[0].is_a? Pio::SetIpDestinationAddress }
@@ -270,7 +267,7 @@ describe Pio::OpenFlow10::PacketOut do
         }
       end
 
-      Then { result.length == 0x58 }
+      Then { result.message_length == 0x58 }
       Then { result.actions_len == 0x8 }
       Then { result.actions.length == 1 }
       Then { result.actions[0].is_a? Pio::SetIpTos }
@@ -288,7 +285,7 @@ describe Pio::OpenFlow10::PacketOut do
         }
       end
 
-      Then { result.length == 0x58 }
+      Then { result.message_length == 0x58 }
       Then { result.actions_len == 0x8 }
       Then { result.actions.length == 1 }
       Then { result.actions[0].is_a? Pio::SetTransportSourcePort }
@@ -306,7 +303,7 @@ describe Pio::OpenFlow10::PacketOut do
         }
       end
 
-      Then { result.length == 0x58 }
+      Then { result.message_length == 0x58 }
       Then { result.actions_len == 0x8 }
       Then { result.actions.length == 1 }
       Then { result.actions[0].is_a? Pio::SetTransportDestinationPort }
@@ -324,7 +321,7 @@ describe Pio::OpenFlow10::PacketOut do
         }
       end
 
-      Then { result.length == 0x60 }
+      Then { result.message_length == 0x60 }
       Then { result.actions_len == 0x10 }
       Then { result.actions.length == 1 }
       Then { result.actions[0].is_a? Pio::Enqueue }
@@ -344,7 +341,7 @@ describe Pio::OpenFlow10::PacketOut do
         }
       end
 
-      Then { result.length == 0x60 }
+      Then { result.message_length == 0x60 }
       Then { result.actions_len == 0x10 }
       Then { result.actions.length == 2 }
       Then { result.actions[0].is_a? Pio::OpenFlow10::SendOutPort }

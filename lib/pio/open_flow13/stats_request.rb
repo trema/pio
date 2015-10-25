@@ -27,27 +27,11 @@ module Pio
         end
       end
 
-      # OpenFlow 1.3 Stats Request message body
-      class Body < BinData::Record
-        endian :big
-
-        stats_type :stats_type
-        uint16 :stats_flags
-
-        def length
-          4
-        end
-      end
-
-      # OpenFlow 1.3 Stats Request message format
-      class Format < BinData::Record
-        extend OpenFlow::Format
-
-        header version: 4, message_type: 16
-        body :body
-      end
-
-      body_option :stats_type
+      open_flow_header version: 4,
+                       message_type: 16,
+                       message_length: 12
+      stats_type :stats_type
+      uint16 :stats_flags
     end
   end
 end

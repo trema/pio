@@ -10,7 +10,7 @@ Feature: Pio::Features::Request
       | field          | value |
       | ofp_version    |     4 |
       | message_type   |     5 |
-      | length         |     8 |
+      | message_length |     8 |
       | transaction_id |     0 |
       | xid            |     0 |
       | body           |       |
@@ -25,22 +25,7 @@ Feature: Pio::Features::Request
       | field          | value |
       | ofp_version    |     4 |
       | message_type   |     5 |
-      | length         |     8 |
-      | transaction_id |   123 |
-      | xid            |   123 |
-      | body           |       |
-
-  Scenario: new(xid: 123)
-    When I try to create an OpenFlow message with:
-      """
-      Pio::Features::Request.new(xid: 123)
-      """
-    Then it should finish successfully
-    And the message has the following fields and values:
-      | field          | value |
-      | ofp_version    |     4 |
-      | message_type   |     5 |
-      | length         |     8 |
+      | message_length |     8 |
       | transaction_id |   123 |
       | xid            |   123 |
       | body           |       |
@@ -59,7 +44,7 @@ Feature: Pio::Features::Request
       | field          | value |
       | ofp_version    |     4 |
       | message_type   |     5 |
-      | length         |     8 |
+      | message_length |     8 |
       | transaction_id |     0 |
       | xid            |     0 |
       | body           |       |

@@ -4,7 +4,6 @@ require 'pio/open_flow'
 require 'pio/parse_error'
 require 'pio/parser'
 
-# Base module.
 module Pio
   module OpenFlow10
     # OpenFlow 1.0 Packet-In message
@@ -25,55 +24,32 @@ module Pio
         end
       end
 
-      # Message body of Packet-In.
-      class Body < BinData::Record
-        endian :big
+      open_flow_header version: 1,
+                       message_type: 10,
+                       message_length: -> { 18 + raw_data.length }
+      uint32 :buffer_id
+      uint16 :total_len, value: -> { raw_data.length }
+      uint16 :in_port
+      reason :reason
+      uint8 :padding
+      hide :padding
+      string :raw_data, read_length: :total_len
 
-        uint32 :buffer_id
-        uint16 :total_len, value: -> { raw_data.length }
-        uint16 :in_port
-        reason :reason
-        uint8 :padding
-        hide :padding
-        string :raw_data, read_length: :total_len
-
-        def data
-          @data ||= Pio::Parser.read(raw_data)
-        end
-
-        def empty?
-          false
-        end
-
-        def length
-          10 + raw_data.length
-        end
-
-        def lldp?
-          data.is_a? Lldp
-        end
-
-        def method_missing(method, *args)
-          data.__send__(method, *args).snapshot
-        end
+      def data
+        @data ||= Pio::Parser.read(raw_data)
       end
 
-      # OpenFlow 1.0 Flow Mod message format.
-      class Format < BinData::Record
-        extend OpenFlow::Format
+      def lldp?
+        data.is_a? Lldp
+      end
 
-        header version: 1, message_type: 10
-        body :body
+      def method_missing(method, *args)
+        data.__send__(method, *args).snapshot
       end
 
       attr_accessor :datapath_id
       alias_method :dpid, :datapath_id
       alias_method :dpid=, :datapath_id=
-
-      body_option :buffer_id
-      body_option :in_port
-      body_option :reason
-      body_option :raw_data
     end
   end
 end

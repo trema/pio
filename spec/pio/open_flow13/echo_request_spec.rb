@@ -1,4 +1,4 @@
-require 'pio/open_flow13/echo'
+require 'pio/open_flow13/echo/request'
 
 describe Pio::OpenFlow13::Echo::Request do
   describe '.new' do

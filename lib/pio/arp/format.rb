@@ -27,6 +27,26 @@ module Pio
         operation
       end
 
+      # rubocop:disable MethodLength
+      def to_exact_match(in_port)
+        match_options = {
+          in_port: in_port,
+          ether_source_address: source_mac,
+          ether_destination_address: destination_mac,
+          vlan_vid: vlan_vid,
+          vlan_priority: vlan_pcp,
+          ether_type: ether_type,
+          ip_tos: 0,
+          ip_protocol: operation,
+          ip_source_address: sender_protocol_address,
+          ip_destination_address: target_protocol_address,
+          transport_source_port: 0,
+          transport_destination_port: 0
+        }
+        Pio::OpenFlow10::Match.new(match_options)
+      end
+      # rubocop:enable MethodLength
+
       def to_binary
         to_binary_s + "\000" * (64 - num_bytes)
       end

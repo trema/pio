@@ -1,7 +1,6 @@
 require 'pio/open_flow/datapath_id'
 require 'pio/open_flow/error'
 require 'pio/open_flow/flags'
-require 'pio/open_flow/format'
 require 'pio/open_flow/message'
 require 'pio/open_flow/open_flow_header'
 require 'pio/open_flow10'

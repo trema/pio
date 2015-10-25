@@ -13,7 +13,7 @@ Feature: Pio::Error::BadRequest
       | field           |        value |
       | ofp_version     |            4 |
       | message_type    |            1 |
-      | length          |           20 |
+      | message_length  |           20 |
       | transaction_id  |            0 |
       | xid             |            0 |
       | error_type      | :bad_request |
@@ -27,7 +27,7 @@ Feature: Pio::Error::BadRequest
       | field           |        value |
       | ofp_version     |            4 |
       | message_type    |            1 |
-      | length          |           20 |
+      | message_length  |           20 |
       | transaction_id  |            0 |
       | xid             |            0 |
       | error_type      | :bad_request |

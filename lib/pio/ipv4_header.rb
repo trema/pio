@@ -33,6 +33,26 @@ module Pio
     end
     # rubocop:enable MethodLength
 
+    # rubocop:disable MethodLength
+    def to_exact_match(in_port)
+      match_options = {
+        in_port: in_port,
+        ether_source_address: source_mac,
+        ether_destination_address: destination_mac,
+        vlan_vid: vlan_vid,
+        vlan_priority: vlan_pcp,
+        ether_type: ether_type,
+        ip_tos: ip_type_of_service,
+        ip_protocol: ip_protocol,
+        ip_source_address: ip_source_address,
+        ip_destination_address: ip_destination_address,
+        transport_source_port: transport_source_port,
+        transport_destination_port: transport_destination_port
+      }
+      Pio::OpenFlow10::Match.new match_options
+    end
+    # rubocop:enable MethodLength
+
     private
 
     def calculate_ip_length

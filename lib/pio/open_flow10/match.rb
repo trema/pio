@@ -1,6 +1,5 @@
 require 'English'
 require 'bindata'
-require 'pio/open_flow'
 require 'pio/type/ip_address'
 require 'pio/type/mac_address'
 
@@ -159,23 +158,6 @@ module Pio
 
       def method_missing(method, *args, &block)
         @format.__send__ method, *args, &block
-      end
-    end
-
-    # Pio::MatchFormat wrapper.
-    class Match10 < BinData::Primitive
-      endian :big
-
-      string :match,
-             read_length: 40,
-             initial_value: Pio::OpenFlow10::Match.new.to_binary_s
-
-      def set(object)
-        self.match = object.to_binary_s
-      end
-
-      def get
-        Pio::OpenFlow10::Match.read match
       end
     end
   end

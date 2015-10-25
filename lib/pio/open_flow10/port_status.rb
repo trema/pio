@@ -1,8 +1,6 @@
-require 'pio/open_flow'
+require 'pio/open_flow/message'
 
-# Base module.
 module Pio
-  # OpenFlow 1.0 messages
   module OpenFlow10
     # OpenFlow 1.0 Port Status message
     class PortStatus < OpenFlow::Message
@@ -21,51 +19,25 @@ module Pio
         end
       end
 
-      # Message body of Port Status
-      class Body < BinData::Record
-        endian :big
+      open_flow_header version: 1,
+                       message_type: 12,
+                       message_length: 10
+      reason :reason
+      uint56 :padding
+      hide :padding
+      phy_port16 :desc
 
-        reason :reason
-        uint56 :padding
-        hide :padding
-        phy_port16 :desc
-      end
-
-      # OpenFlow 1.0 Flow Mod message format.
-      class Format < BinData::Record
-        extend OpenFlow::Format
-
-        header version: 1, message_type: 12
-        body :body
-
-        def reason
-          body.reason.to_sym
-        end
+      def reason
+        @format.reason.to_sym
       end
 
       attr_writer :datapath_id
 
       def desc
-        @desc ||= @format.body.desc.snapshot
+        @desc ||= @format.desc.snapshot
         @desc.instance_variable_set :@datapath_id, @datapath_id
         @desc
       end
-
-      # rubocop:disable MethodLength
-      def initialize(user_options = {})
-        header_options = parse_header_options(user_options)
-        body_options = if user_options.respond_to?(:fetch)
-                         user_options.delete :transaction_id
-                         user_options.delete :xid
-                         dpid = user_options[:dpid]
-                         user_options[:datapath_id] = dpid if dpid
-                         user_options
-                       else
-                         ''
-                       end
-        @format = Format.new(header: header_options, body: body_options)
-      end
-      # rubocop:enable MethodLength
     end
   end
 end

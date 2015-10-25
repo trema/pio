@@ -1,4 +1,4 @@
-require 'pio/open_flow10/flow_stats_reply'
+require 'pio/open_flow10/flow_stats/reply'
 
 describe Pio::OpenFlow10::FlowStats::Reply do
   describe '.read' do

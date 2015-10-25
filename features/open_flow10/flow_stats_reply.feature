@@ -10,7 +10,7 @@ Feature: Pio::FlowStats::Reply
       | field          | value |
       | ofp_version    |     1 |
       | message_type   |    17 |
-      | length         |    12 |
+      | message_length |    12 |
       | transaction_id |     0 |
       | xid            |     0 |
       | stats_type     | :flow |
@@ -31,7 +31,7 @@ Feature: Pio::FlowStats::Reply
       | field                                                       |                        value |
       | ofp_version                                                 |                            1 |
       | message_type                                                |                           17 |
-      | length                                                      |                          228 |
+      | message_length                                              |                          228 |
       | transaction_id                                              |                            6 |
       | xid                                                         |                            6 |
       | stats_type                                                  |                        :flow |

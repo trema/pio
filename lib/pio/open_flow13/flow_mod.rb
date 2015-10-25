@@ -2,7 +2,6 @@ require 'pio/open_flow'
 require 'pio/open_flow13/buffer_id'
 require 'pio/open_flow13/match'
 
-# Base module.
 module Pio
   module OpenFlow13
     # OpenFlow 1.3 FlowMod message parser and generator
@@ -103,57 +102,35 @@ module Pio
         end
       end
 
-      # OpenFlow 1.3 FlowMod message body
-      class Body < BinData::Record
-        extend OpenFlow::Flags
-        flags_16bit :flags,
-                    [:send_flow_rem,
-                     :check_overwrap,
-                     :reset_counts,
-                     :no_packet_counts,
-                     :no_byte_counts]
+      extend OpenFlow::Flags
 
-        endian :big
+      flags_16bit :flags,
+                  [:send_flow_rem,
+                   :check_overwrap,
+                   :reset_counts,
+                   :no_packet_counts,
+                   :no_byte_counts]
 
-        uint64 :cookie
-        uint64 :cookie_mask
-        uint8 :table_id
-        command :command
-        uint16 :idle_timeout
-        uint16 :hard_timeout
-        uint16 :priority, initial_value: 0xffff
-        buffer_id :buffer_id
-        out_port :out_port
-        out_group :out_group
-        flags :flags
-        string :padding, length: 2
-        hide :padding
-        oxm :match
-        instructions :instructions
-
-        def length
-          40 + match.length + instructions.length
-        end
-      end
-
-      # OpenFlow 1.3 FlowMod message format
-      class Format < BinData::Record
-        extend OpenFlow::Format
-
-        header version: 4, message_type: 14
-        body :body
-      end
-
-      body_option :actions
-      body_option :buffer_id
-      body_option :command
-      body_option :flags
-      body_option :hard_timeout
-      body_option :idle_timeout
-      body_option :instructions
-      body_option :match
-      body_option :priority
-      body_option :table_id
+      open_flow_header(version: 4,
+                       message_type: 14,
+                       message_length: lambda do
+                         48 + match.length + instructions.length
+                       end)
+      uint64 :cookie
+      uint64 :cookie_mask
+      uint8 :table_id
+      command :command
+      uint16 :idle_timeout
+      uint16 :hard_timeout
+      uint16 :priority, initial_value: 0xffff
+      buffer_id :buffer_id
+      out_port :out_port
+      out_group :out_group
+      flags :flags
+      string :padding, length: 2
+      hide :padding
+      oxm :match
+      instructions :instructions
     end
   end
 end
