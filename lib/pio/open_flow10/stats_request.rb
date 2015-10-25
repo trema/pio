@@ -1,3 +1,4 @@
+require 'pio/open_flow10/table_stats/request'
 require 'pio/open_flow/message'
 
 module Pio
@@ -8,7 +9,8 @@ module Pio
         TYPES = {
           description: OpenFlow10::DescriptionStats::Request,
           flow: OpenFlow10::FlowStats::Request,
-          aggregate: OpenFlow10::AggregateStats::Request
+          aggregate: OpenFlow10::AggregateStats::Request,
+          table: OpenFlow10::TableStats::Request
         }
 
         # Stats request format.
