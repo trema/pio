@@ -2,6 +2,7 @@
 
 ## develop (unreleased)
 ### New features
+* [#242](https://github.com/trema/pio/issues/242): Fix `Parser#read` to avoid fail in parsing unsupported eth\_type frame.
 * [#244](https://github.com/trema/pio/pull/244): Support ARP in `ExactMatch.new`.
 
 
