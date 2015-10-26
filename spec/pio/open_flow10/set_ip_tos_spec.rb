@@ -13,8 +13,8 @@ describe Pio::OpenFlow10::SetIpTos do
         Then { set_ip_tos.action_type == 8 }
       end
 
-      describe '#length' do
-        Then { set_ip_tos.length == 8 }
+      describe '#action_length' do
+        Then { set_ip_tos.action_length == 8 }
       end
 
       describe '#to_binary' do

@@ -17,8 +17,8 @@ describe Pio::OpenFlow10::SetTransportSourcePort do
         Then { set_transport_source_port.action_type == 9 }
       end
 
-      describe '#length' do
-        Then { set_transport_source_port.length == 8 }
+      describe '#action_length' do
+        Then { set_transport_source_port.action_length == 8 }
       end
 
       describe '#to_binary' do

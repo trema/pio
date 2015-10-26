@@ -8,8 +8,8 @@ Feature: Pio::OpenFlow10::StripVlanHeader
       """
     Then it should finish successfully
     And the action has the following fields and values:
-      | field       | value |
-      | action_type |     3 |
-      | length      |     8 |
+      | field         | value |
+      | action_type   |     3 |
+      | action_length |     8 |
 
 

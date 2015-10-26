@@ -10,7 +10,7 @@ Feature: Pio::OpenFlow10::SetVlanPriority
     And the action has the following fields and values:
       | field         | value |
       | action_type   |     2 |
-      | length        |     8 |
+      | action_length |     8 |
       | vlan_priority |     1 |
 
 

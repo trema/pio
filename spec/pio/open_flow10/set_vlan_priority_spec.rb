@@ -15,8 +15,8 @@ describe Pio::OpenFlow10::SetVlanPriority do
         Then { set_vlan_priority.action_type == 2 }
       end
 
-      describe '#length' do
-        Then { set_vlan_priority.length == 8 }
+      describe '#action_length' do
+        Then { set_vlan_priority.action_length == 8 }
       end
 
       describe '#to_binary' do

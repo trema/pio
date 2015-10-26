@@ -8,9 +8,9 @@ describe Pio::OpenFlow10::StripVlanHeader do
     Then { action_type == 3 }
   end
 
-  describe '#length' do
-    When(:length) { strip_vlan_header.length }
-    Then { length == 8 }
+  describe '#action_length' do
+    When(:action_length) { strip_vlan_header.action_length }
+    Then { action_length == 8 }
   end
 
   describe '#to_binary' do

@@ -49,7 +49,7 @@ module Pio
           type = BinData::Uint16be.read(tmp)
           begin
             action = ACTION_CLASS.fetch(type).read(tmp)
-            tmp = tmp[action.length..-1]
+            tmp = tmp[action.action_length..-1]
             actions << action
           rescue KeyError
             raise "action type #{type} is not supported."

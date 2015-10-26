@@ -8,9 +8,9 @@ Feature: Pio::OpenFlow10::SetTransportSourcePort
       """
     Then it should finish successfully
     And the action has the following fields and values:
-      | field       | value |
-      | action_type |     9 |
-      | length      |     8 |
-      | port        |   100 |
+      | field         | value |
+      | action_type   |     9 |
+      | action_length |     8 |
+      | port          |   100 |
 
 

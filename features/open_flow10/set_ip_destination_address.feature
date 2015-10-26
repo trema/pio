@@ -8,9 +8,9 @@ Feature: Pio::OpenFlow10::SetIpDestinationAddress
       """
     Then it should finish successfully
     And the action has the following fields and values:
-      | field       |       value |
-      | action_type |           7 |
-      | length      |           8 |
-      | ip_address  | 192.168.0.1 |
+      | field         |       value |
+      | action_type   |           7 |
+      | action_length |           8 |
+      | ip_address    | 192.168.0.1 |
 
 

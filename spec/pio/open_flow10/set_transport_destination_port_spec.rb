@@ -17,8 +17,8 @@ describe Pio::OpenFlow10::SetTransportDestinationPort do
         Then { set_transport_destination_port.action_type == 10 }
       end
 
-      describe '#length' do
-        Then { set_transport_destination_port.length == 8 }
+      describe '#action_length' do
+        Then { set_transport_destination_port.action_length == 8 }
       end
 
       describe '#to_binary' do

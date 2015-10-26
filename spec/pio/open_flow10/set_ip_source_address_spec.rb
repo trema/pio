@@ -15,8 +15,8 @@ describe Pio::OpenFlow10::SetIpSourceAddress do
         Then { set_ip_source_addr.action_type == 6 }
       end
 
-      describe '#length' do
-        Then { set_ip_source_addr.length == 8 }
+      describe '#action_length' do
+        Then { set_ip_source_addr.action_length == 8 }
       end
 
       describe '#to_binary' do

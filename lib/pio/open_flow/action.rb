@@ -33,11 +33,6 @@ module Pio
         @format = self.class.const_get(:Format).new(user_options)
       end
 
-      # FIXME: delete this method
-      def length
-        @format.action_length
-      end
-
       def to_binary
         @format.to_binary_s
       end

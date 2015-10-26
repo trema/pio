@@ -15,8 +15,8 @@ describe Pio::OpenFlow10::SetVlanVid do
         Then { set_vlan_vid.action_type == 1 }
       end
 
-      describe '#length' do
-        Then { set_vlan_vid.length == 8 }
+      describe '#action_length' do
+        Then { set_vlan_vid.action_length == 8 }
       end
 
       describe '#to_binary' do

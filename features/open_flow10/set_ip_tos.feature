@@ -10,7 +10,7 @@ Feature: Pio::OpenFlow10::SetIpTos
     And the action has the following fields and values:
       | field           | value |
       | action_type     |     8 |
-      | length          |     8 |
+      | action_length   |     8 |
       | type_of_service |   252 |
 
 

@@ -17,8 +17,8 @@ describe Pio::OpenFlow10::Enqueue do
         Then { enqueue.action_type == 11 }
       end
 
-      describe '#length' do
-        Then { enqueue.length == 16 }
+      describe '#action_length' do
+        Then { enqueue.action_length == 16 }
       end
 
       describe '#to_binary' do

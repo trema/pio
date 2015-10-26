@@ -8,10 +8,10 @@ Feature: Pio::OpenFlow10::Enqueue
       """
     Then it should finish successfully
     And the action has the following fields and values:
-      | field       | value |
-      | action_type |    11 |
-      | length      |    16 |
-      | port        |     1 |
-      | queue_id    |     2 |
+      | field         | value |
+      | action_type   |    11 |
+      | action_length |    16 |
+      | port          |     1 |
+      | queue_id      |     2 |
 
 
