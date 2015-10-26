@@ -1,8 +1,8 @@
 require 'pio/open_flow10/set_vlan_priority'
 
-describe Pio::SetVlanPriority do
+describe Pio::OpenFlow10::SetVlanPriority do
   describe '.new' do
-    When(:set_vlan_priority) { Pio::SetVlanPriority.new(priority) }
+    When(:set_vlan_priority) { Pio::OpenFlow10::SetVlanPriority.new(priority) }
 
     context 'with 3' do
       When(:priority) { 3 }
@@ -15,8 +15,8 @@ describe Pio::SetVlanPriority do
         Then { set_vlan_priority.action_type == 2 }
       end
 
-      describe '#length' do
-        Then { set_vlan_priority.length == 8 }
+      describe '#action_length' do
+        Then { set_vlan_priority.action_length == 8 }
       end
 
       describe '#to_binary' do

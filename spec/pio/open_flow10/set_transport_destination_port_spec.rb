@@ -1,9 +1,9 @@
 require 'pio/open_flow10/set_transport_port'
 
-describe Pio::SetTransportDestinationPort do
+describe Pio::OpenFlow10::SetTransportDestinationPort do
   describe '.new' do
     When(:set_transport_destination_port) do
-      Pio::SetTransportDestinationPort.new(port)
+      Pio::OpenFlow10::SetTransportDestinationPort.new(port)
     end
 
     context 'with 100' do
@@ -17,8 +17,8 @@ describe Pio::SetTransportDestinationPort do
         Then { set_transport_destination_port.action_type == 10 }
       end
 
-      describe '#length' do
-        Then { set_transport_destination_port.length == 8 }
+      describe '#action_length' do
+        Then { set_transport_destination_port.action_length == 8 }
       end
 
       describe '#to_binary' do

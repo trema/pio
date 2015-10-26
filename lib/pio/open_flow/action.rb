@@ -17,6 +17,12 @@ module Pio
         end
       end
 
+      def self.read(raw_data)
+        action = allocate
+        action.instance_variable_set :@format, const_get(:Format).read(raw_data)
+        action
+      end
+
       def self.method_missing(method, *args, &block)
         const_get(:Format).__send__ method, *args, &block
         return if method == :endian || method == :virtual
