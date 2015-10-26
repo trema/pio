@@ -5,6 +5,9 @@
 * [#250](https://github.com/trema/pio/pull/250): Add Flow Removed message parser.
 * [#251](https://github.com/trema/pio/pull/251): Add Table Stats Request message generator.
 
+### Changes
+* [#265](https://github.com/trema/pio/pull/265): Rename `SetIpTos` -> `SetTos`.
+
 
 ## 0.27.2 (10/25/2015)
 ### New features

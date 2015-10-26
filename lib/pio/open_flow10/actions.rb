@@ -3,7 +3,7 @@ require 'pio/open_flow10/enqueue'
 require 'pio/open_flow10/send_out_port'
 require 'pio/open_flow10/set_ether_address'
 require 'pio/open_flow10/set_ip_address'
-require 'pio/open_flow10/set_ip_tos'
+require 'pio/open_flow10/set_tos'
 require 'pio/open_flow10/set_transport_port'
 require 'pio/open_flow10/set_vlan_priority'
 require 'pio/open_flow10/set_vlan_vid'
@@ -23,7 +23,7 @@ module Pio
         5 => Pio::OpenFlow10::SetEtherDestinationAddress,
         6 => Pio::OpenFlow10::SetIpSourceAddress,
         7 => Pio::OpenFlow10::SetIpDestinationAddress,
-        8 => Pio::OpenFlow10::SetIpTos,
+        8 => Pio::OpenFlow10::SetTos,
         9 => Pio::OpenFlow10::SetTransportSourcePort,
         10 => Pio::OpenFlow10::SetTransportDestinationPort,
         11 => Pio::OpenFlow10::Enqueue,

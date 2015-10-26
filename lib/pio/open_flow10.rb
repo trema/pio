@@ -28,6 +28,7 @@ require 'pio/open_flow10/table_stats/request'
 require 'pio/open_flow10/nicira_resubmit'
 require 'pio/open_flow10/nicira_resubmit_table'
 require 'pio/open_flow10/send_out_port'
+require 'pio/open_flow10/set_tos'
 require 'pio/open_flow10/set_vlan_priority'
 require 'pio/open_flow10/set_vlan_vid'
 
