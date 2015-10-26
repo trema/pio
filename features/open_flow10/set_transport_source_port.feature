@@ -1,10 +1,10 @@
 @open_flow10
-Feature: Pio::SetTransportSourcePort
+Feature: Pio::OpenFlow10::SetTransportSourcePort
 
   Scenario: new(100)
     When I try to create an OpenFlow action with:
       """
-      Pio::SetTransportSourcePort.new(100)
+      Pio::OpenFlow10::SetTransportSourcePort.new(100)
       """
     Then it should finish successfully
     And the action has the following fields and values:

@@ -281,7 +281,7 @@ describe Pio::OpenFlow10::PacketOut do
           transaction_id: 0x16,
           buffer_id: 0xffffffff,
           in_port: 0xffff,
-          actions: Pio::SetTransportSourcePort.new(100),
+          actions: Pio::OpenFlow10::SetTransportSourcePort.new(100),
           raw_data: data_dump
         }
       end
@@ -289,7 +289,7 @@ describe Pio::OpenFlow10::PacketOut do
       Then { result.message_length == 0x58 }
       Then { result.actions_len == 0x8 }
       Then { result.actions.length == 1 }
-      Then { result.actions[0].is_a? Pio::SetTransportSourcePort }
+      Then { result.actions[0].is_a? Pio::OpenFlow10::SetTransportSourcePort }
       Then { result.actions[0].port == 100 }
     end
 
@@ -299,7 +299,7 @@ describe Pio::OpenFlow10::PacketOut do
           transaction_id: 0x16,
           buffer_id: 0xffffffff,
           in_port: 0xffff,
-          actions: Pio::SetTransportDestinationPort.new(100),
+          actions: Pio::OpenFlow10::SetTransportDestinationPort.new(100),
           raw_data: data_dump
         }
       end
@@ -307,7 +307,7 @@ describe Pio::OpenFlow10::PacketOut do
       Then { result.message_length == 0x58 }
       Then { result.actions_len == 0x8 }
       Then { result.actions.length == 1 }
-      Then { result.actions[0].is_a? Pio::SetTransportDestinationPort }
+      Then { result.actions[0].is_a? Pio::OpenFlow10::SetTransportDestinationPort }
       Then { result.actions[0].port == 100 }
     end
 
