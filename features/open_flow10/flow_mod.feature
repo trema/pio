@@ -76,7 +76,7 @@ Feature: Pio::FlowMod
       | out_port                               |                                                 65535 |
       | flags                                  |                                      [:send_flow_rem] |
       | actions.length                         |                                                    12 |
-      | actions.first.class                    |                                       Pio::SetVlanVid |
+      | actions.first.class                    |                           Pio::OpenFlow10::SetVlanVid |
       | actions.first.vlan_id                  |                                                    10 |
 
   Scenario: read (Flow Mod Modify)
@@ -113,7 +113,7 @@ Feature: Pio::FlowMod
       | out_port                               |                                                 65535 |
       | flags                                  |                                      [:send_flow_rem] |
       | actions.length                         |                                                    12 |
-      | actions.first.class                    |                                       Pio::SetVlanVid |
+      | actions.first.class                    |                           Pio::OpenFlow10::SetVlanVid |
       | actions.first.vlan_id                  |                                                    10 |
 
   Scenario: read (Flow Mod Modify Strict)
@@ -150,7 +150,7 @@ Feature: Pio::FlowMod
       | out_port                               |                                                 65535 |
       | flags                                  |                                      [:send_flow_rem] |
       | actions.length                         |                                                    12 |
-      | actions.first.class                    |                                       Pio::SetVlanVid |
+      | actions.first.class                    |                           Pio::OpenFlow10::SetVlanVid |
       | actions.first.vlan_id                  |                                                    10 |
     
   Scenario: read (Flow Mod Delete)

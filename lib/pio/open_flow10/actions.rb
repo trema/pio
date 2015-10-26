@@ -16,7 +16,7 @@ module Pio
     class Actions < BinData::Primitive
       ACTION_CLASS = {
         0 => Pio::OpenFlow10::SendOutPort,
-        1 => Pio::SetVlanVid,
+        1 => Pio::OpenFlow10::SetVlanVid,
         2 => Pio::SetVlanPriority,
         3 => Pio::StripVlanHeader,
         4 => Pio::SetEtherSourceAddress,

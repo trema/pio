@@ -137,7 +137,7 @@ describe Pio::OpenFlow10::PacketOut do
           transaction_id: 0x16,
           buffer_id: 0xffffffff,
           in_port: 0xffff,
-          actions: Pio::SetVlanVid.new(10),
+          actions: Pio::OpenFlow10::SetVlanVid.new(10),
           raw_data: data_dump
         }
       end
@@ -145,7 +145,7 @@ describe Pio::OpenFlow10::PacketOut do
       Then { result.message_length == 0x58 }
       Then { result.actions_len == 0x8 }
       Then { result.actions.length == 1 }
-      Then { result.actions[0].is_a? Pio::SetVlanVid }
+      Then { result.actions[0].is_a? Pio::OpenFlow10::SetVlanVid }
       Then { result.actions[0].vlan_id == 10 }
     end
 
@@ -336,7 +336,7 @@ describe Pio::OpenFlow10::PacketOut do
           buffer_id: 0xffffffff,
           in_port: 0xffff,
           actions: [Pio::OpenFlow10::SendOutPort.new(2),
-                    Pio::SetVlanVid.new(10)],
+                    Pio::OpenFlow10::SetVlanVid.new(10)],
           raw_data: data_dump
         }
       end
@@ -347,7 +347,7 @@ describe Pio::OpenFlow10::PacketOut do
       Then { result.actions[0].is_a? Pio::OpenFlow10::SendOutPort }
       Then { result.actions[0].port == 2 }
       Then { result.actions[0].max_length == 2**16 - 1 }
-      Then { result.actions[1].is_a? Pio::SetVlanVid }
+      Then { result.actions[1].is_a? Pio::OpenFlow10::SetVlanVid }
       Then { result.actions[1].vlan_id == 10 }
     end
   end
