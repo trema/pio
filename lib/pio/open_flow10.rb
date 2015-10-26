@@ -26,6 +26,8 @@ require 'pio/open_flow10/table_stats/request'
 
 # Actions
 require 'pio/open_flow10/send_out_port'
+require 'pio/open_flow10/nicira_resubmit'
+require 'pio/open_flow10/nicira_resubmit_table'
 
 # Misc.
 require 'pio/open_flow10/exact_match'
