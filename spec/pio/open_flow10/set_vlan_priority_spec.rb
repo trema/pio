@@ -1,8 +1,8 @@
 require 'pio/open_flow10/set_vlan_priority'
 
-describe Pio::SetVlanPriority do
+describe Pio::OpenFlow10::SetVlanPriority do
   describe '.new' do
-    When(:set_vlan_priority) { Pio::SetVlanPriority.new(priority) }
+    When(:set_vlan_priority) { Pio::OpenFlow10::SetVlanPriority.new(priority) }
 
     context 'with 3' do
       When(:priority) { 3 }

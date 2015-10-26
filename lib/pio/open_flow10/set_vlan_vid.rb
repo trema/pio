@@ -1,5 +1,4 @@
 require 'pio/open_flow/action'
-require 'pio/open_flow10/set_vlan'
 
 module Pio
   module OpenFlow10

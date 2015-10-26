@@ -26,6 +26,8 @@ require 'pio/open_flow10/table_stats/request'
 
 # Actions
 require 'pio/open_flow10/send_out_port'
+require 'pio/open_flow10/set_vlan_priority'
+require 'pio/open_flow10/set_vlan_vid'
 
 # Misc.
 require 'pio/open_flow10/exact_match'
