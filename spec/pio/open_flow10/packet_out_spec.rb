@@ -317,7 +317,7 @@ describe Pio::OpenFlow10::PacketOut do
           transaction_id: 0x16,
           buffer_id: 0xffffffff,
           in_port: 0xffff,
-          actions: Pio::Enqueue.new(port: 1, queue_id: 2),
+          actions: Pio::OpenFlow10::Enqueue.new(port: 1, queue_id: 2),
           raw_data: data_dump
         }
       end
@@ -325,7 +325,7 @@ describe Pio::OpenFlow10::PacketOut do
       Then { result.message_length == 0x60 }
       Then { result.actions_len == 0x10 }
       Then { result.actions.length == 1 }
-      Then { result.actions[0].is_a? Pio::Enqueue }
+      Then { result.actions[0].is_a? Pio::OpenFlow10::Enqueue }
       Then { result.actions[0].port == 1 }
       Then { result.actions[0].queue_id == 2 }
     end

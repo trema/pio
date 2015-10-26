@@ -26,7 +26,7 @@ module Pio
         8 => Pio::OpenFlow10::SetIpTos,
         9 => Pio::OpenFlow10::SetTransportSourcePort,
         10 => Pio::OpenFlow10::SetTransportDestinationPort,
-        11 => Pio::Enqueue,
+        11 => Pio::OpenFlow10::Enqueue,
         0xffff => Pio::VendorAction
       }
 
