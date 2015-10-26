@@ -18,7 +18,7 @@ module Pio
         0 => Pio::OpenFlow10::SendOutPort,
         1 => Pio::OpenFlow10::SetVlanVid,
         2 => Pio::OpenFlow10::SetVlanPriority,
-        3 => Pio::StripVlanHeader,
+        3 => Pio::OpenFlow10::StripVlanHeader,
         4 => Pio::SetEtherSourceAddress,
         5 => Pio::SetEtherDestinationAddress,
         6 => Pio::SetIpSourceAddress,

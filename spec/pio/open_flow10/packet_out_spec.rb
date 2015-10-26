@@ -173,7 +173,7 @@ describe Pio::OpenFlow10::PacketOut do
           transaction_id: 0x16,
           buffer_id: 0xffffffff,
           in_port: 0xffff,
-          actions: Pio::StripVlanHeader.new,
+          actions: Pio::OpenFlow10::StripVlanHeader.new,
           raw_data: data_dump
         }
       end
@@ -181,7 +181,7 @@ describe Pio::OpenFlow10::PacketOut do
       Then { result.message_length == 0x58 }
       Then { result.actions_len == 0x8 }
       Then { result.actions.length == 1 }
-      Then { result.actions[0].is_a? Pio::StripVlanHeader }
+      Then { result.actions[0].is_a? Pio::OpenFlow10::StripVlanHeader }
     end
 
     context 'with a SetEtherSourceAddress action' do

@@ -6,8 +6,7 @@ module Pio
   module OpenFlow10
     # An action to output a packet to a port.
     class SendOutPort < OpenFlow::Action
-      action_header action_type: 0,
-                    action_length: 8
+      action_header action_type: 0, action_length: 8
       port16 :port
       uint16 :max_length, initial_value: 2**16 - 1
 

@@ -1,7 +1,7 @@
 require 'pio/open_flow10/strip_vlan_header'
 
-describe Pio::StripVlanHeader do
-  Given(:strip_vlan_header) { Pio::StripVlanHeader.new }
+describe Pio::OpenFlow10::StripVlanHeader do
+  Given(:strip_vlan_header) { Pio::OpenFlow10::StripVlanHeader.new }
 
   describe '#action_type' do
     When(:action_type) { strip_vlan_header.action_type }
