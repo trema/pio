@@ -23,7 +23,7 @@ module Pio
         5 => Pio::OpenFlow10::SetEtherDestinationAddress,
         6 => Pio::OpenFlow10::SetIpSourceAddress,
         7 => Pio::OpenFlow10::SetIpDestinationAddress,
-        8 => Pio::SetIpTos,
+        8 => Pio::OpenFlow10::SetIpTos,
         9 => Pio::SetTransportSourcePort,
         10 => Pio::SetTransportDestinationPort,
         11 => Pio::Enqueue,

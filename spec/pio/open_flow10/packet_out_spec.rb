@@ -263,7 +263,7 @@ describe Pio::OpenFlow10::PacketOut do
           transaction_id: 0x16,
           buffer_id: 0xffffffff,
           in_port: 0xffff,
-          actions: Pio::SetIpTos.new(32),
+          actions: Pio::OpenFlow10::SetIpTos.new(32),
           raw_data: data_dump
         }
       end
@@ -271,7 +271,7 @@ describe Pio::OpenFlow10::PacketOut do
       Then { result.message_length == 0x58 }
       Then { result.actions_len == 0x8 }
       Then { result.actions.length == 1 }
-      Then { result.actions[0].is_a? Pio::SetIpTos }
+      Then { result.actions[0].is_a? Pio::OpenFlow10::SetIpTos }
       Then { result.actions[0].type_of_service == 32 }
     end
 
