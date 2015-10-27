@@ -1,4 +1,5 @@
 require 'pio/open_flow10/table_stats/request'
+require 'pio/open_flow10/port_stats/request'
 require 'pio/open_flow/message'
 
 module Pio
@@ -10,7 +11,8 @@ module Pio
           description: OpenFlow10::DescriptionStats::Request,
           flow: OpenFlow10::FlowStats::Request,
           aggregate: OpenFlow10::AggregateStats::Request,
-          table: OpenFlow10::TableStats::Request
+          table: OpenFlow10::TableStats::Request,
+          port: OpenFlow10::PortStats::Request
         }
 
         # Stats request format.

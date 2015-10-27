@@ -18,7 +18,7 @@ module Pio
       [:Barrier, :Echo, :Features, :FlowMod, :Hello, :Match,
        :PacketIn, :FlowRemoved, :PacketOut, :SendOutPort, :PortStatus,
        :Stats, :FlowStats, :DescriptionStats, :AggregateStats,
-       :TableStats, :Error, :NiciraResubmit,
+       :TableStats, :PortStats, :Error, :NiciraResubmit,
        :NiciraResubmitTable].each do |each|
         set_message_class_name each, version
         @version = version.to_s
