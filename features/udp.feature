@@ -18,8 +18,8 @@ Feature: Pio::Udp
     | ip_ttl                 |               250 |
     | ip_protocol            |                17 |
     | ip_header_checksum     |              6027 |
-    | ip_source_address      |           0.0.0.0 |
-    | ip_destination_address |   255.255.255.255 |
+    | source_ip_address      |           0.0.0.0 |
+    | destination_ip_address |   255.255.255.255 |
     | ip_option              |                   |
     | udp_source_port        |                68 |
     | udp_destination_port   |                67 |

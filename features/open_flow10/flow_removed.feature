@@ -16,9 +16,9 @@ Feature: Pio::FlowRemoved
       | match.wildcards.fetch(:destination_mac_address)    |    true |
       | match.wildcards.fetch(:source_mac_address)         |    true |
       | match.wildcards.fetch(:ether_type)                 |    true |
-      | match.wildcards.fetch(:ip_destination_address_all) |    true |
+      | match.wildcards.fetch(:destination_ip_address_all) |    true |
       | match.wildcards.fetch(:ip_protocol)                |    true |
-      | match.wildcards.fetch(:ip_source_address_all)      |    true |
+      | match.wildcards.fetch(:source_ip_address_all)      |    true |
       | match.wildcards.fetch(:tos)                        |    true |
       | match.wildcards.fetch(:transport_destination_port) |    true |
       | match.wildcards.fetch(:transport_source_port)      |    true |

@@ -35,8 +35,8 @@ Feature: Pio::FlowMod
       | match.wildcards.key?(:ip_protocol)                | true  |
       | match.wildcards.key?(:transport_source_port)      | true  |
       | match.wildcards.key?(:transport_destination_port) | true  |
-      | match.wildcards.key?(:ip_source_address_all)      | true  |
-      | match.wildcards.key?(:ip_destination_address_all) | true  |
+      | match.wildcards.key?(:source_ip_address_all)      | true  |
+      | match.wildcards.key?(:destination_ip_address_all) | true  |
       | match.wildcards.key?(:vlan_priority)              | true  |
       | match.wildcards.key?(:tos)                        | true  |
       | out_port                                          | 0     |
@@ -52,7 +52,7 @@ Feature: Pio::FlowMod
       | message_length                         |                                                   192 |
       | transaction_id                         |                                                     0 |
       | xid                                    |                                                     0 |
-      | match.wildcards                        | {:ip_source_address=>24, :ip_destination_address=>24} |
+      | match.wildcards                        | {:source_ip_address=>24, :destination_ip_address=>24} |
       | match.in_port                          |                                                     1 |
       | match.source_mac_address               |                                     00:00:00:00:00:0a |
       | match.destination_mac_address          |                                     00:00:00:00:00:14 |
@@ -61,10 +61,10 @@ Feature: Pio::FlowMod
       | match.ether_type                       |                                                  2048 |
       | match.tos                              |                                                     0 |
       | match.ip_protocol                      |                                                     1 |
-      | match.ip_source_address                |                                              10.0.0.0 |
-      | match.ip_source_address.prefixlen      |                                                     8 |
-      | match.ip_destination_address           |                                              20.0.0.0 |
-      | match.ip_destination_address.prefixlen |                                                     8 |
+      | match.source_ip_address                |                                              10.0.0.0 |
+      | match.source_ip_address.prefixlen      |                                                     8 |
+      | match.destination_ip_address           |                                              20.0.0.0 |
+      | match.destination_ip_address.prefixlen |                                                     8 |
       | match.transport_source_port            |                                                     8 |
       | match.transport_destination_port       |                                                     0 |
       | cookie                                 |                                                     0 |
@@ -89,7 +89,7 @@ Feature: Pio::FlowMod
       | message_length                         |                                                   192 |
       | transaction_id                         |                                                     0 |
       | xid                                    |                                                     0 |
-      | match.wildcards                        | {:ip_source_address=>24, :ip_destination_address=>24} |
+      | match.wildcards                        | {:source_ip_address=>24, :destination_ip_address=>24} |
       | match.in_port                          |                                                     1 |
       | match.source_mac_address               |                                     00:00:00:00:00:0a |
       | match.destination_mac_address          |                                     00:00:00:00:00:14 |
@@ -98,10 +98,10 @@ Feature: Pio::FlowMod
       | match.ether_type                       |                                                  2048 |
       | match.tos                              |                                                     0 |
       | match.ip_protocol                      |                                                     1 |
-      | match.ip_source_address                |                                              10.0.0.0 |
-      | match.ip_source_address.prefixlen      |                                                     8 |
-      | match.ip_destination_address           |                                              20.0.0.0 |
-      | match.ip_destination_address.prefixlen |                                                     8 |
+      | match.source_ip_address                |                                              10.0.0.0 |
+      | match.source_ip_address.prefixlen      |                                                     8 |
+      | match.destination_ip_address           |                                              20.0.0.0 |
+      | match.destination_ip_address.prefixlen |                                                     8 |
       | match.transport_source_port            |                                                     8 |
       | match.transport_destination_port       |                                                     0 |
       | cookie                                 |                                                     0 |
@@ -126,7 +126,7 @@ Feature: Pio::FlowMod
       | message_length                         |                                                   192 |
       | transaction_id                         |                                                     0 |
       | xid                                    |                                                     0 |
-      | match.wildcards                        | {:ip_source_address=>24, :ip_destination_address=>24} |
+      | match.wildcards                        | {:source_ip_address=>24, :destination_ip_address=>24} |
       | match.in_port                          |                                                     1 |
       | match.source_mac_address               |                                     00:00:00:00:00:0a |
       | match.destination_mac_address          |                                     00:00:00:00:00:14 |
@@ -135,10 +135,10 @@ Feature: Pio::FlowMod
       | match.ether_type                       |                                                  2048 |
       | match.tos                              |                                                     0 |
       | match.ip_protocol                      |                                                     1 |
-      | match.ip_source_address                |                                              10.0.0.0 |
-      | match.ip_source_address.prefixlen      |                                                     8 |
-      | match.ip_destination_address           |                                              20.0.0.0 |
-      | match.ip_destination_address.prefixlen |                                                     8 |
+      | match.source_ip_address                |                                              10.0.0.0 |
+      | match.source_ip_address.prefixlen      |                                                     8 |
+      | match.destination_ip_address           |                                              20.0.0.0 |
+      | match.destination_ip_address.prefixlen |                                                     8 |
       | match.transport_source_port            |                                                     8 |
       | match.transport_destination_port       |                                                     0 |
       | cookie                                 |                                                     0 |
@@ -163,7 +163,7 @@ Feature: Pio::FlowMod
       | message_length                         |                                                    72 |
       | transaction_id                         |                                                     0 |
       | xid                                    |                                                     0 |
-      | match.wildcards                        | {:ip_source_address=>24, :ip_destination_address=>24} |
+      | match.wildcards                        | {:source_ip_address=>24, :destination_ip_address=>24} |
       | match.in_port                          |                                                     1 |
       | match.source_mac_address               |                                     00:00:00:00:00:0a |
       | match.destination_mac_address          |                                     00:00:00:00:00:00 |
@@ -172,10 +172,10 @@ Feature: Pio::FlowMod
       | match.ether_type                       |                                                  2048 |
       | match.tos                              |                                                     0 |
       | match.ip_protocol                      |                                                     1 |
-      | match.ip_source_address                |                                              10.0.0.0 |
-      | match.ip_source_address.prefixlen      |                                                     8 |
-      | match.ip_destination_address           |                                              20.0.0.0 |
-      | match.ip_destination_address.prefixlen |                                                     8 |
+      | match.source_ip_address                |                                              10.0.0.0 |
+      | match.source_ip_address.prefixlen      |                                                     8 |
+      | match.destination_ip_address           |                                              20.0.0.0 |
+      | match.destination_ip_address.prefixlen |                                                     8 |
       | match.transport_source_port            |                                                     8 |
       | match.transport_destination_port       |                                                     0 |
       | cookie                                 |                                                     0 |
@@ -198,7 +198,7 @@ Feature: Pio::FlowMod
       | message_length                         |                                                    72 |
       | transaction_id                         |                                                     0 |
       | xid                                    |                                                     0 |
-      | match.wildcards                        | {:ip_source_address=>24, :ip_destination_address=>24} |
+      | match.wildcards                        | {:source_ip_address=>24, :destination_ip_address=>24} |
       | match.in_port                          |                                                     1 |
       | match.source_mac_address               |                                     00:00:00:00:00:0a |
       | match.destination_mac_address          |                                     00:00:00:00:00:14 |
@@ -207,10 +207,10 @@ Feature: Pio::FlowMod
       | match.ether_type                       |                                                  2048 |
       | match.tos                              |                                                     0 |
       | match.ip_protocol                      |                                                     1 |
-      | match.ip_source_address                |                                              10.0.0.0 |
-      | match.ip_source_address.prefixlen      |                                                     8 |
-      | match.ip_destination_address           |                                              20.0.0.0 |
-      | match.ip_destination_address.prefixlen |                                                     8 |
+      | match.source_ip_address                |                                              10.0.0.0 |
+      | match.source_ip_address.prefixlen      |                                                     8 |
+      | match.destination_ip_address           |                                              20.0.0.0 |
+      | match.destination_ip_address.prefixlen |                                                     8 |
       | match.transport_source_port            |                                                     8 |
       | match.transport_destination_port       |                                                     0 |
       | cookie                                 |                                                     1 |

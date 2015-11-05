@@ -18,25 +18,25 @@ module Pio
           ip_protocol: 1 << 5,
           transport_source_port: 1 << 6,
           transport_destination_port: 1 << 7,
-          ip_source_address: 0,
-          ip_source_address0: 1 << 8,
-          ip_source_address1: 1 << 9,
-          ip_source_address2: 1 << 10,
-          ip_source_address3: 1 << 11,
-          ip_source_address4: 1 << 12,
-          ip_source_address_all: 1 << 13,
-          ip_destination_address: 0,
-          ip_destination_address0: 1 << 14,
-          ip_destination_address1: 1 << 15,
-          ip_destination_address2: 1 << 16,
-          ip_destination_address3: 1 << 17,
-          ip_destination_address4: 1 << 18,
-          ip_destination_address_all: 1 << 19,
+          source_ip_address: 0,
+          source_ip_address0: 1 << 8,
+          source_ip_address1: 1 << 9,
+          source_ip_address2: 1 << 10,
+          source_ip_address3: 1 << 11,
+          source_ip_address4: 1 << 12,
+          source_ip_address_all: 1 << 13,
+          destination_ip_address: 0,
+          destination_ip_address0: 1 << 14,
+          destination_ip_address1: 1 << 15,
+          destination_ip_address2: 1 << 16,
+          destination_ip_address3: 1 << 17,
+          destination_ip_address4: 1 << 18,
+          destination_ip_address_all: 1 << 19,
           vlan_priority: 1 << 20,
           tos: 1 << 21
         }
-        NW_FLAGS = [:ip_source_address, :ip_destination_address]
-        FLAGS = BITS.keys.select { |each| !(/^ip_(source|destination)/=~ each) }
+        NW_FLAGS = [:source_ip_address, :destination_ip_address]
+        FLAGS = BITS.keys.select { |each| !(/^(source|destination)_ip/=~ each) }
 
         endian :big
 
@@ -46,7 +46,7 @@ module Pio
         def get
           BITS.each_with_object(Hash.new(0)) do |(key, bit), memo|
             next if flags & bit == 0
-            if /(ip_source_address|ip_destination_address)(\d)/=~ key
+            if /(source_ip_address|destination_ip_address)(\d)/=~ key
               memo[$LAST_MATCH_INFO[1].to_sym] |= 1 << $LAST_MATCH_INFO[2].to_i
             else
               memo[key] = true
@@ -57,23 +57,23 @@ module Pio
         def set(params)
           self.flags = params.inject(0) do |memo, (key, val)|
             memo | case key
-                   when :ip_source_address, :ip_destination_address
+                   when :source_ip_address, :destination_ip_address
                      (params.fetch(key) & 31) <<
-                       (key == :ip_source_address ? 8 : 14)
+                       (key == :source_ip_address ? 8 : 14)
                    else
                      val ? BITS.fetch(key) : 0
                    end
           end
         end
 
-        def ip_source_address
-          get.fetch(:ip_source_address)
+        def source_ip_address
+          get.fetch(:source_ip_address)
         rescue KeyError
           0
         end
 
-        def ip_destination_address
-          get.fetch(:ip_destination_address)
+        def destination_ip_address
+          get.fetch(:destination_ip_address)
         rescue KeyError
           0
         end
@@ -117,10 +117,10 @@ module Pio
         uint8 :ip_protocol
         uint16 :padding2
         hide :padding2
-        match_ip_address :ip_source_address,
-                         bitcount: -> { wildcards.ip_source_address }
-        match_ip_address :ip_destination_address,
-                         bitcount: -> { wildcards.ip_destination_address }
+        match_ip_address :source_ip_address,
+                         bitcount: -> { wildcards.source_ip_address }
+        match_ip_address :destination_ip_address,
+                         bitcount: -> { wildcards.destination_ip_address }
         uint16 :transport_source_port
         uint16 :transport_destination_port
       end

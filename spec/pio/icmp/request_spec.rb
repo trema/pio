@@ -9,8 +9,8 @@ describe Pio::Icmp do
     Pio::Icmp::Request.new(
       destination_mac: '24:db:ac:41:e5:5b',
       source_mac: '74:e5:0b:2a:18:f8',
-      ip_source_address: '192.168.1.101',
-      ip_destination_address: '8.8.8.8',
+      source_ip_address: '192.168.1.101',
+      destination_ip_address: '8.8.8.8',
       identifier: 0x123,
       sequence_number: 0x321,
       echo_data: 'abcdefghijklmnopqrstuvwabcdefghi'
@@ -29,8 +29,8 @@ describe Pio::Icmp::Request, '.new' do
       Pio::Icmp::Request.new(
         destination_mac: '24:db:ac:41:e5:5b',
         source_mac: '74:e5:0b:2a:18:f8',
-        ip_source_address: '192.168.1.101',
-        ip_destination_address: '8.8.8.8',
+        source_ip_address: '192.168.1.101',
+        destination_ip_address: '8.8.8.8',
         identifier: 0x123,
         sequence_number: 0x321,
         echo_data: 'abcdefghijklmnopqrstuvwabcdefghi'
@@ -95,8 +95,8 @@ describe Pio::Icmp::Request, '.new' do
       Pio::Icmp::Request.new(
         destination_mac: '24:db:ac:41:e5:5b',
         source_mac: '74:e5:0b:2a:18:f8',
-        ip_source_address: '192.168.1.101',
-        ip_destination_address: '8.8.8.8',
+        source_ip_address: '192.168.1.101',
+        destination_ip_address: '8.8.8.8',
         identifier: 0x123,
         sequence_number: 0x321
       )

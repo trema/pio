@@ -24,17 +24,17 @@ module Pio
         Mac.new(@options[:destination_mac] || BROADCAST_MAC_ADDRESS)
       end
 
-      def ip_source_address
-        IPv4Address.new(@options[:ip_source_address])
+      def source_ip_address
+        IPv4Address.new(@options[:source_ip_address])
       end
 
-      def ip_destination_address
-        IPv4Address.new(@options[:ip_destination_address])
+      def destination_ip_address
+        IPv4Address.new(@options[:destination_ip_address])
       end
 
       def server_identifier
         IPv4Address.new(
-          @options[:server_identifier] || ip_source_address
+          @options[:server_identifier] || source_ip_address
         )
       end
 

@@ -11,8 +11,8 @@ module Pio
 
       mandatory_option :source_mac
       mandatory_option :destination_mac
-      mandatory_option :ip_source_address
-      mandatory_option :ip_destination_address
+      mandatory_option :source_ip_address
+      mandatory_option :destination_ip_address
       mandatory_option :type
       option :subnet_mask
       option :renewal_time_value
@@ -29,8 +29,8 @@ module Pio
         {
           destination_mac: destination_mac,
           source_mac: source_mac,
-          ip_destination_address: ip_destination_address,
-          ip_source_address: ip_source_address,
+          destination_ip_address: destination_ip_address,
+          source_ip_address: source_ip_address,
           udp_source_port: BOOTPS,
           udp_destination_port: BOOTPC,
           dhcp: dhcp_data
@@ -44,7 +44,7 @@ module Pio
           message_type: BootReply::MESSAGE_TYPE,
           transaction_id: transaction_id,
           client_ip_address: QUAD_ZERO_IP_ADDRESS,
-          your_ip_address: ip_destination_address,
+          your_ip_address: destination_ip_address,
           next_server_ip_address: QUAD_ZERO_IP_ADDRESS,
           relay_agent_ip_address: QUAD_ZERO_IP_ADDRESS,
           client_mac_address: source_mac,
@@ -65,7 +65,7 @@ module Pio
 
       def server_identifier
         IPv4Address.new(
-          @options[:server_identifier] || ip_source_address
+          @options[:server_identifier] || source_ip_address
         )
       end
     end

@@ -12,8 +12,8 @@ Feature: Pio::ExactMatch
       | ether_type                 |              2054 |
       | tos                        |                 0 |
       | ip_protocol                |                 1 |
-      | ip_source_address          |     192.168.2.254 |
-      | ip_destination_address     |       192.168.2.5 |
+      | source_ip_address          |     192.168.2.254 |
+      | destination_ip_address     |       192.168.2.5 |
       | transport_source_port      |                 0 |
       | transport_destination_port |                 0 |
 
@@ -30,8 +30,8 @@ Feature: Pio::ExactMatch
       | ether_type                 |              2054 |
       | tos                        |                 0 |
       | ip_protocol                |                 2 |
-      | ip_source_address          |       192.168.0.1 |
-      | ip_destination_address     |       192.168.0.2 |
+      | source_ip_address          |       192.168.0.1 |
+      | destination_ip_address     |       192.168.0.2 |
       | transport_source_port      |                 0 |
       | transport_destination_port |                 0 |
 
@@ -48,7 +48,7 @@ Feature: Pio::ExactMatch
       | ether_type                 |              2048 |
       | tos                        |                 0 |
       | ip_protocol                |               255 |
-      | ip_source_address          |      192.168.0.40 |
-      | ip_destination_address     |      192.168.1.40 |
+      | source_ip_address          |      192.168.0.40 |
+      | destination_ip_address     |      192.168.1.40 |
       | transport_source_port      |             31256 |
       | transport_destination_port |             22635 |

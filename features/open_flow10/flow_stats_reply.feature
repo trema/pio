@@ -43,11 +43,11 @@ Feature: Pio::FlowStats::Reply
       | stats[0].match.wildcards.fetch(:source_mac_address)         |                         true |
       | stats[0].match.wildcards.fetch(:ether_type)                 |                         true |
       | stats[0].match.wildcards.fetch(:in_port)                    |                         true |
-      | stats[0].match.wildcards.fetch(:ip_destination_address)     |                           31 |
-      | stats[0].match.wildcards.fetch(:ip_destination_address_all) |                         true |
+      | stats[0].match.wildcards.fetch(:destination_ip_address)     |                           31 |
+      | stats[0].match.wildcards.fetch(:destination_ip_address_all) |                         true |
       | stats[0].match.wildcards.fetch(:ip_protocol)                |                         true |
-      | stats[0].match.wildcards.fetch(:ip_source_address)          |                           31 |
-      | stats[0].match.wildcards.fetch(:ip_source_address_all)      |                         true |
+      | stats[0].match.wildcards.fetch(:source_ip_address)          |                           31 |
+      | stats[0].match.wildcards.fetch(:source_ip_address_all)      |                         true |
       | stats[0].match.wildcards.fetch(:tos)                        |                         true |
       | stats[0].match.wildcards.fetch(:transport_destination_port) |                         true |
       | stats[0].match.wildcards.fetch(:transport_source_port)      |                         true |
@@ -75,11 +75,11 @@ Feature: Pio::FlowStats::Reply
       | stats[1].match.wildcards.fetch(:source_mac_address)         |                         true |
       | stats[1].match.wildcards.fetch(:ether_type)                 |                         true |
       | stats[1].match.wildcards.fetch(:in_port)                    |                         true |
-      | stats[1].match.wildcards.fetch(:ip_destination_address)     |                           31 |
-      | stats[1].match.wildcards.fetch(:ip_destination_address_all) |                         true |
+      | stats[1].match.wildcards.fetch(:destination_ip_address)     |                           31 |
+      | stats[1].match.wildcards.fetch(:destination_ip_address_all) |                         true |
       | stats[1].match.wildcards.fetch(:ip_protocol)                |                         true |
-      | stats[1].match.wildcards.fetch(:ip_source_address)          |                           31 |
-      | stats[1].match.wildcards.fetch(:ip_source_address_all)      |                         true |
+      | stats[1].match.wildcards.fetch(:source_ip_address)          |                           31 |
+      | stats[1].match.wildcards.fetch(:source_ip_address_all)      |                         true |
       | stats[1].match.wildcards.fetch(:tos)                        |                         true |
       | stats[1].match.wildcards.fetch(:transport_destination_port) |                         true |
       | stats[1].match.wildcards.fetch(:transport_source_port)      |                         true |

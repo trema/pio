@@ -38,8 +38,8 @@ module Pio
           ether_type: ether_type,
           tos: 0,
           ip_protocol: operation,
-          ip_source_address: sender_protocol_address,
-          ip_destination_address: target_protocol_address,
+          source_ip_address: sender_protocol_address,
+          destination_ip_address: target_protocol_address,
           transport_source_port: 0,
           transport_destination_port: 0
         }

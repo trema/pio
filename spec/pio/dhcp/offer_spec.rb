@@ -10,8 +10,8 @@ describe Pio::Dhcp::Offer, '.new' do
       Pio::Dhcp::Offer.new(
         source_mac: source_mac,
         destination_mac: destination_mac,
-        ip_source_address: ip_source_address,
-        ip_destination_address: ip_destination_address,
+        source_ip_address: source_ip_address,
+        destination_ip_address: destination_ip_address,
         transaction_id: 0xdeadbeef,
         renewal_time_value: 0xdeadbeef,
         rebinding_time_value: 0xdeadbeef,
@@ -134,8 +134,8 @@ describe Pio::Dhcp::Offer, '.new' do
     context 'with Pio::MAC Address and Pio::IPv4Address Address' do
       let(:source_mac) { Pio::Mac.new('aa:bb:cc:dd:ee:ff') }
       let(:destination_mac) { Pio::Mac.new('11:22:33:44:55:66') }
-      let(:ip_source_address) { Pio::IPv4Address.new('192.168.0.10') }
-      let(:ip_destination_address) { Pio::IPv4Address.new('192.168.0.1') }
+      let(:source_ip_address) { Pio::IPv4Address.new('192.168.0.10') }
+      let(:destination_ip_address) { Pio::IPv4Address.new('192.168.0.1') }
       let(:subnet_mask) { Pio::IPv4Address.new('255.255.255.0') }
 
       context '#to_binary' do
@@ -152,8 +152,8 @@ describe Pio::Dhcp::Offer, '.new' do
     context 'with String MAC Address' do
       let(:source_mac) { 'aa:bb:cc:dd:ee:ff' }
       let(:destination_mac) { '11:22:33:44:55:66' }
-      let(:ip_source_address) { '192.168.0.10' }
-      let(:ip_destination_address) { '192.168.0.1' }
+      let(:source_ip_address) { '192.168.0.10' }
+      let(:destination_ip_address) { '192.168.0.1' }
       let(:subnet_mask) { '255.255.255.0' }
 
       context '#to_binary' do
@@ -173,8 +173,8 @@ describe Pio::Dhcp::Offer, '.new' do
       Pio::Dhcp::Offer.new(
         source_mac: 'aa:bb:cc:dd:ee:ff',
         destination_mac: '11:22:33:44:55:66',
-        ip_source_address: '192.168.0.10',
-        ip_destination_address: '192.168.0.1'
+        source_ip_address: '192.168.0.10',
+        destination_ip_address: '192.168.0.1'
       )
     end
 
