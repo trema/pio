@@ -1,7 +1,6 @@
 require 'pio/open_flow/datapath_id'
 require 'pio/open_flow/error'
 require 'pio/open_flow/flags'
-require 'pio/open_flow/format'
 require 'pio/open_flow/message'
 require 'pio/open_flow/open_flow_header'
 require 'pio/open_flow10'
@@ -17,8 +16,10 @@ module Pio
 
     def self.switch_version(version)
       [:Barrier, :Echo, :Features, :FlowMod, :Hello, :Match,
-       :PacketIn, :PacketOut, :SendOutPort, :PortStatus, :Stats,
-       :FlowStats, :DescriptionStats, :AggregateStats, :Error].each do |each|
+       :PacketIn, :FlowRemoved, :PacketOut, :SendOutPort, :PortStatus,
+       :Stats, :FlowStats, :DescriptionStats, :AggregateStats,
+       :TableStats, :PortStats, :QueueStats, :Error, :NiciraResubmit,
+       :NiciraResubmitTable].each do |each|
         set_message_class_name each, version
         @version = version.to_s
       end
@@ -34,6 +35,7 @@ module Pio
         5 => Pio::Features::Request,
         6 => Pio::Features::Reply,
         10 => Pio::PacketIn,
+        11 => Pio::FlowRemoved,
         12 => Pio::PortStatus,
         13 => Pio::PacketOut,
         14 => Pio::FlowMod,

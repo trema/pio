@@ -13,8 +13,8 @@ module Pio
       class Options < Pio::Icmp::Options
         mandatory_option :source_mac
         mandatory_option :destination_mac
-        mandatory_option :ip_source_address
-        mandatory_option :ip_destination_address
+        mandatory_option :source_ip_address
+        mandatory_option :destination_ip_address
         mandatory_option :identifier
         mandatory_option :sequence_number
         option :echo_data
@@ -27,10 +27,10 @@ module Pio
 
           @source_mac = Mac.new(options[:source_mac]).freeze
           @destination_mac = Mac.new(options[:destination_mac]).freeze
-          @ip_source_address =
-            IPv4Address.new(options[:ip_source_address]).freeze
-          @ip_destination_address =
-            IPv4Address.new(options[:ip_destination_address]).freeze
+          @source_ip_address =
+            IPv4Address.new(options[:source_ip_address]).freeze
+          @destination_ip_address =
+            IPv4Address.new(options[:destination_ip_address]).freeze
           @identifier = options[:identifier]
           @sequence_number = options[:sequence_number]
           @echo_data = options[:echo_data] || ''

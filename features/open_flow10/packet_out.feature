@@ -7,7 +7,7 @@ Feature: Pio::PacketOut
       | field                    |                        value |
       | ofp_version              |                            1 |
       | message_type             |                           13 |
-      | length                   |                           88 |
+      | message_length           |                           88 |
       | transaction_id           |                           22 |
       | xid                      |                           22 |
       | buffer_id                |                   4294967295 |

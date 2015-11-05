@@ -9,8 +9,8 @@ module Pio
           icmp_type: @type,
           source_mac: @source_mac,
           destination_mac: @destination_mac,
-          ip_source_address: @ip_source_address,
-          ip_destination_address: @ip_destination_address,
+          source_ip_address: @source_ip_address,
+          destination_ip_address: @destination_ip_address,
           icmp_identifier: @identifier,
           icmp_sequence_number: @sequence_number,
           echo_data: @echo_data

@@ -5,8 +5,8 @@ Feature: Pio::Dhcp
       Pio::Dhcp::Ack.new(
         source_mac: 'aa:bb:cc:dd:ee:ff',
         destination_mac: '11:22:33:44:55:66',
-        ip_source_address: '192.168.0.10',
-        ip_destination_address: '192.168.0.1',
+        source_ip_address: '192.168.0.10',
+        destination_ip_address: '192.168.0.1',
         transaction_id: 0xdeadbeef,
         renewal_time_value: 0xdeadbeef,
         rebinding_time_value: 0xdeadbeef,
@@ -31,8 +31,8 @@ Feature: Pio::Dhcp
     | ip_ttl                 |               128 |
     | ip_protocol            |                17 |
     | ip_header_checksum     |             47177 |
-    | ip_source_address      |      192.168.0.10 |
-    | ip_destination_address |       192.168.0.1 |
+    | source_ip_address      |      192.168.0.10 |
+    | destination_ip_address |       192.168.0.1 |
     | udp_source_port        |                67 |
     | udp_destination_port   |                68 |
     | udp_length             |               308 |
@@ -80,8 +80,8 @@ Feature: Pio::Dhcp
     | ip_ttl                 |                 128 |
     | ip_protocol            |                  17 |
     | ip_header_checksum     |               14758 |
-    | ip_source_address      |             0.0.0.0 |
-    | ip_destination_address |     255.255.255.255 |
+    | source_ip_address      |             0.0.0.0 |
+    | destination_ip_address |     255.255.255.255 |
     | udp_source_port        |                  68 |
     | udp_destination_port   |                  67 |
     | udp_length             |                 308 |
@@ -128,8 +128,8 @@ Feature: Pio::Dhcp
     | ip_ttl                 |                128 |
     | ip_protocol            |                 17 |
     | ip_header_checksum     |              14758 |
-    | ip_source_address      |            0.0.0.0 |
-    | ip_destination_address |    255.255.255.255 |
+    | source_ip_address      |            0.0.0.0 |
+    | destination_ip_address |    255.255.255.255 |
     | udp_source_port        |                 68 |
     | udp_destination_port   |                 67 |
     | udp_length             |                308 |
@@ -156,8 +156,8 @@ Feature: Pio::Dhcp
       Pio::Dhcp::Offer.new(
         source_mac: 'aa:bb:cc:dd:ee:ff',
         destination_mac: '11:22:33:44:55:66',
-        ip_source_address: '192.168.0.10',
-        ip_destination_address: '192.168.0.1',
+        source_ip_address: '192.168.0.10',
+        destination_ip_address: '192.168.0.1',
         transaction_id: 0xdeadbeef,
         renewal_time_value: 0xdeadbeef,
         rebinding_time_value: 0xdeadbeef,
@@ -182,8 +182,8 @@ Feature: Pio::Dhcp
     | ip_ttl                 |               128 |
     | ip_protocol            |                17 |
     | ip_header_checksum     |             47177 |
-    | ip_source_address      |      192.168.0.10 |
-    | ip_destination_address |       192.168.0.1 |
+    | source_ip_address      |      192.168.0.10 |
+    | destination_ip_address |       192.168.0.1 |
     | udp_source_port        |                67 |
     | udp_destination_port   |                68 |
     | udp_length             |               308 |

@@ -192,16 +192,16 @@ describe Pio::Dhcp, '.read' do
       it { is_expected.to eq 0x39a6 }
     end
 
-    describe '#ip_source_address' do
-      subject { super().ip_source_address }
+    describe '#source_ip_address' do
+      subject { super().source_ip_address }
       describe '#to_s' do
         subject { super().to_s }
         it { is_expected.to eq '0.0.0.0' }
       end
     end
 
-    describe '#ip_destination_address' do
-      subject { super().ip_destination_address }
+    describe '#destination_ip_address' do
+      subject { super().destination_ip_address }
       describe '#to_s' do
         subject { super().to_s }
         it { is_expected.to eq '255.255.255.255' }
@@ -514,16 +514,16 @@ describe Pio::Dhcp, '.read' do
       it { is_expected.to eq 0xb849 }
     end
 
-    describe '#ip_source_address' do
-      subject { super().ip_source_address }
+    describe '#source_ip_address' do
+      subject { super().source_ip_address }
       describe '#to_s' do
         subject { super().to_s }
         it { is_expected.to eq '192.168.0.10' }
       end
     end
 
-    describe '#ip_destination_address' do
-      subject { super().ip_destination_address }
+    describe '#destination_ip_address' do
+      subject { super().destination_ip_address }
       describe '#to_s' do
         subject { super().to_s }
         it { is_expected.to eq '192.168.0.1' }
@@ -844,16 +844,16 @@ describe Pio::Dhcp, '.read' do
       it { is_expected.to eq 0x39a6 }
     end
 
-    describe '#ip_source_address' do
-      subject { super().ip_source_address }
+    describe '#source_ip_address' do
+      subject { super().source_ip_address }
       describe '#to_s' do
         subject { super().to_s }
         it { is_expected.to eq '0.0.0.0' }
       end
     end
 
-    describe '#ip_destination_address' do
-      subject { super().ip_destination_address }
+    describe '#destination_ip_address' do
+      subject { super().destination_ip_address }
       describe '#to_s' do
         subject { super().to_s }
         it { is_expected.to eq '255.255.255.255' }
@@ -1166,16 +1166,16 @@ describe Pio::Dhcp, '.read' do
       it { is_expected.to eq 0xb849 }
     end
 
-    describe '#ip_source_address' do
-      subject { super().ip_source_address }
+    describe '#source_ip_address' do
+      subject { super().source_ip_address }
       describe '#to_s' do
         subject { super().to_s }
         it { is_expected.to eq '192.168.0.10' }
       end
     end
 
-    describe '#ip_destination_address' do
-      subject { super().ip_destination_address }
+    describe '#destination_ip_address' do
+      subject { super().destination_ip_address }
       describe '#to_s' do
         subject { super().to_s }
         it { is_expected.to eq '192.168.0.1' }

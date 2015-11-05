@@ -28,28 +28,28 @@ describe Pio::OpenFlow10::Match do
       Then do
         match.wildcards.keys == [
           :vlan_vid,
-          :ether_source_address,
-          :ether_destination_address,
+          :source_mac_address,
+          :destination_mac_address,
           :ether_type,
           :ip_protocol,
           :transport_source_port,
           :transport_destination_port,
-          :ip_source_address_all,
-          :ip_destination_address_all,
+          :source_ip_address_all,
+          :destination_ip_address_all,
           :vlan_priority,
-          :ip_tos
+          :tos
         ]
       end
       Then { match.in_port == 1 }
-      Then { match.ether_source_address == '00:00:00:00:00:00' }
-      Then { match.ether_destination_address == '00:00:00:00:00:00' }
+      Then { match.source_mac_address == '00:00:00:00:00:00' }
+      Then { match.destination_mac_address == '00:00:00:00:00:00' }
       Then { match.vlan_vid == 0 }
       Then { match.vlan_priority == 0 }
       Then { match.ether_type == 0 }
-      Then { match.ip_tos == 0 }
+      Then { match.tos == 0 }
       Then { match.ip_protocol == 0 }
-      Then { match.ip_source_address == '0.0.0.0' }
-      Then { match.ip_destination_address == '0.0.0.0' }
+      Then { match.source_ip_address == '0.0.0.0' }
+      Then { match.destination_ip_address == '0.0.0.0' }
       Then { match.transport_source_port == 0 }
       Then { match.transport_destination_port == 0 }
     end
@@ -57,7 +57,7 @@ describe Pio::OpenFlow10::Match do
     context 'with a Match binary generated with Pio::OpenFlow10::Match.new' do
       Given(:binary) do
         Pio::OpenFlow10::Match
-          .new(ip_source_address: '192.168.1.0/24')
+          .new(source_ip_address: '192.168.1.0/24')
           .to_binary_s
       end
 
@@ -65,30 +65,30 @@ describe Pio::OpenFlow10::Match do
         match.wildcards.keys == [
           :in_port,
           :vlan_vid,
-          :ether_source_address,
-          :ether_destination_address,
+          :source_mac_address,
+          :destination_mac_address,
           :ether_type,
           :ip_protocol,
           :transport_source_port,
           :transport_destination_port,
-          :ip_source_address,
-          :ip_destination_address_all,
+          :source_ip_address,
+          :destination_ip_address_all,
           :vlan_priority,
-          :ip_tos
+          :tos
         ]
       end
-      And { match.wildcards[:ip_source_address] = 12 }
+      And { match.wildcards[:source_ip_address] = 12 }
       Then { match.in_port == 0 }
-      Then { match.ether_source_address == '00:00:00:00:00:00' }
-      Then { match.ether_destination_address == '00:00:00:00:00:00' }
+      Then { match.source_mac_address == '00:00:00:00:00:00' }
+      Then { match.destination_mac_address == '00:00:00:00:00:00' }
       Then { match.vlan_vid == 0 }
       Then { match.vlan_priority == 0 }
       Then { match.ether_type == 0 }
-      Then { match.ip_tos == 0 }
+      Then { match.tos == 0 }
       Then { match.ip_protocol == 0 }
-      Then { match.ip_source_address == '192.168.1.0' }
-      Then { match.ip_source_address.prefixlen == 24 }
-      Then { match.ip_destination_address == '0.0.0.0' }
+      Then { match.source_ip_address == '192.168.1.0' }
+      Then { match.source_ip_address.prefixlen == 24 }
+      Then { match.destination_ip_address == '0.0.0.0' }
       Then { match.transport_source_port == 0 }
       Then { match.transport_destination_port == 0 }
     end
@@ -102,28 +102,28 @@ describe Pio::OpenFlow10::Match do
       Then do
         match.wildcards.keys == [
           :vlan_vid,
-          :ether_source_address,
-          :ether_destination_address,
+          :source_mac_address,
+          :destination_mac_address,
           :ether_type,
           :ip_protocol,
           :transport_source_port,
           :transport_destination_port,
-          :ip_source_address_all,
-          :ip_destination_address_all,
+          :source_ip_address_all,
+          :destination_ip_address_all,
           :vlan_priority,
-          :ip_tos
+          :tos
         ]
       end
       Then { match.in_port == 1 }
-      Then { match.ether_source_address == '00:00:00:00:00:00' }
-      Then { match.ether_destination_address == '00:00:00:00:00:00' }
+      Then { match.source_mac_address == '00:00:00:00:00:00' }
+      Then { match.destination_mac_address == '00:00:00:00:00:00' }
       Then { match.vlan_vid == 0 }
       Then { match.vlan_priority == 0 }
       Then { match.ether_type == 0 }
-      Then { match.ip_tos == 0 }
+      Then { match.tos == 0 }
       Then { match.ip_protocol == 0 }
-      Then { match.ip_source_address == '0.0.0.0' }
-      Then { match.ip_destination_address == '0.0.0.0' }
+      Then { match.source_ip_address == '0.0.0.0' }
+      Then { match.destination_ip_address == '0.0.0.0' }
       Then { match.transport_source_port == 0 }
       Then { match.transport_destination_port == 0 }
 
@@ -137,68 +137,68 @@ describe Pio::OpenFlow10::Match do
       end
     end
 
-    context "with ip_source_address: '192.168.1.0/24'" do
-      Given(:options) { { ip_source_address: '192.168.1.0/24' } }
+    context "with source_ip_address: '192.168.1.0/24'" do
+      Given(:options) { { source_ip_address: '192.168.1.0/24' } }
       Then do
         match.wildcards.keys == [
           :in_port,
           :vlan_vid,
-          :ether_source_address,
-          :ether_destination_address,
+          :source_mac_address,
+          :destination_mac_address,
           :ether_type,
           :ip_protocol,
           :transport_source_port,
           :transport_destination_port,
-          :ip_source_address,
-          :ip_destination_address_all,
+          :source_ip_address,
+          :destination_ip_address_all,
           :vlan_priority,
-          :ip_tos
+          :tos
         ]
       end
-      Then { match.wildcards.fetch(:ip_source_address) == 8 }
+      Then { match.wildcards.fetch(:source_ip_address) == 8 }
       Then { match.in_port == 0 }
-      Then { match.ether_source_address == '00:00:00:00:00:00' }
-      Then { match.ether_destination_address == '00:00:00:00:00:00' }
+      Then { match.source_mac_address == '00:00:00:00:00:00' }
+      Then { match.destination_mac_address == '00:00:00:00:00:00' }
       Then { match.vlan_vid == 0 }
       Then { match.vlan_priority == 0 }
       Then { match.ether_type == 0 }
-      Then { match.ip_tos == 0 }
+      Then { match.tos == 0 }
       Then { match.ip_protocol == 0 }
-      Then { match.ip_source_address == '192.168.1.0/24' }
-      Then { match.ip_destination_address == '0.0.0.0' }
+      Then { match.source_ip_address == '192.168.1.0/24' }
+      Then { match.destination_ip_address == '0.0.0.0' }
       Then { match.transport_source_port == 0 }
       Then { match.transport_destination_port == 0 }
     end
 
-    context "with ip_destination_address: '192.168.1.0/24'" do
-      Given(:options) { { ip_destination_address: '192.168.1.0/24' } }
+    context "with destination_ip_address: '192.168.1.0/24'" do
+      Given(:options) { { destination_ip_address: '192.168.1.0/24' } }
       Then do
         match.wildcards.keys == [
           :in_port,
           :vlan_vid,
-          :ether_source_address,
-          :ether_destination_address,
+          :source_mac_address,
+          :destination_mac_address,
           :ether_type,
           :ip_protocol,
           :transport_source_port,
           :transport_destination_port,
-          :ip_source_address_all,
-          :ip_destination_address,
+          :source_ip_address_all,
+          :destination_ip_address,
           :vlan_priority,
-          :ip_tos
+          :tos
         ]
       end
-      Then { match.wildcards.fetch(:ip_destination_address) == 8 }
+      Then { match.wildcards.fetch(:destination_ip_address) == 8 }
       Then { match.in_port == 0 }
-      Then { match.ether_source_address == '00:00:00:00:00:00' }
-      Then { match.ether_destination_address == '00:00:00:00:00:00' }
+      Then { match.source_mac_address == '00:00:00:00:00:00' }
+      Then { match.destination_mac_address == '00:00:00:00:00:00' }
       Then { match.vlan_vid == 0 }
       Then { match.vlan_priority == 0 }
       Then { match.ether_type == 0 }
-      Then { match.ip_tos == 0 }
+      Then { match.tos == 0 }
       Then { match.ip_protocol == 0 }
-      Then { match.ip_source_address == '0.0.0.0' }
-      Then { match.ip_destination_address == '192.168.1.0/24' }
+      Then { match.source_ip_address == '0.0.0.0' }
+      Then { match.destination_ip_address == '192.168.1.0/24' }
       Then { match.transport_source_port == 0 }
       Then { match.transport_destination_port == 0 }
     end

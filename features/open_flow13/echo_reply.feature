@@ -10,7 +10,7 @@ Feature: Pio::Echo::Reply
       | field          | value |
       | ofp_version    |     4 |
       | message_type   |     3 |
-      | length         |     8 |
+      | message_length |     8 |
       | transaction_id |     0 |
       | xid            |     0 |
       | body           |       |
@@ -26,23 +26,7 @@ Feature: Pio::Echo::Reply
       | field          | value |
       | ofp_version    |     4 |
       | message_type   |     3 |
-      | length         |     8 |
-      | transaction_id |   123 |
-      | xid            |   123 |
-      | body           |       |
-      | user_data      |       |
-
-  Scenario: new(xid: 123)
-    When I try to create an OpenFlow message with:
-      """
-      Pio::Echo::Reply.new(xid: 123)
-      """
-    Then it should finish successfully
-    And the message has the following fields and values:
-      | field          | value |
-      | ofp_version    |     4 |
-      | message_type   |     3 |
-      | length         |     8 |
+      | message_length |     8 |
       | transaction_id |   123 |
       | xid            |   123 |
       | body           |       |
@@ -58,23 +42,7 @@ Feature: Pio::Echo::Reply
         | field          |           value |
         | ofp_version    |               4 |
         | message_type   |               3 |
-        | length         |              23 |
-        | transaction_id |               0 |
-        | xid            |               0 |
-        | body           | echo reply body |
-        | user_data      | echo reply body |
-
-  Scenario: new(user_data: 'echo reply body')
-    When I try to create an OpenFlow message with:
-      """
-      Pio::Echo::Reply.new(user_data: 'echo reply body')
-      """
-    Then it should finish successfully
-    And the message has the following fields and values:
-        | field          |           value |
-        | ofp_version    |               4 |
-        | message_type   |               3 |
-        | length         |              23 |
+        | message_length |              23 |
         | transaction_id |               0 |
         | xid            |               0 |
         | body           | echo reply body |
@@ -94,7 +62,7 @@ Feature: Pio::Echo::Reply
       | field          | value |
       | ofp_version    |     4 |
       | message_type   |     3 |
-      | length         |     8 |
+      | message_length |     8 |
       | transaction_id |     0 |
       | xid            |     0 |
       | body           |       |
@@ -107,7 +75,7 @@ Feature: Pio::Echo::Reply
       | field          |                value |
       | ofp_version    |                    4 |
       | message_type   |                    3 |
-      | length         |                   28 |
+      | message_length |                   28 |
       | transaction_id |                    0 |
       | xid            |                    0 |
       | body           | hogehogehogehogehoge |

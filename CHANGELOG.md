@@ -3,6 +3,31 @@
 ## develop (unreleased)
 
 
+## 0.28.0 (11/5/2015)
+### New features
+* [#267](https://github.com/trema/pio/pull/267): Add Queue Stats Request message generator.
+* [#266](https://github.com/trema/pio/pull/266): Add Port Stats Request message generator.
+* [#252](https://github.com/trema/pio/pull/252): Add NiciraResubmit and NiciraResubmitTable actions.
+* [#251](https://github.com/trema/pio/pull/251): Add Table Stats Request message generator.
+* [#250](https://github.com/trema/pio/pull/250): Add Flow Removed message parser.
+
+### Changes
+* [#272](https://github.com/trema/pio/pull/272): Rename `Match` option: `:ip_source_address` -> `:source_ip_address` and `:ip_destination_address` -> `:destination_ip_address`.
+* [#271](https://github.com/trema/pio/pull/271): Rename `Match` option: `:ether_destination_address` -> `:destination_mac_address`.
+* [#270](https://github.com/trema/pio/pull/270): Rename `Match` option: `:ether_source_address` -> `:source_mac_address`.
+* [#269](https://github.com/trema/pio/pull/269): Rename `SetIpSourceAddress` -> `SetSourceIpAddress` and `SetIpDestinationAddress` -> `SetDestinationIpAddress`.
+* [#268](https://github.com/trema/pio/pull/268): Rename `SetEtherSourceAddress` -> `SetSourceMacAddress` and `SetEtherDestinationAddress` -> `SetDestinationMacAddress`.
+* [#265](https://github.com/trema/pio/pull/265): Rename `SetIpTos` -> `SetTos`.
+
+
+## 0.27.2 (10/25/2015)
+### New features
+* [#244](https://github.com/trema/pio/pull/244): Support ARP in `ExactMatch.new`.
+
+### Changes
+* [#242](https://github.com/trema/pio/issues/242): Fix `Parser#read` to avoid fail in parsing unsupported eth\_type frame.
+
+
 ## 0.27.1 (9/28/2015)
 ### Bugs fixed
 * [#238](https://github.com/trema/pio/issues/238): `Features::Reply#datapath_id` doesn't return an Integer.

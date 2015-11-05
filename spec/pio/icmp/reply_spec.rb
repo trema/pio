@@ -10,8 +10,8 @@ describe Pio::Icmp::Reply, '.new' do
       Pio::Icmp::Reply.new(
         destination_mac: '00:26:82:eb:ea:d1',
         source_mac: '24:db:ac:41:e5:5b',
-        ip_source_address: '8.8.8.8',
-        ip_destination_address: '192.168.1.102',
+        source_ip_address: '8.8.8.8',
+        destination_ip_address: '192.168.1.102',
         identifier: 0x123,
         sequence_number: 0x321,
         echo_data: 'abcdefghijklmnopqrstuvwabcdefghi'
@@ -75,8 +75,8 @@ describe Pio::Icmp::Reply, '.new' do
         Pio::Icmp::Reply.new(
           destination_mac: '00:26:82:eb:ea:d1',
           source_mac: '24:db:ac:41:e5:5b',
-          ip_source_address: '8.8.8.8',
-          ip_destination_address: '192.168.1.102',
+          source_ip_address: '8.8.8.8',
+          destination_ip_address: '192.168.1.102',
           identifier: 0x123,
           sequence_number: 0x321
         )

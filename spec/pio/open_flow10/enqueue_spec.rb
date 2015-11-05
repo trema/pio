@@ -1,9 +1,9 @@
 require 'pio/open_flow10/enqueue'
 
-describe Pio::Enqueue do
+describe Pio::OpenFlow10::Enqueue do
   describe '.new' do
     context 'with port: 1, queue_id: 2' do
-      When(:enqueue) { Pio::Enqueue.new(port: 1, queue_id: 2) }
+      When(:enqueue) { Pio::OpenFlow10::Enqueue.new(port: 1, queue_id: 2) }
 
       describe '#port' do
         Then { enqueue.port == 1 }
@@ -17,8 +17,8 @@ describe Pio::Enqueue do
         Then { enqueue.action_type == 11 }
       end
 
-      describe '#length' do
-        Then { enqueue.length == 16 }
+      describe '#action_length' do
+        Then { enqueue.action_length == 16 }
       end
 
       describe '#to_binary' do
@@ -27,7 +27,9 @@ describe Pio::Enqueue do
     end
 
     context 'with port: :in_port, queue_id: 2' do
-      When(:enqueue) { Pio::Enqueue.new(port: :in_port, queue_id: 2) }
+      When(:enqueue) do
+        Pio::OpenFlow10::Enqueue.new(port: :in_port, queue_id: 2)
+      end
 
       describe '#port' do
         Then { enqueue.port == :in_port }
@@ -35,32 +37,32 @@ describe Pio::Enqueue do
     end
 
     context 'with port: :local, queue_id: 2' do
-      When(:enqueue) { Pio::Enqueue.new(port: :local, queue_id: 2) }
+      When(:enqueue) { Pio::OpenFlow10::Enqueue.new(port: :local, queue_id: 2) }
       Then { enqueue == Failure(ArgumentError) }
     end
 
     context 'with port: -1, queue_id: 2' do
-      When(:enqueue) { Pio::Enqueue.new(port: -1, queue_id: 2) }
+      When(:enqueue) { Pio::OpenFlow10::Enqueue.new(port: -1, queue_id: 2) }
       Then { enqueue == Failure(ArgumentError) }
     end
 
     context 'with port: 0xff00, queue_id: 2' do
-      When(:enqueue) { Pio::Enqueue.new(port: 0xff00, queue_id: 2) }
+      When(:enqueue) { Pio::OpenFlow10::Enqueue.new(port: 0xff00, queue_id: 2) }
       Then { enqueue == Failure(ArgumentError) }
     end
 
     context 'with port: 1, queue_id: -2' do
-      When(:enqueue) { Pio::Enqueue.new(port: 1, queue_id: -2) }
+      When(:enqueue) { Pio::OpenFlow10::Enqueue.new(port: 1, queue_id: -2) }
       Then { enqueue == Failure(ArgumentError) }
     end
 
     context 'with port: 1' do
-      When(:enqueue) { Pio::Enqueue.new(port: 1) }
+      When(:enqueue) { Pio::OpenFlow10::Enqueue.new(port: 1) }
       Then { enqueue == Failure(ArgumentError) }
     end
 
     context 'with queue_id: 2' do
-      When(:enqueue) { Pio::Enqueue.new(queue_id: 2) }
+      When(:enqueue) { Pio::OpenFlow10::Enqueue.new(queue_id: 2) }
       Then { enqueue == Failure(ArgumentError) }
     end
   end

@@ -1,6 +1,7 @@
 require 'pio/open_flow10/packet_out'
 require 'pio/parse_error'
 
+# rubocop:disable LineLength
 describe Pio::OpenFlow10::PacketOut do
   Given(:header_dump) do
     [
@@ -41,11 +42,10 @@ describe Pio::OpenFlow10::PacketOut do
       Then { result.class == Pio::OpenFlow10::PacketOut }
       Then { result.ofp_version == 0x1 }
       Then { result.message_type == 0xd }
-      Then { result.length == 0x58 }
+      Then { result.message_length == 0x58 }
       Then { result.transaction_id == 0x16 }
       Then { result.xid == 0x16 }
 
-      Then { !result.body.empty? }
       Then { result.buffer_id == 0xffffffff }
       Then { result.in_port == 0xffff }
       Then { result.actions_len == 0x8 }
@@ -70,11 +70,10 @@ describe Pio::OpenFlow10::PacketOut do
       Then { result.class == Pio::OpenFlow10::PacketOut }
       Then { result.ofp_version == 0x1 }
       Then { result.message_type == 0xd }
-      Then { result.length == 0x58 }
+      Then { result.message_length == 0x58 }
       Then { result.transaction_id == 0x16 }
       Then { result.xid == 0x16 }
 
-      Then { !result.body.empty? }
       Then { result.buffer_id == 0xffffffff }
       Then { result.in_port == 0xffff }
       Then { result.actions_len == 0x8 }
@@ -113,11 +112,10 @@ describe Pio::OpenFlow10::PacketOut do
 
       Then { result.ofp_version == 0x1 }
       Then { result.message_type == 0xd }
-      Then { result.length == 0x58 }
+      Then { result.message_length == 0x58 }
       Then { result.transaction_id == 0x16 }
       Then { result.xid == 0x16 }
 
-      Then { !result.body.empty? }
       Then { result.buffer_id == 0xffffffff }
       Then { result.in_port == 0xffff }
       Then { result.actions_len == 0x8 }
@@ -140,15 +138,15 @@ describe Pio::OpenFlow10::PacketOut do
           transaction_id: 0x16,
           buffer_id: 0xffffffff,
           in_port: 0xffff,
-          actions: Pio::SetVlanVid.new(10),
+          actions: Pio::OpenFlow10::SetVlanVid.new(10),
           raw_data: data_dump
         }
       end
 
-      Then { result.length == 0x58 }
+      Then { result.message_length == 0x58 }
       Then { result.actions_len == 0x8 }
       Then { result.actions.length == 1 }
-      Then { result.actions[0].is_a? Pio::SetVlanVid }
+      Then { result.actions[0].is_a? Pio::OpenFlow10::SetVlanVid }
       Then { result.actions[0].vlan_id == 10 }
     end
 
@@ -158,15 +156,15 @@ describe Pio::OpenFlow10::PacketOut do
           transaction_id: 0x16,
           buffer_id: 0xffffffff,
           in_port: 0xffff,
-          actions: Pio::SetVlanPriority.new(3),
+          actions: Pio::OpenFlow10::SetVlanPriority.new(3),
           raw_data: data_dump
         }
       end
 
-      Then { result.length == 0x58 }
+      Then { result.message_length == 0x58 }
       Then { result.actions_len == 0x8 }
       Then { result.actions.length == 1 }
-      Then { result.actions[0].is_a? Pio::SetVlanPriority }
+      Then { result.actions[0].is_a? Pio::OpenFlow10::SetVlanPriority }
       Then { result.actions[0].vlan_priority == 3 }
     end
 
@@ -176,104 +174,104 @@ describe Pio::OpenFlow10::PacketOut do
           transaction_id: 0x16,
           buffer_id: 0xffffffff,
           in_port: 0xffff,
-          actions: Pio::StripVlanHeader.new,
+          actions: Pio::OpenFlow10::StripVlanHeader.new,
           raw_data: data_dump
         }
       end
 
-      Then { result.length == 0x58 }
+      Then { result.message_length == 0x58 }
       Then { result.actions_len == 0x8 }
       Then { result.actions.length == 1 }
-      Then { result.actions[0].is_a? Pio::StripVlanHeader }
+      Then { result.actions[0].is_a? Pio::OpenFlow10::StripVlanHeader }
     end
 
-    context 'with a SetEtherSourceAddress action' do
+    context 'with a SetSourceMacAddress action' do
       When(:user_options) do
         {
           transaction_id: 0x16,
           buffer_id: 0xffffffff,
           in_port: 0xffff,
-          actions: Pio::SetEtherSourceAddress.new('11:22:33:44:55:66'),
+          actions: Pio::OpenFlow10::SetSourceMacAddress.new('11:22:33:44:55:66'),
           raw_data: data_dump
         }
       end
 
-      Then { result.length == 0x60 }
+      Then { result.message_length == 0x60 }
       Then { result.actions_len == 0x10 }
       Then { result.actions.length == 1 }
-      Then { result.actions[0].is_a? Pio::SetEtherSourceAddress }
+      Then { result.actions[0].is_a? Pio::OpenFlow10::SetSourceMacAddress }
       Then { result.actions[0].mac_address == '11:22:33:44:55:66' }
     end
 
-    context 'with a SetEtherDestinationAddress action' do
+    context 'with a SetDestinationMacAddress action' do
       When(:user_options) do
         {
           transaction_id: 0x16,
           buffer_id: 0xffffffff,
           in_port: 0xffff,
-          actions: Pio::SetEtherDestinationAddress.new('11:22:33:44:55:66'),
+          actions: Pio::OpenFlow10::SetDestinationMacAddress.new('11:22:33:44:55:66'),
           raw_data: data_dump
         }
       end
 
-      Then { result.length == 0x60 }
+      Then { result.message_length == 0x60 }
       Then { result.actions_len == 0x10 }
       Then { result.actions.length == 1 }
-      Then { result.actions[0].is_a? Pio::SetEtherDestinationAddress }
+      Then { result.actions[0].is_a? Pio::OpenFlow10::SetDestinationMacAddress }
       Then { result.actions[0].mac_address == '11:22:33:44:55:66' }
     end
 
-    context 'with a SetIpSourceAddress action' do
+    context 'with a SetSourceIpAddress action' do
       When(:user_options) do
         {
           transaction_id: 0x16,
           buffer_id: 0xffffffff,
           in_port: 0xffff,
-          actions: Pio::SetIpSourceAddress.new('1.2.3.4'),
+          actions: Pio::OpenFlow10::SetSourceIpAddress.new('1.2.3.4'),
           raw_data: data_dump
         }
       end
 
-      Then { result.length == 0x58 }
+      Then { result.message_length == 0x58 }
       Then { result.actions_len == 0x8 }
       Then { result.actions.length == 1 }
-      Then { result.actions[0].is_a? Pio::SetIpSourceAddress }
+      Then { result.actions[0].is_a? Pio::OpenFlow10::SetSourceIpAddress }
       Then { result.actions[0].ip_address == '1.2.3.4' }
     end
 
-    context 'with a SetIpDestinationAddress action' do
+    context 'with a SetDestinationIpAddress action' do
       When(:user_options) do
         {
           transaction_id: 0x16,
           buffer_id: 0xffffffff,
           in_port: 0xffff,
-          actions: Pio::SetIpDestinationAddress.new('1.2.3.4'),
+          actions: Pio::OpenFlow10::SetDestinationIpAddress.new('1.2.3.4'),
           raw_data: data_dump
         }
       end
 
-      Then { result.length == 0x58 }
+      Then { result.message_length == 0x58 }
       Then { result.actions_len == 0x8 }
       Then { result.actions.length == 1 }
-      Then { result.actions[0].is_a? Pio::SetIpDestinationAddress }
+      Then { result.actions[0].is_a? Pio::OpenFlow10::SetDestinationIpAddress }
       Then { result.actions[0].ip_address == '1.2.3.4' }
     end
 
-    context 'with a SetIpTos action' do
+    context 'with a SetTos action' do
       When(:user_options) do
         {
           transaction_id: 0x16,
           buffer_id: 0xffffffff,
           in_port: 0xffff,
-          actions: Pio::SetIpTos.new(32),
+          actions: Pio::OpenFlow10::SetTos.new(32),
           raw_data: data_dump
         }
       end
 
-      Then { result.length == 0x58 }
+      Then { result.message_length == 0x58 }
       Then { result.actions_len == 0x8 }
       Then { result.actions.length == 1 }
-      Then { result.actions[0].is_a? Pio::SetIpTos }
+      Then { result.actions[0].is_a? Pio::OpenFlow10::SetTos }
       Then { result.actions[0].type_of_service == 32 }
     end
 
@@ -283,15 +281,15 @@ describe Pio::OpenFlow10::PacketOut do
           transaction_id: 0x16,
           buffer_id: 0xffffffff,
           in_port: 0xffff,
-          actions: Pio::SetTransportSourcePort.new(100),
+          actions: Pio::OpenFlow10::SetTransportSourcePort.new(100),
           raw_data: data_dump
         }
       end
 
-      Then { result.length == 0x58 }
+      Then { result.message_length == 0x58 }
       Then { result.actions_len == 0x8 }
       Then { result.actions.length == 1 }
-      Then { result.actions[0].is_a? Pio::SetTransportSourcePort }
+      Then { result.actions[0].is_a? Pio::OpenFlow10::SetTransportSourcePort }
       Then { result.actions[0].port == 100 }
     end
 
@@ -301,15 +299,15 @@ describe Pio::OpenFlow10::PacketOut do
           transaction_id: 0x16,
           buffer_id: 0xffffffff,
           in_port: 0xffff,
-          actions: Pio::SetTransportDestinationPort.new(100),
+          actions: Pio::OpenFlow10::SetTransportDestinationPort.new(100),
           raw_data: data_dump
         }
       end
 
-      Then { result.length == 0x58 }
+      Then { result.message_length == 0x58 }
       Then { result.actions_len == 0x8 }
       Then { result.actions.length == 1 }
-      Then { result.actions[0].is_a? Pio::SetTransportDestinationPort }
+      Then { result.actions[0].is_a? Pio::OpenFlow10::SetTransportDestinationPort }
       Then { result.actions[0].port == 100 }
     end
 
@@ -319,15 +317,15 @@ describe Pio::OpenFlow10::PacketOut do
           transaction_id: 0x16,
           buffer_id: 0xffffffff,
           in_port: 0xffff,
-          actions: Pio::Enqueue.new(port: 1, queue_id: 2),
+          actions: Pio::OpenFlow10::Enqueue.new(port: 1, queue_id: 2),
           raw_data: data_dump
         }
       end
 
-      Then { result.length == 0x60 }
+      Then { result.message_length == 0x60 }
       Then { result.actions_len == 0x10 }
       Then { result.actions.length == 1 }
-      Then { result.actions[0].is_a? Pio::Enqueue }
+      Then { result.actions[0].is_a? Pio::OpenFlow10::Enqueue }
       Then { result.actions[0].port == 1 }
       Then { result.actions[0].queue_id == 2 }
     end
@@ -339,19 +337,20 @@ describe Pio::OpenFlow10::PacketOut do
           buffer_id: 0xffffffff,
           in_port: 0xffff,
           actions: [Pio::OpenFlow10::SendOutPort.new(2),
-                    Pio::SetVlanVid.new(10)],
+                    Pio::OpenFlow10::SetVlanVid.new(10)],
           raw_data: data_dump
         }
       end
 
-      Then { result.length == 0x60 }
+      Then { result.message_length == 0x60 }
       Then { result.actions_len == 0x10 }
       Then { result.actions.length == 2 }
       Then { result.actions[0].is_a? Pio::OpenFlow10::SendOutPort }
       Then { result.actions[0].port == 2 }
       Then { result.actions[0].max_length == 2**16 - 1 }
-      Then { result.actions[1].is_a? Pio::SetVlanVid }
+      Then { result.actions[1].is_a? Pio::OpenFlow10::SetVlanVid }
       Then { result.actions[1].vlan_id == 10 }
     end
   end
 end
+# rubocop:enable LineLength

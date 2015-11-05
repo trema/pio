@@ -23,7 +23,7 @@ Feature: Pio::PacketIn
       | field                 |             value |
       | ofp_version           |                 1 |
       | message_type          |                10 |
-      | length                |                78 |
+      | message_length        |                78 |
       | transaction_id        |                 0 |
       | xid                   |                 0 |
       | buffer_id             |        4294967040 |
@@ -43,7 +43,7 @@ Feature: Pio::PacketIn
       | field                 |             value |
       | ofp_version           |                 1 |
       | message_type          |                10 |
-      | length                |                78 |
+      | message_length        |                78 |
       | transaction_id        |                 0 |
       | xid                   |                 0 |
       | buffer_id             |        4294967040 |

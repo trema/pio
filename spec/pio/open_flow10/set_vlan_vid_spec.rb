@@ -1,8 +1,8 @@
 require 'pio/open_flow10/set_vlan_vid'
 
-describe Pio::SetVlanVid do
+describe Pio::OpenFlow10::SetVlanVid do
   describe '.new' do
-    When(:set_vlan_vid) { Pio::SetVlanVid.new(vlan_id) }
+    When(:set_vlan_vid) { Pio::OpenFlow10::SetVlanVid.new(vlan_id) }
 
     context 'with 10' do
       When(:vlan_id) { 10 }
@@ -15,8 +15,8 @@ describe Pio::SetVlanVid do
         Then { set_vlan_vid.action_type == 1 }
       end
 
-      describe '#length' do
-        Then { set_vlan_vid.length == 8 }
+      describe '#action_length' do
+        Then { set_vlan_vid.action_length == 8 }
       end
 
       describe '#to_binary' do

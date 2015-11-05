@@ -10,7 +10,7 @@ Feature: Pio::DescriptionStats::Request
       | field          |        value |
       | ofp_version    |            1 |
       | message_type   |           16 |
-      | length         |           12 |
+      | message_length |           12 |
       | transaction_id |            0 |
       | xid            |            0 |
       | stats_type     | :description |
@@ -25,7 +25,7 @@ Feature: Pio::DescriptionStats::Request
       | field          |        value |
       | ofp_version    |            1 |
       | message_type   |           16 |
-      | length         |           12 |
+      | message_length |           12 |
       | transaction_id |          123 |
       | xid            |          123 |
       | stats_type     | :description |
@@ -37,7 +37,7 @@ Feature: Pio::DescriptionStats::Request
       | field          |        value |
       | ofp_version    |            1 |
       | message_type   |           16 |
-      | length         |           12 |
+      | message_length |           12 |
       | transaction_id |           12 |
       | xid            |           12 |
       | stats_type     | :description |

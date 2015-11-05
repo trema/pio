@@ -5,8 +5,8 @@ Feature: Pio::Icmp
       Pio::Icmp::Request.new(
         source_mac: '00:16:9d:1d:9c:c4',
         destination_mac: '00:26:82:eb:ea:d1',
-        ip_source_address: '192.168.83.3',
-        ip_destination_address: '192.168.83.254'
+        source_ip_address: '192.168.83.3',
+        destination_ip_address: '192.168.83.254'
       )
       """
     Then it should finish successfully
@@ -26,8 +26,8 @@ Feature: Pio::Icmp
       | ip_ttl                 |                128 |
       | ip_protocol            |                  1 |
       | ip_header_checksum     |               4729 |
-      | ip_source_address      |       192.168.83.3 |
-      | ip_destination_address |     192.168.83.254 |
+      | source_ip_address      |       192.168.83.3 |
+      | destination_ip_address |     192.168.83.254 |
       | ip_option              |                    |
       | icmp_type              |                  8 |
       | icmp_code              |                  0 |
@@ -42,8 +42,8 @@ Feature: Pio::Icmp
       Pio::Icmp::Reply.new(
         source_mac: '00:26:82:eb:ea:d1',
         destination_mac: '00:16:9d:1d:9c:c4',
-        ip_source_address: '192.168.83.254',
-        ip_destination_address: '192.168.83.3',
+        source_ip_address: '192.168.83.254',
+        destination_ip_address: '192.168.83.3',
         identifier: 256,
         sequence_number: 0
       )
@@ -65,8 +65,8 @@ Feature: Pio::Icmp
       | ip_ttl                 |               128 |
       | ip_protocol            |                 1 |
       | ip_header_checksum     |              4729 |
-      | ip_source_address      |    192.168.83.254 |
-      | ip_destination_address |      192.168.83.3 |
+      | source_ip_address      |    192.168.83.254 |
+      | destination_ip_address |      192.168.83.3 |
       | ip_option              |                   |
       | icmp_type              |                 0 |
       | icmp_code              |                 0 |
@@ -94,8 +94,8 @@ Feature: Pio::Icmp
       | ip_ttl                 |                              128 |
       | ip_protocol            |                                1 |
       | ip_header_checksum     |                            10850 |
-      | ip_source_address      |                    192.168.0.114 |
-      | ip_destination_address |                      192.168.0.1 |
+      | source_ip_address      |                    192.168.0.114 |
+      | destination_ip_address |                      192.168.0.1 |
       | ip_option              |                                  |
       | icmp_type              |                                8 |
       | icmp_code              |                                0 |
@@ -119,8 +119,8 @@ Feature: Pio::Icmp
       | ip_ttl                 |                              127 |
       | ip_protocol            |                                1 |
       | ip_header_checksum     |                            23463 |
-      | ip_source_address      |                      192.168.0.1 |
-      | ip_destination_address |                    192.168.0.114 |
+      | source_ip_address      |                      192.168.0.1 |
+      | destination_ip_address |                    192.168.0.114 |
       | ip_option              |                                  |
       | icmp_type              |                                0 |
       | icmp_code              |                                0 |

@@ -1,35 +1,14 @@
-require 'bindata'
-require 'forwardable'
 require 'pio/monkey_patch/integer'
+require 'pio/open_flow/action'
 require 'pio/open_flow10/port16'
 
 module Pio
   module OpenFlow10
     # An action to output a packet to a port.
-    class SendOutPort
-      # OpenFlow 1.0 OFPAT_OUTPUT action format.
-      class Format < BinData::Record
-        endian :big
-
-        uint16 :action_type, value: 0
-        uint16 :action_length, value: 8
-        port16 :port
-        uint16 :max_length, initial_value: 2**16 - 1
-      end
-
-      def self.read(raw_data)
-        send_out_port = allocate
-        send_out_port.instance_variable_set :@format, Format.read(raw_data)
-        send_out_port
-      end
-
-      extend Forwardable
-
-      def_delegators :@format, :action_type
-      def_delegator :@format, :action_length, :length
-      def_delegators :@format, :port
-      def_delegators :@format, :max_length
-      def_delegator :@format, :to_binary_s, :to_binary
+    class SendOutPort < OpenFlow::Action
+      action_header action_type: 0, action_length: 8
+      port16 :port
+      uint16 :max_length, initial_value: 2**16 - 1
 
       # rubocop:disable MethodLength
       def initialize(user_options)
@@ -45,7 +24,7 @@ module Pio
           fail(ArgumentError,
                'The max_length should be an unsigned 16bit integer.')
         end
-        @format = Format.new(options)
+        super(options)
       end
       # rubocop:enable MethodLength
 

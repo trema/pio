@@ -71,8 +71,8 @@ describe Pio::Icmp, '.read' do
     Then { icmp_request.ip_ttl == 128 }
     Then { icmp_request.ip_protocol == 1 }
     Then { icmp_request.ip_header_checksum == 0x2ed0 }
-    Then { icmp_request.ip_source_address.to_s == '192.168.1.102' }
-    Then { icmp_request.ip_destination_address.to_s == '8.8.8.8' }
+    Then { icmp_request.source_ip_address.to_s == '192.168.1.102' }
+    Then { icmp_request.destination_ip_address.to_s == '8.8.8.8' }
     Then { icmp_request.icmp_type == 8 }
     Then { icmp_request.icmp_code == 0 }
     Then { icmp_request.icmp_checksum == 0x4c5b }
@@ -144,8 +144,8 @@ describe Pio::Icmp, '.read' do
     Then { icmp_reply.ip_ttl == 45 }
     Then { icmp_reply.ip_protocol == 1 }
     Then { icmp_reply.ip_header_checksum == 0xbba3 }
-    Then { icmp_reply.ip_source_address.to_s == '8.8.8.8' }
-    Then { icmp_reply.ip_destination_address.to_s == '192.168.1.102' }
+    Then { icmp_reply.source_ip_address.to_s == '8.8.8.8' }
+    Then { icmp_reply.destination_ip_address.to_s == '192.168.1.102' }
     Then { icmp_reply.icmp_type == 0 }
     Then { icmp_reply.icmp_code == 0 }
     Then { icmp_reply.icmp_checksum == 0x545b }

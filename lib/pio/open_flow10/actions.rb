@@ -1,9 +1,11 @@
 require 'bindata'
 require 'pio/open_flow10/enqueue'
 require 'pio/open_flow10/send_out_port'
-require 'pio/open_flow10/set_ether_address'
-require 'pio/open_flow10/set_ip_address'
-require 'pio/open_flow10/set_ip_tos'
+require 'pio/open_flow10/set_destination_ip_address'
+require 'pio/open_flow10/set_destination_mac_address'
+require 'pio/open_flow10/set_source_ip_address'
+require 'pio/open_flow10/set_source_mac_address'
+require 'pio/open_flow10/set_tos'
 require 'pio/open_flow10/set_transport_port'
 require 'pio/open_flow10/set_vlan_priority'
 require 'pio/open_flow10/set_vlan_vid'
@@ -16,17 +18,17 @@ module Pio
     class Actions < BinData::Primitive
       ACTION_CLASS = {
         0 => Pio::OpenFlow10::SendOutPort,
-        1 => Pio::SetVlanVid,
-        2 => Pio::SetVlanPriority,
-        3 => Pio::StripVlanHeader,
-        4 => Pio::SetEtherSourceAddress,
-        5 => Pio::SetEtherDestinationAddress,
-        6 => Pio::SetIpSourceAddress,
-        7 => Pio::SetIpDestinationAddress,
-        8 => Pio::SetIpTos,
-        9 => Pio::SetTransportSourcePort,
-        10 => Pio::SetTransportDestinationPort,
-        11 => Pio::Enqueue,
+        1 => Pio::OpenFlow10::SetVlanVid,
+        2 => Pio::OpenFlow10::SetVlanPriority,
+        3 => Pio::OpenFlow10::StripVlanHeader,
+        4 => Pio::OpenFlow10::SetSourceMacAddress,
+        5 => Pio::OpenFlow10::SetDestinationMacAddress,
+        6 => Pio::OpenFlow10::SetSourceIpAddress,
+        7 => Pio::OpenFlow10::SetDestinationIpAddress,
+        8 => Pio::OpenFlow10::SetTos,
+        9 => Pio::OpenFlow10::SetTransportSourcePort,
+        10 => Pio::OpenFlow10::SetTransportDestinationPort,
+        11 => Pio::OpenFlow10::Enqueue,
         0xffff => Pio::VendorAction
       }
 
@@ -49,7 +51,7 @@ module Pio
           type = BinData::Uint16be.read(tmp)
           begin
             action = ACTION_CLASS.fetch(type).read(tmp)
-            tmp = tmp[action.length..-1]
+            tmp = tmp[action.action_length..-1]
             actions << action
           rescue KeyError
             raise "action type #{type} is not supported."

@@ -8,8 +8,8 @@ module Pio
     # Pseudo UDP header
     class PseudoUdpHeader < BinData::Record
       endian :big
-      ip_address :ip_source_address
-      ip_address :ip_destination_address
+      ip_address :source_ip_address
+      ip_address :destination_ip_address
       uint8 :padding
       uint8 :ip_protocol, value: IPv4Header::ProtocolNumber::UDP
       uint16 :udp_length
@@ -44,8 +44,8 @@ module Pio
     end
 
     def pseudo_udp_header
-      PseudoUdpHeader.new(ip_source_address: ip_source_address,
-                          ip_destination_address: ip_destination_address,
+      PseudoUdpHeader.new(source_ip_address: source_ip_address,
+                          destination_ip_address: destination_ip_address,
                           udp_length: udp_length).to_binary_s
     end
 

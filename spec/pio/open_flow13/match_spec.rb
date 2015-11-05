@@ -30,11 +30,11 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields[0].oxm_length == 4 }
     end
 
-    context "with ether_source_address: '01:02:03:04:05:06'" do
+    context "with source_mac_address: '01:02:03:04:05:06'" do
       When(:match) do
-        Pio::OpenFlow13::Match.new(ether_source_address: '01:02:03:04:05:06')
+        Pio::OpenFlow13::Match.new(source_mac_address: '01:02:03:04:05:06')
       end
-      Then { match.ether_source_address == '01:02:03:04:05:06' }
+      Then { match.source_mac_address == '01:02:03:04:05:06' }
       And { match.class == Pio::OpenFlow13::Match }
       And { match.length == 16 }
       And { match.match_type == Pio::OpenFlow13::MATCH_TYPE_OXM }
@@ -46,7 +46,7 @@ describe Pio::OpenFlow13::Match do
       end
       And do
         match.match_fields[0].oxm_field ==
-          Pio::OpenFlow13::Match::EtherSourceAddress::OXM_FIELD
+          Pio::OpenFlow13::Match::SourceMacAddress::OXM_FIELD
       end
       And { match.match_fields[0].masked? == false }
       And { match.match_fields[0].oxm_length == 6 }
@@ -97,13 +97,13 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields[0].oxm_length == 16 }
     end
 
-    context "with ether_source_address: '01:02:03:04:05:06', ether_source_address_mask: 'ff:ff:ff:00:00:00'" do
+    context "with source_mac_address: '01:02:03:04:05:06', source_mac_address_mask: 'ff:ff:ff:00:00:00'" do
       When(:match) do
-        Pio::OpenFlow13::Match.new(ether_source_address: '01:02:03:04:05:06',
-                                   ether_source_address_mask: 'ff:ff:ff:00:00:00')
+        Pio::OpenFlow13::Match.new(source_mac_address: '01:02:03:04:05:06',
+                                   source_mac_address_mask: 'ff:ff:ff:00:00:00')
       end
-      Then { match.ether_source_address == '01:02:03:04:05:06' }
-      Then { match.ether_source_address_mask == 'ff:ff:ff:00:00:00' }
+      Then { match.source_mac_address == '01:02:03:04:05:06' }
+      Then { match.source_mac_address_mask == 'ff:ff:ff:00:00:00' }
       And { match.class == Pio::OpenFlow13::Match }
       And { match.length == 24 }
       And { match.match_type == Pio::OpenFlow13::MATCH_TYPE_OXM }
@@ -115,7 +115,7 @@ describe Pio::OpenFlow13::Match do
       end
       And do
         match.match_fields[0].oxm_field ==
-          Pio::OpenFlow13::Match::EtherSourceAddress::OXM_FIELD
+          Pio::OpenFlow13::Match::SourceMacAddress::OXM_FIELD
       end
       And { match.match_fields[0].masked? == true }
       And { match.match_fields[0].oxm_length == 12 }
@@ -739,7 +739,7 @@ describe Pio::OpenFlow13::Match do
       Given(:raw_data) do
         read_raw_data_file 'features/open_flow13/oxm_ether_destination_field.raw'
       end
-      Then { match.ether_destination_address == 'ff:ff:ff:ff:ff:ff' }
+      Then { match.destination_mac_address == 'ff:ff:ff:ff:ff:ff' }
       And { match.class == Pio::OpenFlow13::Match }
       And { match.length == 16 }
       And { match.match_type == Pio::OpenFlow13::MATCH_TYPE_OXM }
@@ -751,7 +751,7 @@ describe Pio::OpenFlow13::Match do
       end
       And do
         match.match_fields[0].oxm_field ==
-          Pio::OpenFlow13::Match::EtherDestinationAddress::OXM_FIELD
+          Pio::OpenFlow13::Match::DestinationMacAddress::OXM_FIELD
       end
       And { match.match_fields[0].masked? == false }
       And { match.match_fields[0].oxm_length == 6 }
@@ -761,7 +761,7 @@ describe Pio::OpenFlow13::Match do
       Given(:raw_data) do
         read_raw_data_file 'features/open_flow13/oxm_ether_source_field.raw'
       end
-      Then { match.ether_source_address == '01:02:03:04:05:06' }
+      Then { match.source_mac_address == '01:02:03:04:05:06' }
       And { match.class == Pio::OpenFlow13::Match }
       And { match.length == 16 }
       And { match.match_type == Pio::OpenFlow13::MATCH_TYPE_OXM }
@@ -773,7 +773,7 @@ describe Pio::OpenFlow13::Match do
       end
       And do
         match.match_fields[0].oxm_field ==
-          Pio::OpenFlow13::Match::EtherSourceAddress::OXM_FIELD
+          Pio::OpenFlow13::Match::SourceMacAddress::OXM_FIELD
       end
       And { match.match_fields[0].masked? == false }
       And { match.match_fields[0].oxm_length == 6 }
@@ -783,8 +783,8 @@ describe Pio::OpenFlow13::Match do
       Given(:raw_data) do
         read_raw_data_file 'features/open_flow13/oxm_masked_ether_destination_field.raw'
       end
-      Then { match.ether_destination_address == 'ff:ff:ff:ff:ff:ff' }
-      Then { match.ether_destination_address_mask == 'ff:ff:ff:00:00:00' }
+      Then { match.destination_mac_address == 'ff:ff:ff:ff:ff:ff' }
+      Then { match.destination_mac_address_mask == 'ff:ff:ff:00:00:00' }
       And { match.class == Pio::OpenFlow13::Match }
       And { match.length == 24 }
       And { match.match_type == Pio::OpenFlow13::MATCH_TYPE_OXM }
@@ -796,7 +796,7 @@ describe Pio::OpenFlow13::Match do
       end
       And do
         match.match_fields[0].oxm_field ==
-          Pio::OpenFlow13::Match::EtherDestinationAddress::OXM_FIELD
+          Pio::OpenFlow13::Match::DestinationMacAddress::OXM_FIELD
       end
       And { match.match_fields[0].masked? == true }
       And { match.match_fields[0].oxm_length == 12 }
@@ -806,8 +806,8 @@ describe Pio::OpenFlow13::Match do
       Given(:raw_data) do
         read_raw_data_file 'features/open_flow13/oxm_masked_ether_source_field.raw'
       end
-      Then { match.ether_source_address == '01:02:03:04:05:06' }
-      Then { match.ether_source_address_mask == 'ff:ff:ff:00:00:00' }
+      Then { match.source_mac_address == '01:02:03:04:05:06' }
+      Then { match.source_mac_address_mask == 'ff:ff:ff:00:00:00' }
       And { match.class == Pio::OpenFlow13::Match }
       And { match.length == 24 }
       And { match.match_type == Pio::OpenFlow13::MATCH_TYPE_OXM }
@@ -819,7 +819,7 @@ describe Pio::OpenFlow13::Match do
       end
       And do
         match.match_fields[0].oxm_field ==
-          Pio::OpenFlow13::Match::EtherSourceAddress::OXM_FIELD
+          Pio::OpenFlow13::Match::SourceMacAddress::OXM_FIELD
       end
       And { match.match_fields[0].masked? == true }
       And { match.match_fields[0].oxm_length == 12 }

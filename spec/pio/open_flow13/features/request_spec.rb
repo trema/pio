@@ -5,9 +5,11 @@ describe Pio::OpenFlow13::Features::Request do
     it_should_behave_like('an OpenFlow message',
                           Pio::OpenFlow13::Features::Request)
 
-    context "with body: 'abcde'" do
-      When(:message) { Pio::OpenFlow13::Features::Request.new(body: 'abcde') }
-      Then { message == Failure(RuntimeError, 'Unknown option: body') }
+    context "with unknown_opt: 'abcde'" do
+      When(:message) do
+        Pio::OpenFlow13::Features::Request.new(unknown_opt: 'abcde')
+      end
+      Then { message == Failure(RuntimeError, 'Unknown option: unknown_opt') }
     end
   end
 end

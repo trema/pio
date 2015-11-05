@@ -10,7 +10,7 @@ Feature: Pio::FlowStats::Reply
       | field          | value |
       | ofp_version    |     1 |
       | message_type   |    17 |
-      | length         |    12 |
+      | message_length |    12 |
       | transaction_id |     0 |
       | xid            |     0 |
       | stats_type     | :flow |
@@ -31,7 +31,7 @@ Feature: Pio::FlowStats::Reply
       | field                                                       |                        value |
       | ofp_version                                                 |                            1 |
       | message_type                                                |                           17 |
-      | length                                                      |                          228 |
+      | message_length                                              |                          228 |
       | transaction_id                                              |                            6 |
       | xid                                                         |                            6 |
       | stats_type                                                  |                        :flow |
@@ -39,16 +39,16 @@ Feature: Pio::FlowStats::Reply
       | stats[0].entry_length                                       |                          104 |
       | stats[0].table_id                                           |                            3 |
       | stats[0].match.wildcards.keys.size                          |                           14 |
-      | stats[0].match.wildcards.fetch(:ether_destination_address)  |                         true |
-      | stats[0].match.wildcards.fetch(:ether_source_address)       |                         true |
+      | stats[0].match.wildcards.fetch(:destination_mac_address)    |                         true |
+      | stats[0].match.wildcards.fetch(:source_mac_address)         |                         true |
       | stats[0].match.wildcards.fetch(:ether_type)                 |                         true |
       | stats[0].match.wildcards.fetch(:in_port)                    |                         true |
-      | stats[0].match.wildcards.fetch(:ip_destination_address)     |                           31 |
-      | stats[0].match.wildcards.fetch(:ip_destination_address_all) |                         true |
+      | stats[0].match.wildcards.fetch(:destination_ip_address)     |                           31 |
+      | stats[0].match.wildcards.fetch(:destination_ip_address_all) |                         true |
       | stats[0].match.wildcards.fetch(:ip_protocol)                |                         true |
-      | stats[0].match.wildcards.fetch(:ip_source_address)          |                           31 |
-      | stats[0].match.wildcards.fetch(:ip_source_address_all)      |                         true |
-      | stats[0].match.wildcards.fetch(:ip_tos)                     |                         true |
+      | stats[0].match.wildcards.fetch(:source_ip_address)          |                           31 |
+      | stats[0].match.wildcards.fetch(:source_ip_address_all)      |                         true |
+      | stats[0].match.wildcards.fetch(:tos)                        |                         true |
       | stats[0].match.wildcards.fetch(:transport_destination_port) |                         true |
       | stats[0].match.wildcards.fetch(:transport_source_port)      |                         true |
       | stats[0].match.wildcards.fetch(:vlan_priority)              |                         true |
@@ -71,16 +71,16 @@ Feature: Pio::FlowStats::Reply
       | stats[1].entry_length                                       |                          112 |
       | stats[1].table_id                                           |                            4 |
       | stats[1].match.wildcards.keys.size                          |                           14 |
-      | stats[1].match.wildcards.fetch(:ether_destination_address)  |                         true |
-      | stats[1].match.wildcards.fetch(:ether_source_address)       |                         true |
+      | stats[1].match.wildcards.fetch(:destination_mac_address)    |                         true |
+      | stats[1].match.wildcards.fetch(:source_mac_address)         |                         true |
       | stats[1].match.wildcards.fetch(:ether_type)                 |                         true |
       | stats[1].match.wildcards.fetch(:in_port)                    |                         true |
-      | stats[1].match.wildcards.fetch(:ip_destination_address)     |                           31 |
-      | stats[1].match.wildcards.fetch(:ip_destination_address_all) |                         true |
+      | stats[1].match.wildcards.fetch(:destination_ip_address)     |                           31 |
+      | stats[1].match.wildcards.fetch(:destination_ip_address_all) |                         true |
       | stats[1].match.wildcards.fetch(:ip_protocol)                |                         true |
-      | stats[1].match.wildcards.fetch(:ip_source_address)          |                           31 |
-      | stats[1].match.wildcards.fetch(:ip_source_address_all)      |                         true |
-      | stats[1].match.wildcards.fetch(:ip_tos)                     |                         true |
+      | stats[1].match.wildcards.fetch(:source_ip_address)          |                           31 |
+      | stats[1].match.wildcards.fetch(:source_ip_address_all)      |                         true |
+      | stats[1].match.wildcards.fetch(:tos)                        |                         true |
       | stats[1].match.wildcards.fetch(:transport_destination_port) |                         true |
       | stats[1].match.wildcards.fetch(:transport_source_port)      |                         true |
       | stats[1].match.wildcards.fetch(:vlan_priority)              |                         true |

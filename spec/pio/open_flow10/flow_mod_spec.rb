@@ -32,36 +32,35 @@ describe Pio::OpenFlow10::FlowMod do
       Then { flow_mod.class == Pio::OpenFlow10::FlowMod }
       Then { flow_mod.ofp_version == 0x1 }
       Then { flow_mod.message_type == 0xe }
-      Then { flow_mod.length == 0x50 }
+      Then { flow_mod.message_length == 0x50 }
       Then { flow_mod.transaction_id == 0x15 }
       Then { flow_mod.xid == 0x15 }
 
-      Then { !flow_mod.body.empty? }
       Then do
         flow_mod.match.wildcards.keys == [
           :vlan_vid,
-          :ether_source_address,
-          :ether_destination_address,
+          :source_mac_address,
+          :destination_mac_address,
           :ether_type,
           :ip_protocol,
           :transport_source_port,
           :transport_destination_port,
-          :ip_source_address_all,
-          :ip_destination_address_all,
+          :source_ip_address_all,
+          :destination_ip_address_all,
           :vlan_priority,
-          :ip_tos
+          :tos
         ]
       end
       Then { flow_mod.match.in_port == 1 }
-      Then { flow_mod.match.ether_source_address == '00:00:00:00:00:00' }
-      Then { flow_mod.match.ether_destination_address == '00:00:00:00:00:00' }
+      Then { flow_mod.match.source_mac_address == '00:00:00:00:00:00' }
+      Then { flow_mod.match.destination_mac_address == '00:00:00:00:00:00' }
       Then { flow_mod.match.vlan_vid == 0 }
       Then { flow_mod.match.vlan_priority == 0 }
       Then { flow_mod.match.ether_type == 0 }
-      Then { flow_mod.match.ip_tos == 0 }
+      Then { flow_mod.match.tos == 0 }
       Then { flow_mod.match.ip_protocol == 0 }
-      Then { flow_mod.match.ip_source_address == '0.0.0.0' }
-      Then { flow_mod.match.ip_destination_address == '0.0.0.0' }
+      Then { flow_mod.match.source_ip_address == '0.0.0.0' }
+      Then { flow_mod.match.destination_ip_address == '0.0.0.0' }
       Then { flow_mod.match.transport_source_port == 0 }
       Then { flow_mod.match.transport_destination_port == 0 }
       Then { flow_mod.cookie == 1 }
@@ -98,36 +97,35 @@ describe Pio::OpenFlow10::FlowMod do
       Then { flow_mod.class == Pio::OpenFlow10::FlowMod }
       Then { flow_mod.ofp_version == 0x1 }
       Then { flow_mod.message_type == 0xe }
-      Then { flow_mod.length == 0x50 }
+      Then { flow_mod.message_length == 0x50 }
       Then { flow_mod.transaction_id == 0x15 }
       Then { flow_mod.xid == 0x15 }
 
-      Then { !flow_mod.body.empty? }
       Then do
         flow_mod.match.wildcards.keys == [
           :vlan_vid,
-          :ether_source_address,
-          :ether_destination_address,
+          :source_mac_address,
+          :destination_mac_address,
           :ether_type,
           :ip_protocol,
           :transport_source_port,
           :transport_destination_port,
-          :ip_source_address_all,
-          :ip_destination_address_all,
+          :source_ip_address_all,
+          :destination_ip_address_all,
           :vlan_priority,
-          :ip_tos
+          :tos
         ]
       end
       Then { flow_mod.match.in_port == 1 }
-      Then { flow_mod.match.ether_source_address == '00:00:00:00:00:00' }
-      Then { flow_mod.match.ether_destination_address == '00:00:00:00:00:00' }
+      Then { flow_mod.match.source_mac_address == '00:00:00:00:00:00' }
+      Then { flow_mod.match.destination_mac_address == '00:00:00:00:00:00' }
       Then { flow_mod.match.vlan_vid == 0 }
       Then { flow_mod.match.vlan_priority == 0 }
       Then { flow_mod.match.ether_type == 0 }
-      Then { flow_mod.match.ip_tos == 0 }
+      Then { flow_mod.match.tos == 0 }
       Then { flow_mod.match.ip_protocol == 0 }
-      Then { flow_mod.match.ip_source_address == '0.0.0.0' }
-      Then { flow_mod.match.ip_destination_address == '0.0.0.0' }
+      Then { flow_mod.match.source_ip_address == '0.0.0.0' }
+      Then { flow_mod.match.destination_ip_address == '0.0.0.0' }
       Then { flow_mod.match.transport_source_port == 0 }
       Then { flow_mod.match.transport_destination_port == 0 }
       Then { flow_mod.cookie == 1 }
