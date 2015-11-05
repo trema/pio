@@ -1,6 +1,9 @@
 # Changelog
 
 ## develop (unreleased)
+
+
+## 0.28.0 (11/5/2015)
 ### New features
 * [#267](https://github.com/trema/pio/pull/267): Add Queue Stats Request message generator.
 * [#266](https://github.com/trema/pio/pull/266): Add Port Stats Request message generator.
