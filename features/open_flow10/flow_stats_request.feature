@@ -22,7 +22,7 @@ Feature: Pio::FlowStats::Request
       | match.wildcards.fetch(:ip_destination_address_all) | true  |
       | match.wildcards.fetch(:ip_protocol)                | true  |
       | match.wildcards.fetch(:ip_source_address_all)      | true  |
-      | match.wildcards.fetch(:ip_tos)                     | true  |
+      | match.wildcards.fetch(:tos)                        | true  |
       | match.wildcards.fetch(:transport_destination_port) | true  |
       | match.wildcards.fetch(:transport_source_port)      | true  |
       | match.wildcards.fetch(:vlan_priority)              | true  |
@@ -52,7 +52,7 @@ Feature: Pio::FlowStats::Request
       | match.wildcards.fetch(:ip_destination_address_all) | true  |
       | match.wildcards.fetch(:ip_protocol)                | true  |
       | match.wildcards.fetch(:ip_source_address_all)      | true  |
-      | match.wildcards.fetch(:ip_tos)                     | true  |
+      | match.wildcards.fetch(:tos)                        | true  |
       | match.wildcards.fetch(:transport_destination_port) | true  |
       | match.wildcards.fetch(:transport_source_port)      | true  |
       | match.wildcards.fetch(:vlan_priority)              | true  |
@@ -80,7 +80,7 @@ Feature: Pio::FlowStats::Request
       | match.wildcards.fetch(:ip_destination_address_all) | true  |
       | match.wildcards.fetch(:ip_protocol)                | true  |
       | match.wildcards.fetch(:ip_source_address_all)      | true  |
-      | match.wildcards.fetch(:ip_tos)                     | true  |
+      | match.wildcards.fetch(:tos)                        | true  |
       | match.wildcards.fetch(:transport_destination_port) | true  |
       | match.wildcards.fetch(:transport_source_port)      | true  |
       | match.wildcards.fetch(:vlan_priority)              | true  |

@@ -38,7 +38,7 @@ Feature: Pio::FlowMod
       | match.wildcards.key?(:ip_source_address_all)      | true  |
       | match.wildcards.key?(:ip_destination_address_all) | true  |
       | match.wildcards.key?(:vlan_priority)              | true  |
-      | match.wildcards.key?(:ip_tos)                     | true  |
+      | match.wildcards.key?(:tos)                        | true  |
       | out_port                                          | 0     |
       | priority                                          | 0     |
 
@@ -59,7 +59,7 @@ Feature: Pio::FlowMod
       | match.vlan_vid                         |                                                     0 |
       | match.vlan_priority                    |                                                     0 |
       | match.ether_type                       |                                                  2048 |
-      | match.ip_tos                           |                                                     0 |
+      | match.tos                              |                                                     0 |
       | match.ip_protocol                      |                                                     1 |
       | match.ip_source_address                |                                              10.0.0.0 |
       | match.ip_source_address.prefixlen      |                                                     8 |
@@ -96,7 +96,7 @@ Feature: Pio::FlowMod
       | match.vlan_vid                         |                                                     0 |
       | match.vlan_priority                    |                                                     0 |
       | match.ether_type                       |                                                  2048 |
-      | match.ip_tos                           |                                                     0 |
+      | match.tos                              |                                                     0 |
       | match.ip_protocol                      |                                                     1 |
       | match.ip_source_address                |                                              10.0.0.0 |
       | match.ip_source_address.prefixlen      |                                                     8 |
@@ -133,7 +133,7 @@ Feature: Pio::FlowMod
       | match.vlan_vid                         |                                                     0 |
       | match.vlan_priority                    |                                                     0 |
       | match.ether_type                       |                                                  2048 |
-      | match.ip_tos                           |                                                     0 |
+      | match.tos                              |                                                     0 |
       | match.ip_protocol                      |                                                     1 |
       | match.ip_source_address                |                                              10.0.0.0 |
       | match.ip_source_address.prefixlen      |                                                     8 |
@@ -170,7 +170,7 @@ Feature: Pio::FlowMod
       | match.vlan_vid                         |                                                     0 |
       | match.vlan_priority                    |                                                     0 |
       | match.ether_type                       |                                                  2048 |
-      | match.ip_tos                           |                                                     0 |
+      | match.tos                              |                                                     0 |
       | match.ip_protocol                      |                                                     1 |
       | match.ip_source_address                |                                              10.0.0.0 |
       | match.ip_source_address.prefixlen      |                                                     8 |
@@ -195,7 +195,7 @@ Feature: Pio::FlowMod
       | field                                  |                                                 value |
       | ofp_version                            |                                                     1 |
       | message_type                           |                                                    14 |
-      | message_length                                 |                                                    72 |
+      | message_length                         |                                                    72 |
       | transaction_id                         |                                                     0 |
       | xid                                    |                                                     0 |
       | match.wildcards                        | {:ip_source_address=>24, :ip_destination_address=>24} |
@@ -205,7 +205,7 @@ Feature: Pio::FlowMod
       | match.vlan_vid                         |                                                     0 |
       | match.vlan_priority                    |                                                     0 |
       | match.ether_type                       |                                                  2048 |
-      | match.ip_tos                           |                                                     0 |
+      | match.tos                              |                                                     0 |
       | match.ip_protocol                      |                                                     1 |
       | match.ip_source_address                |                                              10.0.0.0 |
       | match.ip_source_address.prefixlen      |                                                     8 |

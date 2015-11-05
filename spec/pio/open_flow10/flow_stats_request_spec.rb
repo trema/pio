@@ -27,7 +27,7 @@ describe Pio::OpenFlow10::FlowStats::Request do
         flow_stats_request.match.wildcards.keys.sort ==
           [:ether_destination_address, :ether_source_address,
            :ether_type, :in_port, :ip_destination_address_all,
-           :ip_protocol, :ip_source_address_all, :ip_tos,
+           :ip_protocol, :ip_source_address_all, :tos,
            :transport_destination_port, :transport_source_port,
            :vlan_priority, :vlan_vid]
       end

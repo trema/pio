@@ -36,7 +36,7 @@ module Pio
           vlan_vid: vlan_vid,
           vlan_priority: vlan_pcp,
           ether_type: ether_type,
-          ip_tos: 0,
+          tos: 0,
           ip_protocol: operation,
           ip_source_address: sender_protocol_address,
           ip_destination_address: target_protocol_address,

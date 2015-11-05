@@ -11,7 +11,7 @@ module Pio
       hide :padding
 
       def initialize(type_of_service)
-        # ip_tos (IP ToS) value consists of 8 bits, of which only the
+        # tos (IP ToS) value consists of 8 bits, of which only the
         # 6 high-order bits belong to DSCP, the 2 low-order bits must
         # be zero.
         unless type_of_service.unsigned_8bit? && type_of_service % 4 == 0

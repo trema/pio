@@ -31,7 +31,7 @@ module Pio
                      :set_ether_destination_address,
                      :set_ip_source_address,
                      :set_ip_destination_address,
-                     :set_ip_tos,
+                     :set_tos,
                      :set_transport_source_port,
                      :set_transport_destination_port,
                      :enqueue]

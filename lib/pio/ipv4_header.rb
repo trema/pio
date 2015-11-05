@@ -42,7 +42,7 @@ module Pio
         vlan_vid: vlan_vid,
         vlan_priority: vlan_pcp,
         ether_type: ether_type,
-        ip_tos: ip_type_of_service,
+        tos: ip_type_of_service,
         ip_protocol: ip_protocol,
         ip_source_address: ip_source_address,
         ip_destination_address: ip_destination_address,

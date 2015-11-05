@@ -106,11 +106,11 @@ describe Pio::OpenFlow10::Match::Wildcards do
       Then { wildcards == { ip_destination_address_all: true } }
     end
 
-    context 'with in_port: true, ip_source_address: 010101, ip_tos: true' do
+    context 'with in_port: true, ip_source_address: 010101, tos: true' do
       Given(:binary) { ['00000000001000000001010100000001'].pack('B*') }
 
       Then do
-        wildcards == { in_port: true, ip_source_address: 0b10101, ip_tos: true }
+        wildcards == { in_port: true, ip_source_address: 0b10101, tos: true }
       end
     end
   end

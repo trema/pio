@@ -10,7 +10,7 @@ Feature: Pio::ExactMatch
       | vlan_vid                   |             65535 |
       | vlan_priority              |                 0 |
       | ether_type                 |              2054 |
-      | ip_tos                     |                 0 |
+      | tos                        |                 0 |
       | ip_protocol                |                 1 |
       | ip_source_address          |     192.168.2.254 |
       | ip_destination_address     |       192.168.2.5 |
@@ -28,7 +28,7 @@ Feature: Pio::ExactMatch
       | vlan_vid                   |             65535 |
       | vlan_priority              |                 0 |
       | ether_type                 |              2054 |
-      | ip_tos                     |                 0 |
+      | tos                        |                 0 |
       | ip_protocol                |                 2 |
       | ip_source_address          |       192.168.0.1 |
       | ip_destination_address     |       192.168.0.2 |
@@ -46,7 +46,7 @@ Feature: Pio::ExactMatch
       | vlan_vid                   |             65535 |
       | vlan_priority              |                 0 |
       | ether_type                 |              2048 |
-      | ip_tos                     |                 0 |
+      | tos                        |                 0 |
       | ip_protocol                |               255 |
       | ip_source_address          |      192.168.0.40 |
       | ip_destination_address     |      192.168.1.40 |

@@ -48,7 +48,7 @@ describe Pio::OpenFlow10::FlowMod do
           :ip_source_address_all,
           :ip_destination_address_all,
           :vlan_priority,
-          :ip_tos
+          :tos
         ]
       end
       Then { flow_mod.match.in_port == 1 }
@@ -57,7 +57,7 @@ describe Pio::OpenFlow10::FlowMod do
       Then { flow_mod.match.vlan_vid == 0 }
       Then { flow_mod.match.vlan_priority == 0 }
       Then { flow_mod.match.ether_type == 0 }
-      Then { flow_mod.match.ip_tos == 0 }
+      Then { flow_mod.match.tos == 0 }
       Then { flow_mod.match.ip_protocol == 0 }
       Then { flow_mod.match.ip_source_address == '0.0.0.0' }
       Then { flow_mod.match.ip_destination_address == '0.0.0.0' }
@@ -113,7 +113,7 @@ describe Pio::OpenFlow10::FlowMod do
           :ip_source_address_all,
           :ip_destination_address_all,
           :vlan_priority,
-          :ip_tos
+          :tos
         ]
       end
       Then { flow_mod.match.in_port == 1 }
@@ -122,7 +122,7 @@ describe Pio::OpenFlow10::FlowMod do
       Then { flow_mod.match.vlan_vid == 0 }
       Then { flow_mod.match.vlan_priority == 0 }
       Then { flow_mod.match.ether_type == 0 }
-      Then { flow_mod.match.ip_tos == 0 }
+      Then { flow_mod.match.tos == 0 }
       Then { flow_mod.match.ip_protocol == 0 }
       Then { flow_mod.match.ip_source_address == '0.0.0.0' }
       Then { flow_mod.match.ip_destination_address == '0.0.0.0' }

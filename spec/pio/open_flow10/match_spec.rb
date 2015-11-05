@@ -37,7 +37,7 @@ describe Pio::OpenFlow10::Match do
           :ip_source_address_all,
           :ip_destination_address_all,
           :vlan_priority,
-          :ip_tos
+          :tos
         ]
       end
       Then { match.in_port == 1 }
@@ -46,7 +46,7 @@ describe Pio::OpenFlow10::Match do
       Then { match.vlan_vid == 0 }
       Then { match.vlan_priority == 0 }
       Then { match.ether_type == 0 }
-      Then { match.ip_tos == 0 }
+      Then { match.tos == 0 }
       Then { match.ip_protocol == 0 }
       Then { match.ip_source_address == '0.0.0.0' }
       Then { match.ip_destination_address == '0.0.0.0' }
@@ -74,7 +74,7 @@ describe Pio::OpenFlow10::Match do
           :ip_source_address,
           :ip_destination_address_all,
           :vlan_priority,
-          :ip_tos
+          :tos
         ]
       end
       And { match.wildcards[:ip_source_address] = 12 }
@@ -84,7 +84,7 @@ describe Pio::OpenFlow10::Match do
       Then { match.vlan_vid == 0 }
       Then { match.vlan_priority == 0 }
       Then { match.ether_type == 0 }
-      Then { match.ip_tos == 0 }
+      Then { match.tos == 0 }
       Then { match.ip_protocol == 0 }
       Then { match.ip_source_address == '192.168.1.0' }
       Then { match.ip_source_address.prefixlen == 24 }
@@ -111,7 +111,7 @@ describe Pio::OpenFlow10::Match do
           :ip_source_address_all,
           :ip_destination_address_all,
           :vlan_priority,
-          :ip_tos
+          :tos
         ]
       end
       Then { match.in_port == 1 }
@@ -120,7 +120,7 @@ describe Pio::OpenFlow10::Match do
       Then { match.vlan_vid == 0 }
       Then { match.vlan_priority == 0 }
       Then { match.ether_type == 0 }
-      Then { match.ip_tos == 0 }
+      Then { match.tos == 0 }
       Then { match.ip_protocol == 0 }
       Then { match.ip_source_address == '0.0.0.0' }
       Then { match.ip_destination_address == '0.0.0.0' }
@@ -152,7 +152,7 @@ describe Pio::OpenFlow10::Match do
           :ip_source_address,
           :ip_destination_address_all,
           :vlan_priority,
-          :ip_tos
+          :tos
         ]
       end
       Then { match.wildcards.fetch(:ip_source_address) == 8 }
@@ -162,7 +162,7 @@ describe Pio::OpenFlow10::Match do
       Then { match.vlan_vid == 0 }
       Then { match.vlan_priority == 0 }
       Then { match.ether_type == 0 }
-      Then { match.ip_tos == 0 }
+      Then { match.tos == 0 }
       Then { match.ip_protocol == 0 }
       Then { match.ip_source_address == '192.168.1.0/24' }
       Then { match.ip_destination_address == '0.0.0.0' }
@@ -185,7 +185,7 @@ describe Pio::OpenFlow10::Match do
           :ip_source_address_all,
           :ip_destination_address,
           :vlan_priority,
-          :ip_tos
+          :tos
         ]
       end
       Then { match.wildcards.fetch(:ip_destination_address) == 8 }
@@ -195,7 +195,7 @@ describe Pio::OpenFlow10::Match do
       Then { match.vlan_vid == 0 }
       Then { match.vlan_priority == 0 }
       Then { match.ether_type == 0 }
-      Then { match.ip_tos == 0 }
+      Then { match.tos == 0 }
       Then { match.ip_protocol == 0 }
       Then { match.ip_source_address == '0.0.0.0' }
       Then { match.ip_destination_address == '192.168.1.0/24' }
