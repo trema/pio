@@ -40,7 +40,7 @@ Feature: Pio::FlowStats::Reply
       | stats[0].table_id                                           |                            3 |
       | stats[0].match.wildcards.keys.size                          |                           14 |
       | stats[0].match.wildcards.fetch(:ether_destination_address)  |                         true |
-      | stats[0].match.wildcards.fetch(:ether_source_address)       |                         true |
+      | stats[0].match.wildcards.fetch(:source_mac_address)         |                         true |
       | stats[0].match.wildcards.fetch(:ether_type)                 |                         true |
       | stats[0].match.wildcards.fetch(:in_port)                    |                         true |
       | stats[0].match.wildcards.fetch(:ip_destination_address)     |                           31 |
@@ -72,7 +72,7 @@ Feature: Pio::FlowStats::Reply
       | stats[1].table_id                                           |                            4 |
       | stats[1].match.wildcards.keys.size                          |                           14 |
       | stats[1].match.wildcards.fetch(:ether_destination_address)  |                         true |
-      | stats[1].match.wildcards.fetch(:ether_source_address)       |                         true |
+      | stats[1].match.wildcards.fetch(:source_mac_address)         |                         true |
       | stats[1].match.wildcards.fetch(:ether_type)                 |                         true |
       | stats[1].match.wildcards.fetch(:in_port)                    |                         true |
       | stats[1].match.wildcards.fetch(:ip_destination_address)     |                           31 |

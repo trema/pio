@@ -29,7 +29,7 @@ Feature: Pio::FlowMod
       | match.wildcards.keys.size                         | 12    |
       | match.wildcards.key?(:in_port)                    | true  |
       | match.wildcards.key?(:vlan_vid)                   | true  |
-      | match.wildcards.key?(:ether_source_address)       | true  |
+      | match.wildcards.key?(:source_mac_address)         | true  |
       | match.wildcards.key?(:ether_destination_address)  | true  |
       | match.wildcards.key?(:ether_type)                 | true  |
       | match.wildcards.key?(:ip_protocol)                | true  |
@@ -54,7 +54,7 @@ Feature: Pio::FlowMod
       | xid                                    |                                                     0 |
       | match.wildcards                        | {:ip_source_address=>24, :ip_destination_address=>24} |
       | match.in_port                          |                                                     1 |
-      | match.ether_source_address             |                                     00:00:00:00:00:0a |
+      | match.source_mac_address               |                                     00:00:00:00:00:0a |
       | match.ether_destination_address        |                                     00:00:00:00:00:14 |
       | match.vlan_vid                         |                                                     0 |
       | match.vlan_priority                    |                                                     0 |
@@ -91,7 +91,7 @@ Feature: Pio::FlowMod
       | xid                                    |                                                     0 |
       | match.wildcards                        | {:ip_source_address=>24, :ip_destination_address=>24} |
       | match.in_port                          |                                                     1 |
-      | match.ether_source_address             |                                     00:00:00:00:00:0a |
+      | match.source_mac_address               |                                     00:00:00:00:00:0a |
       | match.ether_destination_address        |                                     00:00:00:00:00:14 |
       | match.vlan_vid                         |                                                     0 |
       | match.vlan_priority                    |                                                     0 |
@@ -128,7 +128,7 @@ Feature: Pio::FlowMod
       | xid                                    |                                                     0 |
       | match.wildcards                        | {:ip_source_address=>24, :ip_destination_address=>24} |
       | match.in_port                          |                                                     1 |
-      | match.ether_source_address             |                                     00:00:00:00:00:0a |
+      | match.source_mac_address               |                                     00:00:00:00:00:0a |
       | match.ether_destination_address        |                                     00:00:00:00:00:14 |
       | match.vlan_vid                         |                                                     0 |
       | match.vlan_priority                    |                                                     0 |
@@ -165,7 +165,7 @@ Feature: Pio::FlowMod
       | xid                                    |                                                     0 |
       | match.wildcards                        | {:ip_source_address=>24, :ip_destination_address=>24} |
       | match.in_port                          |                                                     1 |
-      | match.ether_source_address             |                                     00:00:00:00:00:0a |
+      | match.source_mac_address               |                                     00:00:00:00:00:0a |
       | match.ether_destination_address        |                                     00:00:00:00:00:00 |
       | match.vlan_vid                         |                                                     0 |
       | match.vlan_priority                    |                                                     0 |
@@ -200,7 +200,7 @@ Feature: Pio::FlowMod
       | xid                                    |                                                     0 |
       | match.wildcards                        | {:ip_source_address=>24, :ip_destination_address=>24} |
       | match.in_port                          |                                                     1 |
-      | match.ether_source_address             |                                     00:00:00:00:00:0a |
+      | match.source_mac_address               |                                     00:00:00:00:00:0a |
       | match.ether_destination_address        |                                     00:00:00:00:00:14 |
       | match.vlan_vid                         |                                                     0 |
       | match.vlan_priority                    |                                                     0 |

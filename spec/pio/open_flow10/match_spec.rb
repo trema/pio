@@ -28,7 +28,7 @@ describe Pio::OpenFlow10::Match do
       Then do
         match.wildcards.keys == [
           :vlan_vid,
-          :ether_source_address,
+          :source_mac_address,
           :ether_destination_address,
           :ether_type,
           :ip_protocol,
@@ -41,7 +41,7 @@ describe Pio::OpenFlow10::Match do
         ]
       end
       Then { match.in_port == 1 }
-      Then { match.ether_source_address == '00:00:00:00:00:00' }
+      Then { match.source_mac_address == '00:00:00:00:00:00' }
       Then { match.ether_destination_address == '00:00:00:00:00:00' }
       Then { match.vlan_vid == 0 }
       Then { match.vlan_priority == 0 }
@@ -65,7 +65,7 @@ describe Pio::OpenFlow10::Match do
         match.wildcards.keys == [
           :in_port,
           :vlan_vid,
-          :ether_source_address,
+          :source_mac_address,
           :ether_destination_address,
           :ether_type,
           :ip_protocol,
@@ -79,7 +79,7 @@ describe Pio::OpenFlow10::Match do
       end
       And { match.wildcards[:ip_source_address] = 12 }
       Then { match.in_port == 0 }
-      Then { match.ether_source_address == '00:00:00:00:00:00' }
+      Then { match.source_mac_address == '00:00:00:00:00:00' }
       Then { match.ether_destination_address == '00:00:00:00:00:00' }
       Then { match.vlan_vid == 0 }
       Then { match.vlan_priority == 0 }
@@ -102,7 +102,7 @@ describe Pio::OpenFlow10::Match do
       Then do
         match.wildcards.keys == [
           :vlan_vid,
-          :ether_source_address,
+          :source_mac_address,
           :ether_destination_address,
           :ether_type,
           :ip_protocol,
@@ -115,7 +115,7 @@ describe Pio::OpenFlow10::Match do
         ]
       end
       Then { match.in_port == 1 }
-      Then { match.ether_source_address == '00:00:00:00:00:00' }
+      Then { match.source_mac_address == '00:00:00:00:00:00' }
       Then { match.ether_destination_address == '00:00:00:00:00:00' }
       Then { match.vlan_vid == 0 }
       Then { match.vlan_priority == 0 }
@@ -143,7 +143,7 @@ describe Pio::OpenFlow10::Match do
         match.wildcards.keys == [
           :in_port,
           :vlan_vid,
-          :ether_source_address,
+          :source_mac_address,
           :ether_destination_address,
           :ether_type,
           :ip_protocol,
@@ -157,7 +157,7 @@ describe Pio::OpenFlow10::Match do
       end
       Then { match.wildcards.fetch(:ip_source_address) == 8 }
       Then { match.in_port == 0 }
-      Then { match.ether_source_address == '00:00:00:00:00:00' }
+      Then { match.source_mac_address == '00:00:00:00:00:00' }
       Then { match.ether_destination_address == '00:00:00:00:00:00' }
       Then { match.vlan_vid == 0 }
       Then { match.vlan_priority == 0 }
@@ -176,7 +176,7 @@ describe Pio::OpenFlow10::Match do
         match.wildcards.keys == [
           :in_port,
           :vlan_vid,
-          :ether_source_address,
+          :source_mac_address,
           :ether_destination_address,
           :ether_type,
           :ip_protocol,
@@ -190,7 +190,7 @@ describe Pio::OpenFlow10::Match do
       end
       Then { match.wildcards.fetch(:ip_destination_address) == 8 }
       Then { match.in_port == 0 }
-      Then { match.ether_source_address == '00:00:00:00:00:00' }
+      Then { match.source_mac_address == '00:00:00:00:00:00' }
       Then { match.ether_destination_address == '00:00:00:00:00:00' }
       Then { match.vlan_vid == 0 }
       Then { match.vlan_priority == 0 }

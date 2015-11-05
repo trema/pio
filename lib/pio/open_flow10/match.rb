@@ -12,7 +12,7 @@ module Pio
         BITS = {
           in_port: 1 << 0,
           vlan_vid: 1 << 1,
-          ether_source_address: 1 << 2,
+          source_mac_address: 1 << 2,
           ether_destination_address: 1 << 3,
           ether_type: 1 << 4,
           ip_protocol: 1 << 5,
@@ -106,7 +106,7 @@ module Pio
 
         wildcards :wildcards
         uint16 :in_port
-        mac_address :ether_source_address
+        mac_address :source_mac_address
         mac_address :ether_destination_address
         uint16 :vlan_vid
         uint8 :vlan_priority

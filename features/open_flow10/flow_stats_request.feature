@@ -16,7 +16,7 @@ Feature: Pio::FlowStats::Request
       | stats_type                                         | :flow |
       | match.wildcards.keys.size                          | 12    |
       | match.wildcards.fetch(:ether_destination_address)  | true  |
-      | match.wildcards.fetch(:ether_source_address)       | true  |
+      | match.wildcards.fetch(:source_mac_address)         | true  |
       | match.wildcards.fetch(:ether_type)                 | true  |
       | match.wildcards.fetch(:in_port)                    | true  |
       | match.wildcards.fetch(:ip_destination_address_all) | true  |
@@ -47,7 +47,7 @@ Feature: Pio::FlowStats::Request
       | match.in_port                                      | 1     |
       | match.wildcards.keys.size                          | 11    |
       | match.wildcards.fetch(:ether_destination_address)  | true  |
-      | match.wildcards.fetch(:ether_source_address)       | true  |
+      | match.wildcards.fetch(:source_mac_address)         | true  |
       | match.wildcards.fetch(:ether_type)                 | true  |
       | match.wildcards.fetch(:ip_destination_address_all) | true  |
       | match.wildcards.fetch(:ip_protocol)                | true  |
@@ -74,7 +74,7 @@ Feature: Pio::FlowStats::Request
       | stats_type                                         | :flow |
       | match.wildcards.keys.size                          | 12    |
       | match.wildcards.fetch(:ether_destination_address)  | true  |
-      | match.wildcards.fetch(:ether_source_address)       | true  |
+      | match.wildcards.fetch(:source_mac_address)         | true  |
       | match.wildcards.fetch(:ether_type)                 | true  |
       | match.wildcards.fetch(:in_port)                    | true  |
       | match.wildcards.fetch(:ip_destination_address_all) | true  |

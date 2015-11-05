@@ -5,7 +5,7 @@ Feature: Pio::ExactMatch
       | field                      |             value |
       | wildcards                  |                {} |
       | in_port                    |                 1 |
-      | ether_source_address       | ac:5d:10:31:37:79 |
+      | source_mac_address         | ac:5d:10:31:37:79 |
       | ether_destination_address  | ff:ff:ff:ff:ff:ff |
       | vlan_vid                   |             65535 |
       | vlan_priority              |                 0 |
@@ -23,7 +23,7 @@ Feature: Pio::ExactMatch
       | field                      |             value |
       | wildcards                  |                {} |
       | in_port                    |                 1 |
-      | ether_source_address       | 11:11:11:11:11:11 |
+      | source_mac_address         | 11:11:11:11:11:11 |
       | ether_destination_address  | 22:22:22:22:22:22 |
       | vlan_vid                   |             65535 |
       | vlan_priority              |                 0 |
@@ -41,7 +41,7 @@ Feature: Pio::ExactMatch
       | field                      |             value |
       | wildcards                  |                {} |
       | in_port                    |                 1 |
-      | ether_source_address       | 00:00:00:00:00:01 |
+      | source_mac_address         | 00:00:00:00:00:01 |
       | ether_destination_address  | 80:00:00:00:00:01 |
       | vlan_vid                   |             65535 |
       | vlan_priority              |                 0 |

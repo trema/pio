@@ -31,7 +31,7 @@ module Pio
       def to_exact_match(in_port)
         match_options = {
           in_port: in_port,
-          ether_source_address: source_mac,
+          source_mac_address: source_mac,
           ether_destination_address: destination_mac,
           vlan_vid: vlan_vid,
           vlan_priority: vlan_pcp,

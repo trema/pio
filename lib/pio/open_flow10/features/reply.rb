@@ -27,7 +27,7 @@ module Pio
                      :set_vlan_vid,
                      :set_vlan_pcp,
                      :strip_vlan,
-                     :set_ether_source_address,
+                     :set_source_mac_address,
                      :set_ether_destination_address,
                      :set_ip_source_address,
                      :set_ip_destination_address,
