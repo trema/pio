@@ -185,13 +185,13 @@ describe Pio::OpenFlow10::PacketOut do
       Then { result.actions[0].is_a? Pio::OpenFlow10::StripVlanHeader }
     end
 
-    context 'with a SetEtherSourceAddress action' do
+    context 'with a SetSourceMacAddress action' do
       When(:user_options) do
         {
           transaction_id: 0x16,
           buffer_id: 0xffffffff,
           in_port: 0xffff,
-          actions: Pio::OpenFlow10::SetEtherSourceAddress.new('11:22:33:44:55:66'),
+          actions: Pio::OpenFlow10::SetSourceMacAddress.new('11:22:33:44:55:66'),
           raw_data: data_dump
         }
       end
@@ -199,17 +199,17 @@ describe Pio::OpenFlow10::PacketOut do
       Then { result.message_length == 0x60 }
       Then { result.actions_len == 0x10 }
       Then { result.actions.length == 1 }
-      Then { result.actions[0].is_a? Pio::OpenFlow10::SetEtherSourceAddress }
+      Then { result.actions[0].is_a? Pio::OpenFlow10::SetSourceMacAddress }
       Then { result.actions[0].mac_address == '11:22:33:44:55:66' }
     end
 
-    context 'with a SetEtherDestinationAddress action' do
+    context 'with a SetDestinationMacAddress action' do
       When(:user_options) do
         {
           transaction_id: 0x16,
           buffer_id: 0xffffffff,
           in_port: 0xffff,
-          actions: Pio::OpenFlow10::SetEtherDestinationAddress.new('11:22:33:44:55:66'),
+          actions: Pio::OpenFlow10::SetDestinationMacAddress.new('11:22:33:44:55:66'),
           raw_data: data_dump
         }
       end
@@ -217,7 +217,7 @@ describe Pio::OpenFlow10::PacketOut do
       Then { result.message_length == 0x60 }
       Then { result.actions_len == 0x10 }
       Then { result.actions.length == 1 }
-      Then { result.actions[0].is_a? Pio::OpenFlow10::SetEtherDestinationAddress }
+      Then { result.actions[0].is_a? Pio::OpenFlow10::SetDestinationMacAddress }
       Then { result.actions[0].mac_address == '11:22:33:44:55:66' }
     end
 

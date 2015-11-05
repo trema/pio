@@ -1,9 +1,9 @@
-require 'pio/open_flow10/set_ether_address'
+require 'pio/open_flow10/set_destination_mac_address'
 
-describe Pio::OpenFlow10::SetEtherDestinationAddress do
+describe Pio::OpenFlow10::SetDestinationMacAddress do
   describe '.new' do
     Given(:set_ether_destination_address) do
-      Pio::OpenFlow10::SetEtherDestinationAddress.new(mac_address)
+      Pio::OpenFlow10::SetDestinationMacAddress.new(mac_address)
     end
 
     context "with '11:22:33:44:55:66'" do
