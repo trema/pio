@@ -221,13 +221,13 @@ describe Pio::OpenFlow10::PacketOut do
       Then { result.actions[0].mac_address == '11:22:33:44:55:66' }
     end
 
-    context 'with a SetIpSourceAddress action' do
+    context 'with a SetSourceIpAddress action' do
       When(:user_options) do
         {
           transaction_id: 0x16,
           buffer_id: 0xffffffff,
           in_port: 0xffff,
-          actions: Pio::OpenFlow10::SetIpSourceAddress.new('1.2.3.4'),
+          actions: Pio::OpenFlow10::SetSourceIpAddress.new('1.2.3.4'),
           raw_data: data_dump
         }
       end
@@ -235,17 +235,17 @@ describe Pio::OpenFlow10::PacketOut do
       Then { result.message_length == 0x58 }
       Then { result.actions_len == 0x8 }
       Then { result.actions.length == 1 }
-      Then { result.actions[0].is_a? Pio::OpenFlow10::SetIpSourceAddress }
+      Then { result.actions[0].is_a? Pio::OpenFlow10::SetSourceIpAddress }
       Then { result.actions[0].ip_address == '1.2.3.4' }
     end
 
-    context 'with a SetIpDestinationAddress action' do
+    context 'with a SetDestinationIpAddress action' do
       When(:user_options) do
         {
           transaction_id: 0x16,
           buffer_id: 0xffffffff,
           in_port: 0xffff,
-          actions: Pio::OpenFlow10::SetIpDestinationAddress.new('1.2.3.4'),
+          actions: Pio::OpenFlow10::SetDestinationIpAddress.new('1.2.3.4'),
           raw_data: data_dump
         }
       end
@@ -253,7 +253,7 @@ describe Pio::OpenFlow10::PacketOut do
       Then { result.message_length == 0x58 }
       Then { result.actions_len == 0x8 }
       Then { result.actions.length == 1 }
-      Then { result.actions[0].is_a? Pio::OpenFlow10::SetIpDestinationAddress }
+      Then { result.actions[0].is_a? Pio::OpenFlow10::SetDestinationIpAddress }
       Then { result.actions[0].ip_address == '1.2.3.4' }
     end
 

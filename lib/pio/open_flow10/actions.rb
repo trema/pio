@@ -1,8 +1,9 @@
 require 'bindata'
 require 'pio/open_flow10/enqueue'
 require 'pio/open_flow10/send_out_port'
+require 'pio/open_flow10/set_destination_ip_address'
 require 'pio/open_flow10/set_destination_mac_address'
-require 'pio/open_flow10/set_ip_address'
+require 'pio/open_flow10/set_source_ip_address'
 require 'pio/open_flow10/set_source_mac_address'
 require 'pio/open_flow10/set_tos'
 require 'pio/open_flow10/set_transport_port'
@@ -22,8 +23,8 @@ module Pio
         3 => Pio::OpenFlow10::StripVlanHeader,
         4 => Pio::OpenFlow10::SetSourceMacAddress,
         5 => Pio::OpenFlow10::SetDestinationMacAddress,
-        6 => Pio::OpenFlow10::SetIpSourceAddress,
-        7 => Pio::OpenFlow10::SetIpDestinationAddress,
+        6 => Pio::OpenFlow10::SetSourceIpAddress,
+        7 => Pio::OpenFlow10::SetDestinationIpAddress,
         8 => Pio::OpenFlow10::SetTos,
         9 => Pio::OpenFlow10::SetTransportSourcePort,
         10 => Pio::OpenFlow10::SetTransportDestinationPort,

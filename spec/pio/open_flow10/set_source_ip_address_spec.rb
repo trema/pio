@@ -1,10 +1,10 @@
-require 'pio/open_flow10/set_ip_address'
+require 'pio/open_flow10/set_source_ip_address'
 
-describe Pio::OpenFlow10::SetIpSourceAddress do
+describe Pio::OpenFlow10::SetSourceIpAddress do
   describe '.new' do
     context "with '1.2.3.4'" do
       When(:set_ip_source_addr) do
-        Pio::OpenFlow10::SetIpSourceAddress.new('1.2.3.4')
+        Pio::OpenFlow10::SetSourceIpAddress.new('1.2.3.4')
       end
 
       describe '#ip_address' do
