@@ -3,6 +3,11 @@
 ## develop (unreleased)
 
 
+## 0.28.1 (11/5/2015)
+### Changes
+* Remove `OpenFlow10` namespace from `Pio::OpenFlow10::SetSourceMacAddress` and `Pio::OpenFlow10::SetDestinationMacAddress`.
+
+
 ## 0.28.0 (11/5/2015)
 ### New features
 * [#267](https://github.com/trema/pio/pull/267): Add Queue Stats Request message generator.
