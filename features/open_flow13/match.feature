@@ -51,15 +51,15 @@ Feature: Pio::Match
       | field              |             value |
       | source_mac_address | 01:02:03:04:05:06 |
 
-  Scenario: new(ether_destination_address: '01:02:03:04:05:06')
+  Scenario: new(destination_mac_address: '01:02:03:04:05:06')
     When I try to create an OpenFlow message with:
       """
-      Pio::Match.new(ether_destination_address: '01:02:03:04:05:06')
+      Pio::Match.new(destination_mac_address: '01:02:03:04:05:06')
       """
     Then it should finish successfully
     And the message has the following fields and values:
-      | field                     |             value |
-      | ether_destination_address | 01:02:03:04:05:06 |
+      | field                   |             value |
+      | destination_mac_address | 01:02:03:04:05:06 |
 
   Scenario: new(source_mac_address: '01:02:03:04:05:06', source_mac_address_mask: 'ff:ff:ff:00:00:00')
     When I try to create an OpenFlow message with:
@@ -72,16 +72,16 @@ Feature: Pio::Match
       | source_mac_address      | 01:02:03:04:05:06 |
       | source_mac_address_mask | ff:ff:ff:00:00:00 |
 
-  Scenario: new(ether_destination_address: '01:02:03:04:05:06', ether_destination_address_mask: 'ff:ff:ff:00:00:00')
+  Scenario: new(destination_mac_address: '01:02:03:04:05:06', destination_mac_address_mask: 'ff:ff:ff:00:00:00')
     When I try to create an OpenFlow message with:
       """
-      Pio::Match.new(ether_destination_address: '01:02:03:04:05:06', ether_destination_address_mask: 'ff:ff:ff:00:00:00')
+      Pio::Match.new(destination_mac_address: '01:02:03:04:05:06', destination_mac_address_mask: 'ff:ff:ff:00:00:00')
       """
     Then it should finish successfully
     And the message has the following fields and values:
-      | field                          | value             |
-      | ether_destination_address      | 01:02:03:04:05:06 |
-      | ether_destination_address_mask | ff:ff:ff:00:00:00 |
+      | field                        | value             |
+      | destination_mac_address      | 01:02:03:04:05:06 |
+      | destination_mac_address_mask | ff:ff:ff:00:00:00 |
 
   Scenario: new(ether_type: 0x0800)
     When I try to create an OpenFlow message with:
@@ -481,8 +481,8 @@ Feature: Pio::Match
     When I try to parse a file named "open_flow13/oxm_ether_destination_field.raw" with "Pio::Match" class
     Then it should finish successfully
     And the message has the following fields and values:
-      | field                     | value             |
-      | ether_destination_address | ff:ff:ff:ff:ff:ff |
+      | field                   | value             |
+      | destination_mac_address | ff:ff:ff:ff:ff:ff |
 
   Scenario: read (file: open_flow13/oxm_ether_source_field.raw)
     When I try to parse a file named "open_flow13/oxm_ether_source_field.raw" with "Pio::Match" class
@@ -495,9 +495,9 @@ Feature: Pio::Match
     When I try to parse a file named "open_flow13/oxm_masked_ether_destination_field.raw" with "Pio::Match" class
     Then it should finish successfully
     And the message has the following fields and values:
-      | field                          | value             |
-      | ether_destination_address      | ff:ff:ff:ff:ff:ff |
-      | ether_destination_address_mask | ff:ff:ff:00:00:00 |
+      | field                        | value             |
+      | destination_mac_address      | ff:ff:ff:ff:ff:ff |
+      | destination_mac_address_mask | ff:ff:ff:00:00:00 |
 
   Scenario: read (file: open_flow13/oxm_masked_ether_source_field.raw)
     When I try to parse a file named "open_flow13/oxm_masked_ether_source_field.raw" with "Pio::Match" class

@@ -54,12 +54,12 @@ module Pio
       end
 
       # The value of OXM_OF_ETH_DST match field.
-      class EtherDestinationAddress < BinData::Record
+      class DestinationMacAddress < BinData::Record
         OXM_FIELD = 3
 
         endian :big
 
-        mac_address :ether_destination_address
+        mac_address :destination_mac_address
 
         def length
           6
@@ -80,11 +80,11 @@ module Pio
       end
 
       # Masked OXM_OF_ETH_DST match field.
-      class MaskedEtherDestinationAddress < BinData::Record
+      class MaskedDestinationMacAddress < BinData::Record
         endian :big
 
-        mac_address :ether_destination_address
-        mac_address :ether_destination_address_mask
+        mac_address :destination_mac_address
+        mac_address :destination_mac_address_mask
 
         def length
           12
@@ -577,8 +577,8 @@ module Pio
             in_port InPort
             metadata Metadata
             masked_metadata MaskedMetadata
-            ether_destination_address EtherDestinationAddress
-            masked_ether_destination_address MaskedEtherDestinationAddress
+            destination_mac_address DestinationMacAddress
+            masked_destination_mac_address MaskedDestinationMacAddress
             source_mac_address SourceMacAddress
             masked_source_mac_address MaskedSourceMacAddress
             ether_type EtherType
@@ -640,8 +640,8 @@ module Pio
               InPort
             when Metadata::OXM_FIELD
               masked? ? MaskedMetadata : Metadata
-            when EtherDestinationAddress::OXM_FIELD
-              masked? ? MaskedEtherDestinationAddress : EtherDestinationAddress
+            when DestinationMacAddress::OXM_FIELD
+              masked? ? MaskedDestinationMacAddress : DestinationMacAddress
             when SourceMacAddress::OXM_FIELD
               masked? ? MaskedSourceMacAddress : SourceMacAddress
             when EtherType::OXM_FIELD
@@ -827,7 +827,7 @@ module Pio
                 tlv_value: { each => user_attrs.fetch(each) } } }
           end
 
-          [:metadata, :ether_destination_address, :source_mac_address,
+          [:metadata, :destination_mac_address, :source_mac_address,
            :ipv4_source_address, :ipv4_destination_address,
            :arp_sender_protocol_address, :arp_target_protocol_address,
            :arp_sender_hardware_address, :arp_target_hardware_address,

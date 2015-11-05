@@ -13,7 +13,7 @@ Feature: Pio::FlowRemoved
       | transaction_id                                     |       0 |
       | xid                                                |       0 |
       | match.wildcards.keys.size                          |      11 |
-      | match.wildcards.fetch(:ether_destination_address)  |    true |
+      | match.wildcards.fetch(:destination_mac_address)    |    true |
       | match.wildcards.fetch(:source_mac_address)         |    true |
       | match.wildcards.fetch(:ether_type)                 |    true |
       | match.wildcards.fetch(:ip_destination_address_all) |    true |

@@ -40,7 +40,7 @@ describe Pio::OpenFlow10::FlowMod do
         flow_mod.match.wildcards.keys == [
           :vlan_vid,
           :source_mac_address,
-          :ether_destination_address,
+          :destination_mac_address,
           :ether_type,
           :ip_protocol,
           :transport_source_port,
@@ -53,7 +53,7 @@ describe Pio::OpenFlow10::FlowMod do
       end
       Then { flow_mod.match.in_port == 1 }
       Then { flow_mod.match.source_mac_address == '00:00:00:00:00:00' }
-      Then { flow_mod.match.ether_destination_address == '00:00:00:00:00:00' }
+      Then { flow_mod.match.destination_mac_address == '00:00:00:00:00:00' }
       Then { flow_mod.match.vlan_vid == 0 }
       Then { flow_mod.match.vlan_priority == 0 }
       Then { flow_mod.match.ether_type == 0 }
@@ -105,7 +105,7 @@ describe Pio::OpenFlow10::FlowMod do
         flow_mod.match.wildcards.keys == [
           :vlan_vid,
           :source_mac_address,
-          :ether_destination_address,
+          :destination_mac_address,
           :ether_type,
           :ip_protocol,
           :transport_source_port,
@@ -118,7 +118,7 @@ describe Pio::OpenFlow10::FlowMod do
       end
       Then { flow_mod.match.in_port == 1 }
       Then { flow_mod.match.source_mac_address == '00:00:00:00:00:00' }
-      Then { flow_mod.match.ether_destination_address == '00:00:00:00:00:00' }
+      Then { flow_mod.match.destination_mac_address == '00:00:00:00:00:00' }
       Then { flow_mod.match.vlan_vid == 0 }
       Then { flow_mod.match.vlan_priority == 0 }
       Then { flow_mod.match.ether_type == 0 }

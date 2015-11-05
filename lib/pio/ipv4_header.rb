@@ -38,7 +38,7 @@ module Pio
       match_options = {
         in_port: in_port,
         source_mac_address: source_mac,
-        ether_destination_address: destination_mac,
+        destination_mac_address: destination_mac,
         vlan_vid: vlan_vid,
         vlan_priority: vlan_pcp,
         ether_type: ether_type,

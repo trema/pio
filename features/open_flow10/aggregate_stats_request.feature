@@ -16,7 +16,7 @@ Feature: Pio::AggregateStats::Request
       | stats_type                                         | :aggregate |
       | match.in_port                                      | 1          |
       | match.wildcards.keys.size                          | 11         |
-      | match.wildcards.fetch(:ether_destination_address)  | true       |
+      | match.wildcards.fetch(:destination_mac_address)    | true       |
       | match.wildcards.fetch(:source_mac_address)         | true       |
       | match.wildcards.fetch(:ether_type)                 | true       |
       | match.wildcards.fetch(:ip_destination_address_all) | true       |
@@ -43,7 +43,7 @@ Feature: Pio::AggregateStats::Request
       | xid                                                | 14         |
       | stats_type                                         | :aggregate |
       | match.wildcards.keys.size                          | 12         |
-      | match.wildcards.fetch(:ether_destination_address)  | true       |
+      | match.wildcards.fetch(:destination_mac_address)    | true       |
       | match.wildcards.fetch(:source_mac_address)         | true       |
       | match.wildcards.fetch(:ether_type)                 | true       |
       | match.wildcards.fetch(:in_port)                    | true       |

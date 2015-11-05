@@ -739,7 +739,7 @@ describe Pio::OpenFlow13::Match do
       Given(:raw_data) do
         read_raw_data_file 'features/open_flow13/oxm_ether_destination_field.raw'
       end
-      Then { match.ether_destination_address == 'ff:ff:ff:ff:ff:ff' }
+      Then { match.destination_mac_address == 'ff:ff:ff:ff:ff:ff' }
       And { match.class == Pio::OpenFlow13::Match }
       And { match.length == 16 }
       And { match.match_type == Pio::OpenFlow13::MATCH_TYPE_OXM }
@@ -751,7 +751,7 @@ describe Pio::OpenFlow13::Match do
       end
       And do
         match.match_fields[0].oxm_field ==
-          Pio::OpenFlow13::Match::EtherDestinationAddress::OXM_FIELD
+          Pio::OpenFlow13::Match::DestinationMacAddress::OXM_FIELD
       end
       And { match.match_fields[0].masked? == false }
       And { match.match_fields[0].oxm_length == 6 }
@@ -783,8 +783,8 @@ describe Pio::OpenFlow13::Match do
       Given(:raw_data) do
         read_raw_data_file 'features/open_flow13/oxm_masked_ether_destination_field.raw'
       end
-      Then { match.ether_destination_address == 'ff:ff:ff:ff:ff:ff' }
-      Then { match.ether_destination_address_mask == 'ff:ff:ff:00:00:00' }
+      Then { match.destination_mac_address == 'ff:ff:ff:ff:ff:ff' }
+      Then { match.destination_mac_address_mask == 'ff:ff:ff:00:00:00' }
       And { match.class == Pio::OpenFlow13::Match }
       And { match.length == 24 }
       And { match.match_type == Pio::OpenFlow13::MATCH_TYPE_OXM }
@@ -796,7 +796,7 @@ describe Pio::OpenFlow13::Match do
       end
       And do
         match.match_fields[0].oxm_field ==
-          Pio::OpenFlow13::Match::EtherDestinationAddress::OXM_FIELD
+          Pio::OpenFlow13::Match::DestinationMacAddress::OXM_FIELD
       end
       And { match.match_fields[0].masked? == true }
       And { match.match_fields[0].oxm_length == 12 }
