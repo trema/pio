@@ -14,6 +14,7 @@ require 'pio/open_flow13/stats_request'
 
 # Actions
 require 'pio/open_flow13/send_out_port'
+require 'pio/open_flow13/set_destination_mac_address'
 require 'pio/open_flow13/set_source_mac_address'
 
 # Instructions
