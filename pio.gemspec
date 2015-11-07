@@ -31,7 +31,6 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'bindata', '~> 2.1.0'
 
   gem.add_development_dependency 'bundler', '~> 1.10.6'
-  gem.add_development_dependency 'byebug', '~> 7.0.0'
   gem.add_development_dependency 'pry', '~> 0.10.3'
   gem.add_development_dependency 'rake'
 
