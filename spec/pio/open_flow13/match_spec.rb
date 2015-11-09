@@ -404,15 +404,15 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields[2].oxm_length == 1 }
     end
 
-    context 'with ether_type: 0x0806, arp_op: 1' do
+    context 'with ether_type: 0x0806, arp_operation: 1' do
       When(:match) do
         Pio::OpenFlow13::Match.new(
           ether_type: 0x0806,
-          arp_op: 1
+          arp_operation: 1
         )
       end
       Then { match.ether_type == 0x0806 }
-      Then { match.arp_op == 1 }
+      Then { match.arp_operation == 1 }
       And { match.class == Pio::OpenFlow13::Match }
       And { match.length == 16 }
       And { match.match_type == Pio::OpenFlow13::MATCH_TYPE_OXM }
@@ -424,7 +424,7 @@ describe Pio::OpenFlow13::Match do
       end
       And do
         match.match_fields[1].oxm_field ==
-          Pio::OpenFlow13::Match::ArpOp::OXM_FIELD
+          Pio::OpenFlow13::Match::ArpOperation::OXM_FIELD
       end
       And { match.match_fields[1].masked? == false }
       And { match.match_fields[1].oxm_length == 2 }

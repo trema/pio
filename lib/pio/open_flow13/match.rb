@@ -350,12 +350,12 @@ module Pio
       end
 
       # The value of OXM_OF_ARP_OP
-      class ArpOp < BinData::Record
+      class ArpOperation < BinData::Record
         OXM_FIELD = 21
 
         endian :big
 
-        uint16 :arp_op
+        uint16 :arp_operation
 
         def length
           2
@@ -597,7 +597,7 @@ module Pio
             udp_destination_port UdpDestinationPort
             sctp_source_port SctpSourcePort
             sctp_destination_port SctpDestinationPort
-            arp_op ArpOp
+            arp_operation ArpOperation
             arp_sender_protocol_address ArpSenderProtocolAddress
             masked_arp_sender_protocol_address MaskedArpSenderProtocolAddress
             arp_target_protocol_address ArpTargetProtocolAddress
@@ -676,8 +676,8 @@ module Pio
               Icmpv4Type
             when Icmpv4Code::OXM_FIELD
               Icmpv4Code
-            when ArpOp::OXM_FIELD
-              ArpOp
+            when ArpOperation::OXM_FIELD
+              ArpOperation
             when ArpSenderProtocolAddress::OXM_FIELD
               if masked?
                 MaskedArpSenderProtocolAddress
@@ -819,7 +819,7 @@ module Pio
            :ip_dscp, :ip_ecn, :tcp_source_port, :tcp_destination_port,
            :udp_source_port, :udp_destination_port,
            :sctp_source_port, :sctp_destination_port,
-           :icmpv4_type, :icmpv4_code, :arp_op].each do |each|
+           :icmpv4_type, :icmpv4_code, :arp_operation].each do |each|
             next unless user_attrs.key?(each)
             klass = Match.const_get(each.to_s.split('_').map(&:capitalize).join)
             @match_fields << { class_payload:
