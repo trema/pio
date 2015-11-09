@@ -20,7 +20,8 @@ module Pio
        :SetSourceMacAddress, :SetDestinationMacAddress, :PortStatus, :Stats,
        :FlowStats, :DescriptionStats, :AggregateStats, :TableStats, :PortStats,
        :QueueStats, :Error, :NiciraResubmit, :SetArpOperation,
-       :SetArpSenderProtocolAddress, :NiciraResubmitTable].each do |each|
+       :SetArpSenderProtocolAddress, :SetArpSenderHardwareAddress,
+       :NiciraResubmitTable].each do |each|
         set_message_class_name each, version
         @version = version.to_s
       end
