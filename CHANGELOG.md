@@ -3,6 +3,16 @@
 ## develop (unreleased)
 
 
+## 0.29.0 (11/11/2015)
+### New features
+* [#274](https://github.com/trema/pio/pull/274): Add `SetSourceMacAddress` action.
+* [#275](https://github.com/trema/pio/pull/275): Add `SetDestinationMacAddress` action.
+* [#276](https://github.com/trema/pio/pull/276): Add `SetArpOperation` action.
+* [#277](https://github.com/trema/pio/pull/277): Add `SetArpSenderProtocolAddress` action.
+* [#278](https://github.com/trema/pio/pull/278): Add `SetArpSenderHardwareAddress` action.
+* [#280](https://github.com/trema/pio/pull/280): Add `NiciraRegMove` action.
+
+
 ## 0.28.1 (11/5/2015)
 ### Changes
 * Remove `OpenFlow10` namespace from `Pio::OpenFlow10::SetSourceMacAddress` and `Pio::OpenFlow10::SetDestinationMacAddress`.
