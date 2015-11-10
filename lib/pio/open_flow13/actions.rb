@@ -7,6 +7,11 @@ module Pio
 
     uint16 :action_type
     uint16 :action_length
+    string :body, length: -> { action_length - 4 }
+
+    def to_binary
+      to_binary_s
+    end
   end
 
   # Actions list of actions-apply instruction.
