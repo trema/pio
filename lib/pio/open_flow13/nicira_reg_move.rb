@@ -5,7 +5,7 @@ module Pio
   module OpenFlow13
     # NXAST_REG_MOVE action
     class NiciraRegMove < OpenFlow::Action
-      action_header action_type: 0xffff, action_length: 16
+      action_header action_type: 0xffff, action_length: 24
       uint32 :experimenter_id, value: 0x2320
       uint16 :experimenter_type, value: 6
       uint16 :n_bits, initial_value: -> { source_oxm_length * 8 }

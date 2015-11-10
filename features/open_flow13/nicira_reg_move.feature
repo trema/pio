@@ -10,7 +10,7 @@ Feature: Pio::NiciraRegMove
     And the action has the following fields and values:
       | field                  |                        value |
       | action_type.to_hex     |                       0xffff |
-      | action_length          |                           16 |
+      | action_length          |                           24 |
       | experimenter_id.to_hex |                       0x2320 |
       | experimenter_type      |                            6 |
       | from                   | :arp_sender_hardware_address |
