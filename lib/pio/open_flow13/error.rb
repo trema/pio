@@ -11,18 +11,23 @@ module Pio
         uint16 :error_code
       end
 
+      # rubocop:disable MethodLength
       def self.read(binary)
         body = OpenFlowHeaderParser.read(binary).body
-        klass = case BodyParser.read(body).snapshot.error_type
+        error = BodyParser.read(body).snapshot
+        klass = case error.error_type
                 when :hello_failed
                   HelloFailed
                 when :bad_request
                   BadRequest
                 else
-                  fail 'Unknown error message.'
+                  # Not implemented yet
+                  fail 'Unknown error message '\
+                       "(type=#{error.error_type}, code=#{error.error_code})"
                 end
         klass.read binary
       end
+      # rubocop:enable MethodLength
     end
   end
 end
