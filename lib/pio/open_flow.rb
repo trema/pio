@@ -19,9 +19,8 @@ module Pio
        :PacketIn, :FlowRemoved, :PacketOut, :SendOutPort,
        :SetSourceMacAddress, :SetDestinationMacAddress, :PortStatus, :Stats,
        :FlowStats, :DescriptionStats, :AggregateStats, :TableStats, :PortStats,
-       :QueueStats, :Error, :NiciraResubmit, :SetArpOperation,
-       :SetArpSenderProtocolAddress, :SetArpSenderHardwareAddress,
-       :NiciraResubmitTable, :NiciraRegMove].each do |each|
+       :QueueStats, :Error, :SetArpOperation, :SetArpSenderProtocolAddress,
+       :SetArpSenderHardwareAddress, :NiciraRegMove].each do |each|
         set_message_class_name each, version
         @version = version.to_s
       end

@@ -1,4 +1,3 @@
-@open_flow10
 Feature: Pio::NiciraResubmit
 
   Scenario: new(1)
