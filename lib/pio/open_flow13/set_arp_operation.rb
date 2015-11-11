@@ -7,7 +7,7 @@ module Pio
     class SetArpOperation < OpenFlow::Action
       action_header action_type: 25, action_length: 16
 
-      uint16 :oxm_class, value: Match::OXM_CLASS_OPENFLOW_BASIC
+      uint16 :oxm_class, value: Match::OpenFlowBasicValue::OXM_CLASS
       bit7 :oxm_field, value: Match::ArpOperation::OXM_FIELD
       bit1 :oxm_hasmask, value: 0
       uint8 :oxm_length, value: 2

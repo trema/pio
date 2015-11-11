@@ -11,11 +11,11 @@ module Pio
       uint16 :n_bits, initial_value: -> { source_oxm_length * 8 }
       uint16 :source_offset, value: 0
       uint16 :destination_offset, value: 0
-      uint16 :source_class, value: Match::OXM_CLASS_OPENFLOW_BASIC
+      uint16 :source_class, value: Match::OpenFlowBasicValue::OXM_CLASS
       bit7 :source_oxm_field
       bit1 :source_oxm_hasmask, value: 0
       uint8 :source_oxm_length
-      uint16 :destination_oxm_class, value: Match::OXM_CLASS_OPENFLOW_BASIC
+      uint16 :destination_oxm_class, value: Match::OpenFlowBasicValue::OXM_CLASS
       bit7 :destination_oxm_field
       bit1 :destination_oxm_hasmask, value: 0
       uint8 :destination_oxm_length

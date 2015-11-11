@@ -12,11 +12,23 @@ module Pio
 
     # OpenFlow eXtensible Match (OXM)
     class Match
-      OXM_CLASS_OPENFLOW_BASIC = 0x8000
-      OXM_CLASS_EXPERIMENTER = 0xFFFF
+      # OFPXMC_NXM_1 TLV value
+      class NiciraMatchExtensionValue < BinData::Record
+        OXM_CLASS = 0x1
+      end
+
+      # OFPXMC_OPENFLOW_BASIC TLV value
+      class OpenFlowBasicValue < BinData::Record
+        OXM_CLASS = 0x8000
+      end
+
+      # OFPXMC_EXPERIMENTER TLV value
+      class ExperimenterValue < BinData::Record
+        OXM_CLASS = 0xFFFF
+      end
 
       # The value of OXM_OF_IN_PORT match field.
-      class InPort < BinData::Record
+      class InPort < OpenFlowBasicValue
         OXM_FIELD = 0
 
         endian :big
@@ -29,7 +41,7 @@ module Pio
       end
 
       # The value of OXM_OF_METADATA match field
-      class Metadata < BinData::Record
+      class Metadata < OpenFlowBasicValue
         OXM_FIELD = 2
 
         endian :big
@@ -42,7 +54,7 @@ module Pio
       end
 
       # Masked OXM_OF_METADATA match field
-      class MaskedMetadata < BinData::Record
+      class MaskedMetadata < OpenFlowBasicValue
         endian :big
 
         uint64 :metadata
@@ -54,7 +66,7 @@ module Pio
       end
 
       # The value of OXM_OF_ETH_DST match field.
-      class DestinationMacAddress < BinData::Record
+      class DestinationMacAddress < OpenFlowBasicValue
         OXM_FIELD = 3
 
         endian :big
@@ -67,7 +79,7 @@ module Pio
       end
 
       # The value of OXM_OF_ETH_SRC match field.
-      class SourceMacAddress < BinData::Record
+      class SourceMacAddress < OpenFlowBasicValue
         OXM_FIELD = 4
 
         endian :big
@@ -80,7 +92,7 @@ module Pio
       end
 
       # Masked OXM_OF_ETH_DST match field.
-      class MaskedDestinationMacAddress < BinData::Record
+      class MaskedDestinationMacAddress < OpenFlowBasicValue
         endian :big
 
         mac_address :destination_mac_address
@@ -92,7 +104,7 @@ module Pio
       end
 
       # Masked OXM_OF_ETH_SRC match field.
-      class MaskedSourceMacAddress < BinData::Record
+      class MaskedSourceMacAddress < OpenFlowBasicValue
         endian :big
 
         mac_address :source_mac_address
@@ -104,7 +116,7 @@ module Pio
       end
 
       # The value of OXM_OF_ETH_TYPE match field.
-      class EtherType < BinData::Record
+      class EtherType < OpenFlowBasicValue
         OXM_FIELD = 5
 
         endian :big
@@ -117,7 +129,7 @@ module Pio
       end
 
       # The value of OXM_OF_VLAN_VID match field
-      class VlanVid < BinData::Record
+      class VlanVid < OpenFlowBasicValue
         OXM_FIELD = 6
 
         endian :big
@@ -133,7 +145,7 @@ module Pio
       end
 
       # The value of OXM_OF_VLAN_PCP match field
-      class VlanPcp < BinData::Record
+      class VlanPcp < OpenFlowBasicValue
         OXM_FIELD = 7
 
         endian :big
@@ -149,7 +161,7 @@ module Pio
       end
 
       # The value of OXM_OF_IP_DSCP match field
-      class IpDscp < BinData::Record
+      class IpDscp < OpenFlowBasicValue
         OXM_FIELD = 8
 
         endian :big
@@ -165,7 +177,7 @@ module Pio
       end
 
       # The value of OXM_OF_IP_ECN match field
-      class IpEcn < BinData::Record
+      class IpEcn < OpenFlowBasicValue
         OXM_FIELD = 9
 
         endian :big
@@ -181,7 +193,7 @@ module Pio
       end
 
       # The value of OXM_OF_IP_PROTO
-      class IpProtocol < BinData::Record
+      class IpProtocol < OpenFlowBasicValue
         OXM_FIELD = 10
 
         endian :big
@@ -194,7 +206,7 @@ module Pio
       end
 
       # The value of OXM_OF_IPV4_SRC
-      class Ipv4SourceAddress < BinData::Record
+      class Ipv4SourceAddress < OpenFlowBasicValue
         OXM_FIELD = 11
 
         endian :big
@@ -207,7 +219,7 @@ module Pio
       end
 
       # The value of masked OXM_OF_IPV4_SRC
-      class MaskedIpv4SourceAddress < BinData::Record
+      class MaskedIpv4SourceAddress < OpenFlowBasicValue
         OXM_FIELD = 11
 
         endian :big
@@ -220,7 +232,7 @@ module Pio
       end
 
       # The value of OXM_OF_IPV4_DST
-      class Ipv4DestinationAddress < BinData::Record
+      class Ipv4DestinationAddress < OpenFlowBasicValue
         OXM_FIELD = 12
 
         endian :big
@@ -233,7 +245,7 @@ module Pio
       end
 
       # The value of masked OXM_OF_IPV4_DST
-      class MaskedIpv4DestinationAddress < BinData::Record
+      class MaskedIpv4DestinationAddress < OpenFlowBasicValue
         OXM_FIELD = 12
 
         endian :big
@@ -246,7 +258,7 @@ module Pio
       end
 
       # The value of OXM_OF_TCP_SRC
-      class TcpSourcePort < BinData::Record
+      class TcpSourcePort < OpenFlowBasicValue
         OXM_FIELD = 13
 
         endian :big
@@ -259,7 +271,7 @@ module Pio
       end
 
       # The value of OXM_OF_TCP_DST
-      class TcpDestinationPort < BinData::Record
+      class TcpDestinationPort < OpenFlowBasicValue
         OXM_FIELD = 14
 
         endian :big
@@ -272,7 +284,7 @@ module Pio
       end
 
       # The value of OXM_OF_UDP_SRC
-      class UdpSourcePort < BinData::Record
+      class UdpSourcePort < OpenFlowBasicValue
         OXM_FIELD = 15
 
         endian :big
@@ -285,7 +297,7 @@ module Pio
       end
 
       # The value of OXM_OF_UDP_SRC
-      class UdpDestinationPort < BinData::Record
+      class UdpDestinationPort < OpenFlowBasicValue
         OXM_FIELD = 16
 
         endian :big
@@ -298,7 +310,7 @@ module Pio
       end
 
       # The value of OXM_OF_SCTP_SRC
-      class SctpSourcePort < BinData::Record
+      class SctpSourcePort < OpenFlowBasicValue
         OXM_FIELD = 17
 
         endian :big
@@ -311,7 +323,7 @@ module Pio
       end
 
       # The value of OXM_OF_SCTP_DST
-      class SctpDestinationPort < BinData::Record
+      class SctpDestinationPort < OpenFlowBasicValue
         OXM_FIELD = 18
 
         endian :big
@@ -324,7 +336,7 @@ module Pio
       end
 
       # The value of OXM_OF_ICMPV4_TYPE
-      class Icmpv4Type < BinData::Record
+      class Icmpv4Type < OpenFlowBasicValue
         OXM_FIELD = 19
 
         endian :big
@@ -337,7 +349,7 @@ module Pio
       end
 
       # The value of OXM_OF_ICMPV4_CODE
-      class Icmpv4Code < BinData::Record
+      class Icmpv4Code < OpenFlowBasicValue
         OXM_FIELD = 20
 
         endian :big
@@ -350,7 +362,7 @@ module Pio
       end
 
       # The value of OXM_OF_ARP_OP
-      class ArpOperation < BinData::Record
+      class ArpOperation < OpenFlowBasicValue
         OXM_FIELD = 21
 
         endian :big
@@ -363,7 +375,7 @@ module Pio
       end
 
       # The value of OXM_OF_ARP_SPA
-      class ArpSenderProtocolAddress < BinData::Record
+      class ArpSenderProtocolAddress < OpenFlowBasicValue
         OXM_FIELD = 22
 
         endian :big
@@ -376,7 +388,7 @@ module Pio
       end
 
       # The value of masked OXM_OF_ARP_SPA
-      class MaskedArpSenderProtocolAddress < BinData::Record
+      class MaskedArpSenderProtocolAddress < OpenFlowBasicValue
         OXM_FIELD = 22
 
         endian :big
@@ -389,7 +401,7 @@ module Pio
       end
 
       # The value of OXM_OF_ARP_TPA
-      class ArpTargetProtocolAddress < BinData::Record
+      class ArpTargetProtocolAddress < OpenFlowBasicValue
         OXM_FIELD = 23
 
         endian :big
@@ -402,7 +414,7 @@ module Pio
       end
 
       # The value of masked OXM_OF_ARP_TPA
-      class MaskedArpTargetProtocolAddress < BinData::Record
+      class MaskedArpTargetProtocolAddress < OpenFlowBasicValue
         OXM_FIELD = 23
 
         endian :big
@@ -415,7 +427,7 @@ module Pio
       end
 
       # The value of OXM_OF_ARP_SHA match field.
-      class ArpSenderHardwareAddress < BinData::Record
+      class ArpSenderHardwareAddress < OpenFlowBasicValue
         OXM_FIELD = 24
 
         endian :big
@@ -428,7 +440,7 @@ module Pio
       end
 
       # Masked OXM_OF_ARP_SHA match field.
-      class MaskedArpSenderHardwareAddress < BinData::Record
+      class MaskedArpSenderHardwareAddress < OpenFlowBasicValue
         OXM_FIELD = 24
 
         endian :big
@@ -442,7 +454,7 @@ module Pio
       end
 
       # The value of OXM_OF_ARP_THA match field.
-      class ArpTargetHardwareAddress < BinData::Record
+      class ArpTargetHardwareAddress < OpenFlowBasicValue
         OXM_FIELD = 25
 
         endian :big
@@ -455,7 +467,7 @@ module Pio
       end
 
       # Masked OXM_OF_ARP_THA match field.
-      class MaskedArpTargetHardwareAddress < BinData::Record
+      class MaskedArpTargetHardwareAddress < OpenFlowBasicValue
         OXM_FIELD = 25
 
         endian :big
@@ -469,7 +481,7 @@ module Pio
       end
 
       # The value of OXM_OF_IPV6_SRC
-      class Ipv6SourceAddress < BinData::Record
+      class Ipv6SourceAddress < OpenFlowBasicValue
         OXM_FIELD = 26
 
         endian :big
@@ -482,7 +494,7 @@ module Pio
       end
 
       # The value of masked OXM_OF_IPV6_SRC
-      class MaskedIpv6SourceAddress < BinData::Record
+      class MaskedIpv6SourceAddress < OpenFlowBasicValue
         OXM_FIELD = 26
 
         endian :big
@@ -496,7 +508,7 @@ module Pio
       end
 
       # The value of OXM_OF_IPV6_DST
-      class Ipv6DestinationAddress < BinData::Record
+      class Ipv6DestinationAddress < OpenFlowBasicValue
         OXM_FIELD = 27
 
         endian :big
@@ -509,7 +521,7 @@ module Pio
       end
 
       # The value of OXM_OF_IPV6_DST
-      class MaskedIpv6DestinationAddress < BinData::Record
+      class MaskedIpv6DestinationAddress < OpenFlowBasicValue
         OXM_FIELD = 27
 
         endian :big
@@ -523,7 +535,7 @@ module Pio
       end
 
       # The value of OXM_OF_TUNNEL_ID match field
-      class TunnelId < BinData::Record
+      class TunnelId < OpenFlowBasicValue
         OXM_FIELD = 38
 
         endian :big
@@ -536,7 +548,7 @@ module Pio
       end
 
       # Masked OXM_OF_TUNNEL_ID match field
-      class MaskedTunnelId < BinData::Record
+      class MaskedTunnelId < OpenFlowBasicValue
         endian :big
 
         uint64 :tunnel_id
@@ -544,6 +556,19 @@ module Pio
 
         def length
           16
+        end
+      end
+
+      # NXM_NX_REG0
+      class Reg0 < NiciraMatchExtensionValue
+        OXM_FIELD = 0
+
+        endian :big
+
+        uint32 :reg0
+
+        def length
+          4
         end
       end
 
@@ -727,10 +752,10 @@ module Pio
         class MatchField < BinData::Record
           endian :big
 
-          uint16 :oxm_class, initial_value: OXM_CLASS_OPENFLOW_BASIC
+          uint16 :oxm_class, initial_value: OpenFlowBasicValue::OXM_CLASS
           choice :class_payload, selection: :oxm_class do
-            OpenflowBasic OXM_CLASS_OPENFLOW_BASIC
-            Experimenter OXM_CLASS_EXPERIMENTER
+            OpenflowBasic OpenFlowBasicValue::OXM_CLASS
+            Experimenter ExperimenterValue::OXM_CLASS
           end
 
           def oxm_field
@@ -751,9 +776,9 @@ module Pio
 
           def method_missing(method, *args, &block)
             case oxm_class
-            when OXM_CLASS_OPENFLOW_BASIC
+            when OpenFlowBasicValue::OXM_CLASS
               return class_payload.tlv_value.__send__(method, *args, &block)
-            when OXM_CLASS_EXPERIMENTER
+            when ExperimenterValue::OXM_CLASS
               return class_payload.__send__(method, *args, &block)
             else
               fail NoMethodError, method.to_s
@@ -779,7 +804,7 @@ module Pio
         # rubocop:disable Next
         def method_missing(method, *args, &block)
           match_fields.each do |each|
-            if each.oxm_class == OXM_CLASS_OPENFLOW_BASIC
+            if each.oxm_class == OpenFlowBasicValue::OXM_CLASS
               next unless each.class_payload.tlv_value.respond_to?(method)
               return each.class_payload.tlv_value.__send__(
                 method, *args, &block)

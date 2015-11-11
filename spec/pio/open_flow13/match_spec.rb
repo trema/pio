@@ -20,7 +20,7 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields.size == 1 }
       And do
         match.match_fields[0].oxm_class ==
-          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+          Pio::OpenFlow13::Match::OpenFlowBasicValue::OXM_CLASS
       end
       And do
         match.match_fields[0].oxm_field ==
@@ -42,7 +42,7 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields.size == 1 }
       And do
         match.match_fields[0].oxm_class ==
-          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+          Pio::OpenFlow13::Match::OpenFlowBasicValue::OXM_CLASS
       end
       And do
         match.match_fields[0].oxm_field ==
@@ -64,7 +64,7 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields.size == 1 }
       And do
         match.match_fields[0].oxm_class ==
-          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+          Pio::OpenFlow13::Match::OpenFlowBasicValue::OXM_CLASS
       end
       And do
         match.match_fields[0].oxm_field ==
@@ -87,7 +87,7 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields.size == 1 }
       And do
         match.match_fields[0].oxm_class ==
-          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+          Pio::OpenFlow13::Match::OpenFlowBasicValue::OXM_CLASS
       end
       And do
         match.match_fields[0].oxm_field ==
@@ -111,7 +111,7 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields.size == 1 }
       And do
         match.match_fields[0].oxm_class ==
-          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+          Pio::OpenFlow13::Match::OpenFlowBasicValue::OXM_CLASS
       end
       And do
         match.match_fields[0].oxm_field ==
@@ -131,7 +131,7 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields.size == 1 }
       And do
         match.match_fields[0].oxm_class ==
-          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+          Pio::OpenFlow13::Match::OpenFlowBasicValue::OXM_CLASS
       end
       And do
         match.match_fields[0].oxm_field ==
@@ -151,7 +151,7 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields.size == 1 }
       And do
         match.match_fields[0].oxm_class ==
-          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+          Pio::OpenFlow13::Match::OpenFlowBasicValue::OXM_CLASS
       end
       And do
         match.match_fields[0].oxm_field ==
@@ -172,7 +172,7 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields.size == 2 }
       And do
         match.match_fields[1].oxm_class ==
-          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+          Pio::OpenFlow13::Match::OpenFlowBasicValue::OXM_CLASS
       end
       And do
         match.match_fields[1].oxm_field ==
@@ -193,7 +193,7 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields.size == 2 }
       And do
         match.match_fields[1].oxm_class ==
-          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+          Pio::OpenFlow13::Match::OpenFlowBasicValue::OXM_CLASS
       end
       And do
         match.match_fields[1].oxm_field ==
@@ -214,7 +214,7 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields.size == 2 }
       And do
         match.match_fields[1].oxm_class ==
-          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+          Pio::OpenFlow13::Match::OpenFlowBasicValue::OXM_CLASS
       end
       And do
         match.match_fields[1].oxm_field ==
@@ -238,7 +238,7 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields.size == 2 }
       And do
         match.match_fields[0].oxm_class ==
-          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+          Pio::OpenFlow13::Match::OpenFlowBasicValue::OXM_CLASS
       end
       And do
         match.match_fields[0].oxm_field ==
@@ -248,7 +248,7 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields[0].oxm_length == 2 }
       And do
         match.match_fields[1].oxm_class ==
-          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+          Pio::OpenFlow13::Match::OpenFlowBasicValue::OXM_CLASS
       end
       And do
         match.match_fields[1].oxm_field ==
@@ -272,7 +272,7 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields.size == 2 }
       And do
         match.match_fields[0].oxm_class ==
-          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+          Pio::OpenFlow13::Match::OpenFlowBasicValue::OXM_CLASS
       end
       And do
         match.match_fields[0].oxm_field ==
@@ -282,7 +282,7 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields[0].oxm_length == 2 }
       And do
         match.match_fields[1].oxm_class ==
-          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+          Pio::OpenFlow13::Match::OpenFlowBasicValue::OXM_CLASS
       end
       And do
         match.match_fields[1].oxm_field ==
@@ -310,7 +310,7 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields.size == 3 }
       And do
         match.match_fields[2].oxm_class ==
-          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+          Pio::OpenFlow13::Match::OpenFlowBasicValue::OXM_CLASS
       end
       And do
         match.match_fields[2].oxm_field ==
@@ -338,7 +338,7 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields.size == 3 }
       And do
         match.match_fields[2].oxm_class ==
-          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+          Pio::OpenFlow13::Match::OpenFlowBasicValue::OXM_CLASS
       end
       And do
         match.match_fields[2].oxm_field ==
@@ -366,7 +366,7 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields.size == 3 }
       And do
         match.match_fields[2].oxm_class ==
-          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+          Pio::OpenFlow13::Match::OpenFlowBasicValue::OXM_CLASS
       end
       And do
         match.match_fields[2].oxm_field ==
@@ -394,7 +394,7 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields.size == 3 }
       And do
         match.match_fields[2].oxm_class ==
-          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+          Pio::OpenFlow13::Match::OpenFlowBasicValue::OXM_CLASS
       end
       And do
         match.match_fields[2].oxm_field ==
@@ -420,7 +420,7 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields.size == 2 }
       And do
         match.match_fields[1].oxm_class ==
-          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+          Pio::OpenFlow13::Match::OpenFlowBasicValue::OXM_CLASS
       end
       And do
         match.match_fields[1].oxm_field ==
@@ -446,7 +446,7 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields.size == 2 }
       And do
         match.match_fields[1].oxm_class ==
-          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+          Pio::OpenFlow13::Match::OpenFlowBasicValue::OXM_CLASS
       end
       And do
         match.match_fields[1].oxm_field ==
@@ -474,7 +474,7 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields.size == 2 }
       And do
         match.match_fields[1].oxm_class ==
-          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+          Pio::OpenFlow13::Match::OpenFlowBasicValue::OXM_CLASS
       end
       And do
         match.match_fields[1].oxm_field ==
@@ -500,7 +500,7 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields.size == 2 }
       And do
         match.match_fields[1].oxm_class ==
-          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+          Pio::OpenFlow13::Match::OpenFlowBasicValue::OXM_CLASS
       end
       And do
         match.match_fields[1].oxm_field ==
@@ -528,7 +528,7 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields.size == 2 }
       And do
         match.match_fields[1].oxm_class ==
-          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+          Pio::OpenFlow13::Match::OpenFlowBasicValue::OXM_CLASS
       end
       And do
         match.match_fields[1].oxm_field ==
@@ -554,7 +554,7 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields.size == 2 }
       And do
         match.match_fields[1].oxm_class ==
-          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+          Pio::OpenFlow13::Match::OpenFlowBasicValue::OXM_CLASS
       end
       And do
         match.match_fields[1].oxm_field ==
@@ -582,7 +582,7 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields.size == 2 }
       And do
         match.match_fields[1].oxm_class ==
-          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+          Pio::OpenFlow13::Match::OpenFlowBasicValue::OXM_CLASS
       end
       And do
         match.match_fields[1].oxm_field ==
@@ -608,7 +608,7 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields.size == 2 }
       And do
         match.match_fields[1].oxm_class ==
-          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+          Pio::OpenFlow13::Match::OpenFlowBasicValue::OXM_CLASS
       end
       And do
         match.match_fields[1].oxm_field ==
@@ -636,7 +636,7 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields.size == 2 }
       And do
         match.match_fields[1].oxm_class ==
-          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+          Pio::OpenFlow13::Match::OpenFlowBasicValue::OXM_CLASS
       end
       And do
         match.match_fields[1].oxm_field ==
@@ -658,7 +658,7 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields.size == 1 }
       And do
         match.match_fields[0].oxm_class ==
-          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+          Pio::OpenFlow13::Match::OpenFlowBasicValue::OXM_CLASS
       end
       And do
         match.match_fields[0].oxm_field ==
@@ -684,7 +684,7 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields.size == 1 }
       And do
         match.match_fields[0].oxm_class ==
-          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+          Pio::OpenFlow13::Match::OpenFlowBasicValue::OXM_CLASS
       end
       And do
         match.match_fields[0].oxm_field ==
@@ -725,7 +725,7 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields.size == 1 }
       And do
         match.match_fields[0].oxm_class ==
-          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+          Pio::OpenFlow13::Match::OpenFlowBasicValue::OXM_CLASS
       end
       And do
         match.match_fields[0].oxm_field ==
@@ -747,7 +747,7 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields.size == 1 }
       And do
         match.match_fields[0].oxm_class ==
-          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+          Pio::OpenFlow13::Match::OpenFlowBasicValue::OXM_CLASS
       end
       And do
         match.match_fields[0].oxm_field ==
@@ -769,7 +769,7 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields.size == 1 }
       And do
         match.match_fields[0].oxm_class ==
-          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+          Pio::OpenFlow13::Match::OpenFlowBasicValue::OXM_CLASS
       end
       And do
         match.match_fields[0].oxm_field ==
@@ -792,7 +792,7 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields.size == 1 }
       And do
         match.match_fields[0].oxm_class ==
-          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+          Pio::OpenFlow13::Match::OpenFlowBasicValue::OXM_CLASS
       end
       And do
         match.match_fields[0].oxm_field ==
@@ -815,7 +815,7 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields.size == 1 }
       And do
         match.match_fields[0].oxm_class ==
-          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+          Pio::OpenFlow13::Match::OpenFlowBasicValue::OXM_CLASS
       end
       And do
         match.match_fields[0].oxm_field ==
@@ -837,7 +837,7 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields.size == 1 }
       And do
         match.match_fields[0].oxm_class ==
-          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+          Pio::OpenFlow13::Match::OpenFlowBasicValue::OXM_CLASS
       end
       And do
         match.match_fields[0].oxm_field ==
@@ -859,7 +859,7 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields.size == 1 }
       And do
         match.match_fields[0].oxm_class ==
-          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+          Pio::OpenFlow13::Match::OpenFlowBasicValue::OXM_CLASS
       end
       And do
         match.match_fields[0].oxm_field ==
@@ -881,7 +881,7 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields.size == 2 }
       And do
         match.match_fields[0].oxm_class ==
-          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+          Pio::OpenFlow13::Match::OpenFlowBasicValue::OXM_CLASS
       end
       And do
         match.match_fields[0].oxm_field ==
@@ -903,7 +903,7 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields.size == 2 }
       And do
         match.match_fields[1].oxm_class ==
-          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+          Pio::OpenFlow13::Match::OpenFlowBasicValue::OXM_CLASS
       end
       And do
         match.match_fields[1].oxm_field ==
@@ -925,7 +925,7 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields.size == 2 }
       And do
         match.match_fields[1].oxm_class ==
-          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+          Pio::OpenFlow13::Match::OpenFlowBasicValue::OXM_CLASS
       end
       And do
         match.match_fields[1].oxm_field ==
@@ -948,7 +948,7 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields.size == 2 }
       And do
         match.match_fields[0].oxm_class ==
-          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+          Pio::OpenFlow13::Match::OpenFlowBasicValue::OXM_CLASS
       end
       And do
         match.match_fields[0].oxm_field ==
@@ -958,7 +958,7 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields[0].oxm_length == 2 }
       And do
         match.match_fields[1].oxm_class ==
-          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+          Pio::OpenFlow13::Match::OpenFlowBasicValue::OXM_CLASS
       end
       And do
         match.match_fields[1].oxm_field ==
@@ -981,7 +981,7 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields.size == 2 }
       And do
         match.match_fields[0].oxm_class ==
-          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+          Pio::OpenFlow13::Match::OpenFlowBasicValue::OXM_CLASS
       end
       And do
         match.match_fields[0].oxm_field ==
@@ -991,7 +991,7 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields[0].oxm_length == 2 }
       And do
         match.match_fields[1].oxm_class ==
-          Pio::OpenFlow13::Match::OXM_CLASS_OPENFLOW_BASIC
+          Pio::OpenFlow13::Match::OpenFlowBasicValue::OXM_CLASS
       end
       And do
         match.match_fields[1].oxm_field ==
