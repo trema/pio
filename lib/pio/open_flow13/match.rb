@@ -559,7 +559,7 @@ module Pio
         end
       end
 
-      # NXM_NX_REG0
+      # NXM_NX_REG0 match field
       class Reg0 < NiciraMatchExtensionValue
         OXM_FIELD = 0
 
@@ -569,6 +569,193 @@ module Pio
 
         def length
           4
+        end
+      end
+
+      # Masked NXM_NX_REG0 match field
+      class MaskedReg0 < NiciraMatchExtensionValue
+        endian :big
+
+        uint32 :reg0
+        uint32 :reg0_mask
+
+        def length
+          8
+        end
+      end
+
+      # NXM_NX_REG1 match field
+      class Reg1 < NiciraMatchExtensionValue
+        OXM_FIELD = 1
+
+        endian :big
+
+        uint32 :reg1
+
+        def length
+          4
+        end
+      end
+
+      # Masked NXM_NX_REG1 match field
+      class MaskedReg1 < NiciraMatchExtensionValue
+        endian :big
+
+        uint32 :reg1
+        uint32 :reg1_mask
+
+        def length
+          8
+        end
+      end
+
+      # NXM_NX_REG2 match field
+      class Reg2 < NiciraMatchExtensionValue
+        OXM_FIELD = 2
+
+        endian :big
+
+        uint32 :reg2
+
+        def length
+          4
+        end
+      end
+
+      # Masked NXM_NX_REG2 match field
+      class MaskedReg2 < NiciraMatchExtensionValue
+        endian :big
+
+        uint32 :reg2
+        uint32 :reg2_mask
+
+        def length
+          8
+        end
+      end
+
+      # NXM_NX_REG3 match field
+      class Reg3 < NiciraMatchExtensionValue
+        OXM_FIELD = 3
+
+        endian :big
+
+        uint32 :reg3
+
+        def length
+          4
+        end
+      end
+
+      # Masked NXM_NX_REG3 match field
+      class MaskedReg3 < NiciraMatchExtensionValue
+        endian :big
+
+        uint32 :reg3
+        uint32 :reg3_mask
+
+        def length
+          8
+        end
+      end
+
+      # NXM_NX_REG4 match field
+      class Reg4 < NiciraMatchExtensionValue
+        OXM_FIELD = 4
+
+        endian :big
+
+        uint32 :reg4
+
+        def length
+          4
+        end
+      end
+
+      # Masked NXM_NX_REG4 match field
+      class MaskedReg4 < NiciraMatchExtensionValue
+        endian :big
+
+        uint32 :reg4
+        uint32 :reg4_mask
+
+        def length
+          8
+        end
+      end
+
+      # NXM_NX_REG5 match field
+      class Reg5 < NiciraMatchExtensionValue
+        OXM_FIELD = 5
+
+        endian :big
+
+        uint32 :reg5
+
+        def length
+          4
+        end
+      end
+
+      # Masked NXM_NX_REG5 match field
+      class MaskedReg5 < NiciraMatchExtensionValue
+        endian :big
+
+        uint32 :reg5
+        uint32 :reg5_mask
+
+        def length
+          8
+        end
+      end
+
+      # NXM_NX_REG6 match field
+      class Reg6 < NiciraMatchExtensionValue
+        OXM_FIELD = 6
+
+        endian :big
+
+        uint32 :reg6
+
+        def length
+          4
+        end
+      end
+
+      # Masked NXM_NX_REG6 match field
+      class MaskedReg6 < NiciraMatchExtensionValue
+        endian :big
+
+        uint32 :reg6
+        uint32 :reg6_mask
+
+        def length
+          8
+        end
+      end
+
+      # NXM_NX_REG7 match field
+      class Reg7 < NiciraMatchExtensionValue
+        OXM_FIELD = 7
+
+        endian :big
+
+        uint32 :reg7
+
+        def length
+          4
+        end
+      end
+
+      # Masked NXM_NX_REG7 match field
+      class MaskedReg7 < NiciraMatchExtensionValue
+        endian :big
+
+        uint32 :reg7
+        uint32 :reg7_mask
+
+        def length
+          8
         end
       end
 
@@ -587,6 +774,79 @@ module Pio
           def length
             oxm_length + 2
           end
+        end
+
+        # Nicira match extension
+        class NiciraMatchExtension < BinData::Record
+          endian :big
+
+          bit7 :oxm_field
+          bit1 :oxm_hasmask
+          uint8 :oxm_length, value: -> { tlv_value.length }
+          choice :tlv_value,
+                 selection: :choose_tlv_value do
+            reg0 Reg0
+            masked_reg0 MaskedReg0
+            reg1 Reg1
+            masked_reg1 MaskedReg1
+            reg2 Reg2
+            masked_reg2 MaskedReg2
+            reg3 Reg3
+            masked_reg3 MaskedReg3
+            reg4 Reg4
+            masked_reg4 MaskedReg4
+            reg5 Reg5
+            masked_reg5 MaskedReg5
+            reg6 Reg6
+            masked_reg6 MaskedReg6
+            reg7 Reg7
+            masked_reg7 MaskedReg7
+          end
+
+          def length
+            tlv_value.length + 2
+          end
+
+          def masked?
+            oxm_hasmask == 1
+          end
+
+          def method_missing(method, *args, &block)
+            tlv_value.__send__ method, *args, &block
+          end
+
+          private
+
+          # rubocop:disable AbcSize
+          # rubocop:disable CyclomaticComplexity
+          # rubocop:disable PerceivedComplexity
+          # rubocop:disable MethodLength
+          def choose_tlv_value
+            case oxm_field
+            when Reg0::OXM_FIELD
+              masked? ? MaskedReg0 : Reg0
+            when Reg1::OXM_FIELD
+              masked? ? MaskedReg1 : Reg1
+            when Reg2::OXM_FIELD
+              masked? ? MaskedReg2 : Reg2
+            when Reg3::OXM_FIELD
+              masked? ? MaskedReg3 : Reg3
+            when Reg4::OXM_FIELD
+              masked? ? MaskedReg4 : Reg4
+            when Reg5::OXM_FIELD
+              masked? ? MaskedReg5 : Reg5
+            when Reg6::OXM_FIELD
+              masked? ? MaskedReg6 : Reg6
+            when Reg7::OXM_FIELD
+              masked? ? MaskedReg7 : Reg7
+            else
+              fail "Unknown OXM field value: #{oxm_field}"
+            end
+          end
+          # rubocop:enable AbcSize
+          # rubocop:enable CyclomaticComplexity
+          # rubocop:enable PerceivedComplexity
+          # rubocop:enable MethodLength
         end
 
         # rubocop:disable ClassLength
@@ -752,8 +1012,9 @@ module Pio
         class MatchField < BinData::Record
           endian :big
 
-          uint16 :oxm_class, initial_value: OpenFlowBasicValue::OXM_CLASS
+          uint16 :oxm_class
           choice :class_payload, selection: :oxm_class do
+            NiciraMatchExtension NiciraMatchExtensionValue::OXM_CLASS
             OpenflowBasic OpenFlowBasicValue::OXM_CLASS
             Experimenter ExperimenterValue::OXM_CLASS
           end
@@ -837,6 +1098,7 @@ module Pio
       class Options
         # rubocop:disable MethodLength
         # rubocop:disable AbcSize
+        # rubocop:disable LineLength
         def initialize(user_attrs)
           @match_fields = []
 
@@ -847,29 +1109,30 @@ module Pio
            :icmpv4_type, :icmpv4_code, :arp_operation].each do |each|
             next unless user_attrs.key?(each)
             klass = Match.const_get(each.to_s.split('_').map(&:capitalize).join)
-            @match_fields << { class_payload:
-              { oxm_field: klass.const_get(:OXM_FIELD),
-                tlv_value: { each => user_attrs.fetch(each) } } }
+            @match_fields << { oxm_class: klass.superclass.const_get(:OXM_CLASS),
+                               class_payload: { oxm_field: klass.const_get(:OXM_FIELD),
+                                                tlv_value: { each => user_attrs.fetch(each) } } }
           end
 
           [:metadata, :destination_mac_address, :source_mac_address,
            :ipv4_source_address, :ipv4_destination_address,
            :arp_sender_protocol_address, :arp_target_protocol_address,
            :arp_sender_hardware_address, :arp_target_hardware_address,
-           :ipv6_source_address, :ipv6_destination_address,
-           :tunnel_id].each do |each|
+           :ipv6_source_address, :ipv6_destination_address, :tunnel_id,
+           :reg0, :reg1, :reg2, :reg3, :reg4, :reg5, :reg6, :reg7].each do |each|
             next unless user_attrs.key?(each)
             klass = Match.const_get(each.to_s.split('_').map(&:capitalize).join)
             mask_key = "#{each}_mask".to_sym
-            @match_fields << { class_payload:
-              { oxm_field: klass.const_get(:OXM_FIELD),
-                oxm_hasmask: user_attrs.key?(mask_key) ? 1 : 0,
-                tlv_value: { each => user_attrs[each],
-                             mask_key => user_attrs[mask_key] } } }
+            @match_fields << { oxm_class: klass.superclass.const_get(:OXM_CLASS),
+                               class_payload: { oxm_field: klass.const_get(:OXM_FIELD),
+                                                oxm_hasmask: user_attrs.key?(mask_key) ? 1 : 0,
+                                                tlv_value: { each => user_attrs[each],
+                                                             mask_key => user_attrs[mask_key] } } }
           end
         end
         # rubocop:enable MethodLength
         # rubocop:enable AbcSize
+        # rubocop:enable LineLength
 
         def to_hash
           { match_fields: @match_fields }

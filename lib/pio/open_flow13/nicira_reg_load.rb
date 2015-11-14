@@ -19,7 +19,7 @@ module Pio
       # rubocop:disable LineLength
       def initialize(value, destination, options = {})
         @destination = destination
-        oxm_klass = Match.const_get(destination.to_s.capitalize)
+        oxm_klass = Match.const_get(destination.to_s.split('_').map(&:capitalize).join)
         super(value_internal: value,
               offset_internal: options[:offset] || 0,
               n_bits_internal: options[:n_bits] ? options[:n_bits] - 1 : oxm_klass.new.length * 8 - 1,
