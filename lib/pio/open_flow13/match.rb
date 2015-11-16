@@ -1063,9 +1063,10 @@ module Pio
         end
 
         # rubocop:disable Next
+        # rubocop:disable LineLength
         def method_missing(method, *args, &block)
           match_fields.each do |each|
-            if each.oxm_class == OpenFlowBasicValue::OXM_CLASS
+            if each.oxm_class == OpenFlowBasicValue::OXM_CLASS || each.oxm_class == NiciraMatchExtensionValue::OXM_CLASS
               next unless each.class_payload.tlv_value.respond_to?(method)
               return each.class_payload.tlv_value.__send__(
                 method, *args, &block)
@@ -1074,6 +1075,7 @@ module Pio
           fail NoMethodError, method.to_s
         end
         # rubocop:enable Next
+        # rubocop:enable LineLength
 
         private
 
