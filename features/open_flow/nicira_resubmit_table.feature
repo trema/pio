@@ -1,4 +1,3 @@
-@open_flow10
 Feature: Pio::NiciraResubmitTable
 
   Scenario: new(in_port: 1, table: 1)
