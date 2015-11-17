@@ -2,6 +2,8 @@
 
 ## develop (unreleased)
 
+## 0.30.0 (11/17/2015)
+### New features
 * [#281](https://github.com/trema/pio/pull/281): Add `NiciraRegLoad` action.
 * [#282](https://github.com/trema/pio/pull/282): Add `NiciraResubmit` action.
 * [#283](https://github.com/trema/pio/pull/283): Add `SetMetadata` action.
