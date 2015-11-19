@@ -1,5 +1,4 @@
 require 'pio/open_flow/nicira_action'
-require 'pio/open_flow10/port16'
 
 module Pio
   # NXAST_RESUBMIT_TABLE action
@@ -7,9 +6,14 @@ module Pio
     nicira_action_header action_type: 0xffff,
                          action_length: 16,
                          subtype: 14
-    port16 :in_port
+    uint16 :in_port
     uint8 :table, initial_value: 0xff
     string :padding, length: 3
     hide :padding
+
+    def initialize(options)
+      fail ':in_port option is a mandatory' unless options.key?(:in_port)
+      super options
+    end
   end
 end
