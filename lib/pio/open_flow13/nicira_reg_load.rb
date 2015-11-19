@@ -12,8 +12,9 @@ module Pio
       bit6 :_n_bits
       struct :_destination do
         uint16 :oxm_class
-        bit9 :oxm_field
-        bit7 :oxm_length
+        bit7 :oxm_field
+        bit1 :oxm_hasmask, value: 0
+        bit8 :oxm_length
       end
       uint64 :_value
 
