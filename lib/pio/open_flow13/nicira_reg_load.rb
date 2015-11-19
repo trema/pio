@@ -44,7 +44,7 @@ module Pio
       private
 
       def oxm_class
-        destination_oxm_class.superclass.const_get(:OXM_CLASS)
+        destination_oxm_class.const_get(:OXM_CLASS)
       end
 
       def oxm_field
