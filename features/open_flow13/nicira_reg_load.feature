@@ -1,6 +1,9 @@
 @open_flow13
 Feature: Pio::NiciraRegLoad
 
+  Copies value[0:n_bits] to destination[ofs:ofs+n_bits], where a[b:c]
+  denotes the bits within 'a' numbered 'b' through 'c' (not including bit 'c').
+
   Scenario: new(0xdeadbeef, :reg0)
     When I try to create an OpenFlow action with:
       """

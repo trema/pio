@@ -12,8 +12,9 @@ module Pio
       bit6 :_n_bits
       struct :_source do
         uint16 :oxm_class
-        bit9 :oxm_field
-        bit7 :oxm_length
+        bit7 :oxm_field
+        bit1 :oxm_hasmask, value: 0
+        bit8 :oxm_length
       end
       uint16 :max_length, value: 0
       string :zero, length: 6
@@ -21,8 +22,8 @@ module Pio
       def initialize(source)
         @source = source
         super(_n_bits: oxm_length * 8 - 1,
-              _source: { oxm_class: oxm_class,
-                         oxm_field: oxm_field,
+              _source: { oxm_class: source_oxm_class.const_get(:OXM_CLASS),
+                         oxm_field: source_oxm_class.const_get(:OXM_FIELD),
                          oxm_length: oxm_length })
       end
 
@@ -37,14 +38,6 @@ module Pio
       end
 
       private
-
-      def oxm_class
-        source_oxm_class.superclass.const_get(:OXM_CLASS)
-      end
-
-      def oxm_field
-        source_oxm_class.const_get(:OXM_FIELD)
-      end
 
       def oxm_length
         source_oxm_class.new.length
