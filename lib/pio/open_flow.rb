@@ -14,6 +14,7 @@ module Pio
       @version
     end
 
+    # rubocop:disable MethodLength
     def self.switch_version(version)
       [:Barrier, :Echo, :Features, :FlowMod, :Hello, :Match,
        :PacketIn, :FlowRemoved, :PacketOut, :SendOutPort,
@@ -21,11 +22,13 @@ module Pio
        :FlowStats, :DescriptionStats, :AggregateStats, :TableStats, :PortStats,
        :QueueStats, :Error, :SetArpOperation, :SetArpSenderProtocolAddress,
        :SetArpSenderHardwareAddress, :NiciraRegMove, :SetMetadata,
-       :NiciraRegLoad, :NiciraSendOutPort, :NiciraStackPush].each do |each|
+       :NiciraRegLoad, :NiciraSendOutPort, :NiciraStackPush,
+       :NiciraStackPop].each do |each|
         set_message_class_name each, version
         @version = version.to_s
       end
     end
+    # rubocop:enable MethodLength
 
     # rubocop:disable MethodLength
     def self.read(binary)
