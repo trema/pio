@@ -21,7 +21,7 @@ module Pio
        :FlowStats, :DescriptionStats, :AggregateStats, :TableStats, :PortStats,
        :QueueStats, :Error, :SetArpOperation, :SetArpSenderProtocolAddress,
        :SetArpSenderHardwareAddress, :NiciraRegMove, :SetMetadata,
-       :NiciraRegLoad, :NiciraSendOutPort].each do |each|
+       :NiciraRegLoad, :NiciraSendOutPort, :NiciraStackPush].each do |each|
         set_message_class_name each, version
         @version = version.to_s
       end
