@@ -23,7 +23,7 @@ module Pio
        :QueueStats, :Error, :SetArpOperation, :SetArpSenderProtocolAddress,
        :SetArpSenderHardwareAddress, :NiciraRegMove, :SetMetadata,
        :NiciraRegLoad, :NiciraSendOutPort, :NiciraStackPush,
-       :NiciraStackPop].each do |each|
+       :NiciraStackPop, :DecrementIpTtl].each do |each|
         set_message_class_name each, version
         @version = version.to_s
       end
