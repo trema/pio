@@ -24,7 +24,7 @@ module Pio
        :SetArpSenderHardwareAddress, :NiciraRegMove, :SetMetadata,
        :NiciraRegLoad, :NiciraSendOutPort, :NiciraStackPush,
        :NiciraStackPop, :DecrementIpTtl, :SetIpTtl,
-       :CopyTtlOutwards].each do |each|
+       :CopyTtlOutwards, :CopyTtlInwards].each do |each|
         set_message_class_name each, version
         @version = version.to_s
       end

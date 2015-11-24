@@ -15,6 +15,7 @@ require 'pio/open_flow13/stats_request'
 # Actions
 require 'pio/open_flow/nicira_resubmit'
 require 'pio/open_flow/nicira_resubmit_table'
+require 'pio/open_flow13/copy_ttl_inwards'
 require 'pio/open_flow13/copy_ttl_outwards'
 require 'pio/open_flow13/decrement_ip_ttl'
 require 'pio/open_flow13/nicira_reg_load'
