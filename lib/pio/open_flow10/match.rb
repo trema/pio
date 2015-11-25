@@ -1,12 +1,13 @@
 require 'English'
 require 'bindata'
+require 'pio/open_flow/match'
 require 'pio/type/ip_address'
 require 'pio/type/mac_address'
 
 module Pio
   module OpenFlow10
     # Fields to match against flows
-    class Match
+    class Match < OpenFlow::Match
       # Flow wildcards
       class Wildcards < BinData::Primitive
         BITS = {

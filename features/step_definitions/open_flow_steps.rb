@@ -1,9 +1,9 @@
 Given(/^I switch the Pio::OpenFlow version to "([^"]*)"$/) do |version|
-  Pio::OpenFlow.switch_version version.to_sym
+  Pio::OpenFlow.version = version
 end
 
 When(/^I get the OpenFlow version string$/) do
-  @version = Pio::OpenFlow.version
+  @version = Pio::OpenFlow.version.to_s
 end
 
 Then(/^the version string should be "([^"]*)"$/) do |expected_version_string|

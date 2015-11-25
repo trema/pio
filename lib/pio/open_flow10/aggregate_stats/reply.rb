@@ -1,3 +1,4 @@
+require 'pio/open_flow/message'
 require 'pio/open_flow10/stats_type'
 
 module Pio

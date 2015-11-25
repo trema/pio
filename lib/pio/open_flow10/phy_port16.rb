@@ -1,4 +1,5 @@
 require 'bindata'
+require 'pio/open_flow/flags'
 require 'pio/type/mac_address'
 
 module Pio

@@ -1,15 +1,13 @@
+require 'active_support/descendants_tracker'
 require 'bindata'
-require 'pio/parse_error'
 require 'pio/open_flow/open_flow_header'
+require 'pio/parse_error'
 
 module Pio
   module OpenFlow
     # OpenFlow messages.
     class Message
-      def self.inherited(child_klass)
-        child_klass.const_set :Format, Class.new(BinData::Record)
-        child_klass.class_variable_set(:@@valid_options, [])
-      end
+      extend ActiveSupport::DescendantsTracker
 
       def self.read(raw_data)
         allocate.tap do |message|
@@ -21,16 +19,27 @@ module Pio
         raise Pio::ParseError, "Invalid #{message_name} message."
       end
 
+      # rubocop:disable MethodLength
+      # rubocop:disable AbcSize
       def self.method_missing(method, *args, &block)
-        const_get(:Format).__send__ method, *args, &block
+        begin
+          const_get(:Format).__send__ method, *args, &block
+        rescue NameError
+          const_set :Format, Class.new(BinData::Record)
+          class_variable_set(:@@valid_options, [])
+          retry
+        end
 
         return if method == :endian || method == :virtual
+
         define_method(args.first) do
           @format.__send__ args.first
         end
         class_variable_set(:@@valid_options,
                            class_variable_get(:@@valid_options) + [args.first])
       end
+      # rubocop:enable MethodLength
+      # rubocop:enable AbcSize
 
       # rubocop:disable AbcSize
       # rubocop:disable MethodLength

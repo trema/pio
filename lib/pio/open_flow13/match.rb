@@ -1,4 +1,5 @@
 require 'bindata'
+require 'pio/open_flow/match'
 require 'pio/type/ip_address'
 require 'pio/type/ipv6_address'
 require 'pio/type/mac_address'
@@ -11,7 +12,7 @@ module Pio
     MATCH_TYPE_OXM = 1
 
     # OpenFlow eXtensible Match (OXM)
-    class Match
+    class Match < OpenFlow::Match
       # OFPXMC_NXM_1 TLV value
       class NiciraMatchExtensionValue < BinData::Record
         OXM_CLASS = 0x1

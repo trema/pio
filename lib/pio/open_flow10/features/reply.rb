@@ -1,4 +1,5 @@
 require 'pio/open_flow'
+require 'pio/open_flow/datapath_id'
 require 'pio/open_flow10/phy_port16'
 require 'pio/open_flow10/port16'
 
