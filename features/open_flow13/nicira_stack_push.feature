@@ -1,12 +1,12 @@
 @open_flow13
-Feature: Pio::NiciraStackPush
+Feature: Pio::OpenFlow::NiciraStackPush
 
   Pushes field[offset: offset + n_bits] to top of the stack.
 
   Scenario: new(:reg0)
     When I try to create an OpenFlow action with:
       """
-      Pio::NiciraStackPush.new(:reg0)
+      Pio::OpenFlow::NiciraStackPush.new(:reg0)
       """
     Then it should finish successfully
     And the action has the following fields and values:
@@ -18,7 +18,7 @@ Feature: Pio::NiciraStackPush
   Scenario: new(:reg0, n_bits: 16, offset: 16)
     When I try to create an OpenFlow action with:
       """
-      Pio::NiciraStackPush.new(:reg0, n_bits: 16, offset: 16)
+      Pio::OpenFlow::NiciraStackPush.new(:reg0, n_bits: 16, offset: 16)
       """
     Then it should finish successfully
     And the action has the following fields and values:

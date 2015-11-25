@@ -1,9 +1,9 @@
-Feature: Pio::NiciraResubmitTable
+Feature: Pio::OpenFlow::NiciraResubmitTable
 
   Scenario: new(in_port: 1, table: 1)
     When I try to create an OpenFlow action with:
       """
-      Pio::NiciraResubmitTable.new(in_port: 1, table: 1)
+      Pio::OpenFlow::NiciraResubmitTable.new(in_port: 1, table: 1)
       """
     Then it should finish successfully
     And the action has the following fields and values:
@@ -14,7 +14,7 @@ Feature: Pio::NiciraResubmitTable
   Scenario: new(in_port: 1)
     When I try to create an OpenFlow action with:
       """
-      Pio::NiciraResubmitTable.new(in_port: 1)
+      Pio::OpenFlow::NiciraResubmitTable.new(in_port: 1)
       """
     Then it should finish successfully
     And the action has the following fields and values:

@@ -1,9 +1,9 @@
 @open_flow13
-Feature: Pio::FlowMod
+Feature: Pio::OpenFlow::FlowMod
   Scenario: new
     When I try to create an OpenFlow message with:
       """
-      Pio::FlowMod.new
+      Pio::OpenFlow::FlowMod.new
       """
     Then it should finish successfully
     And the message has the following fields and values:
@@ -28,10 +28,10 @@ Feature: Pio::FlowMod
       | match.match_fields |         [] |
       | instructions       |         [] |
 
-  Scenario: new(instructions: Pio::Apply.new(SendOutPort.new(1)))
+  Scenario: new(instructions: Pio::OpenFlow::Apply.new(Pio::OpenFlow::SendOutPort.new(1)))
     When I try to create an OpenFlow message with:
       """
-      Pio::FlowMod.new(instructions: Pio::Apply.new(SendOutPort.new(1)))
+      Pio::OpenFlow::FlowMod.new(instructions: Pio::OpenFlow::Apply.new(Pio::OpenFlow::SendOutPort.new(1)))
       """
     Then it should finish successfully
     And the message has the following fields and values:
@@ -54,14 +54,14 @@ Feature: Pio::FlowMod
       | flags                                  |                           [] |
       | match.match_fields                     |                           [] |
       | instructions.size                      |                            1 |
-      | instructions.at(0).class               |                   Pio::Apply |
+      | instructions.at(0).class               |       Pio::OpenFlow13::Apply |
       | instructions.at(0).actions.at(0).class | Pio::OpenFlow13::SendOutPort |
       | instructions.at(0).actions.at(0).port  |                            1 |
 
-  Scenario: new(match: Pio::Match.new(in_port: 1), instructions: Pio::Apply.new(SendOutPort.new(1)))
+  Scenario: new(match: Pio::OpenFlow::Match.new(in_port: 1), instructions: Pio::OpenFlow::Apply.new(Pio::OpenFlow::SendOutPort.new(1)))
     When I try to create an OpenFlow message with:
       """
-      Pio::FlowMod.new(match: Pio::Match.new(in_port: 1), instructions: Pio::Apply.new(SendOutPort.new(1)))
+      Pio::OpenFlow::FlowMod.new(match: Pio::OpenFlow::Match.new(in_port: 1), instructions: Pio::OpenFlow::Apply.new(Pio::OpenFlow::SendOutPort.new(1)))
       """
     Then it should finish successfully
     And the message has the following fields and values:
@@ -84,12 +84,12 @@ Feature: Pio::FlowMod
       | flags                                  |                           [] |
       | match.in_port                          |                            1 |
       | instructions.size                      |                            1 |
-      | instructions.at(0).class               |                   Pio::Apply |
+      | instructions.at(0).class               |       Pio::OpenFlow13::Apply |
       | instructions.at(0).actions.at(0).class | Pio::OpenFlow13::SendOutPort |
       | instructions.at(0).actions.at(0).port  |                            1 |
 
   Scenario: read (no match or instructions)
-    When I try to parse a file named "open_flow13/flow_mod_no_match_or_instructions.raw" with "Pio::FlowMod" class
+    When I try to parse a file named "open_flow13/flow_mod_no_match_or_instructions.raw" with "Pio::OpenFlow::FlowMod" class
     Then it should finish successfully
     And the message has the following fields and values:
       | field              |      value |
@@ -113,7 +113,7 @@ Feature: Pio::FlowMod
       | instructions       |         [] |
 
   Scenario: read (instruction = apply, action = SendOutPort(port: 1))
-    When I try to parse a file named "open_flow13/flow_mod_add_apply_no_match.raw" with "Pio::FlowMod" class
+    When I try to parse a file named "open_flow13/flow_mod_add_apply_no_match.raw" with "Pio::OpenFlow::FlowMod" class
     Then it should finish successfully
     And the message has the following fields and values:
       | field                                  |                        value |
@@ -135,6 +135,6 @@ Feature: Pio::FlowMod
       | flags                                  |                           [] |
       | match.match_fields                     |                           [] |
       | instructions.size                      |                            1 |
-      | instructions.at(0).class               |                   Pio::Apply |
+      | instructions.at(0).class               |       Pio::OpenFlow13::Apply |
       | instructions.at(0).actions.at(0).class | Pio::OpenFlow13::SendOutPort |
       | instructions.at(0).actions.at(0).port  |                            1 |

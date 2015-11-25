@@ -1,9 +1,9 @@
 @open_flow13
-Feature: Pio::PacketIn
+Feature: Pio::OpenFlow::PacketIn
   Scenario: new
     When I try to create an OpenFlow message with:
       """
-      Pio::PacketIn.new
+      Pio::OpenFlow::PacketIn.new
       """
     Then it should finish successfully
     And the message has the following fields and values:
@@ -33,7 +33,7 @@ Feature: Pio::PacketIn
         0x00, 0x00, 0x00, 0x00, 0x00
       ].pack('C*')
 
-      Pio::PacketIn.new(raw_data: data_dump)
+      Pio::OpenFlow::PacketIn.new(raw_data: data_dump)
       """
     Then it should finish successfully
     And the message has the following fields and values:

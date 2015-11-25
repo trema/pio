@@ -1,9 +1,9 @@
 @open_flow13
-Feature: Pio::Echo::Reply
+Feature: Pio::OpenFlow::Echo::Reply
   Scenario: new
     When I try to create an OpenFlow message with:
       """
-      Pio::Echo::Reply.new
+      Pio::OpenFlow::Echo::Reply.new
       """
     Then it should finish successfully
     And the message has the following fields and values:
@@ -19,7 +19,7 @@ Feature: Pio::Echo::Reply
   Scenario: new(transaction_id: 123)
     When I try to create an OpenFlow message with:
       """
-      Pio::Echo::Reply.new(transaction_id: 123)
+      Pio::OpenFlow::Echo::Reply.new(transaction_id: 123)
       """
     Then it should finish successfully
     And the message has the following fields and values:
@@ -35,7 +35,7 @@ Feature: Pio::Echo::Reply
   Scenario: new(body: 'echo reply body')
     When I try to create an OpenFlow message with:
       """
-      Pio::Echo::Reply.new(body: 'echo reply body')
+      Pio::OpenFlow::Echo::Reply.new(body: 'echo reply body')
       """
     Then it should finish successfully
     And the message has the following fields and values:
@@ -51,12 +51,12 @@ Feature: Pio::Echo::Reply
   Scenario: new(unknown_attr: 'foo') and error
     When I try to create an OpenFlow message with:
       """
-      Pio::Echo::Reply.new(unknown_attr: 'foo')
+      Pio::OpenFlow::Echo::Reply.new(unknown_attr: 'foo')
       """
     Then it should fail with "RuntimeError", "Unknown option: unknown_attr"
 
   Scenario: read (no message body)
-    When I try to parse a file named "open_flow13/echo_reply_no_body.raw" with "Pio::Echo::Reply" class
+    When I try to parse a file named "open_flow13/echo_reply_no_body.raw" with "Pio::OpenFlow::Echo::Reply" class
     Then it should finish successfully
     And the message has the following fields and values:
       | field          | value |
@@ -69,7 +69,7 @@ Feature: Pio::Echo::Reply
       | user_data      |       |
 
   Scenario: read
-    When I try to parse a file named "open_flow13/echo_reply_body.raw" with "Pio::Echo::Reply" class
+    When I try to parse a file named "open_flow13/echo_reply_body.raw" with "Pio::OpenFlow::Echo::Reply" class
     Then it should finish successfully
     And the message has the following fields and values:
       | field          |                value |
@@ -82,5 +82,5 @@ Feature: Pio::Echo::Reply
       | user_data      | hogehogehogehogehoge |
 
   Scenario: parse error
-    When I try to parse a file named "open_flow10/features_request.raw" with "Pio::Echo::Reply" class
+    When I try to parse a file named "open_flow10/features_request.raw" with "Pio::OpenFlow::Echo::Reply" class
     Then it should fail with "Pio::ParseError", "Invalid OpenFlow13 Echo Reply message."

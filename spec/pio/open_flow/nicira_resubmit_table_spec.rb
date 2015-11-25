@@ -1,9 +1,9 @@
 require 'pio/open_flow/nicira_resubmit_table'
 
-describe Pio::NiciraResubmitTable do
+describe Pio::OpenFlow::NiciraResubmitTable do
   describe '.new' do
     When(:nicira_resubmit_table) do
-      Pio::NiciraResubmitTable.new(options)
+      Pio::OpenFlow::NiciraResubmitTable.new(options)
     end
 
     context 'with in_port: 1, table: 1' do

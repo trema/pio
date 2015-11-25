@@ -1,9 +1,9 @@
 @open_flow10
-Feature: Pio::Features::Reply
+Feature: Pio::OpenFlow::Features::Reply
   Scenario: new
     When I try to create an OpenFlow message with:
       """
-      Pio::Features::Reply.new(
+      Pio::OpenFlow::Features::Reply.new(
         datapath_id: 0x123,
         n_buffers: 0x100,
         n_tables: 0xfe,

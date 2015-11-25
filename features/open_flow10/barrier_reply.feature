@@ -1,9 +1,9 @@
 @open_flow10
-Feature: Pio::Barrier::Reply
+Feature: Pio::OpenFlow::Barrier::Reply
   Scenario: new
     When I try to create an OpenFlow message with:
       """
-      Pio::Barrier::Reply.new
+      Pio::OpenFlow::Barrier::Reply.new
       """
     Then it should finish successfully
     And the message has the following fields and values:
@@ -18,7 +18,7 @@ Feature: Pio::Barrier::Reply
   Scenario: new(transaction_id: 123)
     When I try to create an OpenFlow message with:
       """
-      Pio::Barrier::Reply.new(transaction_id: 123)
+      Pio::OpenFlow::Barrier::Reply.new(transaction_id: 123)
       """
     Then it should finish successfully
     And the message has the following fields and values:

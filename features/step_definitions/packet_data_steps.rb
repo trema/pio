@@ -2,7 +2,7 @@
 When(/^I try to parse a file named "(.*?\.raw)" with "(.*?)" class$/) do |path, klass|
   full_path = File.expand_path(File.join(__dir__, '..', path))
   raw_data = IO.read(full_path)
-  parser_klass = Pio.const_get(klass)
+  parser_klass = Pio::OpenFlow.const_get(klass)
   begin
     @result = parser_klass.read(raw_data)
   rescue
@@ -15,7 +15,7 @@ end
 When(/^I try to parse a file named "(.*?\.pcap)" with "(.*?)" class$/) do |path, klass|
   full_path = File.expand_path(File.join(__dir__, '..', path))
   pcap = Pio::Pcap::Frame.read(IO.read(full_path))
-  parser_klass = Pio.const_get(klass)
+  parser_klass = Pio::OpenFlow.const_get(klass)
   begin
     @result = pcap.records.each_with_object([]) do |each, result|
       result << parser_klass.read(each.data)
@@ -37,7 +37,8 @@ end
 
 When(/^I create an exact match from "(.*?)"$/) do |path|
   full_path = File.expand_path(File.join(__dir__, '..', path))
-  @result = Pio::ExactMatch.new(Pio::PacketIn.read(IO.read(full_path)))
+  packet_in = Pio::OpenFlow::PacketIn.read(IO.read(full_path))
+  @result = Pio::OpenFlow::ExactMatch.new(packet_in)
 end
 
 Then(/^the message should be a "([^"]*)"$/) do |expected_klass|

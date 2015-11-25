@@ -1,4 +1,5 @@
 require 'pio/open_flow'
+require 'pio/open_flow/flags'
 require 'pio/open_flow10/actions'
 require 'pio/open_flow10/match10'
 
@@ -47,7 +48,7 @@ module Pio
       uint32 :buffer_id
       uint16 :out_port
       flags :flags
-      actions :actions, length: -> { message_length - 72 }
+      actions10 :actions, length: -> { message_length - 72 }
     end
   end
 end

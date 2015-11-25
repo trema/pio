@@ -31,7 +31,7 @@ module Pio
       in_port :in_port
       uint16 :actions_length, initial_value: -> { actions.binary.length }
       string :padding, length: 6
-      actions :actions, length: :actions_length
+      actions13 :actions, length: :actions_length
       string :raw_data, read_length: -> { message_length - 24 - actions_length }
 
       def data

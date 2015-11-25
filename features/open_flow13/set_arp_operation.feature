@@ -1,10 +1,10 @@
 @open_flow13
-Feature: Pio::SetArpOperation
+Feature: Pio::OpenFlow::SetArpOperation
 
   Scenario: new(Pio::Arp::Reply::OPERATION)
     When I try to create an OpenFlow action with:
       """
-      Pio::SetArpOperation.new(Pio::Arp::Reply::OPERATION)
+      Pio::OpenFlow::SetArpOperation.new(Pio::Arp::Reply::OPERATION)
       """
     Then it should finish successfully
     And the action has the following fields and values:

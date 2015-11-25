@@ -1,9 +1,9 @@
 @open_flow10
-Feature: Pio::FlowStats::Request
+Feature: Pio::OpenFlow::FlowStats::Request
   Scenario: new
     When I try to create an OpenFlow message with:
       """
-      Pio::FlowStats::Request.new
+      Pio::OpenFlow::FlowStats::Request.new
       """
     Then it should finish successfully
     And the message has the following fields and values:
@@ -33,7 +33,7 @@ Feature: Pio::FlowStats::Request
   Scenario: new
     When I try to create an OpenFlow message with:
       """
-      Pio::FlowStats::Request.new(match: Match.new(in_port: 1))
+      Pio::OpenFlow::FlowStats::Request.new(match: Pio::OpenFlow::Match.new(in_port: 1))
       """
     Then it should finish successfully
     And the message has the following fields and values:

@@ -1,3 +1,4 @@
+require 'pio/open_flow/datapath_id'
 require 'pio/open_flow/message'
 
 module Pio

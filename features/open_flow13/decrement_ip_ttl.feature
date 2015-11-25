@@ -1,10 +1,10 @@
 @open_flow13
-Feature: Pio::DecrementIpTtl
+Feature: Pio::OpenFlow::DecrementIpTtl
 
   Scenario: new
     When I try to create an OpenFlow action with:
       """
-      Pio::DecrementIpTtl.new
+      Pio::OpenFlow::DecrementIpTtl.new
       """
     Then it should finish successfully
     And the action has the following fields and values:

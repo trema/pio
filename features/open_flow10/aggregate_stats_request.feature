@@ -1,9 +1,9 @@
 @open_flow10
-Feature: Pio::AggregateStats::Request
+Feature: Pio::OpenFlow::AggregateStats::Request
   Scenario: new
     When I try to create an OpenFlow message with:
       """
-      Pio::AggregateStats::Request.new(match: Match.new(in_port: 1))
+      Pio::OpenFlow::AggregateStats::Request.new(match: Pio::OpenFlow::Match.new(in_port: 1))
       """
     Then it should finish successfully
     And the message has the following fields and values:
@@ -32,7 +32,7 @@ Feature: Pio::AggregateStats::Request
 
 
   Scenario: read
-    When I try to parse a file named "open_flow10/aggregate_stats_request.raw" with "AggregateStats::Request" class
+    When I try to parse a file named "open_flow10/aggregate_stats_request.raw" with "Pio::OpenFlow::AggregateStats::Request" class
     Then it should finish successfully
     And the message has the following fields and values:
       | field                                              | value      |

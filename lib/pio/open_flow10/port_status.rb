@@ -1,4 +1,5 @@
 require 'pio/open_flow/message'
+require 'pio/open_flow10/phy_port16'
 
 module Pio
   module OpenFlow10

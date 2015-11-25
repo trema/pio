@@ -15,7 +15,7 @@ module Pio
   end
 
   # Actions list of actions-apply instruction.
-  class Actions < BinData::Primitive
+  class Actions13 < BinData::Primitive
     mandatory_parameter :length
 
     endian :big
@@ -33,7 +33,7 @@ module Pio
       while tmp.length > 0
         action = case BinData::Uint16be.read(tmp)
                  when 0
-                   SendOutPort.read(tmp)
+                   OpenFlow::SendOutPort.read(tmp)
                  else
                    UnsupportedAction.read(tmp)
                  end
