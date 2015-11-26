@@ -1,9 +1,9 @@
 @open_flow10
-Feature: Pio::FlowStats::Reply
+Feature: Pio::OpenFlow::FlowStats::Reply
   Scenario: new
     When I try to create an OpenFlow message with:
       """
-      Pio::FlowStats::Reply.new
+      Pio::OpenFlow::FlowStats::Reply.new
       """
     Then it should finish successfully
     And the message has the following fields and values:
@@ -20,7 +20,7 @@ Feature: Pio::FlowStats::Reply
   Scenario: new(more options)
     When I try to create an OpenFlow message with:
       """
-      Pio::FlowStats::Reply.new(more options)
+      Pio::OpenFlow::FlowStats::Reply.new(more options)
       """
     Then it should finish successfully
 

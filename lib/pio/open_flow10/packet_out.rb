@@ -12,7 +12,7 @@ module Pio
       uint32 :buffer_id
       uint16 :in_port
       uint16 :actions_len, initial_value: -> { actions.binary.length }
-      actions :actions, length: -> { actions_len }
+      actions10 :actions, length: -> { actions_len }
       rest :raw_data
     end
   end

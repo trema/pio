@@ -1,5 +1,5 @@
 @open_flow13
-Feature: Pio::NiciraRegLoad
+Feature: Pio::OpenFlow::NiciraRegLoad
 
   Copies value[0:n_bits] to destination[ofs:ofs+n_bits], where a[b:c]
   denotes the bits within 'a' numbered 'b' through 'c' (not including bit 'c').
@@ -7,7 +7,7 @@ Feature: Pio::NiciraRegLoad
   Scenario: new(0xdeadbeef, :reg0)
     When I try to create an OpenFlow action with:
       """
-      Pio::NiciraRegLoad.new(0xdeadbeef, :reg0)
+      Pio::OpenFlow::NiciraRegLoad.new(0xdeadbeef, :reg0)
       """
     Then it should finish successfully
     And the action has the following fields and values:
@@ -20,7 +20,7 @@ Feature: Pio::NiciraRegLoad
   Scenario: new(0xdeadbeef, :metadata)
     When I try to create an OpenFlow action with:
       """
-      Pio::NiciraRegLoad.new(0xdeadbeef, :metadata)
+      Pio::OpenFlow::NiciraRegLoad.new(0xdeadbeef, :metadata)
       """
     Then it should finish successfully
     And the action has the following fields and values:
@@ -33,7 +33,7 @@ Feature: Pio::NiciraRegLoad
   Scenario: new(0xdeadbeef, :reg0, offset: 16, n_bits: 16)
     When I try to create an OpenFlow action with:
       """
-      Pio::NiciraRegLoad.new(0xdeadbeef, :reg0, offset: 16, n_bits: 16)
+      Pio::OpenFlow::NiciraRegLoad.new(0xdeadbeef, :reg0, offset: 16, n_bits: 16)
       """
     Then it should finish successfully
     And the action has the following fields and values:

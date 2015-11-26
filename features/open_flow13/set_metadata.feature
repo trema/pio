@@ -1,10 +1,10 @@
 @open_flow13
-Feature: Pio::SetMetadata
+Feature: Pio::OpenFlow::SetMetadata
 
   Scenario: new(0x123)
     When I try to create an OpenFlow action with:
       """
-      Pio::SetMetadata.new(0x123)
+      Pio::OpenFlow::SetMetadata.new(0x123)
       """
     Then it should finish successfully
     And the action has the following fields and values:

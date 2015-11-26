@@ -1,9 +1,9 @@
 @open_flow10
-Feature: Pio::Barrier::Request
+Feature: Pio::OpenFlow::Barrier::Request
   Scenario: new
     When I try to create an OpenFlow message with:
       """
-      Pio::Barrier::Request.new
+      Pio::OpenFlow::Barrier::Request.new
       """
     Then it should finish successfully
     And the message has the following fields and values:
@@ -18,7 +18,7 @@ Feature: Pio::Barrier::Request
   Scenario: new(transaction_id: 123)
     When I try to create an OpenFlow message with:
       """
-      Pio::Barrier::Request.new(transaction_id: 123)
+      Pio::OpenFlow::Barrier::Request.new(transaction_id: 123)
       """
     Then it should finish successfully
     And the message has the following fields and values:

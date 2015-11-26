@@ -11,6 +11,10 @@ module Pio
     uint16 :message_length
     transaction_id :transaction_id
     rest :body
+
+    def version
+      { 1 => :OpenFlow10, 4 => :OpenFlow13 }.fetch(ofp_version)
+    end
   end
 
   # OpenFlow message header.

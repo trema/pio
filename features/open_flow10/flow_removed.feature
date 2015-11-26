@@ -1,7 +1,6 @@
 @open_flow10
-Feature: Pio::FlowRemoved
+Feature: Pio::OpenFlow::FlowRemoved
 
-  @open_flow10
   Scenario: read
     When I try to parse a file named "open_flow10/flow_removed.raw" with "FlowRemoved" class
     Then it should finish successfully

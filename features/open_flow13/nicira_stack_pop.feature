@@ -1,12 +1,12 @@
 @open_flow13
-Feature: Pio::NiciraStackPop
+Feature: Pio::OpenFlow::NiciraStackPop
 
   Pops field[offset: offset + n_bits] from top of the stack.
 
   Scenario: new(:reg0)
     When I try to create an OpenFlow action with:
       """
-      Pio::NiciraStackPop.new(:reg0)
+      Pio::OpenFlow::NiciraStackPop.new(:reg0)
       """
     Then it should finish successfully
     And the action has the following fields and values:
@@ -18,7 +18,7 @@ Feature: Pio::NiciraStackPop
   Scenario: new(:reg0, n_bits: 16, offset: 16)
     When I try to create an OpenFlow action with:
       """
-      Pio::NiciraStackPop.new(:reg0, n_bits: 16, offset: 16)
+      Pio::OpenFlow::NiciraStackPop.new(:reg0, n_bits: 16, offset: 16)
       """
     Then it should finish successfully
     And the action has the following fields and values:

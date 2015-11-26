@@ -27,7 +27,7 @@ module Pio
           uint64 :cookie
           uint64 :packet_count
           uint64 :byte_count
-          actions :actions, length: -> { entry_length - 88 }
+          actions10 :actions, length: -> { entry_length - 88 }
         end
 
         open_flow_header version: 1,

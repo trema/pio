@@ -1,10 +1,10 @@
 @open_flow13
-Feature: Pio::SetArpSenderHardwareAddress
+Feature: Pio::OpenFlow::SetArpSenderHardwareAddress
 
   Scenario: new('00:00:de:ad:be:ef')
     When I try to create an OpenFlow action with:
       """
-      Pio::SetArpSenderHardwareAddress.new('00:00:de:ad:be:ef')
+      Pio::OpenFlow::SetArpSenderHardwareAddress.new('00:00:de:ad:be:ef')
       """
     Then it should finish successfully
     And the action has the following fields and values:

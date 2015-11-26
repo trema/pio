@@ -1,9 +1,9 @@
 @open_flow10
-Feature: Pio::Features::Request
+Feature: Pio::OpenFlow::Features::Request
   Scenario: new
     When I try to create an OpenFlow message with:
       """
-      Pio::Features::Request.new
+      Pio::OpenFlow::Features::Request.new
       """
     Then it should finish successfully
     And the message has the following fields and values:
@@ -18,7 +18,7 @@ Feature: Pio::Features::Request
   Scenario: new(transaction_id: 123)
     When I try to create an OpenFlow message with:
       """
-      Pio::Features::Request.new(transaction_id: 123)
+      Pio::OpenFlow::Features::Request.new(transaction_id: 123)
       """
     Then it should finish successfully
     And the message has the following fields and values:
@@ -31,7 +31,7 @@ Feature: Pio::Features::Request
       | user_data      |       |
 
   Scenario: read
-    When I try to parse a file named "open_flow10/features_request.raw" with "Pio::Features::Request" class
+    When I try to parse a file named "open_flow10/features_request.raw" with "Pio::OpenFlow::Features::Request" class
     Then it should finish successfully
     And the message has the following fields and values:
       | field          | value |

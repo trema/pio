@@ -1,5 +1,5 @@
 @open_flow10
-Feature: Pio::PacketOut
+Feature: Pio::OpenFlow::PacketOut
   Scenario: read
     When I try to parse a file named "open_flow10/packet_out.raw" with "PacketOut" class
     Then it should finish successfully

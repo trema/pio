@@ -1,10 +1,10 @@
 @open_flow13
-Feature: Pio::SetArpSenderProtocolAddress
+Feature: Pio::OpenFlow::SetArpSenderProtocolAddress
 
   Scenario: new('192.168.1.1')
     When I try to create an OpenFlow action with:
       """
-      Pio::SetArpSenderProtocolAddress.new('192.168.1.1')
+      Pio::OpenFlow::SetArpSenderProtocolAddress.new('192.168.1.1')
       """
     Then it should finish successfully
     And the action has the following fields and values:

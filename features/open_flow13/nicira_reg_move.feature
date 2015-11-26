@@ -1,5 +1,5 @@
 @open_flow13
-Feature: Pio::NiciraRegMove
+Feature: Pio::OpenFlow::NiciraRegMove
 
   Copies source[source_offset:sourcce_offset+n_bits] to
   destination[destination_offset:dst_ofs+n_bits], where a[b:c] denotes
@@ -8,8 +8,8 @@ Feature: Pio::NiciraRegMove
   Scenario: new(source: :arp_sender_hardware_address, destination: :arp_target_hardware_address)
     When I try to create an OpenFlow action with:
       """
-      Pio::NiciraRegMove.new(source: :arp_sender_hardware_address,
-                             destination: :arp_target_hardware_address)
+      Pio::OpenFlow::NiciraRegMove.new(source: :arp_sender_hardware_address,
+                                       destination: :arp_target_hardware_address)
       """
     Then it should finish successfully
     And the action has the following fields and values:
@@ -23,7 +23,7 @@ Feature: Pio::NiciraRegMove
   Scenario: new(source: :reg0, destination: :reg7)
     When I try to create an OpenFlow action with:
       """
-      Pio::NiciraRegMove.new(source: :reg0, destination: :reg7)
+      Pio::OpenFlow::NiciraRegMove.new(source: :reg0, destination: :reg7)
       """
     Then it should finish successfully
     And the action has the following fields and values:
@@ -37,9 +37,9 @@ Feature: Pio::NiciraRegMove
   Scenario: new(source: :reg0, source_offset: 16, destination: :reg7, destination_offset: 16, n_bits: 16)
     When I try to create an OpenFlow action with:
       """
-      Pio::NiciraRegMove.new(source: :reg0, source_offset: 16,
-                             destination: :reg7, destination_offset: 16,
-                             n_bits: 16)
+      Pio::OpenFlow::NiciraRegMove.new(source: :reg0, source_offset: 16,
+                                       destination: :reg7, destination_offset: 16,
+                                       n_bits: 16)
       """
     Then it should finish successfully
     And the action has the following fields and values:

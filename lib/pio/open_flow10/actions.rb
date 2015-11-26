@@ -15,7 +15,7 @@ require 'pio/open_flow10/vendor_action'
 module Pio
   module OpenFlow
     # Actions list.
-    class Actions < BinData::Primitive
+    class Actions10 < BinData::Primitive
       ACTION_CLASS = {
         0 => Pio::OpenFlow10::SendOutPort,
         1 => Pio::OpenFlow10::SetVlanVid,

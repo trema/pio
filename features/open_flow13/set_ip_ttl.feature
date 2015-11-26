@@ -1,10 +1,10 @@
 @open_flow13
-Feature: Pio::SetIpTtl
+Feature: Pio::OpenFlow::SetIpTtl
 
   Scenario: new(10)
     When I try to create an OpenFlow action with:
       """
-      Pio::SetIpTtl.new(10)
+      Pio::OpenFlow::SetIpTtl.new(10)
       """
     Then it should finish successfully
     And the action has the following fields and values:

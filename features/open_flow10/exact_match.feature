@@ -1,4 +1,4 @@
-Feature: Pio::ExactMatch
+Feature: Pio::OpenFlow::ExactMatch
   Scenario: new (from ARP request Packet In)
     When I create an exact match from "open_flow10/packet_in_arp_request.raw"
     Then the message has the following fields and values:

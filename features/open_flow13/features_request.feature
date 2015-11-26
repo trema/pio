@@ -1,9 +1,9 @@
 @open_flow13
-Feature: Pio::Features::Request
+Feature: Pio::OpenFlow::Features::Request
   Scenario: new
     When I try to create an OpenFlow message with:
       """
-      Pio::Features::Request.new
+      Pio::OpenFlow::Features::Request.new
       """
     Then it should finish successfully
     And the message has the following fields and values:
@@ -18,7 +18,7 @@ Feature: Pio::Features::Request
   Scenario: new(transaction_id: 123)
     When I try to create an OpenFlow message with:
       """
-      Pio::Features::Request.new(transaction_id: 123)
+      Pio::OpenFlow::Features::Request.new(transaction_id: 123)
       """
     Then it should finish successfully
     And the message has the following fields and values:
@@ -33,12 +33,12 @@ Feature: Pio::Features::Request
   Scenario: new(unknown_attr: 'foo') and error
     When I try to create an OpenFlow message with:
       """
-      Pio::Features::Request.new(unknown_attr: 'foo')
+      Pio::OpenFlow::Features::Request.new(unknown_attr: 'foo')
       """
     Then it should fail with "RuntimeError", "Unknown option: unknown_attr"
 
   Scenario: read
-    When I try to parse a file named "open_flow13/features_request.raw" with "Pio::Features::Request" class
+    When I try to parse a file named "open_flow13/features_request.raw" with "Pio::OpenFlow::Features::Request" class
     Then it should finish successfully
     And the message has the following fields and values:
       | field          | value |
@@ -50,5 +50,5 @@ Feature: Pio::Features::Request
       | body           |       |
 
   Scenario: parse error
-    When I try to parse a file named "open_flow10/hello.raw" with "Pio::Features::Request" class
+    When I try to parse a file named "open_flow10/hello.raw" with "Pio::OpenFlow::Features::Request" class
     Then it should fail with "Pio::ParseError", "Invalid OpenFlow13 Features Request message."

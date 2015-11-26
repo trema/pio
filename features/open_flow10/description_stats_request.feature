@@ -1,9 +1,9 @@
 @open_flow10
-Feature: Pio::DescriptionStats::Request
+Feature: Pio::OpenFlow::DescriptionStats::Request
   Scenario: new
     When I try to create an OpenFlow message with:
       """
-      Pio::DescriptionStats::Request.new
+      Pio::OpenFlow::DescriptionStats::Request.new
       """
     Then it should finish successfully
     And the message has the following fields and values:
@@ -18,7 +18,7 @@ Feature: Pio::DescriptionStats::Request
   Scenario: new(transaction_id: 123)
     When I try to create an OpenFlow message with:
       """
-      Pio::DescriptionStats::Request.new(transaction_id: 123)
+      Pio::OpenFlow::DescriptionStats::Request.new(transaction_id: 123)
       """
     Then it should finish successfully
     And the message has the following fields and values:

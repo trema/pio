@@ -1,9 +1,9 @@
 require 'pio/open_flow/nicira_resubmit'
 
-describe Pio::NiciraResubmit do
+describe Pio::OpenFlow::NiciraResubmit do
   describe '.new' do
     When(:nicira_resubmit) do
-      Pio::NiciraResubmit.new(port_number)
+      Pio::OpenFlow::NiciraResubmit.new(port_number)
     end
 
     context 'with 1' do
