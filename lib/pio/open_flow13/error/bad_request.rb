@@ -1,3 +1,4 @@
+require 'pio/open_flow/error_message'
 require 'pio/open_flow/message'
 require 'pio/open_flow13/error/error_type13'
 
@@ -38,7 +39,7 @@ module Pio
         end
 
         open_flow_header version: 4,
-                         message_type: 1,
+                         message_type: OpenFlow::ErrorMessage.message_type,
                          message_length: -> { 12 + raw_data.length }
         error_type13 :error_type, value: -> { :bad_request }
         bad_request_code :error_code

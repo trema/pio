@@ -45,6 +45,10 @@ module Pio
       # rubocop:disable MethodLength
       def self.open_flow_header(opts)
         module_eval do
+          cattr_reader(:message_type, instance_reader: false) do
+            opts.fetch(:message_type)
+          end
+
           endian :big
 
           uint8 :ofp_version, value: opts.fetch(:version)
