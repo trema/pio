@@ -1,3 +1,5 @@
+sudo: false
+
 language: ruby
 
 before_install: gem update bundler
@@ -12,12 +14,12 @@ rvm:
   - 2.0.0
   - 2.2.0
   - ruby-head
-  
+
 matrix:
   allow_failures:
     - rvm: ruby-head
   fast_finish: true
-  
+
 script: bundle exec rake travis
 
 notifications:
