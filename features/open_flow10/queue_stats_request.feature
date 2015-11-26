@@ -1,4 +1,4 @@
-Feature: Pio::OpenFlow10::QueueStats::Request
+Feature: QueueStats::Request
   @open_flow10
   Scenario: new(port: 1, queue_id: 1)
     When I try to create an OpenFlow message with:

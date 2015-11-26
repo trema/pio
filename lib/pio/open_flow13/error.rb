@@ -13,7 +13,7 @@ module Pio
 
       # rubocop:disable MethodLength
       def self.read(binary)
-        body = OpenFlowHeaderParser.read(binary).body
+        body = OpenFlow::OpenFlowHeaderParser.read(binary).body
         error = BodyParser.read(body).snapshot
         klass = case error.error_type
                 when :hello_failed

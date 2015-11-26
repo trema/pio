@@ -1,5 +1,5 @@
 @open_flow10
-Feature: Pio::OpenFlow10::Enqueue
+Feature: Enqueue
 
   Scenario: new(port: 1, queue_id: 2)
     When I try to create an OpenFlow action with:

@@ -1,5 +1,5 @@
 @open_flow13
-Feature: Pio::OpenFlow::Apply
+Feature: Apply
   Scenario: new()
     When I try to create an OpenFlow instruction with:
       """

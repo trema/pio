@@ -1,5 +1,5 @@
 @open_flow13
-Feature: Pio::OpenFlow::SetArpOperation
+Feature: SetArpOperation
 
   Scenario: new(Pio::Arp::Reply::OPERATION)
     When I try to create an OpenFlow action with:

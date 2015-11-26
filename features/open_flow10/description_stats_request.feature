@@ -1,5 +1,5 @@
 @open_flow10
-Feature: Pio::OpenFlow::DescriptionStats::Request
+Feature: DescriptionStats::Request
   Scenario: new
     When I try to create an OpenFlow message with:
       """

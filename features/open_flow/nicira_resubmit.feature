@@ -1,5 +1,5 @@
 @open_flow13
-Feature: Pio::OpenFlow::NiciraResubmit
+Feature: NiciraResubmit
 
   Scenario: new(1)
     When I try to create an OpenFlow action with:

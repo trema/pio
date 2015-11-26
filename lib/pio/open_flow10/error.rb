@@ -12,7 +12,7 @@ module Pio
       end
 
       def self.read(binary)
-        body = OpenFlowHeaderParser.read(binary).body
+        body = OpenFlow::OpenFlowHeaderParser.read(binary).body
         klass = case BodyParser.read(body).snapshot.error_type
                 when :hello_failed
                   HelloFailed

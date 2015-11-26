@@ -1,5 +1,5 @@
 @open_flow13
-Feature: Pio::OpenFlow::Error::BadRequest
+Feature: Error::BadRequest
 
   Request was not understood error.
 

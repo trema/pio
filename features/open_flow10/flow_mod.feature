@@ -1,5 +1,5 @@
 @open_flow10
-Feature: Pio::OpenFlow::FlowMod
+Feature: FlowMod
   Scenario: new
     When I try to create an OpenFlow message with:
       """

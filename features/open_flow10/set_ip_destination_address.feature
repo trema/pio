@@ -1,5 +1,5 @@
 @open_flow10
-Feature: Pio::OpenFlow10::SetDestinationIpAddress
+Feature: SetDestinationIpAddress
 
   Scenario: new('192.168.0.1')
     When I try to create an OpenFlow action with:

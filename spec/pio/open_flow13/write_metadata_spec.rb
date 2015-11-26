@@ -1,8 +1,8 @@
 require 'pio/open_flow13/write_metadata'
 
-describe Pio::WriteMetadata do
+describe Pio::OpenFlow13::WriteMetadata do
   describe '.new' do
-    When(:write_metadata) { Pio::WriteMetadata.new(options) }
+    When(:write_metadata) { Pio::OpenFlow13::WriteMetadata.new(options) }
 
     context 'with metadata: 1' do
       Given(:options) do

@@ -1,4 +1,4 @@
-Feature: Pio::StatsRequest
+Feature: StatsRequest
   Background:
     Given I use OpenFlow 1.3
 

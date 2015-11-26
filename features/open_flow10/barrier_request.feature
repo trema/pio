@@ -1,5 +1,5 @@
 @open_flow10
-Feature: Pio::OpenFlow::Barrier::Request
+Feature: Barrier::Request
   Scenario: new
     When I try to create an OpenFlow message with:
       """

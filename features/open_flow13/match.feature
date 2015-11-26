@@ -1,5 +1,5 @@
 @open_flow13
-Feature: Pio::OpenFlow::Match
+Feature: Match
   Scenario: new
     When I try to create an OpenFlow message with:
       """

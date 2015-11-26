@@ -1,5 +1,5 @@
 @open_flow13
-Feature: Pio::OpenFlow::SetArpSenderProtocolAddress
+Feature: SetArpSenderProtocolAddress
 
   Scenario: new('192.168.1.1')
     When I try to create an OpenFlow action with:

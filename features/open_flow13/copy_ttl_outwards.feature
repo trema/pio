@@ -1,5 +1,5 @@
 @open_flow13
-Feature: Pio::OpenFlow::CopyTtlOutwards
+Feature: CopyTtlOutwards
 
   Copies TTL "outwards" -- from next-to-outermost to outermost
 

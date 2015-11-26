@@ -1,5 +1,5 @@
 @open_flow13
-Feature: Pio::OpenFlow::NiciraRegMove
+Feature: NiciraRegMove
 
   Copies source[source_offset:sourcce_offset+n_bits] to
   destination[destination_offset:dst_ofs+n_bits], where a[b:c] denotes

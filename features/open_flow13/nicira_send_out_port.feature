@@ -1,5 +1,5 @@
 @open_flow13
-Feature: Pio::OpenFlow::NiciraSendOutPort
+Feature: NiciraSendOutPort
 
   Outputs to the OpenFlow port number written to source[offset:offset+n_bits]
 

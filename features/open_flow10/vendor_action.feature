@@ -1,10 +1,10 @@
 @open_flow10
-Feature: Pio::VendorAction
+Feature: VendorAction
 
   Scenario: new(1)
     When I try to create an OpenFlow action with:
       """
-      Pio::VendorAction.new(1)
+      Pio::OpenFlow10::VendorAction.new(1)
       """
     Then it should finish successfully
     And the action has the following fields and values:

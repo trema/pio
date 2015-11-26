@@ -1,5 +1,5 @@
 @open_flow10
-Feature: Pio::OpenFlow10::SetVlanVid
+Feature: SetVlanVid
 
   Scenario: new(1)
     When I try to create an OpenFlow action with:

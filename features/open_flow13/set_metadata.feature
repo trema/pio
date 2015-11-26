@@ -1,5 +1,5 @@
 @open_flow13
-Feature: Pio::OpenFlow::SetMetadata
+Feature: SetMetadata
 
   Scenario: new(0x123)
     When I try to create an OpenFlow action with:

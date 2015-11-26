@@ -1,5 +1,5 @@
 @open_flow13
-Feature: Pio::OpenFlow::SetIpTtl
+Feature: SetIpTtl
 
   Scenario: new(10)
     When I try to create an OpenFlow action with:

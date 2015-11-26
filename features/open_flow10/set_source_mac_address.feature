@@ -1,5 +1,5 @@
 @open_flow10
-Feature: Pio::OpenFlow::SetSourceMacAddress
+Feature: SetSourceMacAddress
 
   Scenario: new('11:22:33:44:55:66')
     When I try to create an OpenFlow action with:
