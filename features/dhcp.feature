@@ -1,4 +1,4 @@
-Feature: Pio::Dhcp
+Feature: Dhcp
   Scenario: create a DHCP Ack
     When I try to create a packet with:
     """

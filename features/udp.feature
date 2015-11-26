@@ -1,4 +1,4 @@
-Feature: Pio::Udp
+Feature: Udp
   Scenario: parse dhcp.pcap
     When I try to parse a file named "dhcp.pcap" with "Pio::Udp" class
     Then it should finish successfully

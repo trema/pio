@@ -1,4 +1,4 @@
-Feature: Pio::Lldp
+Feature: Lldp
   Scenario: create
     When I try to create an OpenFlow message with:
       """

@@ -1,5 +1,5 @@
 @open_flow10
-Feature: Pio::DescriptionStats::Reply
+Feature: DescriptionStats::Reply
   Scenario: read
     When I try to parse a file named "open_flow10/description_stats_reply.raw" with "DescriptionStats::Reply" class
     Then it should finish successfully

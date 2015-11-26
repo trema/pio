@@ -1,4 +1,4 @@
-Feature: Pio::OpenFlow.version
+Feature: OpenFlow.version
   Scenario: OpenFlow 1.0
     Given I switch the Pio::OpenFlow version to "OpenFlow10"
     When I get the OpenFlow version string
