@@ -22,47 +22,9 @@ Pio is a ruby gem to easily parse and generate network packets.
   [BinData](https://github.com/dmendel/bindata)'s declarative binary
   format DSL so that it is easy to read and debug by human beings.
 
-## Supported packet formats
+## Documentation
 
-Pio supports the following packet formats:
-
-- [ICMP](https://relishapp.com/trema/pio/docs/pio-icmp)
-- [ARP](https://relishapp.com/trema/pio/docs/pio-arp)
-- [LLDP](https://relishapp.com/trema/pio/docs/pio-lldp)
-- [DHCP](https://relishapp.com/trema/pio/docs/pio-dhcp)
-- [UDP](https://relishapp.com/trema/pio/docs/pio-udp)
-- OpenFlow 1.0
-  - [Hello](https://relishapp.com/trema/pio/docs/open-flow10/pio-hello)
-  - [HelloFailed](https://relishapp.com/trema/pio/docs/open-flow10/pio-error-hellofailed)
-  - [BadRequest](https://relishapp.com/trema/pio/docs/open-flow10/pio-error-badrequest)
-  - [Echo Request](https://relishapp.com/trema/pio/docs/open-flow10/pio-echo-request)
-  - [Echo Reply](https://relishapp.com/trema/pio/docs/open-flow10/pio-echo-reply)
-  - [Features Request](https://relishapp.com/trema/pio/docs/open-flow10/pio-features-request)
-  - [Features Reply](https://relishapp.com/trema/pio/docs/open-flow10/pio-features-reply)
-  - [Packet In](https://relishapp.com/trema/pio/docs/open-flow10/pio-packetin)
-  - [Packet Out](https://relishapp.com/trema/pio/docs/open-flow10/pio-packetout)
-  - [Flow Mod](https://relishapp.com/trema/pio/docs/open-flow10/pio-flowmod)
-  - [Port Status](https://relishapp.com/trema/pio/docs/open-flow10/pio-portstatus)
-  - [Exact Match](https://relishapp.com/trema/pio/docs/open-flow10/pio-exactmatch)
-  - [Barrier Request](https://relishapp.com/trema/pio/docs/open-flow10/pio-barrier-request)
-  - [Barrier Reply](https://relishapp.com/trema/pio/docs/open-flow10/pio-barrier-reply)
-  - [Description Stats Request](https://relishapp.com/trema/pio/docs/open-flow10/pio-descriptionstats-request)
-  - [Description Stats Reply](https://relishapp.com/trema/pio/docs/open-flow10/pio-descriptionstats-reply)
-  - [Flow Stats Request](https://relishapp.com/trema/pio/docs/open-flow10/pio-flowstats-request)
-  - [Flow Stats Reply](https://relishapp.com/trema/pio/docs/open-flow10/pio-flowstats-reply)
-  - [Aggregate Stats Request](https://relishapp.com/trema/pio/docs/open-flow10/pio-aggregatestats-request)
-  - [Aggregate Stats Reply](https://relishapp.com/trema/pio/docs/open-flow10/pio-aggregatestats-reply)
-- OpenFlow 1.3
-  - [Hello](https://relishapp.com/trema/pio/docs/open-flow13/pio-hello)
-  - [HelloFailed](https://relishapp.com/trema/pio/docs/open-flow13/pio-error-hellofailed)
-  - [BadRequest](https://relishapp.com/trema/pio/docs/open-flow13/pio-error-badrequest)
-  - [Echo Request](https://relishapp.com/trema/pio/docs/open-flow13/pio-echo-request)
-  - [Echo Reply](https://relishapp.com/trema/pio/docs/open-flow13/pio-echo-reply)
-  - [Features Request](https://relishapp.com/trema/pio/docs/open-flow13/pio-features-request)
-  - [Features Reply](https://relishapp.com/trema/pio/docs/open-flow13/pio-features-reply)
-  - [Packet In](https://relishapp.com/trema/pio/docs/open-flow13/pio-packetin)
-  - [Packet Out](https://relishapp.com/trema/pio/docs/open-flow13/pio-packetout)
-  - [Flow Mod](https://relishapp.com/trema/pio/docs/open-flow13/pio-flowmod)
+See https://relishapp.com/trema/pio/docs for links to documentation for all APIs.
 
 ## Installation
 
@@ -79,10 +41,6 @@ and install it by running Bundler:
 ```bash
 bundle
 ```
-
-## Documents
-
-- [API document](https://relishapp.com/trema/pio/docs)
 
 ## Team
 
