@@ -48,13 +48,6 @@ Feature: Pio::OpenFlow::Echo::Reply
         | body           | echo reply body |
         | user_data      | echo reply body |
 
-  Scenario: new(unknown_attr: 'foo') and error
-    When I try to create an OpenFlow message with:
-      """
-      Pio::OpenFlow::Echo::Reply.new(unknown_attr: 'foo')
-      """
-    Then it should fail with "RuntimeError", "Unknown option: unknown_attr"
-
   Scenario: read (no message body)
     When I try to parse a file named "open_flow13/echo_reply_no_body.raw" with "Pio::OpenFlow::Echo::Reply" class
     Then it should finish successfully
@@ -80,7 +73,3 @@ Feature: Pio::OpenFlow::Echo::Reply
       | xid            |                    0 |
       | body           | hogehogehogehogehoge |
       | user_data      | hogehogehogehogehoge |
-
-  Scenario: parse error
-    When I try to parse a file named "open_flow10/features_request.raw" with "Pio::OpenFlow::Echo::Reply" class
-    Then it should fail with "Pio::ParseError", "Invalid OpenFlow13 Echo Reply message."

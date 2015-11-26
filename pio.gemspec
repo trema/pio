@@ -52,6 +52,7 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'yard', '~> 0.8.7.6'
 
   # Test
+  gem.add_development_dependency 'aruba', '~> 0.10.2'
   gem.add_development_dependency 'codeclimate-test-reporter', '~> 0.4.8'
   gem.add_development_dependency 'coveralls', '~> 0.8.3'
   gem.add_development_dependency 'cucumber', '~> 2.1.0'

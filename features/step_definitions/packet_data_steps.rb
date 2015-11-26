@@ -1,7 +1,6 @@
 # rubocop:disable LineLength
 When(/^I try to parse a file named "(.*?\.raw)" with "(.*?)" class$/) do |path, klass|
-  full_path = File.expand_path(File.join(__dir__, '..', path))
-  raw_data = IO.read(full_path)
+  raw_data = IO.read(expand_path("%/#{path}"))
   parser_klass = Pio::OpenFlow.const_get(klass)
   begin
     @result = parser_klass.read(raw_data)
@@ -13,8 +12,7 @@ end
 
 # rubocop:disable LineLength
 When(/^I try to parse a file named "(.*?\.pcap)" with "(.*?)" class$/) do |path, klass|
-  full_path = File.expand_path(File.join(__dir__, '..', path))
-  pcap = Pio::Pcap::Frame.read(IO.read(full_path))
+  pcap = Pio::Pcap::Frame.read(IO.read(expand_path("%/#{path}")))
   parser_klass = Pio::OpenFlow.const_get(klass)
   begin
     @result = pcap.records.each_with_object([]) do |each, result|
@@ -30,14 +28,8 @@ Then(/^it should finish successfully$/) do
   expect(@last_error).to be_nil
 end
 
-Then(/^it should fail with "([^"]*)", "([^"]*)"$/) do |error, message|
-  expect(@last_error.class.to_s).to eq(error)
-  expect(@last_error.message).to eq(message)
-end
-
 When(/^I create an exact match from "(.*?)"$/) do |path|
-  full_path = File.expand_path(File.join(__dir__, '..', path))
-  packet_in = Pio::OpenFlow::PacketIn.read(IO.read(full_path))
+  packet_in = Pio::OpenFlow::PacketIn.read(IO.read(expand_path("%/#{path}")))
   @result = Pio::OpenFlow::ExactMatch.new(packet_in)
 end
 

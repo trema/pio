@@ -776,10 +776,6 @@ Feature: Pio::OpenFlow::Match
       | tunnel_id      |                   1 |
       | tunnel_id_mask | 9223372036854775808 |
 
-  Scenario: read (file: open_flow13/oxm_invalid_field.raw)
-    When I try to parse a file named "open_flow13/oxm_invalid_field.raw" with "Pio::OpenFlow::Match" class
-    Then it should fail with "RuntimeError", "Unknown OXM field value: 40"
-
   Scenario: read (file: open_flow13/oxm_experimenter_stratos_basic_dot11.raw)
     When I try to parse a file named "open_flow13/oxm_experimenter_stratos_basic_dot11.raw" with "Pio::OpenFlow::Match" class
     Then it should finish successfully

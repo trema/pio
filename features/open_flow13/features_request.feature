@@ -30,13 +30,6 @@ Feature: Pio::OpenFlow::Features::Request
       | xid            |   123 |
       | body           |       |
 
-  Scenario: new(unknown_attr: 'foo') and error
-    When I try to create an OpenFlow message with:
-      """
-      Pio::OpenFlow::Features::Request.new(unknown_attr: 'foo')
-      """
-    Then it should fail with "RuntimeError", "Unknown option: unknown_attr"
-
   Scenario: read
     When I try to parse a file named "open_flow13/features_request.raw" with "Pio::OpenFlow::Features::Request" class
     Then it should finish successfully
@@ -48,7 +41,3 @@ Feature: Pio::OpenFlow::Features::Request
       | transaction_id |     0 |
       | xid            |     0 |
       | body           |       |
-
-  Scenario: parse error
-    When I try to parse a file named "open_flow10/hello.raw" with "Pio::OpenFlow::Features::Request" class
-    Then it should fail with "Pio::ParseError", "Invalid OpenFlow13 Features Request message."
