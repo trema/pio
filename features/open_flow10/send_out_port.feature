@@ -1,5 +1,5 @@
 @open_flow10
-Feature: Pio::OpenFlow::SendOutPort
+Feature: SendOutPort
 
   Scenario: new(1)
     When I try to create an OpenFlow action with:

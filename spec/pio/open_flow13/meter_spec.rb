@@ -1,8 +1,8 @@
 require 'pio/open_flow13/meter'
 
-describe Pio::Meter do
+describe Pio::OpenFlow13::Meter do
   describe '.new' do
-    When(:meter) { Pio::Meter.new(options) }
+    When(:meter) { Pio::OpenFlow13::Meter.new(options) }
 
     context 'with 1' do
       Given(:options) { 1 }

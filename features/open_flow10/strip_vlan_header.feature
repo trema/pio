@@ -1,5 +1,5 @@
 @open_flow10
-Feature: Pio::OpenFlow10::StripVlanHeader
+Feature: StripVlanHeader
 
   Scenario: new
     When I try to create an OpenFlow action with:

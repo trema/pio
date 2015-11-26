@@ -1,6 +1,5 @@
 require 'active_support/core_ext/module/attribute_accessors'
 require 'active_support/core_ext/module/introspection'
-require 'pio/open_flow/error'
 require 'pio/open_flow/open_flow_header'
 require 'pio/open_flow10'
 require 'pio/open_flow13'
@@ -8,7 +7,7 @@ require 'pio/open_flow13'
 module Pio
   # Common OpenFlow modules/classes.
   module OpenFlow
-    mattr_reader :version
+    mattr_reader :version, instance_reader: false
 
     module_function
 
@@ -17,50 +16,41 @@ module Pio
       return if @@version == version.to_sym
       [Message, Instruction, Action, FlowMatch].each do |each|
         each.descendants.each do |klass|
-          switch_class klass, version
+          define_class klass, Pio.const_get(version)
         end
       end
       @@version = version.to_sym
+    rescue NameError
+      raise "#{version} is not supported yet."
     end
     # rubocop:enable ClassVars
 
-    def switch_class(klass, version)
-      open_flow_module = Pio.const_get(version)
+    def define_class(klass, open_flow_module)
       return if klass.parents.include?(Pio::OpenFlow)
       return unless klass.parents.include?(open_flow_module)
       klass_name = klass.name.split('::')[2].to_sym
       remove_const(klass_name) if const_defined?(klass_name)
       const_set klass_name, open_flow_module.const_get(klass_name)
-    rescue NameError
-      raise "#{version} is not supported yet."
     end
-    private_class_method :switch_class
+    private_class_method :define_class
 
     # The default OpenFlow version is 1.0
     self.version = :OpenFlow10
 
-    # rubocop:disable MethodLength
     def read(binary)
       header = OpenFlowHeaderParser.read(binary)
       self.version = header.version
-      {
-        0 => Hello,
-        1 => Error,
-        2 => Echo::Request,
-        3 => Echo::Reply,
-        5 => Features::Request,
-        6 => Features::Reply,
-        10 => PacketIn,
-        11 => FlowRemoved,
-        12 => PortStatus,
-        13 => PacketOut,
-        14 => FlowMod,
-        16 => Stats::Request,
-        17 => Stats::Reply,
-        18 => Barrier::Request,
-        19 => Barrier::Reply
-      }.fetch(header.message_type).read(binary)
+      parsers.fetch(header.message_type).read(binary)
     end
-    # rubocop:enable MethodLength
+
+    def parsers
+      [Hello, Error, Echo::Request, Echo::Reply, Features::Request,
+       Features::Reply, PacketIn, FlowRemoved, PortStatus, PacketOut,
+       FlowMod, Stats::Request, Stats::Reply, Barrier::Request,
+       Barrier::Reply].each_with_object({}) do |each, hash|
+        hash[each.message_type] = each
+      end
+    end
+    private_class_method :parsers
   end
 end

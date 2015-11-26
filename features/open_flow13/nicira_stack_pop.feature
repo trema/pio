@@ -1,5 +1,5 @@
 @open_flow13
-Feature: Pio::OpenFlow::NiciraStackPop
+Feature: NiciraStackPop
 
   Pops field[offset: offset + n_bits] from top of the stack.
 

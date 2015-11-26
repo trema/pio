@@ -1,5 +1,5 @@
 @open_flow10
-Feature: Pio::OpenFlow10::Hello
+Feature: Hello
 
   Hello messages are exchanged between the switch and controller upon
   connection startup.

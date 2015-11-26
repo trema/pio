@@ -1,4 +1,4 @@
-Feature: Pio::OpenFlow.read
+Feature: OpenFlow.read
   Scenario: OpenFlow 1.0
     Given I switch the Pio::OpenFlow version to "OpenFlow10"
     Then the following each raw file should be parsed into its corresponding object using OpenFlow.read

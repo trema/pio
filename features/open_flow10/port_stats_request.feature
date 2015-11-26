@@ -1,4 +1,4 @@
-Feature: Pio::OpenFlow10::PortStats::Request
+Feature: PortStats::Request
   @open_flow10
   Scenario: new(:none)
     When I try to create an OpenFlow message with:

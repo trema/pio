@@ -1,5 +1,5 @@
 @open_flow10
-Feature: Pio::OpenFlow::AggregateStats::Request
+Feature: AggregateStats::Request
   Scenario: new
     When I try to create an OpenFlow message with:
       """

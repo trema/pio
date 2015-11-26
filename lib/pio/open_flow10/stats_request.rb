@@ -7,6 +7,8 @@ module Pio
     class Stats
       # Stats request parser.
       class Request
+        cattr_reader(:message_type, instance_reader: false) { 16 }
+
         TYPES = {
           description: OpenFlow10::DescriptionStats::Request,
           flow: OpenFlow10::FlowStats::Request,

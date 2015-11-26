@@ -8,6 +8,8 @@ module Pio
     class Stats
       # Stats reply parser.
       class Reply
+        cattr_reader(:message_type, instance_reader: false) { 17 }
+
         TYPES = {
           description: OpenFlow10::DescriptionStats::Reply,
           flow: OpenFlow10::FlowStats::Reply,

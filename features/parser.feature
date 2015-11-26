@@ -1,4 +1,4 @@
-Feature: Pio::Parser
+Feature: Parser
   Scenario: parse icmpv6.pcap
     When I try to parse a file named "icmpv6.pcap" with "Pio::Parser" class
     Then it should finish successfully

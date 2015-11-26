@@ -1,5 +1,5 @@
 @open_flow10
-Feature: Pio::OpenFlow::PortStatus
+Feature: PortStatus
   Scenario: read
     When I try to parse a file named "open_flow10/port_status.raw" with "PortStatus" class
     Then it should finish successfully

@@ -1,4 +1,4 @@
-Feature: Pio::OpenFlow::NiciraResubmitTable
+Feature: NiciraResubmitTable
 
   Scenario: new(in_port: 1, table: 1)
     When I try to create an OpenFlow action with:

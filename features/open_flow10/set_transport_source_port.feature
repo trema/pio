@@ -1,5 +1,5 @@
 @open_flow10
-Feature: Pio::OpenFlow10::SetTransportSourcePort
+Feature: SetTransportSourcePort
 
   Scenario: new(100)
     When I try to create an OpenFlow action with:

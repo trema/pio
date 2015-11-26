@@ -1,5 +1,5 @@
 @open_flow10
-Feature: Pio::OpenFlow::Error::HelloFailed
+Feature: Error::HelloFailed
 
   Hello protocol failed
 

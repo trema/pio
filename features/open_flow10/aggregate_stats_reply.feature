@@ -1,5 +1,5 @@
 @open_flow10
-Feature: Pio::AggregateStats::Reply
+Feature: AggregateStats::Reply
   Scenario: read
     When I try to parse a file named "open_flow10/aggregate_stats_reply.raw" with "AggregateStats::Reply" class
     Then it should finish successfully

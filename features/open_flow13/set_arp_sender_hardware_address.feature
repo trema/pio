@@ -1,5 +1,5 @@
 @open_flow13
-Feature: Pio::OpenFlow::SetArpSenderHardwareAddress
+Feature: SetArpSenderHardwareAddress
 
   Scenario: new('00:00:de:ad:be:ef')
     When I try to create an OpenFlow action with:

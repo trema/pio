@@ -1,5 +1,5 @@
 @open_flow13
-Feature: Pio::OpenFlow::NiciraStackPush
+Feature: NiciraStackPush
 
   Pushes field[offset: offset + n_bits] to top of the stack.
 

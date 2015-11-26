@@ -17,19 +17,19 @@ module Pio
     # Actions list.
     class Actions10 < BinData::Primitive
       ACTION_CLASS = {
-        0 => Pio::OpenFlow10::SendOutPort,
-        1 => Pio::OpenFlow10::SetVlanVid,
-        2 => Pio::OpenFlow10::SetVlanPriority,
-        3 => Pio::OpenFlow10::StripVlanHeader,
-        4 => Pio::OpenFlow10::SetSourceMacAddress,
-        5 => Pio::OpenFlow10::SetDestinationMacAddress,
-        6 => Pio::OpenFlow10::SetSourceIpAddress,
-        7 => Pio::OpenFlow10::SetDestinationIpAddress,
-        8 => Pio::OpenFlow10::SetTos,
-        9 => Pio::OpenFlow10::SetTransportSourcePort,
-        10 => Pio::OpenFlow10::SetTransportDestinationPort,
-        11 => Pio::OpenFlow10::Enqueue,
-        0xffff => Pio::VendorAction
+        0 => OpenFlow10::SendOutPort,
+        1 => OpenFlow10::SetVlanVid,
+        2 => OpenFlow10::SetVlanPriority,
+        3 => OpenFlow10::StripVlanHeader,
+        4 => OpenFlow10::SetSourceMacAddress,
+        5 => OpenFlow10::SetDestinationMacAddress,
+        6 => OpenFlow10::SetSourceIpAddress,
+        7 => OpenFlow10::SetDestinationIpAddress,
+        8 => OpenFlow10::SetTos,
+        9 => OpenFlow10::SetTransportSourcePort,
+        10 => OpenFlow10::SetTransportDestinationPort,
+        11 => OpenFlow10::Enqueue,
+        0xffff => OpenFlow10::VendorAction
       }
 
       mandatory_parameter :length

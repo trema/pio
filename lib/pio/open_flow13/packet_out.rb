@@ -1,6 +1,6 @@
 require 'pio/open_flow'
+require 'pio/open_flow/buffer_id'
 require 'pio/open_flow13/actions'
-require 'pio/open_flow13/buffer_id'
 
 module Pio
   module OpenFlow13

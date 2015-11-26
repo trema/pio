@@ -1,5 +1,5 @@
 require 'pio/open_flow'
-require 'pio/open_flow13/buffer_id'
+require 'pio/open_flow/buffer_id'
 require 'pio/open_flow13/match'
 
 module Pio

@@ -1,5 +1,5 @@
 @open_flow13
-Feature: Pio::OpenFlow::DecrementIpTtl
+Feature: DecrementIpTtl
 
   Scenario: new
     When I try to create an OpenFlow action with:
