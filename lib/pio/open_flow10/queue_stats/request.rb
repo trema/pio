@@ -6,9 +6,7 @@ module Pio
     class QueueStats
       # Queue Stats Request message
       class Request < OpenFlow::Message
-        open_flow_header version: 1,
-                         message_type: 16,
-                         message_length: 20
+        open_flow_header version: 1, type: 16, length: 20
 
         stats_type :stats_type, value: -> { :queue }
         uint16 :flags

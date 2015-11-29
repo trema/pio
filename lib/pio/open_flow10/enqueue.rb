@@ -24,8 +24,8 @@ module Pio
       def validate_port(user_options)
         port = user_options.fetch(:port)
         if port.is_a?(Symbol) && port != :in_port
-          fail(ArgumentError,
-               ':port must be a valid physical port or :in_port')
+          raise(ArgumentError,
+                ':port must be a valid physical port or :in_port')
         end
       rescue KeyError
         raise ArgumentError, ':port is a mandatory option'
@@ -33,7 +33,7 @@ module Pio
 
       def validate_queue_id(user_options)
         unless user_options.fetch(:queue_id).unsigned_32bit?
-          fail ArgumentError, ':queue_id must be an unsigned 32-bit integer'
+          raise ArgumentError, ':queue_id must be an unsigned 32-bit integer'
         end
       rescue KeyError
         raise ArgumentError, ':queue_id is a mandatory option'

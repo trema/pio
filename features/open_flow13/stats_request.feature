@@ -4,16 +4,13 @@ Feature: StatsRequest
 
   @wip
   Scenario: new
-    When I try to create an OpenFlow message with:
+    When I create an OpenFlow message with:
       """
       Pio::StatsRequest.new(stats_type: :table)
       """
-    Then it should finish successfully
-    And the message has the following fields and values:
+    Then the message has the following fields and values:
       | field          |  value |
-      | ofp_version    |      4 |
-      | message_type   |     16 |
-      | message_length |     12 |
+      | version        |      4 |
       | transaction_id |      0 |
       | xid            |      0 |
       | stats_type     | :table |

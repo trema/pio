@@ -6,7 +6,7 @@ module Pio
     module DescriptionStats
       # OpenFlow 1.0 Description Stats Reply message
       class Reply < OpenFlow::Message
-        open_flow_header version: 1, message_type: 17, message_length: 1068
+        open_flow_header version: 1, type: 17, length: 1068
         stats_type :stats_type, value: -> { :description }
         uint16 :flags
 

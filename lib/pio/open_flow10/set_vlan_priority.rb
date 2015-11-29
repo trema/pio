@@ -12,7 +12,7 @@ module Pio
       def initialize(number)
         priority = number.to_i
         if priority < 0 || priority > 7
-          fail ArgumentError, 'VLAN priority must be between 0 and 7 inclusive'
+          raise ArgumentError, 'VLAN priority must be between 0 and 7 inclusive'
         end
         super(vlan_priority: priority)
       rescue NoMethodError

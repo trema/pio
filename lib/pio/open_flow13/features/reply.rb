@@ -1,4 +1,5 @@
 require 'pio/open_flow/datapath_id'
+require 'pio/open_flow/flags'
 require 'pio/open_flow/message'
 
 module Pio
@@ -20,7 +21,7 @@ module Pio
                      :NOT_USED,
                      :port_blocked])
 
-        open_flow_header version: 4, message_type: 6, message_length: 32
+        open_flow_header version: 4, type: 6, length: 32
         datapath_id :datapath_id
         uint32 :n_buffers
         uint8 :n_tables
@@ -33,7 +34,7 @@ module Pio
         def datapath_id
           @format.datapath_id.to_i
         end
-        alias_method :dpid, :datapath_id
+        alias dpid datapath_id
       end
     end
   end

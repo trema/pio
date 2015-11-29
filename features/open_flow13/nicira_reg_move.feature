@@ -6,13 +6,12 @@ Feature: NiciraRegMove
   the bits within 'a' numbered 'b' through 'c' (not including bit 'c').
 
   Scenario: new(source: :arp_sender_hardware_address, destination: :arp_target_hardware_address)
-    When I try to create an OpenFlow action with:
+    When I create an OpenFlow action with:
       """
-      Pio::OpenFlow::NiciraRegMove.new(source: :arp_sender_hardware_address,
-                                       destination: :arp_target_hardware_address)
+      Pio::NiciraRegMove.new(source: :arp_sender_hardware_address,
+                             destination: :arp_target_hardware_address)
       """
-    Then it should finish successfully
-    And the action has the following fields and values:
+    Then the action has the following fields and values:
       | field              |                        value |
       | n_bits             |                           48 |
       | source             | :arp_sender_hardware_address |
@@ -21,12 +20,11 @@ Feature: NiciraRegMove
       | destination_offset |                            0 |
 
   Scenario: new(source: :reg0, destination: :reg7)
-    When I try to create an OpenFlow action with:
+    When I create an OpenFlow action with:
       """
-      Pio::OpenFlow::NiciraRegMove.new(source: :reg0, destination: :reg7)
+      Pio::NiciraRegMove.new(source: :reg0, destination: :reg7)
       """
-    Then it should finish successfully
-    And the action has the following fields and values:
+    Then the action has the following fields and values:
       | field              | value |
       | n_bits             |    32 |
       | source             | :reg0 |
@@ -35,14 +33,13 @@ Feature: NiciraRegMove
       | destination_offset |     0 |
       
   Scenario: new(source: :reg0, source_offset: 16, destination: :reg7, destination_offset: 16, n_bits: 16)
-    When I try to create an OpenFlow action with:
+    When I create an OpenFlow action with:
       """
-      Pio::OpenFlow::NiciraRegMove.new(source: :reg0, source_offset: 16,
-                                       destination: :reg7, destination_offset: 16,
-                                       n_bits: 16)
+      Pio::NiciraRegMove.new(source: :reg0, source_offset: 16,
+                             destination: :reg7, destination_offset: 16,
+                             n_bits: 16)
       """
-    Then it should finish successfully
-    And the action has the following fields and values:
+    Then the action has the following fields and values:
       | field              | value |
       | n_bits             |    16 |
       | source             | :reg0 |

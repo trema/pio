@@ -10,7 +10,7 @@ module Pio
         port: 4,
         queue: 5,
         vendor: 0xffff
-      }
+      }.freeze
 
       endian :big
       uint16 :command

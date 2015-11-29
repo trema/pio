@@ -28,7 +28,7 @@ module Pio
         icmp_type
       end
 
-      alias_method :to_binary, :to_binary_s
+      alias to_binary to_binary_s
 
       private
 

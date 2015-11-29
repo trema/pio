@@ -1,6 +1,6 @@
 Feature: Icmp
   Scenario: create an ICMP request
-    When I try to create a packet with:
+    When I create a packet with:
       """
       Pio::Icmp::Request.new(
         source_mac: '00:16:9d:1d:9c:c4',
@@ -9,8 +9,7 @@ Feature: Icmp
         destination_ip_address: '192.168.83.254'
       )
       """
-    Then it should finish successfully
-    And the packet has the following fields and values:
+    Then the packet has the following fields and values:
       | field                  |              value |
       | class                  | Pio::Icmp::Request |
       | destination_mac        |  00:26:82:eb:ea:d1 |
@@ -37,7 +36,7 @@ Feature: Icmp
       | echo_data              |                    |
 
   Scenario: create an ICMP reply
-    When I try to create a packet with:
+    When I create a packet with:
       """
       Pio::Icmp::Reply.new(
         source_mac: '00:26:82:eb:ea:d1',
@@ -48,8 +47,7 @@ Feature: Icmp
         sequence_number: 0
       )
       """
-    Then it should finish successfully
-    And the packet has the following fields and values:
+    Then the packet has the following fields and values:
       | field                  |             value |
       | class                  |  Pio::Icmp::Reply |
       | destination_mac        | 00:16:9d:1d:9c:c4 |
@@ -76,9 +74,8 @@ Feature: Icmp
       | echo_data              |                   |
 
   Scenario: parse icmp.pcap
-    When I try to parse a file named "icmp.pcap" with "Pio::Icmp" class
-    Then it should finish successfully
-    And the message #1 have the following fields and values:
+    When I parse a file named "icmp.pcap" with "Pio::Icmp" class
+    Then the message #1 have the following fields and values:
       | field                  |                            value |
       | class                  |               Pio::Icmp::Request |
       | destination_mac        |                00:13:46:0b:22:ba |
@@ -103,7 +100,7 @@ Feature: Icmp
       | icmp_identifier        |                              768 |
       | icmp_sequence_number   |                              256 |
       | echo_data              | abcdefghijklmnopqrstuvwabcdefghi |
-    And the message #2 have the following fields and values:
+    Then the message #2 have the following fields and values:
       | field                  |                            value |
       | class                  |                 Pio::Icmp::Reply |
       | destination_mac        |                00:16:ce:6e:8b:24 |

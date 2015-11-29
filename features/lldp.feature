@@ -1,11 +1,10 @@
 Feature: Lldp
   Scenario: create
-    When I try to create an OpenFlow message with:
+    When I create an OpenFlow message with:
       """
       Pio::Lldp.new(dpid: 0x123, port_number: 12, source_mac: '11:22:33:44:55:66')
       """
-    Then it should finish successfully
-    And the message has the following fields and values:
+    Then the message has the following fields and values:
       | field                     |             value |
       | class                     |         Pio::Lldp |
       | destination_mac           | 01:80:c2:00:00:0e |
@@ -23,8 +22,7 @@ Feature: Lldp
       | organizationally_specific |                   |
 
   Scenario: parse lldp.minimal.pcap
-    When I try to parse a file named "lldp.minimal.pcap" with "Pio::Lldp" class
-    Then it should finish successfully
+    When I parse a file named "lldp.minimal.pcap" with "Pio::Lldp" class
     Then the message #1 have the following fields and values:
       | field                     | value             |
       | class                     | Pio::Lldp         |
@@ -43,5 +41,4 @@ Feature: Lldp
       | organizationally_specific |                   |
 
   Scenario: parse lldp.detailed.pcap
-    When I try to parse a file named "lldp.detailed.pcap" with "Pio::Lldp" class
-    Then it should finish successfully
+    Then I parse a file named "lldp.detailed.pcap" with "Pio::Lldp" class

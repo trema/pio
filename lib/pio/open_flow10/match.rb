@@ -35,8 +35,8 @@ module Pio
           destination_ip_address_all: 1 << 19,
           vlan_priority: 1 << 20,
           tos: 1 << 21
-        }
-        NW_FLAGS = [:source_ip_address, :destination_ip_address]
+        }.freeze
+        NW_FLAGS = [:source_ip_address, :destination_ip_address].freeze
         FLAGS = BITS.keys.select { |each| !(/^(source|destination)_ip/=~ each) }
 
         endian :big
@@ -57,13 +57,13 @@ module Pio
 
         def set(params)
           self.flags = params.inject(0) do |memo, (key, val)|
-            memo | case key
-                   when :source_ip_address, :destination_ip_address
-                     (params.fetch(key) & 31) <<
-                       (key == :source_ip_address ? 8 : 14)
-                   else
-                     val ? BITS.fetch(key) : 0
-                   end
+            memo |
+              case key
+              when :source_ip_address, :destination_ip_address
+                (params.fetch(key) & 31) << (key == :source_ip_address ? 8 : 14)
+              else
+                val ? BITS.fetch(key) : 0
+              end
           end
         end
 
@@ -144,7 +144,7 @@ module Pio
             memo["#{each}_all".to_sym] = true
           end
         end
-        @format = MatchFormat.new({ wildcards: flags }.merge user_options)
+        @format = MatchFormat.new({ wildcards: flags }.merge(user_options))
       end
       # rubocop:enable MethodLength
 

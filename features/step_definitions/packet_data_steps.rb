@@ -1,36 +1,20 @@
-# rubocop:disable LineLength
-When(/^I try to parse a file named "(.*?\.raw)" with "(.*?)" class$/) do |path, klass|
+When(/^I parse a file named "(.*?\.raw)" with "(.*?)" class$/) do |path, klass|
   raw_data = IO.read(expand_path("%/#{path}"))
-  parser_klass = Pio::OpenFlow.const_get(klass)
-  begin
-    @result = parser_klass.read(raw_data)
-  rescue
-    @last_error = $ERROR_INFO
-  end
+  parser_klass = Pio.const_get(klass)
+  @result = parser_klass.read(raw_data)
 end
-# rubocop:enable LineLength
 
-# rubocop:disable LineLength
-When(/^I try to parse a file named "(.*?\.pcap)" with "(.*?)" class$/) do |path, klass|
+When(/^I parse a file named "(.*?\.pcap)" with "(.*?)" class$/) do |path, klass|
   pcap = Pio::Pcap::Frame.read(IO.read(expand_path("%/#{path}")))
-  parser_klass = Pio::OpenFlow.const_get(klass)
-  begin
-    @result = pcap.records.each_with_object([]) do |each, result|
-      result << parser_klass.read(each.data)
-    end
-  rescue
-    @last_error = $ERROR_INFO
+  parser_klass = Pio.const_get(klass)
+  @result = pcap.records.each_with_object([]) do |each, result|
+    result << parser_klass.read(each.data)
   end
-end
-# rubocop:enable LineLength
-
-Then(/^it should finish successfully$/) do
-  expect(@last_error).to be_nil
 end
 
 When(/^I create an exact match from "(.*?)"$/) do |path|
-  packet_in = Pio::OpenFlow::PacketIn.read(IO.read(expand_path("%/#{path}")))
-  @result = Pio::OpenFlow::ExactMatch.new(packet_in)
+  packet_in = Pio::PacketIn.read(IO.read(expand_path("%/#{path}")))
+  @result = Pio::ExactMatch.new(packet_in)
 end
 
 Then(/^the message should be a "([^"]*)"$/) do |expected_klass|

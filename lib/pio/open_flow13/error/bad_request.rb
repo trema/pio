@@ -24,7 +24,7 @@ module Pio
             bad_port: 11,
             bad_packet: 12,
             multipart_buffer_overflow: 13
-          }
+          }.freeze
 
           endian :big
           uint16 :error_code
@@ -39,8 +39,8 @@ module Pio
         end
 
         open_flow_header version: 4,
-                         message_type: OpenFlow::ErrorMessage.message_type,
-                         message_length: -> { 12 + raw_data.length }
+                         type: OpenFlow::ErrorMessage.type,
+                         length: -> { 12 + raw_data.length }
         error_type13 :error_type, value: -> { :bad_request }
         bad_request_code :error_code
         rest :raw_data

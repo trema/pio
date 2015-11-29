@@ -17,9 +17,9 @@ describe Pio::OpenFlow10::FlowStats::Request do
       end
 
       Then { flow_stats_request.class == Pio::OpenFlow10::FlowStats::Request }
-      Then { flow_stats_request.ofp_version == 1 }
-      Then { flow_stats_request.message_type == 16 }
-      Then { flow_stats_request.message_length == 56 }
+      Then { flow_stats_request.version == 1 }
+      Then { flow_stats_request.type == 16 }
+      Then { flow_stats_request.length == 56 }
       Then { flow_stats_request.transaction_id == 13 }
       Then { flow_stats_request.xid == 13 }
       Then { flow_stats_request.stats_type == :flow }

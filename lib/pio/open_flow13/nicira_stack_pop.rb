@@ -29,7 +29,7 @@ module Pio
       end
 
       attr_reader :field
-      alias_method :offset, :_offset
+      alias offset _offset
 
       def n_bits
         _n_bits - 1

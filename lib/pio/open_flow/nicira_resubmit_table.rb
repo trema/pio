@@ -13,9 +13,10 @@ module Pio
       hide :padding
 
       def initialize(options)
-        fail ':in_port option is a mandatory' unless options.key?(:in_port)
+        raise ':in_port option is a mandatory' unless options.key?(:in_port)
         super options
       end
     end
   end
+  NiciraResubmitTable = OpenFlow::NiciraResubmitTable
 end

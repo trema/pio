@@ -21,8 +21,8 @@ module Pio
                   end
         max_length = options[:max_length]
         if max_length && !max_length.unsigned_16bit?
-          fail(ArgumentError,
-               'The max_length should be an unsigned 16bit integer.')
+          raise(ArgumentError,
+                'The max_length should be an unsigned 16bit integer.')
         end
         super(options)
       end

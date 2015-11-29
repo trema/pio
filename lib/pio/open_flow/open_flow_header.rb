@@ -7,14 +7,14 @@ module Pio
     class OpenFlowHeaderParser < BinData::Record
       endian :big
 
-      uint8 :ofp_version
-      uint8 :message_type
+      uint8 :_version
+      uint8 :type
       uint16 :message_length
       transaction_id :transaction_id
       rest :body
 
       def version
-        { 1 => :OpenFlow10, 4 => :OpenFlow13 }.fetch(ofp_version)
+        { 1 => :OpenFlow10, 4 => :OpenFlow13 }.fetch(_version)
       end
     end
 
@@ -22,11 +22,11 @@ module Pio
     class OfpHeader < BinData::Record
       endian :big
 
-      uint8 :ofp_version, value: :version_value
-      virtual assert: -> { ofp_version == version_value }
-      uint8 :message_type, value: :message_type_value
+      uint8 :version, value: :version_value
+      virtual assert: -> { version == version_value }
+      uint8 :type, value: :message_type_value
       virtual assert: -> { message_type == message_type_value }
-      uint16 :message_length, initial_value: -> { length + body_length }
+      uint16 :_length, initial_value: -> { length + body_length }
       transaction_id :transaction_id, initial_value: 0
 
       def length

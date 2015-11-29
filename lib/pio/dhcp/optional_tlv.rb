@@ -7,15 +7,15 @@ module Pio
   class Dhcp
     # DHCP Optional TLV
     class OptionalTlv < BinData::Record
-      DEFAULT = 'default'
+      DEFAULT = 'default'.freeze
 
       endian :big
 
       bit8 :tlv_type
       bit8 :tlv_info_length,
-           onlyif: -> { !(end_of_dhcpdu?) }
+           onlyif: -> { !end_of_dhcpdu? }
       choice :tlv_value,
-             onlyif: -> { !(end_of_dhcpdu?) },
+             onlyif: -> { !end_of_dhcpdu? },
              selection: :chooser do
         uint8 Dhcp::MESSAGE_TYPE_TLV
         ip_address Dhcp::SERVER_IDENTIFIER_TLV

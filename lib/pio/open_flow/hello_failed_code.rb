@@ -4,7 +4,7 @@ module Pio
   module OpenFlow
     # enum ofp_hello_failed_code
     class HelloFailedCode < BinData::Primitive
-      ERROR_CODES = { incompatible: 0, permissions_error: 1 }
+      ERROR_CODES = { incompatible: 0, permissions_error: 1 }.freeze
 
       endian :big
       uint16 :error_code

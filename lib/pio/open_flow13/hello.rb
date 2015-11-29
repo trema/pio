@@ -41,8 +41,8 @@ module Pio
         end
       end
 
-      open_flow_header version: 4, message_type: 0
-      body :body
+      open_flow_header version: 4, type: 0
+      body :body, read_length: -> { length - header_length }
 
       def elements
         body.elements
@@ -68,11 +68,10 @@ module Pio
       end
 
       def initialize(user_options = {})
-        validate_user_options user_options
         body_options = { elements: [{ element_type: VERSION_BITMAP,
                                       element_length: 8,
                                       element_value: 0b10000 }] }
-        @format = Format.new(user_options.merge(body: body_options))
+        super user_options.merge(body: body_options)
       end
     end
   end

@@ -1,3 +1,4 @@
+require 'active_support/core_ext/module/attribute_accessors'
 require 'active_support/descendants_tracker'
 require 'bindata'
 require 'pio/open_flow/open_flow_header'
@@ -7,6 +8,8 @@ module Pio
   module OpenFlow
     # OpenFlow messages.
     class Message
+      attr_reader :format
+
       extend ActiveSupport::DescendantsTracker
 
       def self.read(raw_data)
@@ -25,7 +28,12 @@ module Pio
         begin
           const_get(:Format).__send__ method, *args, &block
         rescue NameError
-          const_set :Format, Class.new(BinData::Record)
+          klass = Class.new(BinData::Record)
+          const_set :Format, klass
+          klass.class_eval do
+            define_method(:header_length) { 8 }
+            define_method(:length) { _length }
+          end
           class_variable_set(:@@valid_options, [])
           retry
         end
@@ -45,19 +53,24 @@ module Pio
       # rubocop:disable MethodLength
       def self.open_flow_header(opts)
         module_eval do
-          cattr_reader(:message_type, instance_reader: false) do
-            opts.fetch(:message_type)
-          end
+          cattr_reader(:type) { opts.fetch(:type) }
 
           endian :big
 
-          uint8 :ofp_version, value: opts.fetch(:version)
-          virtual assert: -> { ofp_version == opts.fetch(:version) }
-          uint8 :message_type, value: opts.fetch(:message_type)
-          virtual assert: -> { message_type == opts.fetch(:message_type) }
-          uint16 :message_length,
-                 initial_value: opts[:message_length] || -> { 8 + body.length }
+          uint8 :version, value: opts.fetch(:version)
+          uint8 :type, value: opts.fetch(:type)
+          uint16(:_length,
+                 initial_value: opts[:length] || lambda do
+                   begin
+                     8 + body.length
+                   rescue
+                     8
+                   end
+                 end)
           transaction_id :transaction_id, initial_value: 0
+
+          virtual assert: -> { version == opts.fetch(:version) }
+          virtual assert: -> { type == opts.fetch(:type) }
 
           alias_method :xid, :transaction_id
         end
@@ -84,7 +97,7 @@ module Pio
         unknown_options =
           user_options.keys - self.class.class_variable_get(:@@valid_options)
         return if unknown_options.empty?
-        fail "Unknown option: #{unknown_options.first}"
+        raise "Unknown option: #{unknown_options.first}"
       end
 
       def parse_options(user_options)

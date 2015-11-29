@@ -9,8 +9,8 @@ module Pio
       # Hello Failed error message
       class HelloFailed < OpenFlow::Message
         open_flow_header version: 4,
-                         message_type: OpenFlow::ErrorMessage.message_type,
-                         message_length: -> { 12 + description.length }
+                         type: OpenFlow::ErrorMessage.type,
+                         length: -> { 12 + description.length }
         error_type13 :error_type
         hello_failed_code :error_code
         rest :description
