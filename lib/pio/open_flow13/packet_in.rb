@@ -9,7 +9,7 @@ module Pio
       # Why is this packet being sent to the controller?
       # (enum ofp_packet_in_reason)
       class Reason < BinData::Primitive
-        REASONS = { no_match: 0, action: 1, invalid_ttl: 2 }
+        REASONS = { no_match: 0, action: 1, invalid_ttl: 2 }.freeze
 
         uint8 :reason
 
@@ -22,9 +22,8 @@ module Pio
         end
       end
 
-      open_flow_header(version: 4,
-                       message_type: 10,
-                       message_length: lambda do
+      open_flow_header(version: 4, type: 10,
+                       length: lambda do
                          24 + match.length + padding.length + raw_data.length
                        end)
       uint32 :buffer_id
@@ -38,8 +37,8 @@ module Pio
       string :raw_data, read_length: :total_len
 
       attr_accessor :datapath_id
-      alias_method :dpid, :datapath_id
-      alias_method :dpid=, :datapath_id=
+      alias dpid datapath_id
+      alias dpid= datapath_id=
 
       def data
         @data ||= Pio::Parser.read(raw_data)

@@ -11,8 +11,8 @@ module Pio
 
       def set(value)
         unless value.unsigned_32bit?
-          fail(ArgumentError,
-               'Transaction ID should be an unsigned 32-bit integer.')
+          raise(ArgumentError,
+                'Transaction ID should be an unsigned 32-bit integer.')
         end
         self.xid = value
       end

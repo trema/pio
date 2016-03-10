@@ -22,9 +22,8 @@ module Pio
         end
       end
 
-      open_flow_header(version: 4,
-                       message_type: 13,
-                       message_length: lambda do
+      open_flow_header(version: 4, type: 13,
+                       length: lambda do
                          24 + actions_length + raw_data.length
                        end)
       buffer_id :buffer_id
@@ -32,7 +31,7 @@ module Pio
       uint16 :actions_length, initial_value: -> { actions.binary.length }
       string :padding, length: 6
       actions13 :actions, length: :actions_length
-      string :raw_data, read_length: -> { message_length - 24 - actions_length }
+      string :raw_data, read_length: -> { length - 24 - actions_length }
 
       def data
         @data ||= Pio::Parser.read(raw_data)

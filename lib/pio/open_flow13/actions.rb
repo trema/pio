@@ -31,10 +31,10 @@ module Pio
       def get
         actions = []
         tmp = binary
-        while tmp.length > 0
+        until tmp.empty?
           action = case BinData::Uint16be.read(tmp)
                    when 0
-                     OpenFlow::SendOutPort.read(tmp)
+                     OpenFlow13::SendOutPort.read(tmp)
                    else
                      UnsupportedAction.read(tmp)
                    end

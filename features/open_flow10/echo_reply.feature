@@ -1,49 +1,41 @@
 @open_flow10
 Feature: Echo::Reply
+
+  An Echo Reply message consists of an OpenFlow header plus the
+  unmodified data field of an echo request message.
+
   Scenario: new
-    When I try to create an OpenFlow message with:
+    When I create an OpenFlow message with:
       """
-      Pio::OpenFlow::Echo::Reply.new
+      Pio::Echo::Reply.new
       """
-    Then it should finish successfully
-    And the message has the following fields and values:
+    Then the message has the following fields and values:
       | field          | value |
-      | ofp_version    |     1 |
-      | message_type   |     3 |
-      | message_length |     8 |
       | transaction_id |     0 |
       | xid            |     0 |
       | body           |       |
       | user_data      |       |
 
   Scenario: new(transaction_id: 123)
-    When I try to create an OpenFlow message with:
+    When I create an OpenFlow message with:
       """
-      Pio::OpenFlow::Echo::Reply.new(transaction_id: 123)
+      Pio::Echo::Reply.new(transaction_id: 123)
       """
-    Then it should finish successfully
-    And the message has the following fields and values:
+    Then the message has the following fields and values:
       | field          | value |
-      | ofp_version    |     1 |
-      | message_type   |     3 |
-      | message_length |     8 |
       | transaction_id |   123 |
       | xid            |   123 |
       | body           |       |
       | user_data      |       |
 
   Scenario: new(body: 'echo reply body')
-    When I try to create an OpenFlow message with:
+    When I create an OpenFlow message with:
       """
-      Pio::OpenFlow::Echo::Reply.new(body: 'echo reply body')
+      Pio::Echo::Reply.new(body: 'echo reply body')
       """
-    Then it should finish successfully
-    And the message has the following fields and values:
-      | field          |           value |
-      | ofp_version    |               1 |
-      | message_type   |               3 |
-      | message_length |              23 |
-      | transaction_id |               0 |
-      | xid            |               0 |
+    Then the message has the following fields and values:
+      | field          | value           |
+      | transaction_id | 0               |
+      | xid            | 0               |
       | body           | echo reply body |
       | user_data      | echo reply body |

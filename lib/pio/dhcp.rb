@@ -22,7 +22,7 @@ module Pio
         ROUTER_TLV,
         DNS_TLV,
         NTP_SERVERS_TLV
-      ]
+      ].freeze
   end
   DHCP = Dhcp
 end
@@ -41,7 +41,7 @@ module Pio
       Offer::TYPE => Offer,
       Request::TYPE => Request,
       Ack::TYPE => Ack
-    }
+    }.freeze
 
     def self.read(raw_data)
       begin

@@ -15,7 +15,7 @@ module Pio
         # 6 high-order bits belong to DSCP, the 2 low-order bits must
         # be zero.
         unless type_of_service.unsigned_8bit? && type_of_service % 4 == 0
-          fail ArgumentError, 'Invalid type_of_service (ToS) value.'
+          raise ArgumentError, 'Invalid type_of_service (ToS) value.'
         end
         super(type_of_service: type_of_service)
       end

@@ -8,9 +8,7 @@ module Pio
     module FlowStats
       # OpenFlow 1.0 Flow Stats Request message
       class Request < OpenFlow::Message
-        open_flow_header version: 1,
-                         message_type: 16,
-                         message_length: 56
+        open_flow_header version: 1, type: 16, length: 56
 
         stats_type :stats_type, value: -> { :flow }
         uint16 :flags

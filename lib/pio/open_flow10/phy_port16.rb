@@ -6,6 +6,8 @@ module Pio
   module OpenFlow10
     # Description of a physical port
     class PhyPort16 < BinData::Record
+      cattr_reader(:length) { 48 }
+
       extend OpenFlow::Flags
 
       # enum ofp_port_config
@@ -57,14 +59,14 @@ module Pio
       def snapshot
         super.tap do |ss|
           def ss.datapath_id
-            @datapath_id || fail
+            @datapath_id || raise
           end
 
           def ss.dpid
-            @datapath_id || fail
+            @datapath_id || raise
           end
 
-          def ss.number
+          def ss.port_number
             port_no
           end
 

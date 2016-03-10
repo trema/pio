@@ -7,6 +7,8 @@ module Pio
   module OpenFlow13
     # Error message parser
     module Error
+      mattr_reader(:type) { 1 }
+
       extend OpenFlow::ErrorMessage
 
       # Error message body parser.

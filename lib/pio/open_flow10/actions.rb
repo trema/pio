@@ -30,7 +30,7 @@ module Pio
         10 => OpenFlow10::SetTransportDestinationPort,
         11 => OpenFlow10::Enqueue,
         0xffff => OpenFlow10::VendorAction
-      }
+      }.freeze
 
       mandatory_parameter :length
 
@@ -47,7 +47,7 @@ module Pio
       def get
         actions = []
         tmp = binary
-        while tmp.length > 0
+        until tmp.empty?
           type = BinData::Uint16be.read(tmp)
           begin
             action = ACTION_CLASS.fetch(type).read(tmp)

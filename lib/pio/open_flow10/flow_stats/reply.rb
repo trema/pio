@@ -30,9 +30,8 @@ module Pio
           actions10 :actions, length: -> { entry_length - 88 }
         end
 
-        open_flow_header version: 1,
-                         message_type: 17,
-                         message_length: -> { 12 + stats.to_binary_s.length }
+        open_flow_header version: 1, type: 17,
+                         length: -> { 12 + stats.to_binary_s.length }
 
         stats_type :stats_type, value: -> { :flow }
         uint16 :flags

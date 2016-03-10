@@ -6,7 +6,7 @@ module Pio
     class Features
       # Features Request message.
       class Request < OpenFlow::Message
-        open_flow_header version: 4, message_type: 5
+        open_flow_header version: 4, type: 5
         string :body, value: ''
       end
     end

@@ -21,14 +21,14 @@ module Pio
     # @return [IPv4Address] self
     #   a proxy to IPAddr.
     def initialize(addr)
-      case addr
-      when Integer
-        @value = IPAddr.new(addr, Socket::AF_INET)
-      when String
-        @value = IPAddr.new(addr)
-      else
-        @value = addr.value
-      end
+      @value = case addr
+               when Integer
+                 IPAddr.new(addr, Socket::AF_INET)
+               when String
+                 IPAddr.new(addr)
+               else
+                 addr.value
+               end
     end
 
     # @return [String] the IPv4 address in its text representation.
@@ -78,14 +78,14 @@ module Pio
       @value = @value.mask(masklen)
       self
     end
-    alias_method :prefix!, :mask!
+    alias prefix! mask!
 
     # Returns the IPv4 address masked with +masklen+.
     # @return [IPv4Address]
     def mask(masklen)
       clone.mask!(masklen)
     end
-    alias_method :prefix, :mask
+    alias prefix mask
 
     # @return [bool]
     #   Returns true if the address belongs to class A.
@@ -110,7 +110,7 @@ module Pio
     def class_d?
       mask(4).to_s == '224.0.0.0'
     end
-    alias_method :multicast?, :class_d?
+    alias multicast? class_d?
 
     # @return [bool]
     #   Returns true if the address belongs to class E.

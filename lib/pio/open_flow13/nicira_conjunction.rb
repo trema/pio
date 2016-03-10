@@ -22,4 +22,5 @@ module Pio
       end
     end
   end
+  NiciraConjunction = OpenFlow::NiciraConjunction
 end

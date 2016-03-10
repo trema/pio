@@ -57,9 +57,9 @@ module Pio
           self.port = reserved_port_number(port)
         else
           port_num = port.to_i
-          fail ArgumentError, 'The port should be > 0' if port_num < 1
+          raise ArgumentError, 'The port should be > 0' if port_num < 1
           if port_num >= max
-            fail ArgumentError, "The port should be < #{max.to_hex}"
+            raise ArgumentError, "The port should be < #{max.to_hex}"
           end
           self.port = port_num
         end

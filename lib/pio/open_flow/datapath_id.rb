@@ -12,8 +12,8 @@ module Pio
 
       def set(value)
         unless value.unsigned_64bit?
-          fail(ArgumentError,
-               'Datapath ID should be an unsigned 64-bit integer.')
+          raise(ArgumentError,
+                'Datapath ID should be an unsigned 64-bit integer.')
         end
         self.datapath_id = value
       end

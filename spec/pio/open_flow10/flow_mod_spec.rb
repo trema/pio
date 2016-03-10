@@ -30,9 +30,9 @@ describe Pio::OpenFlow10::FlowMod do
       end
 
       Then { flow_mod.class == Pio::OpenFlow10::FlowMod }
-      Then { flow_mod.ofp_version == 0x1 }
-      Then { flow_mod.message_type == 0xe }
-      Then { flow_mod.message_length == 0x50 }
+      Then { flow_mod.version == 0x1 }
+      Then { flow_mod.type == 0xe }
+      Then { flow_mod.length == 0x50 }
       Then { flow_mod.transaction_id == 0x15 }
       Then { flow_mod.xid == 0x15 }
 
@@ -95,9 +95,9 @@ describe Pio::OpenFlow10::FlowMod do
       end
 
       Then { flow_mod.class == Pio::OpenFlow10::FlowMod }
-      Then { flow_mod.ofp_version == 0x1 }
-      Then { flow_mod.message_type == 0xe }
-      Then { flow_mod.message_length == 0x50 }
+      Then { flow_mod.version == 0x1 }
+      Then { flow_mod.type == 0xe }
+      Then { flow_mod.length == 0x50 }
       Then { flow_mod.transaction_id == 0x15 }
       Then { flow_mod.xid == 0x15 }
 

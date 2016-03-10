@@ -12,7 +12,7 @@ module Pio
                  :table,
                  :port,
                  :queue,
-                 :vendor]
+                 :vendor].freeze
 
         endian :big
 
@@ -27,9 +27,7 @@ module Pio
         end
       end
 
-      open_flow_header version: 4,
-                       message_type: 16,
-                       message_length: 12
+      open_flow_header version: 4, type: 16, length: 12
       stats_type :stats_type
       uint16 :stats_flags
     end

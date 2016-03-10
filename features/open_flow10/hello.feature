@@ -2,36 +2,27 @@
 Feature: Hello
 
   Hello messages are exchanged between the switch and controller upon
-  connection startup.
+  connection startup. Hello messages have the version field set to the
+  highest OpenFlow protocol version supported by the sender.
 
   Scenario: new
-    When I try to create an OpenFlow message with:
+    When I create an OpenFlow message with:
       """
-      Pio::OpenFlow::Hello.new
+      Pio::Hello.new
       """
-    Then it should finish successfully
-    And the message has the following fields and values:
+    Then the message has the following fields and values:
       | field          | value |
-      | ofp_version    |     1 |
-      | message_type   |     0 |
-      | message_length |     8 |
+      | version        |     1 |
       | transaction_id |     0 |
       | xid            |     0 |
-      | body           |       |
-      | user_data      |       |
 
   Scenario: new(transaction_id: 123)
-    When I try to create an OpenFlow message with:
+    When I create an OpenFlow message with:
       """
-      Pio::OpenFlow::Hello.new(transaction_id: 123)
+      Pio::Hello.new(transaction_id: 123)
       """
-    Then it should finish successfully
-    And the message has the following fields and values:
+    Then the message has the following fields and values:
       | field          | value |
-      | ofp_version    |     1 |
-      | message_type   |     0 |
-      | message_length |     8 |
+      | version        |     1 |
       | transaction_id |   123 |
       | xid            |   123 |
-      | body           |       |
-      | user_data      |       |

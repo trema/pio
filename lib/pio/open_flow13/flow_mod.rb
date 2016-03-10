@@ -14,7 +14,7 @@ module Pio
           modify_strict: 2,
           delete: 3,
           delete_strict: 4
-        }
+        }.freeze
 
         uint8 :command
 
@@ -76,7 +76,7 @@ module Pio
         def get
           list = []
           tmp = instructions
-          while tmp.length > 0
+          until tmp.empty?
             instruction_type = BinData::Uint16be.read(tmp)
             instruction = case instruction_type
                           when 1
@@ -88,7 +88,7 @@ module Pio
                           when 6
                             Meter.read(tmp)
                           else
-                            fail "Unsupported instruction #{instruction_type}"
+                            raise "Unsupported instruction #{instruction_type}"
                           end
             tmp = tmp[instruction.instruction_length..-1]
             list << instruction
@@ -111,9 +111,8 @@ module Pio
                    :no_packet_counts,
                    :no_byte_counts]
 
-      open_flow_header(version: 4,
-                       message_type: 14,
-                       message_length: lambda do
+      open_flow_header(version: 4, type: 14,
+                       length: lambda do
                          48 + match.length + instructions.length
                        end)
       uint64 :cookie

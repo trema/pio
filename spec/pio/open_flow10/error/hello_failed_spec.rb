@@ -10,7 +10,7 @@ describe Pio::OpenFlow10::Error::HelloFailed do
     context 'with {}' do
       Given(:options) { {} }
 
-      Then { hello_failed.message_length == 12 }
+      Then { hello_failed.length == 12 }
       Then { hello_failed.error_type == :hello_failed }
       Then { hello_failed.error_code == :incompatible }
       Then { hello_failed.description == '' }
@@ -19,7 +19,7 @@ describe Pio::OpenFlow10::Error::HelloFailed do
     context "with description: 'error description'" do
       Given(:options) { { description: 'error description' } }
 
-      Then { hello_failed.message_length == 29 }
+      Then { hello_failed.length == 29 }
       Then { hello_failed.description == 'error description' }
     end
   end

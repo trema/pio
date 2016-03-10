@@ -13,7 +13,8 @@ module Pio
       def initialize(number)
         port = number.to_i
         unless port.unsigned_16bit?
-          fail ArgumentError, 'TCP/UDP port must be an unsigned 16-bit integer.'
+          raise ArgumentError,
+                'TCP/UDP port must be an unsigned 16-bit integer.'
         end
         super(port: port)
       rescue NoMethodError
@@ -31,7 +32,8 @@ module Pio
       def initialize(number)
         port = number.to_i
         unless port.unsigned_16bit?
-          fail ArgumentError, 'TCP/UDP port must be an unsigned 16-bit integer.'
+          raise ArgumentError,
+                'TCP/UDP port must be an unsigned 16-bit integer.'
         end
         super(port: port)
       rescue NoMethodError

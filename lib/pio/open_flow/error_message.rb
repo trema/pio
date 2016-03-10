@@ -1,10 +1,11 @@
+require 'active_support/core_ext/module/attribute_accessors'
 require 'active_support/core_ext/string/inflections'
 
 module Pio
   module OpenFlow
     # Error message parser
     module ErrorMessage
-      mattr_reader(:message_type) { 1 }
+      mattr_reader(:type) { 1 }
 
       # rubocop:disable AbcSize
       def read(binary)
@@ -14,7 +15,7 @@ module Pio
           each.name.split('::').last.underscore == error.error_type.to_s
         end
         unless klass
-          fail 'Unknown error message '\
+          raise 'Unknown error message '\
                "(type=#{error.error_type}, code=#{error.error_code})"
         end
         klass.read binary

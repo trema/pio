@@ -1,19 +1,30 @@
 @open_flow10
 Feature: PacketOut
-  Scenario: read
-    When I try to parse a file named "open_flow10/packet_out.raw" with "PacketOut" class
-    Then it should finish successfully
-    And the message has the following fields and values:
-      | field                    |                        value |
-      | ofp_version              |                            1 |
-      | message_type             |                           13 |
-      | message_length           |                           88 |
-      | transaction_id           |                           22 |
-      | xid                      |                           22 |
-      | buffer_id                |                   4294967295 |
-      | in_port                  |                        65535 |
-      | actions.length           |                            1 |
-      | actions.first.class      | Pio::OpenFlow10::SendOutPort |
-      | actions.first.port       |                            2 |
-      | actions.first.max_length |                        65535 |
-      | raw_data.length          |                           64 |
+  Scenario: new
+    When I create an OpenFlow message with:
+      """
+      arp_request = Pio::Arp::Request.new(
+        source_mac: 'fa:ce:b0:00:00:cc',
+        sender_protocol_address: '192.168.0.1',
+        target_protocol_address: '192.168.0.2'
+      )
+
+      Pio::PacketOut.new(
+        transaction_id: 0x16,
+        buffer_id: 0xffffffff,
+        in_port: 0xffff,
+        actions: Pio::SendOutPort.new(2),
+        raw_data: arp_request.to_binary
+      )
+      """
+    Then the message has the following fields and values:
+      | field                 |                        value |
+      | transaction_id        |                           22 |
+      | xid                   |                           22 |
+      | buffer_id.to_hex      |                   0xffffffff |
+      | in_port.to_hex        |                       0xffff |
+      | actions.length        |                            1 |
+      | actions[0].class      | Pio::OpenFlow10::SendOutPort |
+      | actions[0].port       |                            2 |
+      | actions[0].max_length |                        65535 |
+      | raw_data.length       |                           64 |

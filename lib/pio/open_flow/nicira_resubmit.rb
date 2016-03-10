@@ -16,4 +16,5 @@ module Pio
       end
     end
   end
+  NiciraResubmit = OpenFlow::NiciraResubmit
 end

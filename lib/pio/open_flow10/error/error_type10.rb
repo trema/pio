@@ -10,7 +10,7 @@ module Pio
           flow_mod_failed: 3,
           port_mod_failed: 4,
           queue_operation_failed: 5
-        }
+        }.freeze
 
         endian :big
         uint16 :error_type

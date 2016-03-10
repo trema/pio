@@ -945,7 +945,7 @@ module Pio
             when Reg7::OXM_FIELD
               masked? ? MaskedReg7 : Reg7
             else
-              fail "Unknown OXM field value: #{oxm_field}"
+              raise "Unknown OXM field value: #{oxm_field}"
             end
           end
           # rubocop:enable AbcSize
@@ -1103,7 +1103,7 @@ module Pio
             when TunnelId::OXM_FIELD
               masked? ? MaskedTunnelId : TunnelId
             else
-              fail "Unknown OXM field value: #{oxm_field}"
+              raise "Unknown OXM field value: #{oxm_field}"
             end
           end
           # rubocop:enable MethodLength
@@ -1158,7 +1158,7 @@ module Pio
             when PacketReg3::OXM_FIELD
               masked? ? MaskedPacketReg3 : PacketReg3
             else
-              fail "Unknown OXM field value: #{oxm_field}"
+              raise "Unknown OXM field value: #{oxm_field}"
             end
           end
           # rubocop:enable CyclomaticComplexity
@@ -1202,7 +1202,7 @@ module Pio
             when PacketRegistersValue::OXM_CLASS
               return class_payload.__send__(method, *args, &block)
             else
-              fail NoMethodError, method.to_s
+              raise NoMethodError, method.to_s
             end
           end
         end
@@ -1233,7 +1233,7 @@ module Pio
                 method, *args, &block)
             end
           end
-          fail NoMethodError, method.to_s
+          raise NoMethodError, method.to_s
         end
         # rubocop:enable AbcSize
         # rubocop:enable Next
@@ -1246,7 +1246,7 @@ module Pio
         end
 
         def tlv_total_length
-          if match_fields.size > 0
+          if !match_fields.empty?
             match_fields.map(&:length).inject(&:+)
           else
             0

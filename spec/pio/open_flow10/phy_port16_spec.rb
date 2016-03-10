@@ -20,6 +20,6 @@ describe Pio::OpenFlow10::PhyPort16 do
     Then { phy_port.advertised.empty? }
     Then { phy_port.supported.empty? }
     Then { phy_port.peer.empty? }
-    Then { phy_port.to_binary_s.length > 0 }
+    Then { !phy_port.to_binary_s.empty? }
   end
 end
