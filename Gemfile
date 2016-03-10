@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gemspec development_group: :test
+gemspec
 
 # Rake 11.0.0 is broken
 gem 'rake', '10.5.0'

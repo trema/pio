@@ -23,6 +23,11 @@ module Pio
         OXM_CLASS = 0x8000
       end
 
+      # OFPXMC_PACKET_REGS TLV value
+      class PacketRegistersValue < BinData::Record
+        OXM_CLASS = 0x8001
+      end
+
       # OFPXMC_EXPERIMENTER TLV value
       class ExperimenterValue < BinData::Record
         OXM_CLASS = 0xFFFF
@@ -760,6 +765,105 @@ module Pio
         end
       end
 
+      # OXM_PACKET_REG0 match field
+      class PacketReg0 < PacketRegistersValue
+        OXM_FIELD = 0
+
+        endian :big
+
+        uint64 :packet_reg0
+
+        def length
+          8
+        end
+      end
+
+      # Masked OXM_PACKET_REG0 match field
+      class MaskedPacketReg0 < PacketRegistersValue
+        endian :big
+
+        uint64 :packet_reg0
+        uint64 :packet_reg0_mask
+
+        def length
+          16
+        end
+      end
+      # OXM_PACKET_REG1 match field
+      class PacketReg1 < PacketRegistersValue
+        OXM_FIELD = 1
+
+        endian :big
+
+        uint64 :packet_reg1
+
+        def length
+          8
+        end
+      end
+
+      # Masked OXM_PACKET_REG1 match field
+      class MaskedPacketReg1 < PacketRegistersValue
+        endian :big
+
+        uint64 :packet_reg1
+        uint64 :packet_reg1_mask
+
+        def length
+          16
+        end
+      end
+
+      # OXM_PACKET_REG2 match field
+      class PacketReg2 < PacketRegistersValue
+        OXM_FIELD = 2
+
+        endian :big
+
+        uint64 :packet_reg2
+
+        def length
+          8
+        end
+      end
+
+      # Masked OXM_PACKET_REG2 match field
+      class MaskedPacketReg2 < PacketRegistersValue
+        endian :big
+
+        uint64 :packet_reg2
+        uint64 :packet_reg2_mask
+
+        def length
+          16
+        end
+      end
+
+      # OXM_PACKET_REG3 match field
+      class PacketReg3 < PacketRegistersValue
+        OXM_FIELD = 3
+
+        endian :big
+
+        uint64 :packet_reg3
+
+        def length
+          8
+        end
+      end
+
+      # Masked OXM_PACKET_REG3 match field
+      class MaskedPacketReg3 < PacketRegistersValue
+        endian :big
+
+        uint64 :packet_reg3
+        uint64 :packet_reg3_mask
+
+        def length
+          16
+        end
+      end
+
       # OXM format
       class Oxm < BinData::Record
         # Experimenter part, data will use oxm_length
@@ -1009,6 +1113,58 @@ module Pio
         end
         # rubocop:enable MethodLength
 
+        # Packet Register match field.
+        class PacketRegisters < BinData::Record
+          endian :big
+
+          bit7 :oxm_field
+          bit1 :oxm_hasmask
+          uint8 :oxm_length, value: -> { tlv_value.length }
+          choice :tlv_value, selection: :choose_tlv_value do
+            packet_reg0 PacketReg0
+            masked_packet_reg0 MaskedPacketReg0
+            packet_reg1 PacketReg1
+            masked_packet_reg1 MaskedPacketReg1
+            packet_reg2 PacketReg2
+            masked_packet_reg2 MaskedPacketReg2
+            packet_reg3 PacketReg3
+            masked_packet_reg3 MaskedPacketReg3
+          end
+
+          def length
+            tlv_value.length + 2
+          end
+
+          def masked?
+            oxm_hasmask == 1
+          end
+
+          def method_missing(method, *args, &block)
+            tlv_value.__send__ method, *args, &block
+          end
+
+          private
+
+          # rubocop:disable CyclomaticComplexity
+          # rubocop:disable MethodLength
+          def choose_tlv_value
+            case oxm_field
+            when PacketReg0::OXM_FIELD
+              masked? ? MaskedPacketReg0 : PacketReg0
+            when PacketReg1::OXM_FIELD
+              masked? ? MaskedPacketReg1 : PacketReg1
+            when PacketReg2::OXM_FIELD
+              masked? ? MaskedPacketReg2 : PacketReg2
+            when PacketReg3::OXM_FIELD
+              masked? ? MaskedPacketReg3 : PacketReg3
+            else
+              fail "Unknown OXM field value: #{oxm_field}"
+            end
+          end
+          # rubocop:enable CyclomaticComplexity
+          # rubocop:enable MethodLength
+        end
+
         # OXM match field.
         class MatchField < BinData::Record
           endian :big
@@ -1018,6 +1174,7 @@ module Pio
             NiciraMatchExtension NiciraMatchExtensionValue::OXM_CLASS
             OpenflowBasic OpenFlowBasicValue::OXM_CLASS
             Experimenter ExperimenterValue::OXM_CLASS
+            PacketRegisters PacketRegistersValue::OXM_CLASS
           end
 
           def oxm_field
@@ -1042,6 +1199,8 @@ module Pio
               return class_payload.tlv_value.__send__(method, *args, &block)
             when ExperimenterValue::OXM_CLASS
               return class_payload.__send__(method, *args, &block)
+            when PacketRegistersValue::OXM_CLASS
+              return class_payload.__send__(method, *args, &block)
             else
               raise NoMethodError, method.to_s
             end
@@ -1063,11 +1222,12 @@ module Pio
           match_length + padding_length
         end
 
+        # rubocop:disable AbcSize
         # rubocop:disable Next
         # rubocop:disable LineLength
         def method_missing(method, *args, &block)
           match_fields.each do |each|
-            if each.oxm_class == OpenFlowBasicValue::OXM_CLASS || each.oxm_class == NiciraMatchExtensionValue::OXM_CLASS
+            if each.oxm_class == OpenFlowBasicValue::OXM_CLASS || each.oxm_class == NiciraMatchExtensionValue::OXM_CLASS || each.oxm_class == PacketRegistersValue::OXM_CLASS
               next unless each.class_payload.tlv_value.respond_to?(method)
               return each.class_payload.tlv_value.__send__(
                 method, *args, &block)
@@ -1075,6 +1235,7 @@ module Pio
           end
           raise NoMethodError, method.to_s
         end
+        # rubocop:enable AbcSize
         # rubocop:enable Next
         # rubocop:enable LineLength
 
@@ -1122,7 +1283,8 @@ module Pio
            :arp_sender_protocol_address, :arp_target_protocol_address,
            :arp_sender_hardware_address, :arp_target_hardware_address,
            :ipv6_source_address, :ipv6_destination_address, :tunnel_id,
-           :reg0, :reg1, :reg2, :reg3, :reg4, :reg5, :reg6, :reg7].each do |each|
+           :reg0, :reg1, :reg2, :reg3, :reg4, :reg5, :reg6, :reg7,
+           :packet_reg0, :packet_reg1, :packet_reg2, :packet_reg3].each do |each|
             next unless user_attrs.key?(each)
             klass = Match.const_get(each.to_s.split('_').map(&:capitalize).join)
             mask_key = "#{each}_mask".to_sym

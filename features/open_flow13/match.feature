@@ -408,6 +408,82 @@ Feature: Match
       | tunnel_id      |                   1 |
       | tunnel_id_mask | 9223372036854775808 |
 
+  Scenario: new(packet_reg0: 1)
+    When I create an OpenFlow message with:
+      """
+      Pio::Match.new(packet_reg0: 1)
+      """
+    Then the message has the following fields and values:
+      | field       | value |
+      | packet_reg0 |     1 |
+
+  Scenario: new(packet_reg0: 1, packet_reg0_mask: 1)
+    When I create an OpenFlow message with:
+      """
+      Pio::Match.new(packet_reg0: 1, packet_reg0_mask: 1)
+      """
+    Then the message has the following fields and values:
+      | field            | value |
+      | packet_reg0      |     1 |
+      | packet_reg0_mask |     1 |
+
+  Scenario: new(packet_reg1: 1)
+    When I create an OpenFlow message with:
+      """
+      Pio::Match.new(packet_reg1: 1)
+      """
+    Then the message has the following fields and values:
+      | field       | value |
+      | packet_reg1 |     1 |
+
+  Scenario: new(packet_reg1: 1, packet_reg1_mask: 1)
+    When I create an OpenFlow message with:
+      """
+      Pio::Match.new(packet_reg1: 1, packet_reg1_mask: 1)
+      """
+    Then the message has the following fields and values:
+      | field            | value |
+      | packet_reg1      |     1 |
+      | packet_reg1_mask |     1 |
+
+  Scenario: new(packet_reg2: 1)
+    When I create an OpenFlow message with:
+      """
+      Pio::Match.new(packet_reg2: 1)
+      """
+    Then the message has the following fields and values:
+      | field       | value |
+      | packet_reg2 |     1 |
+
+  Scenario: new(packet_reg2: 1, packet_reg2_mask: 1)
+    When I create an OpenFlow message with:
+      """
+      Pio::Match.new(packet_reg2: 1, packet_reg2_mask: 1)
+      """
+    Then the message has the following fields and values:
+      | field            | value |
+      | packet_reg2      |     1 |
+      | packet_reg2_mask |     1 |
+
+  Scenario: new(packet_reg3: 1)
+    When I create an OpenFlow message with:
+      """
+      Pio::Match.new(packet_reg3: 1)
+      """
+    Then the message has the following fields and values:
+      | field       | value |
+      | packet_reg3 |     1 |
+
+  Scenario: new(packet_reg3: 1, packet_reg3_mask: 1)
+    When I create an OpenFlow message with:
+      """
+      Pio::Match.new(packet_reg3: 1, packet_reg3_mask: 1)
+      """
+    Then the message has the following fields and values:
+      | field            | value |
+      | packet_reg3      |     1 |
+      | packet_reg3_mask |     1 |
+
   Scenario: read (file: open_flow13/oxm_no_fields.raw)
     When I parse a file named "open_flow13/oxm_no_fields.raw" with "Pio::Match" class
     Then the message has the following fields and values:
