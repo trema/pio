@@ -1158,7 +1158,7 @@ module Pio
             when PacketReg3::OXM_FIELD
               masked? ? MaskedPacketReg3 : PacketReg3
             else
-              fail "Unknown OXM field value: #{oxm_field}"
+              raise "Unknown OXM field value: #{oxm_field}"
             end
           end
           # rubocop:enable CyclomaticComplexity
