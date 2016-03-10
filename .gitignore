@@ -2,7 +2,6 @@
 *.rbc
 /.config
 /.idea/
-/Gemfile.lock
 /InstalledFiles
 /bin/
 /coverage/
