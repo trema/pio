@@ -34,4 +34,5 @@ module Pio
       end
     end
   end
+  OpenFlowHeaderParser = OpenFlow::OpenFlowHeaderParser
 end
