@@ -3,17 +3,21 @@ module Pio
     # bitmap functions.
     # This class smells of :reek:DataClump
     module Flags
+      def define_flags_32bit(name, flags)
+        _define_flags name, 32, flags
+      end
+
       def flags_32bit(name, flags)
-        _def_flags name, 32, flags
+        _flags name, 32, flags
       end
 
       def flags_16bit(name, flags)
-        _def_flags name, 16, flags
+        _flags name, 16, flags
       end
 
       # rubocop:disable MethodLength
       # This method smells of :reek:TooManyStatements
-      def _def_flags(name, size, flags)
+      def _define_flags(name, size, flags)
         flag_value = case flags
                      when Array
                        shift = 0
@@ -29,7 +33,7 @@ module Pio
         klass_name = name.to_s.split('_').map(&:capitalize).join
         flags_hash = flag_value.inspect
 
-        code = %{
+        module_eval <<-end_eval, __FILE__, __LINE__
           class #{klass_name} < BinData::Primitive
             endian :big
 
@@ -53,8 +57,13 @@ module Pio
                              v.map { |each| list[each] }.inject(:|)
             end
           end
-        }
-        module_eval code
+        end_eval
+      end
+      # rubocop:enable MethodLength
+
+      def _flags(name, size, flags_)
+        _define_flags name, size, flags_
+        module_eval "#{name} :#{name}", __FILE__, __LINE__
       end
     end
   end

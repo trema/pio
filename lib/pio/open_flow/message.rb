@@ -1,6 +1,7 @@
 require 'active_support/core_ext/module/attribute_accessors'
 require 'active_support/descendants_tracker'
 require 'bindata'
+require 'pio/open_flow/flags'
 require 'pio/open_flow/open_flow_header'
 require 'pio/parse_error'
 
@@ -11,6 +12,7 @@ module Pio
       attr_reader :format
 
       extend ActiveSupport::DescendantsTracker
+      extend OpenFlow::Flags
 
       def self.read(raw_data)
         allocate.tap do |message|
@@ -41,7 +43,12 @@ module Pio
         return if method == :endian || method == :virtual
 
         define_method(args.first) do
-          @format.__send__ args.first
+          snapshot = @format.snapshot.__send__(args.first)
+          if snapshot.class == BinData::Struct::Snapshot
+            @format.__send__(args.first)
+          else
+            snapshot
+          end
         end
         class_variable_set(:@@valid_options,
                            class_variable_get(:@@valid_options) + [args.first])

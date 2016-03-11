@@ -102,15 +102,6 @@ module Pio
         end
       end
 
-      extend OpenFlow::Flags
-
-      flags_16bit :flags,
-                  [:send_flow_rem,
-                   :check_overwrap,
-                   :reset_counts,
-                   :no_packet_counts,
-                   :no_byte_counts]
-
       open_flow_header(version: 4, type: 14,
                        length: lambda do
                          48 + match.length + instructions.length
@@ -125,7 +116,12 @@ module Pio
       buffer_id :buffer_id
       out_port :out_port
       out_group :out_group
-      flags :flags
+      flags_16bit :flags,
+                  [:send_flow_rem,
+                   :check_overwrap,
+                   :reset_counts,
+                   :no_packet_counts,
+                   :no_byte_counts]
       string :padding, length: 2
       hide :padding
       oxm :match

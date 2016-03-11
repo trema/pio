@@ -19,7 +19,7 @@ module Pio
       end
 
       def get
-        datapath_id
+        datapath_id.to_i
       end
     end
   end
