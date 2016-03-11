@@ -24,9 +24,7 @@ module Pio
         hide :padding
         capabilities :capabilities
         actions_flag :actions
-        array :ports,
-              type: :phy_port16,
-              length: -> { length - header_length - 24 }
+        array :ports, type: :phy_port16, read_until: :eof
 
         def datapath_id
           format.datapath_id.to_i
