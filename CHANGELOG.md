@@ -2,6 +2,7 @@
 
 ## develop (unreleased)
 ### New features
+* [#301](https://github.com/trema/pio/pull/301): Add `NiciraConjunction` action.
 * [#300](https://github.com/trema/pio/pull/300): Add new classes `Pio::Match::PacketReg{0..3}`.
 
 ## 0.30.0 (11/17/2015)
