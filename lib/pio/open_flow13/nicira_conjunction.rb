@@ -1,7 +1,7 @@
 require 'pio/open_flow/nicira_action'
 
 module Pio
-  module OpenFlow
+  module OpenFlow13
     # NXAST_CONJUNCTION action
     class NiciraConjunction < OpenFlow::NiciraAction
       nicira_action_header action_type: 0xffff,
@@ -22,5 +22,5 @@ module Pio
       end
     end
   end
-  NiciraConjunction = OpenFlow::NiciraConjunction
+  NiciraConjunction = OpenFlow13::NiciraConjunction
 end
