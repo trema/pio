@@ -1,7 +1,5 @@
 require 'pio/open_flow/datapath_id'
 require 'pio/open_flow/message'
-require 'pio/open_flow10/features/reply/actions_flag'
-require 'pio/open_flow10/features/reply/capabilities'
 require 'pio/open_flow10/phy_port16'
 require 'pio/open_flow10/port16'
 
@@ -18,22 +16,38 @@ module Pio
                          end)
 
         datapath_id :datapath_id
+        alias dpid datapath_id
         uint32 :n_buffers
         uint8 :n_tables
         string :padding, length: 3
         hide :padding
-        capabilities :capabilities
-        actions_flag :actions
+        flags_32bit :capabilities,
+                    [:flow_stats,
+                     :table_stats,
+                     :port_stats,
+                     :stp,
+                     :reserved,
+                     :ip_reasm,
+                     :queue_stats,
+                     :arp_match_ip]
+        flags_32bit :actions,
+                    [:output,
+                     :set_vlan_vid,
+                     :set_vlan_pcp,
+                     :strip_vlan,
+                     :set_source_mac_address,
+                     :set_destination_mac_address,
+                     :set_source_ip_address,
+                     :set_destination_ip_address,
+                     :set_tos,
+                     :set_transport_source_port,
+                     :set_transport_destination_port,
+                     :enqueue]
         array :ports, type: :phy_port16, read_until: :eof
 
-        def datapath_id
-          format.datapath_id.to_i
-        end
-        alias dpid datapath_id
-
         def ports
-          snapshot.ports.map do |each|
-            each.instance_variable_set :@datapath_id, datapath_id
+          super.map do |each|
+            each.datapath_id = datapath_id
             each
           end
         end
