@@ -58,6 +58,7 @@ bundle
 
 ## License
 
-Pio is released under the GNU General Public License version 3.0:
+Pio is released under the GNU General Public License version 2.0 or MIT License:
 
-- <http://www.gnu.org/licenses/gpl.html>
+* http://www.gnu.org/licenses/gpl-2.0.html
+* http://www.opensource.org/licenses/MIT
