@@ -1230,7 +1230,8 @@ module Pio
             if each.oxm_class == OpenFlowBasicValue::OXM_CLASS || each.oxm_class == NiciraMatchExtensionValue::OXM_CLASS || each.oxm_class == PacketRegistersValue::OXM_CLASS
               next unless each.class_payload.tlv_value.respond_to?(method)
               return each.class_payload.tlv_value.__send__(
-                method, *args, &block)
+                method, *args, &block
+              )
             end
           end
           raise NoMethodError, method.to_s
