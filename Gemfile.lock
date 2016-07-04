@@ -4,7 +4,7 @@ PATH
     pio (0.30.0)
       activesupport (~> 4.2, >= 4.2.4)
       bindata (~> 2.1.0)
-      bundler (~> 1.11.2)
+      bundler (~> 1.12.5)
 
 GEM
   remote: https://rubygems.org/
@@ -118,7 +118,7 @@ GEM
     lumberjack (1.0.10)
     method_source (0.8.2)
     mime-types (2.99.1)
-    minitest (5.8.4)
+    minitest (5.9.0)
     multi_json (1.11.2)
     multi_test (0.1.2)
     nenv (0.3.0)
@@ -237,4 +237,4 @@ DEPENDENCIES
   yard
 
 BUNDLED WITH
-   1.11.2
+   1.12.5
