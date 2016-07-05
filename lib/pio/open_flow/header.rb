@@ -1,5 +1,7 @@
 require 'bindata'
+require 'pio/monkey_patch/uint'
 require 'pio/open_flow/transaction_id'
+require 'pio/open_flow/version'
 
 module Pio
   module OpenFlow
@@ -7,14 +9,17 @@ module Pio
     class Header < BinData::Record
       endian :big
 
-      uint8 :_version
+      version :version
       uint8 :type
       uint16 :message_length
       transaction_id :transaction_id
       rest :body
 
-      def version
-        { 1 => :OpenFlow10, 4 => :OpenFlow13 }.fetch(_version)
+      def to_hex
+        [version,
+         type,
+         message_length,
+         transaction_id].map(&:to_hex).join(', ')
       end
     end
   end
