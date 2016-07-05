@@ -8,7 +8,7 @@ Gem::Specification.new do |gem|
   gem.summary = 'Packet parser and generator.'
   gem.description = 'Pure ruby packet parser and generator.'
 
-  gem.license = 'GPL3'
+  gem.licenses = %w(GPLv2 MIT)
 
   gem.authors = ['Yasuhito Takamiya']
   gem.email = ['yasuhito@gmail.com']
