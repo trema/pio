@@ -2,7 +2,7 @@ require 'active_support/core_ext/module/attribute_accessors'
 require 'active_support/descendants_tracker'
 require 'bindata'
 require 'pio/open_flow/flags'
-require 'pio/open_flow/open_flow_header'
+require 'pio/open_flow/header'
 require 'pio/parse_error'
 
 module Pio
