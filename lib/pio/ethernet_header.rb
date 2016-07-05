@@ -11,6 +11,27 @@ module Pio
       LLDP = 0x88cc
     end
 
+    # Ethernet header parser
+    class Parser < BinData::Record
+      endian :big
+
+      mac_address :destination_mac
+      mac_address :source_mac
+      uint16 :ether_type
+      bit3 :vlan_pcp_internal, onlyif: :vlan?
+      bit1 :vlan_cfi, onlyif: :vlan?
+      bit12 :vlan_vid_internal, onlyif: :vlan?
+      uint16 :ether_type_vlan, value: :ether_type, onlyif: :vlan?
+
+      def to_hex
+        [:destination_mac,
+         :source_mac,
+         :ether_type].map do |each|
+          __send__(each).to_hex + ", # #{each}"
+        end.join("\n")
+      end
+    end
+
     # This method smells of :reek:TooManyStatements
     def self.included(klass)
       def klass.ethernet_header(options)
@@ -22,6 +43,12 @@ module Pio
         bit12 :vlan_vid_internal, onlyif: :vlan?
         uint16 :ether_type_vlan, value: :ether_type, onlyif: :vlan?
       end
+    end
+
+    def ethernet_header
+      Parser.new(destination_mac: destination_mac,
+                 source_mac: source_mac,
+                 ether_type: ether_type)
     end
 
     def vlan_vid

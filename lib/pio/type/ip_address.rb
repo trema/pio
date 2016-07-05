@@ -26,6 +26,10 @@ module Pio
       def ==(other)
         get == other
       end
+
+      def to_hex
+        octets.map(&:to_hex).join(', ')
+      end
     end
   end
 end

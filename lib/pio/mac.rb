@@ -91,6 +91,10 @@ module Pio
       to_s.split(':').map(&:hex)
     end
 
+    def to_hex
+      to_a.map(&:to_hex).join(', ')
+    end
+
     # @!endgroup
 
     # @!group Predicates
