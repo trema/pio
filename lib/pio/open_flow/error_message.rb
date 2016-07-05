@@ -9,7 +9,7 @@ module Pio
 
       # rubocop:disable AbcSize
       def read(binary)
-        body = OpenFlow::OpenFlowHeaderParser.read(binary).body
+        body = OpenFlow::Header.read(binary).body
         error = const_get(:BodyParser).read(body)
         klass = error_classes.find do |each|
           each.name.split('::').last.underscore == error.error_type.to_s

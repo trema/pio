@@ -2,7 +2,7 @@ require 'active_support/core_ext/array/access'
 require 'active_support/core_ext/module/attribute_accessors'
 require 'active_support/core_ext/module/introspection'
 require 'active_support/core_ext/module/qualified_const.rb'
-require 'pio/open_flow/open_flow_header'
+require 'pio/open_flow/header'
 require 'pio/open_flow/parser'
 
 module Pio
@@ -21,7 +21,7 @@ module Pio
     end
 
     def self.read(binary)
-      header = OpenFlowHeaderParser.read(binary)
+      header = OpenFlow::Header.read(binary)
       self.version = header.version
       Parser.find_by_type!(header.type).read(binary)
     end
