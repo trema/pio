@@ -1,7 +1,7 @@
-Feature: Arp Request
+Feature: Arp::Request
   Scenario: create an ARP request
     When I create a packet with:
-      """
+      """ruby
       Pio::Arp::Request.new(
         source_mac: '00:26:82:eb:ea:d1',
         sender_protocol_address: '192.168.83.3',

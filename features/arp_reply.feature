@@ -1,7 +1,7 @@
-Feature: Arp Reply
+Feature: Arp::Reply
   Scenario: create an ARP reply
     When I create a packet with:
-      """
+      """ruby
       Pio::Arp::Reply.new(
         destination_mac: '00:26:82:eb:ea:d1',
         source_mac: '00:16:9d:1d:9c:c4',
@@ -52,9 +52,3 @@ Feature: Arp Reply
         0xc0, 0xa8, 0x53, 0x03, # target_protocol_address
       ].pack('C*')
       """
-
-  Scenario: parse arp.pcap
-    Then I parse a file named "arp.pcap" with "Pio::Arp" class
-
-  Scenario: parse arp-storm.pcap
-    Then I parse a file named "arp-storm.pcap" with "Pio::Arp" class

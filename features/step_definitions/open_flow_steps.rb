@@ -11,7 +11,7 @@ Then(/^the version string should be "([^"]*)"$/) do |expected_version_string|
 end
 
 When(/^I create a packet with:$/) do |ruby_code|
-  @result = Pio.module_eval(ruby_code)
+  cd('.') { @result = Pio.module_eval(ruby_code) }
 end
 
 When(/^I create an OpenFlow message with:$/) do |ruby_code|

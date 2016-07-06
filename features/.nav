@@ -1,4 +1,5 @@
 - icmp.feature
+- arp.feature
 - arp_request.feature
 - arp_reply.feature
 - lldp.feature
