@@ -22,14 +22,6 @@ module Pio
       bit1 :vlan_cfi, onlyif: :vlan?
       bit12 :vlan_vid_internal, onlyif: :vlan?
       uint16 :ether_type_vlan, value: :ether_type, onlyif: :vlan?
-
-      def to_hex
-        [:destination_mac,
-         :source_mac,
-         :ether_type].map do |each|
-          __send__(each).to_hex + ", # #{each}"
-        end.join("\n")
-      end
     end
 
     # This method smells of :reek:TooManyStatements
