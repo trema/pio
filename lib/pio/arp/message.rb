@@ -1,9 +1,11 @@
 require 'pio/arp/format'
+require 'pio/ruby_dumper'
 
 module Pio
   class Arp
     # Base class of ARP Request and Reply
     class Message
+      include RubyDumper
       private_class_method :new
 
       def initialize(user_options)
@@ -13,15 +15,6 @@ module Pio
 
       def method_missing(method, *args)
         @format.__send__ method, *args
-      end
-
-      # Returns a Ruby code representation of this packet, such that
-      # it can be eval'ed and sent later.
-      def to_ruby
-        hexes = @format.field_names.map do |each|
-          '  ' + __send__(each).to_hex + ", # #{each}" if __send__("#{each}?")
-        end.compact
-        ['[', *hexes, "].pack('C*')"].join("\n")
       end
     end
   end

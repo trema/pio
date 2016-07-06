@@ -9,12 +9,12 @@ module Pio
     class Format < BinData::Record
       MINIMUM_IP_PACKET_LENGTH = 50
 
-      include EthernetHeader
+      include Ethernet
       include IPv4Header
 
       endian :big
 
-      ethernet_header ether_type: EtherType::IPV4
+      ethernet_header ether_type: Ethernet::Type::IPV4
       ipv4_header ip_protocol: ProtocolNumber::ICMP
       uint8 :icmp_type
       uint8 :icmp_code, initial_value: 0

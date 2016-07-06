@@ -8,11 +8,11 @@ module Pio
   class Arp
     # ARP parser.
     class Format < BinData::Record
-      include EthernetHeader
+      include Ethernet
 
       endian :big
 
-      ethernet_header ether_type: EtherType::ARP
+      ethernet_header ether_type: Ethernet::Type::ARP
       uint16 :hardware_type, value: 1
       uint16 :protocol_type, value: 0x0800
       uint8 :hardware_length, value: 6
@@ -33,7 +33,7 @@ module Pio
           in_port: in_port,
           source_mac_address: source_mac,
           destination_mac_address: destination_mac,
-          vlan_vid: vlan_vid,
+          vlan_vid: 0xffff,
           vlan_priority: vlan_pcp,
           ether_type: ether_type,
           tos: 0,

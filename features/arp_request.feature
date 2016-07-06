@@ -48,5 +48,5 @@ Feature: Arp::Request
         0xc0, 0xa8, 0x53, 0x03, # sender_protocol_address
         0x00, 0x00, 0x00, 0x00, 0x00, 0x00, # target_hardware_address
         0xc0, 0xa8, 0x53, 0xfe, # target_protocol_address
-      ].pack('C*')
+      ].pack('C42')
       """

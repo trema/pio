@@ -11,11 +11,11 @@ module Pio
   class Lldp
     # LLDP frame
     class Frame < BinData::Record
-      include EthernetHeader
+      include Ethernet
 
       endian :big
 
-      ethernet_header ether_type: EtherType::LLDP
+      ethernet_header ether_type: Ethernet::Type::LLDP
       chassis_id_tlv :chassis_id
       port_id_tlv :port_id
       ttl_tlv :ttl, initial_value: 120

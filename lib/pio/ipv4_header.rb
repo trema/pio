@@ -39,7 +39,7 @@ module Pio
         in_port: in_port,
         source_mac_address: source_mac,
         destination_mac_address: destination_mac,
-        vlan_vid: vlan_vid,
+        vlan_vid: vlan? ? vlan_vid : 0xffff,
         vlan_priority: vlan_pcp,
         ether_type: ether_type,
         tos: ip_type_of_service,

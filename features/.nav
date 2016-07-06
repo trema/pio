@@ -5,6 +5,7 @@
 - lldp.feature
 - dhcp.feature
 - udp.feature
+- ethernet_header.feature
 - open_flow10:
   - hello.feature
   - hello_failed.feature

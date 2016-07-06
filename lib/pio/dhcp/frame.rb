@@ -12,12 +12,12 @@ module Pio
 
       OPTION_FIELD_LENGTH = 60
 
-      include EthernetHeader
+      include Ethernet
       include IPv4Header
       include UdpHeader
 
       endian :big
-      ethernet_header ether_type: EtherType::IPV4
+      ethernet_header ether_type: Ethernet::Type::IPV4
       ipv4_header ip_protocol: ProtocolNumber::UDP
       udp_header
       dhcp_field :dhcp
