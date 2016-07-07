@@ -13,10 +13,12 @@ module Pio
       bytes = ''
       bit = false
       bit_names = []
+      total_bit_length = 0
       field_names.each do |each|
         next unless __send__("#{each}?")
         if /Bit(\d+)$/ =~ __send__(each).class.to_s
-          bit_length = Regexp.last_match(1)
+          bit_length = Regexp.last_match(1).to_i
+          total_bit_length += bit_length
           if bit
             bit_names << each
             bytes << format("_%0#{bit_length}b", __send__(each))
@@ -28,11 +30,19 @@ module Pio
         else
           if bit
             bytes << ", # #{bit_names.join(', ')}\n"
-            pack_template << 'n'
+            if total_bit_length == 8
+              pack_template << 'C'
+            elsif total_bit_length == 16
+              pack_template << 'n'
+            else
+              raise
+            end
+            total_bit_length = 0
             bit_names = []
             bit = false
           end
           list = __send__(each).to_hex
+          next if list.empty?
           bytes << "  #{list}, # #{each}\n"
           pack_template << 'C' * (list.count(',') + 1)
         end

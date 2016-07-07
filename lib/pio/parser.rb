@@ -17,7 +17,7 @@ module Pio
     # IPv4 packet parser
     class IPv4Packet < BinData::Record
       include Ethernet
-      include IPv4Header
+      include IPv4
 
       endian :big
 

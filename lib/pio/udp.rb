@@ -7,7 +7,7 @@ module Pio
   # UDP packet format
   class Udp < BinData::Record
     include Ethernet
-    include IPv4Header
+    include IPv4
     include UdpHeader
 
     endian :big

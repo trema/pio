@@ -13,7 +13,7 @@ module Pio
       OPTION_FIELD_LENGTH = 60
 
       include Ethernet
-      include IPv4Header
+      include IPv4
       include UdpHeader
 
       endian :big

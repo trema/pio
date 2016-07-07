@@ -10,7 +10,7 @@ module Pio
       MINIMUM_IP_PACKET_LENGTH = 50
 
       include Ethernet
-      include IPv4Header
+      include IPv4
 
       endian :big
 
