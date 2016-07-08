@@ -1,14 +1,12 @@
-require 'bindata'
 require 'pio/ethernet_header'
 require 'pio/ipv4_header'
+require 'pio/monkey_patch/bindata_record'
 
 module Pio
-  # Icmp parser and generator.
+  # ICMP parser and generator
   class Icmp
-    # Icmp parser.
+    # ICMP format
     class Format < BinData::Record
-      MINIMUM_IP_PACKET_LENGTH = 50
-
       include Ethernet
       include IPv4
 
@@ -21,16 +19,14 @@ module Pio
       uint16 :icmp_checksum, value: :calculate_icmp_checksum
       uint16 :icmp_identifier
       uint16 :icmp_sequence_number
-      string :echo_data, read_length: :echo_data_read_length
-      string :padding, read_length: 0, initial_value: :icmp_padding_length
-
-      def message_type
-        icmp_type
-      end
-
-      alias to_binary to_binary_s
+      string :echo_data, read_length: :echo_data_length
+      string :padding, length: :padding_length
 
       private
+
+      def icmp_header_length
+        8
+      end
 
       def calculate_icmp_checksum
         sum = [icmp_type * 0x100 + icmp_code,
@@ -40,14 +36,15 @@ module Pio
         ~((sum & 0xffff) + (sum >> 16)) & 0xffff
       end
 
-      def echo_data_read_length
-        ip_total_length - (ip_header_length * 4) - 8
+      def echo_data_length
+        ip_total_length - ip_header_length_in_bytes - icmp_header_length
       end
 
-      def icmp_padding_length
-        length = MINIMUM_IP_PACKET_LENGTH -
-                 (ip_header_length * 4) - 8 - echo_data.length
-        length > 0 ? "\x00" * length : ''
+      def padding_length
+        tmp = Ethernet::MINIMUM_FRAME_SIZE -
+              ethernet_header_length - ip_header_length_in_bytes -
+              icmp_header_length - echo_data.length
+        tmp > 0 ? tmp : 0
       end
     end
   end

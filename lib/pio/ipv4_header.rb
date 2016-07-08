@@ -55,6 +55,10 @@ module Pio
     end
     # rubocop:enable MethodLength
 
+    def ip_header_length_in_bytes
+      ip_header_length * 4
+    end
+
     private
 
     def calculate_ip_length

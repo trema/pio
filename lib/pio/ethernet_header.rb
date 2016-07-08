@@ -4,6 +4,8 @@ require 'pio/type/mac_address'
 module Pio
   # Adds ethernet_header macro.
   module Ethernet
+    MINIMUM_FRAME_SIZE = 64
+
     # EtherType constants
     module Type
       ARP = 0x0806
@@ -30,6 +32,10 @@ module Pio
       end
     end
     # rubocop:enable MethodLength
+
+    def ethernet_header_length
+      vlan? ? 18 : 14
+    end
 
     private
 

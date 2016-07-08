@@ -1,9 +1,12 @@
 require 'pio/icmp/format'
+require 'pio/ruby_dumper'
 
 module Pio
   class Icmp
     # Base class of Icmp::Request and Icmp::Reply.
     class Message
+      include RubyDumper
+
       private_class_method :new
 
       def initialize(user_options)
