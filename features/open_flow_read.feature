@@ -19,7 +19,6 @@ Feature: OpenFlow.read
       | open_flow10/flow_stats_request.raw        | Pio::OpenFlow10::FlowStats::Request        |
       | open_flow10/hello.raw                     | Pio::OpenFlow10::Hello                     |
       | open_flow10/hello_failed.raw              | Pio::OpenFlow10::Error::HelloFailed        |
-      | open_flow10/packet_in.raw                 | Pio::OpenFlow10::PacketIn                  |
       | open_flow10/packet_out.raw                | Pio::OpenFlow10::PacketOut                 |
       | open_flow10/port_stats_request.raw        | Pio::OpenFlow10::PortStats::Request        |
       | open_flow10/port_status.raw               | Pio::OpenFlow10::PortStatus                |

@@ -31,6 +31,38 @@ Feature: PacketIn
       | source_mac      | fa:ce:b0:00:00:cc |
       | destination_mac | ff:ff:ff:ff:ff:ff |
 
+  Scenario: read an empty PacketIn message
+    Given I use the fixture "open_flow10"
+    When I create a packet with:
+      """ruby
+      Pio::PacketIn.read(eval(IO.read('packet_in.rb')))
+      """
+    Then the packet has the following fields and values:
+      | field          |      value |
+      | transaction_id |          0 |
+      | xid            |          0 |
+      | buffer_id      | 4294967040 |
+      | in_port        |          1 |
+      | reason         |  :no_match |
+
+  Scenario: read a PacketIn message (ARP request)
+    Given I use the fixture "open_flow10"
+    When I create a packet with:
+      """ruby
+      Pio::PacketIn.read(eval(IO.read('packet_in_arp_request.rb')))
+      """
+    Then the packet has the following fields and values:
+      | field           |             value |
+      | transaction_id  |                 0 |
+      | xid             |                 0 |
+      | buffer_id       |        4294967040 |
+      | total_length    |                64 |
+      | in_port         |                 1 |
+      | reason          |         :no_match |
+      | data.class      | Pio::Arp::Request |
+      | source_mac      | fa:ce:b0:00:00:cc |
+      | destination_mac | ff:ff:ff:ff:ff:ff |
+
   Scenario: convert PacketIn to Ruby code
     When I eval the following Ruby code:
       """ruby
