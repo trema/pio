@@ -29,6 +29,12 @@ module Pio
       end
 
       # rubocop:disable LineLength
+      def self.inspect
+        'PacketIn(open_flow_version: uint8, message_type: uint8, message_length: uint16, transaction_id: uint32, buffer_id: uint32, total_length: uint16, in_port: uint16, reason: symbol, raw_data: string)'
+      end
+      # rubocop:enable LineLength
+
+      # rubocop:disable LineLength
       def inspect
         data_inspection = if raw_data.empty?
                             %(raw_data: "")
