@@ -1,4 +1,3 @@
-require 'active_support/core_ext/string/inflections'
 require 'pio/class_inspector'
 require 'pio/ruby_dumper'
 require 'pio/type/mac_address'
