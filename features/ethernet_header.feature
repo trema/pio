@@ -145,5 +145,5 @@ Feature: EthernetHeader
       """
     Then the result of eval should be:
       """
-      EthernetHeader(destination_mac: mac_address, source_mac: mac_address, ether_type: uint16, vlan_pcp: bit3, vlan_cfi: bit1, vlan_vid: bit12)
+      Pio::EthernetHeader(destination_mac: mac_address, source_mac: mac_address, ether_type: uint16, vlan_pcp: bit3, vlan_cfi: bit1, vlan_vid: bit12, ether_type_vlan: uint16)
       """

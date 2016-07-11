@@ -1,3 +1,5 @@
+require 'active_support/core_ext/string/inflections'
+require 'pio/class_inspector'
 require 'pio/ruby_dumper'
 require 'pio/type/mac_address'
 
@@ -46,18 +48,13 @@ module Pio
 
   # Ethernet header generator/parser
   class EthernetHeader < BinData::Record
+    extend ClassInspector
     include Ethernet
     include RubyDumper
 
     endian :big
 
     ethernet_header
-
-    # rubocop:disable LineLength
-    def self.inspect
-      'EthernetHeader(destination_mac: mac_address, source_mac: mac_address, ether_type: uint16, vlan_pcp: bit3, vlan_cfi: bit1, vlan_vid: bit12)'
-    end
-    # rubocop:enable LineLength
 
     # rubocop:disable LineLength
     def inspect
