@@ -16,7 +16,7 @@ module Pio
           self.reason = REASONS.fetch(value)
         end
 
-        def to_hex
+        def to_bytes
           reason.to_hex
         end
       end

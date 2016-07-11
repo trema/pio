@@ -41,7 +41,7 @@ module Pio
             bit_names = []
             bit = false
           end
-          list = __send__(each).to_hex
+          list = __send__(each).to_bytes
           next if list.empty?
           bytes << "  #{list}, # #{each}\n"
           pack_template << 'C' * (list.count(',') + 1)

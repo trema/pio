@@ -1,5 +1,7 @@
 require 'pio/class_inspector'
+require 'pio/instance_inspector'
 require 'pio/ruby_dumper'
+require 'pio/type/ether_type'
 require 'pio/type/mac_address'
 
 module Pio
@@ -22,9 +24,9 @@ module Pio
         mac_address :destination_mac
         mac_address :source_mac
         if options
-          uint16 :ether_type, value: options.fetch(:ether_type)
+          ether_type :ether_type, value: options.fetch(:ether_type)
         else
-          uint16 :ether_type
+          ether_type :ether_type
         end
         bit3 :vlan_pcp, onlyif: :vlan?
         bit1 :vlan_cfi, onlyif: :vlan?
@@ -49,20 +51,11 @@ module Pio
   class EthernetHeader < BinData::Record
     extend ClassInspector
     include Ethernet
+    include InstanceInspector
     include RubyDumper
 
     endian :big
 
     ethernet_header
-
-    # rubocop:disable LineLength
-    def inspect
-      if vlan?
-        %(#<EthernetHeader destination_mac: "#{destination_mac}", source_mac: "#{source_mac}", ether_type: #{format('0x%04x', ether_type)}, vlan_pcp: #{vlan_pcp}, vlan_cfi: #{vlan_cfi}, vlan_vid: #{vlan_vid}>)
-      else
-        %(#<EthernetHeader destination_mac: "#{destination_mac}", source_mac: "#{source_mac}", ether_type: #{format('0x%04x', ether_type)}>)
-      end
-    end
-    # rubocop:enable LineLength
   end
 end

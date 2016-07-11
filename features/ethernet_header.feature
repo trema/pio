@@ -13,7 +13,7 @@ Feature: EthernetHeader
       | class             | Pio::EthernetHeader |
       | destination_mac   | ff:ff:ff:ff:ff:ff   |
       | source_mac        | 00:26:82:eb:ea:d1   |
-      | ether_type.to_hex | 0x08, 0x00          |
+      | ether_type.to_hex | 0x800               |
 
   Scenario: create a VLAN-tagged Ethernet header
     When I create a packet with:
@@ -32,7 +32,7 @@ Feature: EthernetHeader
       | class             | Pio::EthernetHeader |
       | destination_mac   | ff:ff:ff:ff:ff:ff   |
       | source_mac        | 00:26:82:eb:ea:d1   |
-      | ether_type.to_hex | 0x81, 0x00          |
+      | ether_type.to_hex | 0x8100              |
       | vlan_pcp          | 5                   |
       | vlan_cfi          | 0                   |
       | vlan_vid          | 100                 |
@@ -48,7 +48,7 @@ Feature: EthernetHeader
       | class             | Pio::EthernetHeader |
       | destination_mac   | ff:ff:ff:ff:ff:ff   |
       | source_mac        | 00:26:82:eb:ea:d1   |
-      | ether_type.to_hex | 0x08, 0x00          |
+      | ether_type.to_hex | 0x800               |
 
   Scenario: read a VLAN-tagged Ethernet header
     Given I use the fixture "ethernet_header"
@@ -61,7 +61,7 @@ Feature: EthernetHeader
       | class             | Pio::EthernetHeader |
       | destination_mac   | ff:ff:ff:ff:ff:ff   |
       | source_mac        | 00:26:82:eb:ea:d1   |
-      | ether_type.to_hex | 0x81, 0x00          |
+      | ether_type.to_hex | 0x8100              |
       | vlan_pcp          | 5                   |
       | vlan_cfi          | 0                   |
       | vlan_vid          | 100                 |
@@ -118,7 +118,7 @@ Feature: EthernetHeader
       """
     Then the result of eval should be:
       """
-      #<EthernetHeader destination_mac: "ff:ff:ff:ff:ff:ff", source_mac: "00:26:82:eb:ea:d1", ether_type: 0x0800>
+      #<Pio::EthernetHeader destination_mac: "ff:ff:ff:ff:ff:ff", source_mac: "00:26:82:eb:ea:d1", ether_type: 0x0800>
       """
 
   Scenario: VLAN-tagged EthernetHeader instance inspection
@@ -135,7 +135,7 @@ Feature: EthernetHeader
       """
     Then the result of eval should be:
       """
-      #<EthernetHeader destination_mac: "ff:ff:ff:ff:ff:ff", source_mac: "00:26:82:eb:ea:d1", ether_type: 0x8100, vlan_pcp: 5, vlan_cfi: 0, vlan_vid: 100>
+      #<Pio::EthernetHeader destination_mac: "ff:ff:ff:ff:ff:ff", source_mac: "00:26:82:eb:ea:d1", ether_type: 0x8100, vlan_pcp: 5, vlan_cfi: 0, vlan_vid: 100, ether_type_vlan: 0x8100>
       """
 
   Scenario: EthernetHeader class inspection
@@ -145,5 +145,5 @@ Feature: EthernetHeader
       """
     Then the result of eval should be:
       """
-      Pio::EthernetHeader(destination_mac: mac_address, source_mac: mac_address, ether_type: uint16, vlan_pcp: bit3, vlan_cfi: bit1, vlan_vid: bit12, ether_type_vlan: uint16)
+      Pio::EthernetHeader(destination_mac: mac_address, source_mac: mac_address, ether_type: ether_type, vlan_pcp: bit3, vlan_cfi: bit1, vlan_vid: bit12, ether_type_vlan: uint16)
       """

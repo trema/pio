@@ -6,7 +6,7 @@ Feature: Udp
       | class                  |          Pio::Udp |
       | destination_mac        | ff:ff:ff:ff:ff:ff |
       | source_mac             | 00:0b:82:01:fc:42 |
-      | ether_type             |              2048 |
+      | ether_type.to_hex      |             0x800 |
       | ip_version             |                 4 |
       | ip_header_length       |                 5 |
       | ip_type_of_service     |                 0 |

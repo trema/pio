@@ -9,5 +9,5 @@ Feature: OpenFlow::Header
                                 transaction_id: 0xff)
       """
     Then the message has the following fields and values:
-      | field  | value                                          |
-      | to_hex | 0x01, 0x0a, 0x00, 0x12, 0x00, 0x00, 0x00, 0xff |
+      | field    | value                                          |
+      | to_bytes | 0x01, 0x0a, 0x00, 0x12, 0x00, 0x00, 0x00, 0xff |

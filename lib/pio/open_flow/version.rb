@@ -14,7 +14,7 @@ module Pio
         self.version = VERSIONS.invert.fetch(value)
       end
 
-      def to_hex
+      def to_bytes
         version.to_hex
       end
     end

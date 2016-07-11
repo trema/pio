@@ -9,11 +9,11 @@ Feature: NiciraSendOutPort
       Pio::NiciraSendOutPort.new(:reg0)
       """
     Then the action has the following fields and values:
-      | field             | value      |
-      | offset            | 0          |
-      | n_bits            | 32         |
-      | source            | :reg0      |
-      | max_length.to_hex | 0xff, 0xff |
+      | field             |  value |
+      | offset            |      0 |
+      | n_bits            |     32 |
+      | source            |  :reg0 |
+      | max_length.to_hex | 0xffff |
 
   Scenario: new(:reg0, offset: 16, n_bits: 16, max_length: 256)
     When I create an OpenFlow action with:

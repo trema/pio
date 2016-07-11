@@ -15,11 +15,11 @@ module Pio
       transaction_id :transaction_id
       rest :body
 
-      def to_hex
+      def to_bytes
         [version,
          type,
          message_length,
-         transaction_id].map(&:to_hex).join(', ')
+         transaction_id].map(&:to_bytes).join(', ')
       end
     end
   end

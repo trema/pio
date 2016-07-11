@@ -27,7 +27,7 @@ module Pio
         get == other
       end
 
-      def to_hex
+      def to_bytes
         octets.map(&:to_hex).join(', ')
       end
     end

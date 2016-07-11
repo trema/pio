@@ -11,7 +11,7 @@ module Pio
 
       # rubocop:disable LineLength
       def inspect
-        %(#<Arp::Request destination_mac: "#{destination_mac}", source_mac: "#{source_mac}", ether_type: #{format '0x%04x', ether_type}, hardware_type: #{hardware_type}, protocol_length: #{protocol_length}, operation: #{operation}, sender_hardware_address: "#{sender_hardware_address}", sender_protocol_address: "#{sender_protocol_address}", target_hardware_address: "#{target_hardware_address}", target_protocol_address: "#{target_protocol_address}">)
+        %(#<Arp::Request destination_mac: "#{destination_mac}", source_mac: "#{source_mac}", ether_type: #{ether_type.inspect}, hardware_type: #{hardware_type}, protocol_length: #{protocol_length}, operation: #{operation}, sender_hardware_address: "#{sender_hardware_address}", sender_protocol_address: "#{sender_protocol_address}", target_hardware_address: "#{target_hardware_address}", target_protocol_address: "#{target_protocol_address}">)
       end
       # rubocop:enable LineLength
 
