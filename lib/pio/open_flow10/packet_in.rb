@@ -28,6 +28,17 @@ module Pio
         @format.to_ruby
       end
 
+      # rubocop:disable LineLength
+      def inspect
+        data_inspection = if raw_data.empty?
+                            %(raw_data: "")
+                          else
+                            %(data: #{data.inspect})
+                          end
+        %(#<PacketIn open_flow_version: #{version}, message_type: #{type}, message_length: #{_length}, transaction_id: #{Kernel.format('0x%x', transaction_id)}, buffer_id: #{Kernel.format('0x%x', buffer_id)}, total_length: #{total_length}, in_port: #{in_port}, reason: :#{reason}, #{data_inspection}>)
+      end
+      # rubocop:enable LineLength
+
       def method_missing(method, *args)
         data.__send__(method, *args).snapshot
       end

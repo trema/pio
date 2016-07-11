@@ -50,3 +50,18 @@ Feature: Arp::Request
         0xc0, 0xa8, 0x53, 0xfe, # target_protocol_address
       ].pack('C42')
       """
+
+  Scenario: ARP request inspection
+    When I eval the following Ruby code:
+      """ruby
+      Pio::Arp::Request.new(
+        source_mac: '00:26:82:eb:ea:d1',
+        sender_protocol_address: '192.168.83.3',
+        target_protocol_address: '192.168.83.254'
+      ).inspect
+      """
+    Then the result of eval should be:
+      """
+      #<Arp::Request destination_mac: "ff:ff:ff:ff:ff:ff", source_mac: "00:26:82:eb:ea:d1", ether_type: 0x0806, hardware_type: 1, protocol_length: 4, operation: 1, sender_hardware_address: "00:26:82:eb:ea:d1", sender_protocol_address: "192.168.83.3", target_hardware_address: "00:00:00:00:00:00", target_protocol_address: "192.168.83.254">
+      """
+

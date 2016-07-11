@@ -9,6 +9,12 @@ module Pio
       OPERATION = 1
       public_class_method :new
 
+      # rubocop:disable LineLength
+      def inspect
+        %(#<Arp::Request destination_mac: "#{destination_mac}", source_mac: "#{source_mac}", ether_type: #{format '0x%04x', ether_type}, hardware_type: #{hardware_type}, protocol_length: #{protocol_length}, operation: #{operation}, sender_hardware_address: "#{sender_hardware_address}", sender_protocol_address: "#{sender_protocol_address}", target_hardware_address: "#{target_hardware_address}", target_protocol_address: "#{target_protocol_address}">)
+      end
+      # rubocop:enable LineLength
+
       # User options for creating an Arp Request.
       class Options < Pio::Options
         mandatory_option :source_mac
