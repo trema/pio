@@ -15,6 +15,10 @@ module Pio
         def set(value)
           self.reason = REASONS.fetch(value)
         end
+
+        def to_hex
+          reason.to_hex
+        end
       end
     end
   end

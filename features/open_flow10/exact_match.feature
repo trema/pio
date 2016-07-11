@@ -1,19 +1,19 @@
 Feature: ExactMatch
   Scenario: new (from ARP request Packet In)
-    When I create an exact match from "open_flow10/packet_in_arp_request.raw"
+    When I create an exact match from "open_flow10/packet_in_arp_request.rb"
     Then the message has the following fields and values:
       | field                      |             value |
       | wildcards                  |                {} |
       | in_port                    |                 1 |
-      | source_mac_address         | ac:5d:10:31:37:79 |
+      | source_mac_address         | fa:ce:b0:00:00:cc |
       | destination_mac_address    | ff:ff:ff:ff:ff:ff |
       | vlan_vid                   |             65535 |
       | vlan_priority              |                 0 |
       | ether_type                 |              2054 |
       | tos                        |                 0 |
       | ip_protocol                |                 1 |
-      | source_ip_address          |     192.168.2.254 |
-      | destination_ip_address     |       192.168.2.5 |
+      | source_ip_address          |       192.168.0.1 |
+      | destination_ip_address     |       192.168.0.2 |
       | transport_source_port      |                 0 |
       | transport_destination_port |                 0 |
 

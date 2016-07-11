@@ -13,8 +13,15 @@ When(/^I parse a file named "(.*?\.pcap)" with "(.*?)" class$/) do |path, klass|
 end
 
 When(/^I create an exact match from "(.*?)"$/) do |path|
-  packet_in = Pio::PacketIn.read(IO.read(expand_path("%/#{path}")))
-  @result = Pio::ExactMatch.new(packet_in)
+  raw_data = case File.extname(path)
+             when '.raw'
+               IO.read(expand_path("%/#{path}"))
+             when '.rb'
+               Pio.module_eval(IO.read(expand_path("%/#{path}")))
+             else
+               raise
+             end
+  @result = Pio::ExactMatch.new(Pio::PacketIn.read(raw_data))
 end
 
 Then(/^the message should be a "([^"]*)"$/) do |expected_klass|

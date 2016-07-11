@@ -4,6 +4,7 @@ require 'bindata'
 require 'pio/open_flow/flags'
 require 'pio/open_flow/header'
 require 'pio/parse_error'
+require 'pio/ruby_dumper'
 
 module Pio
   module OpenFlow
@@ -33,6 +34,7 @@ module Pio
           klass = Class.new(BinData::Record)
           const_set :Format, klass
           klass.class_eval do
+            include RubyDumper
             define_method(:header_length) { 8 }
             define_method(:length) { _length }
           end

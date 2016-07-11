@@ -14,7 +14,6 @@ module Pio
       uint16 :in_port
       reason :reason
       uint8 :padding
-      hide :padding
       string :raw_data, read_length: :total_length
 
       def data
@@ -23,6 +22,10 @@ module Pio
 
       def lldp?
         data.is_a? Lldp
+      end
+
+      def to_ruby
+        @format.to_ruby
       end
 
       def method_missing(method, *args)
