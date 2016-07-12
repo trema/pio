@@ -51,5 +51,5 @@ Feature: PacketOut
       | operation               |                 1 |
       | sender_hardware_address | ac:5d:10:31:37:79 |
       | sender_protocol_address |     192.168.2.254 |
-      | target_hardware_address | ff:ff:ff:ff:ff:ff |
+      | target_hardware_address | 00:00:00:00:00:00 |
       | target_protocol_address |       192.168.2.5 |

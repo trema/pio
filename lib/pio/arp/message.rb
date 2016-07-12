@@ -1,16 +1,18 @@
 require 'pio/arp/format'
-require 'pio/ruby_dumper'
+require 'pio/message'
 
 module Pio
   class Arp
     # Base class of ARP Request and Reply
-    class Message
-      include RubyDumper
-      private_class_method :new
+    class Message < Pio::Message
+      def self.create(format)
+        allocate.tap do |message|
+          message.instance_variable_set :@format, format
+        end
+      end
 
       def initialize(user_options)
-        options = self.class.const_get(:Options).new(user_options.dup.freeze)
-        @format = Arp::Format.new(options.to_hash)
+        @format = Arp::Format.new(parse_options(user_options))
       end
 
       def method_missing(method, *args)

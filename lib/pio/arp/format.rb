@@ -23,10 +23,6 @@ module Pio
       mac_address :target_hardware_address
       ip_address :target_protocol_address
 
-      def message_type
-        operation
-      end
-
       # rubocop:disable MethodLength
       def to_exact_match(in_port)
         match_options = {

@@ -4,7 +4,7 @@ Feature: SetArpOperation
   Scenario: new(Pio::Arp::Reply::OPERATION)
     When I create an OpenFlow action with:
       """
-      Pio::SetArpOperation.new(Pio::Arp::Reply::OPERATION)
+      Pio::SetArpOperation.new(Pio::Arp::Reply.operation)
       """
     Then the action has the following fields and values:
       | field         | value |

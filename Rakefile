@@ -1,7 +1,7 @@
 require 'bundler/gem_tasks'
 
 RELISH_PROJECT = 'trema/pio'.freeze
-FLAY_THRESHOLD = 1386
+FLAY_THRESHOLD = 1418
 
 task default: :travis
 task test: [:spec, :cucumber]

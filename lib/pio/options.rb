@@ -14,6 +14,11 @@ module Pio
       const_get(:OPTIONS) << name
     end
 
+    def initialize(options)
+      validate options
+      @options = options
+    end
+
     private
 
     def validate(user_options)

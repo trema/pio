@@ -1,3 +1,4 @@
+require 'active_support/core_ext/object/try'
 require 'pio/open_flow/message'
 require 'pio/open_flow10/packet_in/reason'
 require 'pio/parser'
@@ -46,7 +47,8 @@ module Pio
       # rubocop:enable LineLength
 
       def method_missing(method, *args)
-        data.__send__(method, *args).snapshot
+        bindata_value = data.__send__(method, *args)
+        bindata_value.try(:snapshot) || bindata_value
       end
 
       attr_accessor :datapath_id

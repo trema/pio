@@ -1,3 +1,4 @@
+require 'active_support/core_ext/object/try'
 require 'pio/open_flow'
 require 'pio/open_flow/buffer_id'
 require 'pio/open_flow13/actions'
@@ -38,7 +39,8 @@ module Pio
       end
 
       def method_missing(method, *args)
-        data.__send__(method, *args).snapshot
+        bindata_value = data.__send__(method, *args)
+        bindata_value.try(:snapshot) || bindata_value
       end
     end
   end
