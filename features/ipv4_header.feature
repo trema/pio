@@ -75,7 +75,7 @@ Feature: IPv4Header
       """
     Then the result of eval should be:
       """
-      #<IPv4Header ip_version: 4, ip_header_length: 5, ip_type_of_service: 0, ip_total_length: 20, ip_identifier: 0, ip_flag: 0, ip_fragment: 0, ip_ttl: 128, ip_protocol: 0, ip_header_checksum: 12513, source_ip_address: "1.2.3.4", destination_ip_address: "4.3.2.1", ip_option: "">
+      #<Pio::IPv4Header ip_version: 4, ip_header_length: 5, ip_type_of_service: 0, ip_total_length: 20, ip_identifier: 0, ip_flag: 0, ip_fragment: 0, ip_ttl: 128, ip_protocol: 0, ip_header_checksum: 12513, source_ip_address: "1.2.3.4", destination_ip_address: "4.3.2.1", ip_option: "">
       """
 
   Scenario: IPv4Header class inspection
