@@ -51,7 +51,7 @@ Feature: Icmp::Reply
       """
     Then the result of eval should be:
       """
-      #<Icmp::Reply destination_mac: "00:26:82:eb:ea:d1", source_mac: "00:16:9d:1d:9c:c4", ether_type: 2048, ip_version: 4, ip_header_length: 5, ip_type_of_service: 0, ip_total_length: 50, ip_identifier: 0, ip_flag: 0, ip_fragment: 0, ip_ttl: 128, ip_protocol: 1, ip_header_checksum: 12482, source_ip_address: "1.2.3.4", destination_ip_address: "4.3.2.1", ip_option: "", icmp_type: 0, icmp_code: 0, icmp_checksum: 65279, icmp_identifier: 256, icmp_sequence_number: 0, echo_data: "">
+      #<Pio::Icmp::Reply destination_mac: "00:26:82:eb:ea:d1", source_mac: "00:16:9d:1d:9c:c4", ether_type: 0x0800, ip_version: 4, ip_header_length: 5, ip_type_of_service: 0, ip_total_length: 50, ip_identifier: 0, ip_flag: 0, ip_fragment: 0, ip_ttl: 128, ip_protocol: 1, ip_header_checksum: 12482, source_ip_address: "1.2.3.4", destination_ip_address: "4.3.2.1", ip_option: "", icmp_type: 0, icmp_code: 0, icmp_checksum: 65279, icmp_identifier: 256, icmp_sequence_number: 0, echo_data: "">
       """
 
   Scenario: Icmp::Reply class inspection

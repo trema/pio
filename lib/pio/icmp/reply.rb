@@ -1,21 +1,16 @@
 require 'pio/icmp/message'
 require 'pio/icmp/options'
+require 'pio/instance_inspector'
 require 'pio/mac'
 
 module Pio
   class Icmp
     # ICMP Reply packet generator
     class Reply < Message
+      include InstanceInspector
+
       TYPE = 0
       public_class_method :new
-
-      # rubocop:disable LineLength
-      # rubocop:disable AbcSize
-      def inspect
-        %(#<Icmp::Reply destination_mac: "#{destination_mac}", source_mac: "#{source_mac}", ether_type: #{ether_type}, ip_version: #{ip_version}, ip_header_length: #{ip_header_length}, ip_type_of_service: #{ip_type_of_service}, ip_total_length: #{ip_total_length}, ip_identifier: #{ip_identifier}, ip_flag: #{ip_flag}, ip_fragment: #{ip_fragment}, ip_ttl: #{ip_ttl}, ip_protocol: #{ip_protocol}, ip_header_checksum: #{ip_header_checksum}, source_ip_address: "#{source_ip_address}", destination_ip_address: "#{destination_ip_address}", ip_option: "#{ip_option}", icmp_type: #{icmp_type}, icmp_code: #{icmp_code}, icmp_checksum: #{icmp_checksum}, icmp_identifier: #{icmp_identifier}, icmp_sequence_number: #{icmp_sequence_number}, echo_data: "#{echo_data}">)
-      end
-      # rubocop:enable LineLength
-      # rubocop:enable AbcSize
 
       # rubocop:disable LineLength
       def self.inspect
