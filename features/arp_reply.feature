@@ -65,5 +65,5 @@ Feature: Arp::Reply
       """
     Then the result of eval should be:
       """ruby
-      #<Arp::Reply destination_mac: "00:26:82:eb:ea:d1", source_mac: "00:16:9d:1d:9c:c4", ether_type: 0x0806, hardware_type: 1, protocol_length: 4, operation: 2, sender_hardware_address: "00:16:9d:1d:9c:c4", sender_protocol_address: "192.168.83.254", target_hardware_address: "00:26:82:eb:ea:d1", target_protocol_address: "192.168.83.3">
+      #<Pio::Arp::Reply destination_mac: "00:26:82:eb:ea:d1", source_mac: "00:16:9d:1d:9c:c4", ether_type: 0x0806, hardware_type: 1, protocol_type: 2048, hardware_length: 6, protocol_length: 4, operation: 2, sender_hardware_address: "00:16:9d:1d:9c:c4", sender_protocol_address: "192.168.83.254", target_hardware_address: "00:26:82:eb:ea:d1", target_protocol_address: "192.168.83.3">
       """

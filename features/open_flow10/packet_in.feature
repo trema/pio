@@ -124,7 +124,7 @@ Feature: PacketIn
       """
     Then the result of eval should be:
       """
-      #<PacketIn open_flow_version: 1, message_type: 10, message_length: 82, transaction_id: 0x0, buffer_id: 0xffffff00, total_length: 64, in_port: 1, reason: :no_match, data: #<Arp::Request destination_mac: "ff:ff:ff:ff:ff:ff", source_mac: "fa:ce:b0:00:00:cc", ether_type: 0x0806, hardware_type: 1, protocol_length: 4, operation: 1, sender_hardware_address: "fa:ce:b0:00:00:cc", sender_protocol_address: "192.168.0.1", target_hardware_address: "00:00:00:00:00:00", target_protocol_address: "192.168.0.2">>
+      #<PacketIn open_flow_version: 1, message_type: 10, message_length: 82, transaction_id: 0x0, buffer_id: 0xffffff00, total_length: 64, in_port: 1, reason: :no_match, data: #<Pio::Arp::Request destination_mac: "ff:ff:ff:ff:ff:ff", source_mac: "fa:ce:b0:00:00:cc", ether_type: 0x0806, hardware_type: 1, protocol_type: 2048, hardware_length: 6, protocol_length: 4, operation: 1, sender_hardware_address: "fa:ce:b0:00:00:cc", sender_protocol_address: "192.168.0.1", target_hardware_address: "00:00:00:00:00:00", target_protocol_address: "192.168.0.2">>
       """
 
   Scenario: PacketIn class inspection
