@@ -6,6 +6,7 @@ module Pio
     # rubocop:disable LineLength
     def inspect
       field_and_type = fields.each_with_object([]) do |each, result|
+        next if each.name == :padding
         result << [each.name,
                    each.prototype.instance_variable_get(:@obj_class).name.demodulize.sub(/be$/, '').underscore]
       end

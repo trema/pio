@@ -3,7 +3,6 @@ require 'pio/arp/reply'
 require 'pio/arp/request'
 require 'pio/parse_error'
 
-# Packet parser and generator library.
 module Pio
   # ARP parser and generator.
   class Arp

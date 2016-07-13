@@ -8,13 +8,13 @@ module Pio
     class Reply < Message
       include InstanceInspector
 
-      options operation: 2,
-              source_mac: :source_mac,
-              destination_mac: :destination_mac,
-              sender_hardware_address: :source_mac,
-              target_hardware_address: :destination_mac,
-              sender_protocol_address: :sender_protocol_address,
-              target_protocol_address: :target_protocol_address
+      option :operation, value: 2
+      option :source_mac
+      option :destination_mac
+      option :sender_hardware_address, value: :source_mac
+      option :target_hardware_address, value: :destination_mac
+      option :sender_protocol_address
+      option :target_protocol_address
     end
   end
 end

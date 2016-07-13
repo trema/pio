@@ -1,9 +1,5 @@
 require 'pio'
 
-describe Pio::ICMP::Reply do
-  Then { Pio::ICMP::Reply == Pio::Icmp::Reply }
-end
-
 describe Pio::Icmp::Reply, '.new' do
   context 'with echo_data' do
     Given(:icmp_reply) do
@@ -12,8 +8,8 @@ describe Pio::Icmp::Reply, '.new' do
         source_mac: '24:db:ac:41:e5:5b',
         source_ip_address: '8.8.8.8',
         destination_ip_address: '192.168.1.102',
-        identifier: 0x123,
-        sequence_number: 0x321,
+        icmp_identifier: 0x123,
+        icmp_sequence_number: 0x321,
         echo_data: 'abcdefghijklmnopqrstuvwabcdefghi'
       )
     end
@@ -77,8 +73,8 @@ describe Pio::Icmp::Reply, '.new' do
           source_mac: '24:db:ac:41:e5:5b',
           source_ip_address: '8.8.8.8',
           destination_ip_address: '192.168.1.102',
-          identifier: 0x123,
-          sequence_number: 0x321
+          icmp_identifier: 0x123,
+          icmp_sequence_number: 0x321
         )
       end
 
