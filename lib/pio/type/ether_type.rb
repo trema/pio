@@ -16,6 +16,7 @@ module Pio
         ether_type
       end
 
+      # This method smells of :reek:UncommunicativeVariableName
       def to_bytes
         byte1 = format('%02x', (self & 0xff00) >> 8)
         byte2 = format('%02x', self & 0xff)
