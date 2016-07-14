@@ -1,19 +1,10 @@
+require 'pio/ethernet_frame'
 require 'pio/ethernet_header'
 require 'pio/ipv4_header'
 
 module Pio
   # Raw data parser.
   class Parser
-    # Ethernet header parser
-    class EthernetFrame < BinData::Record
-      endian :big
-
-      mac_address :destination_mac
-      mac_address :source_mac
-      uint16 :ether_type
-      rest :rest
-    end
-
     # IPv4 packet parser
     class IPv4Packet < BinData::Record
       include Ethernet
