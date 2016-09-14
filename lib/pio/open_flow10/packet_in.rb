@@ -11,11 +11,11 @@ module Pio
                        type: 10,
                        length: -> { header_length + 10 + raw_data.length }
       uint32 :buffer_id
-      uint16 :total_length, value: -> { raw_data.length }
+      uint16 :total_length, initial_value: -> { raw_data.length }
       uint16 :in_port
       reason :reason
       uint8 :padding
-      string :raw_data, read_length: :total_length
+      string :raw_data, read_length: -> { length - header_length - 10 }
 
       def data
         @data ||= Pio::Parser.read(raw_data)
