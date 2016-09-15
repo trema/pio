@@ -43,15 +43,15 @@ describe Pio::OpenFlow10::Match do
       Then { match.in_port == 1 }
       Then { match.source_mac_address == '00:00:00:00:00:00' }
       Then { match.destination_mac_address == '00:00:00:00:00:00' }
-      Then { match.vlan_vid == 0 }
-      Then { match.vlan_priority == 0 }
-      Then { match.ether_type == 0 }
-      Then { match.tos == 0 }
-      Then { match.ip_protocol == 0 }
+      Then { match.vlan_vid.zero? }
+      Then { match.vlan_priority.zero? }
+      Then { match.ether_type.zero? }
+      Then { match.tos.zero? }
+      Then { match.ip_protocol.zero? }
       Then { match.source_ip_address == '0.0.0.0' }
       Then { match.destination_ip_address == '0.0.0.0' }
-      Then { match.transport_source_port == 0 }
-      Then { match.transport_destination_port == 0 }
+      Then { match.transport_source_port.zero? }
+      Then { match.transport_destination_port.zero? }
     end
 
     context 'with a Match binary generated with Pio::OpenFlow10::Match.new' do
@@ -78,19 +78,19 @@ describe Pio::OpenFlow10::Match do
         ]
       end
       And { match.wildcards[:source_ip_address] = 12 }
-      Then { match.in_port == 0 }
+      Then { match.in_port.zero? }
       Then { match.source_mac_address == '00:00:00:00:00:00' }
       Then { match.destination_mac_address == '00:00:00:00:00:00' }
-      Then { match.vlan_vid == 0 }
-      Then { match.vlan_priority == 0 }
-      Then { match.ether_type == 0 }
-      Then { match.tos == 0 }
-      Then { match.ip_protocol == 0 }
+      Then { match.vlan_vid.zero? }
+      Then { match.vlan_priority.zero? }
+      Then { match.ether_type.zero? }
+      Then { match.tos.zero? }
+      Then { match.ip_protocol.zero? }
       Then { match.source_ip_address == '192.168.1.0' }
       Then { match.source_ip_address.prefixlen == 24 }
       Then { match.destination_ip_address == '0.0.0.0' }
-      Then { match.transport_source_port == 0 }
-      Then { match.transport_destination_port == 0 }
+      Then { match.transport_source_port.zero? }
+      Then { match.transport_destination_port.zero? }
     end
   end
 
@@ -117,15 +117,15 @@ describe Pio::OpenFlow10::Match do
       Then { match.in_port == 1 }
       Then { match.source_mac_address == '00:00:00:00:00:00' }
       Then { match.destination_mac_address == '00:00:00:00:00:00' }
-      Then { match.vlan_vid == 0 }
-      Then { match.vlan_priority == 0 }
-      Then { match.ether_type == 0 }
-      Then { match.tos == 0 }
-      Then { match.ip_protocol == 0 }
+      Then { match.vlan_vid.zero? }
+      Then { match.vlan_priority.zero? }
+      Then { match.ether_type.zero? }
+      Then { match.tos.zero? }
+      Then { match.ip_protocol.zero? }
       Then { match.source_ip_address == '0.0.0.0' }
       Then { match.destination_ip_address == '0.0.0.0' }
-      Then { match.transport_source_port == 0 }
-      Then { match.transport_destination_port == 0 }
+      Then { match.transport_source_port.zero? }
+      Then { match.transport_destination_port.zero? }
 
       describe '#==' do
         When(:result) { match == other }
@@ -156,18 +156,18 @@ describe Pio::OpenFlow10::Match do
         ]
       end
       Then { match.wildcards.fetch(:source_ip_address) == 8 }
-      Then { match.in_port == 0 }
+      Then { match.in_port.zero? }
       Then { match.source_mac_address == '00:00:00:00:00:00' }
       Then { match.destination_mac_address == '00:00:00:00:00:00' }
-      Then { match.vlan_vid == 0 }
-      Then { match.vlan_priority == 0 }
-      Then { match.ether_type == 0 }
-      Then { match.tos == 0 }
-      Then { match.ip_protocol == 0 }
+      Then { match.vlan_vid.zero? }
+      Then { match.vlan_priority.zero? }
+      Then { match.ether_type.zero? }
+      Then { match.tos.zero? }
+      Then { match.ip_protocol.zero? }
       Then { match.source_ip_address == '192.168.1.0/24' }
       Then { match.destination_ip_address == '0.0.0.0' }
-      Then { match.transport_source_port == 0 }
-      Then { match.transport_destination_port == 0 }
+      Then { match.transport_source_port.zero? }
+      Then { match.transport_destination_port.zero? }
     end
 
     context "with destination_ip_address: '192.168.1.0/24'" do
@@ -189,18 +189,18 @@ describe Pio::OpenFlow10::Match do
         ]
       end
       Then { match.wildcards.fetch(:destination_ip_address) == 8 }
-      Then { match.in_port == 0 }
+      Then { match.in_port.zero? }
       Then { match.source_mac_address == '00:00:00:00:00:00' }
       Then { match.destination_mac_address == '00:00:00:00:00:00' }
-      Then { match.vlan_vid == 0 }
-      Then { match.vlan_priority == 0 }
-      Then { match.ether_type == 0 }
-      Then { match.tos == 0 }
-      Then { match.ip_protocol == 0 }
+      Then { match.vlan_vid.zero? }
+      Then { match.vlan_priority.zero? }
+      Then { match.ether_type.zero? }
+      Then { match.tos.zero? }
+      Then { match.ip_protocol.zero? }
       Then { match.source_ip_address == '0.0.0.0' }
       Then { match.destination_ip_address == '192.168.1.0/24' }
-      Then { match.transport_source_port == 0 }
-      Then { match.transport_destination_port == 0 }
+      Then { match.transport_source_port.zero? }
+      Then { match.transport_destination_port.zero? }
     end
   end
 end

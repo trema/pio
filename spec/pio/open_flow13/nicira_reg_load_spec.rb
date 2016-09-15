@@ -19,11 +19,11 @@ describe Pio::OpenFlow13::NiciraRegLoad do
       Then { nicira_reg_load.action_length == 24 }
       Then { nicira_reg_load.vendor == 0x2320 }
       Then { nicira_reg_load.subtype == 7 }
-      Then { nicira_reg_load.offset == 0 }
+      Then { nicira_reg_load.offset.zero? }
       Then { nicira_reg_load.n_bits == 32 }
       Then { nicira_reg_load.destination == :reg0 }
       Then { nicira_reg_load._destination[:oxm_class] == 1 }
-      Then { nicira_reg_load._destination[:oxm_field] == 0 }
+      Then { nicira_reg_load._destination[:oxm_field].zero? }
       Then { nicira_reg_load._destination[:oxm_length] == 4 }
       Then { nicira_reg_load.value == 0xdeadbeef }
     end
@@ -41,7 +41,7 @@ describe Pio::OpenFlow13::NiciraRegLoad do
       Then { nicira_reg_load.action_length == 24 }
       Then { nicira_reg_load.vendor == 0x2320 }
       Then { nicira_reg_load.subtype == 7 }
-      Then { nicira_reg_load.offset == 0 }
+      Then { nicira_reg_load.offset.zero? }
       Then { nicira_reg_load.n_bits == 64 }
       Then { nicira_reg_load.destination == :metadata }
       Then { nicira_reg_load._destination[:oxm_class] == 0x8000 }
@@ -63,7 +63,7 @@ describe Pio::OpenFlow13::NiciraRegLoad do
       Then { nicira_reg_load.n_bits == 16 }
       Then { nicira_reg_load.destination == :reg0 }
       Then { nicira_reg_load._destination[:oxm_class] == 1 }
-      Then { nicira_reg_load._destination[:oxm_field] == 0 }
+      Then { nicira_reg_load._destination[:oxm_field].zero? }
       Then { nicira_reg_load._destination[:oxm_length] == 4 }
       Then { nicira_reg_load.value == 0xdeadbeef }
     end
