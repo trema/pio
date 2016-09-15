@@ -386,7 +386,7 @@ describe Pio::OpenFlow13::Match do
       end
       Then { match.ether_type == 0x0800 }
       Then { match.ip_protocol == 1 }
-      Then { match.icmpv4_code == 0 }
+      Then { match.icmpv4_code.zero? }
       And { match.class == Pio::OpenFlow13::Match }
       And { match.length == 24 }
       And { match.match_type == Pio::OpenFlow13::MATCH_TYPE_OXM }
@@ -829,7 +829,7 @@ describe Pio::OpenFlow13::Match do
       Given(:raw_data) do
         read_raw_data_file 'open_flow13/oxm_ether_type_field.raw'
       end
-      Then { match.ether_type == 0 }
+      Then { match.ether_type.zero? }
       And { match.class == Pio::OpenFlow13::Match }
       And { match.length == 16 }
       And { match.match_type == Pio::OpenFlow13::MATCH_TYPE_OXM }

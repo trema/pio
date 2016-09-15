@@ -23,17 +23,17 @@ describe Pio::OpenFlow13::NiciraRegMove do
       Then { nicira_reg_move.vendor == 0x2320 }
       Then { nicira_reg_move.subtype == 6 }
       Then { nicira_reg_move.n_bits == 48 }
-      Then { nicira_reg_move.source_offset == 0 }
-      Then { nicira_reg_move.destination_offset == 0 }
+      Then { nicira_reg_move.source_offset.zero? }
+      Then { nicira_reg_move.destination_offset.zero? }
       Then { nicira_reg_move.source == :arp_sender_hardware_address }
       Then { nicira_reg_move._source[:oxm_class] == 0x8000 }
       Then { nicira_reg_move._source[:oxm_field] == 24 }
-      Then { nicira_reg_move._source[:oxm_hasmask] == 0 }
+      Then { nicira_reg_move._source[:oxm_hasmask].zero? }
       Then { nicira_reg_move._source[:oxm_length] == 6 }
       Then { nicira_reg_move.destination == :arp_target_hardware_address }
       Then { nicira_reg_move._destination[:oxm_class] == 0x8000 }
       Then { nicira_reg_move._destination[:oxm_field] == 25 }
-      Then { nicira_reg_move._destination[:oxm_hasmask] == 0 }
+      Then { nicira_reg_move._destination[:oxm_hasmask].zero? }
       Then { nicira_reg_move._destination[:oxm_length] == 6 }
     end
   end

@@ -60,17 +60,17 @@ describe Pio::Icmp, '.read' do
     Then { icmp_request.ether_type == 0x0800 }
     Then { icmp_request.ip_version == 0x4 }
     Then { icmp_request.ip_header_length == 0x5 }
-    Then { icmp_request.ip_type_of_service == 0x0 }
+    Then { icmp_request.ip_type_of_service.zero? }
     Then { icmp_request.ip_total_length == 60 }
     Then { icmp_request.ip_identifier == 0x39d3 }
-    Then { icmp_request.ip_fragment == 0 }
+    Then { icmp_request.ip_fragment.zero? }
     Then { icmp_request.ip_ttl == 128 }
     Then { icmp_request.ip_protocol == 1 }
     Then { icmp_request.ip_header_checksum == 0x2ed0 }
     Then { icmp_request.source_ip_address.to_s == '192.168.1.102' }
     Then { icmp_request.destination_ip_address.to_s == '8.8.8.8' }
     Then { icmp_request.icmp_type == 8 }
-    Then { icmp_request.icmp_code == 0 }
+    Then { icmp_request.icmp_code.zero? }
     Then { icmp_request.icmp_checksum == 0x4c5b }
     Then { icmp_request.icmp_identifier == 0x0100 }
     Then { icmp_request.icmp_sequence_number == 0x0001 }
@@ -133,17 +133,17 @@ describe Pio::Icmp, '.read' do
     Then { icmp_reply.ether_type == 0x0800 }
     Then { icmp_reply.ip_version == 0x4 }
     Then { icmp_reply.ip_header_length == 0x5 }
-    Then { icmp_reply.ip_type_of_service == 0 }
+    Then { icmp_reply.ip_type_of_service.zero? }
     Then { icmp_reply.ip_total_length == 60 }
-    Then { icmp_reply.ip_identifier == 0 }
-    Then { icmp_reply.ip_fragment == 0 }
+    Then { icmp_reply.ip_identifier.zero? }
+    Then { icmp_reply.ip_fragment.zero? }
     Then { icmp_reply.ip_ttl == 45 }
     Then { icmp_reply.ip_protocol == 1 }
     Then { icmp_reply.ip_header_checksum == 0xbba3 }
     Then { icmp_reply.source_ip_address.to_s == '8.8.8.8' }
     Then { icmp_reply.destination_ip_address.to_s == '192.168.1.102' }
-    Then { icmp_reply.icmp_type == 0 }
-    Then { icmp_reply.icmp_code == 0 }
+    Then { icmp_reply.icmp_type.zero? }
+    Then { icmp_reply.icmp_code.zero? }
     Then { icmp_reply.icmp_checksum == 0x545b }
     Then { icmp_reply.icmp_identifier == 0x0100 }
     Then { icmp_reply.icmp_sequence_number == 0x0001 }

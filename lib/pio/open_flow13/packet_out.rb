@@ -15,7 +15,7 @@ module Pio
         uint32 :in_port
 
         def get
-          (in_port == CONTROLLER) ? :controller : in_port
+          in_port == CONTROLLER ? :controller : in_port
         end
 
         def set(value)

@@ -14,7 +14,7 @@ module Pio
         # tos (IP ToS) value consists of 8 bits, of which only the
         # 6 high-order bits belong to DSCP, the 2 low-order bits must
         # be zero.
-        unless type_of_service.unsigned_8bit? && type_of_service % 4 == 0
+        unless type_of_service.unsigned_8bit? && (type_of_service % 4).zero?
           raise ArgumentError, 'Invalid type_of_service (ToS) value.'
         end
         super(type_of_service: type_of_service)

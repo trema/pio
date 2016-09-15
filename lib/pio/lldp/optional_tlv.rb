@@ -29,7 +29,7 @@ module Pio
       end
 
       def end_of_lldpdu?
-        tlv_type == 0
+        tlv_type.zero?
       end
 
       def chooser
@@ -52,7 +52,7 @@ module Pio
       end
 
       def end_of_lldpdu_tlv?
-        tlv_type == 0
+        tlv_type.zero?
       end
     end
   end

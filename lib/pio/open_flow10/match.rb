@@ -46,7 +46,7 @@ module Pio
         # This method smells of :reek:FeatureEnvy
         def get
           BITS.each_with_object(Hash.new(0)) do |(key, bit), memo|
-            next if flags & bit == 0
+            next if (flags & bit).zero?
             if /(source_ip_address|destination_ip_address)(\d)/=~ key
               memo[$LAST_MATCH_INFO[1].to_sym] |= 1 << $LAST_MATCH_INFO[2].to_i
             else
