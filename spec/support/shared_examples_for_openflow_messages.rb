@@ -51,8 +51,8 @@ shared_examples 'an OpenFlow message with Datapath ID' do |klass|
 
   context 'with { datapath_id: 0 }' do
     Given(:options) { { datapath_id: 0 } }
-    Then { message.datapath_id == 0 }
-    And { message.dpid == 0 }
+    Then { message.datapath_id.zero? }
+    And { message.dpid.zero? }
     And { message.datapath_id.is_a? Integer }
     And { message.dpid.is_a? Integer }
   end

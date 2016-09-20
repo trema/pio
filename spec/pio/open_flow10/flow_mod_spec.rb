@@ -54,19 +54,19 @@ describe Pio::OpenFlow10::FlowMod do
       Then { flow_mod.match.in_port == 1 }
       Then { flow_mod.match.source_mac_address == '00:00:00:00:00:00' }
       Then { flow_mod.match.destination_mac_address == '00:00:00:00:00:00' }
-      Then { flow_mod.match.vlan_vid == 0 }
-      Then { flow_mod.match.vlan_priority == 0 }
-      Then { flow_mod.match.ether_type == 0 }
-      Then { flow_mod.match.tos == 0 }
-      Then { flow_mod.match.ip_protocol == 0 }
+      Then { flow_mod.match.vlan_vid.zero? }
+      Then { flow_mod.match.vlan_priority.zero? }
+      Then { flow_mod.match.ether_type.zero? }
+      Then { flow_mod.match.tos.zero? }
+      Then { flow_mod.match.ip_protocol.zero? }
       Then { flow_mod.match.source_ip_address == '0.0.0.0' }
       Then { flow_mod.match.destination_ip_address == '0.0.0.0' }
-      Then { flow_mod.match.transport_source_port == 0 }
-      Then { flow_mod.match.transport_destination_port == 0 }
+      Then { flow_mod.match.transport_source_port.zero? }
+      Then { flow_mod.match.transport_destination_port.zero? }
       Then { flow_mod.cookie == 1 }
       Then { flow_mod.command == :add }
-      Then { flow_mod.idle_timeout == 0 }
-      Then { flow_mod.hard_timeout == 0 }
+      Then { flow_mod.idle_timeout.zero? }
+      Then { flow_mod.hard_timeout.zero? }
       Then { flow_mod.priority == 0xffff }
       Then { flow_mod.buffer_id == 0xffffffff }
       Then { flow_mod.out_port == 2 }
@@ -119,19 +119,19 @@ describe Pio::OpenFlow10::FlowMod do
       Then { flow_mod.match.in_port == 1 }
       Then { flow_mod.match.source_mac_address == '00:00:00:00:00:00' }
       Then { flow_mod.match.destination_mac_address == '00:00:00:00:00:00' }
-      Then { flow_mod.match.vlan_vid == 0 }
-      Then { flow_mod.match.vlan_priority == 0 }
-      Then { flow_mod.match.ether_type == 0 }
-      Then { flow_mod.match.tos == 0 }
-      Then { flow_mod.match.ip_protocol == 0 }
+      Then { flow_mod.match.vlan_vid.zero? }
+      Then { flow_mod.match.vlan_priority.zero? }
+      Then { flow_mod.match.ether_type.zero? }
+      Then { flow_mod.match.tos.zero? }
+      Then { flow_mod.match.ip_protocol.zero? }
       Then { flow_mod.match.source_ip_address == '0.0.0.0' }
       Then { flow_mod.match.destination_ip_address == '0.0.0.0' }
-      Then { flow_mod.match.transport_source_port == 0 }
-      Then { flow_mod.match.transport_destination_port == 0 }
+      Then { flow_mod.match.transport_source_port.zero? }
+      Then { flow_mod.match.transport_destination_port.zero? }
       Then { flow_mod.cookie == 1 }
       Then { flow_mod.command == :add }
-      Then { flow_mod.idle_timeout == 0 }
-      Then { flow_mod.hard_timeout == 0 }
+      Then { flow_mod.idle_timeout.zero? }
+      Then { flow_mod.hard_timeout.zero? }
       Then { flow_mod.priority == 0xffff }
       Then { flow_mod.buffer_id == 0xffffffff }
       Then { flow_mod.out_port == 2 }

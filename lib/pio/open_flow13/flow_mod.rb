@@ -36,7 +36,7 @@ module Pio
         uint32 :out_port, initial_value: ANY
 
         def get
-          (out_port == ANY) ? :any : out_port
+          out_port == ANY ? :any : out_port
         end
 
         def set(value)
@@ -53,7 +53,7 @@ module Pio
         uint32 :out_group, initial_value: ANY
 
         def get
-          (out_group == ANY) ? :any : out_group
+          out_group == ANY ? :any : out_group
         end
 
         def set(value)

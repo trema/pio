@@ -11,7 +11,7 @@ describe Pio::OpenFlow13::WriteMetadata do
         }
       end
       Then { write_metadata.metadata == 1 }
-      Then { write_metadata.metadata_mask == 0 }
+      Then { write_metadata.metadata_mask.zero? }
     end
 
     context 'with metadata: 1, metadata_mask: 1' do

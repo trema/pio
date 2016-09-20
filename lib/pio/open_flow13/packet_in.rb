@@ -9,6 +9,7 @@ module Pio
     class PacketIn < OpenFlow::Message
       # Why is this packet being sent to the controller?
       # (enum ofp_packet_in_reason)
+      # rubocop:disable LineLength
       class Reason < BinData::Primitive
         REASONS = { no_match: 0, action: 1, invalid_ttl: 2 }.freeze
 
@@ -35,7 +36,7 @@ module Pio
       oxm :match
       string :padding, length: 2
       hide :padding
-      string :raw_data, read_length: :total_len
+      string :raw_data, read_length: -> { length - header_length - (16 + match.length + 2) }
 
       attr_accessor :datapath_id
       alias dpid datapath_id
@@ -53,6 +54,7 @@ module Pio
         bindata_value = data.__send__(method, *args)
         bindata_value.try(:snapshot) || bindata_value
       end
+      # rubocop:enable LineLength
     end
   end
 end
