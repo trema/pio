@@ -32,7 +32,7 @@ module Pio
         result + each.descendants
       end
       all_class.select do |each|
-        each.parents.include?(Pio.const_get(version))
+        each.parents.include?(Class.const_get("Pio::#{version}"))
       end
     end
     private_class_method :find_all_class_by_version
