@@ -1,5 +1,3 @@
-sudo: false
-
 language: ruby
 
 before_install:
@@ -13,10 +11,8 @@ env:
     - secure: cbR8GBZyaDxE54pfGkfzhuTQEh3mpcghrx95dL42df3Ei9s3DHCI2Q/yDChUMY3eeqzHUNAt9fPQeDZsMG/aHUrh775bebh28M8zSkUYzv6x1diPnDtywXGutW7MKGak6jw8F+45J6TW4IxNFYMmuWyBu9HOd5VkqWRKvezvqc8=
 
 rvm:
-  - 2.0
-  - 2.1
   - 2.2
-  - 2.3.0
+  - 2.3
   - ruby-head
 
 matrix:

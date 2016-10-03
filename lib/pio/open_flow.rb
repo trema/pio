@@ -1,7 +1,6 @@
 require 'active_support/core_ext/array/access'
 require 'active_support/core_ext/module/attribute_accessors'
 require 'active_support/core_ext/module/introspection'
-require 'active_support/core_ext/module/qualified_const.rb'
 require 'pio/open_flow/header'
 require 'pio/open_flow/parser'
 
@@ -44,8 +43,7 @@ module Pio
       if Pio.const_defined?(class_name)
         Pio.module_eval { remove_const class_name }
       end
-      Object.qualified_const_set("Pio::#{class_name}",
-                                 "Pio::#{version}::#{class_name}".constantize)
+      Pio.const_set(class_name, "Pio::#{version}::#{class_name}".constantize)
     end
     private_class_method :alias_open_flow_class
   end

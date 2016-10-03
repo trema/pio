@@ -24,9 +24,9 @@ Gem::Specification.new do |gem|
   gem.test_files = Dir.glob('spec/**/*')
   gem.test_files += Dir.glob('features/**/*')
 
-  gem.required_ruby_version = '>= 2.0.0'
+  gem.required_ruby_version = '>= 2.2.2'
 
   gem.add_dependency 'bindata', '~> 2.1.0'
-  gem.add_dependency 'activesupport', '~> 4.2', '>= 4.2.4'
+  gem.add_dependency 'activesupport', '~> 5.0.0.1'
   gem.add_dependency 'bundler', '>= 1.11.2', '< 2.0'
 end
