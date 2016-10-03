@@ -31,7 +31,7 @@ module Pio
 
       def ff_and_padding
         padding_length = OPTION_FIELD_LENGTH - dhcp.optional_tlvs.num_bytes - 1
-        "\xFF" + (padding_length > 0 ? "\x00" * padding_length : '')
+        [0xFF].pack('C') + (padding_length > 0 ? "\x00" * padding_length : '')
       end
     end
   end
