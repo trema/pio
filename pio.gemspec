@@ -28,5 +28,4 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency 'bindata', '~> 2.1.0'
   gem.add_dependency 'activesupport', '~> 5.0.0.1'
-  gem.add_dependency 'bundler', '>= 1.11.2', '< 2.0'
 end

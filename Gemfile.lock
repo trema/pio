@@ -4,7 +4,6 @@ PATH
     pio (0.30.0)
       activesupport (~> 5.0.0.1)
       bindata (~> 2.1.0)
-      bundler (>= 1.11.2, < 2.0)
 
 GEM
   remote: https://rubygems.org/
