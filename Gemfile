@@ -4,42 +4,32 @@ gemspec
 
 gem 'rake'
 
-group :development do
-  gem 'pry', require: false
-end
-
-group :test do
+group :development, :test do
   gem 'aruba', require: false
+  gem 'codeclimate-test-reporter', require: false
+  gem 'coveralls', require: false
   gem 'cucumber', require: false
+  gem 'flay', require: false
+  gem 'flog', require: false
+  gem 'reek', require: false
   gem 'rspec', require: false
   gem 'rspec-given', require: false
+  gem 'rubocop', require: false
 end
 
-group :guard do
+group :development do
   gem 'guard', require: false
   gem 'guard-bundler', require: false
   gem 'guard-cucumber', require: false
   gem 'guard-rspec', require: false
   gem 'guard-rubocop', require: false
+  gem 'inch', require: false
+  gem 'listen', require: false
+  gem 'pry', require: false
   gem 'rb-fchange', require: false
   gem 'rb-fsevent', require: false
   gem 'rb-inotify', require: false
-  gem 'terminal-notifier-guard', require: false
-  gem 'listen', require: false
-end
-
-group :metrics do
-  gem 'codeclimate-test-reporter', require: false
-  gem 'coveralls', require: false
-  gem 'flay', require: false
-  gem 'flog', require: false
-  # Reek dropped Ruby2.0 compatibility
-  gem 'reek', require: false, platforms: [:ruby_21, :ruby_22, :ruby_23]
-  gem 'rubocop', require: false
-end
-
-group :doc do
-  gem 'inch', require: false
   gem 'relish', require: false
+  gem 'terminal-notifier-guard', require: false
   gem 'yard', require: false
 end
