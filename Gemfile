@@ -2,8 +2,7 @@ source 'https://rubygems.org'
 
 gemspec
 
-# Rake 11.0.0 is broken
-gem 'rake', '10.5.0'
+gem 'rake'
 
 group :development do
   gem 'pry', require: false
