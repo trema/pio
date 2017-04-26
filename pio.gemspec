@@ -14,13 +14,13 @@ Gem::Specification.new do |gem|
   gem.email = ['yasuhito@gmail.com']
   gem.homepage = 'http://github.com/trema/pio'
 
-  gem.files = %w(CONTRIBUTING.md LICENSE Rakefile pio.gemspec)
+  gem.files = %w(CONTRIBUTING.md Rakefile pio.gemspec)
   gem.files += Dir.glob('lib/**/*.rb')
   gem.files += Dir.glob('spec/**/*')
 
   gem.require_paths = ['lib']
 
-  gem.extra_rdoc_files = %w(README.md CHANGELOG.md LICENSE CONTRIBUTING.md)
+  gem.extra_rdoc_files = %w(README.md CHANGELOG.md CONTRIBUTING.md)
   gem.test_files = Dir.glob('spec/**/*')
   gem.test_files += Dir.glob('features/**/*')
 
