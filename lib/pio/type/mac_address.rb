@@ -1,5 +1,7 @@
 require 'bindata'
 require 'pio/mac'
+require 'pio/monkey_patch/integer'
+require 'pio/monkey_patch/uint'
 
 module Pio
   module Type
@@ -15,6 +17,14 @@ module Pio
         Mac.new(octets.reduce('') do |str, each|
                   str + format('%02x', each)
                 end.hex)
+      end
+
+      def to_bytes
+        octets.map(&:to_hex).join(', ')
+      end
+
+      def inspect
+        %("#{get}")
       end
     end
   end

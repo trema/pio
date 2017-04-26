@@ -1,3 +1,4 @@
+require 'pio/open_flow/message'
 require 'pio/open_flow10/stats_type'
 
 module Pio
@@ -6,7 +7,7 @@ module Pio
     module AggregateStats
       # Aggregate Stats Reply message
       class Reply < OpenFlow::Message
-        open_flow_header version: 1, message_type: 17, message_length: 32
+        open_flow_header version: 1, type: 17, length: 32
         stats_type :stats_type, value: -> { :aggregate }
         uint16 :flags
         uint64 :packet_count

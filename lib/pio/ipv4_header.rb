@@ -1,9 +1,12 @@
+require 'pio/instance_inspector'
+require 'pio/monkey_patch/bindata_string'
 require 'pio/payload'
+require 'pio/ruby_dumper'
 require 'pio/type/ip_address'
 
 module Pio
   # IP Version 4 Header Format
-  module IPv4Header
+  module IPv4
     # Internet protocol numbers for ipv4_header.ip_protocol
     module ProtocolNumber
       ICMP = 1
@@ -39,7 +42,7 @@ module Pio
         in_port: in_port,
         source_mac_address: source_mac,
         destination_mac_address: destination_mac,
-        vlan_vid: vlan_vid,
+        vlan_vid: vlan? ? vlan_vid : 0xffff,
         vlan_priority: vlan_pcp,
         ether_type: ether_type,
         tos: ip_type_of_service,
@@ -52,6 +55,10 @@ module Pio
       Pio::OpenFlow10::Match.new match_options
     end
     # rubocop:enable MethodLength
+
+    def ip_header_length_in_bytes
+      ip_header_length * 4
+    end
 
     private
 
@@ -81,5 +88,20 @@ module Pio
     def ip_option_length
       20 - ip_header_length * 4
     end
+  end
+
+  # IPv4 header generator/parser
+  class IPv4Header < BinData::Record
+    include IPv4
+    include InstanceInspector
+    include RubyDumper
+
+    ipv4_header
+
+    # rubocop:disable LineLength
+    def self.inspect
+      'IPv4Header(ip_version: bit4, ip_header_length: bit4, ip_type_of_service: uint8, ip_total_length: uint16, ip_identifier: uint16, ip_flag: bit3, ip_fragment: bit13, ip_ttl: uint8, ip_protocol: uint8, ip_header_checksum: uint16, source_ip_address: ip_address, destination_ip_address: ip_address, ip_option: string)'
+    end
+    # rubocop:enable LineLength
   end
 end

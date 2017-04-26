@@ -1,14 +1,28 @@
+require 'pio/class_inspector'
 require 'pio/icmp/format'
+require 'pio/instance_inspector'
+require 'pio/message'
+require 'pio/ruby_dumper'
 
 module Pio
   class Icmp
     # Base class of Icmp::Request and Icmp::Reply.
-    class Message
-      private_class_method :new
+    class Message < Pio::Message
+      extend ClassInspector
+      include InstanceInspector
+
+      def self.fields
+        Icmp::Format.fields
+      end
+
+      def self.create(format)
+        allocate.tap do |message|
+          message.instance_variable_set :@format, format
+        end
+      end
 
       def initialize(user_options)
-        options = self.class.const_get(:Options).new(user_options)
-        @format = Icmp::Format.new(options.to_hash)
+        @format = Icmp::Format.new(parse_options(user_options))
       end
 
       def method_missing(method, *args)

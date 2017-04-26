@@ -1,9 +1,5 @@
 require 'pio'
 
-describe Pio::ARP::Reply do
-  Then { Pio::ARP::Reply == Pio::Arp::Reply }
-end
-
 describe Pio::Arp::Reply, '.new' do
   ARP_REPLY_DUMP =
     [

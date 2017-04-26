@@ -26,6 +26,14 @@ module Pio
       def ==(other)
         get == other
       end
+
+      def to_bytes
+        octets.map(&:to_hex).join(', ')
+      end
+
+      def inspect
+        %("#{get}")
+      end
     end
   end
 end

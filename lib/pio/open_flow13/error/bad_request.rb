@@ -1,3 +1,4 @@
+require 'pio/open_flow/error_message'
 require 'pio/open_flow/message'
 require 'pio/open_flow13/error/error_type13'
 
@@ -23,7 +24,7 @@ module Pio
             bad_port: 11,
             bad_packet: 12,
             multipart_buffer_overflow: 13
-          }
+          }.freeze
 
           endian :big
           uint16 :error_code
@@ -38,8 +39,8 @@ module Pio
         end
 
         open_flow_header version: 4,
-                         message_type: 1,
-                         message_length: -> { 12 + raw_data.length }
+                         type: OpenFlow::ErrorMessage.type,
+                         length: -> { 12 + raw_data.length }
         error_type13 :error_type, value: -> { :bad_request }
         bad_request_code :error_code
         rest :raw_data

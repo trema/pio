@@ -1,16 +1,17 @@
 @open_flow10
-Feature: Pio::AggregateStats::Request
+Feature: AggregateStats::Request
+
+  Aggregate information about multiple flows is requested with the
+  Aggregate Stats Request message
+
   Scenario: new
-    When I try to create an OpenFlow message with:
+    When I create an OpenFlow message with:
       """
-      Pio::AggregateStats::Request.new(match: Match.new(in_port: 1))
+      Pio::AggregateStats::Request.new(match: Pio::Match.new(in_port: 1))
       """
-    Then it should finish successfully
-    And the message has the following fields and values:
+    Then the message has the following fields and values:
       | field                                              | value      |
-      | ofp_version                                        | 1          |
-      | message_type                                       | 16         |
-      | message_length                                     | 56         |
+      | version                                            | 1          |
       | transaction_id                                     | 0          |
       | xid                                                | 0          |
       | stats_type                                         | :aggregate |
@@ -32,13 +33,10 @@ Feature: Pio::AggregateStats::Request
 
 
   Scenario: read
-    When I try to parse a file named "open_flow10/aggregate_stats_request.raw" with "AggregateStats::Request" class
-    Then it should finish successfully
-    And the message has the following fields and values:
+    When I parse a file named "open_flow10/aggregate_stats_request.raw" with "Pio::AggregateStats::Request" class
+    Then the message has the following fields and values:
       | field                                              | value      |
-      | ofp_version                                        | 1          |
-      | message_type                                       | 16         |
-      | message_length                                     | 56         |
+      | version                                            | 1          |
       | transaction_id                                     | 14         |
       | xid                                                | 14         |
       | stats_type                                         | :aggregate |

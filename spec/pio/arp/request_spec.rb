@@ -1,9 +1,5 @@
 require 'pio'
 
-describe Pio::ARP::Request do
-  Then { Pio::ARP::Request == Pio::Arp::Request }
-end
-
 describe Pio::Arp::Request, '.new' do
   ARP_REQUEST_DUMP =
     [

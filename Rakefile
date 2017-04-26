@@ -1,7 +1,7 @@
 require 'bundler/gem_tasks'
 
-RELISH_PROJECT = 'trema/pio'
-FLAY_THRESHOLD = 1343
+RELISH_PROJECT = 'trema/pio'.freeze
+FLAY_THRESHOLD = 1446
 
 task default: :travis
 task test: [:spec, :cucumber]
@@ -24,7 +24,7 @@ end
 desc 'Dump packet data file in Array'
 task :dump do
   unless ENV['PACKET_FILE']
-    fail 'Usage: rake PACKET_FILE="foobar.{pcap,raw}" dump'
+    raise 'Usage: rake PACKET_FILE="foobar.{pcap,raw}" dump'
   end
   packet_file =
     File.join(File.dirname(__FILE__), 'features/', ENV['PACKET_FILE'])
@@ -38,6 +38,6 @@ task :dump do
       end
     end
   else
-    fail "Unsupported file extension: #{ENV['PACKET_FILE']}"
+    raise "Unsupported file extension: #{ENV['PACKET_FILE']}"
   end
 end

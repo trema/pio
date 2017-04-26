@@ -1,12 +1,13 @@
 require 'English'
 require 'bindata'
+require 'pio/open_flow/flow_match'
 require 'pio/type/ip_address'
 require 'pio/type/mac_address'
 
 module Pio
   module OpenFlow10
     # Fields to match against flows
-    class Match
+    class Match < OpenFlow::FlowMatch
       # Flow wildcards
       class Wildcards < BinData::Primitive
         BITS = {
@@ -34,8 +35,8 @@ module Pio
           destination_ip_address_all: 1 << 19,
           vlan_priority: 1 << 20,
           tos: 1 << 21
-        }
-        NW_FLAGS = [:source_ip_address, :destination_ip_address]
+        }.freeze
+        NW_FLAGS = [:source_ip_address, :destination_ip_address].freeze
         FLAGS = BITS.keys.select { |each| !(/^(source|destination)_ip/=~ each) }
 
         endian :big
@@ -45,7 +46,7 @@ module Pio
         # This method smells of :reek:FeatureEnvy
         def get
           BITS.each_with_object(Hash.new(0)) do |(key, bit), memo|
-            next if flags & bit == 0
+            next if (flags & bit).zero?
             if /(source_ip_address|destination_ip_address)(\d)/=~ key
               memo[$LAST_MATCH_INFO[1].to_sym] |= 1 << $LAST_MATCH_INFO[2].to_i
             else
@@ -56,13 +57,13 @@ module Pio
 
         def set(params)
           self.flags = params.inject(0) do |memo, (key, val)|
-            memo | case key
-                   when :source_ip_address, :destination_ip_address
-                     (params.fetch(key) & 31) <<
-                       (key == :source_ip_address ? 8 : 14)
-                   else
-                     val ? BITS.fetch(key) : 0
-                   end
+            memo |
+              case key
+              when :source_ip_address, :destination_ip_address
+                (params.fetch(key) & 31) << (key == :source_ip_address ? 8 : 14)
+              else
+                val ? BITS.fetch(key) : 0
+              end
           end
         end
 
@@ -143,7 +144,7 @@ module Pio
             memo["#{each}_all".to_sym] = true
           end
         end
-        @format = MatchFormat.new({ wildcards: flags }.merge user_options)
+        @format = MatchFormat.new({ wildcards: flags }.merge(user_options))
       end
       # rubocop:enable MethodLength
 

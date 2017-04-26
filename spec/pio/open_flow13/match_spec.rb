@@ -386,7 +386,7 @@ describe Pio::OpenFlow13::Match do
       end
       Then { match.ether_type == 0x0800 }
       Then { match.ip_protocol == 1 }
-      Then { match.icmpv4_code == 0 }
+      Then { match.icmpv4_code.zero? }
       And { match.class == Pio::OpenFlow13::Match }
       And { match.length == 24 }
       And { match.match_type == Pio::OpenFlow13::MATCH_TYPE_OXM }
@@ -696,15 +696,15 @@ describe Pio::OpenFlow13::Match do
   end
 
   def read_raw_data_file(name)
-    IO.read File.join(__dir__, '..', '..', '..', name)
+    IO.read File.join(__dir__, '..', '..', '..', 'fixtures', name)
   end
 
   describe '.read' do
     When(:match) { Pio::OpenFlow13::Match.read(raw_data) }
 
-    context 'with file "features/open_flow13/oxm_no_fields.raw"' do
+    context 'with file "open_flow13/oxm_no_fields.raw"' do
       Given(:raw_data) do
-        read_raw_data_file 'features/open_flow13/oxm_no_fields.raw'
+        read_raw_data_file 'open_flow13/oxm_no_fields.raw'
       end
       Then { match.match_fields == [] }
       And { match.class == Pio::OpenFlow13::Match }
@@ -713,9 +713,9 @@ describe Pio::OpenFlow13::Match do
       And { match.match_length == 4 }
     end
 
-    context 'with file "features/open_flow13/oxm_in_port_field.raw"' do
+    context 'with file "open_flow13/oxm_in_port_field.raw"' do
       Given(:raw_data) do
-        read_raw_data_file 'features/open_flow13/oxm_in_port_field.raw'
+        read_raw_data_file 'open_flow13/oxm_in_port_field.raw'
       end
       Then { match.in_port == 1 }
       And { match.class == Pio::OpenFlow13::Match }
@@ -735,9 +735,9 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields[0].oxm_length == 4 }
     end
 
-    context 'with file "features/open_flow13/oxm_ether_destination_field.raw"' do
+    context 'with file "open_flow13/oxm_ether_destination_field.raw"' do
       Given(:raw_data) do
-        read_raw_data_file 'features/open_flow13/oxm_ether_destination_field.raw'
+        read_raw_data_file 'open_flow13/oxm_ether_destination_field.raw'
       end
       Then { match.destination_mac_address == 'ff:ff:ff:ff:ff:ff' }
       And { match.class == Pio::OpenFlow13::Match }
@@ -757,9 +757,9 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields[0].oxm_length == 6 }
     end
 
-    context 'with file "features/open_flow13/oxm_ether_source_field.raw"' do
+    context 'with file "open_flow13/oxm_ether_source_field.raw"' do
       Given(:raw_data) do
-        read_raw_data_file 'features/open_flow13/oxm_ether_source_field.raw'
+        read_raw_data_file 'open_flow13/oxm_ether_source_field.raw'
       end
       Then { match.source_mac_address == '01:02:03:04:05:06' }
       And { match.class == Pio::OpenFlow13::Match }
@@ -779,9 +779,9 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields[0].oxm_length == 6 }
     end
 
-    context 'with file "features/open_flow13/oxm_masked_ether_destination_field.raw"' do
+    context 'with file "open_flow13/oxm_masked_ether_destination_field.raw"' do
       Given(:raw_data) do
-        read_raw_data_file 'features/open_flow13/oxm_masked_ether_destination_field.raw'
+        read_raw_data_file 'open_flow13/oxm_masked_ether_destination_field.raw'
       end
       Then { match.destination_mac_address == 'ff:ff:ff:ff:ff:ff' }
       Then { match.destination_mac_address_mask == 'ff:ff:ff:00:00:00' }
@@ -802,9 +802,9 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields[0].oxm_length == 12 }
     end
 
-    context 'with file "features/open_flow13/oxm_masked_ether_source_field.raw"' do
+    context 'with file "open_flow13/oxm_masked_ether_source_field.raw"' do
       Given(:raw_data) do
-        read_raw_data_file 'features/open_flow13/oxm_masked_ether_source_field.raw'
+        read_raw_data_file 'open_flow13/oxm_masked_ether_source_field.raw'
       end
       Then { match.source_mac_address == '01:02:03:04:05:06' }
       Then { match.source_mac_address_mask == 'ff:ff:ff:00:00:00' }
@@ -825,11 +825,11 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields[0].oxm_length == 12 }
     end
 
-    context 'with file "features/open_flow13/oxm_ether_type_field.raw"' do
+    context 'with file "open_flow13/oxm_ether_type_field.raw"' do
       Given(:raw_data) do
-        read_raw_data_file 'features/open_flow13/oxm_ether_type_field.raw'
+        read_raw_data_file 'open_flow13/oxm_ether_type_field.raw'
       end
-      Then { match.ether_type == 0 }
+      Then { match.ether_type.zero? }
       And { match.class == Pio::OpenFlow13::Match }
       And { match.length == 16 }
       And { match.match_type == Pio::OpenFlow13::MATCH_TYPE_OXM }
@@ -847,9 +847,9 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields[0].oxm_length == 2 }
     end
 
-    context 'with file "features/open_flow13/oxm_vlan_vid_field.raw"' do
+    context 'with file "open_flow13/oxm_vlan_vid_field.raw"' do
       Given(:raw_data) do
-        read_raw_data_file 'features/open_flow13/oxm_vlan_vid_field.raw'
+        read_raw_data_file 'open_flow13/oxm_vlan_vid_field.raw'
       end
       Then { match.vlan_vid == 10 }
       And { match.class == Pio::OpenFlow13::Match }
@@ -869,9 +869,9 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields[0].oxm_length == 2 }
     end
 
-    context 'with file "features/open_flow13/oxm_vlan_pcp_field.raw"' do
+    context 'with file "open_flow13/oxm_vlan_pcp_field.raw"' do
       Given(:raw_data) do
-        read_raw_data_file 'features/open_flow13/oxm_vlan_pcp_field.raw'
+        read_raw_data_file 'open_flow13/oxm_vlan_pcp_field.raw'
       end
       Then { match.vlan_pcp == 5 }
       And { match.class == Pio::OpenFlow13::Match }
@@ -891,9 +891,9 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields[0].oxm_length == 2 }
     end
 
-    context 'with file "features/open_flow13/oxm_ip_dscp_field.raw"' do
+    context 'with file "open_flow13/oxm_ip_dscp_field.raw"' do
       Given(:raw_data) do
-        read_raw_data_file 'features/open_flow13/oxm_ip_dscp_field.raw'
+        read_raw_data_file 'open_flow13/oxm_ip_dscp_field.raw'
       end
       Then { match.ip_dscp == 0x2e }
       And { match.class == Pio::OpenFlow13::Match }
@@ -913,9 +913,9 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields[0].oxm_length == 2 }
     end
 
-    context 'with file "features/open_flow13/oxm_ip_ecn_field.raw"' do
+    context 'with file "open_flow13/oxm_ip_ecn_field.raw"' do
       Given(:raw_data) do
-        read_raw_data_file 'features/open_flow13/oxm_ip_ecn_field.raw'
+        read_raw_data_file 'open_flow13/oxm_ip_ecn_field.raw'
       end
       Then { match.ip_ecn == 3 }
       And { match.class == Pio::OpenFlow13::Match }
@@ -935,9 +935,9 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields[0].oxm_length == 2 }
     end
 
-    context 'with file "features/open_flow13/oxm_ipv4_source_field.raw"' do
+    context 'with file "open_flow13/oxm_ipv4_source_field.raw"' do
       Given(:raw_data) do
-        read_raw_data_file 'features/open_flow13/oxm_ipv4_source_field.raw'
+        read_raw_data_file 'open_flow13/oxm_ipv4_source_field.raw'
       end
       Then { match.ether_type == 0x0800 }
       Then { match.ipv4_source_address == '1.2.3.4' }
@@ -968,9 +968,9 @@ describe Pio::OpenFlow13::Match do
       And { match.match_fields[1].oxm_length == 4 }
     end
 
-    context 'with file "features/open_flow13/oxm_ipv4_destination_field.raw"' do
+    context 'with file "open_flow13/oxm_ipv4_destination_field.raw"' do
       Given(:raw_data) do
-        read_raw_data_file 'features/open_flow13/oxm_ipv4_destination_field.raw'
+        read_raw_data_file 'open_flow13/oxm_ipv4_destination_field.raw'
       end
       Then { match.ether_type == 0x0800 }
       Then { match.ipv4_destination_address == '11.22.33.44' }

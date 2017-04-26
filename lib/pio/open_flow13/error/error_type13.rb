@@ -19,7 +19,7 @@ module Pio
           meter_mod_failed: 12,
           table_features_failed: 13,
           experimenter: 0xffff
-        }
+        }.freeze
 
         endian :big
         uint16 :error_type

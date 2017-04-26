@@ -38,18 +38,6 @@ shared_examples 'an OpenFlow message' do |klass|
   end
 end
 
-shared_examples 'an OpenFlow message with no body' do |klass|
-  describe '.new' do
-    When(:message) { klass.new(options) }
-
-    context "with body: 'DEADBEEF'" do
-      When(:options) { { body: 'DEADBEEF' } }
-
-      Then { message.body == '' }
-    end
-  end
-end
-
 shared_examples 'an OpenFlow message with Datapath ID' do |klass|
   When(:message) { klass.new(options) }
 
@@ -63,14 +51,18 @@ shared_examples 'an OpenFlow message with Datapath ID' do |klass|
 
   context 'with { datapath_id: 0 }' do
     Given(:options) { { datapath_id: 0 } }
-    Then { message.datapath_id == 0 }
+    Then { message.datapath_id.zero? }
+    And { message.dpid.zero? }
     And { message.datapath_id.is_a? Integer }
+    And { message.dpid.is_a? Integer }
   end
 
   context 'with { datapath_id: 2**64 - 1 }' do
     Given(:options) { { datapath_id: 2**64 - 1 } }
     Then { message.datapath_id == 2**64 - 1 }
+    And { message.dpid == 2**64 - 1 }
     And { message.datapath_id.is_a? Integer }
+    And { message.dpid.is_a? Integer }
   end
 
   context 'with { datapath_id: 2**64 }' do

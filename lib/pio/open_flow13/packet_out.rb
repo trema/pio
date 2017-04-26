@@ -1,6 +1,7 @@
+require 'active_support/core_ext/object/try'
 require 'pio/open_flow'
+require 'pio/open_flow/buffer_id'
 require 'pio/open_flow13/actions'
-require 'pio/open_flow13/buffer_id'
 
 module Pio
   module OpenFlow13
@@ -14,7 +15,7 @@ module Pio
         uint32 :in_port
 
         def get
-          (in_port == CONTROLLER) ? :controller : in_port
+          in_port == CONTROLLER ? :controller : in_port
         end
 
         def set(value)
@@ -22,24 +23,24 @@ module Pio
         end
       end
 
-      open_flow_header(version: 4,
-                       message_type: 13,
-                       message_length: lambda do
+      open_flow_header(version: 4, type: 13,
+                       length: lambda do
                          24 + actions_length + raw_data.length
                        end)
       buffer_id :buffer_id
       in_port :in_port
       uint16 :actions_length, initial_value: -> { actions.binary.length }
       string :padding, length: 6
-      actions :actions, length: :actions_length
-      string :raw_data, read_length: -> { message_length - 24 - actions_length }
+      actions13 :actions, length: :actions_length
+      string :raw_data, read_length: -> { length - 24 - actions_length }
 
       def data
         @data ||= Pio::Parser.read(raw_data)
       end
 
       def method_missing(method, *args)
-        data.__send__(method, *args).snapshot
+        bindata_value = data.__send__(method, *args)
+        bindata_value.try(:snapshot) || bindata_value
       end
     end
   end

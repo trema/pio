@@ -1,43 +1,20 @@
 require 'pio/arp/message'
+require 'pio/instance_inspector'
 require 'pio/mac'
-require 'pio/options'
 
 module Pio
   class Arp
     # ARP Reply packet generator
     class Reply < Message
-      OPERATION = 2
-      public_class_method :new
+      include InstanceInspector
 
-      # User options for creating an Arp Reply.
-      class Options < Pio::Options
-        mandatory_option :source_mac
-        mandatory_option :destination_mac
-        mandatory_option :sender_protocol_address
-        mandatory_option :target_protocol_address
-
-        def initialize(options)
-          validate options
-          @source_mac = Mac.new(options[:source_mac]).freeze
-          @destination_mac = Mac.new(options[:destination_mac]).freeze
-          @sender_protocol_address =
-            IPv4Address.new(options[:sender_protocol_address]).freeze
-          @target_protocol_address =
-            IPv4Address.new(options[:target_protocol_address]).freeze
-        end
-
-        def to_hash
-          {
-            operation: OPERATION,
-            source_mac: @source_mac,
-            destination_mac: @destination_mac,
-            sender_hardware_address: @source_mac,
-            target_hardware_address: @destination_mac,
-            sender_protocol_address: @sender_protocol_address,
-            target_protocol_address: @target_protocol_address
-          }.freeze
-        end
-      end
+      option :operation, value: 2
+      option :source_mac
+      option :destination_mac
+      option :sender_hardware_address, value: :source_mac
+      option :target_hardware_address, value: :destination_mac
+      option :sender_protocol_address
+      option :target_protocol_address
     end
   end
 end

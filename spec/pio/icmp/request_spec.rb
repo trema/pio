@@ -1,9 +1,5 @@
 require 'pio'
 
-describe Pio::ICMP::Request do
-  Then { Pio::ICMP::Request == Pio::Icmp::Request }
-end
-
 describe Pio::Icmp do
   Given(:icmp_request) do
     Pio::Icmp::Request.new(
@@ -11,8 +7,8 @@ describe Pio::Icmp do
       source_mac: '74:e5:0b:2a:18:f8',
       source_ip_address: '192.168.1.101',
       destination_ip_address: '8.8.8.8',
-      identifier: 0x123,
-      sequence_number: 0x321,
+      icmp_identifier: 0x123,
+      icmp_sequence_number: 0x321,
       echo_data: 'abcdefghijklmnopqrstuvwabcdefghi'
     ).to_binary
   end
@@ -31,8 +27,8 @@ describe Pio::Icmp::Request, '.new' do
         source_mac: '74:e5:0b:2a:18:f8',
         source_ip_address: '192.168.1.101',
         destination_ip_address: '8.8.8.8',
-        identifier: 0x123,
-        sequence_number: 0x321,
+        icmp_identifier: 0x123,
+        icmp_sequence_number: 0x321,
         echo_data: 'abcdefghijklmnopqrstuvwabcdefghi'
       )
     end
@@ -97,8 +93,8 @@ describe Pio::Icmp::Request, '.new' do
         source_mac: '74:e5:0b:2a:18:f8',
         source_ip_address: '192.168.1.101',
         destination_ip_address: '8.8.8.8',
-        identifier: 0x123,
-        sequence_number: 0x321
+        icmp_identifier: 0x123,
+        icmp_sequence_number: 0x321
       )
     end
 

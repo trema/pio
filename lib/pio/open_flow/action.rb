@@ -1,12 +1,11 @@
+require 'active_support/descendants_tracker'
 require 'bindata'
 
 module Pio
   module OpenFlow
     # OpenFlow actions.
     class Action
-      def self.inherited(child_klass)
-        child_klass.const_set :Format, Class.new(BinData::Record)
-      end
+      extend ActiveSupport::DescendantsTracker
 
       def self.action_header(options)
         module_eval do
@@ -24,7 +23,12 @@ module Pio
       end
 
       def self.method_missing(method, *args, &block)
-        const_get(:Format).__send__ method, *args, &block
+        begin
+          const_get(:Format).__send__ method, *args, &block
+        rescue NameError
+          const_set :Format, Class.new(BinData::Record)
+          retry
+        end
         return if method == :endian || method == :virtual
         define_method(args.first) { @format.__send__ args.first }
       end

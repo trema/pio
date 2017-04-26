@@ -1,57 +1,138 @@
 @open_flow10
-Feature: Pio::PacketIn
+Feature: PacketIn
+
+  When packets are received by the datapath and sent to the
+  controller, they use the PacketIn message.
+
   Scenario: new
-    When I try to create an OpenFlow message with:
-      """
-      data_dump = [
-        0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xac, 0x5d, 0x10, 0x31, 0x37,
-        0x79, 0x08, 0x06, 0x00, 0x01, 0x08, 0x00, 0x06, 0x04, 0x00, 0x01,
-        0xac, 0x5d, 0x10, 0x31, 0x37, 0x79, 0xc0, 0xa8, 0x02, 0xfe, 0xff,
-        0xff, 0xff, 0xff, 0xff, 0xff, 0xc0, 0xa8, 0x02, 0x05, 0x00, 0x00,
-        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-        0x00, 0x00, 0x00, 0x00, 0x00
-      ].pack('C*')
+    When I create an OpenFlow message with:
+      """ruby
+      arp_request = Pio::Arp::Request.new(
+        source_mac: 'fa:ce:b0:00:00:cc',
+        sender_protocol_address: '192.168.0.1',
+        target_protocol_address: '192.168.0.2'
+      )
 
       Pio::PacketIn.new(transaction_id: 0,
                         buffer_id: 0xffffff00,
                         in_port: 1,
                         reason: :no_match,
-                        raw_data: data_dump)
+                        raw_data: arp_request.to_binary)
       """
-    Then it should finish successfully
-    And the message has the following fields and values:
-      | field                 |             value |
-      | ofp_version           |                 1 |
-      | message_type          |                10 |
-      | message_length        |                78 |
-      | transaction_id        |                 0 |
-      | xid                   |                 0 |
-      | buffer_id             |        4294967040 |
-      | total_len             |                60 |
-      | in_port               |                 1 |
-      | reason                |         :no_match |
-      | raw_data.length       |                60 |
-      | source_mac            | ac:5d:10:31:37:79 |
-      | source_mac.class      |          Pio::Mac |
-      | destination_mac       | ff:ff:ff:ff:ff:ff |
-      | destination_mac.class |          Pio::Mac |
+    Then the message has the following fields and values:
+      | field           |             value |
+      | transaction_id  |                 0 |
+      | xid             |                 0 |
+      | buffer_id       |        4294967040 |
+      | total_length    |                64 |
+      | in_port         |                 1 |
+      | reason          |         :no_match |
+      | data.class      | Pio::Arp::Request |
+      | source_mac      | fa:ce:b0:00:00:cc |
+      | destination_mac | ff:ff:ff:ff:ff:ff |
 
-  Scenario: read
-    When I try to parse a file named "open_flow10/packet_in_arp_request.raw" with "PacketIn" class
-    Then it should finish successfully
-    And the message has the following fields and values:
-      | field                 |             value |
-      | ofp_version           |                 1 |
-      | message_type          |                10 |
-      | message_length        |                78 |
-      | transaction_id        |                 0 |
-      | xid                   |                 0 |
-      | buffer_id             |        4294967040 |
-      | total_len             |                60 |
-      | in_port               |                 1 |
-      | reason                |         :no_match |
-      | raw_data.length       |                60 |
-      | source_mac            | ac:5d:10:31:37:79 |
-      | source_mac.class      |          Pio::Mac |
-      | destination_mac       | ff:ff:ff:ff:ff:ff |
-      | destination_mac.class |          Pio::Mac |
+  Scenario: read an empty PacketIn message
+    Given I use the fixture "open_flow10"
+    When I create a packet with:
+      """ruby
+      Pio::PacketIn.read(eval(IO.read('packet_in.rb')))
+      """
+    Then the packet has the following fields and values:
+      | field          |      value |
+      | transaction_id |          0 |
+      | xid            |          0 |
+      | buffer_id      | 4294967040 |
+      | in_port        |          1 |
+      | reason         |  :no_match |
+
+  Scenario: read a PacketIn message (ARP request)
+    Given I use the fixture "open_flow10"
+    When I create a packet with:
+      """ruby
+      Pio::PacketIn.read(eval(IO.read('packet_in_arp_request.rb')))
+      """
+    Then the packet has the following fields and values:
+      | field           |             value |
+      | transaction_id  |                 0 |
+      | xid             |                 0 |
+      | buffer_id       |        4294967040 |
+      | total_length    |                64 |
+      | in_port         |                 1 |
+      | reason          |         :no_match |
+      | data.class      | Pio::Arp::Request |
+      | source_mac      | fa:ce:b0:00:00:cc |
+      | destination_mac | ff:ff:ff:ff:ff:ff |
+
+  Scenario: convert PacketIn to Ruby code
+    When I eval the following Ruby code:
+      """ruby
+      arp_request = Pio::Arp::Request.new(
+        source_mac: 'fa:ce:b0:00:00:cc',
+        sender_protocol_address: '192.168.0.1',
+        target_protocol_address: '192.168.0.2'
+      )
+
+      Pio::PacketIn.new(transaction_id: 0,
+                        buffer_id: 0xffffff00,
+                        in_port: 1,
+                        reason: :no_match,
+                        raw_data: arp_request.to_binary).to_ruby
+      """
+    Then the result of eval should be:
+      """ruby
+      [
+        0x01, # version
+        0x0a, # type
+        0x00, 0x52, # _length
+        0x00, 0x00, 0x00, 0x00, # transaction_id
+        0xff, 0xff, 0xff, 0x00, # buffer_id
+        0x00, 0x40, # total_length
+        0x00, 0x01, # in_port
+        0x00, # reason
+        0x00, # padding
+        0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xfa, 0xce, 0xb0, 0x00, 0x00, 0xcc, 0x08, 0x06, 0x00, 0x01, 0x08, 0x00, 0x06, 0x04, 0x00, 0x01, 0xfa, 0xce, 0xb0, 0x00, 0x00, 0xcc, 0xc0, 0xa8, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0, 0xa8, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, # raw_data
+      ].pack('C82')
+      """
+
+  Scenario: PacketIn inspection (empty PacketIn)
+    When I eval the following Ruby code:
+      """ruby
+      Pio::PacketIn.new(transaction_id: 0,
+                        buffer_id: 0xffffff00,
+                        in_port: 1,
+                        reason: :no_match).inspect
+      """
+    Then the result of eval should be:
+      """
+      #<PacketIn open_flow_version: 1, message_type: 10, message_length: 18, transaction_id: 0x0, buffer_id: 0xffffff00, total_length: 0, in_port: 1, reason: :no_match, raw_data: "">
+      """
+
+  Scenario: PacketIn inspection (ARP request)
+    When I eval the following Ruby code:
+      """ruby
+      arp_request = Pio::Arp::Request.new(
+        source_mac: 'fa:ce:b0:00:00:cc',
+        sender_protocol_address: '192.168.0.1',
+        target_protocol_address: '192.168.0.2'
+      )
+
+      Pio::PacketIn.new(transaction_id: 0,
+                        buffer_id: 0xffffff00,
+                        in_port: 1,
+                        reason: :no_match,
+                        raw_data: arp_request.to_binary).inspect
+      """
+    Then the result of eval should be:
+      """
+      #<PacketIn open_flow_version: 1, message_type: 10, message_length: 82, transaction_id: 0x0, buffer_id: 0xffffff00, total_length: 64, in_port: 1, reason: :no_match, data: #<Pio::Arp::Request destination_mac: "ff:ff:ff:ff:ff:ff", source_mac: "fa:ce:b0:00:00:cc", ether_type: 0x0806, hardware_type: 1, protocol_type: 2048, hardware_length: 6, protocol_length: 4, operation: 1, sender_hardware_address: "fa:ce:b0:00:00:cc", sender_protocol_address: "192.168.0.1", target_hardware_address: "00:00:00:00:00:00", target_protocol_address: "192.168.0.2">>
+      """
+
+  Scenario: PacketIn class inspection
+    When I eval the following Ruby code:
+      """ruby
+      Pio::PacketIn.inspect
+      """
+    Then the result of eval should be:
+      """
+      PacketIn(open_flow_version: uint8, message_type: uint8, message_length: uint16, transaction_id: uint32, buffer_id: uint32, total_length: uint16, in_port: uint16, reason: symbol, raw_data: string)
+      """

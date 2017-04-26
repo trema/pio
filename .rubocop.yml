@@ -12,8 +12,9 @@ AllCops:
 
 Metrics/LineLength:
   Exclude:
+    - 'fixtures/**/*.rb'
     - 'spec/support/*.rb'
-    
+
 Style/StringLiterals:
   EnforcedStyle: single_quotes
 

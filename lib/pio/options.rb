@@ -14,6 +14,11 @@ module Pio
       const_get(:OPTIONS) << name
     end
 
+    def initialize(options)
+      validate options
+      @options = options
+    end
+
     private
 
     def validate(user_options)
@@ -42,7 +47,7 @@ module Pio
     def check_unknown(user_options)
       valid_options = mandatory_options + options
       user_options.keys.each do |each|
-        fail "Unknown option: #{each}." unless valid_options.include?(each)
+        raise "Unknown option: #{each}." unless valid_options.include?(each)
       end
     end
 
@@ -54,10 +59,10 @@ module Pio
 
     def check_existence(user_options, key)
       value = user_options.fetch(key) do |missing_key|
-        fail ArgumentError, "The #{missing_key} option should be passed."
+        raise ArgumentError, "The #{missing_key} option should be passed."
       end
       return if value
-      fail(ArgumentError, "The #{key} option shouldn't be #{value.inspect}.")
+      raise(ArgumentError, "The #{key} option shouldn't be #{value.inspect}.")
     end
   end
 end

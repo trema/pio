@@ -1,14 +1,17 @@
 require 'pio/arp/format'
-require 'pio/arp/request'
 require 'pio/arp/reply'
-require 'pio/message_type_selector'
+require 'pio/arp/request'
+require 'pio/parse_error'
 
-# Packet parser and generator library.
 module Pio
   # ARP parser and generator.
   class Arp
-    extend MessageTypeSelector
-    message_type Request::OPERATION => Request, Reply::OPERATION => Reply
+    def self.read(raw_data)
+      format = Format.read(raw_data)
+      { Request.operation => Request,
+        Reply.operation => Reply }.fetch(format.operation).create(format)
+    rescue
+      raise Pio::ParseError, $ERROR_INFO.message
+    end
   end
-  ARP = Arp
 end

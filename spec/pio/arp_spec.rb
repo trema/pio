@@ -1,9 +1,5 @@
 require 'pio'
 
-describe Pio::ARP do
-  Then { Pio::ARP == Pio::Arp }
-end
-
 describe Pio::Arp do
   describe '.read' do
     context 'with an Arp Request packet' do

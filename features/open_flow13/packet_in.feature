@@ -1,16 +1,13 @@
 @open_flow13
-Feature: Pio::PacketIn
+Feature: PacketIn
   Scenario: new
-    When I try to create an OpenFlow message with:
+    When I create an OpenFlow message with:
       """
       Pio::PacketIn.new
       """
-    Then it should finish successfully
-    And the message has the following fields and values:
+    Then the message has the following fields and values:
       | field                   |     value |
-      | ofp_version             |         4 |
-      | message_type            |        10 |
-      | message_length          |        34 |
+      | version                 |         4 |
       | transaction_id          |         0 |
       | xid                     |         0 |
       | buffer_id               |         0 |
@@ -22,7 +19,7 @@ Feature: Pio::PacketIn
       | raw_data.length         |         0 |
 
   Scenario: new (raw_data = ARP request)
-    When I try to create an OpenFlow message with:
+    When I create an OpenFlow message with:
       """
       data_dump = [
         0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xac, 0x5d, 0x10, 0x31, 0x37,
@@ -35,11 +32,9 @@ Feature: Pio::PacketIn
 
       Pio::PacketIn.new(raw_data: data_dump)
       """
-    Then it should finish successfully
-    And the message has the following fields and values:
+    Then the message has the following fields and values:
       | field                   |             value |
-      | ofp_version             |                 4 |
-      | message_length          |                94 |
+      | version                 |                 4 |
       | transaction_id          |                 0 |
       | xid                     |                 0 |
       | buffer_id               |                 0 |
@@ -51,25 +46,3 @@ Feature: Pio::PacketIn
       | raw_data.length         |                60 |
       | source_mac              | ac:5d:10:31:37:79 |
       | destination_mac         | ff:ff:ff:ff:ff:ff |
-
-  Scenario: read
-    When I try to parse a file named "open_flow13/packet_in.raw" with "PacketIn" class
-    Then it should finish successfully
-    And the message has the following fields and values:
-      | field                         |             value |
-      | ofp_version                   |                 4 |
-      | message_type                  |                10 |
-      | message_length                |               102 |
-      | transaction_id                |               123 |
-      | xid                           |               123 |
-      | buffer_id.to_hex              |        0xcafebabe |
-      | total_len                     |                60 |
-      | in_port                       |                 1 |
-      | reason                        |         :no_match |
-      | table_id                      |                 0 |
-      | cookie                        |                 0 |
-      | match.match_fields.size       |                 1 |
-      | match.match_fields[0].in_port |                 1 |
-      | raw_data.length               |                60 |
-      | source_mac                    | ac:5d:10:31:37:79 |
-      | destination_mac               | ff:ff:ff:ff:ff:ff |

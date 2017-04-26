@@ -11,7 +11,7 @@ module Pio
       ip_address :source_ip_address
       ip_address :destination_ip_address
       uint8 :padding
-      uint8 :ip_protocol, value: IPv4Header::ProtocolNumber::UDP
+      uint8 :ip_protocol, value: IPv4::ProtocolNumber::UDP
       uint16 :udp_length
     end
 

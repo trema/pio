@@ -1,14 +1,17 @@
 require 'pio/icmp/format'
 require 'pio/icmp/reply'
 require 'pio/icmp/request'
-require 'pio/message_type_selector'
+require 'pio/parse_error'
 
-# Packet parser and generator library.
 module Pio
   # Icmp parser and generator.
   class Icmp
-    extend MessageTypeSelector
-    message_type Request::TYPE => Request, Reply::TYPE => Reply
+    def self.read(raw_data)
+      format = Format.read(raw_data)
+      { Request.icmp_type => Request,
+        Reply.icmp_type => Reply }.fetch(format.icmp_type).create(format)
+    rescue
+      raise Pio::ParseError, $ERROR_INFO.message
+    end
   end
-  ICMP = Icmp
 end

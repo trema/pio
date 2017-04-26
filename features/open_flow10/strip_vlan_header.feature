@@ -1,13 +1,12 @@
 @open_flow10
-Feature: Pio::OpenFlow10::StripVlanHeader
+Feature: StripVlanHeader
 
   Scenario: new
-    When I try to create an OpenFlow action with:
+    When I create an OpenFlow action with:
       """
       Pio::OpenFlow10::StripVlanHeader.new
       """
-    Then it should finish successfully
-    And the action has the following fields and values:
+    Then the action has the following fields and values:
       | field         | value |
       | action_type   |     3 |
       | action_length |     8 |

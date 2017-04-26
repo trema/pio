@@ -8,11 +8,11 @@ module Pio
   class Arp
     # ARP parser.
     class Format < BinData::Record
-      include EthernetHeader
+      include Ethernet
 
       endian :big
 
-      ethernet_header ether_type: EtherType::ARP
+      ethernet_header ether_type: Ethernet::Type::ARP
       uint16 :hardware_type, value: 1
       uint16 :protocol_type, value: 0x0800
       uint8 :hardware_length, value: 6
@@ -23,17 +23,13 @@ module Pio
       mac_address :target_hardware_address
       ip_address :target_protocol_address
 
-      def message_type
-        operation
-      end
-
       # rubocop:disable MethodLength
       def to_exact_match(in_port)
         match_options = {
           in_port: in_port,
           source_mac_address: source_mac,
           destination_mac_address: destination_mac,
-          vlan_vid: vlan_vid,
+          vlan_vid: 0xffff,
           vlan_priority: vlan_pcp,
           ether_type: ether_type,
           tos: 0,

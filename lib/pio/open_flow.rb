@@ -1,67 +1,53 @@
-require 'pio/open_flow/datapath_id'
-require 'pio/open_flow/error'
-require 'pio/open_flow/flags'
-require 'pio/open_flow/message'
-require 'pio/open_flow/open_flow_header'
-require 'pio/open_flow10'
-require 'pio/open_flow13'
+require 'active_support/core_ext/array/access'
+require 'active_support/core_ext/module/attribute_accessors'
+require 'active_support/core_ext/module/introspection'
+require 'pio/open_flow/header'
+require 'pio/open_flow/parser'
 
 module Pio
   # Common OpenFlow modules/classes.
   module OpenFlow
-    def self.version
-      fail unless @version
-      @version
-    end
+    mattr_reader :version, instance_reader: false
 
-    def self.switch_version(version)
-      [:Barrier, :Echo, :Features, :FlowMod, :Hello, :Match,
-       :PacketIn, :FlowRemoved, :PacketOut, :SendOutPort,
-       :SetSourceMacAddress, :SetDestinationMacAddress, :PortStatus, :Stats,
-       :FlowStats, :DescriptionStats, :AggregateStats, :TableStats, :PortStats,
-       :QueueStats, :Error, :SetArpOperation, :SetArpSenderProtocolAddress,
-       :SetArpSenderHardwareAddress, :NiciraRegMove, :SetMetadata,
-       :NiciraRegLoad, :NiciraSendOutPort].each do |each|
-        set_message_class_name each, version
-        @version = version.to_s
+    def self.version=(version)
+      return if OpenFlow.version == version.to_sym
+      find_all_class_by_version(version).each do |each|
+        alias_open_flow_class each
       end
-    end
-
-    # rubocop:disable MethodLength
-    def self.read(binary)
-      parser = {
-        0 => Pio::Hello,
-        1 => Pio::OpenFlow::Error,
-        2 => Pio::Echo::Request,
-        3 => Pio::Echo::Reply,
-        5 => Pio::Features::Request,
-        6 => Pio::Features::Reply,
-        10 => Pio::PacketIn,
-        11 => Pio::FlowRemoved,
-        12 => Pio::PortStatus,
-        13 => Pio::PacketOut,
-        14 => Pio::FlowMod,
-        16 => Pio::Stats::Request,
-        17 => Pio::Stats::Reply,
-        18 => Pio::Barrier::Request,
-        19 => Pio::Barrier::Reply
-      }
-      header = OpenFlowHeaderParser.read(binary)
-      parser.fetch(header.message_type).read(binary)
-    end
-    # rubocop:enable MethodLength
-
-    def self.set_message_class_name(klass_name, version)
-      open_flow_module = Pio.const_get(version)
-      return unless open_flow_module.const_defined?(klass_name)
-      Pio.__send__ :remove_const, klass_name if Pio.const_defined?(klass_name)
-      Pio.const_set(klass_name, open_flow_module.const_get(klass_name))
+      @@version = version.to_sym # rubocop:disable ClassVars
     rescue NameError
       raise "#{version} is not supported yet."
     end
-    private_class_method :set_message_class_name
 
-    # The default OpenFlow version is 1.0
-    switch_version 'OpenFlow10'
+    def self.read(binary)
+      header = OpenFlow::Header.read(binary)
+      self.version = header.version
+      Parser.find_by_type!(header.type).read(binary)
+    end
+
+    def self.find_all_class_by_version(version)
+      all_class = [Message, Instruction, Action, FlowMatch].
+                  inject([]) do |result, each|
+        result + each.descendants
+      end
+      all_class.select do |each|
+        each.parents.include?(Class.const_get("Pio::#{version}"))
+      end
+    end
+    private_class_method :find_all_class_by_version
+
+    # Pio::OpenFlow10::Hello -> Pio::Hello
+    def self.alias_open_flow_class(klass)
+      version = klass.name.split('::').second
+      class_name = klass.name.split('::').third
+      if Pio.const_defined?(class_name)
+        Pio.module_eval { remove_const class_name }
+      end
+      Pio.const_set(class_name, "Pio::#{version}::#{class_name}".constantize)
+    end
+    private_class_method :alias_open_flow_class
   end
 end
+
+# The default OpenFlow version is 1.0
+Pio::OpenFlow.version = :OpenFlow10

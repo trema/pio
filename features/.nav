@@ -1,5 +1,13 @@
-- icmp.feature
-- arp.feature
+- ethernet_header.feature
+- ipv4_header.feature
+- arp:
+  - arp.feature
+  - arp_request.feature
+  - arp_reply.feature
+- icmp:
+  - icmp.feature
+  - icmp_request.feature
+  - icmp_reply.feature
 - lldp.feature
 - dhcp.feature
 - udp.feature
@@ -12,9 +20,10 @@
   - features_request.feature
   - features_reply.feature
   - packet_in.feature
+  - flow_removed.feature
+  - port_status.feature    
   - packet_out.feature
   - flow_mod.feature
-  - port_status.feature
   - exact_match.feature
 - open_flow13:
   - hello.feature

@@ -9,11 +9,11 @@ describe Pio::OpenFlow13::Hello do
       Given(:binary) { [4, 0, 0, 8, 0, 0, 0, 0].pack('C*') }
 
       Then { result.class == Pio::OpenFlow13::Hello }
-      Then { result.ofp_version == 4 }
-      Then { result.message_type == 0 }
-      Then { result.message_length == 8 }
-      Then { result.transaction_id == 0 }
-      Then { result.xid == 0 }
+      Then { result.version == 4 }
+      Then { result.type.zero? }
+      Then { result.length == 8 }
+      Then { result.transaction_id.zero? }
+      Then { result.xid.zero? }
       Then { result.supported_versions.empty? }
     end
 
@@ -23,11 +23,11 @@ describe Pio::OpenFlow13::Hello do
       end
 
       Then { result.class == Pio::OpenFlow13::Hello }
-      Then { result.ofp_version == 4 }
-      Then { result.message_type == 0 }
-      Then { result.message_length == 16 }
-      Then { result.transaction_id == 0 }
-      Then { result.xid == 0 }
+      Then { result.version == 4 }
+      Then { result.type.zero? }
+      Then { result.length == 16 }
+      Then { result.transaction_id.zero? }
+      Then { result.xid.zero? }
       Then { result.supported_versions == [:open_flow10, :open_flow13] }
     end
 
@@ -46,11 +46,11 @@ describe Pio::OpenFlow13::Hello do
     context 'with no arguments' do
       When(:result) { Pio::OpenFlow13::Hello.new }
 
-      Then { result.ofp_version == 4 }
-      Then { result.message_type == 0 }
-      Then { result.message_length == 16 }
-      Then { result.transaction_id == 0 }
-      Then { result.xid == 0 }
+      Then { result.version == 4 }
+      Then { result.type.zero? }
+      Then { result.length == 16 }
+      Then { result.transaction_id.zero? }
+      Then { result.xid.zero? }
       Then { result.supported_versions == [:open_flow13] }
       Then do
         result.to_binary ==

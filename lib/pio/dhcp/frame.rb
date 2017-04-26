@@ -12,12 +12,12 @@ module Pio
 
       OPTION_FIELD_LENGTH = 60
 
-      include EthernetHeader
-      include IPv4Header
+      include Ethernet
+      include IPv4
       include UdpHeader
 
       endian :big
-      ethernet_header ether_type: EtherType::IPV4
+      ethernet_header ether_type: Ethernet::Type::IPV4
       ipv4_header ip_protocol: ProtocolNumber::UDP
       udp_header
       dhcp_field :dhcp
@@ -31,7 +31,7 @@ module Pio
 
       def ff_and_padding
         padding_length = OPTION_FIELD_LENGTH - dhcp.optional_tlvs.num_bytes - 1
-        "\xFF" + (padding_length > 0 ? "\x00" * padding_length : '')
+        [0xFF].pack('C') + (padding_length > 0 ? "\x00" * padding_length : '')
       end
     end
   end

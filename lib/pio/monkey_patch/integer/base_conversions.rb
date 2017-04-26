@@ -3,7 +3,7 @@ module MonkeyPatch
     # to_hex etc.
     module BaseConversions
       def to_hex
-        format '%#x', self
+        format '0x%02x', self
       end
     end
   end

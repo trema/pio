@@ -1,8 +1,8 @@
 require 'pio/open_flow13/goto_table'
 
-describe Pio::GotoTable do
+describe Pio::OpenFlow13::GotoTable do
   describe '.new' do
-    When(:goto_table) { Pio::GotoTable.new(options) }
+    When(:goto_table) { Pio::OpenFlow13::GotoTable.new(options) }
 
     context 'with 1' do
       Given(:options) { 1 }

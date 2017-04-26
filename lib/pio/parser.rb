@@ -1,27 +1,18 @@
+require 'pio/ethernet_frame'
 require 'pio/ethernet_header'
 require 'pio/ipv4_header'
 
 module Pio
   # Raw data parser.
   class Parser
-    # Ethernet header parser
-    class EthernetFrame < BinData::Record
-      endian :big
-
-      mac_address :destination_mac
-      mac_address :source_mac
-      uint16 :ether_type
-      rest :rest
-    end
-
     # IPv4 packet parser
     class IPv4Packet < BinData::Record
-      include EthernetHeader
-      include IPv4Header
+      include Ethernet
+      include IPv4
 
       endian :big
 
-      ethernet_header ether_type: EtherType::IPV4
+      ethernet_header ether_type: Ethernet::Type::IPV4
       ipv4_header
 
       uint16 :transport_source_port
@@ -33,11 +24,11 @@ module Pio
     def self.read(raw_data)
       ethernet_frame = EthernetFrame.read(raw_data)
       case ethernet_frame.ether_type
-      when EthernetHeader::EtherType::IPV4, EthernetHeader::EtherType::VLAN
+      when Ethernet::Type::IPV4, Ethernet::Type::VLAN
         IPv4Packet.read raw_data
-      when EthernetHeader::EtherType::ARP
+      when Ethernet::Type::ARP
         Pio::Arp.read raw_data
-      when EthernetHeader::EtherType::LLDP
+      when Ethernet::Type::LLDP
         Pio::Lldp.read raw_data
       else
         ethernet_frame

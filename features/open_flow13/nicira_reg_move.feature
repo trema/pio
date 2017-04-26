@@ -1,42 +1,48 @@
 @open_flow13
-Feature: Pio::NiciraRegMove
+Feature: NiciraRegMove
 
-  Scenario: new(from: :arp_sender_hardware_address, to: :arp_target_hardware_address)
-    When I try to create an OpenFlow action with:
-      """
-      Pio::NiciraRegMove.new(from: :arp_sender_hardware_address, to: :arp_target_hardware_address)
-      """
-    Then it should finish successfully
-    And the action has the following fields and values:
-      | field                  |                        value |
-      | action_type.to_hex     |                       0xffff |
-      | action_length          |                           24 |
-      | experimenter_id.to_hex |                       0x2320 |
-      | experimenter_type      |                            6 |
-      | from                   | :arp_sender_hardware_address |
-      | source_oxm_field       |                           24 |
-      | source_oxm_length      |                            6 |
-      | to                     | :arp_target_hardware_address |
-      | destination_oxm_field  |                           25 |
-      | destination_oxm_length |                            6 |
+  Copies source[source_offset:sourcce_offset+n_bits] to
+  destination[destination_offset:dst_ofs+n_bits], where a[b:c] denotes
+  the bits within 'a' numbered 'b' through 'c' (not including bit 'c').
 
-  Scenario: new(from: :reg0, to: :reg7)
-    When I try to create an OpenFlow action with:
+  Scenario: new(source: :arp_sender_hardware_address, destination: :arp_target_hardware_address)
+    When I create an OpenFlow action with:
       """
-      Pio::NiciraRegMove.new(from: :reg0, to: :reg7)
+      Pio::NiciraRegMove.new(source: :arp_sender_hardware_address,
+                             destination: :arp_target_hardware_address)
       """
-    Then it should finish successfully
-    And the action has the following fields and values:
-      | field                  |  value |
-      | action_type.to_hex     | 0xffff |
-      | action_length          |     24 |
-      | experimenter_id.to_hex | 0x2320 |
-      | experimenter_type      |      6 |
-      | from                   |  :reg0 |
-      | source_oxm_class       |      1 |
-      | source_oxm_field       |      0 |
-      | source_oxm_length      |      4 |
-      | to                     |  :reg7 |
-      | destination_oxm_class  |      1 |
-      | destination_oxm_field  |      7 |
-      | destination_oxm_length |      4 |
+    Then the action has the following fields and values:
+      | field              |                        value |
+      | n_bits             |                           48 |
+      | source             | :arp_sender_hardware_address |
+      | source_offset      |                            0 |
+      | destination        | :arp_target_hardware_address |
+      | destination_offset |                            0 |
+
+  Scenario: new(source: :reg0, destination: :reg7)
+    When I create an OpenFlow action with:
+      """
+      Pio::NiciraRegMove.new(source: :reg0, destination: :reg7)
+      """
+    Then the action has the following fields and values:
+      | field              | value |
+      | n_bits             |    32 |
+      | source             | :reg0 |
+      | source_offset      |     0 |
+      | destination        | :reg7 |
+      | destination_offset |     0 |
+      
+  Scenario: new(source: :reg0, source_offset: 16, destination: :reg7, destination_offset: 16, n_bits: 16)
+    When I create an OpenFlow action with:
+      """
+      Pio::NiciraRegMove.new(source: :reg0, source_offset: 16,
+                             destination: :reg7, destination_offset: 16,
+                             n_bits: 16)
+      """
+    Then the action has the following fields and values:
+      | field              | value |
+      | n_bits             |    16 |
+      | source             | :reg0 |
+      | source_offset      |    16 |
+      | destination        | :reg7 |
+      | destination_offset |    16 |      

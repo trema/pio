@@ -1,15 +1,19 @@
+require 'active_support/core_ext/module/attribute_accessors'
+require 'active_support/descendants_tracker'
 require 'bindata'
+require 'pio/open_flow/flags'
+require 'pio/open_flow/header'
 require 'pio/parse_error'
-require 'pio/open_flow/open_flow_header'
+require 'pio/ruby_dumper'
 
 module Pio
   module OpenFlow
     # OpenFlow messages.
     class Message
-      def self.inherited(child_klass)
-        child_klass.const_set :Format, Class.new(BinData::Record)
-        child_klass.class_variable_set(:@@valid_options, [])
-      end
+      attr_reader :format
+
+      extend ActiveSupport::DescendantsTracker
+      extend OpenFlow::Flags
 
       def self.read(raw_data)
         allocate.tap do |message|
@@ -21,30 +25,61 @@ module Pio
         raise Pio::ParseError, "Invalid #{message_name} message."
       end
 
+      # rubocop:disable MethodLength
+      # rubocop:disable AbcSize
       def self.method_missing(method, *args, &block)
-        const_get(:Format).__send__ method, *args, &block
+        begin
+          const_get(:Format).__send__ method, *args, &block
+        rescue NameError
+          klass = Class.new(BinData::Record)
+          const_set :Format, klass
+          klass.class_eval do
+            include RubyDumper
+            define_method(:header_length) { 8 }
+            define_method(:length) { _length }
+          end
+          class_variable_set(:@@valid_options, [])
+          retry
+        end
 
         return if method == :endian || method == :virtual
+
         define_method(args.first) do
-          @format.__send__ args.first
+          snapshot = @format.snapshot.__send__(args.first)
+          if snapshot.class == BinData::Struct::Snapshot
+            @format.__send__(args.first)
+          else
+            snapshot
+          end
         end
         class_variable_set(:@@valid_options,
                            class_variable_get(:@@valid_options) + [args.first])
       end
+      # rubocop:enable MethodLength
+      # rubocop:enable AbcSize
 
       # rubocop:disable AbcSize
       # rubocop:disable MethodLength
       def self.open_flow_header(opts)
         module_eval do
+          cattr_reader(:type) { opts.fetch(:type) }
+
           endian :big
 
-          uint8 :ofp_version, value: opts.fetch(:version)
-          virtual assert: -> { ofp_version == opts.fetch(:version) }
-          uint8 :message_type, value: opts.fetch(:message_type)
-          virtual assert: -> { message_type == opts.fetch(:message_type) }
-          uint16 :message_length,
-                 initial_value: opts[:message_length] || -> { 8 + body.length }
+          uint8 :version, value: opts.fetch(:version)
+          uint8 :type, value: opts.fetch(:type)
+          uint16(:_length,
+                 initial_value: opts[:length] || lambda do
+                   begin
+                     8 + body.length
+                   rescue
+                     8
+                   end
+                 end)
           transaction_id :transaction_id, initial_value: 0
+
+          virtual assert: -> { version == opts.fetch(:version) }
+          virtual assert: -> { type == opts.fetch(:type) }
 
           alias_method :xid, :transaction_id
         end
@@ -71,7 +106,7 @@ module Pio
         unknown_options =
           user_options.keys - self.class.class_variable_get(:@@valid_options)
         return if unknown_options.empty?
-        fail "Unknown option: #{unknown_options.first}"
+        raise "Unknown option: #{unknown_options.first}"
       end
 
       def parse_options(user_options)

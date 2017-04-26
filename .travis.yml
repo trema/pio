@@ -1,6 +1,8 @@
 language: ruby
 
-before_install: gem update bundler
+before_install:
+  - gem update bundler
+
 bundler_args: --without development
 
 env:
@@ -9,15 +11,15 @@ env:
     - secure: cbR8GBZyaDxE54pfGkfzhuTQEh3mpcghrx95dL42df3Ei9s3DHCI2Q/yDChUMY3eeqzHUNAt9fPQeDZsMG/aHUrh775bebh28M8zSkUYzv6x1diPnDtywXGutW7MKGak6jw8F+45J6TW4IxNFYMmuWyBu9HOd5VkqWRKvezvqc8=
 
 rvm:
-  - 2.0.0
-  - 2.2.0
+  - 2.2
+  - 2.3
   - ruby-head
-  
+
 matrix:
   allow_failures:
     - rvm: ruby-head
   fast_finish: true
-  
+
 script: bundle exec rake travis
 
 notifications:

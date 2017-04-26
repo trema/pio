@@ -1,43 +1,36 @@
+require 'active_support/core_ext/module/delegation'
 require 'pio/open_flow/message'
+require 'pio/open_flow10/phy_port16'
+require 'pio/open_flow10/port_status/reason'
 
 module Pio
   module OpenFlow10
     # OpenFlow 1.0 Port Status message
     class PortStatus < OpenFlow::Message
-      # What changed about the physical port
-      class Reason < BinData::Primitive
-        REASONS = { add: 0, delete: 1, modify: 2 }
+      open_flow_header version: 1, type: 12,
+                       length: -> { header_length + 8 + PhyPort16.length }
 
-        uint8 :reason
-
-        def get
-          REASONS.invert.fetch(reason)
-        end
-
-        def set(value)
-          self.reason = REASONS.fetch(value)
-        end
-      end
-
-      open_flow_header version: 1,
-                       message_type: 12,
-                       message_length: 10
       reason :reason
       uint56 :padding
       hide :padding
-      phy_port16 :desc
+      phy_port16 :description
 
-      def reason
-        @format.reason.to_sym
-      end
+      attr_accessor :datapath_id
+      alias dpid datapath_id
+      alias dpid= datapath_id=
 
-      attr_writer :datapath_id
-
-      def desc
-        @desc ||= @format.desc.snapshot
-        @desc.instance_variable_set :@datapath_id, @datapath_id
-        @desc
-      end
+      delegate :number, to: :description
+      delegate :mac_address, to: :description
+      delegate :name, to: :description
+      delegate :config, to: :description
+      delegate :state, to: :description
+      delegate :curr, to: :description
+      delegate :advertised, to: :description
+      delegate :supported, to: :description
+      delegate :peer, to: :description
+      delegate :up?, to: :description
+      delegate :down?, to: :description
+      delegate :local?, to: :description
     end
   end
 end
