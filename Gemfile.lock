@@ -107,11 +107,6 @@ GEM
       domain_name (~> 0.5)
     i18n (0.8.1)
     ice_nine (0.11.2)
-    inch (0.7.1)
-      pry
-      sparkr (>= 0.2.0)
-      term-ansicolor
-      yard (~> 0.8.7.5)
     json (2.0.2)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -190,7 +185,6 @@ GEM
     simplecov-html (0.10.0)
     slop (3.6.0)
     sorcerer (1.0.2)
-    sparkr (0.4.1)
     term-ansicolor (1.4.0)
       tins (~> 1.0)
     terminal-notifier-guard (1.7.0)
@@ -208,7 +202,6 @@ GEM
       coercible (~> 1.0)
       descendants_tracker (~> 0.0, >= 0.0.3)
       equalizer (~> 0.0, >= 0.0.9)
-    yard (0.8.7.6)
 
 PLATFORMS
   ruby
@@ -225,7 +218,6 @@ DEPENDENCIES
   guard-cucumber
   guard-rspec
   guard-rubocop
-  inch
   listen
   pio!
   pry

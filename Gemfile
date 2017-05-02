@@ -23,7 +23,6 @@ group :development do
   gem 'guard-cucumber', require: false
   gem 'guard-rspec', require: false
   gem 'guard-rubocop', require: false
-  gem 'inch', require: false
   gem 'listen', require: false
   gem 'pry', require: false
   gem 'rb-fchange', require: false
