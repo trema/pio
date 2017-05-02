@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/open_flow'
 require 'pio/open_flow/buffer_id'
 require 'pio/open_flow13/match'
@@ -117,11 +119,11 @@ module Pio
       out_port :out_port
       out_group :out_group
       flags_16bit :flags,
-                  [:send_flow_rem,
-                   :check_overwrap,
-                   :reset_counts,
-                   :no_packet_counts,
-                   :no_byte_counts]
+                  %i[send_flow_rem
+                     check_overwrap
+                     reset_counts
+                     no_packet_counts
+                     no_byte_counts]
       string :padding, length: 2
       hide :padding
       oxm :match

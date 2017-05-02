@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/open_flow13/nicira_reg_load'
 
 describe Pio::OpenFlow13::NiciraRegLoad do

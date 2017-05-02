@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/monkey_patch/integer'
 require 'pio/open_flow/action'
 require 'pio/open_flow10/port16'

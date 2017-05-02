@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/open_flow'
 require 'pio/open_flow10/actions'
 require 'pio/open_flow10/flow_mod/command'
@@ -19,9 +21,9 @@ module Pio
       uint32 :buffer_id
       uint16 :out_port
       flags_16bit :flags,
-                  [:send_flow_rem,
-                   :check_overwrap,
-                   :emerg]
+                  %i[send_flow_rem
+                     check_overwrap
+                     emerg]
       actions10 :actions, length: -> { length - 72 }
     end
   end

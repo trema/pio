@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module MonkeyPatch
   module Uint
     # Uint8#to_bytes, Uintxxbe#to_bytes

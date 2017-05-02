@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module MonkeyPatch
   module Integer
     # Defines Integer#nbit? methods.

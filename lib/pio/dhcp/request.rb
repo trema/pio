@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/dhcp/boot_request'
 
 module Pio

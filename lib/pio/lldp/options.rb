@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/options'
 
 module Pio
@@ -9,8 +11,8 @@ module Pio
       option :destination_mac
       option :source_mac
 
-      DEFAULT_DESTINATION_MAC = '01:80:c2:00:00:0e'.freeze
-      DEFAULT_SOURCE_MAC = '01:02:03:04:05:06'.freeze
+      DEFAULT_DESTINATION_MAC = '01:80:c2:00:00:0e'
+      DEFAULT_SOURCE_MAC = '01:02:03:04:05:06'
 
       def initialize(options)
         validate options

@@ -1,3 +1,0 @@
-# '== nil' is often used in rspec_given's natural assertions
-NilComparison:
-  Enabled: false

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'bindata'
 require 'pio/monkey_patch/uint'
 require 'pio/open_flow/transaction_id'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Before('@open_flow10') do
   Pio::OpenFlow.version = :OpenFlow10
 end

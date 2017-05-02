@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'active_support/core_ext/object/try'
 require 'pio/open_flow/message'
 require 'pio/open_flow10/packet_in/reason'

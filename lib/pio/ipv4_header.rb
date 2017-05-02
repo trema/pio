@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/instance_inspector'
 require 'pio/monkey_patch/bindata_string'
 require 'pio/payload'

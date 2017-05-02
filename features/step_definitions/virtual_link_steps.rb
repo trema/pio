@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # rubocop:disable LineLength
 
 Then(/^virtual links should not exist$/) do

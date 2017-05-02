@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'bindata'
 require 'pio/open_flow/flow_match'
 require 'pio/type/ip_address'
@@ -1196,11 +1198,11 @@ module Pio
           def method_missing(method, *args, &block)
             case oxm_class
             when OpenFlowBasicValue::OXM_CLASS
-              return class_payload.tlv_value.__send__(method, *args, &block)
+              class_payload.tlv_value.__send__(method, *args, &block)
             when ExperimenterValue::OXM_CLASS
-              return class_payload.__send__(method, *args, &block)
+              class_payload.__send__(method, *args, &block)
             when PacketRegistersValue::OXM_CLASS
-              return class_payload.__send__(method, *args, &block)
+              class_payload.__send__(method, *args, &block)
             else
               raise NoMethodError, method.to_s
             end
@@ -1267,11 +1269,11 @@ module Pio
         def initialize(user_attrs)
           @match_fields = []
 
-          [:in_port, :ether_type, :ip_protocol, :vlan_vid, :vlan_pcp,
-           :ip_dscp, :ip_ecn, :tcp_source_port, :tcp_destination_port,
-           :udp_source_port, :udp_destination_port,
-           :sctp_source_port, :sctp_destination_port,
-           :icmpv4_type, :icmpv4_code, :arp_operation].each do |each|
+          %i[in_port ether_type ip_protocol vlan_vid vlan_pcp
+             ip_dscp ip_ecn tcp_source_port tcp_destination_port
+             udp_source_port udp_destination_port
+             sctp_source_port sctp_destination_port
+             icmpv4_type icmpv4_code arp_operation].each do |each|
             next unless user_attrs.key?(each)
             klass = Match.const_get(each.to_s.split('_').map(&:capitalize).join)
             @match_fields << { oxm_class: klass.superclass.const_get(:OXM_CLASS),
@@ -1279,13 +1281,13 @@ module Pio
                                                 tlv_value: { each => user_attrs.fetch(each) } } }
           end
 
-          [:metadata, :destination_mac_address, :source_mac_address,
-           :ipv4_source_address, :ipv4_destination_address,
-           :arp_sender_protocol_address, :arp_target_protocol_address,
-           :arp_sender_hardware_address, :arp_target_hardware_address,
-           :ipv6_source_address, :ipv6_destination_address, :tunnel_id,
-           :reg0, :reg1, :reg2, :reg3, :reg4, :reg5, :reg6, :reg7,
-           :packet_reg0, :packet_reg1, :packet_reg2, :packet_reg3].each do |each|
+          %i[metadata destination_mac_address source_mac_address
+             ipv4_source_address ipv4_destination_address
+             arp_sender_protocol_address arp_target_protocol_address
+             arp_sender_hardware_address arp_target_hardware_address
+             ipv6_source_address ipv6_destination_address tunnel_id
+             reg0 reg1 reg2 reg3 reg4 reg5 reg6 reg7
+             packet_reg0 packet_reg1 packet_reg2 packet_reg3].each do |each|
             next unless user_attrs.key?(each)
             klass = Match.const_get(each.to_s.split('_').map(&:capitalize).join)
             mask_key = "#{each}_mask".to_sym

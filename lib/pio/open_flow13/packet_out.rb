@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'active_support/core_ext/object/try'
 require 'pio/open_flow'
 require 'pio/open_flow/buffer_id'

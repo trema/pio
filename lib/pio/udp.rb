@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'bindata'
 require 'pio/ethernet_header'
 require 'pio/ipv4_header'

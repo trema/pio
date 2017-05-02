@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/open_flow'
 
 module Pio
@@ -6,13 +8,13 @@ module Pio
     class StatsRequest < OpenFlow::Message
       # Request type of Stats Request message
       class StatsType < BinData::Primitive
-        TYPES = [:description,
-                 :flow,
-                 :aggregate,
-                 :table,
-                 :port,
-                 :queue,
-                 :vendor].freeze
+        TYPES = %i[description
+                   flow
+                   aggregate
+                   table
+                   port
+                   queue
+                   vendor].freeze
 
         endian :big
 

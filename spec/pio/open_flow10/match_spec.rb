@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/open_flow10/match'
 
 describe Pio::OpenFlow10::Match do
@@ -26,18 +28,18 @@ describe Pio::OpenFlow10::Match do
       end
 
       Then do
-        match.wildcards.keys == [
-          :vlan_vid,
-          :source_mac_address,
-          :destination_mac_address,
-          :ether_type,
-          :ip_protocol,
-          :transport_source_port,
-          :transport_destination_port,
-          :source_ip_address_all,
-          :destination_ip_address_all,
-          :vlan_priority,
-          :tos
+        match.wildcards.keys == %i[
+          vlan_vid
+          source_mac_address
+          destination_mac_address
+          ether_type
+          ip_protocol
+          transport_source_port
+          transport_destination_port
+          source_ip_address_all
+          destination_ip_address_all
+          vlan_priority
+          tos
         ]
       end
       Then { match.in_port == 1 }
@@ -56,25 +58,25 @@ describe Pio::OpenFlow10::Match do
 
     context 'with a Match binary generated with Pio::OpenFlow10::Match.new' do
       Given(:binary) do
-        Pio::OpenFlow10::Match
-          .new(source_ip_address: '192.168.1.0/24')
-          .to_binary_s
+        Pio::OpenFlow10::Match.
+          new(source_ip_address: '192.168.1.0/24').
+          to_binary_s
       end
 
       Then do
-        match.wildcards.keys == [
-          :in_port,
-          :vlan_vid,
-          :source_mac_address,
-          :destination_mac_address,
-          :ether_type,
-          :ip_protocol,
-          :transport_source_port,
-          :transport_destination_port,
-          :source_ip_address,
-          :destination_ip_address_all,
-          :vlan_priority,
-          :tos
+        match.wildcards.keys == %i[
+          in_port
+          vlan_vid
+          source_mac_address
+          destination_mac_address
+          ether_type
+          ip_protocol
+          transport_source_port
+          transport_destination_port
+          source_ip_address
+          destination_ip_address_all
+          vlan_priority
+          tos
         ]
       end
       And { match.wildcards[:source_ip_address] = 12 }
@@ -100,18 +102,18 @@ describe Pio::OpenFlow10::Match do
     context 'with in_port: 1' do
       Given(:options) { { in_port: 1 } }
       Then do
-        match.wildcards.keys == [
-          :vlan_vid,
-          :source_mac_address,
-          :destination_mac_address,
-          :ether_type,
-          :ip_protocol,
-          :transport_source_port,
-          :transport_destination_port,
-          :source_ip_address_all,
-          :destination_ip_address_all,
-          :vlan_priority,
-          :tos
+        match.wildcards.keys == %i[
+          vlan_vid
+          source_mac_address
+          destination_mac_address
+          ether_type
+          ip_protocol
+          transport_source_port
+          transport_destination_port
+          source_ip_address_all
+          destination_ip_address_all
+          vlan_priority
+          tos
         ]
       end
       Then { match.in_port == 1 }
@@ -140,19 +142,19 @@ describe Pio::OpenFlow10::Match do
     context "with source_ip_address: '192.168.1.0/24'" do
       Given(:options) { { source_ip_address: '192.168.1.0/24' } }
       Then do
-        match.wildcards.keys == [
-          :in_port,
-          :vlan_vid,
-          :source_mac_address,
-          :destination_mac_address,
-          :ether_type,
-          :ip_protocol,
-          :transport_source_port,
-          :transport_destination_port,
-          :source_ip_address,
-          :destination_ip_address_all,
-          :vlan_priority,
-          :tos
+        match.wildcards.keys == %i[
+          in_port
+          vlan_vid
+          source_mac_address
+          destination_mac_address
+          ether_type
+          ip_protocol
+          transport_source_port
+          transport_destination_port
+          source_ip_address
+          destination_ip_address_all
+          vlan_priority
+          tos
         ]
       end
       Then { match.wildcards.fetch(:source_ip_address) == 8 }
@@ -173,19 +175,19 @@ describe Pio::OpenFlow10::Match do
     context "with destination_ip_address: '192.168.1.0/24'" do
       Given(:options) { { destination_ip_address: '192.168.1.0/24' } }
       Then do
-        match.wildcards.keys == [
-          :in_port,
-          :vlan_vid,
-          :source_mac_address,
-          :destination_mac_address,
-          :ether_type,
-          :ip_protocol,
-          :transport_source_port,
-          :transport_destination_port,
-          :source_ip_address_all,
-          :destination_ip_address,
-          :vlan_priority,
-          :tos
+        match.wildcards.keys == %i[
+          in_port
+          vlan_vid
+          source_mac_address
+          destination_mac_address
+          ether_type
+          ip_protocol
+          transport_source_port
+          transport_destination_port
+          source_ip_address_all
+          destination_ip_address
+          vlan_priority
+          tos
         ]
       end
       Then { match.wildcards.fetch(:destination_ip_address) == 8 }

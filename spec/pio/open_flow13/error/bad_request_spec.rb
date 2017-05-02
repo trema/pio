@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/open_flow13/error/bad_request'
 
 describe Pio::OpenFlow13::Error::BadRequest do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Pio
   # Get payload fields.
   module Payload

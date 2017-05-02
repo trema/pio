@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Pio
   module OpenFlow10
     # Flow Removed message

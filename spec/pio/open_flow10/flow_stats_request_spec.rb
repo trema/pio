@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/open_flow10/flow_stats/request'
 
 describe Pio::OpenFlow10::FlowStats::Request do
@@ -25,11 +27,11 @@ describe Pio::OpenFlow10::FlowStats::Request do
       Then { flow_stats_request.stats_type == :flow }
       Then do
         flow_stats_request.match.wildcards.keys.sort ==
-          [:destination_mac_address, :source_mac_address,
-           :ether_type, :in_port, :destination_ip_address_all,
-           :ip_protocol, :source_ip_address_all, :tos,
-           :transport_destination_port, :transport_source_port,
-           :vlan_priority, :vlan_vid].sort
+          %i[destination_mac_address source_mac_address
+             ether_type in_port destination_ip_address_all
+             ip_protocol source_ip_address_all tos
+             transport_destination_port transport_source_port
+             vlan_priority vlan_vid].sort
       end
       Then { flow_stats_request.table_id == 0xff }
       Then { flow_stats_request.out_port == :none }

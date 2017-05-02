@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Packet parser and generator library.
 module Pio
   # Dhcp parser and generator.

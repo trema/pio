@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 [
   0b0100_0101, # ip_version, ip_header_length
   0x00, # ip_type_of_service

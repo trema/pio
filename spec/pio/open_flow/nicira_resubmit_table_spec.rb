@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/open_flow/nicira_resubmit_table'
 
 describe Pio::OpenFlow::NiciraResubmitTable do

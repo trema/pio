@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Messages
 require 'pio/open_flow13/echo/reply'
 require 'pio/open_flow13/echo/request'

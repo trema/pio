@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/type/mac_address'
 
 module Pio

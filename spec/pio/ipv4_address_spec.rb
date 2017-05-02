@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/ipv4_address'
 
 describe Pio::IPv4Address do

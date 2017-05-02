@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/open_flow13/nicira_send_out_port'
 
 describe Pio::OpenFlow13::NiciraSendOutPort do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/open_flow10/packet_out'
 
 describe Pio::OpenFlow10::PacketOut do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'active_support/core_ext/module/delegation'
 require 'pio/open_flow/message'
 require 'pio/open_flow10/phy_port16'

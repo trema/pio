@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 require 'bundler/gem_tasks'
 
-RELISH_PROJECT = 'trema/pio'.freeze
+RELISH_PROJECT = 'trema/pio'
 FLAY_THRESHOLD = 1446
 
 task default: :travis
-task test: [:spec, :cucumber]
-task travis: [:test, :quality, 'coveralls:push']
+task test: %i[spec cucumber]
+task travis: %i[test quality]
 
 desc 'Check for code quality'
-task quality: [:reek, :flog, :flay, :rubocop]
+task quality: %i[reek flog flay rubocop]
 
 Dir.glob('tasks/*.rake').each { |each| import each }
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/open_flow13/error/hello_failed'
 
 describe Pio::OpenFlow13::Error::HelloFailed do

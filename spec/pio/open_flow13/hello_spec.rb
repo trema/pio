@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/open_flow13/hello'
 require 'pio/parse_error'
 
@@ -28,7 +30,7 @@ describe Pio::OpenFlow13::Hello do
       Then { result.length == 16 }
       Then { result.transaction_id.zero? }
       Then { result.xid.zero? }
-      Then { result.supported_versions == [:open_flow10, :open_flow13] }
+      Then { result.supported_versions == %i[open_flow10 open_flow13] }
     end
 
     context 'with a hello message (OpenFlow 1.0)' do

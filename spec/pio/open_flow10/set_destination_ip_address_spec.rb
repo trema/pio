@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/open_flow10/set_destination_ip_address'
 
 describe Pio::OpenFlow10::SetDestinationIpAddress do

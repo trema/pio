@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/open_flow13/packet_in'
 
 describe Pio::OpenFlow13::PacketIn do

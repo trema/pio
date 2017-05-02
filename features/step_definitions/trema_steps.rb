@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Given(/^I use OpenFlow 1\.0$/) do
   @open_flow_version = :open_flow10
 end

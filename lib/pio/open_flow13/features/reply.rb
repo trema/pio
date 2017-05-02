@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/open_flow/datapath_id'
 require 'pio/open_flow/message'
 
@@ -16,15 +18,15 @@ module Pio
         uint16 :padding
         hide :padding
         flags_32bit(:capabilities,
-                    [:flow_stats,
-                     :table_stats,
-                     :port_stats,
-                     :group_stats,
-                     :NOT_USED,
-                     :ip_reasm,
-                     :queue_stats,
-                     :NOT_USED,
-                     :port_blocked])
+                    %i[flow_stats
+                       table_stats
+                       port_stats
+                       group_stats
+                       NOT_USED
+                       ip_reasm
+                       queue_stats
+                       NOT_USED
+                       port_blocked])
         uint32 :reserved
       end
     end

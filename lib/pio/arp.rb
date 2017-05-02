@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/arp/format'
 require 'pio/arp/reply'
 require 'pio/arp/request'

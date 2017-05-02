@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Pio
   module OpenFlow
     # Buffered packet to apply to, or :no_buffer.

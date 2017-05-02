@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/dhcp/dhcp_field'
 require 'pio/dhcp/field_util'
 require 'pio/ipv4_header'
