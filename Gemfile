@@ -6,8 +6,6 @@ gem 'rake'
 
 group :development, :test do
   gem 'aruba', require: false
-  gem 'codeclimate-test-reporter', require: false
-  gem 'coveralls', require: false
   gem 'cucumber', require: false
   gem 'flay', require: false
   gem 'flog', require: false

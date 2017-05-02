@@ -5,7 +5,7 @@ FLAY_THRESHOLD = 1446
 
 task default: :travis
 task test: [:spec, :cucumber]
-task travis: [:test, :quality, 'coveralls:push']
+task travis: [:test, :quality]
 
 desc 'Check for code quality'
 task quality: [:reek, :flog, :flay, :rubocop]
