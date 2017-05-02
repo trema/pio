@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio'
 
 describe Pio::Arp do

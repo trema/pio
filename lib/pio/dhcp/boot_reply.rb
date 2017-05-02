@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/dhcp/message'
 require 'pio/dhcp/boot_reply_options'
 

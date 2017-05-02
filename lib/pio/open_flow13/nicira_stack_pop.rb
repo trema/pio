@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/open_flow/nicira_action'
 require 'pio/open_flow13/match'
 

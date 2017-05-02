@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 When(/^I eval the following Ruby code:$/) do |ruby_code|
   @result = Pio.module_eval(ruby_code)
 end

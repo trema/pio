@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/options'
 require 'pio/dhcp/common_options'
 require 'pio/dhcp/dhcp_tlv_options'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/open_flow10/flow_mod'
 
 describe Pio::OpenFlow10::FlowMod do
@@ -37,18 +39,18 @@ describe Pio::OpenFlow10::FlowMod do
       Then { flow_mod.xid == 0x15 }
 
       Then do
-        flow_mod.match.wildcards.keys == [
-          :vlan_vid,
-          :source_mac_address,
-          :destination_mac_address,
-          :ether_type,
-          :ip_protocol,
-          :transport_source_port,
-          :transport_destination_port,
-          :source_ip_address_all,
-          :destination_ip_address_all,
-          :vlan_priority,
-          :tos
+        flow_mod.match.wildcards.keys == %i[
+          vlan_vid
+          source_mac_address
+          destination_mac_address
+          ether_type
+          ip_protocol
+          transport_source_port
+          transport_destination_port
+          source_ip_address_all
+          destination_ip_address_all
+          vlan_priority
+          tos
         ]
       end
       Then { flow_mod.match.in_port == 1 }
@@ -70,7 +72,7 @@ describe Pio::OpenFlow10::FlowMod do
       Then { flow_mod.priority == 0xffff }
       Then { flow_mod.buffer_id == 0xffffffff }
       Then { flow_mod.out_port == 2 }
-      Then { flow_mod.flags == [:send_flow_rem, :check_overwrap] }
+      Then { flow_mod.flags == %i[send_flow_rem check_overwrap] }
       Then { flow_mod.actions.length == 1 }
       Then { flow_mod.actions[0].is_a? Pio::OpenFlow10::SendOutPort }
       Then { flow_mod.actions[0].port == 2 }
@@ -89,7 +91,7 @@ describe Pio::OpenFlow10::FlowMod do
           command: :add,
           priority: 0xffff,
           out_port: 2,
-          flags: [:send_flow_rem, :check_overwrap],
+          flags: %i[send_flow_rem check_overwrap],
           actions: Pio::OpenFlow10::SendOutPort.new(2)
         )
       end
@@ -102,18 +104,18 @@ describe Pio::OpenFlow10::FlowMod do
       Then { flow_mod.xid == 0x15 }
 
       Then do
-        flow_mod.match.wildcards.keys == [
-          :vlan_vid,
-          :source_mac_address,
-          :destination_mac_address,
-          :ether_type,
-          :ip_protocol,
-          :transport_source_port,
-          :transport_destination_port,
-          :source_ip_address_all,
-          :destination_ip_address_all,
-          :vlan_priority,
-          :tos
+        flow_mod.match.wildcards.keys == %i[
+          vlan_vid
+          source_mac_address
+          destination_mac_address
+          ether_type
+          ip_protocol
+          transport_source_port
+          transport_destination_port
+          source_ip_address_all
+          destination_ip_address_all
+          vlan_priority
+          tos
         ]
       end
       Then { flow_mod.match.in_port == 1 }
@@ -135,7 +137,7 @@ describe Pio::OpenFlow10::FlowMod do
       Then { flow_mod.priority == 0xffff }
       Then { flow_mod.buffer_id == 0xffffffff }
       Then { flow_mod.out_port == 2 }
-      Then { flow_mod.flags == [:send_flow_rem, :check_overwrap] }
+      Then { flow_mod.flags == %i[send_flow_rem check_overwrap] }
       Then { flow_mod.actions.length == 1 }
       Then { flow_mod.actions[0].is_a? Pio::OpenFlow10::SendOutPort }
       Then { flow_mod.actions[0].port == 2 }

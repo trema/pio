@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # rubocop:disable LineLength
 
 Then(/^the switch "(.*?)" has (\d+) flow entr(?:y|ies)$/) do |switch, num_entries|

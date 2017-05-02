@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/open_flow/nicira_action'
 require 'pio/open_flow13/match'
 
@@ -34,9 +36,9 @@ module Pio
                       _destination: { oxm_class: destination_oxm_class,
                                       oxm_field: destination_oxm_field,
                                       oxm_length: destination_oxm_length } }
-        options = [:n_bits,
-                   :source_offset,
-                   :destination_offset].each_with_object({}) do |each, opts|
+        options = %i[n_bits
+                     source_offset
+                     destination_offset].each_with_object({}) do |each, opts|
           opts[each] = arguments[each] if arguments[each]
         end
         super registers.merge(options)

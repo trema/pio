@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/open_flow10/strip_vlan_header'
 
 describe Pio::OpenFlow10::StripVlanHeader do

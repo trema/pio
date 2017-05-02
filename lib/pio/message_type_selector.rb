@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'English'
 require 'pio/parse_error'
 

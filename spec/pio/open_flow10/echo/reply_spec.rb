@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/open_flow10/echo/reply'
 
 describe Pio::OpenFlow10::Echo::Reply do

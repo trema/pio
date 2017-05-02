@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/open_flow10/echo/request'
 
 describe Pio::OpenFlow10::Echo::Request do

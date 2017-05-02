@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/class_inspector'
 require 'pio/icmp/format'
 require 'pio/instance_inspector'

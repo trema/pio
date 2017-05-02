@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/icmp/format'
 require 'pio/icmp/reply'
 require 'pio/icmp/request'

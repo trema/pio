@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # rubocop:disable LineLength
 
 Then(/^the number of packets sent from "(.*?)" should be:$/) do |host_name, table|

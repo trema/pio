@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/open_flow13/goto_table'
 
 describe Pio::OpenFlow13::GotoTable do

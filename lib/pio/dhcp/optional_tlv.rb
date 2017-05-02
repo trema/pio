@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/dhcp/parameter_list'
 require 'pio/dhcp/client_id'
 require 'pio/type/ip_address'
@@ -7,7 +9,7 @@ module Pio
   class Dhcp
     # DHCP Optional TLV
     class OptionalTlv < BinData::Record
-      DEFAULT = 'default'.freeze
+      DEFAULT = 'default'
 
       endian :big
 

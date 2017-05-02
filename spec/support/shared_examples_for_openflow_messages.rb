@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 shared_examples 'an OpenFlow message' do |klass|
   describe '.new' do
     When(:message) { klass.new(options) }

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module BinData
   # Add BinData::String#to_bytes
   class String

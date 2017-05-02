@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Pio
   class Dhcp
     # Dhcp Field Read Methods.
@@ -93,7 +95,7 @@ module Pio
 
       def get_tlv_field(tlv_type)
         tlv = get_tlv(tlv_type)
-        tlv.snapshot if tlv
+        tlv&.snapshot
       end
     end
   end

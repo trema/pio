@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/open_flow13/nicira_reg_move'
 
 describe Pio::OpenFlow13::NiciraRegMove do

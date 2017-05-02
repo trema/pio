@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'bindata'
 require 'pio/ipv4_address'
 

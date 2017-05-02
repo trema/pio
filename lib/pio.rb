@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/parse_error'
 
 require 'pio/arp'

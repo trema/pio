@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/open_flow/datapath_id'
 require 'pio/open_flow/message'
 require 'pio/open_flow10/phy_port16'
@@ -22,27 +24,27 @@ module Pio
         string :padding, length: 3
         hide :padding
         flags_32bit :capabilities,
-                    [:flow_stats,
-                     :table_stats,
-                     :port_stats,
-                     :stp,
-                     :reserved,
-                     :ip_reasm,
-                     :queue_stats,
-                     :arp_match_ip]
+                    %i[flow_stats
+                       table_stats
+                       port_stats
+                       stp
+                       reserved
+                       ip_reasm
+                       queue_stats
+                       arp_match_ip]
         flags_32bit :actions,
-                    [:output,
-                     :set_vlan_vid,
-                     :set_vlan_pcp,
-                     :strip_vlan,
-                     :set_source_mac_address,
-                     :set_destination_mac_address,
-                     :set_source_ip_address,
-                     :set_destination_ip_address,
-                     :set_tos,
-                     :set_transport_source_port,
-                     :set_transport_destination_port,
-                     :enqueue]
+                    %i[output
+                       set_vlan_vid
+                       set_vlan_pcp
+                       strip_vlan
+                       set_source_mac_address
+                       set_destination_mac_address
+                       set_source_ip_address
+                       set_destination_ip_address
+                       set_tos
+                       set_transport_source_port
+                       set_transport_destination_port
+                       enqueue]
         array :ports, type: :phy_port16, read_until: :eof
 
         def ports

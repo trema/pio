@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/open_flow10/set_transport_port'
 
 describe Pio::OpenFlow10::SetTransportSourcePort do

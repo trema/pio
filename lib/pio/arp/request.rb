@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/arp/message'
 require 'pio/instance_inspector'
 require 'pio/mac'
@@ -10,9 +12,9 @@ module Pio
 
       option :operation, value: 1
       option :source_mac
-      option :destination_mac, default: 'ff:ff:ff:ff:ff:ff'.freeze
+      option :destination_mac, default: 'ff:ff:ff:ff:ff:ff'
       option :sender_hardware_address, value: :source_mac
-      option :target_hardware_address, default: '00:00:00:00:00:00'.freeze
+      option :target_hardware_address, default: '00:00:00:00:00:00'
       option :sender_protocol_address
       option :target_protocol_address
     end

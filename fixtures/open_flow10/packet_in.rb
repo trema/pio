@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 [
   0x01, # version
   0x0a, # type

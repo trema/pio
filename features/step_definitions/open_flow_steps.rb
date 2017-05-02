@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Given(/^I switch the Pio::OpenFlow version to "([^"]*)"$/) do |version|
   Pio::OpenFlow.version = version
 end

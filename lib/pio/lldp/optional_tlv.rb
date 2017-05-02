@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/lldp/port_description_value'
 require 'pio/lldp/system_name_value'
 require 'pio/lldp/system_description_value'

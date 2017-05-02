@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Messages
 require 'pio/open_flow10/aggregate_stats/reply'
 require 'pio/open_flow10/aggregate_stats/request'

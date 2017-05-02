@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/monkey_patch/integer/base_conversions'
 require 'pio/monkey_patch/integer/ranges'
 

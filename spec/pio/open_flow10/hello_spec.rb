@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/open_flow10/hello'
 
 describe Pio::OpenFlow10::Hello do

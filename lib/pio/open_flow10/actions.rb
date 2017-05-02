@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'bindata'
 require 'pio/open_flow10/enqueue'
 require 'pio/open_flow10/send_out_port'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 When(/^I parse a file named "(.*?\.raw)" with "(.*?)" class$/) do |path, klass|
   raw_data = IO.read(expand_path("%/#{path}"))
   parser_klass = Pio.const_get(klass)
@@ -31,7 +33,7 @@ end
 Then(/^the packet has the following fields and values:$/) do |table|
   table.hashes.each do |each|
     output = @result.instance_eval("self.#{each['field']}")
-    if /^:/ =~ output.inspect
+    if /^:/.match?(output.inspect)
       expect(output.inspect).to eq(each['value'])
     else
       expect(output.to_s).to eq(each['value'])

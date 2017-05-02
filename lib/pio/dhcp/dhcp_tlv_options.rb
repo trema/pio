@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/dhcp/common_options'
 
 module Pio
@@ -31,11 +33,13 @@ module Pio
       end
 
       def dhcp_server_identifier_hash
-        {
-          tlv_type: Dhcp::SERVER_IDENTIFIER_TLV,
-          tlv_info_length: 4,
-          tlv_value: server_identifier
-        } if server_identifier
+        if server_identifier
+          {
+            tlv_type: Dhcp::SERVER_IDENTIFIER_TLV,
+            tlv_info_length: 4,
+            tlv_value: server_identifier
+          }
+        end
       end
 
       def parameters_list_hash
@@ -47,19 +51,23 @@ module Pio
       end
 
       def renewal_time_value_hash
-        {
-          tlv_type: Dhcp::RENEWAL_TIME_VALUE_TLV,
-          tlv_info_length: 4,
-          tlv_value: renewal_time_value
-        } if renewal_time_value
+        if renewal_time_value
+          {
+            tlv_type: Dhcp::RENEWAL_TIME_VALUE_TLV,
+            tlv_info_length: 4,
+            tlv_value: renewal_time_value
+          }
+        end
       end
 
       def rebinding_time_value_hash
-        {
-          tlv_type: Dhcp::REBINDING_TIME_VALUE_TLV,
-          tlv_info_length: 4,
-          tlv_value: rebinding_time_value
-        } if rebinding_time_value
+        if rebinding_time_value
+          {
+            tlv_type: Dhcp::REBINDING_TIME_VALUE_TLV,
+            tlv_info_length: 4,
+            tlv_value: rebinding_time_value
+          }
+        end
       end
 
       def ip_address_lease_time_hash
@@ -71,11 +79,13 @@ module Pio
       end
 
       def subnet_mask_hash
-        {
-          tlv_type: Dhcp::SUBNET_MASK_TLV,
-          tlv_info_length: 4,
-          tlv_value: subnet_mask
-        } if subnet_mask
+        if subnet_mask
+          {
+            tlv_type: Dhcp::SUBNET_MASK_TLV,
+            tlv_info_length: 4,
+            tlv_value: subnet_mask
+          }
+        end
       end
     end
   end

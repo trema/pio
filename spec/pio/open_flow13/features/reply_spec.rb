@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/open_flow13/features/reply'
 
 describe Pio::OpenFlow13::Features::Reply do

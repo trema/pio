@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/open_flow13/features/request'
 
 describe Pio::OpenFlow13::Features::Request do

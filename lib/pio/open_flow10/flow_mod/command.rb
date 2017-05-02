@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Pio
   module OpenFlow10
     # OpenFlow 1.0 Flow Mod message.

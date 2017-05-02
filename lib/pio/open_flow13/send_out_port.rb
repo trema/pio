@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/open_flow/action'
 require 'pio/open_flow13/port32'
 

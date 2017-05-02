@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/open_flow/error_message'
 require 'pio/open_flow10/error/error_type10'
 

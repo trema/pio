@@ -1,3 +1,5 @@
+# frozen_string_literal: false
+
 module Pio
   # defines to_ruby method
   module RubyDumper

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pio/arp/message'
 require 'pio/instance_inspector'
 require 'pio/mac'

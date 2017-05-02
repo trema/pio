@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'English'
 require 'bindata'
 require 'pio/open_flow/flow_match'
@@ -36,8 +38,8 @@ module Pio
           vlan_priority: 1 << 20,
           tos: 1 << 21
         }.freeze
-        NW_FLAGS = [:source_ip_address, :destination_ip_address].freeze
-        FLAGS = BITS.keys.select { |each| !(/^(source|destination)_ip/=~ each) }
+        NW_FLAGS = %i[source_ip_address destination_ip_address].freeze
+        FLAGS = BITS.keys.reject { |each| (/^(source|destination)_ip/=~ each) }
 
         endian :big
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Pio
   module OpenFlow10
     class PacketIn < OpenFlow::Message
