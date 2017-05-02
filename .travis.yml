@@ -11,8 +11,9 @@ env:
     - secure: cbR8GBZyaDxE54pfGkfzhuTQEh3mpcghrx95dL42df3Ei9s3DHCI2Q/yDChUMY3eeqzHUNAt9fPQeDZsMG/aHUrh775bebh28M8zSkUYzv6x1diPnDtywXGutW7MKGak6jw8F+45J6TW4IxNFYMmuWyBu9HOd5VkqWRKvezvqc8=
 
 rvm:
-  - 2.2
-  - 2.3
+  - 2.2.7
+  - 2.3.4
+  - 2.4.1
   - ruby-head
 
 matrix:
