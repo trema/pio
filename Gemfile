@@ -18,16 +18,6 @@ group :development, :test do
 end
 
 group :development do
-  gem 'guard', require: false
-  gem 'guard-bundler', require: false
-  gem 'guard-cucumber', require: false
-  gem 'guard-rspec', require: false
-  gem 'guard-rubocop', require: false
-  gem 'listen', require: false
   gem 'pry', require: false
-  gem 'rb-fchange', require: false
-  gem 'rb-fsevent', require: false
-  gem 'rb-inotify', require: false
   gem 'relish', require: false
-  gem 'terminal-notifier-guard', require: false
 end

@@ -1,7 +1,6 @@
 AllCops:
   Include:
     - '**/Gemfile'
-    - '**/Guardfile'
     - '**/Rakefile'
     - examples
     - pio.gemspec
