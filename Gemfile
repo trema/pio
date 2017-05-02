@@ -31,5 +31,4 @@ group :development do
   gem 'rb-inotify', require: false
   gem 'relish', require: false
   gem 'terminal-notifier-guard', require: false
-  gem 'yard', require: false
 end
